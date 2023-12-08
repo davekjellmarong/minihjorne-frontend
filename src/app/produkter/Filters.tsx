@@ -20,11 +20,11 @@ interface FiltersProps {
   setFilterQuery: any;
 }
 const Filters = ({ setFilterQuery }: FiltersProps) => {
-  const [colorFilter, setColorFilter] = useState([]);
-  const [sizeFilter, setSizeFilter] = useState([]);
-  const [tagFilter, setTagFilter] = useState([]);
-  const [materialFilter, setMaterialFilter] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState([]);
+  const [colorFilter, setColorFilter] = useState<any>([]);
+  const [sizeFilter, setSizeFilter] = useState<any>([]);
+  const [tagFilter, setTagFilter] = useState<any>([]);
+  const [materialFilter, setMaterialFilter] = useState<any>([]);
+  const [categoryFilter, setCategoryFilter] = useState<any>([]);
   const { data: TagsData, isLoading: tagsLoading } = useQuery<TagsRQ>({
     queryKey: ["tags"],
     queryFn: fetchTags,
@@ -49,27 +49,27 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
     });
   const handleFilterFetch = () => {
     const colorQuery = colorFilter
-      .map((item) => {
+      .map((item: any) => {
         return item.query;
       })
       .join("");
     const sizeQuery = sizeFilter
-      .map((item) => {
+      .map((item: any) => {
         return item.query;
       })
       .join("");
     const tagQuery = tagFilter
-      .map((item) => {
+      .map((item: any) => {
         return item.query;
       })
       .join("");
     const materialQuery = materialFilter
-      .map((item) => {
+      .map((item: any) => {
         return item.query;
       })
       .join("");
     const categoryQuery = categoryFilter
-      .map((item) => {
+      .map((item: any) => {
         return item.query;
       })
       .join("");
