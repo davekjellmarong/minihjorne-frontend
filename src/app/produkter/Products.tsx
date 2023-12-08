@@ -4,6 +4,7 @@ import { baseUrl, tailwindColors } from "@/utils/constants";
 import { Product } from "@/utils/types";
 import { PlusCircle, Tag, User } from "@phosphor-icons/react";
 import Loading from "@/components/loading/Loading";
+import Image from "next/image";
 interface ProductsProps {
   isLoading?: boolean;
   data: Product[] | undefined;
@@ -17,7 +18,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
           return (
             <li className="shadow w-80 p-10" key={product.id}>
               <p className="text-center">{product.attributes.name}</p>
-              <img
+              <Image
                 className="w-full h-56"
                 src={`${baseUrl}${product.attributes.image.data?.attributes.url}`}
                 height={200}

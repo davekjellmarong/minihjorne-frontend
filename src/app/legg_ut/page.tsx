@@ -6,7 +6,7 @@ import ProductForm from "../../components/form/product/ProductForm";
 import ImagesList from "./ImagesList";
 import { tailwindColors } from "@/utils/constants";
 const LeggUt = () => {
-  const [selectedImage, setSelectedImage] = useState();
+  const [selectedImage, setSelectedImage] = useState<any>("");
   const [images, setImages] = useState([]);
 
   return (
