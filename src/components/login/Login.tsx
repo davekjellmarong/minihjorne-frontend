@@ -3,7 +3,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { loginUser } from "../utils/utils";
+import { loginUser } from "../../utils/utils";
 
 const Login = () => {
   const queryClient = useQueryClient();
@@ -13,7 +13,7 @@ const Login = () => {
       return loginUser(values);
     },
     onSuccess: (data) => {
-      queryClient.setQueryData(["user"], data.user);
+      queryClient.setQueryData(["login-user"], data.user);
       queryClient.setQueryData(["jwt"], data.jwt);
       router.push("/");
     },
@@ -21,8 +21,8 @@ const Login = () => {
   // Request API.
   const formik = useFormik({
     initialValues: {
-      identifier: "",
-      password: "",
+      identifier: "davemarong",
+      password: "dave1011",
     },
     onSubmit: (values) => {
       console.log("Form data submitted:", values);

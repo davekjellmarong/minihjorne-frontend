@@ -4,7 +4,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { registerUser } from "../utils/utils";
+import { registerUser } from "../../utils/utils";
 
 const Register = () => {
   // Request API.

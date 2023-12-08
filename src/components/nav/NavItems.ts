@@ -31,4 +31,9 @@ export const navItemsAuth = [
     path: "/minSide",
     color: "transparent",
   },
+  {
+    label: "Legg ut",
+    path: "/legg_ut",
+    color: "transparent",
+  },
 ];
