@@ -18,7 +18,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
           return (
             <li className="shadow w-80 p-10" key={product.id}>
               <p className="text-center">{product.attributes.name}</p>
-              <Image
+              <img
                 className="w-full h-56"
                 src={`${baseUrl}${product.attributes.image.data?.attributes.url}`}
                 height={200}
@@ -41,7 +41,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                     );
                   })}
                 </ul>
-                <div className="flex justify-between">
+                {/* <div className="flex justify-between">
                   <ul className="flex gap-2 ">
                     {product.attributes.colors.data.map((color) => {
                       const colorClass = tailwindColors.find(
@@ -55,7 +55,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                       );
                     })}
                   </ul>
-                </div>
+                </div> */}
                 <p>
                   <span className=" text-sm">Str </span>
                   <span>{product.attributes.size.data.attributes.number}</span>

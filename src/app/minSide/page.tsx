@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 import Products from "../produkter/Products";
 import { productByIdOption } from "@/components/reactQuery/Options";
+import SideMenu from "./SideMenu";
+import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 
 interface UserData {
   username: string;
@@ -15,6 +17,8 @@ const MinSide = () => {
   const { data: userData } = useQuery<UserData>({
     queryKey: ["login-user"],
   });
+  useAutoLogIn();
+
   const userId = userData?.id;
 
   const { data, isLoading } = useQuery(productByIdOption(userId));
@@ -23,12 +27,10 @@ const MinSide = () => {
   if (data) {
     return (
       <div>
-        {/* <Suspense> */}
         <p className="text-center font-semibold text-lg">
           {userData?.username}
         </p>
         <Products data={data.data} />
-        {/* </Suspense> */}
       </div>
     );
   }

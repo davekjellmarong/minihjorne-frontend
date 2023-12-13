@@ -53,11 +53,42 @@ export const postRequest = async (values: any, endpoint: string) => {
       return error;
     });
 };
+export const putRequest = async (values: any, endpoint: string) => {
+  const url = apiUrl + endpoint;
+
+  return axios
+    .put(url, values)
+    .then((response) => {
+      // Handle success.
+      console.log("Well done!");
+      console.log("User profile", response.data.user);
+      console.log("User token", response.data.jwt);
+      return response.data;
+    })
+    .catch((error) => {
+      // Handle error.
+      console.log("An error occurred:", error.response);
+      return error;
+    });
+};
 
 export const fetchPublicData = async (query: string) => {
   try {
     const url = apiUrl + query;
     const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+export const fetchAuthData = async (query: string, token: string) => {
+  try {
+    const url = apiUrl + query;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.get(url, { headers });
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -97,9 +128,6 @@ export const fetchMaterials = async () => {
 export const fetchCategories = async () => {
   return fetchPublicData("/categories");
 };
-export const fetchUser = async () => {
-  return fetchPublicData("/categories");
-};
 
 export const UserMethods = {
   getAll: async () => {
@@ -108,15 +136,24 @@ export const UserMethods = {
   getById: async (id: any) => {
     return fetchPublicData(`/users/${id}`);
   },
+  put: async (values: any, id: any) => {
+    return putRequest(values, `/users/${id}`);
+  },
+  getMe: async (token: any) => {
+    return fetchAuthData("/users/me", token);
+  },
 };
 export const ProductsMethods = {
   get: async () => {
     return fetchPublicData("/products?populate=*");
   },
   getByUserId: async (id: any) => {
-    return fetchPublicData(`/products?populate=*&filters[user][id][$eq]=2`);
+    return fetchPublicData(`/products?populate=*&filters[user][id][$eq]=${id}`);
   },
   post: async (data: any) => {
     return postRequest(data, "/products");
   },
+};
+export const uploadImageFile = async (formData: any) => {
+  return postRequest(formData, "/upload");
 };

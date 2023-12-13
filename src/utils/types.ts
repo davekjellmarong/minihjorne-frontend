@@ -37,6 +37,10 @@ export interface User {
     updatedAt: string;
     active: null;
     activeUntill: null;
+    header: string;
+    description: string;
+    icon: string;
+    color: string;
   };
 }
 
@@ -158,4 +162,7 @@ export interface MaterialRQ {
 }
 export interface CategoryRQ {
   data: Category[];
+}
+export interface UserRQ {
+  data: User;
 }

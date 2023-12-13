@@ -18,3 +18,33 @@ export const tailwindColors = [
   { title: "Sølv", tailwind: "bg-gray-400" },
   { title: "Bronse", tailwind: "bg-orange-600" },
 ];
+
+export const tailwindColorsObject: any = {
+  red: "bg-red-500 checked:bg-red-500 checked:active:bg-red-500 checked:focus:bg-red-500",
+  blue: "bg-blue-500 checked:bg-blue-500 checked:active:bg-blue-500 checked:focus:bg-blue-500",
+  green:
+    "bg-green-500 checked:bg-green-500 checked:active:bg-green-500 checked:focus:bg-green-500",
+  yellow:
+    "bg-yellow-500 checked:bg-yellow-500 checked:active:bg-yellow-500 checked:focus:bg-yellow-500",
+  pink: "bg-pink-400 checked:bg-pink-400 checked:active:bg-pink-400 checked:focus:bg-pink-400",
+  black:
+    "bg-black checked:bg-black checked:active:bg-black checked:focus:bg-black",
+  white:
+    "bg-white checked:bg-white checked:active:bg-white checked:focus:bg-white",
+  gray: "bg-gray-500 checked:bg-gray-500 checked:active:bg-gray-500 checked:focus:bg-gray-500",
+  purple:
+    "bg-purple-400 checked:bg-purple-400 checked:active:bg-purple-400 checked:focus:bg-purple-400",
+  orange:
+    "bg-orange-400 checked:bg-orange-400 checked:active:bg-orange-400 checked:focus:bg-orange-400",
+  Turkis:
+    "bg-teal-400 checked:bg-teal-400 checked:active:bg-teal-400 checked:focus:bg-teal-400",
+  indigo:
+    "bg-indigo-400 checked:bg-indigo-400 checked:active:bg-indigo-400 checked:focus:bg-indigo-400",
+  amber:
+    "bg-amber-700 checked:bg-amber-700 checked:active:bg-amber-700 checked:focus:bg-amber-700",
+  Cyan: "bg-cyan-400 checked:bg-cyan-400 checked:active:bg-cyan-400 checked:focus:bg-cyan-400",
+  Gull: "bg-yellow-500 checked:bg-yellow-500 checked:active:bg-yellow-500 checked:focus:bg-yellow-500",
+  Sølv: "bg-gray-400 checked:bg-gray-400 checked:active:bg-gray-400 checked:focus:bg-gray-400",
+  Bronse:
+    "bg-orange-600 checked:bg-orange-600 checked:active:bg-orange-600 checked:focus:bg-orange-600",
+};

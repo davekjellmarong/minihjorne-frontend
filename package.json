@@ -18,7 +18,9 @@
     "next": "14.0.3",
     "react": "^18",
     "react-arborist": "^3.3.0-rc.1",
-    "react-dom": "^18"
+    "react-cookie": "^6.1.1",
+    "react-dom": "^18",
+    "universal-cookie": "^6.1.1"
   },
   "devDependencies": {
     "@types/node": "^20",

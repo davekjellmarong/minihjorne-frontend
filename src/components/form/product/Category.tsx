@@ -20,7 +20,7 @@ const Category = ({ categories, formik }: CategoryProps) => {
     TShirt: <TShirt size={32} />,
   };
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 flex-wrap">
       {categories.map((category) => {
         return (
           <div key={category.id} className="flex flex-col items-start w-20">

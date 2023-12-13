@@ -7,7 +7,7 @@ import Sex from "./Sex";
 import Price from "./Price";
 import Size from "./Size";
 import Brand from "./Brand";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { Query, useMutation, useQuery } from "@tanstack/react-query";
 import {
   ProductsMethods,
   fetchCategories,
@@ -16,6 +16,7 @@ import {
   fetchSizes,
   fetchTags,
   loginUser,
+  uploadImageFile,
 } from "@/utils/utils";
 import {
   CategoryRQ,
@@ -23,38 +24,30 @@ import {
   MaterialRQ,
   SizesRQ,
   TagsRQ,
+  User,
 } from "@/utils/types";
 import { useFormik } from "formik";
 import Loading from "@/components/loading/Loading";
+import Materials from "./Materials";
+import Tags from "./Tags";
+import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 
 interface ProductFormProps {
   selectedImage: any;
+  setSavedImages: any;
 }
-const ProductForm = ({ selectedImage }: ProductFormProps) => {
+const ProductForm = ({ selectedImage, setSavedImages }: ProductFormProps) => {
   const { mutate: createProduct, isPaused: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.post(values);
     },
     onSuccess: (data) => {
       console.log(data);
-      // queryClient.setQueryData(["login-user"], data.user);
-      // queryClient.setQueryData(["jwt"], data.jwt);
-      // router.push("/");
+      setSavedImages((prev: any) => [...prev, selectedImage.name]);
     },
   });
-  const formik = useFormik({
-    initialValues: {
-      colors: "",
-      brand: "",
-      price: "",
-      category: "",
-      state: "",
-      sex: "",
-    },
-    onSubmit: (values) => {
-      createProduct({ data: values });
-      console.log("Form data submitted:", values);
-    },
+  const { data: user } = useQuery<User>({
+    queryKey: ["login-user"],
   });
   const { data: colors } = useQuery<ColorsRQ>({
     queryKey: ["colors"],
@@ -76,7 +69,29 @@ const ProductForm = ({ selectedImage }: ProductFormProps) => {
     queryKey: ["sizes"],
     queryFn: fetchSizes,
   });
+  const formik = useFormik({
+    initialValues: {
+      colors: "",
+      materials: "",
+      brand: "",
+      price: "",
+      category: "",
+      state: "",
+      sex: "",
+      tags: "",
+      user: 0,
+    },
 
+    onSubmit: (values) => {
+      const userId: any = user?.id;
+      const data = { ...values, user: userId };
+      var formData = new FormData();
+      formData.append("files.image", selectedImage, selectedImage.name);
+      formData.append("data", JSON.stringify(data));
+      createProduct(formData);
+      console.log("Form data submitted:", values);
+    },
+  });
   if (
     !colors?.data ||
     !tags?.data ||
@@ -92,6 +107,8 @@ const ProductForm = ({ selectedImage }: ProductFormProps) => {
     >
       <Color formik={formik} colors={colors.data} />
       <Category formik={formik} categories={categories.data} />
+      <Materials formik={formik} materials={materials.data} />
+      <Tags formik={formik} tags={tags.data} />
       <State formik={formik} />
       <Sex formik={formik} />
       <Size formik={formik} sizes={sizes.data} />

@@ -1,27 +1,15 @@
-import Image from "next/image";
-import React, { useState } from "react";
-
+"use client";
+import React from "react";
 interface ImageUploaderProps {
+  setSelectedImage: any;
   setImages: any;
 }
-const ImageUploader = ({ setImages }: ImageUploaderProps) => {
+const ImageUploader = ({ setSelectedImage, setImages }: ImageUploaderProps) => {
   const handleImageChange = (e: any) => {
-    const files = e.target.files;
-    const imageArray: any = [];
-
-    for (let i = 0; i < files.length; i++) {
-      const reader = new FileReader();
-      const file = files[i];
-
-      reader.onloadend = () => {
-        imageArray.push(reader.result);
-        if (imageArray.length === files.length) {
-          setImages(imageArray);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
+    setSelectedImage(e.target.files[0]);
+    setImages(Object.values(e.target.files));
   };
+
   return (
     <div className="flex justify-center flex-col items-center">
       <input
@@ -30,23 +18,6 @@ const ImageUploader = ({ setImages }: ImageUploaderProps) => {
         multiple
         onChange={handleImageChange}
       />
-
-      {/* <div className="flex gap-6 justify-center">
-        {images.map((image, index) => (
-          <Image
-            className="shadow-lg w-20"
-            key={index}
-            width={200}
-            height={200}
-            src={image}
-            onClick={() => {
-              setSelectedImage(image);
-              console.log(image);
-            }}
-            alt={`uploaded-image-${index}`}
-          />
-        ))}
-      </div> */}
     </div>
   );
 };

@@ -4,8 +4,9 @@ import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUser } from "../../utils/utils";
-
+import { useCookies } from "react-cookie";
 const Login = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
   const { mutate: login, isPaused: loading } = useMutation({
@@ -15,6 +16,9 @@ const Login = () => {
     onSuccess: (data) => {
       queryClient.setQueryData(["login-user"], data.user);
       queryClient.setQueryData(["jwt"], data.jwt);
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 30);
+      setCookie("Token", data.jwt, { expires: expirationDate });
       router.push("/");
     },
   });

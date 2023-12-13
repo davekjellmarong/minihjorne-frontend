@@ -36,7 +36,7 @@ const Filter = ({
       <ul ref={FilterRef} className="hidden">
         {data.data.map((item: any) => {
           return (
-            <li key={item.id} className="flex gap-4 my-2">
+            <li key={item.id} className="flex gap-4 flex-wrap my-2">
               <input
                 type="checkbox"
                 onChange={(e) => {

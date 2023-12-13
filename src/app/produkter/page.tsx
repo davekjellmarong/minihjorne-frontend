@@ -16,6 +16,7 @@ import React, { useState } from "react";
 import Products from "./Products";
 import Filters from "./Filters";
 import SplitView from "@/components/layout/SplitView";
+import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 
 const Page = () => {
   const [filterQuery, setFilterQuery] = useState("");
@@ -25,6 +26,7 @@ const Page = () => {
       return fetchProductsFiltered(filterQuery);
     },
   });
+  useAutoLogIn();
 
   return (
     <>
