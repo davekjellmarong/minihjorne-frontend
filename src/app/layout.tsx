@@ -4,6 +4,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 import Providers from "../components/reactQuery/Provider";
 import Nav from "@/components/nav/Nav";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +22,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <Nav />
-          <main>{children}</main>
+          <main>
+            {children}
+            <ToastContainer
+              theme="colored"
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={true}
+            />
+          </main>
         </Providers>
       </body>
     </html>

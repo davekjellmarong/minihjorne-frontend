@@ -2,14 +2,17 @@
 import React from "react";
 import { baseUrl, tailwindColors } from "@/utils/constants";
 import { Product } from "@/utils/types";
-import { PlusCircle, Tag, User } from "@phosphor-icons/react";
+import { MinusCircle, PlusCircle, Tag, User } from "@phosphor-icons/react";
 import Loading from "@/components/loading/Loading";
-import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
+import AddToCartButtons from "@/components/button/AddToCartButtons";
+
 interface ProductsProps {
   isLoading?: boolean;
   data: Product[] | undefined;
 }
 const Products = ({ isLoading, data }: ProductsProps) => {
+  const router = useRouter();
   if (isLoading) return <Loading />;
   if (data)
     return (
@@ -24,6 +27,9 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                 height={200}
                 width={200}
                 alt=""
+                onClick={() => {
+                  router.push(`/produkter/${product.id}`);
+                }}
               />
               <div className="flex flex-col gap-4">
                 <p className="text-center text-lg font-semibold">
@@ -41,21 +47,6 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                     );
                   })}
                 </ul>
-                {/* <div className="flex justify-between">
-                  <ul className="flex gap-2 ">
-                    {product.attributes.colors.data.map((color) => {
-                      const colorClass = tailwindColors.find(
-                        (item) => item.title === color.attributes.name
-                      );
-                      return (
-                        <li
-                          className={`${colorClass?.tailwind} w-6 h-6 rounded border-gray-200 border-2`}
-                          key={color.id}
-                        ></li>
-                      );
-                    })}
-                  </ul>
-                </div> */}
                 <p>
                   <span className=" text-sm">Str </span>
                   <span>{product.attributes.size.data.attributes.number}</span>
@@ -69,9 +60,9 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                     <User size={22} />
                     <p>{product.attributes.user.data?.attributes.username}</p>
                   </div>
-                  <button className="">
-                    <PlusCircle size={32} />
-                  </button>
+                </div>
+                <div>
+                  <AddToCartButtons product={product} />
                 </div>
               </div>
             </li>

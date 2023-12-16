@@ -19,6 +19,8 @@ import { useFormik } from "formik";
 import { ColorsRQ } from "@/utils/types";
 import { UserMethods, fetchColors } from "@/utils/utils";
 import { tailwindColors, tailwindColorsObject } from "@/utils/constants";
+import { toast } from "react-toastify";
+
 interface UserData {
   username: string;
   id: number;
@@ -32,11 +34,12 @@ const Page = () => {
   const { data: userData } = useQuery<UserData>({
     queryKey: ["login-user"],
   });
-  const { mutate: updateUser, isPaused: loading } = useMutation({
+  const { mutate: updateUser } = useMutation({
     mutationFn: (values: any) => {
       return UserMethods.put(values, userData?.id);
     },
     onSuccess: (data) => {
+      toast.info(`Salgsprofil lagret`);
       console.log(data);
     },
   });

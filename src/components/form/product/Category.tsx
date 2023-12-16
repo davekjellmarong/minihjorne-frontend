@@ -34,7 +34,15 @@ const Category = ({ categories, formik }: CategoryProps) => {
               // id="category"
               className="h-8 w-8"
               value={category.id}
-              onChange={formik.handleChange}
+              // onChange={formik.handleChange}
+              onChange={(e) => {
+                const categoryId = e.target.value;
+                const categoryName = category.attributes.name;
+
+                // Set both color ID and color name to Formik values
+                formik.setFieldValue("category", categoryId);
+                formik.setFieldValue(`categoryName`, categoryName);
+              }}
             />
           </div>
         );

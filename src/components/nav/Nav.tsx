@@ -12,8 +12,8 @@ const Nav = () => {
     }
   }, [data]);
   return (
-    <nav className="flex items-center justify-between flex-wrap p-2 px-6 bg-gray-300 lg:px-20 ">
-      <Link href="/" className="w-36 lg:w-52 mb-4 pb-0 mb-0">
+    <nav className="flex items-center justify-between flex-wrap p-2 px-6 bg-gray-700 lg:px-20 ">
+      <Link href="/" className="w-36 lg:w-52 text-white pb-0 mb-0">
         Mini Bruket
       </Link>
       <div
@@ -23,7 +23,7 @@ const Nav = () => {
           return (
             <Link key={item.path} href={item.path} className="w-500">
               <button
-                className={`"text-white p-4 rounded hover:bg-gray-500 transition-colors duration-150`}
+                className={`text-white p-4 rounded hover:bg-gray-500 transition-colors duration-150`}
                 key={item.label}
               >
                 {item.label}

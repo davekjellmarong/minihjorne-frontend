@@ -7,7 +7,7 @@ import Sex from "./Sex";
 import Price from "./Price";
 import Size from "./Size";
 import Brand from "./Brand";
-import { Query, useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   ProductsMethods,
   fetchCategories,
@@ -15,8 +15,6 @@ import {
   fetchMaterials,
   fetchSizes,
   fetchTags,
-  loginUser,
-  uploadImageFile,
 } from "@/utils/utils";
 import {
   CategoryRQ,
@@ -30,20 +28,32 @@ import { useFormik } from "formik";
 import Loading from "@/components/loading/Loading";
 import Materials from "./Materials";
 import Tags from "./Tags";
-import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
+import { toast } from "react-toastify";
 
 interface ProductFormProps {
   selectedImage: any;
   setSavedImages: any;
 }
 const ProductForm = ({ selectedImage, setSavedImages }: ProductFormProps) => {
+  const { data: jwt } = useQuery({
+    queryKey: ["jwt"],
+  });
   const { mutate: createProduct, isPaused: loading } = useMutation({
     mutationFn: (values: any) => {
-      return ProductsMethods.post(values);
+      return ProductsMethods.post(values, jwt);
     },
     onSuccess: (data) => {
       console.log(data);
+      toast.info(
+        `Produktet '${
+          formik.values.colorsNorwegianName
+        } ${formik.values.categoryName.toLowerCase()}' lagret`
+      );
       setSavedImages((prev: any) => [...prev, selectedImage.name]);
+    },
+    onError: (err: any) => {
+      console.log(err);
+      toast.error(`Produkt kunne ikke lagres`);
     },
   });
   const { data: user } = useQuery<User>({
@@ -72,10 +82,12 @@ const ProductForm = ({ selectedImage, setSavedImages }: ProductFormProps) => {
   const formik = useFormik({
     initialValues: {
       colors: "",
+      colorsNorwegianName: "",
       materials: "",
       brand: "",
       price: "",
       category: "",
+      categoryName: "",
       state: "",
       sex: "",
       tags: "",
@@ -89,7 +101,6 @@ const ProductForm = ({ selectedImage, setSavedImages }: ProductFormProps) => {
       formData.append("files.image", selectedImage, selectedImage.name);
       formData.append("data", JSON.stringify(data));
       createProduct(formData);
-      console.log("Form data submitted:", values);
     },
   });
   if (
@@ -108,13 +119,18 @@ const ProductForm = ({ selectedImage, setSavedImages }: ProductFormProps) => {
       <Color formik={formik} colors={colors.data} />
       <Category formik={formik} categories={categories.data} />
       <Materials formik={formik} materials={materials.data} />
+      <button
+        type="submit"
+        className="border-2 border-gray-400 py-2 px-6 rounded"
+      >
+        Lagre
+      </button>
       <Tags formik={formik} tags={tags.data} />
       <State formik={formik} />
       <Sex formik={formik} />
       <Size formik={formik} sizes={sizes.data} />
       <Brand formik={formik} />
       <Price formik={formik} />
-      <button type="submit">Submit</button>
     </form>
   );
 };

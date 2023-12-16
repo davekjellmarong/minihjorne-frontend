@@ -2,7 +2,6 @@ import { ColorsRQ, SizesRQ, TagsRQ } from "@/utils/types";
 import { fetchColors, fetchSizes, fetchTags } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
 import React, { useRef, useState } from "react";
-import TreeViewComp from "./TreeViewComp";
 import { CaretDown, CaretRight } from "@phosphor-icons/react";
 interface FilterProps {
   data: any;

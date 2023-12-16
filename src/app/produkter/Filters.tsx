@@ -73,9 +73,6 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
         return item.query;
       })
       .join("");
-    console.log(colorQuery);
-    console.log(tagQuery);
-    console.log(sizeQuery);
     setFilterQuery(
       colorQuery + tagQuery + sizeQuery + materialQuery + categoryQuery
     );

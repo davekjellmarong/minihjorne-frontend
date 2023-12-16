@@ -11,9 +11,6 @@ const ImagesList = ({
   setSelectedImage,
   savedImages,
 }: ImageListProps) => {
-  console.log(images);
-  console.log(savedImages);
-
   return (
     <div className="flex justify-center overflow-scroll gap-4">
       {images?.map((image, index) => (

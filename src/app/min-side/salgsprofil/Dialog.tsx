@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ColorsRQ } from "@/utils/types";
 import { fetchColors } from "@/utils/utils";
 import { tailwindColors } from "@/utils/constants";
+
 interface DialogProps {
   formik: any;
   icons: any;
@@ -142,6 +143,9 @@ const Dialog = ({ formik, icons }: DialogProps) => {
             </div>
             <button
               type="submit"
+              onClick={() => {
+                dialogRef.current?.close();
+              }}
               className="rounded-lg border border-sky-600 bg-sky-800 px-5 py-2.5 text-sm font-medium text-sky-100 hover:bg-sky-700 hover:text-white focus:z-10 focus:outline-none focus:ring-0 focus:ring-sky-700"
             >
               Lagre

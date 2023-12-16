@@ -32,6 +32,10 @@ const Color = ({ colors, formik, formName = "colors" }: ColorProps) => {
                 // Set both color ID and color name to Formik values
                 formik.setFieldValue(`${formName}`, colorId);
                 formik.setFieldValue(`${formName}Name`, colorName);
+                formik.setFieldValue(
+                  `${formName}NorwegianName`,
+                  color.attributes.name
+                );
               }}
             />
           </div>

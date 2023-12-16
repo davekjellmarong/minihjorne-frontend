@@ -28,12 +28,17 @@ export const navItemsAuth = [
   },
   {
     label: "Min Side",
-    path: "/minSide",
+    path: "/min-side",
     color: "transparent",
   },
   {
-    label: "Legg ut",
-    path: "/legg_ut",
+    label: "Last Opp",
+    path: "/last-opp",
+    color: "transparent",
+  },
+  {
+    label: "Handlekurv",
+    path: "/handlekurv",
     color: "transparent",
   },
 ];

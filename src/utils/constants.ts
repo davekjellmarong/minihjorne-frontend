@@ -15,8 +15,9 @@ export const tailwindColors = [
   { title: "Brun", tailwind: "bg-brown-400" },
   { title: "Cyan", tailwind: "bg-cyan-400" },
   { title: "Gull", tailwind: "bg-yellow-500" },
-  { title: "Sølv", tailwind: "bg-gray-400" },
+  { title: "Grå", tailwind: "bg-gray-400" },
   { title: "Bronse", tailwind: "bg-orange-600" },
+  { title: "Svart", tailwind: "bg-black" },
 ];
 
 export const tailwindColorsObject: any = {

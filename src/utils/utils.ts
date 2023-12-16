@@ -82,7 +82,26 @@ export const fetchPublicData = async (query: string) => {
     throw error;
   }
 };
-export const fetchAuthData = async (query: string, token: string) => {
+export const fetchPublicDataParams = async (query: string) => {
+  try {
+    const idsToFind = [157, 158, 156, 155, 154, 153, 152];
+
+    const params = {
+      params: {
+        filters: {
+          id: { $in: idsToFind },
+        },
+      },
+    };
+    const url = apiUrl + query;
+    const response = await axios.get(url, { params });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+export const getAuthData = async (query: string, token: string) => {
   try {
     const url = apiUrl + query;
     const headers = {
@@ -95,19 +114,51 @@ export const fetchAuthData = async (query: string, token: string) => {
     throw error;
   }
 };
-
+export const postAuthRequest = async (
+  values: any,
+  endpoint: string,
+  token: string
+) => {
+  try {
+    const url = apiUrl + endpoint;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.post(url, values, { headers });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+export const putAuthRequest = async (
+  values: any,
+  endpoint: string,
+  token: string
+) => {
+  try {
+    const url = apiUrl + endpoint;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.put(url, values, { headers });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 export const fetchProductsFiltered = async (query: string) => {
   let data;
   if (query?.length > 0) {
-    console.log("query");
-    data = await fetchPublicData("/products?populate=*" + query);
+    data = await fetchPublicData(
+      "/products?populate=*&filters[sold][$eq]=false" + query
+    );
   } else {
-    console.log("product");
-    data = await fetchPublicData("/products?populate=*");
+    data = await fetchPublicData(
+      "/products?populate=*&filters[sold][$eq]=false"
+    );
   }
-  // const data = await fetchPublicData(
-  //   "/products?populate=*&filters[colors][name][$eq]=Gul"
-  // );
   return data;
 };
 export const fetchProducts = async () => {
@@ -140,20 +191,56 @@ export const UserMethods = {
     return putRequest(values, `/users/${id}`);
   },
   getMe: async (token: any) => {
-    return fetchAuthData("/users/me", token);
+    return getAuthData("/users/me", token);
   },
 };
 export const ProductsMethods = {
   get: async () => {
+    return fetchPublicData("/products?populate=*&filters[sold][$eq]=false");
+  },
+  getById: async (id: any) => {
+    return fetchPublicData(`/products/${id}?populate=*`);
+  },
+  getAndSold: async () => {
     return fetchPublicData("/products?populate=*");
   },
   getByUserId: async (id: any) => {
-    return fetchPublicData(`/products?populate=*&filters[user][id][$eq]=${id}`);
+    return fetchPublicData(
+      `/products?populate=*&filters[sold][$eq]=false&filters[user][id][$eq]=${id}`
+    );
   },
-  post: async (data: any) => {
-    return postRequest(data, "/products");
+  getByOrderId: async (id: any, token: any) => {
+    return getAuthData(
+      `/products?populate=*&filters[order][id][$eq]=${id}`,
+      token
+    );
+  },
+  getByMultipleProductIds: async () => {
+    return fetchPublicDataParams("/products?populate=*");
+  },
+  getsome: async () => {
+    const idsToFind = [157, 158, 156, 155, 154, 153, 152];
+
+    return fetchPublicData(`/products?filters[id][$in]=[${idsToFind}]`);
+  },
+  post: async (data: any, token: any) => {
+    return postAuthRequest(data, "/products", token);
   },
 };
-export const uploadImageFile = async (formData: any) => {
-  return postRequest(formData, "/upload");
+export const uploadImageFile = async (formData: any, token: any) => {
+  return postAuthRequest(formData, "/upload", token);
+};
+export const OrderMethods = {
+  post: async (data: any, token: any) => {
+    return postAuthRequest(data, "/orders", token);
+  },
+  getByUserId: async (id: any, token: any) => {
+    return getAuthData(
+      `/orders?populate=*&filters[user][id][$eq]=${id}`,
+      token
+    );
+  },
+  getById: async (id: any, token: any) => {
+    return getAuthData(`/orders/${id}?populate=*`, token);
+  },
 };

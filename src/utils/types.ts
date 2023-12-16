@@ -1,7 +1,24 @@
 export interface ProductsData {
   data: Product[];
 }
-
+export interface Order {
+  id: number;
+  attributes: {
+    guid: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    address: string;
+    city: string;
+    postalCode: string;
+    email: string;
+    token: string;
+    amount: number;
+    status: { data: Status };
+    products: { data: Product[] };
+    user: { data: User[] };
+  };
+}
 export interface Product {
   id: number;
   attributes: {
@@ -20,11 +37,18 @@ export interface Product {
     tags: { data: Tag[] };
     colors: { data: Color[] };
     size: { data: Size };
-    materials: { data: Material[] };
+    material: { data: Material };
     category: { data: Category };
   };
 }
+export interface CartItem {
+  product: Product;
+}
 
+export interface Cart {
+  items: Product[];
+  totalPrice: number;
+}
 export interface User {
   id: number;
   attributes: {
@@ -43,7 +67,22 @@ export interface User {
     color: string;
   };
 }
-
+export interface LoginUser {
+  id: number;
+  username: string;
+  email: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  createdAt: string;
+  updatedAt: string;
+  active: null;
+  activeUntill: null;
+  header: string;
+  description: string;
+  icon: string;
+  color: string;
+}
 export interface Tag {
   id: number;
   attributes: {
@@ -148,8 +187,26 @@ export interface Size {
     publishedAt: string;
   };
 }
+export interface Status {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    farge: string;
+    color: { data: Color };
+  };
+}
+
 export interface ColorsRQ {
   data: Color[];
+}
+export interface ProductsRQ {
+  data: Product[];
+}
+export interface ProductRQ {
+  data: Product;
 }
 export interface SizesRQ {
   data: Size[];
@@ -157,7 +214,7 @@ export interface SizesRQ {
 export interface TagsRQ {
   data: Tag[];
 }
-export interface MaterialRQ {
+export interface MaterialsRQ {
   data: Material[];
 }
 export interface CategoryRQ {
@@ -165,4 +222,13 @@ export interface CategoryRQ {
 }
 export interface UserRQ {
   data: User;
+}
+export interface OrdersRQ {
+  data: Order[];
+}
+export interface OrderRQ {
+  data: Order;
+}
+export interface StatusRQ {
+  data: Status[];
 }
