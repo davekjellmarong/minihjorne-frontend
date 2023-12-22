@@ -19,7 +19,7 @@ export const State = ({ formik }: SexProps) => {
     },
   ];
   return (
-    <div className="flex justify-center gap-4">
+    <div className="flex justify-start gap-4">
       {states.map((state) => {
         return (
           <div key={state.id} className="flex flex-col w-20 overflow-visible">

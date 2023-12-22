@@ -7,7 +7,7 @@ interface SizeProps {
 }
 const Size = ({ sizes, formik }: SizeProps) => {
   return (
-    <div className="flex gap-4 flex-wrap">
+    <div className="flex  gap-4 flex-wrap">
       {sizes.map((size) => {
         return (
           <div key={size.id} className="flex flex-col items-start w-20">

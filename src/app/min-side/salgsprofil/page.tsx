@@ -127,7 +127,7 @@ const Page = () => {
       <div
         className={`${tailwindColor} h-full w-full flex justify-center items-center`}
       >
-        <div className="m-16 shadow-2xl rounded bg-white text-center flex flex-col items-center py-10 gap-6">
+        <div className="m-10 shadow-2xl rounded bg-white text-center flex flex-col items-center py-10 gap-6">
           <div className="flex justify-start w-full">
             <Dialog icons={icons} formik={formik} />
           </div>

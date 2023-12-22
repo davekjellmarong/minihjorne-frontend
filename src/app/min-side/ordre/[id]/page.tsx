@@ -61,7 +61,7 @@ const Page = () => {
                   {product.attributes.size.data.attributes.number}
                 </td>
                 <td className="py-5 px-10 text-left">
-                  <ColorSquares product={product} />
+                  <ColorSquares colors={product.attributes.colors.data} />
                 </td>
                 <td className="py-5 px-10 text-right text-gray-500">
                   {product.attributes.price}

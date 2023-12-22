@@ -17,7 +17,6 @@ import {
   TShirt,
 } from "@phosphor-icons/react";
 import Link from "next/link";
-import { addItemToCart, getSavedProductIds } from "@/components/cart/Utils";
 import AddToCartButtons from "@/components/button/AddToCartButtons";
 const Page = () => {
   const { id } = useParams();
@@ -59,11 +58,11 @@ const Page = () => {
         </div>
         <Link href="" className="flex border-2 rounded py-2 border-transparent">
           <p className="text-blue-500">
-            {product.data.attributes.user.data.attributes.username}
+            {product.data.attributes.user.data?.attributes.username}
           </p>
           <User size={22} />
         </Link>
-        <ColorSquares product={product.data} />
+        <ColorSquares colors={product.data.attributes.colors.data} />
         <p>Str {product.data.attributes.size.data.attributes.number}</p>
         <p>{product.data.attributes.brand}</p>
         <p>{product.data.attributes.material.data?.attributes.name}</p>

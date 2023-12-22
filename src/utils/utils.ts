@@ -244,3 +244,8 @@ export const OrderMethods = {
     return getAuthData(`/orders/${id}?populate=*`, token);
   },
 };
+export const PaymentMethods = {
+  post: async (data: any, token: any) => {
+    return postAuthRequest(data, "/payments", token);
+  },
+};

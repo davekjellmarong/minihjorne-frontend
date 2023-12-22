@@ -11,7 +11,7 @@ interface ColorProps {
 
 const Color = ({ colors, formik, formName = "colors" }: ColorProps) => {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap justify-start gap-4">
       {colors.map((color) => {
         const tailwindColor = tailwindColorsObject[color.attributes.tailwind];
         return (

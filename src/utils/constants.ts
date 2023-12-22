@@ -49,3 +49,23 @@ export const tailwindColorsObject: any = {
   Bronse:
     "bg-orange-600 checked:bg-orange-600 checked:active:bg-orange-600 checked:focus:bg-orange-600",
 };
+
+export const tailwindColorsUserButton: any = {
+  red: "bg-red-200 ",
+  blue: "bg-blue-200 ",
+  green: "bg-green-200  ",
+  yellow: "bg-yellow-200 ",
+  pink: "bg-pink-200 ",
+  black: "bg-black ",
+  white: "bg-white ",
+  gray: "bg-gray-200 ",
+  purple: "bg-purple-200 ",
+  orange: "bg-orange-200 ",
+  Turkis: "bg-teal-200 ",
+  indigo: "bg-indigo-200 ",
+  amber: "bg-amber-700 ",
+  Cyan: "bg-cyan-200 ",
+  Gull: "bg-yellow-200 ",
+  Sølv: "bg-gray-200 ",
+  Bronse: "bg-orange-200 ",
+};

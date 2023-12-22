@@ -47,31 +47,6 @@ const Category = ({ categories, formik }: CategoryProps) => {
           </div>
         );
       })}
-      {/* <div className="flex flex-col items-start w-20">
-        <label className="font-light text-sm">T Skjorte</label>
-        <TShirt size={32} />
-        <input type="radio" name="category" className="h-8 w-8" />
-      </div>
-      <div className="flex flex-col items-start w-20">
-        <label className="font-light text-sm">Bukse</label>
-        <Pants size={32} />
-        <input type="radio" name="category" className="h-8 w-8" />
-      </div>
-      <div className="flex flex-col items-start w-20">
-        <label className="font-light text-sm">Sko</label>
-        <Sneaker size={32} />
-        <input type="radio" name="category" className="h-8 w-8" />
-      </div>
-      <div className="flex flex-col items-start w-20">
-        <label className="font-light text-sm">Lue</label>
-        <BaseballCap size={32} />
-        <input type="radio" name="category" className="h-8 w-8" />
-      </div>
-      <div className="flex flex-col items-start w-20">
-        <label className="font-light text-sm">Kjole</label>
-        <Dress size={32} />
-        <input type="radio" name="category" className="h-8 w-8" />
-      </div> */}
     </div>
   );
 };

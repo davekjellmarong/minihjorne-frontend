@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Category from "./Category";
 import Color from "./Color";
 import { State } from "./State";
@@ -19,7 +19,7 @@ import {
 import {
   CategoryRQ,
   ColorsRQ,
-  MaterialRQ,
+  MaterialsRQ,
   SizesRQ,
   TagsRQ,
   User,
@@ -33,32 +33,17 @@ import { toast } from "react-toastify";
 interface ProductFormProps {
   selectedImage: any;
   setSavedImages: any;
+  stepper: number;
+  formik: any;
+  setStepper: (value: number) => void;
 }
-const ProductForm = ({ selectedImage, setSavedImages }: ProductFormProps) => {
-  const { data: jwt } = useQuery({
-    queryKey: ["jwt"],
-  });
-  const { mutate: createProduct, isPaused: loading } = useMutation({
-    mutationFn: (values: any) => {
-      return ProductsMethods.post(values, jwt);
-    },
-    onSuccess: (data) => {
-      console.log(data);
-      toast.info(
-        `Produktet '${
-          formik.values.colorsNorwegianName
-        } ${formik.values.categoryName.toLowerCase()}' lagret`
-      );
-      setSavedImages((prev: any) => [...prev, selectedImage.name]);
-    },
-    onError: (err: any) => {
-      console.log(err);
-      toast.error(`Produkt kunne ikke lagres`);
-    },
-  });
-  const { data: user } = useQuery<User>({
-    queryKey: ["login-user"],
-  });
+const ProductForm = ({
+  selectedImage,
+  setSavedImages,
+  setStepper,
+  formik,
+  stepper,
+}: ProductFormProps) => {
   const { data: colors } = useQuery<ColorsRQ>({
     queryKey: ["colors"],
     queryFn: fetchColors,
@@ -71,37 +56,13 @@ const ProductForm = ({ selectedImage, setSavedImages }: ProductFormProps) => {
     queryKey: ["categories"],
     queryFn: fetchCategories,
   });
-  const { data: materials } = useQuery<MaterialRQ>({
+  const { data: materials } = useQuery<MaterialsRQ>({
     queryKey: ["materials"],
     queryFn: fetchMaterials,
   });
   const { data: sizes } = useQuery<SizesRQ>({
     queryKey: ["sizes"],
     queryFn: fetchSizes,
-  });
-  const formik = useFormik({
-    initialValues: {
-      colors: "",
-      colorsNorwegianName: "",
-      materials: "",
-      brand: "",
-      price: "",
-      category: "",
-      categoryName: "",
-      state: "",
-      sex: "",
-      tags: "",
-      user: 0,
-    },
-
-    onSubmit: (values) => {
-      const userId: any = user?.id;
-      const data = { ...values, user: userId };
-      var formData = new FormData();
-      formData.append("files.image", selectedImage, selectedImage.name);
-      formData.append("data", JSON.stringify(data));
-      createProduct(formData);
-    },
   });
   if (
     !colors?.data ||
@@ -113,24 +74,57 @@ const ProductForm = ({ selectedImage, setSavedImages }: ProductFormProps) => {
     return <Loading />;
   return (
     <form
-      className="flex flex-col items-start gap-12 mb-48"
+      className="flex flex-col items-start gap-12 mb-48 w-full"
       onSubmit={formik.handleSubmit}
     >
-      <Color formik={formik} colors={colors.data} />
-      <Category formik={formik} categories={categories.data} />
-      <Materials formik={formik} materials={materials.data} />
+      <div
+        className={`${
+          stepper === 1 ? "block" : "hidden"
+        } flex flex-col gap-16 `}
+      >
+        <Color formik={formik} colors={colors.data} />
+        <Category formik={formik} categories={categories.data} />
+        <Materials
+          onChangeFunc={() => {
+            if (formik.values.colors && formik.values.category) {
+              setStepper(2);
+            }
+          }}
+          formik={formik}
+          materials={materials.data}
+        />
+      </div>
+      <div
+        className={`${
+          stepper === 2 ? "block" : "hidden"
+        } flex flex-col gap-16 `}
+      >
+        <Tags formik={formik} tags={tags.data} />
+        <State formik={formik} />
+        <Sex
+          onChangeFunc={() => {
+            if (formik.values.tags && formik.values.state) {
+              setStepper(3);
+            }
+          }}
+          formik={formik}
+        />
+      </div>
+      <div
+        className={`${
+          stepper === 3 ? "block" : "hidden"
+        } flex flex-col gap-16 justify-start `}
+      >
+        <Size formik={formik} sizes={sizes.data} />
+        <Price formik={formik} />
+        <Brand formik={formik} />
+      </div>
       <button
         type="submit"
         className="border-2 border-gray-400 py-2 px-6 rounded"
       >
-        Lagre
+        Lagre produkt
       </button>
-      <Tags formik={formik} tags={tags.data} />
-      <State formik={formik} />
-      <Sex formik={formik} />
-      <Size formik={formik} sizes={sizes.data} />
-      <Brand formik={formik} />
-      <Price formik={formik} />
     </form>
   );
 };

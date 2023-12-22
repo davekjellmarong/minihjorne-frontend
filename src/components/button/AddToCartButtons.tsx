@@ -30,7 +30,7 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
           }}
           className="text-sm flex items-center gap-1 border-2 border-gray-200 px-4 py-2 rounded"
         >
-          Fjern <MinusCircle size={22} />
+          Fjern <MinusCircle size={14} />
         </button>
       ) : (
         <button
@@ -41,7 +41,7 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
           }}
           className="text-sm flex items-center gap-1 border-2 border-gray-200 px-4 py-2 rounded"
         >
-          Legg til <PlusCircle size={22} />
+          Legg til <PlusCircle size={14} />
         </button>
       )}
     </>

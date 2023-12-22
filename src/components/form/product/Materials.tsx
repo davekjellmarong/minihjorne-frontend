@@ -6,8 +6,9 @@ import React from "react";
 interface ColorProps {
   materials: Material[];
   formik: any;
+  onChangeFunc?: () => void;
 }
-const Materials = ({ materials, formik }: ColorProps) => {
+const Materials = ({ materials, formik, onChangeFunc }: ColorProps) => {
   return (
     <div className="flex gap-4 flex-wrap">
       {materials.map((material) => {
@@ -22,7 +23,18 @@ const Materials = ({ materials, formik }: ColorProps) => {
               name="materials"
               id="materials"
               value={material.id}
-              onChange={formik.handleChange}
+              // onChange={formik.handleChange}
+              onChange={(e) => {
+                const materialId = e.target.value;
+                const materialName = material.attributes.name;
+
+                // Set both color ID and color name to Formik values
+                formik.setFieldValue("materials", materialId);
+                formik.setFieldValue(`materialName`, materialName);
+                if (onChangeFunc) {
+                  onChangeFunc();
+                }
+              }}
             />
           </div>
         );

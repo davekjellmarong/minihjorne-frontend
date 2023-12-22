@@ -1,8 +1,19 @@
 "use client";
 import React from "react";
-import { baseUrl, tailwindColors } from "@/utils/constants";
+import {
+  baseUrl,
+  tailwindColors,
+  tailwindColorsUserButton,
+} from "@/utils/constants";
 import { Product } from "@/utils/types";
-import { MinusCircle, PlusCircle, Tag, User } from "@phosphor-icons/react";
+import {
+  Heart,
+  MinusCircle,
+  PlusCircle,
+  Tag,
+  User,
+  UserCircle,
+} from "@phosphor-icons/react";
 import Loading from "@/components/loading/Loading";
 import { useParams, useRouter } from "next/navigation";
 import AddToCartButtons from "@/components/button/AddToCartButtons";
@@ -14,55 +25,58 @@ interface ProductsProps {
 const Products = ({ isLoading, data }: ProductsProps) => {
   const router = useRouter();
   if (isLoading) return <Loading />;
+
   if (data)
     return (
-      <ul className="flex flex-wrap gap-20 justify-center">
+      <ul className="flex flex-wrap gap-20 justify-center mt-10">
         {data.map((product) => {
+          const tailwindColor =
+            tailwindColorsUserButton[
+              product.attributes.user.data.attributes.color
+            ];
+
           return (
-            <li className="shadow w-80 p-10" key={product.id}>
-              <p className="text-center">{product.attributes.name}</p>
-              <img
-                className="w-full h-56"
-                src={`${baseUrl}${product.attributes.image.data?.attributes.url}`}
-                height={200}
-                width={200}
-                alt=""
-                onClick={() => {
-                  router.push(`/produkter/${product.id}`);
-                }}
-              />
-              <div className="flex flex-col gap-4">
-                <p className="text-center text-lg font-semibold">
+            <li
+              className="border-2 rounded border-gray-100 w-64"
+              key={product.id}
+            >
+              <div className="relative">
+                <img
+                  className="w-full max-h-72 object-cover"
+                  src={`${baseUrl}${product.attributes.image.data?.attributes.url}`}
+                  alt=""
+                  onClick={() => {
+                    router.push(`/produkter/${product.id}`);
+                  }}
+                />
+                <Heart
+                  className="absolute right-0 top-0 m-4"
+                  size={26}
+                  color="white"
+                  weight="duotone"
+                />
+              </div>
+              <div className="flex flex-col gap-4  p-6">
+                <p className="text-center font-semibold">
                   {product.attributes.price} kr
                 </p>
-                <ul className="flex gap-3">
-                  {product.attributes.tags.data.map((tag, index) => {
-                    return (
-                      <li
-                        key={tag.id}
-                        className={`bg-gray-200 p-2 text-sm rounded `}
-                      >
-                        <p>{tag.attributes.name}</p>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <p>
+                <p className="text-sm text-gray-500">
                   <span className=" text-sm">Str </span>
                   <span>{product.attributes.size.data.attributes.number}</span>
                 </p>
-                <div className="flex">
-                  <Tag size={22} />
-                  <p>{product.attributes.brand}</p>
-                </div>
-                <div className="flex items-end justify-between">
-                  <div className="flex">
-                    <User size={22} />
-                    <p>{product.attributes.user.data?.attributes.username}</p>
+                <div className="flex items-center justify-between text-sm text-gray-500">
+                  <div className="flex gap-2">
+                    <Tag size={22} />
+                    <p>{product.attributes.brand}</p>
                   </div>
                 </div>
-                <div>
-                  <AddToCartButtons product={product} />
+                <div className="flex items-end justify-start text-xs text-gray-500">
+                  <div
+                    className={`flex justify-between gap-1 items-center ${tailwindColor}  px-3 py-1 rounded`}
+                  >
+                    <UserCircle size={20} />
+                    <p>{product.attributes.user.data?.attributes.username}</p>
+                  </div>
                 </div>
               </div>
             </li>

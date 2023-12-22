@@ -1,14 +1,14 @@
 import { tailwindColors } from "@/utils/constants";
-import { Product } from "@/utils/types";
+import { Color, Product } from "@/utils/types";
 import React from "react";
 interface ColorSquaresProps {
-  product: Product;
+  colors: Color[];
 }
-const ColorSquares = ({ product }: ColorSquaresProps) => {
+const ColorSquares = ({ colors }: ColorSquaresProps) => {
   return (
     <div className="flex justify-between">
       <ul className="flex gap-2 ">
-        {product.attributes.colors.data.map((color) => {
+        {colors.map((color) => {
           const colorClass = tailwindColors.find(
             (item) => item.title === color.attributes.name
           );

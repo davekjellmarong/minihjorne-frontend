@@ -2,8 +2,9 @@ import { GenderFemale, GenderMale, GenderNeuter } from "@phosphor-icons/react";
 import React from "react";
 interface SexProps {
   formik: any;
+  onChangeFunc?: () => void;
 }
-const Sex = ({ formik }: SexProps) => {
+const Sex = ({ formik, onChangeFunc }: SexProps) => {
   const sexes = [
     {
       id: 1,
@@ -22,7 +23,7 @@ const Sex = ({ formik }: SexProps) => {
     },
   ];
   return (
-    <div className="flex justify-center gap-4">
+    <div className="flex justify-start gap-4">
       {sexes.map((sex) => {
         return (
           <div key={sex.id} className="flex flex-col w-20">
@@ -33,7 +34,18 @@ const Sex = ({ formik }: SexProps) => {
               name="sex"
               className="h-8 w-8"
               value={sex.id}
-              onChange={formik.handleChange}
+              // onChange={formik.handleChange}
+              onChange={(e) => {
+                const sexId = e.target.value;
+                const sexName = sex.title;
+
+                // Set both color ID and color name to Formik values
+                formik.setFieldValue("sex", sexId);
+                formik.setFieldValue(`sexName`, sexName);
+                if (onChangeFunc) {
+                  onChangeFunc();
+                }
+              }}
             />
           </div>
         );

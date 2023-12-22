@@ -53,9 +53,11 @@ export const calculateTotalPrice = (cart: Product[]): number => {
 export const getCart = () => {
   const cart = getItemsFromLocalStorage();
   const totalPrice = calculateTotalPrice(cart);
+  const productIds = getSavedProductIds();
   return {
     totalPrice: totalPrice,
     items: cart,
+    productIds: productIds,
   };
 };
 
