@@ -5,7 +5,7 @@ import {
   tailwindColors,
   tailwindColorsUserButton,
 } from "@/utils/constants";
-import { Product } from "@/utils/types";
+import { Product, ProductBackend } from "@/utils/types";
 import {
   Heart,
   MinusCircle,
@@ -20,20 +20,17 @@ import AddToCartButtons from "@/components/button/AddToCartButtons";
 
 interface ProductsProps {
   isLoading?: boolean;
-  data: Product[] | undefined;
+  data: ProductBackend[] | undefined;
 }
 const Products = ({ isLoading, data }: ProductsProps) => {
   const router = useRouter();
   if (isLoading) return <Loading />;
-
+  console.log(data);
   if (data)
     return (
       <ul className="flex flex-wrap gap-20 justify-center mt-10">
         {data.map((product) => {
-          const tailwindColor =
-            tailwindColorsUserButton[
-              product.attributes.user.data.attributes.color
-            ];
+          const tailwindColor = tailwindColorsUserButton[product.user.color];
 
           return (
             <li
@@ -43,7 +40,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
               <div className="relative">
                 <img
                   className="w-full max-h-72 object-cover"
-                  src={`${baseUrl}${product.attributes.image.data?.attributes.url}`}
+                  src={`${baseUrl}${product.image.url}`}
                   alt=""
                   onClick={() => {
                     router.push(`/produkter/${product.id}`);
@@ -57,17 +54,15 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                 />
               </div>
               <div className="flex flex-col gap-4  p-6">
-                <p className="text-center font-semibold">
-                  {product.attributes.price} kr
-                </p>
+                <p className="text-center font-semibold">{product.price} kr</p>
                 <p className="text-sm text-gray-500">
                   <span className=" text-sm">Str </span>
-                  <span>{product.attributes.size.data.attributes.number}</span>
+                  <span>{product.size.number}</span>
                 </p>
                 <div className="flex items-center justify-between text-sm text-gray-500">
                   <div className="flex gap-2">
                     <Tag size={22} />
-                    <p>{product.attributes.brand}</p>
+                    <p>{product.brand}</p>
                   </div>
                 </div>
                 <div className="flex items-end justify-start text-xs text-gray-500">
@@ -75,7 +70,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                     className={`flex justify-between gap-1 items-center ${tailwindColor}  px-3 py-1 rounded`}
                   >
                     <UserCircle size={20} />
-                    <p>{product.attributes.user.data?.attributes.username}</p>
+                    <p>{product.user.username}</p>
                   </div>
                 </div>
               </div>

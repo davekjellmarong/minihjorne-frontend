@@ -19,9 +19,18 @@ const PreviewValues = ({ formik }: PreviewValuesProps) => {
   );
 
   return (
-    <div className="flex gap-8 flex-wrap">
-      {color && <ColorSquares colors={[color]} />}
-      <DisplayCategory category={formik.values.category} />
+    <div className="flex gap-8 flex-wrap justify-end opacity-60">
+      <div className="w-1/4">{color && <ColorSquares colors={[color]} />}</div>
+      <div className="w-1/4">
+        <DisplayCategory category={formik.values.category} />
+      </div>
+      <p className="w-1/4">{formik.values.materialName}</p>
+      <p className="w-1/4">{formik.values.tagName}</p>
+      <p className="w-1/4">{formik.values.stateName}</p>
+      <p className="w-1/4">{formik.values.sexName}</p>
+      <p className="w-1/4">{formik.values.sizeName}</p>
+      <p className="w-1/4">{formik.values.price}</p>
+      <p className="w-1/4">{formik.values.brand}</p>
     </div>
   );
 };

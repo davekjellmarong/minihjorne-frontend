@@ -1,6 +1,148 @@
+export interface CommonSize {
+  number: string;
+  text: null;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+export interface CommonProduct {
+  name: string;
+  description: string;
+  price: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  fabric: string;
+  brand: string;
+}
+export interface CommonOrder {
+  guid: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  email: string;
+  token: string;
+  amount: number;
+}
+export interface CommonUser {
+  username: string;
+  email: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  createdAt: string;
+  updatedAt: string;
+  active: null;
+  activeUntill: null;
+  header: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+export interface CommonTags {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+export interface CommonCategory {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  icon: string;
+}
+export interface CommonMaterial {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+export interface CommonColor {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  tailwind: string;
+}
+export interface CommonStatus {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  farge: string;
+}
+export interface CommonImage {
+  name: string;
+  alternativeText: null;
+  caption: null;
+  width: number;
+  height: number;
+  formats: {
+    thumbnail: {
+      name: string;
+      hash: string;
+      ext: string;
+      mime: string;
+      path: null;
+      width: number;
+      height: number;
+      size: number;
+      url: string;
+    };
+    medium: {
+      name: string;
+      hash: string;
+      ext: string;
+      mime: string;
+      path: null;
+      width: number;
+      height: number;
+      size: number;
+      url: string;
+    };
+    small: {
+      name: string;
+      hash: string;
+      ext: string;
+      mime: string;
+      path: null;
+      width: number;
+      height: number;
+      size: number;
+      url: string;
+    };
+  };
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: null;
+  provider: string;
+  provider_metadata: null;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface ProductBackend extends CommonProduct {
+  id: number;
+  image: CommonImage;
+  tags: CommonTags[];
+  colors: CommonColor[];
+  size: CommonSize;
+  material: CommonMaterial;
+  category: CommonCategory;
+  user: CommonUser;
+}
 export interface ProductsData {
   data: Product[];
 }
+
 export interface Order {
   id: number;
   attributes: {
@@ -19,6 +161,7 @@ export interface Order {
     user: { data: User[] };
   };
 }
+
 export interface Product {
   id: number;
   attributes: {

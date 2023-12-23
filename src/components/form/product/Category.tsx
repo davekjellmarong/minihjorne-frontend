@@ -2,51 +2,78 @@ import React from "react";
 import {
   BaseballCap,
   Dress,
+  Hand,
+  Hoodie,
   Pants,
+  Person,
   Sneaker,
   TShirt,
 } from "@phosphor-icons/react";
 import { Category } from "@/utils/types";
+import {
+  Jacket,
+  OutdoorSuit,
+  Shorts,
+  Skirt,
+  Sweater,
+  Body,
+} from "@/components/icons/SVGicons";
+import InputHeader from "@/components/header/InputHeader";
 interface CategoryProps {
   categories: Category[];
   formik: any;
+  onChangeFunc?: () => void;
 }
-const Category = ({ categories, formik }: CategoryProps) => {
+const Category = ({ categories, formik, onChangeFunc }: CategoryProps) => {
   const iconsList: any = {
-    BaseballCap: <BaseballCap size={32} />,
+    Head: <BaseballCap size={32} />,
     Dress: <Dress size={32} />,
     Pants: <Pants size={32} />,
-    Sneaker: <Sneaker size={32} />,
+    Shoes: <Sneaker size={32} />,
     TShirt: <TShirt size={32} />,
+    Sweater: <Hoodie size={32} />,
+    Gloves: <Hand size={32} />,
+    Body: <Body />,
+    Jacket: <Jacket />,
+    Shorts: <Shorts />,
+    Skirt: <Skirt />,
+    OutdoorSuit: <OutdoorSuit />,
   };
   return (
-    <div className="flex gap-4 flex-wrap">
-      {categories.map((category) => {
-        return (
-          <div key={category.id} className="flex flex-col items-start w-20">
-            <label className="font-light text-sm">
-              {category.attributes.name}
-            </label>
-            {iconsList[category.attributes.icon]}
-            <input
-              type="radio"
-              name="category"
-              // id="category"
-              className="h-8 w-8"
-              value={category.id}
-              // onChange={formik.handleChange}
-              onChange={(e) => {
-                const categoryId = e.target.value;
-                const categoryName = category.attributes.name;
+    <div>
+      <InputHeader>Katergori</InputHeader>
+      <div className="flex gap-4 flex-wrap">
+        {categories.map((category) => {
+          return (
+            <div key={category.id} className="flex flex-col items-start w-20">
+              <label className="font-light text-sm">
+                {category.attributes.name}
+              </label>
+              {iconsList[category.attributes.icon]}
+              <input
+                type="radio"
+                name="category"
+                // id="category"
+                className="h-8 w-8 rounded"
+                value={category.id}
+                required
+                // onChange={formik.handleChange}
+                onChange={(e) => {
+                  const categoryId = e.target.value;
+                  const categoryName = category.attributes.name;
 
-                // Set both color ID and color name to Formik values
-                formik.setFieldValue("category", categoryId);
-                formik.setFieldValue(`categoryName`, categoryName);
-              }}
-            />
-          </div>
-        );
-      })}
+                  // Set both color ID and color name to Formik values
+                  formik.setFieldValue("category", categoryId);
+                  formik.setFieldValue(`categoryName`, categoryName);
+                  if (onChangeFunc) {
+                    onChangeFunc();
+                  }
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

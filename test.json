@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "data": {
+    "api::size.size": {
+      "21": {
+        "id": 21,
+        "number": "40/56",
+        "text": "0-2 mnd"
+      },
+      "22": {
+        "id": 22,
+        "number": "62/68",
+        "text": "2-6 mnd"
+      },
+      "23": {
+        "id": 23,
+        "number": "62/68",
+        "text": "2-6 mnd"
+      }
+    }
+  }
+}

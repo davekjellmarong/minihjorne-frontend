@@ -21,9 +21,9 @@ const Filter = ({
 }: FilterProps) => {
   const FilterRef = useRef<HTMLUListElement | null>(null);
   return (
-    <div>
+    <div className="">
       <p
-        className="w-72 font-semibold p-4 hover:bg-gray-200"
+        className="w-72 font-semibold text-xs ml-0 pl-0 p-2 hover:bg-gray-200"
         onClick={() => {
           if (FilterRef.current) {
             FilterRef.current.classList.toggle("hidden");
@@ -32,7 +32,7 @@ const Filter = ({
       >
         {label}
       </p>
-      <ul ref={FilterRef} className="hidden">
+      <ul ref={FilterRef} className="">
         {data.data.map((item: any) => {
           return (
             <li key={item.id} className="flex gap-4 flex-wrap my-2">
@@ -58,7 +58,7 @@ const Filter = ({
                     console.log(removedQuery);
                   }
                 }}
-                className="h-6 w-6 cursor-pointer"
+                className="size-5 cursor-pointer rounded-sm"
               />
               <label className="text-sm">{item.attributes[property]}</label>
             </li>

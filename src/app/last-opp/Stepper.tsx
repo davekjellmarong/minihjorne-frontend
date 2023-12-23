@@ -6,7 +6,7 @@ interface StepperProps {
 }
 
 const Stepper = ({ stepper, setStepper }: StepperProps) => {
-  const stepperNumber = [1, 2, 3];
+  const stepperNumber = [1, 2, 3, 4];
   return (
     <div className="flex gap-14 items-center">
       {stepperNumber.map((step, index) => {

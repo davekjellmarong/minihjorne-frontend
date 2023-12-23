@@ -3,12 +3,15 @@ import { fetchCategories } from "@/utils/utils";
 import {
   BaseballCap,
   Dress,
+  Hand,
+  Hoodie,
   Pants,
   Sneaker,
   TShirt,
 } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Body, Jacket, OutdoorSuit, Shorts, Skirt } from "../icons/SVGicons";
 interface DisplayCategoryProps {
   category: any;
 }
@@ -19,11 +22,18 @@ const DisplayCategory = ({ category }: DisplayCategoryProps) => {
     queryFn: fetchCategories,
   });
   const iconsList: any = {
-    BaseballCap: <BaseballCap size={32} />,
+    Head: <BaseballCap size={32} />,
     Dress: <Dress size={32} />,
     Pants: <Pants size={32} />,
-    Sneaker: <Sneaker size={32} />,
+    Shoes: <Sneaker size={32} />,
     TShirt: <TShirt size={32} />,
+    Sweater: <Hoodie size={32} />,
+    Gloves: <Hand size={32} />,
+    Body: <Body />,
+    Jacket: <Jacket />,
+    Shorts: <Shorts />,
+    Skirt: <Skirt />,
+    OutdoorSuit: <OutdoorSuit />,
   };
   console.log(category);
   const categoryData = categories?.data.find(

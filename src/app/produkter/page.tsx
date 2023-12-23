@@ -1,6 +1,6 @@
 "use client";
 import { apiUrl, baseUrl, tailwindColors } from "@/utils/constants";
-import { Product, ProductsData, TagsRQ } from "@/utils/types";
+import { Product, ProductBackend, ProductsData, TagsRQ } from "@/utils/types";
 import {
   fetchColors,
   fetchProducts,
@@ -24,7 +24,7 @@ import {
 
 const Page = () => {
   const [filterQuery, setFilterQuery] = useState("");
-  const { data, isLoading } = useQuery<ProductsData>({
+  const { data, isLoading } = useQuery<ProductBackend[]>({
     queryKey: ["product", filterQuery],
     queryFn: () => {
       return fetchProductsFiltered(filterQuery);
@@ -46,14 +46,15 @@ const Page = () => {
   //     console.log(addedProducts);
   //   }
   // }, [data]);
-  return (
-    <>
-      <SplitView>
-        <Filters setFilterQuery={setFilterQuery} />
-        <Products data={data?.data} isLoading={isLoading} />
-      </SplitView>
-    </>
-  );
+  if (data)
+    return (
+      <>
+        <SplitView>
+          <Filters setFilterQuery={setFilterQuery} />
+          <Products data={data} isLoading={isLoading} />
+        </SplitView>
+      </>
+    );
 };
 
 export default Page;

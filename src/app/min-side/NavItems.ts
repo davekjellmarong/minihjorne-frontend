@@ -14,6 +14,11 @@ export const navItems = [
     id: 2,
     path: "/min-side/ordre",
   },
+  {
+    title: "Produkter",
+    id: 2,
+    path: "/min-side/produkter",
+  },
   // {
   //   title: "Produkter",
   //   id: 2,

@@ -6,12 +6,16 @@ interface ImageListProps {
   setSelectedImage: (value: any) => void;
   selectedImage: any;
   savedImages: any;
+  setStepper: (value: number) => void;
+  formik: any;
 }
 const ImagesList = ({
   images,
   setSelectedImage,
   savedImages,
   selectedImage,
+  setStepper,
+  formik,
 }: ImageListProps) => {
   return (
     <div className="flex justify-center max-h-[150px] gap-4 flex-wrap mx-12 overflow-scroll">
@@ -29,6 +33,7 @@ const ImagesList = ({
             src={URL.createObjectURL(image)}
             onClick={() => {
               setSelectedImage(image);
+              setStepper(1);
             }}
             alt={`uploaded-image-${index}`}
           />

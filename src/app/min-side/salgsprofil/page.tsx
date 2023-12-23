@@ -16,8 +16,8 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useEffect } from "react";
 import Dialog from "./Dialog";
 import { useFormik } from "formik";
-import { ColorsRQ } from "@/utils/types";
-import { UserMethods, fetchColors } from "@/utils/utils";
+import { ColorsRQ, ProductBackend } from "@/utils/types";
+import { ProductsMethods, UserMethods, fetchColors } from "@/utils/utils";
 import { tailwindColors, tailwindColorsObject } from "@/utils/constants";
 import { toast } from "react-toastify";
 
@@ -75,7 +75,13 @@ const Page = () => {
     }
   }, [userData]);
   const userId = userData?.id;
-  const { data, isLoading } = useQuery(productByIdOption(userId));
+  const { data, isLoading } = useQuery<ProductBackend[]>({
+    queryKey: ["products", userId],
+    queryFn: () => {
+      return ProductsMethods.getByUserId(userId);
+    },
+    enabled: !!userId,
+  });
   const icons: any = {
     Star: {
       component: (
@@ -122,44 +128,42 @@ const Page = () => {
   const tailwindColor = tailwindColorsObject[formik.values.colorName];
 
   if (isLoading) return <Loading />;
-  if (data) {
-    return (
-      <div
-        className={`${tailwindColor} h-full w-full flex justify-center items-center`}
-      >
-        <div className="m-10 shadow-2xl rounded bg-white text-center flex flex-col items-center py-10 gap-6">
-          <div className="flex justify-start w-full">
-            <Dialog icons={icons} formik={formik} />
-          </div>
-          <div className="flex items-center gap-14">
-            {icons[formik.values.icon]?.component}
-            <p className="font-semibold text-lg">{formik.values.header}</p>
-            {icons[formik.values.icon]?.component}
-          </div>
-          <p className="text-gray-500 flex items-center gap-1">
-            <User size={28} />
-            <span>{userData?.username}</span>
-          </p>
-          <p className="max-w-2xl">
-            {formik.values.description}
-            {/* Iselin, dedikert til å tilby kvalitetsklær for barn, ønsker å dele
+  return (
+    <div
+      className={`${tailwindColor} h-full w-full flex justify-center items-center`}
+    >
+      <div className="m-10 shadow-2xl rounded bg-white text-center flex flex-col items-center py-10 gap-6">
+        <div className="flex justify-start w-full">
+          <Dialog icons={icons} formik={formik} />
+        </div>
+        <div className="flex items-center gap-14">
+          {icons[formik.values.icon]?.component}
+          <p className="font-semibold text-lg">{formik.values.header}</p>
+          {icons[formik.values.icon]?.component}
+        </div>
+        <p className="text-gray-500 flex items-center gap-1">
+          <User size={28} />
+          <span>{userData?.username}</span>
+        </p>
+        <p className="max-w-2xl">
+          {formik.values.description}
+          {/* Iselin, dedikert til å tilby kvalitetsklær for barn, ønsker å dele
             det beste av brukt barneklær med deg. Gjennom nøye kuraterte
             kolleksjoner fokuserer Iselin på bærekraft og stil, og gir deg
             tilgang til nydelige plagg for de små. Utforsk hennes digitale
             salgsside for en unik og miljøvennlig handleopplevelse. Velkommen
             til Iselins univers av kjærlig utvalgte, brukte barneklær, hvor
             bærekraft møter barndommens glede. */}
-          </p>
-          <div className="flex gap-4">
-            <div className="py-2 px-6 bg-gray-300 rounded">Gutt 50-80</div>
-            <div className="py-2 px-6 bg-gray-300 rounded">Jente 20-50</div>
-            <div className="py-2 px-6 bg-gray-300 rounded">Unisex 40-200</div>
-          </div>
-          <Products data={data.data} />
+        </p>
+        <div className="flex gap-4">
+          <div className="py-2 px-6 bg-gray-300 rounded">Gutt 50-80</div>
+          <div className="py-2 px-6 bg-gray-300 rounded">Jente 20-50</div>
+          <div className="py-2 px-6 bg-gray-300 rounded">Unisex 40-200</div>
         </div>
+        <Products data={data} />
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default Page;

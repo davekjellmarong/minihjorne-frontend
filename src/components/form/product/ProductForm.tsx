@@ -83,11 +83,43 @@ const ProductForm = ({
         } flex flex-col gap-16 `}
       >
         <Color formik={formik} colors={colors.data} />
-        <Category formik={formik} categories={categories.data} />
+        <Category
+          onChangeFunc={() => {
+            if (formik.values.colors) {
+              setStepper(2);
+            }
+          }}
+          formik={formik}
+          categories={categories.data}
+        />
+      </div>
+      <div
+        className={`${
+          stepper === 2 ? "block" : "hidden"
+        } flex flex-col gap-16 `}
+      >
+        <Size formik={formik} sizes={sizes.data} />
+        <Tags
+          onChangeFunc={() => {
+            if (formik.values.size) {
+              setStepper(3);
+            }
+          }}
+          formik={formik}
+          tags={tags.data}
+        />
+      </div>
+      <div
+        className={`${
+          stepper === 3 ? "block" : "hidden"
+        } flex flex-col gap-16 justify-start `}
+      >
+        <Sex formik={formik} />
+        <State formik={formik} />
         <Materials
           onChangeFunc={() => {
-            if (formik.values.colors && formik.values.category) {
-              setStepper(2);
+            if (formik.values.state && formik.values.sex) {
+              setStepper(4);
             }
           }}
           formik={formik}
@@ -96,35 +128,26 @@ const ProductForm = ({
       </div>
       <div
         className={`${
-          stepper === 2 ? "block" : "hidden"
-        } flex flex-col gap-16 `}
-      >
-        <Tags formik={formik} tags={tags.data} />
-        <State formik={formik} />
-        <Sex
-          onChangeFunc={() => {
-            if (formik.values.tags && formik.values.state) {
-              setStepper(3);
-            }
-          }}
-          formik={formik}
-        />
-      </div>
-      <div
-        className={`${
-          stepper === 3 ? "block" : "hidden"
+          stepper === 4 ? "block" : "hidden"
         } flex flex-col gap-16 justify-start `}
       >
-        <Size formik={formik} sizes={sizes.data} />
         <Price formik={formik} />
         <Brand formik={formik} />
       </div>
-      <button
-        type="submit"
-        className="border-2 border-gray-400 py-2 px-6 rounded"
-      >
-        Lagre produkt
-      </button>
+      <div className="flex justify-between w-full">
+        <button
+          type="submit"
+          className=" bg-gray-500 py-2 px-6 text-white rounded"
+        >
+          Lagre produkt
+        </button>
+        <button
+          type="button"
+          className="border-2 border-gray-400 py-2 px-6 rounded"
+        >
+          Forhåndsvisning av produktene
+        </button>
+      </div>
     </form>
   );
 };

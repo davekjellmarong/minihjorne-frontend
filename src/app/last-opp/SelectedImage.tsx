@@ -7,14 +7,14 @@ interface SelectedImageProps {
 
 const SelectedImage = ({ selectedImage }: SelectedImageProps) => {
   return (
-    <div className="">
+    <div className="flex justify-center">
       {selectedImage && (
         <Image
           src={URL.createObjectURL(selectedImage)}
           height={300}
           width={300}
           alt=""
-          className="w-80 h-80 shadow-xl"
+          className="w-80 h-80 shadow-xl rounded"
         />
       )}
     </div>

@@ -88,25 +88,17 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
   }
   if (TagsData && ColorsData && SizesData && MaterialsData && CategoryData)
     return (
-      <div className="mx-6 space-y-3">
+      <div className="mx-16 space-y-8 max-h-screen overflow-y-scroll">
         <button className="bg-gray-300 p-2 px-4" onClick={handleFilterFetch}>
           Bruk filter
         </button>
         <Filter
-          data={TagsData}
+          data={CategoryData}
           property="name"
-          label="Tags"
-          setFilter={setTagFilter}
-          filter={tagFilter}
-          queryTemplate="&filters[tags][name][$eq]="
-        />
-        <Filter
-          data={ColorsData}
-          property="name"
-          label="Farger"
-          setFilter={setColorFilter}
-          filter={colorFilter}
-          queryTemplate="&filters[colors][name][$eq]="
+          label="Kategori"
+          setFilter={setCategoryFilter}
+          filter={categoryFilter}
+          queryTemplate="&filters[category][name][$eq]="
         />
         <Filter
           data={SizesData}
@@ -125,12 +117,20 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
           queryTemplate="&filters[materials][name][$eq]="
         />
         <Filter
-          data={CategoryData}
+          data={TagsData}
           property="name"
-          label="Kategori"
-          setFilter={setCategoryFilter}
-          filter={categoryFilter}
-          queryTemplate="&filters[category][name][$eq]="
+          label="Tags"
+          setFilter={setTagFilter}
+          filter={tagFilter}
+          queryTemplate="&filters[tags][name][$eq]="
+        />
+        <Filter
+          data={ColorsData}
+          property="name"
+          label="Farger"
+          setFilter={setColorFilter}
+          filter={colorFilter}
+          queryTemplate="&filters[colors][name][$eq]="
         />
       </div>
     );

@@ -39,7 +39,16 @@ const LeggUt = () => {
           formik.values.colorsNorwegianName
         } ${formik.values.categoryName.toLowerCase()}' lagret`
       );
+      // Find the first image that does not exist in savedImages
+      const firstUnsavedImage = images.find(
+        (image: any) =>
+          ![...savedImages, selectedImage.name].includes(image.name)
+      );
+      if (firstUnsavedImage) {
+        setSelectedImage(firstUnsavedImage);
+      }
       setSavedImages((prev: any) => [...prev, selectedImage.name]);
+      setStepper(1);
     },
     onError: (err: any) => {
       console.log(err);
@@ -52,7 +61,6 @@ const LeggUt = () => {
       colors: "",
       colorsNorwegianName: "",
       materials: "",
-      materialName: "",
       brand: "",
       price: "",
       category: "",
@@ -79,6 +87,7 @@ const LeggUt = () => {
     stepper: stepper,
     setStepper: setStepper,
   };
+  console.log({ images });
   if (!selectedImage)
     return (
       <div className="flex flex-col gap-6 justify-center items-center h-screen">
@@ -95,18 +104,23 @@ const LeggUt = () => {
         Registrer dine barne klær
       </p>
       <div className="flex">
-        <div className="w-2/5 flex flex-col gap-12 items-center border-r-2 justify-center border-gray-200">
+        <div className="w-2/5 flex flex-col items-center border-r-2 justify-center border-gray-200">
           <div className="h-2/6 border-b-2 border-gray-200 w-full my-4">
-            <p className="text-center mb-2">{images.length} bilder</p>
+            <p className="text-center mb-2">
+              {images.length - savedImages.length} av {images.length} bilder
+              igjen
+            </p>
             <ImagesList
               savedImages={savedImages}
               images={images}
               setSelectedImage={setSelectedImage}
               selectedImage={selectedImage}
+              setStepper={setStepper}
+              formik={formik}
             />
           </div>
           <div className="h-4/6 ">
-            <p className="text-center mb-2">Produkt 1 av {images.length}</p>
+            <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
             <SelectedImage selectedImage={selectedImage} />
             <PreviewValues formik={formik} />
           </div>

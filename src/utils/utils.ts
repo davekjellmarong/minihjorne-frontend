@@ -177,7 +177,7 @@ export const fetchMaterials = async () => {
   return fetchPublicData("/materials");
 };
 export const fetchCategories = async () => {
-  return fetchPublicData("/categories");
+  return fetchPublicData("/categories?sort=order:asc");
 };
 
 export const UserMethods = {
@@ -214,6 +214,9 @@ export const ProductsMethods = {
       `/products?populate=*&filters[order][id][$eq]=${id}`,
       token
     );
+  },
+  getInactive: async (id: any, token: any) => {
+    return getAuthData(`/product/inactiv`, token);
   },
   getByMultipleProductIds: async () => {
     return fetchPublicDataParams("/products?populate=*");
