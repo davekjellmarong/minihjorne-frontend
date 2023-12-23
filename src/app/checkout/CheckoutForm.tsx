@@ -80,7 +80,7 @@ const CheckoutForm = () => {
     setIsLoading(false);
   };
 
-  const paymentElementOptions = {
+  const paymentElementOptions: any = {
     layout: "tabs",
   };
   return (
