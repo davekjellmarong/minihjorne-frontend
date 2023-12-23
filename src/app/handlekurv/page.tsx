@@ -18,7 +18,13 @@ import { useParams, useRouter } from "next/navigation";
 
 const Page = () => {
   const router = useRouter();
-  const [cartItems, setCartItems] = useState(getItemsFromLocalStorage());
+  let productItems: any = [];
+  if (typeof window !== "undefined") {
+    // Perform localStorage action
+    productItems = getItemsFromLocalStorage();
+  }
+
+  const [cartItems, setCartItems] = useState(productItems);
   const [totalPrice, setTotalPrice] = useState(0);
   const { data: productsAndSold } = useQuery<ProductsRQ>({
     queryKey: ["products", "soldAlso"],
@@ -42,7 +48,7 @@ const Page = () => {
           className="flex flex-col overflow-scroll gap-12"
           style={{ height: 700 }}
         >
-          {cartItems.map((product) => {
+          {cartItems.map((product: any) => {
             return (
               <li key={product.id} className="flex justify-start">
                 <div className="flex gap-8 w-96">

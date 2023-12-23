@@ -22,13 +22,17 @@ const stripePromise = loadStripe(
 const Page = () => {
   useAutoLogIn();
   const [clientSecret, setClientSecret] = useState("");
-  const cart = getCart();
+  let cart: any;
+  if (typeof window !== "undefined") {
+    // Perform localStorage action
+    cart = getCart();
+  }
 
   const { data: jwt } = useQuery({
     queryKey: ["jwt"],
-    queryFn: () => {
-      return localStorage.getItem("jwt");
-    },
+    // queryFn: () => {
+    //   return localStorage.getItem("jwt");
+    // },
   });
   const { mutate: createPayment, isPaused: loading } = useMutation({
     mutationFn: (values: any) => {
