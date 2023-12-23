@@ -1,7 +1,7 @@
 import {
   CategoryRQ,
   ColorsRQ,
-  MaterialRQ,
+  MaterialsRQ,
   SizesRQ,
   TagsRQ,
 } from "@/utils/types";
@@ -43,7 +43,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
       queryFn: fetchCategories,
     });
   const { data: MaterialsData, isLoading: materialLoading } =
-    useQuery<MaterialRQ>({
+    useQuery<MaterialsRQ>({
       queryKey: ["material"],
       queryFn: fetchMaterials,
     });
