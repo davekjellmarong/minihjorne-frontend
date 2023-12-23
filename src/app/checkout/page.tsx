@@ -56,7 +56,7 @@ const Page = () => {
   const appearance = {
     theme: "stripe",
   };
-  const options = {
+  const options: any = {
     clientSecret,
     appearance,
   };
