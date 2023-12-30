@@ -35,7 +35,6 @@ const DisplayCategory = ({ category }: DisplayCategoryProps) => {
     Skirt: <Skirt />,
     OutdoorSuit: <OutdoorSuit />,
   };
-  console.log(category);
   const categoryData = categories?.data.find(
     ({ id }) => String(id) === category
   );

@@ -25,11 +25,11 @@ interface ProductsProps {
 const Products = ({ isLoading, data }: ProductsProps) => {
   const router = useRouter();
   if (isLoading) return <Loading />;
-  console.log(data);
   if (data)
     return (
       <ul className="flex flex-wrap gap-20 justify-center mt-10">
         {data.map((product) => {
+          console.log();
           const tailwindColor = tailwindColorsUserButton[product.user.color];
 
           return (

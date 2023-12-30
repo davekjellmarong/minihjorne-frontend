@@ -21,9 +21,15 @@ import {
   getItemsFromLocalStorage,
   getSavedProductIds,
 } from "@/components/cart/Utils";
-
+import FilterChips from "./FilterChips";
+export interface SelectedFilter {
+  query: string;
+  id: number;
+  name: string;
+}
 const Page = () => {
   const [filterQuery, setFilterQuery] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const { data, isLoading } = useQuery<ProductBackend[]>({
     queryKey: ["product", filterQuery],
     queryFn: () => {
@@ -46,15 +52,28 @@ const Page = () => {
   //     console.log(addedProducts);
   //   }
   // }, [data]);
-  if (data)
-    return (
-      <>
-        <SplitView>
-          <Filters setFilterQuery={setFilterQuery} />
+  console.log(selectedFilters);
+
+  return (
+    <>
+      <div className="flex w-full flex-col items-center sm:items-start sm:flex-row relative">
+        <div className="w-full sm:w-80">
+          <Filters
+            setFilterQuery={setFilterQuery}
+            setSelectedFilters={setSelectedFilters}
+            selectedFilters={selectedFilters}
+          />
+          {/* <FilterChips
+            selectedFilters={selectedFilters}
+            setSelectedFilters={setSelectedFilters}
+          /> */}
+        </div>
+        <div className=" w-full sm:grow">
           <Products data={data} isLoading={isLoading} />
-        </SplitView>
-      </>
-    );
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Page;

@@ -29,7 +29,6 @@ const MinSide = () => {
     },
     enabled: !!userId,
   });
-  console.log(products);
   return (
     <div>
       <p className="text-center font-semibold text-lg">{userData?.username}</p>

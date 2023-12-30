@@ -87,7 +87,6 @@ const LeggUt = () => {
     stepper: stepper,
     setStepper: setStepper,
   };
-  console.log({ images });
   if (!selectedImage)
     return (
       <div className="flex flex-col gap-6 justify-center items-center h-screen">

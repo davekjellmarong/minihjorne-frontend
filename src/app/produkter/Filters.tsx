@@ -15,38 +15,39 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Filter from "./Fillter";
+import useGetFilters from "@/components/customHooks/useGetFilters";
+import { SelectedFilter } from "./page";
+import FilterChips from "./FilterChips";
+import { SlidersHorizontal } from "@phosphor-icons/react";
 
 interface FiltersProps {
   setFilterQuery: any;
+  setSelectedFilters: (value: string[]) => void;
+  selectedFilters: string[];
 }
-const Filters = ({ setFilterQuery }: FiltersProps) => {
-  const [colorFilter, setColorFilter] = useState<any>([]);
-  const [sizeFilter, setSizeFilter] = useState<any>([]);
-  const [tagFilter, setTagFilter] = useState<any>([]);
-  const [materialFilter, setMaterialFilter] = useState<any>([]);
-  const [categoryFilter, setCategoryFilter] = useState<any>([]);
-  const { data: TagsData, isLoading: tagsLoading } = useQuery<TagsRQ>({
-    queryKey: ["tags"],
-    queryFn: fetchTags,
-  });
-  const { data: ColorsData, isLoading: colorsLoading } = useQuery<ColorsRQ>({
-    queryKey: ["colors"],
-    queryFn: fetchColors,
-  });
-  const { data: SizesData, isLoading: sizesLoading } = useQuery<SizesRQ>({
-    queryKey: ["sizes"],
-    queryFn: fetchSizes,
-  });
-  const { data: CategoryData, isLoading: categoriesLoading } =
-    useQuery<CategoryRQ>({
-      queryKey: ["category"],
-      queryFn: fetchCategories,
-    });
-  const { data: MaterialsData, isLoading: materialLoading } =
-    useQuery<MaterialsRQ>({
-      queryKey: ["material"],
-      queryFn: fetchMaterials,
-    });
+const Filters = ({
+  setFilterQuery,
+  setSelectedFilters,
+  selectedFilters,
+}: FiltersProps) => {
+  const [height, setHeight] = useState("0");
+  const [
+    TagsData,
+    ColorsData,
+    SizesData,
+    CategoryData,
+    MaterialsData,
+    colorFilter,
+    setColorFilter,
+    sizeFilter,
+    setSizeFilter,
+    tagFilter,
+    setTagFilter,
+    materialFilter,
+    setMaterialFilter,
+    categoryFilter,
+    setCategoryFilter,
+  ] = useGetFilters();
   const handleFilterFetch = () => {
     const colorQuery = colorFilter
       .map((item: any) => {
@@ -76,20 +77,59 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
     setFilterQuery(
       colorQuery + tagQuery + sizeQuery + materialQuery + categoryQuery
     );
+    setSelectedFilters([
+      ...colorFilter.map((item: any) => item.name),
+      ...sizeFilter.map((item: any) => item.name),
+      ...tagFilter.map((item: any) => item.name),
+      ...materialFilter.map((item: any) => item.name),
+      ...categoryFilter.map((item: any) => item.name),
+    ]);
   };
-  if (
-    colorsLoading ||
-    tagsLoading ||
-    sizesLoading ||
-    materialLoading ||
-    categoriesLoading
-  ) {
-    return <p>loading</p>;
-  }
-  if (TagsData && ColorsData && SizesData && MaterialsData && CategoryData)
-    return (
-      <div className="mx-16 space-y-8 max-h-screen overflow-y-scroll">
-        <button className="bg-gray-300 p-2 px-4" onClick={handleFilterFetch}>
+  // if (
+  //   colorsLoading ||
+  //   tagsLoading ||
+  //   sizesLoading ||
+  //   materialLoading ||
+  //   categoriesLoading
+  // ) {
+  //   return <p>loading</p>;
+  // }
+  // if (TagsData && ColorsData && SizesData && MaterialsData && CategoryData)
+  return (
+    <div className="px-4 sm:px-16 max-h-screen flex flex-col overflow-y-scroll sm:border-r-2 sm:border-gray-300 relative">
+      <div>
+        <button
+          onClick={() => {
+            console.log(height);
+            setHeight(height === "0" ? "h-auto" : "0");
+          }}
+          className="sm:hidden flex items-center border-2 border-gray-500 rounded-md p-2 px-4 my-4  hover:bg-gray-700"
+        >
+          <SlidersHorizontal size={32} weight="thin" />
+          <p>Filter</p>
+        </button>
+      </div>
+
+      <button
+        className="hidden sm:block bg-gray-500 rounded-md p-2 px-4 m-4 sticky top-0 text-white hover:bg-gray-700"
+        onClick={handleFilterFetch}
+      >
+        Bruk filter
+      </button>
+      <FilterChips
+        setSelectedFilters={setSelectedFilters}
+        selectedFilters={selectedFilters}
+      />
+      <div
+        className={`h-${height} max-h-screen sm:h-auto sm:space-y-8 flex flex-col`}
+      >
+        <button
+          className="block sm:hidden bg-gray-500 rounded-md p-2 px-4 m-4 sticky top-0 text-white hover:bg-gray-700"
+          onClick={() => {
+            handleFilterFetch();
+            setHeight("0");
+          }}
+        >
           Bruk filter
         </button>
         <Filter
@@ -133,7 +173,8 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
           queryTemplate="&filters[colors][name][$eq]="
         />
       </div>
-    );
+    </div>
+  );
 };
 
 export default Filters;

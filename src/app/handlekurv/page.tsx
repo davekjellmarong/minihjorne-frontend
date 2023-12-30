@@ -26,11 +26,6 @@ const Page = () => {
 
   const [cartItems, setCartItems] = useState(productItems);
   const [totalPrice, setTotalPrice] = useState(0);
-  const { data: productsAndSold } = useQuery<ProductsRQ>({
-    queryKey: ["products", "soldAlso"],
-    queryFn: ProductsMethods.getsome,
-  });
-  console.log(productsAndSold);
   useEffect(() => {
     const updatedTotalPrice = calculateTotalPrice(cartItems);
     setTotalPrice(updatedTotalPrice);

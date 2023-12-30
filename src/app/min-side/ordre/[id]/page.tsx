@@ -23,7 +23,6 @@ const Page = () => {
     queryFn: () => ProductsMethods.getByOrderId(order?.data.id, jwt),
     enabled: !!order?.data.id,
   });
-  console.log(order);
   if (isPending) return <Loading />;
   return (
     <div>

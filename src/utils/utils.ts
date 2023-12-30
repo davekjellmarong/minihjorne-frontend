@@ -217,10 +217,7 @@ export const ProductsMethods = {
     );
   },
   getInactive: async (id: any, token: any) => {
-    return getAuthData(`/product/inactiv`, token);
-  },
-  getByMultipleProductIds: async () => {
-    return fetchPublicDataParams("/products?populate=*");
+    return getAuthData(`/products/inactiv`, token);
   },
   getsome: async () => {
     const idsToFind = [157, 158, 156, 155, 154, 153, 152];
