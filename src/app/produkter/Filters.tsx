@@ -1,22 +1,6 @@
-import {
-  CategoryRQ,
-  ColorsRQ,
-  MaterialsRQ,
-  SizesRQ,
-  TagsRQ,
-} from "@/utils/types";
-import {
-  fetchCategories,
-  fetchColors,
-  fetchMaterials,
-  fetchSizes,
-  fetchTags,
-} from "@/utils/utils";
-import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Filter from "./Fillter";
 import useGetFilters from "@/components/customHooks/useGetFilters";
-import { SelectedFilter } from "./page";
 import FilterChips from "./FilterChips";
 import { SlidersHorizontal } from "@phosphor-icons/react";
 
@@ -31,6 +15,9 @@ const Filters = ({
   selectedFilters,
 }: FiltersProps) => {
   const [height, setHeight] = useState("0");
+  const [checkboxStates, setCheckboxStates] = useState<{
+    [key: string]: boolean;
+  }>({});
   const [
     TagsData,
     ColorsData,
@@ -85,19 +72,10 @@ const Filters = ({
       ...categoryFilter.map((item: any) => item.name),
     ]);
   };
-  // if (
-  //   colorsLoading ||
-  //   tagsLoading ||
-  //   sizesLoading ||
-  //   materialLoading ||
-  //   categoriesLoading
-  // ) {
-  //   return <p>loading</p>;
-  // }
-  // if (TagsData && ColorsData && SizesData && MaterialsData && CategoryData)
+  console.log(checkboxStates);
   return (
     <div className="px-4 sm:px-16 max-h-screen flex flex-col overflow-y-scroll sm:border-r-2 sm:border-gray-300 relative">
-      <div>
+      <div className="flex justify-between gap-4">
         <button
           onClick={() => {
             console.log(height);
@@ -108,6 +86,21 @@ const Filters = ({
           <SlidersHorizontal size={32} weight="thin" />
           <p>Filter</p>
         </button>
+        <button
+          className="sm:hidden flex items-center border-2 border-red-300 rounded-md p-2 px-4 my-4  hover:bg-gray-700"
+          onClick={() => {
+            setCheckboxStates({});
+            setFilterQuery("");
+            setSelectedFilters([]);
+            setColorFilter([]);
+            setSizeFilter([]);
+            setTagFilter([]);
+            setMaterialFilter([]);
+            setCategoryFilter([]);
+          }}
+        >
+          Tøm alle filtre
+        </button>
       </div>
 
       <button
@@ -117,6 +110,7 @@ const Filters = ({
         Bruk filter
       </button>
       <FilterChips
+        setCheckboxStates={setCheckboxStates}
         setSelectedFilters={setSelectedFilters}
         selectedFilters={selectedFilters}
       />
@@ -133,6 +127,8 @@ const Filters = ({
           Bruk filter
         </button>
         <Filter
+          setCheckboxStates={setCheckboxStates}
+          checkboxStates={checkboxStates}
           data={CategoryData}
           property="name"
           label="Kategori"
@@ -141,6 +137,8 @@ const Filters = ({
           queryTemplate="&filters[category][name][$eq]="
         />
         <Filter
+          setCheckboxStates={setCheckboxStates}
+          checkboxStates={checkboxStates}
           data={SizesData}
           property="number"
           label="Størrelser"
@@ -149,6 +147,8 @@ const Filters = ({
           queryTemplate="&filters[size][number][$eq]="
         />
         <Filter
+          setCheckboxStates={setCheckboxStates}
+          checkboxStates={checkboxStates}
           data={MaterialsData}
           property="name"
           label="Stoff"
@@ -157,6 +157,8 @@ const Filters = ({
           queryTemplate="&filters[materials][name][$eq]="
         />
         <Filter
+          setCheckboxStates={setCheckboxStates}
+          checkboxStates={checkboxStates}
           data={TagsData}
           property="name"
           label="Tags"
@@ -165,6 +167,8 @@ const Filters = ({
           queryTemplate="&filters[tags][name][$eq]="
         />
         <Filter
+          setCheckboxStates={setCheckboxStates}
+          checkboxStates={checkboxStates}
           data={ColorsData}
           property="name"
           label="Farger"

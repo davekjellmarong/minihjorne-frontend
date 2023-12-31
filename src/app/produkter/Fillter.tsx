@@ -1,9 +1,4 @@
-import { ColorsRQ, SizesRQ, TagsRQ } from "@/utils/types";
-import { fetchColors, fetchSizes, fetchTags } from "@/utils/utils";
-import { useQuery } from "@tanstack/react-query";
 import React, { useRef, useState } from "react";
-import { CaretDown, CaretRight } from "@phosphor-icons/react";
-import { SelectedFilter } from "./page";
 interface FilterProps {
   data: any;
   property: string;
@@ -11,6 +6,8 @@ interface FilterProps {
   setFilter: any;
   filter: any;
   queryTemplate: string;
+  setCheckboxStates: any;
+  checkboxStates: any;
 }
 const Filter = ({
   data,
@@ -19,8 +16,35 @@ const Filter = ({
   setFilter,
   filter,
   queryTemplate,
+  setCheckboxStates,
+  checkboxStates,
 }: FilterProps) => {
   const FilterRef = useRef<HTMLUListElement | null>(null);
+
+  const handleCheckboxChange = (item: any) => {
+    const isChecked = !checkboxStates[item.attributes[property]];
+    setCheckboxStates((prevStates: any) => ({
+      ...prevStates,
+      [item.attributes[property]]: isChecked,
+    }));
+
+    const currentQueryTemplate = queryTemplate + item.id;
+
+    if (isChecked) {
+      setFilter((prevFilter: any) => [
+        ...prevFilter,
+        {
+          query: currentQueryTemplate,
+          key: item.id,
+          name: item.attributes[property],
+        },
+      ]);
+    } else {
+      const removedQuery = filter.filter((query: any) => query.key !== item.id);
+      setFilter(removedQuery);
+    }
+  };
+
   if (data)
     return (
       <div className="sm:pl-8">
@@ -41,27 +65,8 @@ const Filter = ({
                 <input
                   id={item.attributes[property]}
                   type="checkbox"
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      const currentQueryTemplate = queryTemplate + item.id;
-                      console.log({ filter });
-                      setFilter([
-                        ...filter,
-                        {
-                          query: currentQueryTemplate,
-                          key: item.id,
-                          name: item.attributes[property],
-                        },
-                      ]);
-                    } else if (!e.target.checked) {
-                      const removedQuery = filter.filter(
-                        (query: any) => query.key != item.id
-                      );
-
-                      setFilter(removedQuery);
-                      console.log(removedQuery);
-                    }
-                  }}
+                  onChange={() => handleCheckboxChange(item)}
+                  checked={checkboxStates[item.attributes[property]] || false}
                   className="size-6 cursor-pointer rounded-sm"
                 />
                 <label

@@ -3,10 +3,15 @@ import React from "react";
 
 interface FilterProps {
   selectedFilters: string[];
-  setSelectedFilters: (value: string[]) => void;
+  setSelectedFilters: any;
+  setCheckboxStates: (value: any) => void;
 }
 
-const FilterChips = ({ selectedFilters, setSelectedFilters }: FilterProps) => {
+const FilterChips = ({
+  selectedFilters,
+  setSelectedFilters,
+  setCheckboxStates,
+}: FilterProps) => {
   if (selectedFilters.length === 0) return <></>;
   return (
     <div className="flex flex-wrap gap-2 mt-2 mb-4  rounded-lg">
@@ -19,6 +24,17 @@ const FilterChips = ({ selectedFilters, setSelectedFilters }: FilterProps) => {
             size={20}
             className="cursor-pointer :hover:bg-gray-400"
             weight="thin"
+            onClick={() => {
+              setCheckboxStates((prevState: any) => {
+                return {
+                  ...prevState,
+                  [filter]: false,
+                };
+              });
+              setSelectedFilters((prevState: string[]) => {
+                return prevState.filter((item) => item !== filter);
+              });
+            }}
           /> */}
 
           <p>{filter}</p>
