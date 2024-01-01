@@ -18,7 +18,7 @@ const ImagesList = ({
   formik,
 }: ImageListProps) => {
   return (
-    <div className="flex justify-center max-h-[150px] gap-4 flex-wrap mx-12 overflow-scroll">
+    <div className="flex justify-center max-h-[80px] gap-4 flex-wrap mx-12 overflow-scroll">
       {images?.map((image, index) => (
         <div
           className={`${

@@ -33,15 +33,15 @@ const Page = () => {
   };
   if (!product) return <Loading />;
   return (
-    <div className="flex w-full">
+    <div className="flex w-full justify-center gap-6 mt-10">
       <img
-        className="w-full"
+        className=" w-1/3 object-cover"
         src={`${baseUrl}${product.data.attributes.image.data.attributes.url}`}
         height={200}
         width={200}
         alt=""
       />
-      <div className="w-full flex flex-col gap-4 items-start">
+      <div className="w-1/3 flex flex-col gap-4 items-start">
         <div className="my-10">
           <BackButton />
         </div>

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import ImageUploader from "./ImageUploader";
-import ProductForm from "../../components/form/product/ProductForm";
+import ProductForm from "../../../../components/form/product/ProductForm";
 import ImagesList from "./ImagesList";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import SelectedImage from "./SelectedImage";
@@ -99,12 +99,12 @@ const LeggUt = () => {
     );
   return (
     <div className="flex flex-col">
-      <p className="hidden sm:block text-center p-6 border-b-2 border-gray-200 text-gray-700 text-lg">
+      <p className="hidden text-center p-6 border-b-2 border-gray-200 text-gray-700 text-lg">
         Registrer dine barne klær
       </p>
       <div className="flex">
         <div className="hidden sm:flex w-2/5 flex-col items-center border-r-2 justify-center border-gray-200">
-          <div className="h-2/6 border-b-2 border-gray-200 w-full my-4">
+          <div className="h-1/6 border-b-2 border-gray-200 w-full my-4">
             <p className="text-center mb-2">
               {images.length - savedImages.length} av {images.length} bilder
               igjen
@@ -118,10 +118,10 @@ const LeggUt = () => {
               formik={formik}
             />
           </div>
-          <div className="h-4/6 ">
+          <div className="h-5/6 ">
             <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
             <SelectedImage selectedImage={selectedImage} />
-            <PreviewValues formik={formik} />
+            {/* <PreviewValues formik={formik} /> */}
           </div>
         </div>
         <div className=" sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">

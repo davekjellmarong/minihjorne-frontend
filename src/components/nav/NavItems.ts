@@ -31,20 +31,20 @@ export const navItemsAuth = [
   //   color: "transparent",
   //   icon: "minSide",
   // },
+  // {
+  //   label: "Last Opp",
+  //   path: "/last-opp",
+  //   color: "transparent",
+  //   icon: "lastOpp",
+  // },
   {
-    label: "Last Opp",
-    path: "/last-opp",
-    color: "transparent",
-    icon: "lastOpp",
-  },
-  {
-    label: "Handlekurv",
+    label: "",
     path: "/handlekurv",
     color: "transparent",
     icon: "handlekurv",
   },
   {
-    label: "Min Side",
+    label: "",
     path: "/min-side",
     color: "transparent",
     icon: "minSide",

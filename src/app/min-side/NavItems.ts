@@ -4,20 +4,30 @@ export const navItems = [
     id: 0,
     path: "/min-side",
   },
-  {
-    title: "Salgsprofil",
-    id: 1,
-    path: "/min-side/salgsprofil",
-  },
+  // {
+  //   title: "Salgsprofil",
+  //   id: 1,
+  //   path: "/min-side/salgsprofil",
+  // },
   {
     title: "Ordre",
     id: 2,
     path: "/min-side/ordre",
   },
+  // {
+  //   title: "Produkter",
+  //   id: 2,
+  //   path: "/min-side/produkter",
+  // },
+  // {
+  //   title: "Last opp",
+  //   id: 3,
+  //   path: "/min-side/last-opp",
+  // },
   {
-    title: "Produkter",
-    id: 2,
-    path: "/min-side/produkter",
+    title: "Selge klær",
+    id: 3,
+    path: "/min-side/selge",
   },
   // {
   //   title: "Produkter",

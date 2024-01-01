@@ -9,12 +9,21 @@ interface FiltersProps {
   setSelectedFilters: (value: string[]) => void;
   selectedFilters: string[];
 }
+type Heights = {
+  0: string;
+  h: string;
+};
 const Filters = ({
   setFilterQuery,
   setSelectedFilters,
   selectedFilters,
 }: FiltersProps) => {
-  const [height, setHeight] = useState("0");
+  enum heightClasses {
+    zero = "h-0",
+    auto = "h-auto",
+  }
+
+  const [height, setHeight] = useState(heightClasses.zero);
   const [checkboxStates, setCheckboxStates] = useState<{
     [key: string]: boolean;
   }>({});
@@ -72,14 +81,17 @@ const Filters = ({
       ...categoryFilter.map((item: any) => item.name),
     ]);
   };
-  console.log(checkboxStates);
   return (
-    <div className="px-4 sm:px-16 max-h-screen flex flex-col overflow-y-scroll sm:border-r-2 sm:border-gray-300 relative">
+    <div className=" sm:px-16 max-h-screen flex flex-col overflow-y-scroll sm:border-r-2 sm:border-gray-300 relative">
       <div className="flex justify-between gap-4">
         <button
           onClick={() => {
             console.log(height);
-            setHeight(height === "0" ? "h-auto" : "0");
+            setHeight(
+              height === heightClasses.zero
+                ? heightClasses.auto
+                : heightClasses.zero
+            );
           }}
           className="sm:hidden flex items-center border-2 border-gray-500 rounded-md p-2 px-4 my-4  hover:bg-gray-700"
         >
@@ -115,17 +127,12 @@ const Filters = ({
         selectedFilters={selectedFilters}
       />
       <div
-        className={`h-${height} max-h-screen sm:h-auto sm:space-y-8 flex flex-col`}
+        className={`${height} max-h-screen sm:h-auto sm:space-y-8 flex flex-col`}
       >
-        <button
-          className="block sm:hidden bg-gray-500 rounded-md p-2 px-4 m-4 sticky top-0 text-white hover:bg-gray-700"
-          onClick={() => {
-            handleFilterFetch();
-            setHeight("0");
-          }}
-        >
-          Bruk filter
-        </button>
+        <div className="flex justify-between">
+          <p className="text-lg font-bold">Filtrer</p>
+          <div>x</div>
+        </div>
         <Filter
           setCheckboxStates={setCheckboxStates}
           checkboxStates={checkboxStates}
@@ -176,6 +183,15 @@ const Filters = ({
           filter={colorFilter}
           queryTemplate="&filters[colors][name][$eq]="
         />
+        <button
+          className="block sm:hidden bg-gray-500 rounded-md p-2 px-4 m-4 sticky top-0 text-white hover:bg-gray-700"
+          onClick={() => {
+            handleFilterFetch();
+            setHeight(heightClasses.zero);
+          }}
+        >
+          Bruk filter
+        </button>
       </div>
     </div>
   );

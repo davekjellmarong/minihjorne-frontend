@@ -27,14 +27,14 @@ const Nav = () => {
     hjem: <House size={32} weight="thin" />,
   };
   return (
-    <nav className="flex items-center justify-between flex-wrap p-2 px-6 bg-gray-700 lg:px-20">
-      <Link href="/produkter" className="w-36 lg:w-52 text-white pb-0 mb-0">
+    <nav className="flex items-center justify-between shadow flex-wrap p-2 px-6  lg:px-20">
+      <Link href="/produkter" className="w-36 lg:w-52  pb-0 mb-0">
         Mini Bruket
       </Link>
       <div className="block sm:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center px-3 py-2 rounded text-white"
+          className="flex items-center px-3 py-2 rounded "
         >
           <svg
             className={`fill-current h-8 w-8 ${isOpen ? "hidden" : "block"}`}
@@ -61,7 +61,7 @@ const Nav = () => {
           return (
             <Link key={item.path} href={item.path} className="w-500">
               <button
-                className={`text-white p-4 flex items-center rounded hover:bg-gray-500 transition-colors duration-150`}
+                className={` p-4 flex items-center rounded hover:bg-gray-500 transition-colors duration-150`}
                 key={item.label}
               >
                 {icons[item.icon]} {item.label}

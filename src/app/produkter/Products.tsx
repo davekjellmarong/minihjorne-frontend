@@ -34,7 +34,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
 
           return (
             <li
-              className="border-2 rounded border-gray-100 w-64"
+              className="border-2 rounded border-gray-100 w-64 hover:shadow-xl"
               key={product.id}
             >
               <div className="relative">

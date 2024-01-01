@@ -20,7 +20,7 @@ const Filter = ({
   checkboxStates,
 }: FilterProps) => {
   const FilterRef = useRef<HTMLUListElement | null>(null);
-
+  const [open, setOpen] = useState(false);
   const handleCheckboxChange = (item: any) => {
     const isChecked = !checkboxStates[item.attributes[property]];
     setCheckboxStates((prevStates: any) => ({
@@ -48,16 +48,19 @@ const Filter = ({
   if (data)
     return (
       <div className="sm:pl-8">
-        <p
-          className="w-full sm:w-72 font-semibold text-xs ml-0 p-4 hover:bg-gray-200 border-b-2 border-b-gray-300 sm:border-0 sm:pl-0"
+        <div
           onClick={() => {
             if (FilterRef.current) {
               FilterRef.current.classList.toggle("hidden");
+              setOpen(!open);
             }
           }}
+          className="flex justify-between w-full sm:w-72  ml-0 p-4 hover:bg-gray-200 border-b border-b-gray-300 sm:border-0 sm:pl-0"
         >
-          {label}
-        </p>
+          <p className=" font-light">{label}</p>
+          <span className={`${open ? "" : "hidden"}`}>Down</span>
+          <span className={`${open ? "hidden" : ""}`}>Up</span>
+        </div>
         <ul ref={FilterRef} className="hidden">
           {data.data.map((item: any) => {
             return (

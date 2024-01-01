@@ -29,6 +29,7 @@ const Ordre = () => {
   if (loading) return <Loading />;
   return (
     <div>
+      <h2 className="font-light text-2xl mb-4">Mine ordre</h2>
       <table className="w-full">
         <thead className="bg-gray-200 border-2 border-gray-100">
           <tr className="">
