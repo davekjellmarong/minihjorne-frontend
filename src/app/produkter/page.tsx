@@ -1,27 +1,19 @@
 "use client";
-import { apiUrl, baseUrl, tailwindColors } from "@/utils/constants";
-import { Product, ProductBackend, ProductsData, TagsRQ } from "@/utils/types";
 import {
-  fetchColors,
-  fetchProducts,
-  fetchProductsFiltered,
-  fetchPublicData,
-  fetchSizes,
-  fetchTags,
-} from "@/utils/utils";
-import { PlusCircle, Tag, User } from "@phosphor-icons/react";
+  Product as ProductType,
+  ProductBackend,
+  ProductsData,
+  TagsRQ,
+} from "@/utils/types";
+import { fetchProductsFiltered } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Products from "./Products";
 import Filters from "./Filters";
-import SplitView from "@/components/layout/SplitView";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
-import {
-  getItemsFromLocalStorage,
-  getSavedProductIds,
-} from "@/components/cart/Utils";
 import FilterChips from "./FilterChips";
+import Product from "./Product";
+import Dialog from "@/components/dialog/Dialog";
 export interface SelectedFilter {
   query: string;
   id: number;
@@ -30,6 +22,11 @@ export interface SelectedFilter {
 const Page = () => {
   const [filterQuery, setFilterQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [checkboxStates, setCheckboxStates] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const [open, setOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<ProductBackend>();
   const { data, isLoading } = useQuery<ProductBackend[]>({
     queryKey: ["product", filterQuery],
     queryFn: () => {
@@ -38,38 +35,35 @@ const Page = () => {
   });
   useAutoLogIn();
 
-  // useEffect(() => {
-  //   if (data?.data) {
-  //     const productsIds = data?.data.map((product) => product.id);
-  //     const savedProductsIds = getItemsFromLocalStorage().map(
-  //       (product) => product.id
-  //     );
-  //     console.log({ savedProductsIds });
-  //     console.log(productsIds);
-  //     const addedProducts = savedProductsIds.filter((id) =>
-  //       productsIds.includes(id)
-  //     );
-  //     console.log(addedProducts);
-  //   }
-  // }, [data]);
-  console.log(selectedFilters);
-
   return (
     <>
-      <div className="flex w-full flex-col items-center sm:items-start sm:flex-row relative">
-        <div className="w-full sm:w-80">
+      <div className="flex w-full flex-col items-center relative">
+        <Dialog open={open} setOpen={setOpen}>
+          <Product selectedProduct={selectedProduct} />
+        </Dialog>
+        <div className="w-full border-y border-gray-200 py-2 px-6 sm:px-24">
           <Filters
             setFilterQuery={setFilterQuery}
             setSelectedFilters={setSelectedFilters}
             selectedFilters={selectedFilters}
+            checkboxStates={checkboxStates}
+            setCheckboxStates={setCheckboxStates}
           />
-          {/* <FilterChips
+        </div>
+        <div className="px-6 sm:px-24 w-full">
+          <FilterChips
             selectedFilters={selectedFilters}
             setSelectedFilters={setSelectedFilters}
-          /> */}
+            setCheckboxStates={setCheckboxStates}
+          />
         </div>
-        <div className=" w-full sm:grow">
-          <Products data={data} isLoading={isLoading} />
+        <div className="w-5/6">
+          <Products
+            setOpen={setOpen}
+            setSelectedProduct={setSelectedProduct}
+            data={data}
+            isLoading={isLoading}
+          />
         </div>
       </div>
     </>

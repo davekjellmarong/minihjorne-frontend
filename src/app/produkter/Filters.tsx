@@ -2,31 +2,26 @@ import React, { useState } from "react";
 import Filter from "./Fillter";
 import useGetFilters from "@/components/customHooks/useGetFilters";
 import FilterChips from "./FilterChips";
-import { SlidersHorizontal } from "@phosphor-icons/react";
+import { SlidersHorizontal, X, XCircle } from "@phosphor-icons/react";
+import { useRef } from "react";
+import FilterDialog from "./FilterDialog";
 
 interface FiltersProps {
   setFilterQuery: any;
   setSelectedFilters: (value: string[]) => void;
   selectedFilters: string[];
+  setCheckboxStates: (value: any) => void;
+  checkboxStates: any;
 }
-type Heights = {
-  0: string;
-  h: string;
-};
 const Filters = ({
   setFilterQuery,
   setSelectedFilters,
   selectedFilters,
+  setCheckboxStates,
+  checkboxStates,
 }: FiltersProps) => {
-  enum heightClasses {
-    zero = "h-0",
-    auto = "h-auto",
-  }
+  const [open, setOpen] = useState(false);
 
-  const [height, setHeight] = useState(heightClasses.zero);
-  const [checkboxStates, setCheckboxStates] = useState<{
-    [key: string]: boolean;
-  }>({});
   const [
     TagsData,
     ColorsData,
@@ -82,117 +77,112 @@ const Filters = ({
     ]);
   };
   return (
-    <div className=" sm:px-16 max-h-screen flex flex-col overflow-y-scroll sm:border-r-2 sm:border-gray-300 relative">
+    <div className="  max-h-screen flex flex-col overflow-y-scroll  relative">
       <div className="flex justify-between gap-4">
         <button
           onClick={() => {
-            console.log(height);
-            setHeight(
-              height === heightClasses.zero
-                ? heightClasses.auto
-                : heightClasses.zero
-            );
+            setOpen(true);
           }}
-          className="sm:hidden flex items-center border-2 border-gray-500 rounded-md p-2 px-4 my-4  hover:bg-gray-700"
+          className=" flex items-center border border-gray-300 rounded p-2 px-4 hover:bg-gray-200"
         >
-          <SlidersHorizontal size={32} weight="thin" />
-          <p>Filter</p>
-        </button>
-        <button
-          className="sm:hidden flex items-center border-2 border-red-300 rounded-md p-2 px-4 my-4  hover:bg-gray-700"
-          onClick={() => {
-            setCheckboxStates({});
-            setFilterQuery("");
-            setSelectedFilters([]);
-            setColorFilter([]);
-            setSizeFilter([]);
-            setTagFilter([]);
-            setMaterialFilter([]);
-            setCategoryFilter([]);
-          }}
-        >
-          Tøm alle filtre
+          <SlidersHorizontal size={24} weight="thin" />
+          <p className="">Filter</p>
         </button>
       </div>
+      <FilterDialog open={open} setOpen={setOpen}>
+        <div className={`h-screen relative flex flex-col max-h-screen `}>
+          <div className="flex justify-between px-6 border-b border-b-gray-300  py-6">
+            <p className="text-lg font-bold ">Filtrer</p>
+            <div
+              onClick={() => {
+                setOpen(false);
+              }}
+              className="cursor-pointer"
+            >
+              <X size={28} />
+            </div>
+          </div>
+          <div className="grow ">
+            <Filter
+              setCheckboxStates={setCheckboxStates}
+              checkboxStates={checkboxStates}
+              data={CategoryData}
+              property="name"
+              label="Kategori"
+              setFilter={setCategoryFilter}
+              filter={categoryFilter}
+              queryTemplate="&filters[category][name][$eq]="
+            />
+            <Filter
+              setCheckboxStates={setCheckboxStates}
+              checkboxStates={checkboxStates}
+              data={SizesData}
+              property="number"
+              label="Størrelser"
+              setFilter={setSizeFilter}
+              filter={sizeFilter}
+              queryTemplate="&filters[size][number][$eq]="
+            />
+            <Filter
+              setCheckboxStates={setCheckboxStates}
+              checkboxStates={checkboxStates}
+              data={MaterialsData}
+              property="name"
+              label="Stoff"
+              setFilter={setMaterialFilter}
+              filter={materialFilter}
+              queryTemplate="&filters[materials][name][$eq]="
+            />
+            <Filter
+              setCheckboxStates={setCheckboxStates}
+              checkboxStates={checkboxStates}
+              data={TagsData}
+              property="name"
+              label="Tags"
+              setFilter={setTagFilter}
+              filter={tagFilter}
+              queryTemplate="&filters[tags][name][$eq]="
+            />
+            <Filter
+              setCheckboxStates={setCheckboxStates}
+              checkboxStates={checkboxStates}
+              data={ColorsData}
+              property="name"
+              label="Farger"
+              setFilter={setColorFilter}
+              filter={colorFilter}
+              queryTemplate="&filters[colors][name][$eq]="
+            />
+          </div>
 
-      <button
-        className="hidden sm:block bg-gray-500 rounded-md p-2 px-4 m-4 sticky top-0 text-white hover:bg-gray-700"
-        onClick={handleFilterFetch}
-      >
-        Bruk filter
-      </button>
-      <FilterChips
-        setCheckboxStates={setCheckboxStates}
-        setSelectedFilters={setSelectedFilters}
-        selectedFilters={selectedFilters}
-      />
-      <div
-        className={`${height} max-h-screen sm:h-auto sm:space-y-8 flex flex-col`}
-      >
-        <div className="flex justify-between">
-          <p className="text-lg font-bold">Filtrer</p>
-          <div>x</div>
+          <div className="flex px-6 justify-between bg-gray-100  shadow-inner bottom-0 sticky">
+            <button
+              className=" flex items-center border-2 border-red-300 rounded-md p-2 px-4 my-4  hover:bg-gray-700"
+              onClick={() => {
+                setCheckboxStates({});
+                setFilterQuery("");
+                setSelectedFilters([]);
+                setColorFilter([]);
+                setSizeFilter([]);
+                setTagFilter([]);
+                setMaterialFilter([]);
+                setCategoryFilter([]);
+              }}
+            >
+              Tøm alle filtre
+            </button>
+            <button
+              className="block bg-gray-500 rounded-md p-2 px-4 m-4 sticky top-0 text-white hover:bg-gray-700"
+              onClick={() => {
+                handleFilterFetch();
+                setOpen(false);
+              }}
+            >
+              Bruk filter
+            </button>
+          </div>
         </div>
-        <Filter
-          setCheckboxStates={setCheckboxStates}
-          checkboxStates={checkboxStates}
-          data={CategoryData}
-          property="name"
-          label="Kategori"
-          setFilter={setCategoryFilter}
-          filter={categoryFilter}
-          queryTemplate="&filters[category][name][$eq]="
-        />
-        <Filter
-          setCheckboxStates={setCheckboxStates}
-          checkboxStates={checkboxStates}
-          data={SizesData}
-          property="number"
-          label="Størrelser"
-          setFilter={setSizeFilter}
-          filter={sizeFilter}
-          queryTemplate="&filters[size][number][$eq]="
-        />
-        <Filter
-          setCheckboxStates={setCheckboxStates}
-          checkboxStates={checkboxStates}
-          data={MaterialsData}
-          property="name"
-          label="Stoff"
-          setFilter={setMaterialFilter}
-          filter={materialFilter}
-          queryTemplate="&filters[materials][name][$eq]="
-        />
-        <Filter
-          setCheckboxStates={setCheckboxStates}
-          checkboxStates={checkboxStates}
-          data={TagsData}
-          property="name"
-          label="Tags"
-          setFilter={setTagFilter}
-          filter={tagFilter}
-          queryTemplate="&filters[tags][name][$eq]="
-        />
-        <Filter
-          setCheckboxStates={setCheckboxStates}
-          checkboxStates={checkboxStates}
-          data={ColorsData}
-          property="name"
-          label="Farger"
-          setFilter={setColorFilter}
-          filter={colorFilter}
-          queryTemplate="&filters[colors][name][$eq]="
-        />
-        <button
-          className="block sm:hidden bg-gray-500 rounded-md p-2 px-4 m-4 sticky top-0 text-white hover:bg-gray-700"
-          onClick={() => {
-            handleFilterFetch();
-            setHeight(heightClasses.zero);
-          }}
-        >
-          Bruk filter
-        </button>
-      </div>
+      </FilterDialog>
     </div>
   );
 };

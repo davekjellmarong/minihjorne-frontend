@@ -129,15 +129,45 @@ export interface CommonImage {
   createdAt: string;
   updatedAt: string;
 }
+export interface TagBackend extends CommonTags {
+  id: number;
+}
+export interface CategoryBackend extends CommonCategory {
+  id: number;
+}
+export interface MaterialBackend extends CommonMaterial {
+  id: number;
+}
+export interface ColorBackend extends CommonColor {
+  id: number;
+}
+export interface SizeBackend extends CommonSize {
+  id: number;
+}
+export interface StatusBackend extends CommonStatus {
+  id: number;
+}
+export interface ImageBackend extends CommonImage {
+  id: number;
+}
+export interface UserBackend extends CommonUser {
+  id: number;
+}
+export interface OrderBackend extends CommonOrder {
+  id: number;
+  products: CommonProduct[];
+  user: CommonUser;
+}
+
 export interface ProductBackend extends CommonProduct {
   id: number;
-  image: CommonImage;
-  tags: CommonTags[];
-  colors: CommonColor[];
-  size: CommonSize;
-  material: CommonMaterial;
-  category: CommonCategory;
-  user: CommonUser;
+  image: ImageBackend;
+  tags: TagBackend[];
+  colors: ColorBackend[];
+  size: SizeBackend;
+  material: MaterialBackend;
+  category: CategoryBackend;
+  user: UserBackend;
 }
 export interface ProductsData {
   data: Product[];

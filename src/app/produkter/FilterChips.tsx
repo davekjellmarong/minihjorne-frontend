@@ -14,10 +14,10 @@ const FilterChips = ({
 }: FilterProps) => {
   if (selectedFilters.length === 0) return <></>;
   return (
-    <div className="flex flex-wrap gap-2 mt-2 mb-4  rounded-lg">
+    <div className="flex w-full flex-wrap gap-2 mt-2 mb-4  rounded-lg">
       {selectedFilters.map((filter) => (
         <div
-          className="flex gap-1 bg-gray-300 px-3 py-2 rounded-lg"
+          className="flex gap-1 border border-gray-300 px-3 py-2 rounded"
           key={filter}
         >
           {/* <XCircle

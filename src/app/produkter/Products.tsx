@@ -1,50 +1,47 @@
 "use client";
 import React from "react";
-import {
-  baseUrl,
-  tailwindColors,
-  tailwindColorsUserButton,
-} from "@/utils/constants";
+import { baseUrl, tailwindColorsUserButton } from "@/utils/constants";
 import { Product, ProductBackend } from "@/utils/types";
-import {
-  Heart,
-  MinusCircle,
-  PlusCircle,
-  Tag,
-  User,
-  UserCircle,
-} from "@phosphor-icons/react";
+import { Heart, Tag, UserCircle } from "@phosphor-icons/react";
 import Loading from "@/components/loading/Loading";
-import { useParams, useRouter } from "next/navigation";
-import AddToCartButtons from "@/components/button/AddToCartButtons";
+import { useRouter } from "next/navigation";
 
 interface ProductsProps {
   isLoading?: boolean;
   data: ProductBackend[] | undefined;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedProduct: (product: ProductBackend) => void;
 }
-const Products = ({ isLoading, data }: ProductsProps) => {
+const Products = ({
+  isLoading,
+  data,
+  setOpen,
+  setSelectedProduct,
+}: ProductsProps) => {
   const router = useRouter();
   if (isLoading) return <Loading />;
   if (data)
     return (
-      <ul className="flex flex-wrap gap-20 justify-center mt-10">
+      <ul className="flex flex-wrap gap-36 justify-center mt-10">
         {data.map((product) => {
-          console.log();
           const tailwindColor = tailwindColorsUserButton[product.user.color];
-
           return (
             <li
-              className="border-2 rounded border-gray-100 w-64 hover:shadow-xl"
+              className="border-2 rounded border-gray-100 w-64 hover:shadow cursor-pointer hover:bg-gray-50"
               key={product.id}
+              onClick={() => {
+                setSelectedProduct(product);
+                setOpen(true);
+              }}
             >
               <div className="relative">
                 <img
                   className="w-full max-h-72 object-cover"
                   src={`${baseUrl}${product.image.url}`}
                   alt=""
-                  onClick={() => {
-                    router.push(`/produkter/${product.id}`);
-                  }}
+                  // onClick={() => {
+                  //   router.push(`/produkter/${product.id}`);
+                  // }}
                 />
                 <Heart
                   className="absolute right-0 top-0 m-4"
