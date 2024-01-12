@@ -60,7 +60,7 @@ const LeggUt = () => {
     initialValues: {
       colors: "",
       colorsNorwegianName: "",
-      materials: "",
+      material: "",
       brand: "",
       price: "",
       category: "",
@@ -74,6 +74,7 @@ const LeggUt = () => {
     onSubmit: (values) => {
       const userId: any = user?.id;
       const data = { ...values, user: userId };
+      console.log(data);
       var formData = new FormData();
       formData.append("files.image", selectedImage, selectedImage.name);
       formData.append("data", JSON.stringify(data));
@@ -98,40 +99,34 @@ const LeggUt = () => {
       </div>
     );
   return (
-    <div className="flex flex-col">
-      <p className="hidden text-center p-6 border-b-2 border-gray-200 text-gray-700 text-lg">
-        Registrer dine barne klær
-      </p>
-      <div className="flex">
-        <div className="hidden sm:flex w-2/5 flex-col items-center border-r-2 justify-center border-gray-200">
-          <div className="h-1/6 border-b-2 border-gray-200 w-full my-4">
-            <p className="text-center mb-2">
-              {images.length - savedImages.length} av {images.length} bilder
-              igjen
-            </p>
-            <ImagesList
-              savedImages={savedImages}
-              images={images}
-              setSelectedImage={setSelectedImage}
-              selectedImage={selectedImage}
-              setStepper={setStepper}
-              formik={formik}
-            />
-          </div>
-          <div className="h-5/6 ">
-            <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
-            <SelectedImage selectedImage={selectedImage} />
-            {/* <PreviewValues formik={formik} /> */}
-          </div>
+    <div className="flex flex-col sm:flex-row relative">
+      <div className="bg-white mx-8 sm:mx-0 overflow-scroll shadow sm:shadow-none flex flex-col-reverse sticky top-0 sm:relative sm:h-auto   sm:w-2/5 sm:flex-col items-center border-r-2 justify-center border-gray-200">
+        <div className="my-4 hidden  sm:block sm:h-1/6 sm:border-b-2 border-gray-200 sm:w-full  w-auto">
+          <p className="text-center mb-2">
+            {images.length - savedImages.length} av {images.length} bilder igjen
+          </p>
+          <ImagesList
+            savedImages={savedImages}
+            images={images}
+            setSelectedImage={setSelectedImage}
+            selectedImage={selectedImage}
+            setStepper={setStepper}
+            formik={formik}
+          />
         </div>
-        <div className=" sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
-          <div className="flex flex-col items-center gap-2 w-3/4">
-            <p className="text-center mb-6">Registrer produktet ditt her</p>
-            <Stepper stepper={stepper} setStepper={setStepper} />
-          </div>
-          <div className="flex flex-col items-center gap-10 w-3/4">
-            {images?.length > 0 && <ProductForm {...ProjectFormProps} />}
-          </div>
+        <div className="sm:h-5/6 pb-8 sm:pb-0">
+          <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
+          <SelectedImage selectedImage={selectedImage} />
+          {/* <PreviewValues formik={formik} /> */}
+        </div>
+      </div>
+      <div className="m-10 sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
+        <div className="flex flex-col items-center gap-2 w-3/4">
+          <p className="text-center mb-6">Registrer produktet ditt her</p>
+          <Stepper stepper={stepper} setStepper={setStepper} />
+        </div>
+        <div className="flex flex-col items-center gap-10 w-full sm:w-3/4">
+          {images?.length > 0 && <ProductForm {...ProjectFormProps} />}
         </div>
       </div>
     </div>

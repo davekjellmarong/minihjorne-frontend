@@ -18,12 +18,12 @@ const ImagesList = ({
   formik,
 }: ImageListProps) => {
   return (
-    <div className="flex justify-center max-h-[80px] gap-4 flex-wrap mx-12 overflow-scroll">
+    <div className="flex justify-center max-h-[80px] gap-4 mx-12 ">
       {images?.map((image, index) => (
         <div
           className={`${
             savedImages.includes(image.name) ? "bg-green-500" : ""
-          } size-16 overflow-hidden`}
+          } size-[50px] sm:size-16`}
           key={index}
         >
           <img

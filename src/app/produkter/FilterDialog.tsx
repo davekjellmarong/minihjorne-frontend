@@ -4,8 +4,14 @@ interface FilterDialogProps {
   children: React.ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
+  width?: string;
 }
-const FilterDialog = ({ children, open, setOpen }: FilterDialogProps) => {
+const FilterDialog = ({
+  children,
+  open,
+  setOpen,
+  width = "w-screen",
+}: FilterDialogProps) => {
   const [translate, setTranslate] = useState("-translate-x-96");
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -24,16 +30,6 @@ const FilterDialog = ({ children, open, setOpen }: FilterDialogProps) => {
         setOpen(false);
       }
     });
-
-    dialog.addEventListener("close", () => {
-      console.log("dialog closed");
-    });
-
-    dialog.addEventListener("cancel", (event) => {
-      console.log("dialog cancelled");
-
-      event.preventDefault();
-    });
   }, []);
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -51,7 +47,7 @@ const FilterDialog = ({ children, open, setOpen }: FilterDialogProps) => {
   return (
     <dialog
       ref={dialogRef}
-      className={`fixed w-screen h-screen sm:w-96 sm:top-0 sm:right-0  m-0  bg-zinc-50 transition-transform duration-300 ease-in-out ${translate}`}
+      className={`fixed ${width} h-screen sm:w-96 sm:top-0 sm:right-0  m-0  bg-zinc-50 transition-transform duration-300 ease-in-out ${translate}`}
     >
       {children}
     </dialog>

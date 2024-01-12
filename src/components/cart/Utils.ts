@@ -1,10 +1,10 @@
 "use client";
 // Define a type for your cart items
 
-import { Cart, Product } from "@/utils/types";
+import { Cart, ProductBackend } from "@/utils/types";
 
 // Function to add an item to the cart
-export const addItemToCart = (product: Product): Product[] => {
+export const addItemToCart = (product: ProductBackend): ProductBackend[] => {
   const cart = getItemsFromLocalStorage();
   const existingItemIndex = cart.findIndex(
     (cartProduct) => cartProduct.id === product.id
@@ -21,7 +21,7 @@ export const addItemToCart = (product: Product): Product[] => {
 };
 
 // Function to remove an item from the cart
-export const removeItemFromCart = (productId: number): Product[] => {
+export const removeItemFromCart = (productId: number): ProductBackend[] => {
   const cart = getItemsFromLocalStorage();
 
   const updatedCart = cart.filter((product) => product.id !== productId);
@@ -31,12 +31,12 @@ export const removeItemFromCart = (productId: number): Product[] => {
 };
 
 // Function to send items to local storage
-export const sendItemsToLocalStorage = (cart: Product[]): void => {
+export const sendItemsToLocalStorage = (cart: ProductBackend[]): void => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
 // Function to get items from local storage
-export const getItemsFromLocalStorage = (): Product[] => {
+export const getItemsFromLocalStorage = (): ProductBackend[] => {
   const storedCart = localStorage.getItem("cart");
   return storedCart ? JSON.parse(storedCart) : [];
 };
@@ -47,8 +47,8 @@ export const getSavedProductIds = (): number[] => {
 };
 
 // Function to calculate the total price of items in the cart
-export const calculateTotalPrice = (cart: Product[]): number => {
-  return cart.reduce((total, product) => total + product.attributes.price, 0);
+export const calculateTotalPrice = (cart: ProductBackend[]): number => {
+  return cart.reduce((total, product) => total + product.price, 0);
 };
 export const getCart = () => {
   const cart = getItemsFromLocalStorage();

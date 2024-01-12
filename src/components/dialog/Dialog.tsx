@@ -23,16 +23,6 @@ const Dialog = ({ children, open, setOpen }: DialogProps) => {
         setOpen(false);
       }
     });
-
-    dialog.addEventListener("close", () => {
-      console.log("dialog closed");
-    });
-
-    dialog.addEventListener("cancel", (event) => {
-      console.log("dialog cancelled");
-
-      event.preventDefault();
-    });
   }, []);
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -50,7 +40,7 @@ const Dialog = ({ children, open, setOpen }: DialogProps) => {
   return (
     <dialog
       ref={dialogRef}
-      className={`fixed w-[900px] h-[600px] m-auto bg-zinc-50 transition-transform duration-200  ${scale}`}
+      className={`fixed  sm:w-[900px] sm:h-[750px] m-auto bg-zinc-50 transition-transform duration-200  ${scale}`}
     >
       {children}
     </dialog>

@@ -17,14 +17,57 @@ import { tailwindColors } from "@/utils/constants";
 
 interface DialogProps {
   formik: any;
-  icons: any;
+  // icons: any;
+  dialogRef: any;
 }
-const Dialog = ({ formik, icons }: DialogProps) => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+const Dialog = ({ formik, dialogRef }: DialogProps) => {
+  // const dialogRef = useRef<HTMLDialogElement>(null);
   const { data: colors } = useQuery<ColorsRQ>({
     queryKey: ["colors"],
     queryFn: fetchColors,
   });
+  const icons: any = {
+    Star: {
+      component: (
+        <Star size={52} weight="fill" color={formik.values.colorName} />
+      ),
+      title: "Star",
+    },
+    HeartStraight: {
+      component: (
+        <HeartStraight
+          size={52}
+          weight="fill"
+          color={formik.values.colorName}
+        />
+      ),
+      title: "HeartStraight",
+    },
+    Baby: {
+      component: (
+        <Baby size={52} weight="fill" color={formik.values.colorName} />
+      ),
+      title: "Baby",
+    },
+    Rainbow: {
+      component: (
+        <Rainbow size={52} weight="fill" color={formik.values.colorName} />
+      ),
+      title: "Rainbow",
+    },
+    Leaf: {
+      component: (
+        <Leaf size={52} weight="fill" color={formik.values.colorName} />
+      ),
+      title: "Leaf",
+    },
+    Bird: {
+      component: (
+        <Bird size={52} weight="fill" color={formik.values.colorName} />
+      ),
+      title: "Bird",
+    },
+  };
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -40,19 +83,10 @@ const Dialog = ({ formik, icons }: DialogProps) => {
         dialog.close();
       }
     });
-
-    dialog.addEventListener("close", () => {
-      console.log("dialog closed");
-    });
-
-    dialog.addEventListener("cancel", (event) => {
-      console.log("dialog cancelled");
-      event.preventDefault();
-    });
   }, []);
   return (
     <section className="flex flex-col items-start pl-10 sm:container">
-      <button
+      {/* <button
         type="button"
         className="rounded-lg border border-sky-600 bg-sky-800 px-5 py-2.5 text-sm font-medium text-sky-100 hover:bg-sky-700 hover:text-white focus:z-10 focus:outline-none focus:ring-0 focus:ring-sky-700"
         onClick={() => {
@@ -60,7 +94,7 @@ const Dialog = ({ formik, icons }: DialogProps) => {
         }}
       >
         Rediger salgsprofil
-      </button>
+      </button> */}
 
       <dialog
         ref={dialogRef}

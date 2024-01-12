@@ -50,6 +50,12 @@ export interface CommonTags {
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonSex {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
 export interface CommonCategory {
   name: string;
   createdAt: string;
@@ -58,6 +64,12 @@ export interface CommonCategory {
   icon: string;
 }
 export interface CommonMaterial {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+export interface CommonState {
   name: string;
   createdAt: string;
   updatedAt: string;
@@ -144,7 +156,10 @@ export interface ColorBackend extends CommonColor {
 export interface SizeBackend extends CommonSize {
   id: number;
 }
-export interface StatusBackend extends CommonStatus {
+export interface SexBackend extends CommonSex {
+  id: number;
+}
+export interface StateBackend extends CommonStatus {
   id: number;
 }
 export interface ImageBackend extends CommonImage {
@@ -168,6 +183,8 @@ export interface ProductBackend extends CommonProduct {
   material: MaterialBackend;
   category: CategoryBackend;
   user: UserBackend;
+  state: StateBackend;
+  sex: SexBackend;
 }
 export interface ProductsData {
   data: Product[];

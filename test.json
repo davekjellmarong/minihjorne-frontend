@@ -4,18 +4,123 @@
     "api::size.size": {
       "21": {
         "id": 21,
-        "number": "40/56",
-        "text": "0-2 mnd"
+        "number": "40-56",
+        "text": "0-2 mnd",
+        "createdAt": "2023-12-23T10:18:45.862Z",
+        "updatedAt": "2023-12-23T10:18:45.885Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
       },
       "22": {
         "id": 22,
-        "number": "62/68",
-        "text": "2-6 mnd"
+        "number": "62-68",
+        "text": "2-6 mnd",
+        "createdAt": "2023-12-23T10:18:45.865Z",
+        "updatedAt": "2023-12-23T10:18:45.886Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
       },
-      "23": {
-        "id": 23,
-        "number": "62/68",
-        "text": "2-6 mnd"
+      "24": {
+        "id": 24,
+        "number": "74-80",
+        "text": "6-12 mnd",
+        "createdAt": "2023-12-23T10:18:45.868Z",
+        "updatedAt": "2023-12-23T10:18:45.888Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "25": {
+        "id": 25,
+        "number": "86-92",
+        "text": "1-2 år",
+        "createdAt": "2023-12-23T10:18:45.870Z",
+        "updatedAt": "2023-12-23T10:18:45.889Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "26": {
+        "id": 26,
+        "number": "98-104",
+        "text": "2-4 år",
+        "createdAt": "2023-12-23T10:18:45.873Z",
+        "updatedAt": "2023-12-23T10:18:45.891Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "27": {
+        "id": 27,
+        "number": "110-116",
+        "text": "4-6 år",
+        "createdAt": "2023-12-23T10:18:45.874Z",
+        "updatedAt": "2023-12-23T10:18:45.892Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "28": {
+        "id": 28,
+        "number": "122-128",
+        "text": "6-8 år",
+        "createdAt": "2023-12-23T10:18:45.876Z",
+        "updatedAt": "2023-12-23T10:18:45.893Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "29": {
+        "id": 29,
+        "number": "134-140",
+        "text": "8-10 år",
+        "createdAt": "2023-12-23T10:18:45.877Z",
+        "updatedAt": "2023-12-23T10:18:45.895Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "30": {
+        "id": 30,
+        "number": "146-152",
+        "text": "10-12 år",
+        "createdAt": "2023-12-23T10:18:45.879Z",
+        "updatedAt": "2023-12-23T10:18:45.896Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "31": {
+        "id": 31,
+        "number": "158-164",
+        "text": "12-14 år",
+        "createdAt": "2023-12-23T10:18:45.881Z",
+        "updatedAt": "2023-12-23T10:18:45.897Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "32": {
+        "id": 32,
+        "number": "170",
+        "text": "14+ år",
+        "createdAt": "2023-12-23T10:18:45.857Z",
+        "updatedAt": "2023-12-23T10:18:45.883Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "33": {
+        "id": 33,
+        "number": "One size",
+        "text": "One size",
+        "createdAt": "2023-12-23T10:18:45.882Z",
+        "updatedAt": "2023-12-23T10:18:45.899Z",
+        "publishedAt": "2023-12-23T10:18:55.780Z",
+        "createdBy": null,
+        "updatedBy": null
       }
     }
   }

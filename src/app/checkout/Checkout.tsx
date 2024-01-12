@@ -65,7 +65,6 @@ const Checkout = () => {
   const { data: userData } = useQuery<LoginUser>({
     queryKey: ["login-user"],
   });
-  console.log(userData);
   const { mutate: createOrder, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return OrderMethods.post(values, jwt);

@@ -6,10 +6,10 @@ import {
 } from "../cart/Utils";
 import { toast } from "react-toastify";
 import { MinusCircle, PlusCircle } from "@phosphor-icons/react";
-import { Product } from "@/utils/types";
+import { Product, ProductBackend } from "@/utils/types";
 
 interface AddToCartButtonsProps {
-  product: Product;
+  product: ProductBackend;
 }
 
 const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
@@ -20,17 +20,17 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
     <>
       {addedProductsIds?.includes(product.id) ? (
         <button
-          onClick={() => {
-            const updatedCart = removeItemFromCart(product.id);
-            const updatedAddedProductsIds = updatedCart.map(
-              (product) => product.id
-            );
-            setAddedProductsIds(updatedAddedProductsIds);
-            toast.info("Fjernet", { position: toast.POSITION.BOTTOM_RIGHT });
-          }}
-          className="text-sm flex items-center gap-1 border-2 border-gray-200 px-4 py-2 rounded"
+          // onClick={() => {
+          //   const updatedCart = removeItemFromCart(product.id);
+          //   const updatedAddedProductsIds = updatedCart.map(
+          //     (product) => product.id
+          //   );
+          //   setAddedProductsIds(updatedAddedProductsIds);
+          //   toast.info("Fjernet", { position: toast.POSITION.BOTTOM_RIGHT });
+          // }}
+          className="text-lg w-full flex justify-center items-center gap-1 border-2 border-gray-400 px-6 h-20 rounded  hover:bg-gray-200"
         >
-          Fjern <MinusCircle size={14} />
+          Eksisterer i handlekurven
         </button>
       ) : (
         <button
@@ -39,9 +39,9 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
             setAddedProductsIds([...addedProductsIds, product.id]);
             toast.info("Lagt til", { position: toast.POSITION.BOTTOM_RIGHT });
           }}
-          className="text-sm flex items-center gap-1 border-2 border-gray-200 px-4 py-2 rounded"
+          className="text-lg w-full flex justify-center items-center gap-1 border-2 border-gray-400 px-6 h-20 rounded hover:bg-gray-200"
         >
-          Legg til <PlusCircle size={14} />
+          Legg til <PlusCircle size={22} />
         </button>
       )}
     </>

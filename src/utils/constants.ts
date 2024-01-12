@@ -63,7 +63,7 @@ export const tailwindColorsUserButton: any = {
   orange: "bg-orange-200 ",
   Turkis: "bg-teal-200 ",
   indigo: "bg-indigo-200 ",
-  amber: "bg-amber-700 ",
+  amber: "bg-amber-200 ",
   Cyan: "bg-cyan-200 ",
   Gull: "bg-yellow-200 ",
   Sølv: "bg-gray-200 ",

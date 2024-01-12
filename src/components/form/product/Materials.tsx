@@ -32,7 +32,7 @@ const Materials = ({ materials, formik, onChangeFunc }: ColorProps) => {
                   const materialName = material.attributes.name;
 
                   // Set both color ID and color name to Formik values
-                  formik.setFieldValue("materials", materialId);
+                  formik.setFieldValue("material", materialId);
                   formik.setFieldValue(`materialName`, materialName);
                   if (onChangeFunc) {
                     onChangeFunc();
