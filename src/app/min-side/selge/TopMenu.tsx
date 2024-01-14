@@ -3,7 +3,7 @@ import { navItems } from "./NavItems";
 import Link from "next/link";
 const TopMenu = () => {
   return (
-    <div className="flex gap-4 ">
+    <div className="flex flex-col items-center gap-10 sm:flex-row sm:gap-4 ">
       {navItems.map((item) => (
         <Link
           href={item.path}
