@@ -38,7 +38,8 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                 <div className="relative">
                   <img
                     className="w-full max-h-72 object-cover"
-                    src={`${baseUrl}${product.image.url}`}
+                    // src={`${baseUrl}${product.image.url}`}
+                    src={`${product.image.url}`}
                     alt=""
                     // onClick={() => {
                     //   router.push(`/produkter/${product.id}`);

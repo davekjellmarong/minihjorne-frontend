@@ -66,7 +66,7 @@ const ProductDetail = ({ selectedProduct, setOpen }: ProductProps) => {
 
         <img
           className="w-full h-[500px] sm:h-[750px] object-cover overflow-hidden"
-          src={`${baseUrl}${selectedProduct.image.url}`}
+          src={`${selectedProduct.image.url}`}
           height={200}
           width={200}
           alt=""
