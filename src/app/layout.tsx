@@ -6,6 +6,7 @@ import Providers from "../components/reactQuery/Provider";
 import Nav from "@/components/nav/Nav";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import UpperNav from "@/components/nav/UpperNav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
+          {/* <UpperNav /> */}
           <Nav />
           <main>
             {children}

@@ -10,6 +10,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        brand: {
+          100: "#f7f8fe",
+          200: "#eff2fd",
+          300: "#e6ebfd",
+          400: "#dee5fc",
+          500: "#d6defb",
+          600: "#abb2c9",
+          700: "#808597",
+          800: "#565964",
+          900: "#2b2c32",
+        },
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

@@ -37,6 +37,9 @@ const Page = () => {
   return (
     <>
       <div className="flex w-full flex-col items-center relative">
+        <div className="w-full px-6 py-10 sm:px-24">
+          <h2 className="text-3xl font-bold">Produkter</h2>
+        </div>
         <div className="w-full border-y border-gray-200 py-2 px-6 sm:px-24">
           <Filters
             setFilterQuery={setFilterQuery}
