@@ -1,6 +1,13 @@
 "use client";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import HomeHeroImage from "@/components/heroImage/HomeHeroImage";
+import {
+  Handshake,
+  Upload,
+  UploadSimple,
+  User,
+  UserCircle,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,7 +16,7 @@ export default function Home() {
   return (
     <div>
       <HomeHeroImage />
-      <div className="flex justify-around my-10">
+      <div className="flex justify-around py-28 bg-brand-100">
         <Link href="/produkter?kjønn=gutt">
           <div className="bg-boyOutM h-[250px] bg-cover rounded-lg cursor-pointer">
             <div className="backdrop-brightness-[0.7] h-full w-[175px] flex items-center justify-center hover:backdrop-brightness-100">
@@ -24,6 +31,40 @@ export default function Home() {
             </div>
           </div>
         </Link>
+      </div>
+      <div className=" py-28">
+        <h3 className="text-center text-xl  mb-6">
+          Vil du selge klær på Mini Bruket?
+        </h3>
+        <ul className="font-light list-disc px-20 flex flex-col gap-16">
+          <li className="flex flex-col items-center">
+            <p className=" text-gray-600">1</p>
+            <User size={38} color="purple" weight="thin" />
+            <p className="font-semibold ">Opprett en bruker, helt gratis</p>
+            <p className="text-gray-600">
+              Registrer deg enkelt og opprett din egen profil
+            </p>
+          </li>
+          <li className="flex flex-col items-center">
+            <p className=" text-gray-600">2</p>
+            <UploadSimple size={38} color="purple" weight="thin" />
+            <p className="font-semibold ">Forhåndsregistrer dine klær</p>
+            <p className="text-gray-600">
+              Dette gjør du her på Minibruket.no, ved å laste opp bilder, fylle
+              inn produktinformasjon, pris osv.
+            </p>
+          </li>
+          <li className="flex flex-col items-center">
+            <p className=" text-gray-600">3</p>
+            <Handshake size={38} color="purple" weight="thin" />
+            <p className="font-semibold ">Lever dine klær til oss</p>
+            <p className="text-gray-600">
+              Vårt lokalet finner du i Oslo. Etter at du har levert klærne dine
+              hos oss, så vil alle dine klær legges ut til salgs på
+              Minibruket.no
+            </p>
+          </li>
+        </ul>
       </div>
     </div>
   );
