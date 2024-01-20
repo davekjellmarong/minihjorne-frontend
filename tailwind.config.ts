@@ -27,6 +27,10 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        homeHeroMobile: "url('/home-hero-mobile.jpg')",
+        homeHeroDesktop: "url('/home-hero-desktop.jpg')",
+        boyOutM: "url('/boy-out-M.jpg')",
+        girlBackM: "url('/girl-back-M.jpg')",
       },
     },
   },
