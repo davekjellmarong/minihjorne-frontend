@@ -36,10 +36,20 @@ const Products = ({ isLoading, data }: ProductsProps) => {
                 }}
               >
                 <div className="relative">
+                  {/* {product.image.map((i) => {
+                    return (
+                      <img
+                        className="w-full max-h-72 object-cover"
+                        src={`${i.url}`}
+                        alt=""
+                        key={i.id}
+                      />
+                    );
+                  })} */}
                   <img
                     className="w-full max-h-72 object-cover"
                     // src={`${baseUrl}${product.image.url}`}
-                    src={`${product.image.url}`}
+                    src={`${product.image[0].url}`}
                     alt=""
                     // onClick={() => {
                     //   router.push(`/produkter/${product.id}`);

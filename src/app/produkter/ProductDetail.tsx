@@ -26,6 +26,7 @@ import {
 import Link from "next/link";
 import AddToCartButtons from "@/components/button/AddToCartButtons";
 import ColorSquaresBackend from "@/components/color/ColorSquaresBackend";
+import CarouselComponent from "@/components/carousel/Carousel";
 
 interface ProductProps {
   selectedProduct: ProductBackend | undefined;
@@ -63,14 +64,20 @@ const ProductDetail = ({ selectedProduct, setOpen }: ProductProps) => {
           </p>
           <User size={22} />
         </Link>
-
-        <img
-          className="w-full h-[500px] sm:h-[750px] object-cover overflow-hidden"
-          src={`${selectedProduct.image.url}`}
-          height={200}
-          width={200}
-          alt=""
-        />
+        <CarouselComponent>
+          {selectedProduct.image.map((image) => {
+            return (
+              <img
+                key={image.id}
+                className="w-full h-[500px] sm:h-[750px] object-cover overflow-hidden"
+                src={`${image.url}`}
+                height={200}
+                width={200}
+                alt=""
+              />
+            );
+          })}
+        </CarouselComponent>
       </div>
       <div className="w-full sm:w-1/2 relative flex flex-col items-start overflow-hidden">
         <div className="absolute top-5 left-10">

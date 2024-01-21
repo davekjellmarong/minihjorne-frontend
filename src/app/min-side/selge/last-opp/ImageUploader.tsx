@@ -1,13 +1,20 @@
 "use client";
 import React from "react";
 interface ImageUploaderProps {
-  setSelectedImage: any;
+  setSelectedImages: any;
   setImages: any;
+  setModal: any;
 }
-const ImageUploader = ({ setSelectedImage, setImages }: ImageUploaderProps) => {
+const ImageUploader = ({
+  setSelectedImages,
+  setImages,
+  setModal,
+}: ImageUploaderProps) => {
   const handleImageChange = (e: any) => {
-    setSelectedImage(e.target.files[0]);
+    console.log(e.target.files);
+    // setSelectedImages(e.target.files[0]);
     setImages(Object.values(e.target.files));
+    setModal(true);
   };
 
   return (

@@ -2,6 +2,7 @@
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import HomeHeroImage from "@/components/heroImage/HomeHeroImage";
 import {
+  ArrowDown,
   Handshake,
   Upload,
   UploadSimple,
@@ -33,11 +34,11 @@ export default function Home() {
         </Link>
       </div>
       <div className=" py-28">
-        <h3 className="text-center text-xl  mb-6">
-          Vil du selge klær på Mini Bruket?
+        <h3 className="text-center text-2xl  mb-6">
+          Hvordan selge klær på Minibruket.no?
         </h3>
-        <ul className="font-light list-disc px-20 flex flex-col gap-16">
-          <li className="flex flex-col items-center">
+        <ul className="font-light text-start list-disc px-20 flex flex-col gap-16">
+          <li className="flex flex-col items-center gap-4">
             <p className=" text-gray-600">1</p>
             <User size={38} color="purple" weight="thin" />
             <p className="font-semibold ">Opprett en bruker, helt gratis</p>
@@ -45,7 +46,10 @@ export default function Home() {
               Registrer deg enkelt og opprett din egen profil
             </p>
           </li>
-          <li className="flex flex-col items-center">
+          <div className="flex justify-center">
+            <ArrowDown size={48} color="purple" weight="thin" />
+          </div>
+          <li className="flex flex-col items-center gap-4">
             <p className=" text-gray-600">2</p>
             <UploadSimple size={38} color="purple" weight="thin" />
             <p className="font-semibold ">Forhåndsregistrer dine klær</p>
@@ -54,7 +58,10 @@ export default function Home() {
               inn produktinformasjon, pris osv.
             </p>
           </li>
-          <li className="flex flex-col items-center">
+          <div className="flex justify-center">
+            <ArrowDown size={48} color="purple" weight="thin" />
+          </div>
+          <li className="flex flex-col items-center gap-4">
             <p className=" text-gray-600">3</p>
             <Handshake size={38} color="purple" weight="thin" />
             <p className="font-semibold ">Lever dine klær til oss</p>

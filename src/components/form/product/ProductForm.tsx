@@ -31,14 +31,12 @@ import Tags from "./Tags";
 import { toast } from "react-toastify";
 
 interface ProductFormProps {
-  selectedImage: any;
   setSavedImages: any;
   stepper: number;
   formik: any;
   setStepper: (value: number) => void;
 }
 const ProductForm = ({
-  selectedImage,
   setSavedImages,
   setStepper,
   formik,

@@ -5,7 +5,7 @@ import ImageUploader from "./ImageUploader";
 import ProductForm from "../../../../components/form/product/ProductForm";
 import ImagesList from "./ImagesList";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
-import SelectedImage from "./SelectedImage";
+import SelectedImages from "./SelectedImages";
 import Stepper from "./Stepper";
 import { useFormik } from "formik";
 import { ProductsMethods } from "@/utils/utils";
@@ -13,11 +13,23 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { User } from "@/utils/types";
 import { toast } from "react-toastify";
 import PreviewValues from "./PreviewValues";
+import Dialog from "@/components/dialog/Dialog";
+import FilterDialog from "@/app/produkter/FilterDialog";
+
+export interface ImageUpload {
+  lastModified: number;
+  lastModifiedDate: Date;
+  name: string;
+  size: number;
+  type: string;
+  webkitRelativePath: string;
+}
 const LeggUt = () => {
+  const [modal, setModal] = useState(false);
   const [stepper, setStepper] = useState(1);
-  const [selectedImage, setSelectedImage] = useState<any>("");
-  const [images, setImages] = useState([]);
-  const [savedImages, setSavedImages] = useState<string[]>([]);
+  const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
+  const [images, setImages] = useState<ImageUpload[]>([]);
+  const [savedImages, setSavedImages] = useState<ImageUpload[]>([]);
   const [stepper1, setStepper1] = useState(0);
   const [stepper2, setStepper2] = useState(700);
   const [stepper3, setStepper3] = useState(1400);
@@ -40,15 +52,17 @@ const LeggUt = () => {
         } ${formik.values.categoryName.toLowerCase()}' lagret`
       );
       // Find the first image that does not exist in savedImages
-      const firstUnsavedImage = images.find(
-        (image: any) =>
-          ![...savedImages, selectedImage.name].includes(image.name)
-      );
-      if (firstUnsavedImage) {
-        setSelectedImage(firstUnsavedImage);
-      }
-      setSavedImages((prev: any) => [...prev, selectedImage.name]);
+      // const firstUnsavedImage = images.find(
+      //   (image: any) =>
+      //     ![...savedImages, selectedImages.name].includes(image.name)
+      // );
+      // if (firstUnsavedImage) {
+      //   setSelectedImagess(firstUnsavedImage);
+      // }
+      setSavedImages((prev: any) => [...prev, ...selectedImages]);
       setStepper(1);
+      setSelectedImages([]);
+      formik.resetForm();
     },
     onError: (err: any) => {
       console.log(err);
@@ -76,60 +90,81 @@ const LeggUt = () => {
       const data = { ...values, user: userId };
       console.log(data);
       var formData = new FormData();
-      formData.append("files.image", selectedImage, selectedImage.name);
+      // formData.append("files.image", selectedImages, selectedImages.name);
+      selectedImages.forEach((image: any) => {
+        formData.append("files.image", image, image.name);
+      });
       formData.append("data", JSON.stringify(data));
+      console.log(formData);
       createProduct(formData);
     },
   });
   const ProjectFormProps = {
     formik: formik,
     setSavedImages: setSavedImages,
-    selectedImage: selectedImage,
     stepper: stepper,
     setStepper: setStepper,
   };
-  if (!selectedImage)
+  if (images.length === 0)
     return (
       <div className="flex flex-col gap-6 justify-center items-center h-screen">
         <p className="text-xl">Last opp bilder til dine produkter her</p>
         <ImageUploader
           setImages={setImages}
-          setSelectedImage={setSelectedImage}
+          setSelectedImages={setSelectedImages}
+          setModal={setModal}
         />
       </div>
     );
   return (
-    <div className="flex flex-col sm:flex-row relative">
-      <div className="bg-white mx-8 sm:mx-0 overflow-scroll shadow sm:shadow-none flex flex-col-reverse sticky top-0 sm:relative sm:h-auto   sm:w-2/5 sm:flex-col items-center border-r-2 justify-center border-gray-200">
-        <div className="my-4 hidden  sm:block sm:h-1/6 sm:border-b-2 border-gray-200 sm:w-full  w-auto">
-          <p className="text-center mb-2">
-            {images.length - savedImages.length} av {images.length} bilder igjen
-          </p>
-          <ImagesList
-            savedImages={savedImages}
-            images={images}
-            setSelectedImage={setSelectedImage}
-            selectedImage={selectedImage}
-            setStepper={setStepper}
-            formik={formik}
-          />
+    <>
+      <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
+        <p className="text-center m-10">Velg opp til 3 bilder</p>
+        <ImagesList
+          savedImages={savedImages}
+          images={images}
+          setSelectedImages={setSelectedImages}
+          selectedImages={selectedImages}
+          setStepper={setStepper}
+          formik={formik}
+        />
+      </FilterDialog>
+      <div className="flex flex-col sm:flex-row relative">
+        <button className=" sm:hidden " onClick={() => setModal(true)}>
+          Endre bilder
+        </button>
+        <div className="bg-white mx-8 sm:mx-0 overflow-scroll shadow sm:shadow-none flex flex-col-reverse sticky top-0 sm:relative sm:h-auto   sm:w-2/5 sm:flex-col items-center border-r-2 justify-center border-gray-200">
+          <div className="my-4 hidden  sm:block sm:h-1/6 sm:border-b-2 border-gray-200 sm:w-full  w-auto">
+            <p className="text-center mb-2">
+              {images.length - savedImages.length} av {images.length} bilder
+              igjen
+            </p>
+            <ImagesList
+              savedImages={savedImages}
+              images={images}
+              setSelectedImages={setSelectedImages}
+              selectedImages={selectedImages}
+              setStepper={setStepper}
+              formik={formik}
+            />
+          </div>
+          <div className="sm:h-5/6 pb-8 sm:pb-0">
+            <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
+            <SelectedImages selectedImages={selectedImages} />
+            {/* <PreviewValues formik={formik} /> */}
+          </div>
         </div>
-        <div className="sm:h-5/6 pb-8 sm:pb-0">
-          <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
-          <SelectedImage selectedImage={selectedImage} />
-          {/* <PreviewValues formik={formik} /> */}
+        <div className="m-10 sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
+          <div className="flex flex-col items-center gap-2 w-3/4">
+            <p className="text-center mb-6">Registrer produktet ditt her</p>
+            <Stepper stepper={stepper} setStepper={setStepper} />
+          </div>
+          <div className="flex flex-col items-center gap-10 w-full sm:w-3/4">
+            {images?.length > 0 && <ProductForm {...ProjectFormProps} />}
+          </div>
         </div>
       </div>
-      <div className="m-10 sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
-        <div className="flex flex-col items-center gap-2 w-3/4">
-          <p className="text-center mb-6">Registrer produktet ditt her</p>
-          <Stepper stepper={stepper} setStepper={setStepper} />
-        </div>
-        <div className="flex flex-col items-center gap-10 w-full sm:w-3/4">
-          {images?.length > 0 && <ProductForm {...ProjectFormProps} />}
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

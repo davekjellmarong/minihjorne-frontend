@@ -176,7 +176,7 @@ export interface OrderBackend extends CommonOrder {
 
 export interface ProductBackend extends CommonProduct {
   id: number;
-  image: ImageBackend;
+  image: ImageBackend[];
   tags: TagBackend[];
   colors: ColorBackend[];
   size: SizeBackend;
