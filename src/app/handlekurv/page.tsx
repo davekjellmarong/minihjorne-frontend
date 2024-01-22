@@ -48,7 +48,7 @@ const Page = () => {
               <li key={product.id} className="flex justify-start">
                 <div className="flex gap-8 ">
                   <img
-                    src={`${product.image?.url}`}
+                    src={`${product.image[0].url}`}
                     alt=""
                     className="p-4 shadow rounded h-28 w-28"
                     onClick={() => {

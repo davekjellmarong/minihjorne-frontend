@@ -16,7 +16,7 @@ import PreviewValues from "./PreviewValues";
 import Dialog from "@/components/dialog/Dialog";
 import FilterDialog from "@/app/produkter/FilterDialog";
 
-export interface ImageUpload {
+export interface ImageUpload extends Blob {
   lastModified: number;
   lastModifiedDate: Date;
   name: string;
