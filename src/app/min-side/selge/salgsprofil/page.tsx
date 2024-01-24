@@ -42,9 +42,12 @@ const Page = () => {
   const { data: userData } = useQuery<UserBackend>({
     queryKey: ["login-user"],
   });
+  const { data: jwt } = useQuery({
+    queryKey: ["jwt"],
+  });
   const { mutate: updateUser } = useMutation({
     mutationFn: (values: any) => {
-      return UserMethods.put(values, userData?.id);
+      return UserMethods.put(values, userData?.id, jwt);
     },
     onSuccess: (data) => {
       toast.info(`Salgsprofil lagret`);

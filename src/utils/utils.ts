@@ -191,8 +191,8 @@ export const UserMethods = {
   getByUsername: async (username: any) => {
     return fetchPublicData(`/users/?filters[username][$eq]=${username}`);
   },
-  put: async (values: any, id: any) => {
-    return putRequest(values, `/users/${id}`);
+  put: async (values: any, id: any, jwt: any) => {
+    return putAuthRequest(values, `/users/${id}`, jwt);
   },
   getMe: async (token: any) => {
     return getAuthData("/users/me", token);
