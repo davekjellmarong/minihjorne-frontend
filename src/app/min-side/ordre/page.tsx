@@ -33,19 +33,11 @@ const Ordre = () => {
       <table className="w-full">
         <thead className="bg-gray-200 border-2 border-gray-100">
           <tr className="">
-            <th className="text-sm text-left pl-10 py-4 font-normal">
-              Ordre nummer
-            </th>
-            <th className="text-sm text-left pl-10 py-4 font-normal">
-              Ordre dato
-            </th>
-            <th className="text-sm text-right pr-10 py-4 font-normal">
-              Total pris
-            </th>
-            <th className="text-sm text-left pl-10 py-4 font-normal">
-              Produkter
-            </th>
-            <th className="text-sm text-left pl-10 py-4 font-normal">Status</th>
+            <th className="text-xs text-left pl-4 py-4 font-normal">Nummer</th>
+            <th className="text-xs text-left pl-4 py-4 font-normal">Dato</th>
+            <th className="text-xs text-right pr-4 py-4 font-normal">Pris</th>
+            <th className="text-xs text-left pl-4 py-4 font-normal">Antall</th>
+            <th className="text-xs text-left pl-4 py-4 font-normal">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -74,20 +66,20 @@ const Ordre = () => {
                 }}
                 className="border-2 border-gray-100 hover:bg-gray-100 cursor-pointer"
               >
-                <td className="  py-5 px-10 text-left">#{order.id}</td>
-                <td className="  py-5 px-10 text-left font-semibold">
+                <td className=" text-sm py-5 px-4 text-left">#{order.id}</td>
+                <td className=" text-sm py-5 px-4 text-left font-semibold">
                   {formattedDateWithoutDot}
                 </td>
-                <td className=" py-5 px-10 text-right text-gray-500">
+                <td className="text-sm py-5 px-4 text-right text-gray-500">
                   kr {order.attributes.amount}
                 </td>
-                <td className=" py-5 px-10 text-left text-gray-500">
+                <td className="text-sm py-5 px-4 text-left text-gray-500">
                   {order.attributes.products?.data.length} stk
                 </td>
                 {/* <td className={` py-4 px-10 text-gray-500 ${color?.tailwind}`}> */}
-                <td className={` py-3 px-8  `}>
+                <td className={` py-3 px-4  `}>
                   <p
-                    className={`text-blue-700 text-sm bg-blue-300 p-2 rounded ${color} text-center`}
+                    className={`text-blue-700 text-xs bg-blue-300 p-2 rounded ${color} text-center`}
                   >
                     {order.attributes.status.data?.attributes.name}
                   </p>

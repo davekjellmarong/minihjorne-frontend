@@ -100,10 +100,7 @@ const Dialog = ({ formik, dialogRef }: DialogProps) => {
         ref={dialogRef}
         className="inset-0 fixed right-full  bg-zinc-50 bg-opacity-90 backdrop:bg-slate-600 backdrop:bg-opacity-50 open:animate-fade-in open:backdrop:animate-fade-in"
       >
-        <div
-          className="flex flex-col items-center gap-3 p-8 "
-          style={{ width: 700 }}
-        >
+        <div className="flex flex-col items-center gap-3 p-8 sm:w-[500px] w-4/6">
           <h1 className="text-4xl font-bold">Rediger din salgsprofil</h1>
           <form
             method="dialog"

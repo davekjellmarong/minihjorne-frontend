@@ -33,11 +33,11 @@ const EditSalgsprofil = ({ formik, dialogRef, id }: EditSalgsprofilProps) => {
   const tailwindColor = tailwindColorsUserButton[formik.values.colorName];
   return (
     <div
-      className={`${tailwindColor} h-full w-full flex justify-center items-center`}
+      className={`${tailwindColor} h-full w-full flex justify-center items-center relative`}
     >
-      <div className="m-10 relative w-full shadow-2xl rounded bg-white text-center flex flex-col items-center py-10 gap-6">
+      <div className="m-10 w-full shadow-2xl rounded bg-white text-center flex flex-col items-center py-10 gap-6">
         {dialogRef && (
-          <div className="absolute top-10 left-10">
+          <div className="absolute top-4 left-4">
             <button
               type="button"
               className="rounded-lg border border-sky-600 bg-sky-800 px-5 py-2.5 text-sm font-medium text-sky-100 hover:bg-sky-700 hover:text-white focus:z-10 focus:outline-none focus:ring-0 focus:ring-sky-700"
