@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "proxy": "http://localhost:4242",
   "dependencies": {
     "@phosphor-icons/react": "^2.0.15",
     "@stripe/react-stripe-js": "^2.4.0",
@@ -18,6 +17,7 @@
     "@tanstack/react-query-devtools": "^5.10.0",
     "axios": "^1.6.2",
     "formik": "^2.4.5",
+    "http-proxy-middleware": "^2.0.6",
     "next": "14.0.3",
     "react": "^18",
     "react-arborist": "^3.3.0-rc.1",

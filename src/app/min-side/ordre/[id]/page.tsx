@@ -24,6 +24,7 @@ const Page = () => {
     enabled: !!order?.data.id,
   });
   if (isPending) return <Loading />;
+  console.log(products);
   return (
     <div>
       {id}
@@ -44,7 +45,7 @@ const Page = () => {
           </tr>
         </thead>
         <tbody>
-          {products?.data.map((product) => {
+          {products?.data?.map((product) => {
             return (
               <tr
                 className="border-2 border-gray-100 hover:bg-gray-100 cursor-pointer"

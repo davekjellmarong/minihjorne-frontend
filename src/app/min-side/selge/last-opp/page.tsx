@@ -120,6 +120,7 @@ const LeggUt = () => {
     <>
       <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
         <p className="text-center m-10">Velg opp til 3 bilder</p>
+        {/* <p>{bilder valgt }</p> */}
         <ImagesList
           savedImages={savedImages}
           images={images}

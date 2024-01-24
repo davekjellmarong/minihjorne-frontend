@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
   useAutoLogIn();
   const [open, setOpen] = useState(false);
   return (
-    <div className="relative pt-14 sm:p-0 sm:flex">
+    <div className="relative sm:pt-14 sm:p-0 sm:flex">
       <div className="hidden sm:block sm:w-72">
         <SideMenu />
       </div>
@@ -20,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
           <SideMenu setOpen={setOpen} />
         </FilterDialog>
       </div>
-      <div className="z-10 absolute top-0 left-0 sm:hidden">
+      <div className="z-10 absolute top-0 left-0 hidden">
         <div className="block sm:hidden">
           <button
             onClick={() => setOpen(true)}
