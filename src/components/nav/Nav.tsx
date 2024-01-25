@@ -14,13 +14,13 @@ import Image from "next/image";
 import UpperNav from "./UpperNav";
 import { upperNavItems } from "./UpperNavItems";
 const Nav = () => {
-  const [navItems, setNavItems] = useState(navItemsPublic);
+  const [navItems, setNavItems] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const { data } = useQuery({ queryKey: ["jwt"] });
   useEffect(() => {
     if (data) {
-      setNavItems(navItemsAuth);
+      setNavItems(true);
     }
   }, [data]);
   const icons: any = {
@@ -30,27 +30,6 @@ const Nav = () => {
     hjem: <House size={26} weight="thin" />,
   };
   return (
-    // <nav className="flex bg-brand-500 items-center justify-between shadow flex-wrap p-2 px-6  lg:px-20">
-    //   <Link href="/produkter" className="w-44 lg:w-52  pb-0 mb-0">
-    //     <Image src="/logoo.png" alt="logo" width={250} height={250} />
-    //   </Link>
-    //   <div
-    //     className={`flex  gap-6 flex-row mt-0 justify-end flex-grow items-center w-auto`}
-    //   >
-    //     {navItems.map((item) => {
-    //       return (
-    //         <Link key={item.path} href={item.path} className="w-500">
-    //           <button
-    //             className={` p-4 flex items-center rounded hover:bg-gray-300 transition-colors duration-150`}
-    //             key={item.label}
-    //           >
-    //             {icons[item.icon]} {item.label}
-    //           </button>
-    //         </Link>
-    //       );
-    //     })}
-    //   </div>
-    // </nav>
     <nav className="flex  bg-brand-500 items-center justify-between shadow flex-wrap p-2 px-6  lg:px-20">
       <div className="block sm:hidden w-1/3">
         <button
@@ -79,18 +58,19 @@ const Nav = () => {
       </Link>
 
       <div className="flex justify-end w-1/3">
-        {navItems.map((item) => {
-          return (
-            <Link key={item.path} href={item.path} className="w-500">
-              <button
-                className={` p-2 flex items-center rounded hover:bg-gray-500 transition-colors duration-150`}
-                key={item.label}
-              >
-                {icons[item.icon]} {item.label}
-              </button>
-            </Link>
-          );
-        })}
+        {navItems &&
+          navItemsAuth.map((item) => {
+            return (
+              <Link key={item.path} href={item.path} className="w-500">
+                <button
+                  className={` p-2 flex items-center rounded hover:bg-gray-500 transition-colors duration-150`}
+                  key={item.label}
+                >
+                  {icons[item.icon]} {item.label}
+                </button>
+              </Link>
+            );
+          })}
       </div>
 
       <div
