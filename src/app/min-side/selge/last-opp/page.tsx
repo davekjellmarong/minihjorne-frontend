@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import PreviewValues from "./PreviewValues";
 import Dialog from "@/components/dialog/Dialog";
 import FilterDialog from "@/app/produkter/FilterDialog";
+import CarouselComponent from "@/components/carousel/Carousel";
 
 export interface ImageUpload extends Blob {
   lastModified: number;
@@ -105,15 +106,46 @@ const LeggUt = () => {
     stepper: stepper,
     setStepper: setStepper,
   };
+  const instructions = [
+    {
+      title: "Steg 1",
+      text: "Gå ut av nettsiden, legg klærne på en flat overflate og ta bilder av dem",
+      img1: "/camera-screenshot.png",
+      img2: "/gallery-clothes.png"
+    },
+    {
+      title: "Steg 2",
+      text: "Når du har tatt bildene, gå tilbake til nettsiden og trykk på knappen under",
+      img1: "/knapp-bilder.png",
+      img2: "/velg-bilder.png"
+    },
+  ];
   if (images.length === 0)
     return (
-      <div className="flex flex-col gap-6 justify-center items-center h-screen">
-        <p className="text-xl">Last opp bilder til dine produkter her</p>
+      <div className="">
+        <p className="text-center text-xl">Laste opp klær</p>
+        <CarouselComponent>
+          {instructions.map((instruction) => {
+            return (
+              <div key={instruction.title} className="flex flex-col gap-6 text-center justify-center items-center h-screen mx-10">
+                <p className="font-light text-sm">{instruction.title}</p>
+                <p className="text-lg">{instruction.text}</p>
+                <div className="flex gap-8">
+
+                <Image src={`${instruction.img1}`} height={150} width={150} alt=""/>
+                <Image src={`${instruction.img2}`} height={150} width={150} alt=""/>
+                </div>
+              </div>
+            );
+          })
+          }
+        </CarouselComponent>
+        {/* <p className="text-xl">Last opp bilder til dine produkter her</p>
         <ImageUploader
           setImages={setImages}
           setSelectedImages={setSelectedImages}
           setModal={setModal}
-        />
+        /> */}
       </div>
     );
   return (

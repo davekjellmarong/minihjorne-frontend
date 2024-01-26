@@ -8,6 +8,8 @@ const UpperNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { data } = useQuery({ queryKey: ["jwt"] });
+  console.log(data);
+  
   useEffect(() => {
     console.log(data);
     if (data) {

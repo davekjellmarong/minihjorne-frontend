@@ -12,14 +12,17 @@ import {
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import UpperNav from "./UpperNav";
-import { upperNavItems } from "./UpperNavItems";
+import { upperNavItems ,authUpperNavItems} from "./UpperNavItems";
 const Nav = () => {
   const [navItems, setNavItems] = useState(false);
+  const [secondaryNavItems, setSecondaryNavItems] = useState(upperNavItems);
   const [isOpen, setIsOpen] = useState(false);
 
   const { data } = useQuery({ queryKey: ["jwt"] });
   useEffect(() => {
+
     if (data) {
+      setSecondaryNavItems(authUpperNavItems);
       setNavItems(true);
     }
   }, [data]);
@@ -78,7 +81,7 @@ const Nav = () => {
           isOpen ? "flex" : "hidden"
         }`}
       >
-        {upperNavItems.map((item) => {
+        {secondaryNavItems.map((item) => {
           return (
             <Link key={item.path} href={item.path} className="w-500">
               <button
