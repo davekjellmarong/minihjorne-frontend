@@ -1,3 +1,4 @@
+import { XCircle } from "@phosphor-icons/react";
 import React, { useRef, useEffect, useState } from "react";
 
 interface DialogProps {
@@ -42,8 +43,14 @@ const Dialog = ({ children, open, setOpen,width = "w-auto", height = "h-auto" }:
   return (
     <dialog
       ref={dialogRef}
-      className={`fixed ${width} ${height} mx-4 rounded  sm:w-[900px] sm:h-[750px] m-auto bg-zinc-50 transition-transform duration-200  ${scale}`}
+      className={`fixed ${width} ${height} mx-4 rounded relative  sm:w-[900px] sm:h-[750px] m-auto bg-zinc-50 transition-transform duration-200  ${scale}`}
     >
+      <XCircle
+        className="absolute top-4 right-4 cursor-pointer"
+        onClick={() => setOpen(false)}
+        size={24}
+        weight="thin"
+      />
       {children}
     </dialog>
   );
