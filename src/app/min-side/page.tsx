@@ -72,7 +72,7 @@ const MinSide = () => {
   ];
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col gap-6 bg-brand-200 py-14 pb-28">
+      <div className="flex flex-col gap-6 bg-brand-200 pt-4 pb-24">
         <p className="text-center ">Min Side</p>
         <div className="flex justify-center ">
           <span className="text-center text-5xl py-6 px-8 rounded-full border bg-white shadow-sm">

@@ -1,10 +1,11 @@
 "use client";
 import Loading from "@/components/loading/Loading";
-import { ColorsRQ, LoginUser, OrdersRQ } from "@/utils/types";
+import {  LoginUser, OrdersRQ } from "@/utils/types";
 import { OrderMethods } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Ordre = () => {
@@ -27,9 +28,35 @@ const Ordre = () => {
     Oransje: "text-orange-900 bg-orange-300",
   };
   if (loading) return <Loading />;
+  if(orders?.data.length === 0 ) return (
+
+<div>
+  <h2 className="font-light text-center text-2xl mb-4">Mine ordre</h2>
+  <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
+      <Image
+        src="/empty-files.svg"
+        height={100}
+        width={100}
+        alt=""
+        className="w-1/2"
+      />
+      <p className="text-gray-400 text-sm mt-2">
+        Du har ingen ordre enda
+      </p>
+        <Link href="/produkter"
+         className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600 transition duration-200 ease-in-out"
+         >
+          Se produkter
+        </Link>
+    </div>
+  </div>
+</div>
+
+  )
   return (
     <div>
-      <h2 className="font-light text-2xl mb-4">Mine ordre</h2>
+      <h2 className="font-light text-center text-2xl mb-4">Mine ordre</h2>
       <table className="w-full">
         <thead className="bg-gray-200 border-2 border-gray-100">
           <tr className="">

@@ -45,12 +45,15 @@ const Dialog = ({ children, open, setOpen,width = "w-auto", height = "h-auto" }:
       ref={dialogRef}
       className={`fixed ${width} ${height} mx-4 rounded relative  sm:w-[900px] sm:h-[750px] m-auto bg-zinc-50 transition-transform duration-200  ${scale}`}
     >
-      <XCircle
-        className="absolute top-4 right-4 cursor-pointer"
+      <button
         onClick={() => setOpen(false)}
+        className="absolute top-0 right-0 p-4 z-30"
+      >
+      <XCircle
         size={24}
         weight="thin"
-      />
+        />
+        </button>
       {children}
     </dialog>
   );

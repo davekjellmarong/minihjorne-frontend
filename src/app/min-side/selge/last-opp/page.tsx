@@ -145,7 +145,7 @@ const LeggUt = () => {
                     {instruction.title}
                   </p>
                   <p className=" mx-4">{instruction.text}</p>
-                  <div className="flex gap-8 w-full">
+                  <div className="flex gap-8 w-full max-h-[350px]">
                     <Image
                       src={`${instruction.img1}`}
                       height={100}
@@ -191,9 +191,6 @@ const LeggUt = () => {
         />
       </FilterDialog>
       <div className="flex flex-col sm:flex-row relative">
-        <button className=" sm:hidden " onClick={() => setModal(true)}>
-          Endre bilder
-        </button>
         <div className="bg-white mx-8 sm:mx-0 overflow-scroll shadow sm:shadow-none flex flex-col-reverse sticky top-0 sm:relative sm:h-auto   sm:w-2/5 sm:flex-col items-center border-r-2 justify-center border-gray-200">
           <div className="my-4 hidden  sm:block sm:h-1/6 sm:border-b-2 border-gray-200 sm:w-full  w-auto">
             <p className="text-center mb-2">
@@ -209,7 +206,9 @@ const LeggUt = () => {
               formik={formik}
             />
           </div>
-          <div className="sm:h-5/6 pb-8 sm:pb-0">
+          <div className="sm:h-5/6 pb-8 sm:pb-0"
+          onClick={() => setModal(true)}
+          >
             <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
             <SelectedImages selectedImages={selectedImages} />
             {/* <PreviewValues formik={formik} /> */}
