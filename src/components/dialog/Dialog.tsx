@@ -4,8 +4,10 @@ interface DialogProps {
   children: React.ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
+  width?: string;
+  height?: string;
 }
-const Dialog = ({ children, open, setOpen }: DialogProps) => {
+const Dialog = ({ children, open, setOpen,width = "w-auto", height = "h-auto" }: DialogProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [scale, setScale] = useState("-scale-x-96");
   useEffect(() => {
@@ -40,7 +42,7 @@ const Dialog = ({ children, open, setOpen }: DialogProps) => {
   return (
     <dialog
       ref={dialogRef}
-      className={`fixed  sm:w-[900px] sm:h-[750px] m-auto bg-zinc-50 transition-transform duration-200  ${scale}`}
+      className={`fixed ${width} ${height} mx-4 rounded  sm:w-[900px] sm:h-[750px] m-auto bg-zinc-50 transition-transform duration-200  ${scale}`}
     >
       {children}
     </dialog>

@@ -16,6 +16,7 @@ import PreviewValues from "./PreviewValues";
 import Dialog from "@/components/dialog/Dialog";
 import FilterDialog from "@/app/produkter/FilterDialog";
 import CarouselComponent from "@/components/carousel/Carousel";
+import { Question } from "@phosphor-icons/react";
 
 export interface ImageUpload extends Blob {
   lastModified: number;
@@ -27,6 +28,7 @@ export interface ImageUpload extends Blob {
 }
 const LeggUt = () => {
   const [modal, setModal] = useState(false);
+  const [introModal, setIntroModal] = useState(true);
   const [stepper, setStepper] = useState(1);
   const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
   const [images, setImages] = useState<ImageUpload[]>([]);
@@ -111,41 +113,67 @@ const LeggUt = () => {
       title: "Steg 1",
       text: "Gå ut av nettsiden, legg klærne på en flat overflate og ta bilder av dem",
       img1: "/camera-screenshot.png",
-      img2: "/gallery-clothes.png"
+      img2: "/gallery-clothes.png",
     },
     {
       title: "Steg 2",
       text: "Når du har tatt bildene, gå tilbake til nettsiden og trykk på knappen under",
       img1: "/knapp-bilder.png",
-      img2: "/velg-bilder.png"
+      img2: "/velg-bilder.png",
     },
   ];
+
   if (images.length === 0)
     return (
-      <div className="">
-        <p className="text-center text-xl">Laste opp klær</p>
-        <CarouselComponent>
-          {instructions.map((instruction) => {
-            return (
-              <div key={instruction.title} className="flex flex-col gap-6 text-center justify-center items-center h-screen mx-10">
-                <p className="font-light text-sm">{instruction.title}</p>
-                <p className="text-lg">{instruction.text}</p>
-                <div className="flex gap-8">
+      <div className="flex flex-col gap-6 text-center justify-center items-center h-screen relative">
+        {/* /create a little help icon button that will open the modal when click */}
 
-                <Image src={`${instruction.img1}`} height={150} width={150} alt=""/>
-                <Image src={`${instruction.img2}`} height={150} width={150} alt=""/>
+        <button className="absolute top-8 left-8" onClick={() => setIntroModal(true)}>
+          <Question size={32} weight="thin" color="blue" />
+        </button>
+
+        {/* <p className="text-center text-xl">Laste opp klær</p> */}
+        <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
+          <CarouselComponent>
+            {instructions.map((instruction) => {
+              return (
+                <div
+                  key={instruction.title}
+                  className="flex flex-col gap-6 text-center justify-center items-center mx-2 h-[500px]"
+                >
+                  <p className="font-light text-sm  text-purple-700">
+                    {instruction.title}
+                  </p>
+                  <p className=" mx-4">{instruction.text}</p>
+                  <div className="flex gap-8 w-full">
+                    <Image
+                      src={`${instruction.img1}`}
+                      height={100}
+                      width={100}
+                      alt=""
+                      className="w-1/2"
+                    />
+                    <Image
+                      src={`${instruction.img2}`}
+                      height={100}
+                      width={100}
+                      alt=""
+                      className="w-1/2"
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })
-          }
-        </CarouselComponent>
-        {/* <p className="text-xl">Last opp bilder til dine produkter her</p>
-        <ImageUploader
-          setImages={setImages}
-          setSelectedImages={setSelectedImages}
-          setModal={setModal}
-        /> */}
+              );
+            })}
+          </CarouselComponent>
+        </Dialog>
+        <div>
+          <p className="text-xl">Last opp bilder til dine produkter her</p>
+          <ImageUploader
+            setImages={setImages}
+            setSelectedImages={setSelectedImages}
+            setModal={setModal}
+          />
+        </div>
       </div>
     );
   return (
