@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import SideMenu from "./SideMenu";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import FilterDialog from "../produkter/FilterDialog";
+import Breadcrumb from "./Breadcrumb";
 
 interface LayoutProps {
   children: any;
@@ -11,6 +12,8 @@ const Layout = ({ children }: LayoutProps) => {
   useAutoLogIn();
   const [open, setOpen] = useState(false);
   return (
+    <>
+    <Breadcrumb />
     <div className="relative sm:pt-14 sm:p-0 sm:flex">
       <div className="hidden sm:block sm:w-72">
         <SideMenu />
@@ -38,6 +41,8 @@ const Layout = ({ children }: LayoutProps) => {
       </div>
       <div className="">{children}</div>
     </div>
+    </>
+
   );
 };
 
