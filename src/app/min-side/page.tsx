@@ -10,7 +10,7 @@ import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import { ProductBackend, ProductsData } from "@/utils/types";
 import Link from "next/link";
 import { navItems } from "./NavItems";
-import { Note, TShirt, UploadSimple, UserSquare } from "@phosphor-icons/react";
+import { CreditCard, Note, TShirt, UploadSimple, UserSquare } from "@phosphor-icons/react";
 import Image from "next/image";
 
 interface UserData {
@@ -33,7 +33,6 @@ const MinSide = () => {
     },
     enabled: !!userId,
   });
-
   const navItems = [
     {
       header: "Ordre",
@@ -66,6 +65,12 @@ const MinSide = () => {
           title: "Salgsprofil",
           path: "/min-side/selge/salgsprofil",
           icon: <UserSquare size={32} weight="thin" color="purple" />,
+        },
+        {
+          id: 4,
+          title: "Abonnement",
+          path: "/min-side/selge/abonnement",
+          icon: <CreditCard size={32} weight="thin" color="purple" />,
         },
       ],
     },
