@@ -15,6 +15,8 @@ export interface CommonProduct {
   publishedAt: string;
   fabric: string;
   brand: string;
+  sold: boolean;
+  active: boolean;
 }
 export interface CommonOrder {
   guid: string;
@@ -42,6 +44,7 @@ export interface CommonUser {
   description: string;
   icon: string;
   color: string;
+  paid: boolean;
 }
 
 export interface CommonTags {
@@ -135,7 +138,7 @@ export interface CommonImage {
   mime: string;
   size: number;
   url: string;
-  previewUrl: null;
+  previewUrl: string;
   provider: string;
   provider_metadata: null;
   createdAt: string;

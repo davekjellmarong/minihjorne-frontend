@@ -6,6 +6,7 @@ import { ProductBackend, User } from "@/utils/types";
 import { ProductsMethods } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import ProductTable from "./ProductTable";
 
 const Produkter = () => {
   const { data: userData } = useQuery<User>({
@@ -37,12 +38,12 @@ const Produkter = () => {
   return (
     <div>
       <div className="mb-28">
-        <p className="text-center">Inaktive produkter</p>
-        <Products data={inactiveProducts} isLoading={inactiveIsLoading} />
+        <p className="text-center">Aktive produkter</p>
+        <ProductTable products={products} />
       </div>
       <div className="">
-        <p className="text-center">Aktive produkter</p>
-        <Products data={products} isLoading={isLoading} />
+        <p className="text-center">Inaktive produkter</p>
+        <ProductTable products={inactiveProducts} />
       </div>
     </div>
   );

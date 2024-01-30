@@ -17,6 +17,7 @@ import Dialog from "@/components/dialog/Dialog";
 import FilterDialog from "@/app/produkter/FilterDialog";
 import CarouselComponent from "@/components/carousel/Carousel";
 import { Question } from "@phosphor-icons/react";
+import IntroCarousel from "./IntroCarousel";
 
 export interface ImageUpload extends Blob {
   lastModified: number;
@@ -134,37 +135,7 @@ const LeggUt = () => {
 
         {/* <p className="text-center text-xl">Laste opp klær</p> */}
         <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
-          <CarouselComponent>
-            {instructions.map((instruction) => {
-              return (
-                <div
-                  key={instruction.title}
-                  className="flex flex-col gap-6 text-center justify-center items-center mx-2 h-[500px]"
-                >
-                  <p className="font-light text-sm  text-purple-700">
-                    {instruction.title}
-                  </p>
-                  <p className=" mx-4">{instruction.text}</p>
-                  <div className="flex gap-8 w-full max-h-[350px]">
-                    <Image
-                      src={`${instruction.img1}`}
-                      height={100}
-                      width={100}
-                      alt=""
-                      className="w-1/2"
-                    />
-                    <Image
-                      src={`${instruction.img2}`}
-                      height={100}
-                      width={100}
-                      alt=""
-                      className="w-1/2"
-                    />
-                  </div>
-                </div>
-              );
-            })}
-          </CarouselComponent>
+        <IntroCarousel/>
         </Dialog>
         <div>
           <p className="text-xl">Last opp bilder til dine produkter her</p>

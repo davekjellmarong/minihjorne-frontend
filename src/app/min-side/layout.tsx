@@ -10,7 +10,6 @@ interface LayoutProps {
 }
 const Layout = ({ children }: LayoutProps) => {
   useAutoLogIn();
-  console.log("layout");
   const [open, setOpen] = useState(false);
   return (
     <>
