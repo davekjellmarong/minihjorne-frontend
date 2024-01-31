@@ -1,14 +1,10 @@
 import React from "react";
 import CarouselComponent from "@/components/carousel/Carousel";
 import Image from "next/image";
-import cameraScreenshot from "/public/camera-screenshot.png";
-import galleryClothes from "/public/gallery-clothes.png";
-import knappBilder from "/public/knapp-bilder.png";
-import velgBilder from "/public/velg-bilder.png";
-// import cameraScreenshot from '../../../../../public/camera-screenshot.png'
-// import galleryClothes from '../../../../../public/gallery-clothes.png'
-// import knappBilder from '../../../../../public/knapp-bilder.png'
-// import velgBilder from '../../../../../public/velg-bilder.png'
+import velgBilder from "../../../../../public/velg-bilder.png";
+import cameraScreenshot from "../../../../../public/camera-screenshot.png";
+import galleryClothes from "../../../../../public/gallery-clothes.png";
+import knappBilder from "../../../../../public/knapp-bilder.png";
 const IntroCarousel = () => {
   const instructions = [
     {
@@ -32,7 +28,7 @@ const IntroCarousel = () => {
             key={instruction.title}
             className="flex flex-col gap-6 text-center justify-center items-center mx-2 h-[500px]"
           >
-            <p className="font-light text-sm  text-purple-700">
+            <p className="font-light text-sm text-purple-700">
               {instruction.title}
             </p>
             <p className=" mx-4">{instruction.text}</p>
