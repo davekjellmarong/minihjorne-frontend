@@ -252,7 +252,7 @@ export const PaymentMethods = {
   post: async (data: any, token: any) => {
     return postAuthRequest(data, "/payments", token);
   },
-  getSubscriptionPaymentLink: async (token: any, months: number) => {
-    return getAuthData(`/payments/subscription?months=${months}`, token);
+  getSubscriptionPaymentLink: async (token: any, planId: number) => {
+    return getAuthData(`/payments/subscription?planId=${planId}`, token);
   },
 };

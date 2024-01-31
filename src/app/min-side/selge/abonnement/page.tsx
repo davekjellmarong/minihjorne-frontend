@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { PaymentMethods } from "@/utils/utils";
 import { CheckCircle, XCircle } from "@phosphor-icons/react";
 import Cards from "./Cards";
+import ActiveCard from "./ActiveCard";
 
 const Abonnement = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const Abonnement = () => {
   const jwt = useStore((state) => state.jwt);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const searchParams = useSearchParams();
-  const [planMonths, setPlanMonths] = useState(0);
+  const [planId, setPlanId] = useState(0);
   const payment = searchParams.get("payment");
   useEffect(() => {
     if (payment === "success") {
@@ -25,9 +26,9 @@ const Abonnement = () => {
   const { data: paymentData } = useQuery({
     queryKey: ["payment-link"],
     queryFn: () => {
-      return PaymentMethods.getSubscriptionPaymentLink(jwt, planMonths);
+      return PaymentMethods.getSubscriptionPaymentLink(jwt, planId);
     },
-    enabled: !!jwt && !!user && planMonths > 0,
+    enabled: !!jwt && !!user && planId > 0,
   });
   useEffect(() => {
     if (paymentData?.url) {
@@ -50,10 +51,7 @@ const Abonnement = () => {
         setPaymentSuccess={setPaymentSuccess}
       />
       {user.paid && (
-        <div>
-          <p>Abonnement: {user.active}</p>
-          <p>Abonnement utløper: {user.activeUntill}</p>
-        </div>
+        <div>{/* <ActiveCard activeCardName={user.plan} /> */}</div>
       )}
       {!user.paid && (
         <div className="mt-8">
@@ -62,7 +60,7 @@ const Abonnement = () => {
               Velg lengde på ditt abonnement
             </p>
           </div>
-          <Cards setPlanMonths={setPlanMonths} />
+          <Cards setPlanId={setPlanId} />
         </div>
       )}
     </div>

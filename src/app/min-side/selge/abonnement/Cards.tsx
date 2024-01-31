@@ -1,10 +1,11 @@
 import { CheckCircle, XCircle } from "@phosphor-icons/react";
 import React from "react";
 
-const Cards = ({ setPlanMonths }: any) => {
+const Cards = ({ setPlanId }: any) => {
   const planCards = [
     {
       title: "1 måned",
+      id: 1,
       price: "99,-",
       duration: 1,
       description: "Kort pakke",
@@ -21,6 +22,7 @@ const Cards = ({ setPlanMonths }: any) => {
     {
       title: "3 måneder",
       price: "249,-",
+      id: 2,
       duration: 3,
       description: "Mest populær",
       customClass: "border shadow-lg shadow-purple p-6 border-purple-200",
@@ -36,6 +38,7 @@ const Cards = ({ setPlanMonths }: any) => {
     {
       title: "6 måneder",
       price: "449,-",
+      id: 3,
       duration: 6,
       description: "Best verdi",
       customClass: "",
@@ -63,7 +66,7 @@ const Cards = ({ setPlanMonths }: any) => {
             <button
               className={`bg-brand-400 px-4 py-2 w-full rounded-md mt-4 hover:bg-brand-600 transition duration-200 ease-in-out ${plan.customButtonClass}`}
               onClick={() => {
-                setPlanMonths(plan.duration);
+                setPlanId(plan.id);
               }}
             >
               Kjøp
