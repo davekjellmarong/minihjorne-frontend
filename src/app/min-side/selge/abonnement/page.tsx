@@ -52,7 +52,7 @@ const Abonnement = () => {
       />
       {user.paid && (
         <div>
-          <ActiveCard planId={user.plan.id} username={user.username} />
+          <ActiveCard planId={user.plan.id} user={user} />
         </div>
       )}
       {!user.paid && (

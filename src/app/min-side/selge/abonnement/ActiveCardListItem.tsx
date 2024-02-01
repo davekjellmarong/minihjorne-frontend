@@ -3,7 +3,7 @@ import React from "react";
 const ActiveCardListItem = ({ text }: { text: string }) => {
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-      <div className="flex space-x-4 items-center py-3 px-4 rounded-md bg-blue-50 dark:bg-blue-100">
+      <div className="flex space-x-4 items-center py-3 px-4 rounded-md bg-blue-200 ">
         <div
           className="icon-container icon-md text-blue-600"
           aria-hidden="true"
@@ -23,7 +23,7 @@ const ActiveCardListItem = ({ text }: { text: string }) => {
             <path d="M22 4 12 14.01l-3-3"></path>
           </svg>
         </div>
-        <p className="text-sm text-blue-600">{text}</p>
+        <p className="text-sm text-blue-800">{text}</p>
       </div>
     </div>
   );
