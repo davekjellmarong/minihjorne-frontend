@@ -195,7 +195,7 @@ export const UserMethods = {
     return putAuthRequest(values, `/users/${id}`, jwt);
   },
   getMe: async (token: any) => {
-    return getAuthData("/users/me", token);
+    return getAuthData("/users/me?populate=*", token);
   },
 };
 export const ProductsMethods = {

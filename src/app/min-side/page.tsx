@@ -10,8 +10,15 @@ import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import { ProductBackend, ProductsData } from "@/utils/types";
 import Link from "next/link";
 import { navItems } from "./NavItems";
-import { CreditCard, Note, TShirt, UploadSimple, UserSquare } from "@phosphor-icons/react";
+import {
+  CreditCard,
+  Note,
+  TShirt,
+  UploadSimple,
+  UserSquare,
+} from "@phosphor-icons/react";
 import Image from "next/image";
+import AvatarLetter from "@/components/avatar/AvatarLetter";
 
 interface UserData {
   username: string;
@@ -80,9 +87,7 @@ const MinSide = () => {
       <div className="flex flex-col gap-6 bg-brand-200 pt-4 pb-24">
         <p className="text-center ">Min Side</p>
         <div className="flex justify-center ">
-          <span className="text-center text-5xl py-6 px-8 rounded-full border bg-white shadow-sm">
-            {userData?.username.slice(0, 1).toUpperCase()}
-          </span>
+          <AvatarLetter username={userData?.username} />
         </div>
         <p className="text-center font-semibold text-lg">
           {userData?.username}

@@ -1,57 +1,58 @@
 import { CheckCircle, XCircle } from "@phosphor-icons/react";
 import React from "react";
 
+export const planCards = [
+  {
+    title: "1 måned",
+    id: 1,
+    price: "99,-",
+    duration: 1,
+    description: "Kort pakke",
+    customClass: "",
+    customButtonClass: "",
+    bulletPoints: [
+      { title: "1 mnd leie", access: true },
+      { title: "50 produkter", access: true },
+      { title: "Betaling hver 14 dag", access: true },
+      { title: "Salgs oversikt online", access: true },
+      { title: "Personlig salgsprofil", access: true },
+    ],
+  },
+  {
+    title: "3 måneder",
+    price: "249,-",
+    id: 2,
+    duration: 3,
+    description: "Mest populær",
+    customClass: "border shadow-lg shadow-purple p-6 border-purple-200",
+    customButtonClass: "bg-purple-500 text-white hover:bg-purple-800",
+    bulletPoints: [
+      { title: "3 mnd leie", access: true },
+      { title: "Ubegrenset produkter", access: true },
+      { title: "Betaling hver 14 dag", access: true },
+      { title: "Salgs oversikt online", access: true },
+      { title: "Personlig salgsprofil", access: true },
+    ],
+  },
+  {
+    title: "6 måneder",
+    price: "449,-",
+    id: 3,
+    duration: 6,
+    description: "Best verdi",
+    customClass: "",
+    customButtonClass: "",
+    bulletPoints: [
+      { title: "6 mnd leie", access: true },
+      { title: "Ubegrenset produkter", access: true },
+      { title: "Betaling hver 14 dag", access: true },
+      { title: "Salgs oversikt online", access: true },
+      { title: "Personlig salgsprofil", access: true },
+    ],
+  },
+];
+
 const Cards = ({ setPlanId }: any) => {
-  const planCards = [
-    {
-      title: "1 måned",
-      id: 1,
-      price: "99,-",
-      duration: 1,
-      description: "Kort pakke",
-      customClass: "",
-      customButtonClass: "",
-      bulletPoints: [
-        { title: "1 mnd leie", access: true },
-        { title: "50 produkter", access: true },
-        { title: "Betaling hver 14 dag", access: true },
-        { title: "Salgs oversikt online", access: true },
-        { title: "Personlig salgsprofil", access: true },
-      ],
-    },
-    {
-      title: "3 måneder",
-      price: "249,-",
-      id: 2,
-      duration: 3,
-      description: "Mest populær",
-      customClass: "border shadow-lg shadow-purple p-6 border-purple-200",
-      customButtonClass: "bg-purple-500 text-white hover:bg-purple-800",
-      bulletPoints: [
-        { title: "3 mnd leie", access: true },
-        { title: "Ubegrenset produkter", access: true },
-        { title: "Betaling hver 14 dag", access: true },
-        { title: "Salgs oversikt online", access: true },
-        { title: "Personlig salgsprofil", access: true },
-      ],
-    },
-    {
-      title: "6 måneder",
-      price: "449,-",
-      id: 3,
-      duration: 6,
-      description: "Best verdi",
-      customClass: "",
-      customButtonClass: "",
-      bulletPoints: [
-        { title: "6 mnd leie", access: true },
-        { title: "Ubegrenset produkter", access: true },
-        { title: "Betaling hver 14 dag", access: true },
-        { title: "Salgs oversikt online", access: true },
-        { title: "Personlig salgsprofil", access: true },
-      ],
-    },
-  ];
   return (
     <div className="flex flex-col lg:flex-row items-center gap-8 w-full px-10">
       {planCards.map((plan) => {

@@ -6,6 +6,18 @@ export interface CommonSize {
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonPlan {
+  id: number;
+  duration: string;
+  months: number;
+  price: number;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  createdBy: null;
+  updatedBy: null;
+}
 export interface CommonProduct {
   name: string;
   description: string;
@@ -170,6 +182,7 @@ export interface ImageBackend extends CommonImage {
 }
 export interface UserBackend extends CommonUser {
   id: number;
+  plan: CommonPlan;
 }
 export interface OrderBackend extends CommonOrder {
   id: number;

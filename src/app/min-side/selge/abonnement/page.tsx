@@ -51,7 +51,9 @@ const Abonnement = () => {
         setPaymentSuccess={setPaymentSuccess}
       />
       {user.paid && (
-        <div>{/* <ActiveCard activeCardName={user.plan} /> */}</div>
+        <div>
+          <ActiveCard planId={user.plan.id} username={user.username} />
+        </div>
       )}
       {!user.paid && (
         <div className="mt-8">
