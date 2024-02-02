@@ -25,11 +25,11 @@ const Sex = ({ formik, onChangeFunc }: SexProps) => {
   ];
   return (
     <div>
-      <InputHeader>Kjønn</InputHeader>
-      <div className="flex justify-start gap-4">
+      <InputHeader center>Kjønn</InputHeader>
+      <div className="flex flex-wrap justify-center sm:justify-start gap-4">
         {sexes.map((sex) => {
           return (
-            <div key={sex.id} className="flex flex-col w-20">
+            <div key={sex.id} className="flex flex-col items-center w-20">
               <label className="font-light text-sm">{sex.title}</label>
               {sex.icon}
               <input

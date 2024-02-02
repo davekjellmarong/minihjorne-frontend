@@ -8,7 +8,7 @@ const Brand = ({ formik }: ColorProps) => {
   return (
     <div className="flex flex-wrap px-10">
       <div className="w-full ">
-        <InputHeader>Klesmerke</InputHeader>
+        <InputHeader center>Klesmerke</InputHeader>
 
         <input
           type="brand"

@@ -9,11 +9,11 @@ interface SizeProps {
 const Size = ({ sizes, formik }: SizeProps) => {
   return (
     <div>
-      <InputHeader>Størrelse</InputHeader>
-      <div className="flex  gap-4 flex-wrap">
+      <InputHeader center>Størrelse</InputHeader>
+      <div className="flex flex-wrap justify-center sm:justify-start gap-4">
         {sizes.map((size) => {
           return (
-            <div key={size.id} className="flex flex-col items-start w-20">
+            <div key={size.id} className="flex flex-col items-center w-20">
               <label className="font-light text-sm">
                 {size.attributes.number}
               </label>

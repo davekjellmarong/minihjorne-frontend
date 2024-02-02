@@ -13,12 +13,12 @@ interface ColorProps {
 const Color = ({ colors, formik, formName = "colors" }: ColorProps) => {
   return (
     <div>
-      <InputHeader>Farge</InputHeader>
-      <div className="flex flex-wrap sm:justify-start gap-4">
+      <InputHeader center>Farge</InputHeader>
+      <div className="flex flex-wrap justify-center sm:justify-start gap-4">
         {colors.map((color) => {
           const tailwindColor = tailwindColorsObject[color.attributes.tailwind];
           return (
-            <div key={color.id} className="w-20 flex flex-col">
+            <div key={color.id} className="w-20 flex flex-col items-center">
               <label className={`font-light text-sm`}>
                 {color.attributes.name}
               </label>

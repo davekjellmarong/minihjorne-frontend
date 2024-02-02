@@ -21,11 +21,14 @@ export const State = ({ formik }: SexProps) => {
   ];
   return (
     <div>
-      <InputHeader>Tilstand</InputHeader>
-      <div className="flex justify-start gap-4">
+      <InputHeader center>Tilstand</InputHeader>
+      <div className="flex flex-wrap justify-center sm:justify-start gap-4">
         {states.map((state) => {
           return (
-            <div key={state.id} className="flex flex-col w-20 overflow-visible">
+            <div
+              key={state.id}
+              className="flex flex-col items-center w-20 overflow-visible"
+            >
               <label className="font-light text-sm">{state.title}</label>
               <input
                 type="radio"

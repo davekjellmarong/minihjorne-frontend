@@ -12,11 +12,11 @@ interface ColorProps {
 const Tags = ({ tags, formik, onChangeFunc }: ColorProps) => {
   return (
     <div>
-      <InputHeader>Tags</InputHeader>
-      <div className="flex gap-4 flex-wrap">
+      <InputHeader center>Tags</InputHeader>
+      <div className="flex flex-wrap justify-center sm:justify-start gap-4">
         {tags.map((tag) => {
           return (
-            <div key={tag.id} className="w-20 flex flex-col">
+            <div key={tag.id} className="w-20 flex flex-col items-center">
               <label className={`font-light text-sm`}>
                 {tag.attributes.name}
               </label>

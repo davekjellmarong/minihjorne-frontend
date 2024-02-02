@@ -8,7 +8,7 @@ const Price = ({ formik }: SexProps) => {
   return (
     <div className="flex flex-wrap px-10 ">
       <div className="w-full ">
-        <InputHeader>Pris</InputHeader>
+        <InputHeader center>Pris</InputHeader>
         <input
           type="text"
           id="price"

@@ -12,11 +12,11 @@ interface ColorProps {
 const Materials = ({ materials, formik, onChangeFunc }: ColorProps) => {
   return (
     <div>
-      <InputHeader>Stoff</InputHeader>
-      <div className="flex gap-4 flex-wrap">
+      <InputHeader center>Stoff</InputHeader>
+      <div className="flex flex-wrap justify-center sm:justify-start gap-4">
         {materials.map((material) => {
           return (
-            <div key={material.id} className="w-20 flex flex-col">
+            <div key={material.id} className="w-20 flex flex-col items-center">
               <label className={`font-light text-sm`}>
                 {material.attributes.name}
               </label>

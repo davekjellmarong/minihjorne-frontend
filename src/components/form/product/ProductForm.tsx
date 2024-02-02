@@ -73,13 +73,13 @@ const ProductForm = ({
   if (stepper)
     return (
       <form
-        className="flex flex-col items-start gap-12 mb-48 "
+        className="flex flex-col items-start gap-28 mb-48 "
         onSubmit={formik.handleSubmit}
       >
         <div
           className={`px-10 ${
             stepper === 1 ? "block" : "sm:hidden block"
-          } flex flex-col gap-16 `}
+          } flex flex-col gap-28 `}
         >
           <Color formik={formik} colors={colors.data} />
           <Category
@@ -95,7 +95,7 @@ const ProductForm = ({
         <div
           className={`px-10 ${
             stepper === 2 ? "block" : "sm:hidden block"
-          } flex flex-col gap-16 `}
+          } flex flex-col gap-28 `}
         >
           <Size formik={formik} sizes={sizes.data} />
           <Tags
@@ -109,9 +109,9 @@ const ProductForm = ({
           />
         </div>
         <div
-          className={`px-10 ${
+          className={`px-10 w-full ${
             stepper === 3 ? "block" : "sm:hidden block"
-          } flex flex-col gap-16 justify-start `}
+          } flex flex-col gap-28 justify-start `}
         >
           <Sex formik={formik} />
           <State formik={formik} />
@@ -128,7 +128,7 @@ const ProductForm = ({
         <div
           className={`${
             stepper === 4 ? "block" : "sm:hidden block"
-          } flex flex-col gap-16 justify-start `}
+          } flex flex-col gap-28 justify-start `}
         >
           <Price formik={formik} />
           <Brand formik={formik} />

@@ -41,11 +41,11 @@ const Category = ({ categories, formik, onChangeFunc }: CategoryProps) => {
   };
   return (
     <div>
-      <InputHeader>Katergori</InputHeader>
-      <div className="flex gap-4 flex-wrap">
+      <InputHeader center>Katergori</InputHeader>
+      <div className="flex flex-wrap justify-center sm:justify-start gap-4">
         {categories.map((category) => {
           return (
-            <div key={category.id} className="flex flex-col items-start w-20">
+            <div key={category.id} className="flex flex-col items-center w-20">
               <label className="font-light text-sm">
                 {category.attributes.name}
               </label>
