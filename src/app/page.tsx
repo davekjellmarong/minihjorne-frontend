@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div>
       <HomeHeroImage />
-      <div className="flex justify-around py-28 bg-brand-100">
+      <div className="flex justify-around py-28 bg-indigo-50">
         <Link href="/produkter?kjønn=gutt">
           <div className="bg-boyOutM h-[250px] bg-cover rounded-lg cursor-pointer">
             <div className="backdrop-brightness-[0.7] h-full w-[175px] flex items-center justify-center hover:backdrop-brightness-100">

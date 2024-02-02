@@ -12,16 +12,18 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          100: "#f7f8fe",
-          200: "#eff2fd",
-          300: "#e6ebfd",
-          400: "#dee5fc",
-          500: "#d6defb",
-          600: "#abb2c9",
-          700: "#808597",
-          800: "#565964",
-          900: "#2b2c32",
+          100: "#e5e1f9",
+          200: "#cbc3f2",
+          300: "#b1a6ec",
+          400: "#9788e5",
+          500: "#7d6adf",
+          600: "#6455b2",
+          700: "#4b4086",
+          800: "#322a59",
+          900: "#19152d",
         },
+
+        // #708BF4 - lilla
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

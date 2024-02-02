@@ -73,11 +73,11 @@ const ProductForm = ({
   if (stepper)
     return (
       <form
-        className="flex flex-col items-start gap-12 mb-48 w-full"
+        className="flex flex-col items-start gap-12 mb-48 "
         onSubmit={formik.handleSubmit}
       >
         <div
-          className={`${
+          className={`px-10 ${
             stepper === 1 ? "block" : "sm:hidden block"
           } flex flex-col gap-16 `}
         >
@@ -93,7 +93,7 @@ const ProductForm = ({
           />
         </div>
         <div
-          className={`${
+          className={`px-10 ${
             stepper === 2 ? "block" : "sm:hidden block"
           } flex flex-col gap-16 `}
         >
@@ -109,7 +109,7 @@ const ProductForm = ({
           />
         </div>
         <div
-          className={`${
+          className={`px-10 ${
             stepper === 3 ? "block" : "sm:hidden block"
           } flex flex-col gap-16 justify-start `}
         >
@@ -133,16 +133,16 @@ const ProductForm = ({
           <Price formik={formik} />
           <Brand formik={formik} />
         </div>
-        <div className="flex justify-between w-full">
+        <div className="flex justify-between flex-wrap px-10 gap-8">
           <button
             type="submit"
-            className=" bg-gray-500 py-2 px-6 text-white rounded"
+            className=" bg-gray-500 py-2 px-6 text-white rounded w-full"
           >
             Lagre produkt
           </button>
           <button
             type="button"
-            className="border-2 border-gray-400 py-2 px-6 rounded"
+            className="border-2 border-gray-400 py-2 px-6 rounded w-full"
           >
             Forhåndsvisning av produktene
           </button>

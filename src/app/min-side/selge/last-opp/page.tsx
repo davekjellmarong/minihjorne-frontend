@@ -129,13 +129,16 @@ const LeggUt = () => {
       <div className="flex flex-col gap-6 text-center justify-center items-center h-screen relative">
         {/* /create a little help icon button that will open the modal when click */}
 
-        <button className="absolute top-8 left-8" onClick={() => setIntroModal(true)}>
+        <button
+          className="absolute top-8 left-8"
+          onClick={() => setIntroModal(true)}
+        >
           <Question size={32} weight="thin" color="blue" />
         </button>
 
         {/* <p className="text-center text-xl">Laste opp klær</p> */}
         <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
-        <IntroCarousel/>
+          <IntroCarousel />
         </Dialog>
         <div>
           <p className="text-xl">Last opp bilder til dine produkter her</p>
@@ -177,20 +180,18 @@ const LeggUt = () => {
               formik={formik}
             />
           </div>
-          <div className="sm:h-5/6 pb-8 sm:pb-0"
-          onClick={() => setModal(true)}
-          >
+          <div className="sm:h-5/6 pb-8 sm:pb-0" onClick={() => setModal(true)}>
             <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
             <SelectedImages selectedImages={selectedImages} />
             {/* <PreviewValues formik={formik} /> */}
           </div>
         </div>
-        <div className="m-10 sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
+        <div className="sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
           <div className="flex flex-col items-center gap-2 w-3/4">
             <p className="text-center mb-6">Registrer produktet ditt her</p>
             <Stepper stepper={stepper} setStepper={setStepper} />
           </div>
-          <div className="flex flex-col items-center gap-10 w-full sm:w-3/4">
+          <div className="flex flex-col items-center gap-10  sm:w-3/4">
             {images?.length > 0 && <ProductForm {...ProjectFormProps} />}
           </div>
         </div>

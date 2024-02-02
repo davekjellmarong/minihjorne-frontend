@@ -15,7 +15,7 @@ const HomeHeroImage = () => {
         </h1>
 
         <Link href="/produkter">
-          <button className=" border-2 bg-brand-500 border-brand-500 px-8 py-4 rounded-lg hover:bg-brand-100 hover:text-black">
+          <button className=" border-2 text-white bg-indigo-500 border-indigo-500 px-8 py-4 rounded-lg hover:bg-brand-100 hover:text-black">
             Se våre produkter
           </button>
         </Link>

@@ -13,6 +13,8 @@ import {
   Bird,
   HeartStraight,
   Leaf,
+  Pen,
+  Pencil,
   Rainbow,
   Star,
   User,
@@ -40,12 +42,13 @@ const EditSalgsprofil = ({ formik, dialogRef, id }: EditSalgsprofilProps) => {
           <div className="absolute top-4 left-4">
             <button
               type="button"
-              className="rounded-lg border border-sky-600 bg-sky-800 px-5 py-2.5 text-sm font-medium text-sky-100 hover:bg-sky-700 hover:text-white focus:z-10 focus:outline-none focus:ring-0 focus:ring-sky-700"
+              className="rounded-lg border border-indigo-600 bg-gray-300  px-2 py-2 text-sm font-medium text-indigo-100 hover:bg-indigo-700 hover:text-white focus:z-10 focus:outline-none focus:ring-0 focus:ring-indigo-700"
               onClick={() => {
                 dialogRef.current?.showModal();
               }}
             >
-              Rediger Editsalgsprofil
+              <Pencil size={20} color="indigo" />
+              {/* Rediger */}
             </button>
           </div>
         )}

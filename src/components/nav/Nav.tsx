@@ -12,7 +12,7 @@ import {
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import UpperNav from "./UpperNav";
-import { upperNavItems ,authUpperNavItems} from "./UpperNavItems";
+import { upperNavItems, authUpperNavItems } from "./UpperNavItems";
 const Nav = () => {
   const [navItems, setNavItems] = useState(false);
   const [secondaryNavItems, setSecondaryNavItems] = useState(upperNavItems);
@@ -20,7 +20,6 @@ const Nav = () => {
 
   const { data } = useQuery({ queryKey: ["jwt"] });
   useEffect(() => {
-
     if (data) {
       setSecondaryNavItems(authUpperNavItems);
       setNavItems(true);
@@ -33,7 +32,7 @@ const Nav = () => {
     hjem: <House size={26} weight="thin" />,
   };
   return (
-    <nav className="flex  bg-brand-500 items-center justify-between shadow flex-wrap p-2 px-6  lg:px-20">
+    <nav className="flex  bg-white items-center justify-between shadow flex-wrap p-2 px-6  lg:px-20">
       <div className="block sm:hidden w-1/3">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -57,7 +56,8 @@ const Nav = () => {
       </div>
 
       <Link href="/produkter" className="lg:w-52  pb-0 mb-0  w-1/3">
-        <Image src="/logoo.png" alt="logo" width={250} height={250} />
+        {/* <Image src="/logoo.png" alt="logo" width={250} height={250} /> */}
+        Mini Hjørne
       </Link>
 
       <div className="flex justify-end w-1/3">

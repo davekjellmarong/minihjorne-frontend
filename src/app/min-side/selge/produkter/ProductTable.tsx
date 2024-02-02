@@ -17,7 +17,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
         <ProductDetail selectedProduct={selectedProduct} setOpen={setOpen} />
       </Dialog>
       <table className="w-full">
-        <thead className="bg-blue-200 border-2 border-blue-100">
+        <thead className="bg-indigo-200 border-2 border-indigo-100">
           <tr className="">
             <th className="text-xs text-left pl-4 py-4 font-normal">Bilde</th>
             <th className="text-xs text-left pl-4 py-4 font-normal">Dato</th>
@@ -47,7 +47,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
                   setSelectedProduct(product);
                   setOpen(true);
                 }}
-                className="border-2 border-blue-100 hover:bg-blue-100 cursor-pointer"
+                className="border-2 border-indigo-100 hover:bg-indigo-100 cursor-pointer"
               >
                 <td className="text-sm py-1 px-4 text-left">
                   <Image
@@ -70,7 +70,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
                 {/* <td className={` py-4 px-10 text-gray-500 ${color?.tailwind}`}> */}
                 <td className={` py-3 px-4  `}>
                   <p
-                    className={`text-blue-700 text-xs p-2 rounded text-center`}
+                    className={`text-indigo-700 text-xs p-2 rounded text-center`}
                   >
                     {product.sold ? (
                       <CheckCircle size={26} color="green" />
