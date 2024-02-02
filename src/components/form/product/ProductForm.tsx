@@ -29,6 +29,7 @@ import Loading from "@/components/loading/Loading";
 import Materials from "./Materials";
 import Tags from "./Tags";
 import { toast } from "react-toastify";
+import CarouselComponent from "@/components/carousel/Carousel";
 
 interface ProductFormProps {
   setSavedImages: any;
@@ -72,15 +73,8 @@ const ProductForm = ({
     return <Loading />;
   if (stepper)
     return (
-      <form
-        className="flex flex-col items-start gap-28 mb-48 "
-        onSubmit={formik.handleSubmit}
-      >
-        <div
-          className={`px-10 ${
-            stepper === 1 ? "block" : "sm:hidden block"
-          } flex flex-col gap-28 `}
-        >
+      <form className="" onSubmit={formik.handleSubmit}>
+        <CarouselComponent>
           <Color formik={formik} colors={colors.data} />
           <Category
             onChangeFunc={() => {
@@ -91,12 +85,6 @@ const ProductForm = ({
             formik={formik}
             categories={categories.data}
           />
-        </div>
-        <div
-          className={`px-10 ${
-            stepper === 2 ? "block" : "sm:hidden block"
-          } flex flex-col gap-28 `}
-        >
           <Size formik={formik} sizes={sizes.data} />
           <Tags
             onChangeFunc={() => {
@@ -107,12 +95,6 @@ const ProductForm = ({
             formik={formik}
             tags={tags.data}
           />
-        </div>
-        <div
-          className={`px-10 w-full ${
-            stepper === 3 ? "block" : "sm:hidden block"
-          } flex flex-col gap-28 justify-start `}
-        >
           <Sex formik={formik} />
           <State formik={formik} />
           <Materials
@@ -124,15 +106,10 @@ const ProductForm = ({
             formik={formik}
             materials={materials.data}
           />
-        </div>
-        <div
-          className={`${
-            stepper === 4 ? "block" : "sm:hidden block"
-          } flex flex-col gap-28 justify-start `}
-        >
           <Price formik={formik} />
           <Brand formik={formik} />
-        </div>
+        </CarouselComponent>
+
         <div className="flex justify-between flex-wrap px-10 gap-8">
           <button
             type="submit"
@@ -152,3 +129,61 @@ const ProductForm = ({
 };
 
 export default ProductForm;
+
+// <div
+// className={`px-10 ${
+//   stepper === 1 ? "block" : "sm:hidden block"
+// } flex flex-col gap-28 `}
+// >
+// <Color formik={formik} colors={colors.data} />
+// <Category
+//   onChangeFunc={() => {
+//     if (formik.values.colors) {
+//       setStepper(2);
+//     }
+//   }}
+//   formik={formik}
+//   categories={categories.data}
+// />
+// </div>
+// <div
+// className={`px-10 ${
+//   stepper === 2 ? "block" : "sm:hidden block"
+// } flex flex-col gap-28 `}
+// >
+// <Size formik={formik} sizes={sizes.data} />
+// <Tags
+//   onChangeFunc={() => {
+//     if (formik.values.size) {
+//       setStepper(3);
+//     }
+//   }}
+//   formik={formik}
+//   tags={tags.data}
+// />
+// </div>
+// <div
+// className={`px-10 w-full ${
+//   stepper === 3 ? "block" : "sm:hidden block"
+// } flex flex-col gap-28 justify-start `}
+// >
+// <Sex formik={formik} />
+// <State formik={formik} />
+// <Materials
+//   onChangeFunc={() => {
+//     if (formik.values.state && formik.values.sex) {
+//       setStepper(4);
+//     }
+//   }}
+//   formik={formik}
+//   materials={materials.data}
+// />
+// </div>
+// <div
+// className={`${
+//   stepper === 4 ? "block" : "sm:hidden block"
+// } flex flex-col gap-28 justify-start `}
+// >
+// <Price formik={formik} />
+// <Brand formik={formik} />
+// </div>

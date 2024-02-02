@@ -186,7 +186,9 @@ const LeggUt = () => {
             {/* <PreviewValues formik={formik} /> */}
           </div>
         </div>
-        <div className="sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
+
+        <ProductForm {...ProjectFormProps} />
+        {/* <div className="sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
           <div className="flex flex-col items-center gap-2 w-3/4">
             <p className="text-center mb-6">Registrer produktet ditt her</p>
             <Stepper stepper={stepper} setStepper={setStepper} />
@@ -194,7 +196,7 @@ const LeggUt = () => {
           <div className="flex flex-col items-center gap-10  sm:w-3/4">
             {images?.length > 0 && <ProductForm {...ProjectFormProps} />}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
