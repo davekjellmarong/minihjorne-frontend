@@ -1,6 +1,7 @@
 import InputHeader from "@/components/header/InputHeader";
 import { GenderFemale, GenderMale, GenderNeuter } from "@phosphor-icons/react";
 import React from "react";
+import FormFieldContainer from "./FormFieldContainer";
 interface SexProps {
   formik: any;
   onChangeFunc?: () => void;
@@ -24,37 +25,34 @@ const Sex = ({ formik, onChangeFunc }: SexProps) => {
     },
   ];
   return (
-    <div>
-      <InputHeader center>Kjønn</InputHeader>
-      <div className="flex flex-wrap justify-center sm:justify-start gap-4">
-        {sexes.map((sex) => {
-          return (
-            <div key={sex.id} className="flex flex-col items-center w-20">
-              <label className="font-light text-sm">{sex.title}</label>
-              {sex.icon}
-              <input
-                type="radio"
-                name="sex"
-                className="h-8 w-8"
-                value={sex.id}
-                // onChange={formik.handleChange}
-                onChange={(e) => {
-                  const sexId = e.target.value;
-                  const sexName = sex.title;
+    <FormFieldContainer header="Kjønn">
+      {sexes.map((sex) => {
+        return (
+          <div key={sex.id} className="flex flex-col items-center w-20">
+            <label className="font-light text-sm">{sex.title}</label>
+            {sex.icon}
+            <input
+              type="radio"
+              name="sex"
+              className="h-8 w-8"
+              value={sex.id}
+              // onChange={formik.handleChange}
+              onChange={(e) => {
+                const sexId = e.target.value;
+                const sexName = sex.title;
 
-                  // Set both color ID and color name to Formik values
-                  formik.setFieldValue("sex", sexId);
-                  formik.setFieldValue(`sexName`, sexName);
-                  if (onChangeFunc) {
-                    onChangeFunc();
-                  }
-                }}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
+                // Set both color ID and color name to Formik values
+                formik.setFieldValue("sex", sexId);
+                formik.setFieldValue(`sexName`, sexName);
+                if (onChangeFunc) {
+                  onChangeFunc();
+                }
+              }}
+            />
+          </div>
+        );
+      })}
+    </FormFieldContainer>
   );
 };
 

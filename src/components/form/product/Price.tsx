@@ -1,14 +1,48 @@
 import InputHeader from "@/components/header/InputHeader";
 import React from "react";
+import FormFieldContainer from "./FormFieldContainer";
 
 interface SexProps {
   formik: any;
 }
 const Price = ({ formik }: SexProps) => {
+  const priceArray = [
+    {
+      title: "50kr",
+      id: 0,
+    },
+    {
+      title: "99kr",
+      id: 1,
+    },
+    {
+      title: "125kr",
+      id: 2,
+    },
+    {
+      title: "150kr",
+      id: 3,
+    },
+    {
+      title: "175kr",
+      id: 4,
+    },
+    {
+      title: "225kr",
+      id: 5,
+    },
+    {
+      title: "250kr",
+      id: 6,
+    },
+    {
+      title: "275kr",
+      id: 7,
+    },
+  ];
   return (
-    <div className="flex flex-wrap px-10 ">
-      <div className="w-full ">
-        <InputHeader center>Pris</InputHeader>
+    <FormFieldContainer header="Pris">
+      <div className="flex flex-wrap gap-y-4 gap-x-6 mt-2 ">
         <input
           type="text"
           id="price"
@@ -19,55 +53,22 @@ const Price = ({ formik }: SexProps) => {
           value={formik.values.price}
           onChange={formik.handleChange}
         />
+        {priceArray.map((price) => {
+          return (
+            <button
+              key={price.id}
+              type="button"
+              onClick={() => {
+                formik.setFieldValue("price", price.title);
+              }}
+              className="border-2 w-20 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
+            >
+              {price.title}
+            </button>
+          );
+        })}
       </div>
-      <div className="flex flex-wrap gap-2 mt-2 ">
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("price", "99");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          99kr
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("price", "125");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          125kr
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("price", "175");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          175kr
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("price", "225");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          225kr
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("price", "275");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          275kr
-        </button>
-      </div>
-    </div>
+    </FormFieldContainer>
   );
 };
 

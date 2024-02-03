@@ -21,6 +21,10 @@ const CarouselComponent = ({ children }: any) => {
       items: 1,
     },
   };
-  return <Carousel responsive={responsive}>{children}</Carousel>;
+  return (
+    <Carousel showDots responsive={responsive}>
+      {children}
+    </Carousel>
+  );
 };
 export default CarouselComponent;

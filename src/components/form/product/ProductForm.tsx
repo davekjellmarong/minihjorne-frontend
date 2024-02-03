@@ -108,27 +108,30 @@ const ProductForm = ({
           />
           <Price formik={formik} />
           <Brand formik={formik} />
-        </CarouselComponent>
 
-        <div className="flex justify-between flex-wrap px-10 gap-8">
-          <button
-            type="submit"
-            className=" bg-gray-500 py-2 px-6 text-white rounded w-full"
-          >
-            Lagre produkt
-          </button>
-          <button
-            type="button"
-            className="border-2 border-gray-400 py-2 px-6 rounded w-full"
-          >
-            Forhåndsvisning av produktene
-          </button>
-        </div>
+          <div className="flex justify-between flex-wrap px-10 gap-8">
+            <button
+              type="submit"
+              className=" bg-gray-500 py-2 px-6 text-white rounded w-full"
+            >
+              Lagre produkt
+            </button>
+          </div>
+        </CarouselComponent>
       </form>
     );
 };
 
 export default ProductForm;
+
+{
+  /* <button
+type="button"
+className="border-2 border-gray-400 py-2 px-6 rounded w-full"
+>
+Forhåndsvisning av produktene
+</button> */
+}
 
 // <div
 // className={`px-10 ${

@@ -1,15 +1,15 @@
 import InputHeader from "@/components/header/InputHeader";
 import React from "react";
+import FormFieldContainer from "./FormFieldContainer";
 
 interface ColorProps {
   formik: any;
 }
 const Brand = ({ formik }: ColorProps) => {
+  const brands = ["Lille lam", "H&M", "Cubus", "Babyshop", "Vet ikke"];
   return (
-    <div className="flex flex-wrap px-10">
-      <div className="w-full ">
-        <InputHeader center>Klesmerke</InputHeader>
-
+    <FormFieldContainer header="Klesmerke">
+      <div className="flex flex-wrap gap-2 mt-2">
         <input
           type="brand"
           id="brand"
@@ -20,55 +20,22 @@ const Brand = ({ formik }: ColorProps) => {
           value={formik.values.brand}
           onChange={formik.handleChange}
         />
+        {brands.map((brand) => {
+          return (
+            <button
+              key={brand}
+              type="button"
+              onClick={() => {
+                formik.setFieldValue("brand", brand);
+              }}
+              className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
+            >
+              {brand}
+            </button>
+          );
+        })}
       </div>
-      <div className="flex flex-wrap gap-2 mt-2">
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("brand", "Lille lam");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          Lille lam
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("brand", "H&M");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          H&M
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("brand", "Cubus");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          Cubus
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("brand", "Babyshop");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          Babyshop
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            formik.setFieldValue("brand", "Vet ikke");
-          }}
-          className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
-        >
-          Vet ikke
-        </button>
-      </div>
-    </div>
+    </FormFieldContainer>
   );
 };
 

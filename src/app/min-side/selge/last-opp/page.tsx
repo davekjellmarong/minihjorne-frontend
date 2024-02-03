@@ -164,39 +164,16 @@ const LeggUt = () => {
           formik={formik}
         />
       </FilterDialog>
-      <div className="flex flex-col sm:flex-row relative">
-        <div className="bg-white mx-8 sm:mx-0 overflow-scroll shadow sm:shadow-none flex flex-col-reverse sticky top-0 sm:relative sm:h-auto   sm:w-2/5 sm:flex-col items-center border-r-2 justify-center border-gray-200">
-          <div className="my-4 hidden  sm:block sm:h-1/6 sm:border-b-2 border-gray-200 sm:w-full  w-auto">
-            <p className="text-center mb-2">
-              {images.length - savedImages.length} av {images.length} bilder
-              igjen
-            </p>
-            <ImagesList
-              savedImages={savedImages}
-              images={images}
-              setSelectedImages={setSelectedImages}
-              selectedImages={selectedImages}
-              setStepper={setStepper}
-              formik={formik}
-            />
-          </div>
-          <div className="sm:h-5/6 pb-8 sm:pb-0" onClick={() => setModal(true)}>
+      <div className="flex flex-col gap-14 relative">
+        <div className="bg-white  overflow-scroll shadow flex flex-col-reverse items-center border-r-2 justify-center border-gray-200">
+          <div className="p-6" onClick={() => setModal(true)}>
             <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
             <SelectedImages selectedImages={selectedImages} />
-            {/* <PreviewValues formik={formik} /> */}
           </div>
         </div>
-
-        <ProductForm {...ProjectFormProps} />
-        {/* <div className="sm:w-3/5 flex flex-col items-center justify-evenly gap-14 mt-14 sm:ml-32 sm:items-start">
-          <div className="flex flex-col items-center gap-2 w-3/4">
-            <p className="text-center mb-6">Registrer produktet ditt her</p>
-            <Stepper stepper={stepper} setStepper={setStepper} />
-          </div>
-          <div className="flex flex-col items-center gap-10  sm:w-3/4">
-            {images?.length > 0 && <ProductForm {...ProjectFormProps} />}
-          </div>
-        </div> */}
+        <div className="">
+          <ProductForm {...ProjectFormProps} />
+        </div>
       </div>
     </>
   );
