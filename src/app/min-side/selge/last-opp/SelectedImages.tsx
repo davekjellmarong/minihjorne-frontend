@@ -11,7 +11,7 @@ const SelectedImages = ({ selectedImages }: SelectedImageProps) => {
       {selectedImages.map((image) => {
         return (
           <Image
-            key={image}
+            key={image.name}
             src={URL.createObjectURL(image)}
             height={300}
             width={300}

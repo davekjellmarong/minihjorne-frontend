@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Category from "./Category";
 import Color from "./Color";
 import { State } from "./State";
@@ -30,6 +30,8 @@ import Materials from "./Materials";
 import Tags from "./Tags";
 import { toast } from "react-toastify";
 import CarouselComponent from "@/components/carousel/Carousel";
+import CustomButtonGroup from "./CustomButtonGroup";
+import Carousel from "react-multi-carousel";
 
 interface ProductFormProps {
   setSavedImages: any;
@@ -63,6 +65,26 @@ const ProductForm = ({
     queryKey: ["sizes"],
     queryFn: fetchSizes,
   });
+  const CarouselRef: any = useRef(null);
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   if (
     !colors?.data ||
     !tags?.data ||
@@ -73,15 +95,23 @@ const ProductForm = ({
     return <Loading />;
   if (stepper)
     return (
-      <form className="" onSubmit={formik.handleSubmit}>
-        <CarouselComponent>
+      <form
+        className=""
+        onSubmit={formik.handleSubmit}
+        onChange={() => {
+          if (CarouselRef.current) {
+            CarouselRef.current.next();
+          }
+        }}
+      >
+        {/* <CarouselComponent
+          //  ref={(el) => (this.Carousel = el)}
+          ref={CarouselRef.current}
+        > */}
+        <Carousel responsive={responsive} ref={CarouselRef}>
           <Color formik={formik} colors={colors.data} />
           <Category
-            onChangeFunc={() => {
-              if (formik.values.colors) {
-                setStepper(2);
-              }
-            }}
+            onChangeFunc={() => {}}
             formik={formik}
             categories={categories.data}
           />
@@ -117,7 +147,9 @@ const ProductForm = ({
               Lagre produkt
             </button>
           </div>
-        </CarouselComponent>
+        </Carousel>
+
+        {/* </CarouselComponent> */}
       </form>
     );
 };

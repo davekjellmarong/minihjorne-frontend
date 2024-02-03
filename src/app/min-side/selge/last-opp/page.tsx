@@ -123,7 +123,6 @@ const LeggUt = () => {
       img2: "/velg-bilder.png",
     },
   ];
-
   if (images.length === 0)
     return (
       <div className="flex flex-col gap-6 text-center justify-center items-center h-screen relative">
