@@ -85,6 +85,11 @@ const ProductForm = ({
       items: 1,
     },
   };
+  const nextSlide = () => {
+    if (CarouselRef.current) {
+      CarouselRef.current.next();
+    }
+  };
   if (
     !colors?.data ||
     !tags?.data ||
@@ -95,44 +100,24 @@ const ProductForm = ({
     return <Loading />;
   if (stepper)
     return (
-      <form
-        className=""
-        onSubmit={formik.handleSubmit}
-        onChange={() => {
-          if (CarouselRef.current) {
-            CarouselRef.current.next();
-          }
-        }}
-      >
-        {/* <CarouselComponent
-          //  ref={(el) => (this.Carousel = el)}
-          ref={CarouselRef.current}
-        > */}
-        <Carousel responsive={responsive} ref={CarouselRef}>
-          <Color formik={formik} colors={colors.data} />
+      <form className="" onSubmit={formik.handleSubmit}>
+        <Carousel responsive={responsive} ref={CarouselRef} showDots>
+          <Color
+            formik={formik}
+            colors={colors.data}
+            onChangeFunc={nextSlide}
+          />
           <Category
-            onChangeFunc={() => {}}
+            onChangeFunc={nextSlide}
             formik={formik}
             categories={categories.data}
           />
-          <Size formik={formik} sizes={sizes.data} />
-          <Tags
-            onChangeFunc={() => {
-              if (formik.values.size) {
-                setStepper(3);
-              }
-            }}
-            formik={formik}
-            tags={tags.data}
-          />
-          <Sex formik={formik} />
-          <State formik={formik} />
+          <Size formik={formik} sizes={sizes.data} onChangeFunc={nextSlide} />
+          <Tags onChangeFunc={nextSlide} formik={formik} tags={tags.data} />
+          <Sex formik={formik} onChangeFunc={nextSlide} />
+          <State formik={formik} onChangeFunc={nextSlide} />
           <Materials
-            onChangeFunc={() => {
-              if (formik.values.state && formik.values.sex) {
-                setStepper(4);
-              }
-            }}
+            onChangeFunc={nextSlide}
             formik={formik}
             materials={materials.data}
           />
@@ -148,8 +133,6 @@ const ProductForm = ({
             </button>
           </div>
         </Carousel>
-
-        {/* </CarouselComponent> */}
       </form>
     );
 };
@@ -164,61 +147,3 @@ className="border-2 border-gray-400 py-2 px-6 rounded w-full"
 Forhåndsvisning av produktene
 </button> */
 }
-
-// <div
-// className={`px-10 ${
-//   stepper === 1 ? "block" : "sm:hidden block"
-// } flex flex-col gap-28 `}
-// >
-// <Color formik={formik} colors={colors.data} />
-// <Category
-//   onChangeFunc={() => {
-//     if (formik.values.colors) {
-//       setStepper(2);
-//     }
-//   }}
-//   formik={formik}
-//   categories={categories.data}
-// />
-// </div>
-// <div
-// className={`px-10 ${
-//   stepper === 2 ? "block" : "sm:hidden block"
-// } flex flex-col gap-28 `}
-// >
-// <Size formik={formik} sizes={sizes.data} />
-// <Tags
-//   onChangeFunc={() => {
-//     if (formik.values.size) {
-//       setStepper(3);
-//     }
-//   }}
-//   formik={formik}
-//   tags={tags.data}
-// />
-// </div>
-// <div
-// className={`px-10 w-full ${
-//   stepper === 3 ? "block" : "sm:hidden block"
-// } flex flex-col gap-28 justify-start `}
-// >
-// <Sex formik={formik} />
-// <State formik={formik} />
-// <Materials
-//   onChangeFunc={() => {
-//     if (formik.values.state && formik.values.sex) {
-//       setStepper(4);
-//     }
-//   }}
-//   formik={formik}
-//   materials={materials.data}
-// />
-// </div>
-// <div
-// className={`${
-//   stepper === 4 ? "block" : "sm:hidden block"
-// } flex flex-col gap-28 justify-start `}
-// >
-// <Price formik={formik} />
-// <Brand formik={formik} />
-// </div>

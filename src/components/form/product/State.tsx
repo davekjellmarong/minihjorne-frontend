@@ -4,8 +4,9 @@ import FormFieldContainer from "./FormFieldContainer";
 
 interface SexProps {
   formik: any;
+  onChangeFunc?: () => void;
 }
-export const State = ({ formik }: SexProps) => {
+export const State = ({ formik, onChangeFunc }: SexProps) => {
   const states = [
     {
       title: "Ny",
@@ -41,6 +42,9 @@ export const State = ({ formik }: SexProps) => {
                 // Set both color ID and color name to Formik values
                 formik.setFieldValue("state", stateId);
                 formik.setFieldValue(`stateName`, stateName);
+                if (onChangeFunc) {
+                  onChangeFunc();
+                }
               }}
             />
           </div>

@@ -6,8 +6,9 @@ import FormFieldContainer from "./FormFieldContainer";
 interface SizeProps {
   sizes: Size[];
   formik: any;
+  onChangeFunc?: () => void;
 }
-const Size = ({ sizes, formik }: SizeProps) => {
+const Size = ({ sizes, formik, onChangeFunc }: SizeProps) => {
   return (
     <FormFieldContainer header="Størrelse">
       {sizes.map((size) => {
@@ -29,6 +30,9 @@ const Size = ({ sizes, formik }: SizeProps) => {
                 // Set both color ID and color name to Formik values
                 formik.setFieldValue("size", sizeId);
                 formik.setFieldValue(`sizeName`, sizeName);
+                if (onChangeFunc) {
+                  onChangeFunc();
+                }
               }}
             />
           </div>

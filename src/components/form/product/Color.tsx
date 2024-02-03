@@ -9,9 +9,15 @@ interface ColorProps {
   colors: Color[];
   formik: any;
   formName?: string;
+  onChangeFunc?: () => void;
 }
 
-const Color = ({ colors, formik, formName = "colors" }: ColorProps) => {
+const Color = ({
+  colors,
+  formik,
+  formName = "colors",
+  onChangeFunc,
+}: ColorProps) => {
   return (
     <FormFieldContainer header="Farge">
       {colors.map((color) => {
@@ -38,6 +44,9 @@ const Color = ({ colors, formik, formName = "colors" }: ColorProps) => {
                   `${formName}NorwegianName`,
                   color.attributes.name
                 );
+                if (onChangeFunc) {
+                  onChangeFunc();
+                }
               }}
             />
           </div>
