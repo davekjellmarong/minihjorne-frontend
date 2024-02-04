@@ -18,6 +18,7 @@ import FilterDialog from "@/app/produkter/FilterDialog";
 import CarouselComponent from "@/components/carousel/Carousel";
 import { Question } from "@phosphor-icons/react";
 import IntroCarousel from "./IntroCarousel";
+import Link from "next/link";
 
 export interface ImageUpload extends Blob {
   lastModified: number;
@@ -29,14 +30,11 @@ export interface ImageUpload extends Blob {
 }
 const LeggUt = () => {
   const [modal, setModal] = useState(false);
-  const [introModal, setIntroModal] = useState(true);
+  const [introModal, setIntroModal] = useState(false);
   const [stepper, setStepper] = useState(1);
   const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
   const [images, setImages] = useState<ImageUpload[]>([]);
   const [savedImages, setSavedImages] = useState<ImageUpload[]>([]);
-  const [stepper1, setStepper1] = useState(0);
-  const [stepper2, setStepper2] = useState(700);
-  const [stepper3, setStepper3] = useState(1400);
   useAutoLogIn();
   const { data: jwt } = useQuery({
     queryKey: ["jwt"],
@@ -80,7 +78,7 @@ const LeggUt = () => {
       colorsNorwegianName: "",
       material: "",
       brand: "",
-      price: "",
+      price: 0,
       category: "",
       categoryName: "",
       state: "",
@@ -109,21 +107,7 @@ const LeggUt = () => {
     stepper: stepper,
     setStepper: setStepper,
   };
-  const instructions = [
-    {
-      title: "Steg 1",
-      text: "Gå ut av nettsiden, legg klærne på en flat overflate og ta bilder av dem",
-      img1: "/camera-screenshot.png",
-      img2: "/gallery-clothes.png",
-    },
-    {
-      title: "Steg 2",
-      text: "Når du har tatt bildene, gå tilbake til nettsiden og trykk på knappen under",
-      img1: "/knapp-bilder.png",
-      img2: "/velg-bilder.png",
-    },
-  ];
-  if (images.length === 0)
+  if (images.length === 0) {
     return (
       <div className="flex flex-col gap-6 text-center justify-center items-center h-screen relative">
         {/* /create a little help icon button that will open the modal when click */}
@@ -139,6 +123,30 @@ const LeggUt = () => {
         <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
           <IntroCarousel />
         </Dialog>
+        <div className="flex flex-col items-center gap-10 sm:flex-row sm:gap-4 ">
+          <Link
+            href="/min-side/selge/last-opp/bilder"
+            key={1}
+            className="flex flex-col justify-center gap-2 border-2 border-gray-200 p-8 rounded w-96 hover:bg-gray-100 hover:border-gray-300"
+          >
+            <p className="font-bold text-lg">Last opp bilder</p>
+            <p className="text-gray-500">
+              Dette er det første steget når du skal selge klær. Start med å
+              laste opp bildene du skal bruke til å swlge
+            </p>
+          </Link>
+          <Link
+            href="/min-side/selge/last-opp/produkt"
+            key={1}
+            className="flex flex-col justify-center gap-2 border-2 border-gray-200 p-8 rounded w-96 hover:bg-gray-100 hover:border-gray-300"
+          >
+            <p className="font-bold text-lg">Registrer dine produkter</p>
+            <p className="text-gray-500/p">
+              Dette er det andre steget når du skal selge klær. Lag pruduktene
+              dine ogknyytt dem til bildene du har lastet opp
+            </p>
+          </Link>
+        </div>
         <div>
           <p className="text-xl">Last opp bilder til dine produkter her</p>
           <ImageUploader
@@ -149,6 +157,7 @@ const LeggUt = () => {
         </div>
       </div>
     );
+  }
   return (
     <>
       <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
