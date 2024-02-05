@@ -5,6 +5,7 @@ import {
   useStripe,
   useElements,
   PaymentElement,
+  AddressElement,
 } from "@stripe/react-stripe-js";
 
 const CheckoutForm = () => {
@@ -82,9 +83,31 @@ const CheckoutForm = () => {
 
   const paymentElementOptions: any = {
     layout: "tabs",
+    defaultValues: {
+      cvc: 555,
+    },
   };
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
+      <h3>Shipping</h3>
+      <AddressElement
+        options={{
+          mode: "shipping",
+          fields: { phone: "always" },
+          allowedCountries: ["NO"],
+          defaultValues: {
+            address: {
+              line1: "Kanohallveien 12a",
+              city: "Oslo",
+              postal_code: "0585",
+              country: "NO",
+            },
+            name: "Dave Marong",
+            phone: "+4798765432",
+          },
+        }}
+      />
+      <h3>Payment</h3>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">

@@ -63,6 +63,7 @@ const Page = () => {
   const options: any = {
     clientSecret,
     appearance,
+    business: "Mini Hjørne",
   };
   return (
     <div>
