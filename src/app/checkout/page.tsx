@@ -59,6 +59,9 @@ const Page = () => {
   }, [jwt]);
   const appearance = {
     theme: "stripe",
+    variables: {
+      colorPrimary: "#7d6adf",
+    },
   };
   const options: any = {
     clientSecret,

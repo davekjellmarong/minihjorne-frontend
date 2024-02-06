@@ -88,28 +88,40 @@ const CheckoutForm = () => {
     },
   };
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <h3>Shipping</h3>
-      <AddressElement
-        options={{
-          mode: "shipping",
-          fields: { phone: "always" },
-          allowedCountries: ["NO"],
-          defaultValues: {
-            address: {
-              line1: "Kanohallveien 12a",
-              city: "Oslo",
-              postal_code: "0585",
-              country: "NO",
+    <form
+      id="payment-form"
+      onSubmit={handleSubmit}
+      className="w-full flex flex-col gap-16 items-center my-14"
+    >
+      <div className="w-[400px]">
+        <h3 className="text-xl">Frakt</h3>
+        <AddressElement
+          options={{
+            mode: "shipping",
+            fields: { phone: "always" },
+            allowedCountries: ["NO"],
+            defaultValues: {
+              address: {
+                line1: "Kanohallveien 12a",
+                city: "Oslo",
+                postal_code: "0585",
+                country: "NO",
+              },
+              name: "Dave Marong",
+              phone: "+4798765432",
             },
-            name: "Dave Marong",
-            phone: "+4798765432",
-          },
-        }}
-      />
-      <h3>Payment</h3>
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+          }}
+        />
+      </div>
+      <div className="w-[400px]">
+        <h3 className="text-xl">Betaling</h3>
+        <PaymentElement id="payment-element" options={paymentElementOptions} />
+      </div>
+      <button
+        className="w-[400px] bg-purple-600 text-white p-4 rounded-md mt-8"
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+      >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
