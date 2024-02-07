@@ -15,12 +15,14 @@ import {
 } from "@/components/cart/Utils";
 import { Check } from "@phosphor-icons/react";
 import CheckoutForm from "./CheckoutForm";
+import { useRouter } from "next/navigation";
 const stripePromise = loadStripe(
   "pk_test_51JOhigA29RXGmicfdKhyh1kC7i8Psetyj3BNwoc7gFwus1AfgNeftLvr0w6hrPmNuWS1zogfahqR0YbjBcv2V9Y300D7TbsjW9"
 );
 
 const Page = () => {
   useAutoLogIn();
+  const router = useRouter();
   const [clientSecret, setClientSecret] = useState("");
   let cart: any;
   if (typeof window !== "undefined") {
@@ -44,6 +46,7 @@ const Page = () => {
     },
     onError: (err: any) => {
       console.log(err);
+      router.push("/handlekurv?handlekurv=feil");
     },
   });
   useEffect(() => {

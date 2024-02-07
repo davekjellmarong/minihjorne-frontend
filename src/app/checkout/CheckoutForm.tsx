@@ -7,6 +7,7 @@ import {
   PaymentElement,
   AddressElement,
 } from "@stripe/react-stripe-js";
+import { clearCartInLocalStorage } from "@/components/cart/Utils";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -34,6 +35,7 @@ const CheckoutForm = () => {
         switch (paymentIntent.status) {
           case "succeeded":
             setMessage("Payment succeeded!");
+            clearCartInLocalStorage();
             break;
           case "processing":
             setMessage("Your payment is processing.");
