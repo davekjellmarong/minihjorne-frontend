@@ -1,3 +1,4 @@
+"use client";
 import { CaretDown, CaretRight, CaretUp } from "@phosphor-icons/react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -101,7 +102,10 @@ const Filter = ({
 
     const search = current.toString();
     const query = search ? `?${search}` : "";
-    router.push(`${pathname}${query}`);
+    // router.push(`${pathname}${query}`);
+    history.pushState(history.state, "", `${pathname}${query}`);
+
+    // history.replaceState(null, "", `${pathname}${query}`);
 
     if (isChecked) {
       setFilter((prevFilter: any) => [
