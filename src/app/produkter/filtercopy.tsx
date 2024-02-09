@@ -14,8 +14,6 @@ interface FilterProps {
   checkboxStates: any;
   filterData: any;
   setFilterData: any;
-  setSelectedFilters: any;
-  selectedFilters: any;
 }
 const Filter = ({
   data,
@@ -28,11 +26,9 @@ const Filter = ({
   checkboxStates,
   filterData,
   setFilterData,
-  setSelectedFilters,
-  selectedFilters,
 }: FilterProps) => {
   // When inside this component, use the Label to check if there are any searchParams for this Label. If there are, loop through thoose and set the checkboxStates to true for each of them. and also set the setFilter data as well
-
+  console.log(label);
   const FilterRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
   const handleFilterData = (item: any) => {
@@ -53,35 +49,8 @@ const Filter = ({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  useEffect(() => {
-    const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
-    const path = current
-      .toString()
-      .split("&")
-      .map((item) => decodeURIComponent(item));
-    const filterValues = path.filter((item) => item.includes(label));
-    const localSelectedFilters = filterValues.map((item) => item.split("=")[0]);
-    const filtersObject = [...localSelectedFilters].reduce(
-      (obj: any, filter) => {
-        obj[filter] = true;
-        return obj;
-      },
-      {}
-    );
-    console.log();
-    setSelectedFilters((prevSelectedFilters: any) => [
-      ...prevSelectedFilters,
-      ...localSelectedFilters,
-    ]);
-    setCheckboxStates((prevCheckboxStates: any) => ({
-      ...prevCheckboxStates,
-      ...filtersObject,
-    }));
-    console.log({ checkboxStates });
-    console.log({ selectedFilters });
-  }, []);
-
   const handleCheckboxChange = (item: any) => {
+    handleFilterData(item);
     const isChecked = !checkboxStates[item.attributes[property]];
     setCheckboxStates((prevStates: any) => ({
       ...prevStates,
@@ -99,10 +68,22 @@ const Filter = ({
       current.set(item.attributes[property], label);
     }
 
+    // cast to string
     const search = current.toString();
+    // or const query = `${'?'.repeat(search.length && 1)}${search}`;
     const query = search ? `?${search}` : "";
     router.push(`${pathname}${query}`);
 
+    // const searchParams = new URLSearchParams(window.location.search);
+    // console.log(searchParams);
+    // console.log(param);
+    // if (param) {
+    //   searchParams.delete(item.attributes[property]);
+    // } else {
+    //   router.push(window.location.pathname + "?" + searchParams.toString());
+
+    //   searchParams.append(item.attributes[property], item.id);
+    // }
     if (isChecked) {
       setFilter((prevFilter: any) => [
         ...prevFilter,
@@ -175,3 +156,32 @@ const Filter = ({
 };
 
 export default Filter;
+
+// const handleCheckboxChange = (item: any) => {
+//   handleFilterData(item);
+//   const isChecked = !checkboxStates[item.attributes[property]];
+//   setCheckboxStates((prevStates: any) => ({
+//     ...prevStates,
+//     [item.attributes[property]]: isChecked,
+//   }));
+
+//   const currentQueryTemplate = queryTemplate + item.id;
+
+//   if (isChecked) {
+//     // setLocalCheckedItems((prevState: number[]) => [...prevState, item.id]);
+//     setFilter((prevFilter: any) => [
+//       ...prevFilter,
+//       {
+//         query: currentQueryTemplate,
+//         key: item.id,
+//         name: item.attributes[property],
+//       },
+//     ]);
+//   } else {
+//     // setLocalCheckedItems((prevState: number[]) =>
+//     //   prevState.filter((id: number) => id !== item.id)
+//     // );
+//     const removedQuery = filter.filter((query: any) => query.key !== item.id);
+//     setFilter(removedQuery);
+//   }
+// };

@@ -162,6 +162,7 @@ export const fetchProductsFiltered = async (query: string) => {
   }
   return data;
 };
+
 export const fetchProducts = async () => {
   return fetchPublicData("/products?populate=*");
 };

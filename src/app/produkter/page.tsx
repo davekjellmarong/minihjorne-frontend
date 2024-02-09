@@ -11,16 +11,21 @@ import React, { useEffect, useState } from "react";
 import Products from "./Products";
 import Filters from "./Filters";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
+
 import FilterChips from "./FilterChips";
 import ProductDetail from "./ProductDetail";
 import Dialog from "@/components/dialog/Dialog";
 import FilterDialog from "./FilterDialog";
+import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
+
 export interface SelectedFilter {
   query: string;
   id: number;
   name: string;
 }
 const Page = () => {
+  const [filterData, setFilterData] = useState<any>({});
   const [filterQuery, setFilterQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [checkboxStates, setCheckboxStates] = useState<{
@@ -33,7 +38,6 @@ const Page = () => {
     },
   });
   useAutoLogIn();
-
   return (
     <>
       <div className="flex w-full flex-col items-center relative">
@@ -42,11 +46,14 @@ const Page = () => {
         </div>
         <div className="w-full border-y border-gray-200 py-2 px-6 sm:px-24">
           <Filters
+            filterQuery={filterQuery}
             setFilterQuery={setFilterQuery}
             setSelectedFilters={setSelectedFilters}
             selectedFilters={selectedFilters}
             checkboxStates={checkboxStates}
             setCheckboxStates={setCheckboxStates}
+            filterData={filterData}
+            setFilterData={setFilterData}
           />
         </div>
         <div className="px-6 sm:px-24 w-full">

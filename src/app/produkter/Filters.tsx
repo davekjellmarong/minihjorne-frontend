@@ -5,23 +5,30 @@ import FilterChips from "./FilterChips";
 import { SlidersHorizontal, X, XCircle } from "@phosphor-icons/react";
 import { useRef } from "react";
 import FilterDialog from "./FilterDialog";
+import { useRouter } from "next/navigation";
 
 interface FiltersProps {
   setFilterQuery: any;
+  filterQuery: string;
   setSelectedFilters: (value: string[]) => void;
   selectedFilters: string[];
   setCheckboxStates: (value: any) => void;
   checkboxStates: any;
+  filterData: any;
+  setFilterData: any;
 }
 const Filters = ({
   setFilterQuery,
+  filterQuery,
   setSelectedFilters,
   selectedFilters,
   setCheckboxStates,
   checkboxStates,
+  filterData,
+  setFilterData,
 }: FiltersProps) => {
   const [open, setOpen] = useState(false);
-
+  const router = useRouter();
   const [
     TagsData,
     ColorsData,
@@ -76,6 +83,14 @@ const Filters = ({
       ...categoryFilter.map((item: any) => item.name),
     ]);
   };
+  const FilterProps = {
+    setCheckboxStates,
+    checkboxStates,
+    filterData,
+    setFilterData,
+    setSelectedFilters,
+    selectedFilters,
+  };
   return (
     <div className="  max-h-screen flex flex-col overflow-y-scroll  relative">
       <div className="flex justify-between gap-4">
@@ -104,8 +119,7 @@ const Filters = ({
           </div>
           <div className="grow ">
             <Filter
-              setCheckboxStates={setCheckboxStates}
-              checkboxStates={checkboxStates}
+              {...FilterProps}
               data={CategoryData}
               property="name"
               label="Kategori"
@@ -114,18 +128,16 @@ const Filters = ({
               queryTemplate="&filters[category][name][$eq]="
             />
             <Filter
-              setCheckboxStates={setCheckboxStates}
-              checkboxStates={checkboxStates}
+              {...FilterProps}
               data={SizesData}
               property="number"
-              label="Størrelser"
+              label="Strl"
               setFilter={setSizeFilter}
               filter={sizeFilter}
               queryTemplate="&filters[size][number][$eq]="
             />
             <Filter
-              setCheckboxStates={setCheckboxStates}
-              checkboxStates={checkboxStates}
+              {...FilterProps}
               data={MaterialsData}
               property="name"
               label="Stoff"
@@ -134,8 +146,7 @@ const Filters = ({
               queryTemplate="&filters[materials][name][$eq]="
             />
             <Filter
-              setCheckboxStates={setCheckboxStates}
-              checkboxStates={checkboxStates}
+              {...FilterProps}
               data={TagsData}
               property="name"
               label="Tags"
@@ -144,8 +155,7 @@ const Filters = ({
               queryTemplate="&filters[tags][name][$eq]="
             />
             <Filter
-              setCheckboxStates={setCheckboxStates}
-              checkboxStates={checkboxStates}
+              {...FilterProps}
               data={ColorsData}
               property="name"
               label="Farger"
@@ -176,6 +186,7 @@ const Filters = ({
               onClick={() => {
                 handleFilterFetch();
                 setOpen(false);
+                // router.push(`/produkter?${filterQuery}`);
               }}
             >
               Bruk filter

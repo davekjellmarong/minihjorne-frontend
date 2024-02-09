@@ -123,7 +123,7 @@ const LeggUt = () => {
         <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
           <IntroCarousel />
         </Dialog>
-        <div className="flex flex-col items-center gap-10 sm:flex-row sm:gap-4 ">
+        {/* <div className="flex flex-col items-center gap-10 sm:flex-row sm:gap-4 ">
           <Link
             href="/min-side/selge/last-opp/bilder"
             key={1}
@@ -146,7 +146,7 @@ const LeggUt = () => {
               dine ogknyytt dem til bildene du har lastet opp
             </p>
           </Link>
-        </div>
+        </div> */}
         <div>
           <p className="text-xl">Last opp bilder til dine produkter her</p>
           <ImageUploader
