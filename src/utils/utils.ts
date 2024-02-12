@@ -178,6 +178,9 @@ export const fetchSizes = async () => {
 export const fetchMaterials = async () => {
   return fetchPublicData("/materials");
 };
+export const fetchSexes = async () => {
+  return fetchPublicData("/sexes");
+};
 export const fetchCategories = async () => {
   return fetchPublicData("/categories?sort=order:asc");
 };

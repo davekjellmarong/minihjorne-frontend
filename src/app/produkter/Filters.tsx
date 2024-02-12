@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Filter from "./Fillter";
 import useGetFilters from "@/components/customHooks/useGetFilters";
 import FilterChips from "./FilterChips";
 import { SlidersHorizontal, X, XCircle } from "@phosphor-icons/react";
 import { useRef } from "react";
 import FilterDialog from "./FilterDialog";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface FiltersProps {
   setFilterQuery: any;
@@ -29,12 +29,16 @@ const Filters = ({
 }: FiltersProps) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [
     TagsData,
     ColorsData,
     SizesData,
     CategoryData,
     MaterialsData,
+    SexData,
     colorFilter,
     setColorFilter,
     sizeFilter,
@@ -45,6 +49,8 @@ const Filters = ({
     setMaterialFilter,
     categoryFilter,
     setCategoryFilter,
+    sexFilter,
+    setSexFilter,
   ] = useGetFilters();
   const handleFilterFetch = () => {
     const colorQuery = colorFilter
@@ -72,8 +78,18 @@ const Filters = ({
         return item.query;
       })
       .join("");
+    const sexQuery = sexFilter
+      .map((item: any) => {
+        return item.query;
+      })
+      .join("");
     setFilterQuery(
-      colorQuery + tagQuery + sizeQuery + materialQuery + categoryQuery
+      colorQuery +
+        tagQuery +
+        sizeQuery +
+        materialQuery +
+        categoryQuery +
+        sexQuery
     );
     setSelectedFilters([
       ...colorFilter.map((item: any) => item.name),
@@ -81,7 +97,29 @@ const Filters = ({
       ...tagFilter.map((item: any) => item.name),
       ...materialFilter.map((item: any) => item.name),
       ...categoryFilter.map((item: any) => item.name),
+      ...sexFilter.map((item: any) => item.name),
     ]);
+    console.log({ filterQuery });
+    const queryParams = [
+      ...colorFilter.map((item: any) => item.queryParam),
+      ...sizeFilter.map((item: any) => item.queryParam),
+      ...tagFilter.map((item: any) => item.queryParam),
+      ...materialFilter.map((item: any) => item.queryParam),
+      ...categoryFilter.map((item: any) => item.queryParam),
+      ...sexFilter.map((item: any) => item.queryParam),
+    ].join("&");
+    console.log({ queryParams });
+    // router.push(`${pathname}?${queryParams}`);
+    router.push(
+      `${pathname}?${
+        colorQuery +
+        tagQuery +
+        sizeQuery +
+        materialQuery +
+        categoryQuery +
+        sexQuery
+      }`
+    );
   };
   const FilterProps = {
     setCheckboxStates,
@@ -91,6 +129,13 @@ const Filters = ({
     setSelectedFilters,
     selectedFilters,
   };
+  useEffect(() => {
+    const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
+    const path = current.toString();
+    if (path.length > 0) {
+      setFilterQuery("&" + path);
+    }
+  }, []);
   return (
     <div className="  max-h-screen flex flex-col overflow-y-scroll  relative">
       <div className="flex justify-between gap-4">
@@ -131,7 +176,7 @@ const Filters = ({
               {...FilterProps}
               data={SizesData}
               property="number"
-              label="Strl"
+              label="Størrelse"
               setFilter={setSizeFilter}
               filter={sizeFilter}
               queryTemplate="&filters[size][number][$eq]="
@@ -162,6 +207,15 @@ const Filters = ({
               setFilter={setColorFilter}
               filter={colorFilter}
               queryTemplate="&filters[colors][name][$eq]="
+            />
+            <Filter
+              {...FilterProps}
+              data={SexData}
+              property="name"
+              label="Sex"
+              setFilter={setSexFilter}
+              filter={sexFilter}
+              queryTemplate="&filters[sex][name][$eq]="
             />
           </div>
 

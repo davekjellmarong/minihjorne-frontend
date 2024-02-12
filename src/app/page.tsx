@@ -18,14 +18,14 @@ export default function Home() {
     <div>
       <HomeHeroImage />
       <div className="flex justify-around py-28 bg-indigo-50">
-        <Link href="/produkter?kjønn=gutt">
+        <Link href="/produkter?&filters[sex][name][$eq]=1">
           <div className="bg-boyOutM h-[250px] bg-cover rounded-lg cursor-pointer">
             <div className="backdrop-brightness-[0.7] h-full w-[175px] flex items-center justify-center hover:backdrop-brightness-100">
               <h3 className="text-lg text-white font-semibold">Gutt</h3>
             </div>
           </div>
         </Link>
-        <Link href="/produkter?kjønn=jente">
+        <Link href="produkter?&filters[sex][name][$eq]=2">
           <div className="bg-girlBackM h-[250px] bg-cover rounded-lg cursor-pointer">
             <div className="backdrop-brightness-[0.7] h-full w-[175px] flex items-center justify-center hover:backdrop-brightness-100">
               <h3 className="text-lg text-white font-semibold">Jente</h3>

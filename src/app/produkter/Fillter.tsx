@@ -36,22 +36,6 @@ const Filter = ({
 
   const FilterRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
-  const handleFilterData = (item: any) => {
-    if (filterData?.[label]?.[item.id]) {
-      delete filterData[label][item.id];
-    } else {
-      setFilterData({
-        ...filterData,
-        [label]: {
-          ...filterData[label],
-          [item.id]: item,
-        },
-      });
-    }
-  };
-
-  const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -60,16 +44,23 @@ const Filter = ({
       .toString()
       .split("&")
       .map((item) => decodeURIComponent(item));
-    const filterValues = path.filter((item) => item.includes(label));
-    const localSelectedFilters = filterValues.map((item) => item.split("=")[0]);
-    const filtersObject = [...localSelectedFilters].reduce(
-      (obj: any, filter) => {
-        obj[filter] = true;
-        return obj;
-      },
-      {}
+    const match = queryTemplate.match(/\[([^\]]+)\]/)?.[1];
+
+    if (!match) return;
+    const filterValues = path.filter((item) => item.includes(match));
+    if (!data?.data) return;
+    const filters = data?.data;
+    const localFilters = filterValues.map((item) =>
+      filters.find((filter: any) => String(filter.id) === item.split("=")[1])
     );
-    console.log();
+    const filtersObject = localFilters.reduce((prev: any, curr) => {
+      const value = curr.attributes[property];
+      prev[value] = true;
+      return prev;
+    }, {});
+    const localSelectedFilters = localFilters.map(
+      (item: any) => item.attributes[property]
+    );
     setSelectedFilters((prevSelectedFilters: any) => [
       ...prevSelectedFilters,
       ...localSelectedFilters,
@@ -78,9 +69,7 @@ const Filter = ({
       ...prevCheckboxStates,
       ...filtersObject,
     }));
-    console.log({ checkboxStates });
-    console.log({ selectedFilters });
-  }, []);
+  }, [data]);
 
   const handleCheckboxChange = (item: any) => {
     const isChecked = !checkboxStates[item.attributes[property]];
@@ -90,20 +79,20 @@ const Filter = ({
     }));
     const currentQueryTemplate = queryTemplate + item.id;
 
-    const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
+    // const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
 
-    const value = searchParams.get(item.attributes[property]);
+    // const value = searchParams.get(item.attributes[property]);
 
-    if (value) {
-      current.delete(item.attributes[property]);
-    } else {
-      current.set(item.attributes[property], label);
-    }
+    // if (value) {
+    //   current.delete(item.attributes[property]);
+    // } else {
+    //   current.set(item.attributes[property], label);
+    // }
 
-    const search = current.toString();
-    const query = search ? `?${search}` : "";
+    // const search = current.toString();
+    // const query = search ? `?${search}` : "";
     // router.push(`${pathname}${query}`);
-    history.pushState(history.state, "", `${pathname}${query}`);
+    // history.pushState(history.state, "", `${pathname}${query}`);
 
     // history.replaceState(null, "", `${pathname}${query}`);
 
@@ -114,6 +103,7 @@ const Filter = ({
           query: currentQueryTemplate,
           key: item.id,
           name: item.attributes[property],
+          queryParam: item.attributes[property] + "=" + label,
         },
       ]);
     } else {

@@ -2,6 +2,7 @@ import {
   CategoryRQ,
   ColorsRQ,
   MaterialsRQ,
+  SexRq,
   SizesRQ,
   TagsRQ,
 } from "@/utils/types";
@@ -9,6 +10,7 @@ import {
   fetchCategories,
   fetchColors,
   fetchMaterials,
+  fetchSexes,
   fetchSizes,
   fetchTags,
 } from "@/utils/utils";
@@ -21,6 +23,7 @@ const useGetFilters = () => {
   const [tagFilter, setTagFilter] = useState<any>([]);
   const [materialFilter, setMaterialFilter] = useState<any>([]);
   const [categoryFilter, setCategoryFilter] = useState<any>([]);
+  const [sex, setSex] = useState<any>([]);
   const { data: TagsData, isLoading: tagsLoading } = useQuery<TagsRQ>({
     queryKey: ["tags"],
     queryFn: fetchTags,
@@ -48,12 +51,18 @@ const useGetFilters = () => {
       queryFn: fetchMaterials,
       staleTime: Infinity,
     });
+  const { data: SexData, isLoading: sexLoading } = useQuery<SexRq>({
+    queryKey: ["sex"],
+    queryFn: fetchSexes,
+    staleTime: Infinity,
+  });
   return [
     TagsData,
     ColorsData,
     SizesData,
     CategoryData,
     MaterialsData,
+    SexData,
     colorFilter,
     setColorFilter,
     sizeFilter,
@@ -64,6 +73,8 @@ const useGetFilters = () => {
     setMaterialFilter,
     categoryFilter,
     setCategoryFilter,
+    sex,
+    setSex,
   ];
 };
 

@@ -404,7 +404,15 @@ export interface Status {
     color: { data: Color };
   };
 }
-
+export interface Sex {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
+}
 export interface ColorsRQ {
   data: Color[];
 }
@@ -437,4 +445,7 @@ export interface OrderRQ {
 }
 export interface StatusRQ {
   data: Status[];
+}
+export interface SexRq {
+  data: Sex[];
 }
