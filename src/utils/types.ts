@@ -237,7 +237,7 @@ export interface Product {
     fabric: string;
     brand: string;
     image: {
-      data: Image;
+      data: Image[];
     };
     user: { data: User };
     tags: { data: Tag[] };
@@ -245,6 +245,7 @@ export interface Product {
     size: { data: Size };
     material: { data: Material };
     category: { data: Category };
+    state: { data: State };
   };
 }
 export interface CartItem {
@@ -402,6 +403,16 @@ export interface Status {
     publishedAt: string;
     farge: string;
     color: { data: Color };
+  };
+}
+
+export interface State {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
   };
 }
 export interface Sex {

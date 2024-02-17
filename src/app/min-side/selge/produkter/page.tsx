@@ -1,5 +1,5 @@
 "use client";
-import Products from "@/app/produkter/Products";
+import Products from "@/components/products/Products";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import Loading from "@/components/loading/Loading";
 import { ProductBackend, User } from "@/utils/types";

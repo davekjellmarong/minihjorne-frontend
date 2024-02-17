@@ -7,6 +7,7 @@ import Nav from "@/components/nav/Nav";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UpperNav from "@/components/nav/UpperNav";
+import AutoLoginMiddleware from "@/components/customHooks/AutoLoginMiddleware";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,17 +23,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          {/* <UpperNav /> */}
-          <Nav />
-          <main>
-            {children}
-            <ToastContainer
-              theme="colored"
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={true}
-            />
-          </main>
+          <AutoLoginMiddleware>
+            {/* <UpperNav /> */}
+            <Nav />
+            <main>
+              {children}
+              <ToastContainer
+                theme="colored"
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={true}
+              />
+            </main>
+          </AutoLoginMiddleware>
         </Providers>
       </body>
     </html>

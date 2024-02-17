@@ -11,21 +11,15 @@ interface FiltersProps {
   setFilterQuery: any;
   filterQuery: string;
   setSelectedFilters: (value: string[]) => void;
-  selectedFilters: string[];
   setCheckboxStates: (value: any) => void;
   checkboxStates: any;
-  filterData: any;
-  setFilterData: any;
 }
 const Filters = ({
   setFilterQuery,
   filterQuery,
   setSelectedFilters,
-  selectedFilters,
   setCheckboxStates,
   checkboxStates,
-  filterData,
-  setFilterData,
 }: FiltersProps) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -124,10 +118,7 @@ const Filters = ({
   const FilterProps = {
     setCheckboxStates,
     checkboxStates,
-    filterData,
-    setFilterData,
     setSelectedFilters,
-    selectedFilters,
   };
   useEffect(() => {
     const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form

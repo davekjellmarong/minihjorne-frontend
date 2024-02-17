@@ -3,7 +3,7 @@ import Loading from "@/components/loading/Loading";
 import { ProductsMethods, UserMethods } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
-import Products from "../produkter/Products";
+import Products from "../../components/products/Products";
 import { productByIdOption } from "@/components/reactQuery/Options";
 import SideMenu from "./SideMenu";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";

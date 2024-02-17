@@ -1,0 +1,32 @@
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from "@tanstack/react-query";
+import { cookies } from "next/headers";
+import React from "react";
+import axios from "axios";
+interface AutoLoginMiddlewareProps {
+  children: React.ReactNode;
+}
+const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
+  const cookieStore: any = cookies();
+  const token = cookieStore.get("Token");
+  if (!token) return <>{children}</>;
+
+  const url = "http://localhost:1337/api/users/me?populate=*";
+  const headers = {
+    Authorization: `Bearer ${token.value}`,
+  };
+  const response = await axios.get(url, { headers });
+  const queryClient = new QueryClient();
+  queryClient.setQueryData(["login-user"], response.data);
+  queryClient.setQueryData(["jwt"], token.value);
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      {children};
+    </HydrationBoundary>
+  );
+};
+
+export default AutoLoginMiddleware;

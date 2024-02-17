@@ -3,7 +3,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import Products from "./page";
+import Products from "./PageConsumer";
 import { fetchProducts, fetchPublicData } from "@/utils/utils";
 import { apiUrl } from "@/utils/constants";
 

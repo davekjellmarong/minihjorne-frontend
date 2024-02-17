@@ -10,21 +10,16 @@ import {
   User,
   UserCircle,
 } from "@phosphor-icons/react";
-import Image from "next/image";
-import UpperNav from "./UpperNav";
-import { upperNavItems, authUpperNavItems } from "./UpperNavItems";
 const Nav = () => {
-  const [navItems, setNavItems] = useState(false);
-  const [secondaryNavItems, setSecondaryNavItems] = useState(upperNavItems);
+  const { data } = useQuery({ queryKey: ["jwt"] });
+  let navItemsRightEnd = navItemsPublic;
+  let navItems = false;
+  if (data) {
+    navItemsRightEnd = navItemsAuth;
+    navItems = true;
+  }
   const [isOpen, setIsOpen] = useState(false);
 
-  const { data } = useQuery({ queryKey: ["jwt"] });
-  useEffect(() => {
-    if (data) {
-      setSecondaryNavItems(authUpperNavItems);
-      setNavItems(true);
-    }
-  }, [data]);
   const icons: any = {
     minSide: <UserCircle size={26} weight="thin" />,
     lastOpp: <PlusCircle size={26} weight="thin" />,
@@ -81,7 +76,7 @@ const Nav = () => {
           isOpen ? "flex" : "hidden"
         }`}
       >
-        {secondaryNavItems.map((item) => {
+        {navItemsRightEnd.map((item) => {
           return (
             <Link key={item.path} href={item.path} className="w-500">
               <button

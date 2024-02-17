@@ -1,4 +1,4 @@
-import ProductDetail from "@/app/produkter/ProductDetail";
+import ProductDetail from "@/components/productDetail/ProductDetail";
 import Dialog from "@/components/dialog/Dialog";
 import { ProductBackend } from "@/utils/types";
 import { CheckCircle, X, XCircle } from "@phosphor-icons/react";
@@ -13,9 +13,9 @@ const ProductTable = ({ products }: ProductTableProps) => {
   console.log(products);
   return (
     <>
-      <Dialog open={open} setOpen={setOpen}>
+      {/* <Dialog open={open} setOpen={setOpen}>
         <ProductDetail selectedProduct={selectedProduct} setOpen={setOpen} />
-      </Dialog>
+      </Dialog> */}
       <table className="w-full">
         <thead className="bg-indigo-200 border-2 border-indigo-100">
           <tr className="">

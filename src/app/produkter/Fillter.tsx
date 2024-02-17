@@ -13,10 +13,7 @@ interface FilterProps {
   queryTemplate: string;
   setCheckboxStates: any;
   checkboxStates: any;
-  filterData: any;
-  setFilterData: any;
   setSelectedFilters: any;
-  selectedFilters: any;
 }
 const Filter = ({
   data,
@@ -27,10 +24,7 @@ const Filter = ({
   queryTemplate,
   setCheckboxStates,
   checkboxStates,
-  filterData,
-  setFilterData,
   setSelectedFilters,
-  selectedFilters,
 }: FilterProps) => {
   // When inside this component, use the Label to check if there are any searchParams for this Label. If there are, loop through thoose and set the checkboxStates to true for each of them. and also set the setFilter data as well
 
@@ -78,23 +72,6 @@ const Filter = ({
       [item.attributes[property]]: isChecked,
     }));
     const currentQueryTemplate = queryTemplate + item.id;
-
-    // const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
-
-    // const value = searchParams.get(item.attributes[property]);
-
-    // if (value) {
-    //   current.delete(item.attributes[property]);
-    // } else {
-    //   current.set(item.attributes[property], label);
-    // }
-
-    // const search = current.toString();
-    // const query = search ? `?${search}` : "";
-    // router.push(`${pathname}${query}`);
-    // history.pushState(history.state, "", `${pathname}${query}`);
-
-    // history.replaceState(null, "", `${pathname}${query}`);
 
     if (isChecked) {
       setFilter((prevFilter: any) => [

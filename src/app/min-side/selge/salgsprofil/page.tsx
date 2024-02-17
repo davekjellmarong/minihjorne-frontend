@@ -1,5 +1,5 @@
 "use client";
-import Products from "@/app/produkter/Products";
+import Products from "@/components/products/Products";
 import Loading from "@/components/loading/Loading";
 import { productByIdOption } from "@/components/reactQuery/Options";
 import {

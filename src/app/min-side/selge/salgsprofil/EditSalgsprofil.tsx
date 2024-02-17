@@ -4,7 +4,7 @@ import {
   tailwindColorsObject,
   tailwindColorsUserButton,
 } from "@/utils/constants";
-import Products from "@/app/produkter/Products";
+import Products from "@/components/products/Products";
 import { useQuery } from "@tanstack/react-query";
 import { ProductsMethods } from "@/utils/utils";
 import EditSalgsprofilHeader from "./EditSalgsprofilHeader";
