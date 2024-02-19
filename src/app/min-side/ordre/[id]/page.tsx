@@ -69,7 +69,7 @@ const Page = () => {
                 <td className=" px-10 text-left">
                   <img
                     className="w-14 h-14 shadow-sm"
-                    src={`${product.attributes.image.data?.attributes.url}`}
+                    src={`${product.attributes.image.data?.[0].attributes.url}`}
                     height={200}
                     width={200}
                     alt=""

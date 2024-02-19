@@ -32,18 +32,13 @@ interface ProductProps {
   product: ProductRQ;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const ProductDetail = ({
-  children,
-  params,
-}: {
-  params: { id: string };
-  children: any;
-}) => {
-  const { data: product } = useQuery<ProductRQ>({
+const ProductDetail = ({ params }: { params: { id: string } }) => {
+  const { data } = useQuery<ProductRQ>({
     queryKey: ["product", params.id],
   });
-  if (!product) return <Loading />;
-  console.log(product.data);
+  console.log(data?.data.attributes.user.data.attributes.username);
+  if (!data) return <Loading />;
+  console.log(data.data);
   const iconsList: any = {
     BaseballCap: <BaseballCap size={22} />,
     Dress: <Dress size={22} />,
@@ -66,16 +61,16 @@ const ProductDetail = ({
     <div className="flex flex-wrap sm:flex-nowrap w-full sm:max-h-[750px] justify-center  overflow-hidden">
       <div className="w-full sm:w-1/2 relative">
         <Link
-          href={`profiler/${product?.data.attributes.user.data.attributes.username}`}
+          href={`profiler/${data?.data.attributes.user.data.attributes.username}`}
           className="absolute sm:top-4 bottom-4 sm:bottom-auto right-4 flex border-2 rounded py-2 px-4 bg-white border-transparent"
         >
           <p className="text-purple-500 text-sm">
-            {product?.data.attributes.user.data.attributes.username}
+            {data?.data.attributes.user.data.attributes.username}
           </p>
           <User size={22} />
         </Link>
         <CarouselComponent>
-          {product?.data.attributes.image.data.map((image) => {
+          {data?.data.attributes.image.data.map((image) => {
             return (
               <img
                 key={image.id}
@@ -92,20 +87,20 @@ const ProductDetail = ({
       <div className="w-full sm:w-1/2 relative flex flex-col items-start overflow-hidden">
         <div className="absolute top-5 left-10">
           <ColorSquares
-            colors={product.data.attributes.colors.data}
+            colors={data.data.attributes.colors.data}
             // size="size-8"
           />
-          {/* <span className="flex">{sexList[product.sex.name]}</span> */}
+          {/* <span className="flex">{sexList[data.sex.name]}</span> */}
         </div>
         <div className="relative  flex w-full flex-col gap-3">
           <p className="text-3xl mt-8  font-semibold w-full text-center">
-            {product.data.attributes.price} kr
+            {data.data.attributes.price} kr
           </p>
           <div className="flex w-full items-center justify-center mb-4">
             <p className="">
-              {product.data.attributes.category.data.attributes.name}
+              {data.data.attributes.category.data.attributes.name}
             </p>
-            {/* <span>{{iconsList[product.category.icon]} }</span> */}
+            {/* <span>{{iconsList[data.category.icon]} }</span> */}
           </div>
           <div className="absolute flex w-full justify-end">
             <button className=" pt-4 pr-4">
@@ -122,8 +117,8 @@ const ProductDetail = ({
             </p>
             <p className="grow text-xl font-light text-center">
               {" "}
-              {product.data.attributes.size.data.attributes.number} /{" "}
-              {product.data.attributes.size.data.attributes.text}
+              {data.data.attributes.size.data.attributes.number} /{" "}
+              {data.data.attributes.size.data.attributes.text}
             </p>
             <div className="w-1/5"></div>
           </div>
@@ -133,7 +128,7 @@ const ProductDetail = ({
               {/* <Tag size={22} /> */}
             </p>
             <p className="grow text-xl font-light text-center">
-              {product.data.attributes.brand}
+              {data.data.attributes.brand}
             </p>
             <div className="w-1/5"></div>
           </div>
@@ -144,7 +139,7 @@ const ProductDetail = ({
             </p>
             <p className="grow text-xl font-light text-center">
               {" "}
-              {product.data.attributes.material.data.attributes.name}
+              {data.data.attributes.material.data.attributes.name}
             </p>
             <div className="w-1/5"></div>
           </div>
@@ -155,7 +150,7 @@ const ProductDetail = ({
             </p>
             <p className="grow text-xl font-light text-center">
               {" "}
-              {product.data.attributes.state.data.attributes.name}
+              {data.data.attributes.state.data.attributes.name}
             </p>
             <div className="w-1/5"></div>
           </div>
@@ -166,14 +161,14 @@ const ProductDetail = ({
             </p>
             <p className="grow text-xl font-light text-center">
               {" "}
-              {product.colors[0]?.name}
+              {data.colors[0]?.name}
             </p>
             <div className="w-1/5"></div>
           </div> */}
         </div>
         <div className="px-12 my-6 flex justify-center">
           <div className=" bg-white py-2 px-12 mt-2 rounded border border-gray-200">
-            {product.data.attributes.tags.data.map((tag) => {
+            {data.data.attributes.tags.data.map((tag) => {
               return <p key={tag.id}>{tag.attributes.name}</p>;
             })}
           </div>
