@@ -6,10 +6,10 @@ import {
 } from "../cart/Utils";
 import { toast } from "react-toastify";
 import { MinusCircle, PlusCircle } from "@phosphor-icons/react";
-import { Product, ProductBackend } from "@/utils/types";
+import { Product } from "@/utils/types";
 
 interface AddToCartButtonsProps {
-  product: ProductBackend;
+  product: Product;
 }
 
 const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {

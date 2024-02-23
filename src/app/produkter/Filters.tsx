@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Filter from "./Fillter";
 import useGetFilters from "@/components/customHooks/useGetFilters";
-import FilterChips from "./FilterChips";
-import { SlidersHorizontal, X, XCircle } from "@phosphor-icons/react";
-import { useRef } from "react";
+import { SlidersHorizontal, X } from "@phosphor-icons/react";
 import FilterDialog from "./FilterDialog";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { queryTemplates } from "@/utils/constants";
 
 interface FiltersProps {
   setFilterQuery: any;
@@ -93,7 +92,6 @@ const Filters = ({
       ...categoryFilter.map((item: any) => item.name),
       ...sexFilter.map((item: any) => item.name),
     ]);
-    console.log({ filterQuery });
     const queryParams = [
       ...colorFilter.map((item: any) => item.queryParam),
       ...sizeFilter.map((item: any) => item.queryParam),
@@ -102,7 +100,6 @@ const Filters = ({
       ...categoryFilter.map((item: any) => item.queryParam),
       ...sexFilter.map((item: any) => item.queryParam),
     ].join("&");
-    console.log({ queryParams });
     // router.push(`${pathname}?${queryParams}`);
     router.push(
       `${pathname}?${
@@ -156,12 +153,21 @@ const Filters = ({
           <div className="grow ">
             <Filter
               {...FilterProps}
+              data={SexData}
+              property="name"
+              label="Kjønn"
+              setFilter={setSexFilter}
+              filter={sexFilter}
+              queryTemplate={queryTemplates.sexQueryTemplate}
+            />
+            <Filter
+              {...FilterProps}
               data={CategoryData}
               property="name"
               label="Kategori"
               setFilter={setCategoryFilter}
               filter={categoryFilter}
-              queryTemplate="&filters[category][name][$eq]="
+              queryTemplate={queryTemplates.categoryQueryTemplate}
             />
             <Filter
               {...FilterProps}
@@ -170,16 +176,7 @@ const Filters = ({
               label="Størrelse"
               setFilter={setSizeFilter}
               filter={sizeFilter}
-              queryTemplate="&filters[size][number][$eq]="
-            />
-            <Filter
-              {...FilterProps}
-              data={MaterialsData}
-              property="name"
-              label="Stoff"
-              setFilter={setMaterialFilter}
-              filter={materialFilter}
-              queryTemplate="&filters[materials][name][$eq]="
+              queryTemplate={queryTemplates.sizeQueryTemplate}
             />
             <Filter
               {...FilterProps}
@@ -188,7 +185,7 @@ const Filters = ({
               label="Tags"
               setFilter={setTagFilter}
               filter={tagFilter}
-              queryTemplate="&filters[tags][name][$eq]="
+              queryTemplate={queryTemplates.tagQueryTemplate}
             />
             <Filter
               {...FilterProps}
@@ -197,16 +194,16 @@ const Filters = ({
               label="Farger"
               setFilter={setColorFilter}
               filter={colorFilter}
-              queryTemplate="&filters[colors][name][$eq]="
+              queryTemplate={queryTemplates.colorQueryTemplate}
             />
             <Filter
               {...FilterProps}
-              data={SexData}
+              data={MaterialsData}
               property="name"
-              label="Sex"
-              setFilter={setSexFilter}
-              filter={sexFilter}
-              queryTemplate="&filters[sex][name][$eq]="
+              label="Stoff"
+              setFilter={setMaterialFilter}
+              filter={materialFilter}
+              queryTemplate={queryTemplates.materialQueryTemplate}
             />
           </div>
 

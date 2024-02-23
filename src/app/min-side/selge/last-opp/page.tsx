@@ -19,6 +19,7 @@ import CarouselComponent from "@/components/carousel/Carousel";
 import { Question } from "@phosphor-icons/react";
 import IntroCarousel from "./IntroCarousel";
 import Link from "next/link";
+import LoadingOverlay from "@/components/loading/LoadingOverlay";
 
 export interface ImageUpload extends Blob {
   lastModified: number;
@@ -35,6 +36,7 @@ const LeggUt = () => {
   const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
   const [images, setImages] = useState<ImageUpload[]>([]);
   const [savedImages, setSavedImages] = useState<ImageUpload[]>([]);
+  const [nextProduct, setNextProduct] = useState(true);
   useAutoLogIn();
   const { data: jwt } = useQuery({
     queryKey: ["jwt"],
@@ -42,7 +44,7 @@ const LeggUt = () => {
   const { data: user } = useQuery<User>({
     queryKey: ["login-user"],
   });
-  const { mutate: createProduct, isPaused: loading } = useMutation({
+  const { mutate: createProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.post(values, jwt);
     },
@@ -65,6 +67,7 @@ const LeggUt = () => {
       setStepper(1);
       setSelectedImages([]);
       formik.resetForm();
+      setNextProduct(true);
     },
     onError: (err: any) => {
       console.log(err);
@@ -172,7 +175,9 @@ const LeggUt = () => {
           formik={formik}
         />
       </FilterDialog>
+
       <div className="flex flex-col gap-14 relative">
+        <LoadingOverlay loading={loading} />
         <div className="bg-white  overflow-scroll shadow flex flex-col-reverse items-center border-r-2 justify-center border-gray-200">
           <div className="p-6" onClick={() => setModal(true)}>
             <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
@@ -180,7 +185,28 @@ const LeggUt = () => {
           </div>
         </div>
         <div className="">
-          <ProductForm {...ProjectFormProps} />
+          {nextProduct ? (
+            <div className="flex flex-col items-center gap-8">
+              <p>Vil du registrere flere produkter?</p>
+              <button
+                onClick={() => {
+                  setNextProduct(false);
+                  setModal(true);
+                }}
+                className="bg-brand-500 w-52 py-4 px-6 text-white rounded "
+              >
+                Ja
+              </button>
+              <Link
+                href="/min-side/selge/produkter"
+                className="bg-white border-2 border-brand-600 w-52 py-4 px-6 rounded text-center"
+              >
+                Se mine produkter
+              </Link>
+            </div>
+          ) : (
+            <ProductForm {...ProjectFormProps} />
+          )}
         </div>
       </div>
     </>

@@ -30,6 +30,12 @@ export const upperNavItems = [
     icon: "hjem'",
   },
   {
+    label: "Handlekurv",
+    path: "/handlekurv",
+    color: "transparent",
+    icon: "handlekurv",
+  },
+  {
     label: "Logg inn/Registrer",
     path: "/auth",
     color: "transparent",
@@ -66,5 +72,17 @@ export const authUpperNavItems = [
     path: "/om-oss",
     color: "transparent",
     icon: "hjem'",
+  },
+  {
+    label: "Handlekurv",
+    path: "/handlekurv",
+    color: "transparent",
+    icon: "handlekurv",
+  },
+  {
+    label: "Min Side",
+    path: "/min-side",
+    color: "transparent",
+    icon: "minSide",
   },
 ];

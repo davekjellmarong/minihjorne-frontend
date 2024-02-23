@@ -70,3 +70,12 @@ export const tailwindColorsUserButton: any = {
   Sølv: "bg-gray-200 ",
   Bronse: "bg-orange-200 ",
 };
+
+export const queryTemplates = {
+  sexQueryTemplate: "&filters[sex][name][$eq]=",
+  categoryQueryTemplate: "&filters[category][name][$eq]=",
+  sizeQueryTemplate: "&filters[size][number][$eq]=",
+  tagQueryTemplate: "&filters[tags][name][$eq]=",
+  colorQueryTemplate: "&filters[colors][name][$eq]=",
+  materialQueryTemplate: "&filters[materials][name][$eq]=",
+};

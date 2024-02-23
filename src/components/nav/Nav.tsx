@@ -10,6 +10,7 @@ import {
   User,
   UserCircle,
 } from "@phosphor-icons/react";
+import { authUpperNavItems } from "./UpperNavItems";
 const Nav = () => {
   const { data } = useQuery({ queryKey: ["jwt"] });
   let navItemsRightEnd = navItemsPublic;
@@ -76,7 +77,7 @@ const Nav = () => {
           isOpen ? "flex" : "hidden"
         }`}
       >
-        {navItemsRightEnd.map((item) => {
+        {authUpperNavItems.map((item) => {
           return (
             <Link key={item.path} href={item.path} className="w-500">
               <button

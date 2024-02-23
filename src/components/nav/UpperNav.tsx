@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { authUpperNavItems, upperNavItems } from "./UpperNavItems";
 import Link from "next/link";
@@ -9,7 +10,7 @@ const UpperNav = () => {
 
   const { data } = useQuery({ queryKey: ["jwt"] });
   console.log(data);
-  
+
   useEffect(() => {
     console.log(data);
     if (data) {
