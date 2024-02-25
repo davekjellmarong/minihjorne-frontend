@@ -32,11 +32,9 @@ export interface ImageUpload extends Blob {
 const LeggUt = () => {
   const [modal, setModal] = useState(false);
   const [introModal, setIntroModal] = useState(false);
-  const [stepper, setStepper] = useState(1);
   const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
   const [images, setImages] = useState<ImageUpload[]>([]);
-  const [savedImages, setSavedImages] = useState<ImageUpload[]>([]);
-  const [nextProduct, setNextProduct] = useState(true);
+  const [nextProduct, setNextProduct] = useState(false);
   useAutoLogIn();
   const { data: jwt } = useQuery({
     queryKey: ["jwt"],
@@ -49,22 +47,15 @@ const LeggUt = () => {
       return ProductsMethods.post(values, jwt);
     },
     onSuccess: (data) => {
-      console.log(data);
       toast.info(
         `Produktet '${
           formik.values.colorsNorwegianName
         } ${formik.values.categoryName.toLowerCase()}' lagret`
       );
-      // Find the first image that does not exist in savedImages
-      // const firstUnsavedImage = images.find(
-      //   (image: any) =>
-      //     ![...savedImages, selectedImages.name].includes(image.name)
-      // );
-      // if (firstUnsavedImage) {
-      //   setSelectedImagess(firstUnsavedImage);
-      // }
-      setSavedImages((prev: any) => [...prev, ...selectedImages]);
-      setStepper(1);
+      setImages((prev: any) =>
+        prev.filter((image: any) => !selectedImages.includes(image))
+      );
+
       setSelectedImages([]);
       formik.resetForm();
       setNextProduct(true);
@@ -93,23 +84,14 @@ const LeggUt = () => {
     onSubmit: (values) => {
       const userId: any = user?.id;
       const data = { ...values, user: userId };
-      console.log(data);
       var formData = new FormData();
-      // formData.append("files.image", selectedImages, selectedImages.name);
       selectedImages.forEach((image: any) => {
         formData.append("files.image", image, image.name);
       });
       formData.append("data", JSON.stringify(data));
-      console.log(formData);
       createProduct(formData);
     },
   });
-  const ProjectFormProps = {
-    formik: formik,
-    setSavedImages: setSavedImages,
-    stepper: stepper,
-    setStepper: setStepper,
-  };
   if (images.length === 0) {
     return (
       <div className="flex flex-col gap-6 text-center justify-center items-center h-screen relative">
@@ -165,14 +147,10 @@ const LeggUt = () => {
     <>
       <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
         <p className="text-center m-10">Velg opp til 3 bilder</p>
-        {/* <p>{bilder valgt }</p> */}
         <ImagesList
-          savedImages={savedImages}
           images={images}
           setSelectedImages={setSelectedImages}
           selectedImages={selectedImages}
-          setStepper={setStepper}
-          formik={formik}
         />
       </FilterDialog>
 
@@ -180,7 +158,6 @@ const LeggUt = () => {
         <LoadingOverlay loading={loading} />
         <div className="bg-white  overflow-scroll shadow flex flex-col-reverse items-center border-r-2 justify-center border-gray-200">
           <div className="p-6" onClick={() => setModal(true)}>
-            <p className="text-center mb-2">Produkt {savedImages.length + 1}</p>
             <SelectedImages selectedImages={selectedImages} />
           </div>
         </div>
@@ -205,7 +182,7 @@ const LeggUt = () => {
               </Link>
             </div>
           ) : (
-            <ProductForm {...ProjectFormProps} />
+            <ProductForm formik={formik} />
           )}
         </div>
       </div>

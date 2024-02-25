@@ -12,35 +12,37 @@ interface ColorProps {
 }
 const Tags = ({ tags, formik, onChangeFunc }: ColorProps) => {
   return (
-    <FormFieldContainer header="Katergori">
-      {tags.map((tag) => {
-        return (
-          <div key={tag.id} className="w-20 flex flex-col items-center">
-            <label className={`font-light text-sm`}>
-              {tag.attributes.name}
-            </label>
-            <input
-              className={`w-8 h-8`}
-              type="radio"
-              name="tags"
-              id="tags"
-              value={tag.id}
-              onChange={(e) => {
-                const tagId = e.target.value;
-                const tagName = tag.attributes.name;
+    <>
+      <FormFieldContainer optional header="Katergori">
+        {tags.map((tag) => {
+          return (
+            <div key={tag.id} className="w-20 flex flex-col items-center">
+              <label className={`font-light text-sm`}>
+                {tag.attributes.name}
+              </label>
+              <input
+                className={`w-8 h-8`}
+                type="radio"
+                name="tags"
+                id="tags"
+                value={tag.id}
+                onChange={(e) => {
+                  const tagId = e.target.value;
+                  const tagName = tag.attributes.name;
 
-                // Set both color ID and color name to Formik values
-                formik.setFieldValue("tags", tagId);
-                formik.setFieldValue(`tagName`, tagName);
-                if (onChangeFunc) {
-                  onChangeFunc();
-                }
-              }}
-            />
-          </div>
-        );
-      })}
-    </FormFieldContainer>
+                  // Set both color ID and color name to Formik values
+                  formik.setFieldValue("tags", tagId);
+                  formik.setFieldValue(`tagName`, tagName);
+                  if (onChangeFunc) {
+                    onChangeFunc();
+                  }
+                }}
+              />
+            </div>
+          );
+        })}
+      </FormFieldContainer>
+    </>
   );
 };
 

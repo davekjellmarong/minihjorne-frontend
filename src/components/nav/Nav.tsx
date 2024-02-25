@@ -10,14 +10,14 @@ import {
   User,
   UserCircle,
 } from "@phosphor-icons/react";
-import { authUpperNavItems } from "./UpperNavItems";
+import { authUpperNavItems, upperNavItems } from "./UpperNavItems";
 const Nav = () => {
   const { data } = useQuery({ queryKey: ["jwt"] });
   let navItemsRightEnd = navItemsPublic;
-  let navItems = false;
+  let navItems = upperNavItems;
   if (data) {
     navItemsRightEnd = navItemsAuth;
-    navItems = true;
+    navItems = authUpperNavItems;
   }
   const [isOpen, setIsOpen] = useState(false);
 
@@ -57,8 +57,9 @@ const Nav = () => {
       </Link>
 
       <div className="flex justify-end w-1/3">
-        {navItems &&
-          navItemsAuth.map((item) => {
+        {
+          // navItems &&
+          navItemsRightEnd.map((item) => {
             return (
               <Link key={item.path} href={item.path} className="w-500">
                 <button
@@ -69,7 +70,8 @@ const Nav = () => {
                 </button>
               </Link>
             );
-          })}
+          })
+        }
       </div>
 
       <div
@@ -77,7 +79,7 @@ const Nav = () => {
           isOpen ? "flex" : "hidden"
         }`}
       >
-        {authUpperNavItems.map((item) => {
+        {navItems.map((item) => {
           return (
             <Link key={item.path} href={item.path} className="w-500">
               <button

@@ -7,17 +7,11 @@ interface ImageListProps {
   images: ImageUpload[];
   setSelectedImages: (value: ImageUpload[]) => void;
   selectedImages: ImageUpload[];
-  savedImages: ImageUpload[];
-  setStepper: (value: number) => void;
-  formik: any;
 }
 const ImagesList = ({
   images,
   setSelectedImages,
-  savedImages,
   selectedImages,
-  setStepper,
-  formik,
 }: ImageListProps) => {
   return (
     <div className="flex justify-center flex-wrap gap-4 mx-12">

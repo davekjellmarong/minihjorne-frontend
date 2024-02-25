@@ -1,21 +1,21 @@
 export const navItemsPublic = [
-  {
-    label: "Hjem",
-    path: "/",
-    color: "transparent",
-    icon: "hjem'",
-  },
-  {
-    label: "Produkter",
-    path: "/produkter",
-    color: "transparent",
-    icon: "minSide",
-  },
+  // {
+  //   label: "Hjem",
+  //   path: "/",
+  //   color: "transparent",
+  //   icon: "hjem'",
+  // },
+  // {
+  //   label: "Produkter",
+  //   path: "/produkter",
+  //   color: "transparent",
+  //   icon: "minSide",
+  // },
   {
     label: "Logg inn/Registrer",
     path: "/auth",
     color: "transparent",
-    icon: "minSide",
+    icon: "",
   },
 ];
 export const navItemsAuth = [
