@@ -167,7 +167,7 @@ const ProductDetail = ({ selectedProduct, setOpen }: ProductProps) => {
           <hr className=" mx-12 mt-6" />
         </div>
         <div className="flex w-full px-12 h-full mb-10 sm:mb-0 items-center justify-center">
-          <AddToCartButtons product={selectedProduct} />
+          {/* <AddToCartButtons product={selectedProduct} /> */}
         </div>
       </div>
     </div>
