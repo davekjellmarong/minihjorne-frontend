@@ -217,6 +217,9 @@ export const ProductsMethods = {
       `/products?populate=*&filters[sold][$eq]=false&filters[user][id][$eq]=${id}`
     );
   },
+  getAllMyProducts: async (token: any) => {
+    return getAuthData(`/products/me/all`, token);
+  },
   getByOrderId: async (id: any, token: any) => {
     return getAuthData(
       `/products?populate=*&filters[order][id][$eq]=${id}`,

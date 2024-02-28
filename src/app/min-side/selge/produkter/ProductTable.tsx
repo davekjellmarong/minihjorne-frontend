@@ -10,19 +10,19 @@ interface ProductTableProps {
 const ProductTable = ({ products }: ProductTableProps) => {
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductBackend>();
-  console.log(products);
   return (
     <>
       {/* <Dialog open={open} setOpen={setOpen}>
         <ProductDetail selectedProduct={selectedProduct} setOpen={setOpen} />
       </Dialog> */}
       <table className="w-full">
-        <thead className="bg-indigo-200 border-2 border-indigo-100">
+        <thead className="bg-indigo-300 border-2 border-indigo-100">
           <tr className="">
             <th className="text-xs text-left pl-4 py-4 font-normal">Bilde</th>
             <th className="text-xs text-left pl-4 py-4 font-normal">Dato</th>
             <th className="text-xs text-right pr-4 py-4 font-normal">Pris</th>
-            <th className="text-xs text-left pl-4 py-4 font-normal">Solgt</th>
+            {/* <th className="text-xs text-left pl-4 py-4 font-normal">Solgt</th> */}
+            <th className="text-xs text-left pl-4 py-4 font-normal">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +39,6 @@ const ProductTable = ({ products }: ProductTableProps) => {
               options
             );
             const formattedDateWithoutDot = formattedDate.replace(/\./g, "");
-
             return (
               <tr
                 key={product.id}
@@ -47,16 +46,18 @@ const ProductTable = ({ products }: ProductTableProps) => {
                   setSelectedProduct(product);
                   setOpen(true);
                 }}
-                className="border-2 border-indigo-100 hover:bg-indigo-100 cursor-pointer"
+                className="border border-indigo-100 hover:bg-indigo-100 cursor-pointer"
               >
                 <td className="text-sm py-1 px-4 text-left">
-                  <Image
-                    src={product.image[0]?.url}
-                    alt="Produkt bilde"
-                    width={50}
-                    height={50}
-                    className="rounded max-h-16 object-cover"
-                  />
+                  {product?.image?.length > 0 && (
+                    <Image
+                      src={product?.image[0]?.url}
+                      alt="Produkt bilde"
+                      width={50}
+                      height={50}
+                      className="rounded max-h-16 object-cover"
+                    />
+                  )}
                 </td>
                 <td className=" text-sm py-5 px-4 text-left font-semibold">
                   {formattedDateWithoutDot}
@@ -68,16 +69,29 @@ const ProductTable = ({ products }: ProductTableProps) => {
                 {product.products?.data.length} stk
               </td> */}
                 {/* <td className={` py-4 px-10 text-gray-500 ${color?.tailwind}`}> */}
-                <td className={` py-3 px-4  `}>
+                {/* <td className={` py-3 px-4  `}>
                   <p
                     className={`text-indigo-700 text-xs p-2 rounded text-center`}
                   >
-                    {product.sold ? (
-                      <CheckCircle size={26} color="green" />
-                    ) : (
-                      <X size={26} weight="light" />
-                    )}
+                    {product.sold ? <p>Ja</p> : <p>Nei</p>}
                   </p>
+                </td> */}
+                <td className=" py-3 px-4 text-sm">
+                  {!product.active && product.sold === false && (
+                    <div className="flex text-red-800 items-center bg-red-200 border p-2">
+                      <p className=" w-full text-center">Offline</p>
+                    </div>
+                  )}
+                  {product.active && product.sold === false && (
+                    <div className="flex text-orange-800 items-center bg-orange-300 border p-2">
+                      <p className=" w-full text-center">Live</p>
+                    </div>
+                  )}
+                  {product.sold && (
+                    <div className="flex text-green-800 items-center bg-green-200 border p-2">
+                      <p className=" w-full text-center">Solgt</p>
+                    </div>
+                  )}
                 </td>
               </tr>
             );

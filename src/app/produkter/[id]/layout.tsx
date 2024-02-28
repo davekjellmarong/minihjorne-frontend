@@ -9,6 +9,7 @@ import {
   ServerProductMethods,
   fetchProductsFiltered,
 } from "@/utils/serverUtils";
+import LargeProductSkeleton from "@/components/skeleton/LargeProductSkeleton";
 
 const Provider = async ({
   children,

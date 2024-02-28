@@ -6,6 +6,7 @@ import {
 import React from "react";
 import ProductPage from "./ProductPage";
 import { fetchProductsFiltered } from "@/utils/serverUtils";
+import ProductSkeleton from "@/components/skeleton/SmallProductSkeleton";
 
 const ProductProvider = async () => {
   const queryClient = new QueryClient();

@@ -1,8 +1,8 @@
 "use client";
-import { Product as ProductType, ProductBackend } from "@/utils/types";
+import { ProductBackend } from "@/utils/types";
 import { fetchProductsFiltered } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Products from "../../components/products/Products";
 import Filters from "./Filters";
 import FilterChips from "./FilterChips";
@@ -24,7 +24,6 @@ const ProductPage = () => {
       return fetchProductsFiltered(filterQuery);
     },
   });
-  console.log(data);
   return (
     <>
       <div className="flex w-full flex-col items-center relative">

@@ -58,7 +58,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
     user,
   } = data.data.attributes;
   return (
-    <div className="flex flex-wrap sm:flex-nowrap w-full sm:max-h-[750px] justify-center  overflow-hidden">
+    <div className="flex flex-wrap w-full justify-center  overflow-hidden">
       <div className="w-full sm:w-1/2 relative">
         <div className="absolute z-10 top-4 left-8">
           <BackButton />
