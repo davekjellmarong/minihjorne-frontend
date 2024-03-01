@@ -23,19 +23,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          {/* <AutoLoginMiddleware> */}
-          {/* <UpperNav /> */}
-          <Nav />
-          <main>
-            {children}
-            <ToastContainer
-              theme="colored"
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={true}
-            />
-          </main>
-          {/* </AutoLoginMiddleware> */}
+          <AutoLoginMiddleware>
+            {/* <UpperNav /> */}
+            <Nav />
+            <main>
+              {children}
+              <ToastContainer
+                theme="colored"
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={true}
+              />
+            </main>
+          </AutoLoginMiddleware>
         </Providers>
       </body>
     </html>
