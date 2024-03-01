@@ -13,6 +13,7 @@ interface AutoLoginMiddlewareProps {
 const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   const cookieStore: any = cookies();
   const token = cookieStore.get("Token");
+  console.log(token);
   if (!token) return <>{children}</>;
   console.log("AutoLoginMiddleware");
   const url = apiUrl + "/users/me?populate=*";
