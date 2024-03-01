@@ -17,7 +17,12 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   const token = cookieStore.get("Token");
   console.log(token, "token");
   if (!token) return <>{children}</>;
-  const url = apiUrl + "/users/me?populate=*";
+
+  const url = process.env.NEXT_PUBLIC_API_URL + "/users/me?populate=*";
+  console.log(
+    process.env.NEXT_PUBLIC_API_URL,
+    "process.env.NEXT_PUBLIC_API_URL"
+  );
   console.log(apiUrl, "apiUrl");
 
   const headers = {
