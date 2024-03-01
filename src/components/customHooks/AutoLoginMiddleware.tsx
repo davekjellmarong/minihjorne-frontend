@@ -6,6 +6,7 @@ import {
 import { cookies } from "next/headers";
 import React from "react";
 import axios from "axios";
+import { apiUrl } from "@/utils/constants";
 interface AutoLoginMiddlewareProps {
   children: React.ReactNode;
 }
@@ -14,7 +15,7 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   const token = cookieStore.get("Token");
   if (!token) return <>{children}</>;
 
-  const url = "http://localhost:1337/api/users/me?populate=*";
+  const url = apiUrl + "/users/me?populate=*";
   const headers = {
     Authorization: `Bearer ${token.value}`,
   };
