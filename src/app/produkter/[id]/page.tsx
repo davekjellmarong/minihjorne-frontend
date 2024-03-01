@@ -21,6 +21,7 @@ import { ProductQueries } from "@/query/product/QueryFactory";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   const { data: product } = useQuery(ProductQueries.detail(params.id));
+  console.log(product);
   if (!product) return <Loading />;
   const iconsList: any = {
     BaseballCap: <BaseballCap size={22} />,
