@@ -1,7 +1,7 @@
 import { queryOptions } from "@tanstack/react-query";
 
 import { apiUrl, fetchPublicData } from "@/utils/serverUtils";
-import { Product } from "@/utils/types";
+import { Product, ProductBackend } from "@/utils/types";
 
 export const ProductQueries = {
   all: () => ["products"],
@@ -29,7 +29,7 @@ export const ProductsMethods = {
   getById: async (id: any): Promise<Product> => {
     return fetchPublicData(`/products/${id}?populate=*`);
   },
-  getFiltered: async (query: string): Promise<Product[]> => {
+  getFiltered: async (query: string): Promise<ProductBackend[]> => {
     return fetchProductsFiltered(query);
   },
 };
