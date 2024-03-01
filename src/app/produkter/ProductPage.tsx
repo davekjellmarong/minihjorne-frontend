@@ -1,11 +1,10 @@
 "use client";
-import { ProductBackend } from "@/utils/types";
-import { fetchProductsFiltered } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Products from "../../components/products/Products";
 import Filters from "./Filters";
 import FilterChips from "./FilterChips";
+import { ProductQueries } from "@/query/product/QueryFactory";
 
 export interface SelectedFilter {
   query: string;
@@ -18,12 +17,10 @@ const ProductPage = () => {
   const [checkboxStates, setCheckboxStates] = useState<{
     [key: string]: boolean;
   }>({});
-  const { data, isLoading } = useQuery<ProductBackend[]>({
-    queryKey: ["product", filterQuery],
-    queryFn: () => {
-      return fetchProductsFiltered(filterQuery);
-    },
-  });
+  const { data: products, isPending } = useQuery(
+    ProductQueries.filtered(filterQuery)
+  );
+  console.log(products);
   return (
     <>
       <div className="flex w-full flex-col items-center relative">
@@ -47,7 +44,7 @@ const ProductPage = () => {
           />
         </div>
         <div className="px-6">
-          <Products data={data} isLoading={isLoading} />
+          <Products data={products} isLoading={isPending} />
         </div>
       </div>
     </>

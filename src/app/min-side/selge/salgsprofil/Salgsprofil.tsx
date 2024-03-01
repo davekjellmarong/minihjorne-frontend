@@ -28,6 +28,7 @@ const Salgsprofil = ({ user }: SalgsprofilProps) => {
       return ProductsMethods.getByUserId(user.id);
     },
   });
+
   const icons: any = {
     Star: {
       component: <Star size={52} weight="fill" color={user.color} />,

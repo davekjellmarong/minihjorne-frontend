@@ -29,7 +29,7 @@ const Produkter = () => {
   //   enabled: !!userId,
   // });
   const { data: products, isLoading } = useQuery<ProductBackend[]>({
-    queryKey: ["products", , "me", "active"],
+    queryKey: ["products", "me", "active"],
     queryFn: () => {
       return ProductsMethods.getByUserId(userId);
     },

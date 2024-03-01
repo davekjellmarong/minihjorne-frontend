@@ -5,7 +5,6 @@ import Link from "next/link";
 const Breadcrumb = () => {
   const pathname = usePathname();
   const pathnames = pathname.split("/").filter((x) => x);
-  console.log(pathname);
   const backgroundColor =
     pathname === "/min-side" ? "bg-brand-200" : "bg-white";
   const textColor =

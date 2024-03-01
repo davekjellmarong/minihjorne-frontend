@@ -7,8 +7,9 @@ interface SizeProps {
   sizes: Size[];
   formik: any;
   onChangeFunc?: () => void;
+  initialId?: number;
 }
-const Size = ({ sizes, formik, onChangeFunc }: SizeProps) => {
+const Size = ({ sizes, formik, onChangeFunc, initialId }: SizeProps) => {
   return (
     <FormFieldContainer header="Størrelse">
       {sizes.map((size) => {
@@ -23,6 +24,7 @@ const Size = ({ sizes, formik, onChangeFunc }: SizeProps) => {
               name="size"
               className="h-8 w-8"
               value={size.id}
+              defaultChecked={size.id === initialId}
               onChange={(e) => {
                 const sizeId = e.target.value;
                 const sizeName = size.attributes.number;

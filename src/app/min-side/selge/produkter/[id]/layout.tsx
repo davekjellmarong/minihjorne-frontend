@@ -1,12 +1,12 @@
-import React from "react";
+import { ProductMethods } from "@/utils/serverUtils";
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { ProductQueries } from "@/query/product/QueryFactory";
+import React, { Suspense } from "react";
 
-const Provider = async ({
+const layout = async ({
   children,
   params,
 }: {
@@ -14,7 +14,13 @@ const Provider = async ({
   children: any;
 }) => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(ProductQueries.detail(params.id));
+  await queryClient.prefetchQuery({
+    queryKey: ["product", params.id],
+    queryFn: () => {
+      return ProductMethods.getById(params.id);
+    },
+  });
+
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       {children}
@@ -22,4 +28,4 @@ const Provider = async ({
   );
 };
 
-export default Provider;
+export default layout;

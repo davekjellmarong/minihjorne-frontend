@@ -24,8 +24,14 @@ interface CategoryProps {
   categories: Category[];
   formik: any;
   onChangeFunc?: () => void;
+  initialId?: number;
 }
-const Category = ({ categories, formik, onChangeFunc }: CategoryProps) => {
+const Category = ({
+  categories,
+  formik,
+  onChangeFunc,
+  initialId,
+}: CategoryProps) => {
   const iconsList: any = {
     Head: <BaseballCap size={32} />,
     Dress: <Dress size={32} />,
@@ -55,6 +61,7 @@ const Category = ({ categories, formik, onChangeFunc }: CategoryProps) => {
               // id="category"
               className="h-8 w-8 rounded"
               value={category.id}
+              defaultChecked={category.id === initialId}
               required
               // onChange={formik.handleChange}
               onChange={(e) => {

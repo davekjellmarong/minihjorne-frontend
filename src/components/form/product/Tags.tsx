@@ -9,8 +9,9 @@ interface ColorProps {
   tags: Tag[];
   formik: any;
   onChangeFunc?: () => void;
+  initialId?: number;
 }
-const Tags = ({ tags, formik, onChangeFunc }: ColorProps) => {
+const Tags = ({ tags, formik, onChangeFunc, initialId }: ColorProps) => {
   return (
     <>
       <FormFieldContainer optional header="Katergori">
@@ -25,6 +26,7 @@ const Tags = ({ tags, formik, onChangeFunc }: ColorProps) => {
                 type="radio"
                 name="tags"
                 id="tags"
+                defaultChecked={tag.id === initialId}
                 value={tag.id}
                 onChange={(e) => {
                   const tagId = e.target.value;

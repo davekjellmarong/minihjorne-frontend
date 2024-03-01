@@ -4,17 +4,17 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { ProductQueries } from "@/query/product/QueryFactory";
+import { UserMethods, UserQueries } from "@/query/user/QueryFactory";
 
 const Provider = async ({
-  children,
   params,
+  children,
 }: {
-  params: { id: string };
   children: any;
+  params: { id: string };
 }) => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(ProductQueries.detail(params.id));
+  await queryClient.prefetchQuery(UserQueries.detail(params.id));
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       {children}

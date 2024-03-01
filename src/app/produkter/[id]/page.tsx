@@ -17,17 +17,11 @@ import Link from "next/link";
 import AddToCartButtons from "@/components/button/AddToCartButtons";
 import CarouselComponent from "@/components/carousel/Carousel";
 import { queryTemplates } from "@/utils/constants";
+import { ProductQueries } from "@/query/product/QueryFactory";
 
-interface ProductProps {
-  product: ProductRQ;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
 const ProductDetail = ({ params }: { params: { id: string } }) => {
-  const { data } = useQuery<ProductRQ>({
-    queryKey: ["product", params.id],
-  });
-  if (!data) return <Loading />;
-  console.log(data.data);
+  const { data: product } = useQuery(ProductQueries.detail(params.id));
+  if (!product) return <Loading />;
   const iconsList: any = {
     BaseballCap: <BaseballCap size={22} />,
     Dress: <Dress size={22} />,
@@ -56,7 +50,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
     state,
     tags,
     user,
-  } = data.data.attributes;
+  } = product.attributes;
   return (
     <div className="flex flex-wrap w-full justify-center  overflow-hidden">
       <div className="w-full sm:w-1/2 relative">
@@ -64,7 +58,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           <BackButton />
         </div>
         <Link
-          href={`/profiler/${user.data.attributes.username}`}
+          href={`/profiler/${user.data.id}`}
           className="absolute z-10 top-4 right-4 flex border-2 rounded py-2 px-4 bg-white shadow border-transparent"
         >
           <p className="text-purple-500 text-sm">
@@ -194,7 +188,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           <hr className=" mx-12 mt-6" />
         </div>
         <div className="flex w-full px-12 h-full mb-10 sm:mb-0 items-center justify-center">
-          <AddToCartButtons product={data.data} />
+          <AddToCartButtons product={product} />
         </div>
       </div>
     </div>

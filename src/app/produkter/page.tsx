@@ -5,16 +5,12 @@ import {
 } from "@tanstack/react-query";
 import React from "react";
 import ProductPage from "./ProductPage";
-import { fetchProductsFiltered } from "@/utils/serverUtils";
-import ProductSkeleton from "@/components/skeleton/SmallProductSkeleton";
+import { ProductQueries } from "@/query/product/QueryFactory";
 
 const ProductProvider = async () => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey: ["product", ""],
-    queryFn: async () => fetchProductsFiltered(""),
-  });
+  await queryClient.prefetchQuery(ProductQueries.filtered(""));
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <ProductPage />

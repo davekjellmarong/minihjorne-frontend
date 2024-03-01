@@ -5,8 +5,9 @@ import FormFieldContainer from "./FormFieldContainer";
 interface SexProps {
   formik: any;
   onChangeFunc?: () => void;
+  initialId?: number;
 }
-export const State = ({ formik, onChangeFunc }: SexProps) => {
+export const State = ({ formik, onChangeFunc, initialId }: SexProps) => {
   const states = [
     {
       title: "Ny",
@@ -35,6 +36,7 @@ export const State = ({ formik, onChangeFunc }: SexProps) => {
               name="state"
               className="h-8 w-8"
               value={state.id}
+              defaultChecked={state.id === initialId}
               onChange={(e) => {
                 const stateId = e.target.value;
                 const stateName = state.title;

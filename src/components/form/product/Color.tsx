@@ -10,6 +10,7 @@ interface ColorProps {
   formik: any;
   formName?: string;
   onChangeFunc?: () => void;
+  initialId?: number;
 }
 
 const Color = ({
@@ -17,6 +18,7 @@ const Color = ({
   formik,
   formName = "colors",
   onChangeFunc,
+  initialId,
 }: ColorProps) => {
   return (
     <FormFieldContainer header="Farge">
@@ -32,6 +34,7 @@ const Color = ({
               type="radio"
               name={formName}
               id={formName}
+              defaultChecked={color.id === initialId}
               value={color.id}
               onChange={(e) => {
                 const colorId = e.target.value;

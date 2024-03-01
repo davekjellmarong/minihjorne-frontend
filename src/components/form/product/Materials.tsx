@@ -9,8 +9,14 @@ interface ColorProps {
   materials: Material[];
   formik: any;
   onChangeFunc?: () => void;
+  initialId?: number;
 }
-const Materials = ({ materials, formik, onChangeFunc }: ColorProps) => {
+const Materials = ({
+  materials,
+  formik,
+  onChangeFunc,
+  initialId,
+}: ColorProps) => {
   return (
     <FormFieldContainer header="Materiale">
       {materials.map((material) => {
@@ -25,6 +31,7 @@ const Materials = ({ materials, formik, onChangeFunc }: ColorProps) => {
               name="materials"
               id="materials"
               value={material.id}
+              defaultChecked={material.id === initialId}
               // onChange={formik.handleChange}
               onChange={(e) => {
                 const materialId = e.target.value;

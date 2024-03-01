@@ -1,23 +1,19 @@
 "use client";
-
 import Salgsprofil from "@/app/min-side/selge/salgsprofil/Salgsprofil";
+import { UserQueries } from "@/query/user/QueryFactory";
 import { UserMethods } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 
 const Page = () => {
-  const { name } = useParams();
-
-  const { data: user } = useQuery({
-    queryKey: ["user", name],
-    queryFn: () => {
-      return UserMethods.getByUsername(name);
-    },
-  });
+  const { id } = useParams();
+  console.log(id);
+  const { data: user } = useQuery(UserQueries.detail(id));
+  console.log(user);
   if (user)
     return (
       <div>
-        <Salgsprofil user={user[0]} />
+        <Salgsprofil user={user} />
       </div>
     );
 };

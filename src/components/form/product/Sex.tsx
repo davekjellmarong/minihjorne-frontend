@@ -5,8 +5,9 @@ import FormFieldContainer from "./FormFieldContainer";
 interface SexProps {
   formik: any;
   onChangeFunc?: () => void;
+  initialId?: number;
 }
-const Sex = ({ formik, onChangeFunc }: SexProps) => {
+const Sex = ({ formik, onChangeFunc, initialId }: SexProps) => {
   const sexes = [
     {
       id: 1,
@@ -36,6 +37,7 @@ const Sex = ({ formik, onChangeFunc }: SexProps) => {
               name="sex"
               className="h-8 w-8"
               value={sex.id}
+              defaultChecked={sex.id === initialId}
               // onChange={formik.handleChange}
               onChange={(e) => {
                 const sexId = e.target.value;

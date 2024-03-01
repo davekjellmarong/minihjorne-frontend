@@ -234,6 +234,7 @@ export interface Product {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    sex: { data: Sex };
     fabric: string;
     brand: string;
     image: {
