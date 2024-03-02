@@ -1,7 +1,8 @@
 import { queryOptions } from "@tanstack/react-query";
 
-import { apiUrl, fetchPublicData } from "@/utils/serverUtils";
+import { apiUrl } from "@/utils/serverUtils";
 import { Product, ProductBackend } from "@/utils/types";
+import { getAuthData, getProductsFiltered, getPublicData } from "./Utils";
 
 export const ProductQueries = {
   all: () => ["products"],
@@ -17,19 +18,14 @@ export const ProductQueries = {
     }),
 };
 
-export const fetchProductsFiltered = async (query: string) => {
-  const baseUrl = apiUrl + "/products?populate=*&filters[sold][$eq]=false";
-  const url = query?.length > 0 ? baseUrl + query : baseUrl;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-};
-
 export const ProductsMethods = {
   getById: async (id: any): Promise<Product> => {
-    return fetchPublicData(`/products/${id}?populate=*`);
+    return getPublicData(`/products/${id}?populate=*`);
   },
   getFiltered: async (query: string): Promise<ProductBackend[]> => {
-    return fetchProductsFiltered(query);
+    return getProductsFiltered(query);
   },
+  //   getMyById: async (id: any): Promise<Product> => {
+  //     return getAuthData(`/products/${id}?populate=*`);
+  //   },
 };

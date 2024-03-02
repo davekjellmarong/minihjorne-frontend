@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Products from "../../components/products/Products";
 import Filters from "./Filters";
 import FilterChips from "./FilterChips";
-import { ProductQueries } from "@/query/product/QueryFactory";
+import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 
 export interface SelectedFilter {
   query: string;

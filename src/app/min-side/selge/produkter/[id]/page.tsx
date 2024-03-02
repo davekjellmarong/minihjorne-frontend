@@ -27,11 +27,11 @@ import Materials from "@/components/form/product/Materials";
 import Brand from "@/components/form/product/Brand";
 import Price from "@/components/form/product/Price";
 import Accordion from "./Accordion";
+import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
+import { useRouter } from "next/navigation";
 const Page = ({ params }: { params: { id: string } }) => {
-  const { data: product } = useQuery<ProductRQ>({
-    queryKey: ["product", params.id],
-  });
-
+  const { data: product } = useQuery(ProductQueries.detail(params.id));
+  const router = useRouter();
   const { data: colors } = useQuery<ColorsRQ>({
     queryKey: ["colors"],
     queryFn: fetchColors,
@@ -52,19 +52,20 @@ const Page = ({ params }: { params: { id: string } }) => {
     queryKey: ["sizes"],
     queryFn: fetchSizes,
   });
+  console.log({ product });
   const formik = useFormik({
     initialValues: {
       colors: "",
       colorsNorwegianName: "",
-      material: product?.data?.attributes.material.data.attributes.name,
-      brand: product?.data.attributes.brand,
-      price: product?.data.attributes.price,
-      category: product?.data.attributes.category.data.id,
-      categoryName: product?.data.attributes.category.data.attributes.name,
-      state: product?.data.attributes.state.data.id,
-      size: product?.data.attributes.size.data.id,
-      sizeName: product?.data.attributes.size.data.attributes.number,
-      sex: product?.data.id,
+      material: product?.attributes.material.data.attributes.name,
+      brand: product?.attributes.brand,
+      price: product?.attributes.price,
+      category: product?.attributes.category.data.id,
+      categoryName: product?.attributes.category.data.attributes.name,
+      state: product?.attributes.state.data.id,
+      size: product?.attributes.size.data.id,
+      sizeName: product?.attributes.size.data.attributes.number,
+      sex: product?.id,
       tags: "",
       user: 0,
     },
@@ -73,7 +74,6 @@ const Page = ({ params }: { params: { id: string } }) => {
       console.log(values);
     },
   });
-  console.log(formik.values.brand);
   if (
     !colors?.data ||
     !tags?.data ||
@@ -83,7 +83,16 @@ const Page = ({ params }: { params: { id: string } }) => {
   )
     return;
   return (
-    <div>
+    <div className="px-8">
+      <div className="flex flex-wrap justify-evenly gap-4 mb-8">
+        {product?.attributes.image.data.map((image) => (
+          <img
+            key={image.id}
+            src={image.attributes.url}
+            className="w-2/5 h-80 object-cover"
+          />
+        ))}
+      </div>
       <Accordion
         label="Farger"
         currentValue={formik.values.colorsNorwegianName}
@@ -91,34 +100,31 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Color
           formik={formik}
           colors={colors.data}
-          initialId={product?.data.attributes.colors.data[0].id}
+          initialId={product?.attributes.colors.data[0].id}
         />
       </Accordion>
       <Accordion label="Kategori" currentValue={formik.values.categoryName}>
         <Category
           formik={formik}
           categories={categories.data}
-          initialId={product?.data.attributes.category.data.id}
+          initialId={product?.attributes.category.data.id}
         />
       </Accordion>
       <Accordion label="Størrelse" currentValue={formik.values.sizeName}>
         <Size
           formik={formik}
           sizes={sizes.data}
-          initialId={product?.data.attributes.size.data.id}
+          initialId={product?.attributes.size.data.id}
         />
       </Accordion>
       <Accordion label="Tags" currentValue={formik.values.tags}>
         <Tags formik={formik} tags={tags.data} />
       </Accordion>
       <Accordion label="Kjønn" currentValue={formik.values.sex}>
-        <Sex formik={formik} initialId={product?.data.attributes.sex.data.id} />
+        <Sex formik={formik} initialId={product?.attributes.sex.data.id} />
       </Accordion>
       <Accordion label="Tilstand" currentValue={formik.values.state}>
-        <State
-          formik={formik}
-          initialId={product?.data.attributes.state.data.id}
-        />
+        <State formik={formik} initialId={product?.attributes.state.data.id} />
       </Accordion>
       <Accordion label="Materialer" currentValue={formik.values.material}>
         <Materials formik={formik} materials={materials.data} />
@@ -129,13 +135,24 @@ const Page = ({ params }: { params: { id: string } }) => {
       <Accordion label="Pris" currentValue={formik.values.price}>
         <Price formik={formik} />
       </Accordion>
-      <button
-        onClick={() => {
-          formik.handleSubmit();
-        }}
-      >
-        Lagre
-      </button>
+      <div className="flex justify-center gap-8">
+        <button
+          className="border-2 border-brand-500 p-4 rounded"
+          onClick={() => {
+            router.back();
+          }}
+        >
+          Gå tilbake
+        </button>
+        <button
+          className="bg-brand-500 text-white p-4 rounded"
+          onClick={() => {
+            formik.handleSubmit();
+          }}
+        >
+          Lagre endringer
+        </button>
+      </div>
     </div>
   );
 };

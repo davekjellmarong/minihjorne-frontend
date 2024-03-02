@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-query";
 import React from "react";
 import ProductPage from "./ProductPage";
-import { ProductQueries } from "@/query/product/QueryFactory";
+import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 
 const ProductProvider = async () => {
   const queryClient = new QueryClient();

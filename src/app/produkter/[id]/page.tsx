@@ -17,7 +17,7 @@ import Link from "next/link";
 import AddToCartButtons from "@/components/button/AddToCartButtons";
 import CarouselComponent from "@/components/carousel/Carousel";
 import { queryTemplates } from "@/utils/constants";
-import { ProductQueries } from "@/query/product/QueryFactory";
+import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   const { data: product } = useQuery(ProductQueries.detail(params.id));

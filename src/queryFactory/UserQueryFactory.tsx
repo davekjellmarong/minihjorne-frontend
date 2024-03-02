@@ -1,7 +1,8 @@
 import { queryOptions } from "@tanstack/react-query";
 
-import { apiUrl, fetchPublicData } from "@/utils/serverUtils";
+import { apiUrl } from "@/utils/serverUtils";
 import { Product, User, UserBackend } from "@/utils/types";
+import { getPublicData } from "./Utils";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -14,9 +15,9 @@ export const UserQueries = {
 
 export const UserMethods = {
   getByUsername: async (username: any): Promise<User[]> => {
-    return fetchPublicData(`/users/?filters[username][$eq]=${username}`);
+    return getPublicData(`/users/?filters[username][$eq]=${username}`);
   },
   getById: async (id: any): Promise<UserBackend> => {
-    return fetchPublicData(`/users/${id}`);
+    return getPublicData(`/users/${id}`);
   },
 };

@@ -1,4 +1,4 @@
-import { ProductMethods } from "@/utils/serverUtils";
+import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 import {
   HydrationBoundary,
   QueryClient,
@@ -14,12 +14,7 @@ const layout = async ({
   children: any;
 }) => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({
-    queryKey: ["product", params.id],
-    queryFn: () => {
-      return ProductMethods.getById(params.id);
-    },
-  });
+  await queryClient.prefetchQuery(ProductQueries.detail(params.id));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
