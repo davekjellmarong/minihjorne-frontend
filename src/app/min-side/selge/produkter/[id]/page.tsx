@@ -1,6 +1,6 @@
 "use client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import {
   fetchCategories,
   fetchColors,
@@ -37,10 +37,12 @@ import LoadingOverlay from "@/components/loading/LoadingOverlay";
 import { toast } from "react-toastify";
 import ProductStatusChip from "@/components/chip/ProductStatusChip";
 import Button from "@/components/button/Button";
+import { DeleteConfirmation } from "@/components/dialog/DeleteConfirmation";
+import Dialog from "@/components/dialog/Dialog";
 const Page = ({ params }: { params: { id: string } }) => {
   const { data: product } = useQuery(ProductQueries.detail(params.id));
   const queryClient = useQueryClient();
-
+  const [modal, setModal] = useState(false);
   const router = useRouter();
   const { data: colors } = useQuery<ColorsRQ>({
     queryKey: ["colors"],
@@ -128,6 +130,14 @@ const Page = ({ params }: { params: { id: string } }) => {
   return (
     <div className="px-8">
       <LoadingOverlay loading={loading} />
+      <Dialog open={modal} setOpen={setModal} height="h-[400px]">
+        <DeleteConfirmation
+          setModal={setModal}
+          handleYes={() => {
+            deleteProduct();
+          }}
+        />
+      </Dialog>
       <div className="flex justify-center">
         <ProductStatusChip
           large
@@ -135,12 +145,12 @@ const Page = ({ params }: { params: { id: string } }) => {
           sold={product?.attributes.sold}
         />
       </div>
-      <div className="flex flex-wrap justify-evenly gap-4 mb-8">
+      <div className="mb-8 flex flex-wrap justify-evenly gap-4">
         {product?.attributes.image.data.map((image) => (
           <img
             key={image.id}
             src={image.attributes.url}
-            className="w-2/5 h-80 object-cover"
+            className="h-80 w-2/5 object-cover"
           />
         ))}
       </div>
@@ -195,7 +205,9 @@ const Page = ({ params }: { params: { id: string } }) => {
           icon="trash"
           type="danger"
           onClick={() => {
-            deleteProduct();
+            // deleteProduct();
+            setModal(true);
+            scrollTo(0, 0);
           }}
         >
           Slett

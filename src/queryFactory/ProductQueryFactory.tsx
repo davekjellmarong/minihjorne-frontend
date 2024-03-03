@@ -1,5 +1,4 @@
 import { queryOptions } from "@tanstack/react-query";
-
 import { Product, ProductBackend } from "@/utils/types";
 import {
   deleteData,

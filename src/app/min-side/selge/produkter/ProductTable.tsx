@@ -7,23 +7,25 @@ import React from "react";
 interface ProductTableProps {
   products: ProductBackend[] | undefined;
 }
+
 const ProductTable = ({ products }: ProductTableProps) => {
   const router = useRouter();
+
   return (
     <>
       <table className="w-full">
-        <thead className="bg-indigo-400  border-indigo-100">
+        <thead className="border-indigo-100  bg-indigo-400">
           <tr className="">
-            <th className="text-xs text-white text-left pl-5 py-4 font-normal">
+            <th className="py-4 pl-5 text-left text-xs font-normal text-white">
               Bilde
             </th>
-            <th className="text-xs text-white text-left pl-4 py-4 font-normal">
+            <th className="py-4 pl-4 text-left text-xs font-normal text-white">
               Dato
             </th>
-            <th className="text-xs text-white text-right pr-4 py-4 font-normal">
+            <th className="py-4 pr-4 text-right text-xs font-normal text-white">
               Pris
             </th>
-            <th className="text-xs text-white text-left pl-4 py-4 font-normal">
+            <th className="py-4 pl-4 text-left text-xs font-normal text-white">
               Status
             </th>
           </tr>
@@ -39,32 +41,32 @@ const ProductTable = ({ products }: ProductTableProps) => {
             };
             const formattedDate = dateObject.toLocaleDateString(
               "no-NO",
-              options
+              options,
             );
             const formattedDateWithoutDot = formattedDate.replace(/\./g, "");
             return (
               <tr
                 key={product.id}
-                className="border-b border-indigo-100 hover:bg-indigo-100 cursor-pointer"
+                className="cursor-pointer border-b border-indigo-100 hover:bg-indigo-100"
                 onClick={() => {
                   router.push(`produkter/${product.id}`);
                 }}
               >
-                <td className="text-sm py-1 px-4 text-left">
+                <td className="px-4 py-1 text-left text-sm">
                   {product?.image?.length > 0 && (
                     <Image
                       src={product?.image[0]?.url}
                       alt="Produkt bilde"
                       width={50}
                       height={50}
-                      className="rounded max-h-16 object-cover"
+                      className="max-h-16 rounded object-cover"
                     />
                   )}
                 </td>
-                <td className=" text-sm py-5 px-4 text-left font-semibold">
+                <td className=" px-4 py-5 text-left text-sm font-semibold">
                   {formattedDateWithoutDot}
                 </td>
-                <td className="text-sm py-5 px-4 text-right text-gray-500">
+                <td className="px-4 py-5 text-right text-sm text-gray-500">
                   kr {product.price}
                 </td>
                 <td>

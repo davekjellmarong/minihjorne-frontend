@@ -1,4 +1,5 @@
 "use client";
+import { EmptyList } from "@/components/empty/EmptyList";
 import Loading from "@/components/loading/Loading";
 import { LoginUser, OrdersRQ } from "@/utils/types";
 import { OrderMethods } from "@/utils/utils";
@@ -30,41 +31,23 @@ const Ordre = () => {
   if (loading) return <Loading />;
   if (orders?.data.length === 0)
     return (
-      <div>
-        <h2 className="font-light text-center text-2xl mb-4">Mine ordre</h2>
-        <div className="flex flex-col items-center justify-center">
-          <div className="flex flex-col items-center justify-center">
-            <Image
-              src="/empty-files.svg"
-              height={100}
-              width={100}
-              alt=""
-              className="w-1/2"
-            />
-            <p className="text-gray-400 text-sm mt-2">
-              Du har ingen ordre enda
-            </p>
-            <Link
-              href="/produkter"
-              className="bg-indigo-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-indigo-600 transition duration-200 ease-in-out"
-            >
-              Se produkter
-            </Link>
-          </div>
-        </div>
-      </div>
+      <EmptyList
+        text="Du har ingen ordre"
+        path="/produkter"
+        buttonLabel="Se produkter"
+      />
     );
   return (
     <div>
-      <h2 className="font-light text-center text-2xl mb-4">Mine ordre</h2>
+      <h2 className="mb-4 text-center text-2xl font-light">Mine ordre</h2>
       <table className="w-full">
-        <thead className="bg-gray-200 border-2 border-gray-100">
+        <thead className="border-2 border-gray-100 bg-gray-200">
           <tr className="">
-            <th className="text-xs text-left pl-4 py-4 font-normal">Nummer</th>
-            <th className="text-xs text-left pl-4 py-4 font-normal">Dato</th>
-            <th className="text-xs text-right pr-4 py-4 font-normal">Pris</th>
-            <th className="text-xs text-left pl-4 py-4 font-normal">Antall</th>
-            <th className="text-xs text-left pl-4 py-4 font-normal">Status</th>
+            <th className="py-4 pl-4 text-left text-xs font-normal">Nummer</th>
+            <th className="py-4 pl-4 text-left text-xs font-normal">Dato</th>
+            <th className="py-4 pr-4 text-right text-xs font-normal">Pris</th>
+            <th className="py-4 pl-4 text-left text-xs font-normal">Antall</th>
+            <th className="py-4 pl-4 text-left text-xs font-normal">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -81,7 +64,7 @@ const Ordre = () => {
             };
             const formattedDate = dateObject.toLocaleDateString(
               "no-NO",
-              options
+              options,
             );
             const formattedDateWithoutDot = formattedDate.replace(/\./g, "");
 
@@ -91,22 +74,22 @@ const Ordre = () => {
                 onClick={() => {
                   router.push(`/min-side/ordre/${order.id}`);
                 }}
-                className="border-2 border-gray-100 hover:bg-gray-100 cursor-pointer"
+                className="cursor-pointer border-2 border-gray-100 hover:bg-gray-100"
               >
-                <td className=" text-sm py-5 px-4 text-left">#{order.id}</td>
-                <td className=" text-sm py-5 px-4 text-left font-semibold">
+                <td className=" px-4 py-5 text-left text-sm">#{order.id}</td>
+                <td className=" px-4 py-5 text-left text-sm font-semibold">
                   {formattedDateWithoutDot}
                 </td>
-                <td className="text-sm py-5 px-4 text-right text-gray-500">
+                <td className="px-4 py-5 text-right text-sm text-gray-500">
                   kr {order.attributes.amount}
                 </td>
-                <td className="text-sm py-5 px-4 text-left text-gray-500">
+                <td className="px-4 py-5 text-left text-sm text-gray-500">
                   {order.attributes.products?.data.length} stk
                 </td>
                 {/* <td className={` py-4 px-10 text-gray-500 ${color?.tailwind}`}> */}
-                <td className={` py-3 px-4  `}>
+                <td className={` px-4 py-3  `}>
                   <p
-                    className={`text-blue-700 text-xs bg-blue-300 p-2 rounded ${color} text-center`}
+                    className={`rounded bg-blue-300 p-2 text-xs text-blue-700 ${color} text-center`}
                   >
                     {order.attributes.status.data?.attributes.name}
                   </p>
