@@ -25,7 +25,7 @@ export const UserMethods = {
   getById: async (id: any): Promise<UserBackend> => {
     return getPublicData(`/users/${id}`);
   },
-  getMe: async (token: any): Promise<User> => {
+  getMe: async (token: any): Promise<UserBackend> => {
     return getAuthData("/users/me?populate=*", token);
   },
 };

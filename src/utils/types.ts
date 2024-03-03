@@ -275,6 +275,8 @@ export interface User {
     description: string;
     icon: string;
     color: string;
+    paid: boolean;
+    plan: { data: CommonPlan };
   };
 }
 export interface LoginUser {

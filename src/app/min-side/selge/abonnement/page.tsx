@@ -1,19 +1,20 @@
 "use client";
 import { useStore } from "@/stateManagment/ZustandStore";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import SuccessDialog from "./SuccessDialog";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { PaymentMethods } from "@/utils/utils";
-import { CheckCircle, XCircle } from "@phosphor-icons/react";
 import Cards from "./Cards";
 import ActiveCard from "./ActiveCard";
+import { UserQueries } from "@/queryFactory/UserQueryFactory";
+import { AuthQueries } from "@/queryFactory/AuthQueryFactory";
 
 const Abonnement = () => {
   const router = useRouter();
-  const user = useStore((state) => state.user);
-  const jwt = useStore((state) => state.jwt);
+  const queryClient = useQueryClient();
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: user } = useQuery(UserQueries.me(jwt));
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const searchParams = useSearchParams();
   const [planId, setPlanId] = useState(0);
@@ -43,7 +44,7 @@ const Abonnement = () => {
         <p>Du må være logget inn for å se denne siden</p>
       </div>
     );
-
+  console.log({ user });
   return (
     <div>
       <SuccessDialog
@@ -55,10 +56,10 @@ const Abonnement = () => {
           <ActiveCard planId={user.plan.id} user={user} />
         </div>
       )}
-      {!user.paid && (
+      {!user?.paid && (
         <div className="mt-8">
           <div className="flex justify-center">
-            <p className="text-center text-2xl mb-12">
+            <p className="mb-12 text-center text-2xl">
               Velg lengde på ditt abonnement
             </p>
           </div>
