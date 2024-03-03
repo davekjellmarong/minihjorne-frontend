@@ -1,8 +1,27 @@
 import { queryOptions } from "@tanstack/react-query";
 
-import { apiUrl } from "@/utils/serverUtils";
 import { Product, ProductBackend } from "@/utils/types";
-import { getAuthData, getProductsFiltered, getPublicData } from "./Utils";
+import {
+  getAuthData,
+  getProductsFiltered,
+  getPublicData,
+  putData,
+} from "./Utils";
+
+export const ProductsMethods = {
+  getById: async (id: any): Promise<Product> => {
+    return getPublicData(`/products/${id}?populate=*`);
+  },
+  getFiltered: async (query: string): Promise<ProductBackend[]> => {
+    return getProductsFiltered(query);
+  },
+  put: async (id: string, data: any, token: any): Promise<Product> => {
+    return putData(`/products/${id}`, token, data);
+  },
+  getAllMyProducts: async (token: any): Promise<ProductBackend[]> => {
+    return getAuthData("/products/me/all", token);
+  },
+};
 
 export const ProductQueries = {
   all: () => ["products"],
@@ -16,16 +35,9 @@ export const ProductQueries = {
       queryKey: [...ProductQueries.all(), query],
       queryFn: () => ProductsMethods.getFiltered(query),
     }),
-};
-
-export const ProductsMethods = {
-  getById: async (id: any): Promise<Product> => {
-    return getPublicData(`/products/${id}?populate=*`);
-  },
-  getFiltered: async (query: string): Promise<ProductBackend[]> => {
-    return getProductsFiltered(query);
-  },
-  //   getMyById: async (id: any): Promise<Product> => {
-  //     return getAuthData(`/products/${id}?populate=*`);
-  //   },
+  me_all: (jwt: any) =>
+    queryOptions({
+      queryKey: [...ProductQueries.all(), "me", "all"],
+      queryFn: () => ProductsMethods.getAllMyProducts(jwt),
+    }),
 };

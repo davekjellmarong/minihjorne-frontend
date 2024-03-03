@@ -1,5 +1,5 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import {
   fetchCategories,
@@ -12,7 +12,6 @@ import {
   CategoryRQ,
   ColorsRQ,
   MaterialsRQ,
-  ProductRQ,
   SizesRQ,
   TagsRQ,
 } from "@/utils/types";
@@ -27,10 +26,23 @@ import Materials from "@/components/form/product/Materials";
 import Brand from "@/components/form/product/Brand";
 import Price from "@/components/form/product/Price";
 import Accordion from "./Accordion";
-import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
+import {
+  ProductQueries,
+  ProductsMethods,
+} from "@/queryFactory/ProductQueryFactory";
 import { useRouter } from "next/navigation";
+import { AuthQueries } from "@/queryFactory/AuthQueryFactory";
+import { UserQueries } from "@/queryFactory/UserQueryFactory";
+import LoadingOverlay from "@/components/loading/LoadingOverlay";
+import { toast } from "react-toastify";
+import ProductStatusChip from "@/components/chip/ProductStatusChip";
 const Page = ({ params }: { params: { id: string } }) => {
-  const { data: product } = useQuery(ProductQueries.detail(params.id));
+  const { data: product, isPending } = useQuery(
+    ProductQueries.detail(params.id)
+  );
+  console.log({ product });
+  const queryClient = useQueryClient();
+
   const router = useRouter();
   const { data: colors } = useQuery<ColorsRQ>({
     queryKey: ["colors"],
@@ -52,26 +64,44 @@ const Page = ({ params }: { params: { id: string } }) => {
     queryKey: ["sizes"],
     queryFn: fetchSizes,
   });
-  console.log({ product });
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: user } = useQuery(UserQueries.me(jwt));
+  const { mutate: updateProduct, isPending: loading } = useMutation({
+    mutationFn: (values: any) => {
+      return ProductsMethods.put(params.id, values, jwt);
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(ProductQueries.me_all(jwt));
+      queryClient.invalidateQueries(ProductQueries.detail(params.id));
+      toast.info(`Produkt endringer lagret`);
+    },
+    onError: (err: any) => {
+      console.log(err);
+    },
+  });
   const formik = useFormik({
     initialValues: {
-      colors: "",
-      colorsNorwegianName: "",
-      material: product?.attributes.material.data.attributes.name,
+      colors: product?.attributes.colors.data[0].id,
+      colorsNorwegianName: product?.attributes.colors.data[0].attributes.name,
+      material: product?.attributes.material.data.id,
+      materialName: product?.attributes.material.data.attributes.name,
       brand: product?.attributes.brand,
       price: product?.attributes.price,
       category: product?.attributes.category.data.id,
       categoryName: product?.attributes.category.data.attributes.name,
       state: product?.attributes.state.data.id,
+      stateName: product?.attributes.state.data.attributes.name,
       size: product?.attributes.size.data.id,
       sizeName: product?.attributes.size.data.attributes.number,
-      sex: product?.id,
-      tags: "",
-      user: 0,
+      sex: product?.attributes.sex.data.id,
+      sexName: product?.attributes.sex.data.attributes.name,
+      tags: product?.attributes.tags.data[0].id,
+      tagName: product?.attributes.tags.data[0].attributes.name,
     },
 
     onSubmit: (values) => {
-      console.log(values);
+      const data = { ...values, user: user?.id };
+      updateProduct({ data: data });
     },
   });
   if (
@@ -82,8 +112,17 @@ const Page = ({ params }: { params: { id: string } }) => {
     !sizes?.data
   )
     return;
+  if (!product) return;
   return (
     <div className="px-8">
+      <LoadingOverlay loading={loading} />
+      <div className="flex justify-center">
+        <ProductStatusChip
+          large
+          active={product?.attributes.active}
+          sold={product?.attributes.sold}
+        />
+      </div>
       <div className="flex flex-wrap justify-evenly gap-4 mb-8">
         {product?.attributes.image.data.map((image) => (
           <img
@@ -117,17 +156,21 @@ const Page = ({ params }: { params: { id: string } }) => {
           initialId={product?.attributes.size.data.id}
         />
       </Accordion>
-      <Accordion label="Tags" currentValue={formik.values.tags}>
-        <Tags formik={formik} tags={tags.data} />
+      <Accordion label="Tags" currentValue={formik.values.tagName}>
+        <Tags formik={formik} tags={tags.data} initialId={formik.values.tags} />
       </Accordion>
-      <Accordion label="Kjønn" currentValue={formik.values.sex}>
+      <Accordion label="Kjønn" currentValue={formik.values.sexName}>
         <Sex formik={formik} initialId={product?.attributes.sex.data.id} />
       </Accordion>
-      <Accordion label="Tilstand" currentValue={formik.values.state}>
+      <Accordion label="Tilstand" currentValue={formik.values.stateName}>
         <State formik={formik} initialId={product?.attributes.state.data.id} />
       </Accordion>
-      <Accordion label="Materialer" currentValue={formik.values.material}>
-        <Materials formik={formik} materials={materials.data} />
+      <Accordion label="Materialer" currentValue={formik.values.materialName}>
+        <Materials
+          formik={formik}
+          materials={materials.data}
+          initialId={product?.attributes.material.data.id}
+        />
       </Accordion>
       <Accordion label="Merke" currentValue={formik.values.brand}>
         <Brand formik={formik} />

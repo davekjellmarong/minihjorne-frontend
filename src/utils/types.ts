@@ -228,6 +228,8 @@ export interface Order {
 export interface Product {
   id: number;
   attributes: {
+    active: boolean;
+    sold: boolean;
     name: string;
     description: string;
     price: number;

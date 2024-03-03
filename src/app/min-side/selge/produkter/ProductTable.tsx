@@ -1,3 +1,4 @@
+import ProductStatusChip from "@/components/chip/ProductStatusChip";
 import { ProductBackend } from "@/utils/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,12 +12,20 @@ const ProductTable = ({ products }: ProductTableProps) => {
   return (
     <>
       <table className="w-full">
-        <thead className="bg-indigo-300 border-2 border-indigo-100">
+        <thead className="bg-indigo-400  border-indigo-100">
           <tr className="">
-            <th className="text-xs text-left pl-4 py-4 font-normal">Bilde</th>
-            <th className="text-xs text-left pl-4 py-4 font-normal">Dato</th>
-            <th className="text-xs text-right pr-4 py-4 font-normal">Pris</th>
-            <th className="text-xs text-left pl-4 py-4 font-normal">Status</th>
+            <th className="text-xs text-white text-left pl-5 py-4 font-normal">
+              Bilde
+            </th>
+            <th className="text-xs text-white text-left pl-4 py-4 font-normal">
+              Dato
+            </th>
+            <th className="text-xs text-white text-right pr-4 py-4 font-normal">
+              Pris
+            </th>
+            <th className="text-xs text-white text-left pl-4 py-4 font-normal">
+              Status
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -58,23 +67,10 @@ const ProductTable = ({ products }: ProductTableProps) => {
                 <td className="text-sm py-5 px-4 text-right text-gray-500">
                   kr {product.price}
                 </td>
-                <td className=" py-3 px-4 text-sm">
-                  {!product.active && product.sold === false && (
-                    <div className="flex text-red-800 items-center bg-red-200 border p-2">
-                      <p className=" w-full text-center">Offline</p>
-                    </div>
-                  )}
-                  {product.active && product.sold === false && (
-                    <div className="flex text-orange-800 items-center bg-orange-300 border p-2">
-                      <p className=" w-full text-center">Live</p>
-                    </div>
-                  )}
-                  {product.sold && (
-                    <div className="flex text-green-800 items-center bg-green-200 border p-2">
-                      <p className=" w-full text-center">Solgt</p>
-                    </div>
-                  )}
-                </td>
+                <ProductStatusChip
+                  active={product.active}
+                  sold={product.sold}
+                />
               </tr>
             );
           })}

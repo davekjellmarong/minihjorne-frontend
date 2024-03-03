@@ -10,6 +10,28 @@ export const fetchProductsFiltered = async (query: string) => {
   return data;
 };
 
+export const putData = async (query: string, jwt: string, data: any) => {
+  try {
+    const url = apiUrl + query;
+    const response = await fetch(url, {
+      method: "PUT",
+
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(data),
+    });
+    const res = await response.json();
+    console.log(res, "this is the response");
+    return res;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
 export const getPublicData = async (query: string) => {
   try {
     const url = apiUrl + query;

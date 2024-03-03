@@ -7,6 +7,7 @@ import { ProductsMethods, UserMethods } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import ProductTable from "./ProductTable";
+import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 
 const Produkter = () => {
   const { data: userData } = useQuery<User>({
@@ -35,23 +36,12 @@ const Produkter = () => {
     },
     enabled: !!userId,
   });
-  const { data: me } = useQuery({
-    queryKey: ["products", "me"],
-    queryFn: () => {
-      return ProductsMethods.getAllMyProducts(jwt);
-    },
-  });
+  const { data: me } = useQuery(ProductQueries.me_all(jwt));
   console.log({ me });
   return (
-    <div>
-      <div className="mb-28">
-        <p className="text-center">Mine produkter</p>
-        <ProductTable products={me} />
-      </div>
-      {/* <div className="">
-        <p className="text-center">Inaktive produkter</p>
-        <ProductTable products={inactiveProducts} />
-      </div> */}
+    <div className="mb-28">
+      <p className="text-center">Mine produkter</p>
+      <ProductTable products={me} />
     </div>
   );
 };
