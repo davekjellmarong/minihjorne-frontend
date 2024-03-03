@@ -40,7 +40,7 @@ const Produkter = () => {
   console.log({ me });
   return (
     <div className="mb-28">
-      <p className="text-center">Mine produkter</p>
+      <p className="text-center mb-4 mt-8">Mine produkter</p>
       <ProductTable products={me} />
     </div>
   );

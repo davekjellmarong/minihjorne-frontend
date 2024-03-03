@@ -45,7 +45,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
             return (
               <tr
                 key={product.id}
-                className="border border-indigo-100 hover:bg-indigo-100 cursor-pointer"
+                className="border-b border-indigo-100 hover:bg-indigo-100 cursor-pointer"
                 onClick={() => {
                   router.push(`produkter/${product.id}`);
                 }}
@@ -67,10 +67,12 @@ const ProductTable = ({ products }: ProductTableProps) => {
                 <td className="text-sm py-5 px-4 text-right text-gray-500">
                   kr {product.price}
                 </td>
-                <ProductStatusChip
-                  active={product.active}
-                  sold={product.sold}
-                />
+                <td>
+                  <ProductStatusChip
+                    active={product.active}
+                    sold={product.sold}
+                  />
+                </td>
               </tr>
             );
           })}

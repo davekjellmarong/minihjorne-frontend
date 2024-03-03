@@ -63,4 +63,22 @@ export const putData = async (query: string, token: string, data: any) => {
     throw error;
   }
 };
+export const deleteData = async (query: string, token: string) => {
+  try {
+    const url = apiUrl + query;
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await response.json();
+    console.log(res, "this is the response");
+    return res;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;

@@ -36,11 +36,9 @@ import { UserQueries } from "@/queryFactory/UserQueryFactory";
 import LoadingOverlay from "@/components/loading/LoadingOverlay";
 import { toast } from "react-toastify";
 import ProductStatusChip from "@/components/chip/ProductStatusChip";
+import Button from "@/components/button/Button";
 const Page = ({ params }: { params: { id: string } }) => {
-  const { data: product, isPending } = useQuery(
-    ProductQueries.detail(params.id)
-  );
-  console.log({ product });
+  const { data: product } = useQuery(ProductQueries.detail(params.id));
   const queryClient = useQueryClient();
 
   const router = useRouter();
@@ -74,6 +72,20 @@ const Page = ({ params }: { params: { id: string } }) => {
       queryClient.invalidateQueries(ProductQueries.me_all(jwt));
       queryClient.invalidateQueries(ProductQueries.detail(params.id));
       toast.info(`Produkt endringer lagret`);
+    },
+    onError: (err: any) => {
+      console.log(err);
+    },
+  });
+  const { mutate: deleteProduct } = useMutation({
+    mutationFn: () => {
+      return ProductsMethods.delete(params.id, jwt);
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(ProductQueries.me_all(jwt));
+      queryClient.invalidateQueries(ProductQueries.detail(params.id));
+      toast.warning(`Produkt slettet`);
+      router.back();
     },
     onError: (err: any) => {
       console.log(err);
@@ -179,22 +191,23 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Price formik={formik} />
       </Accordion>
       <div className="flex justify-center gap-8">
-        <button
-          className="border-2 border-brand-500 p-4 rounded"
+        <Button
+          icon="trash"
+          type="danger"
           onClick={() => {
-            router.back();
+            deleteProduct();
           }}
         >
-          Gå tilbake
-        </button>
-        <button
-          className="bg-brand-500 text-white p-4 rounded"
+          Slett
+        </Button>
+        <Button
+          icon="save"
           onClick={() => {
             formik.handleSubmit();
           }}
         >
           Lagre endringer
-        </button>
+        </Button>
       </div>
     </div>
   );

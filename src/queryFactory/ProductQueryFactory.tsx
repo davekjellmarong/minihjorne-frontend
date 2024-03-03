@@ -2,6 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 
 import { Product, ProductBackend } from "@/utils/types";
 import {
+  deleteData,
   getAuthData,
   getProductsFiltered,
   getPublicData,
@@ -20,6 +21,9 @@ export const ProductsMethods = {
   },
   getAllMyProducts: async (token: any): Promise<ProductBackend[]> => {
     return getAuthData("/products/me/all", token);
+  },
+  delete: async (id: string, token: any): Promise<Product> => {
+    return deleteData(`/products/${id}`, token);
   },
 };
 
