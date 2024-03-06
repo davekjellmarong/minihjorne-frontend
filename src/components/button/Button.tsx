@@ -1,9 +1,15 @@
-import { File, FloppyDisk, Trash } from "@phosphor-icons/react";
+import {
+  File,
+  FloppyDisk,
+  Trash,
+  ArrowLeft,
+  ArrowRight,
+} from "@phosphor-icons/react";
 import { on } from "events";
 import React from "react";
 
 interface ButtonProps {
-  icon?: "save" | "trash";
+  icon?: "save" | "trash" | "arrowLeft" | "arrowRight";
   children: React.ReactNode;
   type?: "brand" | "danger" | "outline";
   onClick?: () => void;
@@ -19,6 +25,8 @@ const Button = ({
   const iconElement = {
     trash: <Trash size={24} />,
     save: <FloppyDisk size={24} />,
+    arrowLeft: <ArrowLeft size={24} />,
+    arrowRight: <ArrowRight size={24} />,
   };
   const colors = {
     brand: "bg-brand-500 text-white",

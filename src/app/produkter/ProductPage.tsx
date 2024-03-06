@@ -7,6 +7,8 @@ import FilterChips from "./FilterChips";
 import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 import Button from "@/components/button/Button";
 import { useBottomScrollListener } from "react-bottom-scroll-listener";
+import Pagination from "./Pagination";
+import PageNumber from "./PageNumber";
 
 export interface SelectedFilter {
   query: string;
@@ -24,6 +26,8 @@ const ProductPage = () => {
     ProductQueries.filtered(filterQuery, page),
   );
   // useBottomScrollListener(() => {
+  //   console.log("bottom");
+  //   if (isPending) return;
   //   setPage(page + 1);
   // });
 
@@ -35,6 +39,7 @@ const ProductPage = () => {
   //     setPage(products?.meta.page);
   //   }
   // }, [products]);
+  console.log(products?.meta.pagination);
   return (
     <>
       <div className="relative flex w-full flex-col items-center">
@@ -49,25 +54,12 @@ const ProductPage = () => {
             checkboxStates={checkboxStates}
             setCheckboxStates={setCheckboxStates}
           />
-          <div className="flex">
-            <Button
-              type="outline"
-              disabled={page === 1}
-              onClick={() => {
-                setPage(page - 1);
-              }}
-            >
-              Forrige
-            </Button>
-            <Button
-              disabled={products?.meta?.pagination.pageCount === page}
-              type="outline"
-              onClick={() => {
-                setPage(page + 1);
-              }}
-            >
-              Neste
-            </Button>
+          <div className="flex grow items-center justify-end">
+            <Pagination
+              page={page}
+              setPage={setPage}
+              pageCount={products?.meta.pagination.pageCount}
+            />
           </div>
         </div>
         <div className="w-full px-6 sm:px-24">
@@ -78,7 +70,22 @@ const ProductPage = () => {
           />
         </div>
         <div className="px-3">
+          <PageNumber
+            page={page}
+            pageCount={products?.meta.pagination.pageCount}
+          />
           <Products data={products?.data} isLoading={isPending} />
+          <div className="flex flex-col items-center pt-6">
+            <Pagination
+              page={page}
+              setPage={setPage}
+              pageCount={products?.meta.pagination.pageCount}
+            />
+            <PageNumber
+              page={page}
+              pageCount={products?.meta.pagination.pageCount}
+            />
+          </div>
         </div>
       </div>
     </>
