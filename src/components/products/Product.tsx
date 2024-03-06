@@ -12,7 +12,7 @@ const Product = ({ product }: ProductProps) => {
   return (
     <Link
       href={`/produkter/${product.id}`}
-      className="w-44 cursor-pointer rounded border-2 border-gray-100 sm:hover:bg-gray-50 sm:hover:shadow"
+      className="w-40 cursor-pointer rounded border-2 border-gray-100 sm:hover:bg-gray-50 sm:hover:shadow"
       key={product.id}
       onClick={() => {}}
     >

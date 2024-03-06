@@ -40,7 +40,7 @@ const EditSalgsprofil = ({ formik, dialogRef, id }: EditSalgsprofilProps) => {
     <div
       className={`${tailwindColor} relative flex h-full w-full items-center justify-center`}
     >
-      <div className="m-4 flex flex-col items-center gap-6 rounded bg-white py-10 text-center shadow-2xl">
+      <div className="m-3 flex flex-col items-center gap-6 rounded bg-white py-10 text-center shadow-2xl">
         <Link
           href="salgsprofil/rediger"
           // type="button"
