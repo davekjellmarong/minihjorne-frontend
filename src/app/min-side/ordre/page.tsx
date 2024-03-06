@@ -74,7 +74,7 @@ const Ordre = () => {
                 onClick={() => {
                   router.push(`/min-side/ordre/${order.id}`);
                 }}
-                className="cursor-pointer border-2 border-gray-100 hover:bg-gray-100"
+                className="cursor-pointer border-2 border-gray-100 sm:hover:bg-gray-100"
               >
                 <td className=" px-4 py-5 text-left text-sm">#{order.id}</td>
                 <td className=" px-4 py-5 text-left text-sm font-semibold">

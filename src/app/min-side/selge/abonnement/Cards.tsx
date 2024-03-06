@@ -25,7 +25,7 @@ export const planCards = [
     duration: 3,
     description: "Mest populær",
     customClass: "border shadow-lg shadow-purple p-6 border-purple-200",
-    customButtonClass: "bg-purple-500 text-white hover:bg-purple-800",
+    customButtonClass: "bg-purple-500 text-white sm:hover:bg-purple-800",
     bulletPoints: [
       { title: "3 mnd leie", access: true },
       { title: "Ubegrenset produkter", access: true },
@@ -54,25 +54,25 @@ export const planCards = [
 
 const Cards = ({ setPlanId }: any) => {
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-8 w-full px-10">
+    <div className="flex w-full flex-col items-center gap-8 px-10 lg:flex-row">
       {planCards.map((plan) => {
         return (
           <div
             key={plan.title}
-            className={`border w-[325px] shadow-sm p-6 rounded-lg ${plan.customClass}`}
+            className={`w-[325px] rounded-lg border p-6 shadow-sm ${plan.customClass}`}
           >
             <p className="font-semibold">{plan.title}</p>
-            <p className="text-sm font-light mb-4">{plan.description}</p>
+            <p className="mb-4 text-sm font-light">{plan.description}</p>
             <p className="text-2xl font-bold">{plan.price}</p>
             <button
-              className={`bg-brand-400 px-4 py-2 w-full rounded-md mt-4 hover:bg-brand-600 transition duration-200 ease-in-out ${plan.customButtonClass}`}
+              className={`mt-4 w-full rounded-md bg-brand-400 px-4 py-2 transition duration-200 ease-in-out sm:hover:bg-brand-600 ${plan.customButtonClass}`}
               onClick={() => {
                 setPlanId(plan.id);
               }}
             >
               Kjøp
             </button>
-            <ul className="flex flex-col gap-2 list-none list-inside mt-4">
+            <ul className="mt-4 flex list-inside list-none flex-col gap-2">
               {plan.bulletPoints.map((bulletPoint) => {
                 return (
                   <li

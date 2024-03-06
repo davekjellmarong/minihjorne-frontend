@@ -16,7 +16,7 @@ const SideMenu = ({ setOpen }: SideMenuProps) => {
   };
 
   return (
-    <div className="bg-gray-100 h-full relative">
+    <div className="relative h-full bg-gray-100">
       {setOpen && <button onClick={() => setOpen(false)}>Close</button>}
       {/* <div className="absolute flex items-center justify-end p-4 sm:hidden">
         <button onClick={toggleMenu} className="focus:outline-none">
@@ -44,14 +44,14 @@ const SideMenu = ({ setOpen }: SideMenuProps) => {
       > */}
       <div
         className={` "w-72" 
-         transition-all ease-in-out duration-300 overflow-hidden`}
+         overflow-hidden transition-all duration-300 ease-in-out`}
       >
         <ul className="flex flex-col gap-8 pt-2">
           {navItems.map((item) => (
             <Link
               href={item.path}
               key={item.id}
-              className={`hover:bg-gray-400 pl-10  p-4 ${
+              className={`p-4 pl-10  sm:hover:bg-gray-400 ${
                 item.path === path && "bg-gray-400"
               }`}
             >

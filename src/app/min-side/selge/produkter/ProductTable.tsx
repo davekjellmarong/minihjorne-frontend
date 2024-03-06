@@ -63,7 +63,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
             return (
               <tr
                 key={product.id}
-                className="cursor-pointer border-b border-indigo-100 hover:bg-indigo-100"
+                className="cursor-pointer border-b border-indigo-100 sm:hover:bg-indigo-100"
                 onClick={() => {
                   router.push(`produkter/${product.id}`);
                 }}

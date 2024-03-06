@@ -50,12 +50,12 @@ const Price = ({ formik }: SexProps) => {
   ];
   return (
     <FormFieldContainer header="Pris">
-      <div className="flex flex-wrap gap-y-4 gap-x-6 mt-2 ">
+      <div className="mt-2 flex flex-wrap gap-x-6 gap-y-4 ">
         <input
           type="number"
           id="price"
           name="price"
-          className="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 "
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500  focus:ring-blue-500 "
           placeholder=""
           required
           value={formik.values.price}
@@ -69,7 +69,7 @@ const Price = ({ formik }: SexProps) => {
               onClick={() => {
                 formik.setFieldValue("price", item.price);
               }}
-              className="border-2 w-20 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
+              className="w-20 rounded border-2 border-gray-200 px-4 py-2 font-light text-gray-700 sm:hover:bg-gray-400"
             >
               {item.title}
             </button>

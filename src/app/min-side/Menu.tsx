@@ -54,7 +54,7 @@ const Menu = () => {
   ];
   return (
     <div className="relative">
-      <div className="bg-white shadow rounded-lg w-3/4 m-auto p-6 bottom-10 relative">
+      <div className="relative bottom-10 m-auto w-3/4 rounded-lg bg-white p-6 shadow">
         {navItems.map((item) => {
           return (
             <div key={item.header}>
@@ -65,7 +65,7 @@ const Menu = () => {
                     <Link
                       href={item.path}
                       key={item.id}
-                      className={`hover:bg-gray-100 rounded p-4 flex items-center `}
+                      className={`flex items-center rounded p-4 sm:hover:bg-gray-100 `}
                     >
                       <span className="pr-6">{item.icon}</span>
                       <span>{item.title}</span>

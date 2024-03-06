@@ -45,7 +45,7 @@ const Filter = ({
     if (!data?.data) return;
     const filters = data?.data;
     const localFilters = filterValues.map((item) =>
-      filters.find((filter: any) => String(filter.id) === item.split("=")[1])
+      filters.find((filter: any) => String(filter.id) === item.split("=")[1]),
     );
     const filtersObject = localFilters.reduce((prev: any, curr) => {
       const value = curr.attributes[property];
@@ -53,7 +53,7 @@ const Filter = ({
       return prev;
     }, {});
     const localSelectedFilters = localFilters.map(
-      (item: any) => item.attributes[property]
+      (item: any) => item.attributes[property],
     );
     setSelectedFilters((prevSelectedFilters: any) => [
       ...prevSelectedFilters,
@@ -98,7 +98,7 @@ const Filter = ({
               setOpen(!open);
             }
           }}
-          className="flex justify-between w-full ml-0 p-6 hover:bg-gray-200 border-b border-b-gray-300"
+          className="ml-0 flex w-full justify-between border-b border-b-gray-300 p-6 sm:hover:bg-gray-200"
         >
           <p className=" font-light">
             {label}&nbsp;
@@ -121,7 +121,7 @@ const Filter = ({
             return (
               <li
                 key={item.attributes[property]}
-                className="flex gap-4 px-6 my-2"
+                className="my-2 flex gap-4 px-6"
               >
                 <input
                   id={item.attributes[property]}
@@ -133,7 +133,7 @@ const Filter = ({
                 />
                 <label
                   htmlFor={item.attributes[property]}
-                  className="text-sm w-full"
+                  className="w-full text-sm"
                 >
                   {item.attributes[property]}
                 </label>

@@ -164,7 +164,7 @@ const EditSalgsprofilForm = () => {
         <button
           type="submit"
           onClick={() => {}}
-          className="rounded-lg border border-sky-600 bg-sky-800 px-5 py-2.5 text-sm font-medium text-sky-100 hover:bg-sky-700 hover:text-white focus:z-10 focus:outline-none focus:ring-0 focus:ring-sky-700"
+          className="rounded-lg border border-sky-600 bg-sky-800 px-5 py-2.5 text-sm font-medium text-sky-100 focus:z-10 focus:outline-none focus:ring-0 focus:ring-sky-700 sm:hover:bg-sky-700 sm:hover:text-white"
         >
           Lagre
         </button>

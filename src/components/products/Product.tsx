@@ -12,13 +12,13 @@ const Product = ({ product }: ProductProps) => {
   return (
     <Link
       href={`/produkter/${product.id}`}
-      className="border-2 rounded border-gray-100 w-44 hover:shadow cursor-pointer hover:bg-gray-50"
+      className="w-44 cursor-pointer rounded border-2 border-gray-100 sm:hover:bg-gray-50 sm:hover:shadow"
       key={product.id}
       onClick={() => {}}
     >
       <div className="relative">
         <img
-          className="w-full h-60 object-cover"
+          className="h-60 w-full object-cover"
           src={`${product.image[0].url}`}
           alt=""
         />
@@ -31,7 +31,7 @@ const Product = ({ product }: ProductProps) => {
       </div>
       <div className="flex flex-col gap-4  p-6">
         <p className="text-center font-semibold">{product.price} kr</p>
-        <p className="text-sm text-start text-gray-500">
+        <p className="text-start text-sm text-gray-500">
           <span className=" text-sm">Str </span>
           <span>{product.size.number}</span>
         </p>
@@ -43,7 +43,7 @@ const Product = ({ product }: ProductProps) => {
         </div>
         <div className="flex items-end justify-start text-xs text-gray-500">
           <div
-            className={`flex justify-between gap-1 items-center ${tailwindColor}  px-3 py-1 rounded`}
+            className={`flex items-center justify-between gap-1 ${tailwindColor}  rounded px-3 py-1`}
           >
             <UserCircle size={20} />
             <p>{product.user.username}</p>

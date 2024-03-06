@@ -3,10 +3,10 @@ import React from "react";
 
 const HomeHeroImage = () => {
   return (
-    <div className="bg-homeHeroMobile h-[700px] bg-cover bg-center bg-no-repeat bg-fixed">
-      <div className="backdrop-brightness-[0.7] h-full w-full flex justify-center items-center gap-8 flex-col">
-        <p className="text-white text-xl ">Kjøp og selg barneklær</p>
-        <h1 className="text-white text-center font-bold text-4xl ">
+    <div className="h-[700px] bg-homeHeroMobile bg-cover bg-fixed bg-center bg-no-repeat">
+      <div className="flex h-full w-full flex-col items-center justify-center gap-8 backdrop-brightness-[0.7]">
+        <p className="text-xl text-white ">Kjøp og selg barneklær</p>
+        <h1 className="text-center text-4xl font-bold text-white ">
           Enkelt.
           <br />
           Rimelig.
@@ -15,7 +15,7 @@ const HomeHeroImage = () => {
         </h1>
 
         <Link href="/produkter">
-          <button className=" border-2 text-white bg-indigo-500 border-indigo-500 px-8 py-4 rounded-lg hover:bg-brand-100 hover:text-black">
+          <button className=" rounded-lg border-2 border-indigo-500 bg-indigo-500 px-8 py-4 text-white sm:hover:bg-brand-100 sm:hover:text-black">
             Se våre produkter
           </button>
         </Link>

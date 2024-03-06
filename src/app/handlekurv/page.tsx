@@ -90,7 +90,7 @@ const Page = () => {
         <p className="text-sm">Frakt pris beregnes ved checkout</p>
         <Link
           href="/checkout"
-          className="rounded border-2 border-gray-500 px-8 py-4 transition-colors duration-150 hover:bg-gray-500 hover:text-white"
+          className="rounded border-2 border-gray-500 px-8 py-4 transition-colors duration-150 sm:hover:bg-gray-500 sm:hover:text-white"
         >
           <button>Gå videre</button>
         </Link>

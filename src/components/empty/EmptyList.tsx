@@ -22,7 +22,7 @@ export const EmptyList = ({ path, text, buttonLabel }: EmptyListProps) => {
           <p className="mt-2 text-sm text-gray-400">{text}</p>
           <Link
             href={path}
-            className="mt-4 rounded-md bg-indigo-500 px-4 py-2 text-white transition duration-200 ease-in-out hover:bg-indigo-600"
+            className="mt-4 rounded-md bg-indigo-500 px-4 py-2 text-white transition duration-200 ease-in-out sm:hover:bg-indigo-600"
           >
             {buttonLabel}
           </Link>

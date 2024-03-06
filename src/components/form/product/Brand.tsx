@@ -9,12 +9,12 @@ const Brand = ({ formik }: ColorProps) => {
   const brands = ["Lille lam", "H&M", "Cubus", "Babyshop", "Vet ikke"];
   return (
     <FormFieldContainer header="Klesmerke">
-      <div className="flex flex-wrap gap-2 mt-2">
+      <div className="mt-2 flex flex-wrap gap-2">
         <input
           type="brand"
           id="brand"
           name="brand"
-          className="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 "
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
           placeholder=""
           required
           value={formik.values.brand}
@@ -28,7 +28,7 @@ const Brand = ({ formik }: ColorProps) => {
               onClick={() => {
                 formik.setFieldValue("brand", brand);
               }}
-              className="border-2 border-gray-200 hover:bg-gray-400 text-gray-700 font-light py-2 px-4 rounded"
+              className="rounded border-2 border-gray-200 px-4 py-2 font-light text-gray-700 sm:hover:bg-gray-400"
             >
               {brand}
             </button>

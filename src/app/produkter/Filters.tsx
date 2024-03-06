@@ -82,7 +82,7 @@ const Filters = ({
         sizeQuery +
         materialQuery +
         categoryQuery +
-        sexQuery
+        sexQuery,
     );
     setSelectedFilters([
       ...colorFilter.map((item: any) => item.name),
@@ -109,7 +109,7 @@ const Filters = ({
         materialQuery +
         categoryQuery +
         sexQuery
-      }`
+      }`,
     );
   };
   const FilterProps = {
@@ -125,21 +125,21 @@ const Filters = ({
     }
   }, []);
   return (
-    <div className="  max-h-screen flex flex-col overflow-y-scroll  relative">
+    <div className="  relative flex max-h-screen flex-col  overflow-y-scroll">
       <div className="flex justify-between gap-4">
         <button
           onClick={() => {
             setOpen(true);
           }}
-          className=" flex items-center border border-gray-300 rounded p-2 px-4 hover:bg-gray-200"
+          className=" flex items-center rounded border border-gray-300 p-2 px-4 sm:hover:bg-gray-200"
         >
           <SlidersHorizontal size={24} weight="thin" />
           <p className="">Filter</p>
         </button>
       </div>
       <FilterDialog open={open} setOpen={setOpen}>
-        <div className={`h-screen relative flex flex-col max-h-screen `}>
-          <div className="flex justify-between px-6 border-b border-b-gray-300  py-6">
+        <div className={`relative flex h-screen max-h-screen flex-col `}>
+          <div className="flex justify-between border-b border-b-gray-300 px-6  py-6">
             <p className="text-lg font-bold ">Filtrer</p>
             <div
               onClick={() => {
@@ -207,9 +207,9 @@ const Filters = ({
             />
           </div>
 
-          <div className="flex px-6 justify-between bg-gray-100  shadow-inner bottom-0 sticky">
+          <div className="sticky bottom-0 flex justify-between  bg-gray-100 px-6 shadow-inner">
             <button
-              className=" flex items-center border-2 border-red-300 rounded-md p-2 px-4 my-4  hover:bg-gray-700"
+              className=" my-4 flex items-center rounded-md border-2 border-red-300 p-2 px-4  sm:hover:bg-gray-700"
               onClick={() => {
                 setCheckboxStates({});
                 setFilterQuery("");
@@ -224,7 +224,7 @@ const Filters = ({
               Tøm alle filtre
             </button>
             <button
-              className="block bg-gray-500 rounded-md p-2 px-4 m-4 sticky top-0 text-white hover:bg-gray-700"
+              className="sticky top-0 m-4 block rounded-md bg-gray-500 p-2 px-4 text-white sm:hover:bg-gray-700"
               onClick={() => {
                 handleFilterFetch();
                 setOpen(false);

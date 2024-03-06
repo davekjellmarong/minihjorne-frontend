@@ -18,13 +18,13 @@ const ImageUploader = ({
   };
 
   return (
-    <div className="flex justify-center flex-col items-center">
+    <div className="flex flex-col items-center justify-center">
       <input
-        className="file:mr-4 file:py-10 file:px-16 file:shadow-lg file:cursor-pointer 
-      file:rounded file:border-0
+        className="file:mr-4 file:cursor-pointer file:rounded file:border-0 file:bg-violet-50 
+      file:px-16 file:py-10
       file:text-sm file:font-semibold
-      file:bg-violet-50 file:text-violet-700
-      hover:file:bg-violet-100"
+      file:text-violet-700 file:shadow-lg
+      sm:hover:file:bg-violet-100"
         type="file"
         id="imageInput"
         multiple

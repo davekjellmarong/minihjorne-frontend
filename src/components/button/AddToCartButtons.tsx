@@ -13,9 +13,8 @@ interface AddToCartButtonsProps {
 }
 
 const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
-  const [addedProductsIds, setAddedProductsIds] = useState<number[]>(
-    getSavedProductIds()
-  );
+  const [addedProductsIds, setAddedProductsIds] =
+    useState<number[]>(getSavedProductIds());
   return (
     <>
       {addedProductsIds?.includes(product.id) ? (
@@ -28,7 +27,7 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
           //   setAddedProductsIds(updatedAddedProductsIds);
           //   toast.info("Fjernet", { position: toast.POSITION.BOTTOM_RIGHT });
           // }}
-          className="text-lg w-full flex justify-center items-center gap-1 border-2 border-gray-400 px-6 h-20 rounded  hover:bg-gray-200"
+          className="flex h-20 w-full items-center justify-center gap-1 rounded border-2 border-gray-400 px-6 text-lg  sm:hover:bg-gray-200"
         >
           Eksisterer i handlekurven
         </button>
@@ -39,7 +38,7 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
             setAddedProductsIds([...addedProductsIds, product.id]);
             toast.info("Lagt til", { position: toast.POSITION.BOTTOM_RIGHT });
           }}
-          className="text-lg w-full flex justify-center items-center gap-1 border-2 border-gray-400 px-6 h-20 rounded hover:bg-gray-200"
+          className="flex h-20 w-full items-center justify-center gap-1 rounded border-2 border-gray-400 px-6 text-lg sm:hover:bg-gray-200"
         >
           Legg til <PlusCircle size={22} />
         </button>

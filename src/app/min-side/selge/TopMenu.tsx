@@ -8,9 +8,9 @@ const TopMenu = () => {
         <Link
           href={item.path}
           key={item.id}
-          className="flex flex-col justify-center gap-2 border-2 border-gray-200 p-8 rounded w-96 hover:bg-gray-100 hover:border-gray-300"
+          className="flex w-96 flex-col justify-center gap-2 rounded border-2 border-gray-200 p-8 sm:hover:border-gray-300 sm:hover:bg-gray-100"
         >
-          <p className="font-bold text-lg">{item.title}</p>
+          <p className="text-lg font-bold">{item.title}</p>
           <p className="text-gray-500">{item.description}</p>
         </Link>
       ))}

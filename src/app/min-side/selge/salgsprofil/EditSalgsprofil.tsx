@@ -44,7 +44,7 @@ const EditSalgsprofil = ({ formik, dialogRef, id }: EditSalgsprofilProps) => {
         <Link
           href="salgsprofil/rediger"
           // type="button"
-          className="text-indigo flex gap-2 rounded-lg border border-indigo-600  bg-gray-300 px-2 py-2 text-sm font-medium hover:bg-indigo-700 hover:text-white focus:z-10 focus:outline-none focus:ring-0 focus:ring-indigo-700"
+          className=" flex gap-2 rounded-lg border border-indigo-300  bg-brand-200 px-2 py-2 text-sm font-medium focus:z-10 focus:outline-none focus:ring-0 focus:ring-indigo-700 sm:hover:bg-indigo-700 sm:hover:text-white"
         >
           <Pencil size={20} color="indigo" />
           <p>Rediger</p>

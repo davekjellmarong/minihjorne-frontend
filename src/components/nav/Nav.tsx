@@ -28,21 +28,21 @@ const Nav = () => {
     hjem: <House size={26} weight="thin" />,
   };
   return (
-    <nav className="flex  bg-white items-center justify-between shadow flex-wrap p-2 px-6  lg:px-20">
-      <div className="block sm:hidden w-1/3">
+    <nav className="flex  flex-wrap items-center justify-between bg-white p-2 px-6 shadow  lg:px-20">
+      <div className="block w-1/3 sm:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center px-3 py-2 rounded "
+          className="flex items-center rounded px-3 py-2 "
         >
           <svg
-            className={`fill-current h-8 w-8 ${isOpen ? "hidden" : "block"}`}
+            className={`h-8 w-8 fill-current ${isOpen ? "hidden" : "block"}`}
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
           <svg
-            className={`fill-current h-8 w-8 ${isOpen ? "block" : "hidden"}`}
+            className={`h-8 w-8 fill-current ${isOpen ? "block" : "hidden"}`}
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -51,19 +51,19 @@ const Nav = () => {
         </button>
       </div>
 
-      <Link href="/produkter" className="lg:w-52  pb-0 mb-0  w-1/3">
+      <Link href="/produkter" className="mb-0  w-1/3 pb-0  lg:w-52">
         {/* <Image src="/logoo.png" alt="logo" width={250} height={250} /> */}
         Mini Hjørne
       </Link>
 
-      <div className="flex justify-end w-1/3">
+      <div className="flex w-1/3 justify-end">
         {
           // navItems &&
           navItemsRightEnd.map((item) => {
             return (
               <Link key={item.path} href={item.path} className="w-500">
                 <button
-                  className={` p-2 flex items-center rounded hover:bg-gray-500 transition-colors duration-150`}
+                  className={` flex items-center rounded p-2 transition-colors duration-150 sm:hover:bg-gray-500`}
                   key={item.label}
                 >
                   {icons[item.icon]} {item.label}
@@ -75,7 +75,7 @@ const Nav = () => {
       </div>
 
       <div
-        className={`w-full flex flex-col gap-6 mt-4 sm:flex-row sm:mt-0 sm:justify-end flex-grow sm:flex sm:items-center sm:w-auto ${
+        className={`mt-4 flex w-full flex-grow flex-col gap-6 sm:mt-0 sm:flex sm:w-auto sm:flex-row sm:items-center sm:justify-end ${
           isOpen ? "flex" : "hidden"
         }`}
       >
@@ -83,7 +83,7 @@ const Nav = () => {
           return (
             <Link key={item.path} href={item.path} className="w-500">
               <button
-                className={` p-4 text-sm text-brand-700 flex items-center rounded hover:bg-gray-300 transition-colors duration-150`}
+                className={` flex items-center rounded p-4 text-sm text-brand-700 transition-colors duration-150 sm:hover:bg-gray-300`}
                 key={item.label}
               >
                 {/* {icons[item.icon]} */}

@@ -10,7 +10,7 @@ const Breadcrumb = () => {
   const textColor =
     pathname === "/min-side"
       ? "text-black"
-      : "text-purple-500 hover:text-purple-700";
+      : "text-purple-500 sm:hover:text-purple-700";
   return (
     <div className={`p-4 text-gray-500 ${backgroundColor}`}>
       <Link href="/">
