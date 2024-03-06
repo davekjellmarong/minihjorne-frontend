@@ -97,8 +97,8 @@ const Page = ({ params }: { params: { id: string } }) => {
     initialValues: {
       colors: product?.attributes.colors.data[0].id,
       colorsNorwegianName: product?.attributes.colors.data[0].attributes.name,
-      material: product?.attributes.material.data.id,
-      materialName: product?.attributes.material.data.attributes.name,
+      material: product?.attributes.material.data?.id,
+      materialName: product?.attributes.material.data?.attributes.name,
       brand: product?.attributes.brand,
       price: product?.attributes.price,
       category: product?.attributes.category.data.id,
@@ -109,8 +109,8 @@ const Page = ({ params }: { params: { id: string } }) => {
       sizeName: product?.attributes.size.data.attributes.number,
       sex: product?.attributes.sex.data.id,
       sexName: product?.attributes.sex.data.attributes.name,
-      tags: product?.attributes.tags.data[0].id,
-      tagName: product?.attributes.tags.data[0].attributes.name,
+      tags: product?.attributes.tags.data[0]?.id,
+      tagName: product?.attributes.tags.data[0]?.attributes.name,
     },
 
     onSubmit: (values) => {
@@ -118,6 +118,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       updateProduct({ data: data });
     },
   });
+  console.log(product?.attributes);
   if (
     !colors?.data ||
     !tags?.data ||
@@ -191,7 +192,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Materials
           formik={formik}
           materials={materials.data}
-          initialId={product?.attributes.material.data.id}
+          initialId={product?.attributes.material.data?.id}
         />
       </Accordion>
       <Accordion label="Merke" currentValue={formik.values.brand}>

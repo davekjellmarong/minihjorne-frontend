@@ -26,6 +26,7 @@ import Loading from "@/components/loading/Loading";
 import Materials from "./Materials";
 import Tags from "./Tags";
 import Carousel from "react-multi-carousel";
+import FormFieldContainer from "./FormFieldContainer";
 
 interface ProductFormProps {
   formik: any;
@@ -93,7 +94,14 @@ const ProductForm = ({ formik }: ProductFormProps) => {
         customTransition="all 0.8s"
         transitionDuration={800}
       >
-        <Color formik={formik} colors={colors.data} onChangeFunc={nextSlide} />
+        {/* TO DO TO-DO Decouple FieldComponents and FormFieldContainer */}
+        <FormFieldContainer header="Farge">
+          <Color
+            formik={formik}
+            colors={colors.data}
+            onChangeFunc={nextSlide}
+          />
+        </FormFieldContainer>
         <Category
           onChangeFunc={nextSlide}
           formik={formik}
@@ -111,14 +119,14 @@ const ProductForm = ({ formik }: ProductFormProps) => {
         <Brand formik={formik} />
         <Price formik={formik} />
 
-        <div className="flex flex-col justify-center items-center h-full flex-wrap px-10 gap-8">
+        <div className="flex h-full flex-col flex-wrap items-center justify-center gap-8 px-10">
           <button
             type="submit"
-            className=" bg-brand-500 py-2 px-6 text-white rounded w-56 h-14"
+            className=" h-14 w-56 rounded bg-brand-500 px-6 py-2 text-white"
           >
             Lagre produkt
           </button>
-          <p className="w-80 text-gray-500 text-sm text-center">
+          <p className="w-80 text-center text-sm text-gray-500">
             Produktet blir bare lagret, ikke publisert
           </p>
         </div>

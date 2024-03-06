@@ -18,15 +18,15 @@ const Materials = ({
   initialId,
 }: ColorProps) => {
   return (
-    <FormFieldContainer header="Materiale">
+    <FormFieldContainer optional header="Materiale">
       {materials.map((material) => {
         return (
-          <div key={material.id} className="w-20 flex flex-col items-center">
-            <label className={`font-light text-sm`}>
+          <div key={material.id} className="flex w-20 flex-col items-center">
+            <label className={`text-sm font-light`}>
               {material.attributes.name}
             </label>
             <input
-              className={`w-8 h-8`}
+              className={`h-8 w-8`}
               type="radio"
               name="materials"
               id="materials"

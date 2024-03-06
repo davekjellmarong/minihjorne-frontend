@@ -11,7 +11,7 @@ interface ProductsProps {
 const Products = ({ isLoading, data }: ProductsProps) => {
   if (isLoading)
     return (
-      <div className="flex flex-wrap gap-10 justify-center mt-10">
+      <div className="mt-10 flex flex-wrap justify-center gap-10">
         {Array(10)
           .fill(0)
           .map((_, i) => {
@@ -21,7 +21,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
     );
   if (data)
     return (
-      <ul className="flex flex-wrap gap-10 justify-center mt-10">
+      <ul className="mt-10 flex flex-wrap justify-center gap-6">
         {data.map((product) => {
           return (
             <React.Fragment key={product.id}>

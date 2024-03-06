@@ -1,16 +1,32 @@
+"use client";
 import ProductStatusChip from "@/components/chip/ProductStatusChip";
 import { ProductBackend } from "@/utils/types";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+  getPaginationRowModel,
+} from "@tanstack/react-table";
+// import { columns } from "@/components/table/ProductsTable/Columns";
+
 interface ProductTableProps {
-  products: ProductBackend[] | undefined;
+  products: ProductBackend[];
+  // columns: ColumnDef<ProductBackend>[];
 }
 
 const ProductTable = ({ products }: ProductTableProps) => {
   const router = useRouter();
-
+  // const table = useReactTable({
+  //   products,
+  //   columns,
+  //   getCoreRowModel: getCoreRowModel(),
+  //   getPaginationRowModel: getPaginationRowModel(),
+  // });
   return (
     <>
       <table className="w-full">

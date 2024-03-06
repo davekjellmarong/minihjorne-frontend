@@ -1,9 +1,7 @@
 "use client";
-import InputHeader from "@/components/header/InputHeader";
 import { tailwindColorsObject } from "@/utils/constants";
 import { Color } from "@/utils/types";
 import React from "react";
-import FormFieldContainer from "./FormFieldContainer";
 
 interface ColorProps {
   colors: Color[];
@@ -21,16 +19,16 @@ const Color = ({
   initialId,
 }: ColorProps) => {
   return (
-    <FormFieldContainer header="Farge">
+    <>
       {colors.map((color) => {
         const tailwindColor = tailwindColorsObject[color.attributes.tailwind];
         return (
-          <div key={color.id} className="w-20 flex flex-col items-center">
-            <label className={`font-light text-sm`}>
+          <div key={color.id} className="flex w-20 flex-col items-center">
+            <label className={`text-sm font-light`}>
               {color.attributes.name}
             </label>
             <input
-              className={`w-8 h-8 rounded ${tailwindColor}  checked:outline checked:outline-4 checked:outline-green-500  focus:ring-1 focus:ring-emerald-400`}
+              className={`h-8 w-8 rounded ${tailwindColor} checked:outline checked:outline-4 checked:outline-green-500 focus:ring-1 focus:ring-emerald-400`}
               type="radio"
               name={formName}
               id={formName}
@@ -45,7 +43,7 @@ const Color = ({
                 formik.setFieldValue(`${formName}Name`, colorName);
                 formik.setFieldValue(
                   `${formName}NorwegianName`,
-                  color.attributes.name
+                  color.attributes.name,
                 );
                 if (onChangeFunc) {
                   onChangeFunc();
@@ -55,7 +53,7 @@ const Color = ({
           </div>
         );
       })}
-    </FormFieldContainer>
+    </>
   );
 };
 

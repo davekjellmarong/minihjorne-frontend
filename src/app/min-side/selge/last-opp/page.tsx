@@ -50,10 +50,10 @@ const LeggUt = () => {
       toast.info(
         `Produktet '${
           formik.values.colorsNorwegianName
-        } ${formik.values.categoryName.toLowerCase()}' lagret`
+        } ${formik.values.categoryName.toLowerCase()}' lagret`,
       );
       setImages((prev: any) =>
-        prev.filter((image: any) => !selectedImages.includes(image))
+        prev.filter((image: any) => !selectedImages.includes(image)),
       );
 
       setSelectedImages([]);
@@ -70,14 +70,14 @@ const LeggUt = () => {
     initialValues: {
       colors: "",
       colorsNorwegianName: "",
-      material: "",
+      // material: "",
       brand: "",
       price: 0,
       category: "",
       categoryName: "",
       state: "",
       sex: "",
-      tags: "",
+      // tags: "",
       user: 0,
     },
 
@@ -94,11 +94,11 @@ const LeggUt = () => {
   });
   if (images.length === 0) {
     return (
-      <div className="flex flex-col gap-6 text-center justify-center items-center h-screen relative">
+      <div className="relative flex h-screen flex-col items-center justify-center gap-6 text-center">
         {/* /create a little help icon button that will open the modal when click */}
 
         <button
-          className="absolute top-8 left-8"
+          className="absolute left-8 top-8"
           onClick={() => setIntroModal(true)}
         >
           <Question size={32} weight="thin" color="blue" />
@@ -146,7 +146,7 @@ const LeggUt = () => {
   return (
     <>
       <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
-        <p className="text-center m-10">Velg opp til 3 bilder</p>
+        <p className="m-10 text-center">Velg opp til 3 bilder</p>
         <ImagesList
           images={images}
           setSelectedImages={setSelectedImages}
@@ -154,9 +154,9 @@ const LeggUt = () => {
         />
       </FilterDialog>
 
-      <div className="flex flex-col gap-14 relative">
+      <div className="relative flex flex-col gap-14">
         <LoadingOverlay loading={loading} />
-        <div className="bg-white  overflow-scroll shadow flex flex-col-reverse items-center border-r-2 justify-center border-gray-200">
+        <div className="flex  flex-col-reverse items-center justify-center overflow-scroll border-r-2 border-gray-200 bg-white shadow">
           <div className="p-6" onClick={() => setModal(true)}>
             <SelectedImages selectedImages={selectedImages} />
           </div>
@@ -170,13 +170,13 @@ const LeggUt = () => {
                   setNextProduct(false);
                   setModal(true);
                 }}
-                className="bg-brand-500 w-52 py-4 px-6 text-white rounded "
+                className="w-52 rounded bg-brand-500 px-6 py-4 text-white "
               >
                 Ja
               </button>
               <Link
                 href="/min-side/selge/produkter"
-                className="bg-white border-2 border-brand-600 w-52 py-4 px-6 rounded text-center"
+                className="w-52 rounded border-2 border-brand-600 bg-white px-6 py-4 text-center"
               >
                 Se mine produkter
               </Link>

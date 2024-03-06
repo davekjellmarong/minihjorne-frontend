@@ -99,7 +99,7 @@ const Page = () => {
   if (userData)
     return (
       <>
-        <Dialog dialogRef={dialogRef} formik={formik} />
+        {/* <Dialog dialogRef={dialogRef} formik={formik} /> */}
         <EditSalgsprofil
           dialogRef={dialogRef}
           formik={formik}

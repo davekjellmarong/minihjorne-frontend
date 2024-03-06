@@ -50,8 +50,8 @@ const Category = ({
     <FormFieldContainer header="Katergori">
       {categories.map((category) => {
         return (
-          <div key={category.id} className="flex flex-col items-center w-20">
-            <label className="font-light text-sm">
+          <div key={category.id} className="flex w-20 flex-col items-center">
+            <label className="text-sm font-light">
               {category.attributes.name}
             </label>
             {iconsList[category.attributes.icon]}
