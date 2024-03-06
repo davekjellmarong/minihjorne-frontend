@@ -44,7 +44,6 @@ const Abonnement = () => {
         <p>Du må være logget inn for å se denne siden</p>
       </div>
     );
-  console.log({ user });
   return (
     <div>
       <SuccessDialog

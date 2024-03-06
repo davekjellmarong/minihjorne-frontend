@@ -94,7 +94,6 @@ const Page = () => {
   //   enabled: !!userId,
   // });
 
-  console.log(userData);
   // if (isLoading) return <Loading />;
   if (userData)
     return (

@@ -35,8 +35,6 @@ const ProductPage = () => {
   //     setPage(products?.meta.page);
   //   }
   // }, [products]);
-  console.log({ products });
-  console.log({ page });
   return (
     <>
       <div className="relative flex w-full flex-col items-center">
@@ -62,7 +60,7 @@ const ProductPage = () => {
               Forrige
             </Button>
             <Button
-              disabled={products?.meta.pagination.pageCount === page}
+              disabled={products?.meta?.pagination.pageCount === page}
               type="outline"
               onClick={() => {
                 setPage(page + 1);

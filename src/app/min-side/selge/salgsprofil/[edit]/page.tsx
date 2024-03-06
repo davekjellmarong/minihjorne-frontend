@@ -25,7 +25,6 @@ const EditSalgsprofilForm = () => {
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: colors } = useQuery(FilterQueries.colors());
   const { data: userData } = useQuery(UserQueries.me(jwt));
-  console.log(colors);
   const { mutate: updateUser } = useMutation({
     mutationFn: (values: any) => {
       return UserMethods.put(values, userData?.id, jwt);

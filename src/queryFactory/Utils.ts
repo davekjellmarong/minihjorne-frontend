@@ -4,9 +4,7 @@ export const getProductsFiltered = async (query: string, page: number) => {
     `/products?pagination[page]=${page}&pagination[pageSize]=10&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
   const url = query?.length > 0 ? baseUrl + query : baseUrl;
   const response = await fetch(url, { cache: "no-cache" });
-  console.log(url);
   const data = await response.json();
-  console.log(data.length);
   return data;
 };
 export const getProductsFilteredInfinite = async (
@@ -18,9 +16,7 @@ export const getProductsFilteredInfinite = async (
     `/products?pagination[page]=${page}&pagination[pageSize]=10&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
   const url = query?.length > 0 ? baseUrl + query : baseUrl;
   const response = await fetch(url, { cache: "no-cache" });
-  console.log(url);
   const data = await response.json();
-  console.log(data.length);
   return data;
 };
 
@@ -71,7 +67,6 @@ export const putData = async (query: string, token: string, data: any) => {
       body: JSON.stringify(data),
     });
     const res = await response.json();
-    console.log(res, "this is the response");
     return res;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -89,7 +84,6 @@ export const deleteData = async (query: string, token: string) => {
       },
     });
     const res = await response.json();
-    console.log(res, "this is the response");
     return res;
   } catch (error) {
     console.error("Error fetching data:", error);

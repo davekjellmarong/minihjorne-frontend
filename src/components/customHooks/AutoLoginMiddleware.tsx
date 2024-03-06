@@ -11,19 +11,11 @@ interface AutoLoginMiddlewareProps {
   children: React.ReactNode;
 }
 const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
-  console.log("AutoLoginMiddleware starts");
   const cookieStore: any = cookies();
-  console.log(cookieStore, "cookieStore");
   const token = cookieStore.get("Token");
-  console.log(token, "token");
   if (!token) return <>{children}</>;
 
   const url = process.env.NEXT_PUBLIC_API_URL + "/users/me?populate=*";
-  console.log(
-    process.env.NEXT_PUBLIC_API_URL,
-    "process.env.NEXT_PUBLIC_API_URL"
-  );
-  console.log(apiUrl, "apiUrl");
 
   const headers = {
     Authorization: `Bearer ${token.value}`,

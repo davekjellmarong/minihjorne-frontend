@@ -24,7 +24,6 @@ const Page = () => {
     enabled: !!order?.data.id,
   });
   if (isPending) return <Loading />;
-  console.log(products);
   return (
     <div>
       {id}

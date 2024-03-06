@@ -28,7 +28,6 @@ const Salgsprofil = ({ user }: SalgsprofilProps) => {
       return ProductsMethods.getByUserId(user.id);
     },
   });
-  console.log("SalgsprofilProps", data);
   const icons: any = {
     Star: {
       component: <Star size={52} weight="fill" color={user.color} />,
@@ -58,23 +57,23 @@ const Salgsprofil = ({ user }: SalgsprofilProps) => {
   const tailwindColor = tailwindColorsUserButton[user.color];
   return (
     <div
-      className={`${tailwindColor} h-full w-full flex justify-center items-center`}
+      className={`${tailwindColor} flex h-full w-full items-center justify-center`}
     >
-      <div className="m-10 relative w-full shadow-2xl rounded bg-white text-center flex flex-col items-center py-10 gap-6">
+      <div className="relative m-10 flex w-full flex-col items-center gap-6 rounded bg-white py-10 text-center shadow-2xl">
         <div className="flex items-center gap-14">
           {icons[user.icon]?.component}
-          <p className="font-semibold text-lg">{user.header}</p>
+          <p className="text-lg font-semibold">{user.header}</p>
           {icons[user.icon]?.component}
         </div>
-        <p className="text-gray-500 flex items-center gap-1">
+        <p className="flex items-center gap-1 text-gray-500">
           <User size={28} />
           <span>{user.username}</span>
         </p>
         <p className="max-w-2xl">{user.description}</p>
         <div className="flex gap-4">
-          <div className="py-2 px-6 bg-gray-300 rounded">Gutt 50-80</div>
-          <div className="py-2 px-6 bg-gray-300 rounded">Jente 20-50</div>
-          <div className="py-2 px-6 bg-gray-300 rounded">Unisex 40-200</div>
+          <div className="rounded bg-gray-300 px-6 py-2">Gutt 50-80</div>
+          <div className="rounded bg-gray-300 px-6 py-2">Jente 20-50</div>
+          <div className="rounded bg-gray-300 px-6 py-2">Unisex 40-200</div>
         </div>
         <div className="w-5/6">
           <Products data={data} />

@@ -118,7 +118,6 @@ const Page = ({ params }: { params: { id: string } }) => {
       updateProduct({ data: data });
     },
   });
-  console.log(product?.attributes);
   if (
     !colors?.data ||
     !tags?.data ||

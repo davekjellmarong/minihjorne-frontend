@@ -18,7 +18,6 @@ export default function Home() {
   const { data } = useQuery({
     queryKey: ["login-user"],
   });
-  console.log(data);
   return (
     <div>
       <HomeHeroImage />
