@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { ProductBackend } from "@/utils/types";
+import { Product as ProductType, ProductBackend } from "@/utils/types";
 import SmallProductSkeleton from "../skeleton/SmallProductSkeleton";
 import Product from "./Product";
 
 interface ProductsProps {
   isLoading?: boolean;
-  data: ProductBackend[] | undefined;
+  data: ProductType[] | undefined;
 }
 const Products = ({ isLoading, data }: ProductsProps) => {
   if (isLoading)
@@ -21,7 +21,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
     );
   if (data)
     return (
-      <ul className="mt-10 flex flex-wrap justify-center gap-4">
+      <ul className="mt-10 flex flex-wrap justify-evenly gap-4">
         {data.map((product) => {
           return (
             <React.Fragment key={product.id}>

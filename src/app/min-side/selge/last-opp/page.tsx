@@ -154,7 +154,7 @@ const LeggUt = () => {
         />
       </FilterDialog>
 
-      <div className="relative flex flex-col gap-14">
+      <div className="relative flex flex-col gap-2">
         <LoadingOverlay loading={loading} />
         <div className="flex  flex-col-reverse items-center justify-center overflow-scroll border-r-2 border-gray-200 bg-white shadow">
           <div className="p-6" onClick={() => setModal(true)}>

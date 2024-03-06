@@ -1,14 +1,16 @@
 import { tailwindColorsUserButton } from "@/utils/constants";
-import { ProductBackend } from "@/utils/types";
+import { Product as ProductType, ProductBackend } from "@/utils/types";
 import { Tag, UserCircle } from "@phosphor-icons/react";
 import Link from "next/link";
 import React from "react";
 
 interface ProductProps {
-  product: ProductBackend;
+  product: ProductType;
 }
 const Product = ({ product }: ProductProps) => {
-  const tailwindColor = tailwindColorsUserButton[product.user.color];
+  const { color, username } = product.attributes.user.data.attributes;
+  const { image, brand, price, size } = product.attributes;
+  const tailwindColor = tailwindColorsUserButton[color];
   return (
     <Link
       href={`/produkter/${product.id}`}
@@ -19,7 +21,7 @@ const Product = ({ product }: ProductProps) => {
       <div className="relative">
         <img
           className="h-60 w-full object-cover"
-          src={`${product.image[0].url}`}
+          src={`${image.data[0].attributes.url}`}
           alt=""
         />
         {/* <Heart
@@ -30,15 +32,15 @@ const Product = ({ product }: ProductProps) => {
       /> */}
       </div>
       <div className="flex flex-col gap-4  p-6">
-        <p className="text-center font-semibold">{product.price} kr</p>
+        <p className="text-center font-semibold">{price} kr</p>
         <p className="text-start text-sm text-gray-500">
           <span className=" text-sm">Str </span>
-          <span>{product.size.number}</span>
+          <span>{size.data.attributes.number}</span>
         </p>
         <div className="flex items-center justify-between text-sm text-gray-500">
           <div className="flex gap-2">
             <Tag size={22} />
-            <p>{product.brand}</p>
+            <p>{brand}</p>
           </div>
         </div>
         <div className="flex items-end justify-start text-xs text-gray-500">
@@ -46,7 +48,7 @@ const Product = ({ product }: ProductProps) => {
             className={`flex items-center justify-between gap-1 ${tailwindColor}  rounded px-3 py-1`}
           >
             <UserCircle size={20} />
-            <p>{product.user.username}</p>
+            <p>{username}</p>
           </div>
         </div>
       </div>

@@ -1,8 +1,26 @@
-export const getProductsFiltered = async (query: string) => {
-  const baseUrl = apiUrl + "/products?populate=*&filters[sold][$eq]=false";
+export const getProductsFiltered = async (query: string, page: number) => {
+  const baseUrl =
+    apiUrl +
+    `/products?pagination[page]=${page}&pagination[pageSize]=10&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
   const url = query?.length > 0 ? baseUrl + query : baseUrl;
   const response = await fetch(url, { cache: "no-cache" });
+  console.log(url);
   const data = await response.json();
+  console.log(data.length);
+  return data;
+};
+export const getProductsFilteredInfinite = async (
+  query: string,
+  page: number,
+) => {
+  const baseUrl =
+    apiUrl +
+    `/products?pagination[page]=${page}&pagination[pageSize]=10&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
+  const url = query?.length > 0 ? baseUrl + query : baseUrl;
+  const response = await fetch(url, { cache: "no-cache" });
+  console.log(url);
+  const data = await response.json();
+  console.log(data.length);
   return data;
 };
 

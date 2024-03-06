@@ -1,3 +1,5 @@
+import Product from "@/components/products/Product";
+
 export interface CommonSize {
   number: string;
   text: null;
@@ -435,6 +437,7 @@ export interface ColorsRQ {
 export interface ProductsRQ {
   data: Product[];
 }
+
 export interface ProductRQ {
   data: Product;
 }
@@ -464,4 +467,18 @@ export interface StatusRQ {
 }
 export interface SexRq {
   data: Sex[];
+}
+
+export interface Pagination {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+}
+
+export interface ProductsPagination {
+  data: Product[];
+  meta: Pagination;
 }

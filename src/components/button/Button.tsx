@@ -7,8 +7,15 @@ interface ButtonProps {
   children: React.ReactNode;
   type?: "brand" | "danger" | "outline";
   onClick?: () => void;
+  disabled?: boolean;
 }
-const Button = ({ icon, children, type = "brand", onClick }: ButtonProps) => {
+const Button = ({
+  icon,
+  children,
+  type = "brand",
+  onClick,
+  disabled,
+}: ButtonProps) => {
   const iconElement = {
     trash: <Trash size={24} />,
     save: <FloppyDisk size={24} />,
@@ -21,6 +28,7 @@ const Button = ({ icon, children, type = "brand", onClick }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={`${colors[type]}  flex items-center gap-2 rounded p-4 px-6`}
     >
       {icon && <span>{iconElement[icon]}</span>}

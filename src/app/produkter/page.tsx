@@ -10,7 +10,7 @@ import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 const ProductProvider = async () => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(ProductQueries.filtered(""));
+  await queryClient.prefetchQuery(ProductQueries.filtered("", 1));
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <ProductPage />
