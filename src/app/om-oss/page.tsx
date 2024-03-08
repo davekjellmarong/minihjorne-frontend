@@ -4,8 +4,8 @@ import React from "react";
 const OmOss = () => {
   return (
     <>
-      <div className="flex flex-col items-center py-14 gap-6">
-        <h1 className="text-3xl text-center px-10">
+      <div className="flex flex-col items-center gap-6 py-14">
+        <h1 className="px-10 text-center text-3xl">
           La oss gjøre gjenbruk gøy og rimelig
         </h1>
         <Image
@@ -16,16 +16,16 @@ const OmOss = () => {
           height={350}
         />
       </div>
-      <div className="flex flex-col items-center px-10 gap-10 ">
+      <div className="flex flex-col items-center gap-10 px-10 ">
         <div className="p">
           <div>
-            <p className="text-purple-700 font-light text-sm">VÅR HISTORIE</p>
+            <p className="text-sm font-light text-purple-700">VÅR HISTORIE</p>
             <h2 className="text-2xl">
               En blanding av Finn.no og kjøp & salg butikker
             </h2>
           </div>
           <Image
-            className="rounded-lg w-full"
+            className="w-full rounded-lg"
             src="/bretter-forklet.jpg"
             alt="logo"
             width={350}
@@ -53,14 +53,14 @@ const OmOss = () => {
           </p>
         </div>
         <div>
-          <p className="text-purple-700 font-light text-sm">HVEM ER VI?</p>
+          <p className="text-sm font-light text-purple-700">HVEM ER VI?</p>
           <h2 className="text-2xl">Vi er foreldre som liker gjenbruk</h2>
           <Image
             src="/sokker-gulv.jpg"
             alt="logo"
             width={350}
             height={350}
-            className="rounded-lg w-full"
+            className="w-full rounded-lg"
           />
           <p>
             Vi er et dedikert team hos Minihjørnet, sammensatt av engasjerte

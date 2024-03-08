@@ -82,7 +82,8 @@ const Filters = ({
         sizeQuery +
         materialQuery +
         categoryQuery +
-        sexQuery,
+        sexQuery +
+        `&pagination[page]=1`,
     );
     setSelectedFilters([
       ...colorFilter.map((item: any) => item.name),
@@ -108,7 +109,8 @@ const Filters = ({
         sizeQuery +
         materialQuery +
         categoryQuery +
-        sexQuery
+        sexQuery +
+        `&pagination[page]=1`
       }`,
     );
   };
@@ -117,13 +119,13 @@ const Filters = ({
     checkboxStates,
     setSelectedFilters,
   };
-  useEffect(() => {
-    const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
-    const path = current.toString();
-    if (path.length > 0) {
-      setFilterQuery("&" + path);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
+  //   const path = current.toString();
+  //   if (path.length > 0) {
+  //     setFilterQuery("&" + path);
+  //   }
+  // }, []);
   return (
     <div className="  relative flex max-h-screen flex-col  overflow-y-scroll">
       <div className="flex justify-between gap-4">

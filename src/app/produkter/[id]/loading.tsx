@@ -3,7 +3,7 @@ import React from "react";
 
 const loading = () => {
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex w-full justify-center">
       <LargeProductSkeleton />
     </div>
   );

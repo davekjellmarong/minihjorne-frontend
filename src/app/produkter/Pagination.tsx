@@ -1,29 +1,51 @@
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
 interface PaginationProps {
   page: number;
   setPage: (page: number) => void;
   pageCount: number | undefined;
+  setFilterQuery: (filterQuery: string) => void;
 }
-const Pagination = ({ page, setPage, pageCount }: PaginationProps) => {
+const Pagination = ({
+  page,
+  setPage,
+  pageCount,
+  setFilterQuery,
+}: PaginationProps) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const nextButtonDisabled = pageCount === undefined || pageCount === page;
+  const prevButtonDisabled = page === undefined || page === 1;
   return (
     <div className="flex gap-8">
       <button
-        className={`flex gap-2 text-sm ${page === 1 ? "text-gray-400" : ""}`}
-        disabled={page === 1}
+        className={`flex gap-2 text-sm ${prevButtonDisabled ? "text-gray-400" : ""}`}
+        disabled={prevButtonDisabled}
         onClick={() => {
+          const params = new URLSearchParams(searchParams.toString());
+          params.set("pagination[page]", String(page - 1));
+          window.history.pushState(null, "", `?${params.toString()}`);
           setPage(page - 1);
+          // setFilterQuery(`?${params.toString()}`);
+          // router.push(`${window.location.pathname}?`);
         }}
       >
         <ArrowLeft size={20} />
         <p>Forrige</p>
       </button>
       <button
-        className={`flex gap-2 text-sm ${pageCount === page ? "text-gray-400" : ""}`}
-        disabled={pageCount === page}
+        className={`flex gap-2 text-sm ${nextButtonDisabled ? "text-gray-400" : ""}`}
+        disabled={nextButtonDisabled}
         onClick={() => {
+          const params = new URLSearchParams(searchParams.toString());
+          params.set("pagination[page]", String(page + 1));
+          window.history.pushState(null, "", `?${params.toString()}`);
           setPage(page + 1);
+          // setFilterQuery(`?${params.toString()}`);
+          // router.push(`${window.location.pathname}?page=${page + 1}`);
         }}
       >
         <p>Neste</p>

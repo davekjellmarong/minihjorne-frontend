@@ -46,7 +46,7 @@ export const ProductQueries = {
     }),
   filtered: (query: string, page: number) =>
     queryOptions({
-      queryKey: [...ProductQueries.all(), query, page],
+      queryKey: [...ProductQueries.all(), query],
       queryFn: () => ProductsMethods.getFiltered(query, page),
     }),
   // infinite: (query: string) =>
