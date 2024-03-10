@@ -1,49 +1,32 @@
 "use client";
 import { CaretDown, CaretUp } from "@phosphor-icons/react";
-import { useSearchParams } from "next/navigation";
 
 import React, { useEffect, useRef, useState } from "react";
-import useExtractQueryParams from "./useExtractQueryParams";
 interface FilterProps {
   data: any;
   property: string;
   label: string;
+  filter: string;
   queryTemplate: string;
-  setCheckboxStates: any;
-  checkboxStates: any;
+  queryParams: any;
 }
 const Filter = ({
   data,
   property,
   label,
+  filter,
   queryTemplate,
-  setCheckboxStates,
-  checkboxStates,
+  queryParams,
 }: FilterProps) => {
   // When inside this component, use the Label to check if there are any searchParams for this Label. If there are, loop through thoose and set the checkboxStates to true for each of them. and also set the setFilter data as well
-
+  const [checkboxStates, setCheckboxStates] = useState<{
+    [key: string]: boolean;
+  }>({});
   const FilterRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
-  const searchParams = useSearchParams();
-  const filters = useExtractQueryParams();
-  console.log({ filters });
   useEffect(() => {
-    const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
-    const path = current
-      .toString()
-      .split("&")
-      .map((item) => decodeURIComponent(item));
-    const match = queryTemplate.match(/\[([^\]]+)\]/)?.[1];
-
-    if (!match) return;
-    const filterValues = path.filter((item) => item.includes(match));
-    if (!data?.data) return;
-    const filters = data?.data;
-    const localFilters = filterValues.map((item) =>
-      filters.find((filter: any) => String(filter.id) === item.split("=")[1]),
-    );
-    console.log({ localFilters });
-    const filtersObject = localFilters.reduce((prev: any, curr) => {
+    const localFilters = queryParams[filter];
+    const filtersObject = localFilters?.reduce((prev: any, curr: any) => {
       const value = curr.attributes[property];
       prev[value] = true;
       return prev;
@@ -118,7 +101,6 @@ const Filter = ({
                 <input
                   id={item.attributes[property]}
                   type="checkbox"
-                  // onChange={() => handleFilterData(item)}
                   onChange={() => handleCheckboxChange(item)}
                   checked={checkboxStates[item.attributes[property]] || false}
                   className="size-6 cursor-pointer rounded-sm"

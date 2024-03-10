@@ -4,15 +4,14 @@ import useGetFilters from "@/components/customHooks/useGetFilters";
 import { SlidersHorizontal, X } from "@phosphor-icons/react";
 import FilterDialog from "./FilterDialog";
 import { queryTemplates } from "@/utils/constants";
+import useExtractQueryParams from "./useExtractQueryParams";
 
 interface FiltersProps {
   setFilterQuery: any;
 }
 const Filters = ({ setFilterQuery }: FiltersProps) => {
   const [open, setOpen] = useState(false);
-  const [checkboxStates, setCheckboxStates] = useState<{
-    [key: string]: boolean;
-  }>({});
+
   const [
     TagsData,
     ColorsData,
@@ -21,13 +20,14 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
     MaterialsData,
     SexData,
   ] = useGetFilters();
+
   const handleFilterFetch = () => {
     const queryParams = new URLSearchParams(window.location.search);
     setFilterQuery(`?${queryParams.toString()}&pagination[page]=1`);
   };
+  const { queryParams } = useExtractQueryParams();
   const FilterProps = {
-    setCheckboxStates,
-    checkboxStates,
+    queryParams,
   };
   return (
     <div className="  relative flex max-h-screen flex-col  overflow-y-scroll">
@@ -61,6 +61,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               data={SexData}
               property="name"
               label="Kjønn"
+              filter="sex"
               queryTemplate={queryTemplates.sexQueryTemplate}
             />
             <Filter
@@ -68,6 +69,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               data={CategoryData}
               property="name"
               label="Kategori"
+              filter="category"
               queryTemplate={queryTemplates.categoryQueryTemplate}
             />
             <Filter
@@ -75,6 +77,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               data={SizesData}
               property="number"
               label="Størrelse"
+              filter="size"
               queryTemplate={queryTemplates.sizeQueryTemplate}
             />
             <Filter
@@ -82,6 +85,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               data={TagsData}
               property="name"
               label="Tags"
+              filter="tags"
               queryTemplate={queryTemplates.tagQueryTemplate}
             />
             <Filter
@@ -89,6 +93,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               data={ColorsData}
               property="name"
               label="Farger"
+              filter="colors"
               queryTemplate={queryTemplates.colorQueryTemplate}
             />
             <Filter
@@ -96,6 +101,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               data={MaterialsData}
               property="name"
               label="Stoff"
+              filter="materials"
               queryTemplate={queryTemplates.materialQueryTemplate}
             />
           </div>
@@ -104,7 +110,6 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
             <button
               className=" my-4 flex items-center rounded-md border-2 border-red-300 p-2 px-4  sm:hover:bg-gray-700"
               onClick={() => {
-                setCheckboxStates({});
                 setFilterQuery("");
               }}
             >

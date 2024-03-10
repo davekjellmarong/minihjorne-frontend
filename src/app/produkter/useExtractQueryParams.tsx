@@ -2,30 +2,44 @@
 import { FilterQueries } from "@/queryFactory/FilterQueryFactory";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useExtractQueryParams = () => {
-  const [filters, setFilters] = useState<any>([]);
+  const [queryParams, setQueryParams] = useState<any>({
+    category: [],
+    colors: [],
+    size: [],
+    tags: [],
+    materials: [],
+  });
+  const [flatQueryParams, setFlatQueryParams] = useState<any>([]);
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();
-
-  const category = queryClient.getQueryData(
-    FilterQueries.categories().queryKey,
-  );
-  const colors = queryClient.getQueryData(FilterQueries.colors().queryKey);
-  const size = queryClient.getQueryData(FilterQueries.sizes().queryKey);
-  const tags = queryClient.getQueryData(FilterQueries.tags().queryKey);
-  const materials = queryClient.getQueryData(
-    FilterQueries.materials().queryKey,
-  );
-  const sex = queryClient.getQueryData(FilterQueries.sexes().queryKey);
-
-  const current = new URLSearchParams(Array.from(searchParams.entries()));
-  const path = current
-    .toString()
-    .split("&")
-    .map((item) => decodeURIComponent(item));
   useEffect(() => {
+    const category = queryClient.getQueryData(
+      FilterQueries.categories().queryKey,
+    );
+    const colors = queryClient.getQueryData(FilterQueries.colors().queryKey);
+    const size = queryClient.getQueryData(FilterQueries.sizes().queryKey);
+    const tags = queryClient.getQueryData(FilterQueries.tags().queryKey);
+    const materials = queryClient.getQueryData(
+      FilterQueries.materials().queryKey,
+    );
+    const sex = queryClient.getQueryData(FilterQueries.sexes().queryKey);
+
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    const path = current
+      .toString()
+      .split("&")
+      .map((item) => decodeURIComponent(item));
+    let queryParamsObject: any = {
+      category: [],
+      colors: [],
+      size: [],
+      tags: [],
+      materials: [],
+    };
+    let flatQueryParams: any = [];
     const filterMap: any = {
       category,
       colors,
@@ -45,17 +59,23 @@ const useExtractQueryParams = () => {
         const filterData = filterMap[filter].find(
           (item: any) => item.id === Number(filterValues),
         );
-        setFilters((prevState: any) => {
-          return [...prevState, filterData];
-        });
+        if (filterData) {
+          queryParamsObject[filter]?.push(filterData);
+          flatQueryParams.push(filterData);
+        }
       }
     }
+    setQueryParams(queryParamsObject);
+    setFlatQueryParams(flatQueryParams);
 
     return () => {
-      setFilters([]);
+      setQueryParams([]);
     };
   }, []);
-  return filters;
+  return {
+    queryParams: queryParams,
+    flatQueryParams: flatQueryParams,
+  };
 };
 
 export default useExtractQueryParams;
