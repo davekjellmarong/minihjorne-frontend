@@ -1,21 +1,12 @@
-import { XCircle } from "@phosphor-icons/react";
 import React from "react";
+import useExtractQueryParams from "./useExtractQueryParams";
 
-interface FilterProps {
-  selectedFilters: string[];
-  setSelectedFilters: any;
-  setCheckboxStates: (value: any) => void;
-}
+const FilterChips = () => {
+  const filters = useExtractQueryParams();
 
-const FilterChips = ({
-  selectedFilters,
-  setSelectedFilters,
-  setCheckboxStates,
-}: FilterProps) => {
-  if (selectedFilters.length === 0) return <></>;
   return (
     <div className="mb-4 mt-2 flex w-full flex-wrap gap-2  rounded-lg">
-      {selectedFilters.map((filter) => (
+      {filters.map((filter: any) => (
         <div
           className="flex gap-1 rounded border border-gray-300 px-3 py-2"
           key={filter}
@@ -37,7 +28,12 @@ const FilterChips = ({
             }}
           /> */}
 
-          <p>{filter}</p>
+          <p>
+            {filter.attributes?.name?.length > 1
+              ? filter.attributes?.name
+              : filter.attributes?.number}
+            {/* {filter.attributes?.name} */}
+          </p>
         </div>
       ))}
     </div>

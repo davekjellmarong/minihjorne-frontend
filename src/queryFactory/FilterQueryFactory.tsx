@@ -16,30 +16,42 @@ import { getPublicData } from "./Utils";
 import { fetchColors } from "@/utils/utils";
 
 export const FilterQueries = {
+  all: () => ["filters"],
   colors: () =>
     queryOptions({
-      queryKey: ["colors"],
+      queryKey: [...FilterQueries.all(), "colors"],
       queryFn: () => FilterMethods.getColors(),
+      staleTime: Infinity,
     }),
   materials: () =>
     queryOptions({
-      queryKey: ["materials"],
+      queryKey: [...FilterQueries.all(), "materials"],
       queryFn: () => FilterMethods.getMaterials(),
+      staleTime: Infinity,
     }),
   sizes: () =>
     queryOptions({
-      queryKey: ["sizes"],
+      queryKey: [...FilterQueries.all(), "sizes"],
       queryFn: () => FilterMethods.getSizes(),
+      staleTime: Infinity,
     }),
   tags: () =>
     queryOptions({
-      queryKey: ["tags"],
+      queryKey: [...FilterQueries.all(), "tags"],
       queryFn: () => FilterMethods.getTags(),
+      staleTime: Infinity,
     }),
   categories: () =>
     queryOptions({
-      queryKey: ["categories"],
+      queryKey: [...FilterQueries.all(), "categories"],
       queryFn: () => FilterMethods.getCategories(),
+      staleTime: Infinity,
+    }),
+  sexes: () =>
+    queryOptions({
+      queryKey: [...FilterQueries.all(), "sexes"],
+      queryFn: () => FilterMethods.getSexes(),
+      staleTime: Infinity,
     }),
 };
 
@@ -58,5 +70,8 @@ export const FilterMethods = {
   },
   getCategories: async (): Promise<Category[]> => {
     return getPublicData("/categories");
+  },
+  getSexes: async (): Promise<Sex[]> => {
+    return getPublicData("/sexes");
   },
 };

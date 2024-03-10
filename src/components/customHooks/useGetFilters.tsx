@@ -18,12 +18,6 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 
 const useGetFilters = () => {
-  const [colorFilter, setColorFilter] = useState<any>([]);
-  const [sizeFilter, setSizeFilter] = useState<any>([]);
-  const [tagFilter, setTagFilter] = useState<any>([]);
-  const [materialFilter, setMaterialFilter] = useState<any>([]);
-  const [categoryFilter, setCategoryFilter] = useState<any>([]);
-  const [sex, setSex] = useState<any>([]);
   const { data: TagsData, isLoading: tagsLoading } = useQuery<TagsRQ>({
     queryKey: ["tags"],
     queryFn: fetchTags,
@@ -63,18 +57,6 @@ const useGetFilters = () => {
     CategoryData,
     MaterialsData,
     SexData,
-    colorFilter,
-    setColorFilter,
-    sizeFilter,
-    setSizeFilter,
-    tagFilter,
-    setTagFilter,
-    materialFilter,
-    setMaterialFilter,
-    categoryFilter,
-    setCategoryFilter,
-    sex,
-    setSex,
   ];
 };
 

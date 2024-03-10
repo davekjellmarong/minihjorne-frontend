@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Filter from "./Fillter";
 import useGetFilters from "@/components/customHooks/useGetFilters";
 import { SlidersHorizontal, X } from "@phosphor-icons/react";
 import FilterDialog from "./FilterDialog";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { queryTemplates } from "@/utils/constants";
 
 interface FiltersProps {
   setFilterQuery: any;
-  filterQuery: string;
-  setSelectedFilters: (value: string[]) => void;
-  setCheckboxStates: (value: any) => void;
-  checkboxStates: any;
 }
-const Filters = ({
-  setFilterQuery,
-  filterQuery,
-  setSelectedFilters,
-  setCheckboxStates,
-  checkboxStates,
-}: FiltersProps) => {
+const Filters = ({ setFilterQuery }: FiltersProps) => {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
+  const [checkboxStates, setCheckboxStates] = useState<{
+    [key: string]: boolean;
+  }>({});
   const [
     TagsData,
     ColorsData,
@@ -32,100 +20,15 @@ const Filters = ({
     CategoryData,
     MaterialsData,
     SexData,
-    colorFilter,
-    setColorFilter,
-    sizeFilter,
-    setSizeFilter,
-    tagFilter,
-    setTagFilter,
-    materialFilter,
-    setMaterialFilter,
-    categoryFilter,
-    setCategoryFilter,
-    sexFilter,
-    setSexFilter,
   ] = useGetFilters();
   const handleFilterFetch = () => {
-    const colorQuery = colorFilter
-      .map((item: any) => {
-        return item.query;
-      })
-      .join("");
-    const sizeQuery = sizeFilter
-      .map((item: any) => {
-        return item.query;
-      })
-      .join("");
-    const tagQuery = tagFilter
-      .map((item: any) => {
-        return item.query;
-      })
-      .join("");
-    const materialQuery = materialFilter
-      .map((item: any) => {
-        return item.query;
-      })
-      .join("");
-    const categoryQuery = categoryFilter
-      .map((item: any) => {
-        return item.query;
-      })
-      .join("");
-    const sexQuery = sexFilter
-      .map((item: any) => {
-        return item.query;
-      })
-      .join("");
-    setFilterQuery(
-      colorQuery +
-        tagQuery +
-        sizeQuery +
-        materialQuery +
-        categoryQuery +
-        sexQuery +
-        `&pagination[page]=1`,
-    );
-    setSelectedFilters([
-      ...colorFilter.map((item: any) => item.name),
-      ...sizeFilter.map((item: any) => item.name),
-      ...tagFilter.map((item: any) => item.name),
-      ...materialFilter.map((item: any) => item.name),
-      ...categoryFilter.map((item: any) => item.name),
-      ...sexFilter.map((item: any) => item.name),
-    ]);
-    const queryParams = [
-      ...colorFilter.map((item: any) => item.queryParam),
-      ...sizeFilter.map((item: any) => item.queryParam),
-      ...tagFilter.map((item: any) => item.queryParam),
-      ...materialFilter.map((item: any) => item.queryParam),
-      ...categoryFilter.map((item: any) => item.queryParam),
-      ...sexFilter.map((item: any) => item.queryParam),
-    ].join("&");
-    // router.push(`${pathname}?${queryParams}`);
-    router.push(
-      `${pathname}?${
-        colorQuery +
-        tagQuery +
-        sizeQuery +
-        materialQuery +
-        categoryQuery +
-        sexQuery +
-        `&pagination[page]=1`
-      }`,
-    );
+    const queryParams = new URLSearchParams(window.location.search);
+    setFilterQuery(`?${queryParams.toString()}&pagination[page]=1`);
   };
   const FilterProps = {
     setCheckboxStates,
     checkboxStates,
-    setSelectedFilters,
   };
-  // useEffect(() => {
-  //   const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
-  //   const path = current.toString();
-  //   if (path.length > 0) {
-  //     setFilterQuery("&" + path);
-  //   }
-  // }, []);
   return (
     <div className="  relative flex max-h-screen flex-col  overflow-y-scroll">
       <div className="flex justify-between gap-4">
@@ -158,8 +61,6 @@ const Filters = ({
               data={SexData}
               property="name"
               label="Kjønn"
-              setFilter={setSexFilter}
-              filter={sexFilter}
               queryTemplate={queryTemplates.sexQueryTemplate}
             />
             <Filter
@@ -167,8 +68,6 @@ const Filters = ({
               data={CategoryData}
               property="name"
               label="Kategori"
-              setFilter={setCategoryFilter}
-              filter={categoryFilter}
               queryTemplate={queryTemplates.categoryQueryTemplate}
             />
             <Filter
@@ -176,8 +75,6 @@ const Filters = ({
               data={SizesData}
               property="number"
               label="Størrelse"
-              setFilter={setSizeFilter}
-              filter={sizeFilter}
               queryTemplate={queryTemplates.sizeQueryTemplate}
             />
             <Filter
@@ -185,8 +82,6 @@ const Filters = ({
               data={TagsData}
               property="name"
               label="Tags"
-              setFilter={setTagFilter}
-              filter={tagFilter}
               queryTemplate={queryTemplates.tagQueryTemplate}
             />
             <Filter
@@ -194,8 +89,6 @@ const Filters = ({
               data={ColorsData}
               property="name"
               label="Farger"
-              setFilter={setColorFilter}
-              filter={colorFilter}
               queryTemplate={queryTemplates.colorQueryTemplate}
             />
             <Filter
@@ -203,8 +96,6 @@ const Filters = ({
               data={MaterialsData}
               property="name"
               label="Stoff"
-              setFilter={setMaterialFilter}
-              filter={materialFilter}
               queryTemplate={queryTemplates.materialQueryTemplate}
             />
           </div>
@@ -215,12 +106,6 @@ const Filters = ({
               onClick={() => {
                 setCheckboxStates({});
                 setFilterQuery("");
-                setSelectedFilters([]);
-                setColorFilter([]);
-                setSizeFilter([]);
-                setTagFilter([]);
-                setMaterialFilter([]);
-                setCategoryFilter([]);
               }}
             >
               Tøm alle filtre

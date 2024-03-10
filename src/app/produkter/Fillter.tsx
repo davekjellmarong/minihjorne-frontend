@@ -1,37 +1,32 @@
 "use client";
-import { CaretDown, CaretRight, CaretUp } from "@phosphor-icons/react";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { CaretDown, CaretUp } from "@phosphor-icons/react";
+import { useSearchParams } from "next/navigation";
 
 import React, { useEffect, useRef, useState } from "react";
+import useExtractQueryParams from "./useExtractQueryParams";
 interface FilterProps {
   data: any;
   property: string;
   label: string;
-  setFilter: any;
-  filter: any;
   queryTemplate: string;
   setCheckboxStates: any;
   checkboxStates: any;
-  setSelectedFilters: any;
 }
 const Filter = ({
   data,
   property,
   label,
-  setFilter,
-  filter,
   queryTemplate,
   setCheckboxStates,
   checkboxStates,
-  setSelectedFilters,
 }: FilterProps) => {
   // When inside this component, use the Label to check if there are any searchParams for this Label. If there are, loop through thoose and set the checkboxStates to true for each of them. and also set the setFilter data as well
 
   const FilterRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
   const searchParams = useSearchParams();
-
+  const filters = useExtractQueryParams();
+  console.log({ filters });
   useEffect(() => {
     const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
     const path = current
@@ -47,18 +42,12 @@ const Filter = ({
     const localFilters = filterValues.map((item) =>
       filters.find((filter: any) => String(filter.id) === item.split("=")[1]),
     );
+    console.log({ localFilters });
     const filtersObject = localFilters.reduce((prev: any, curr) => {
       const value = curr.attributes[property];
       prev[value] = true;
       return prev;
     }, {});
-    const localSelectedFilters = localFilters.map(
-      (item: any) => item.attributes[property],
-    );
-    setSelectedFilters((prevSelectedFilters: any) => [
-      ...prevSelectedFilters,
-      ...localSelectedFilters,
-    ]);
     setCheckboxStates((prevCheckboxStates: any) => ({
       ...prevCheckboxStates,
       ...filtersObject,
@@ -71,21 +60,24 @@ const Filter = ({
       ...prevStates,
       [item.attributes[property]]: isChecked,
     }));
-    const currentQueryTemplate = queryTemplate + item.id;
 
     if (isChecked) {
-      setFilter((prevFilter: any) => [
-        ...prevFilter,
-        {
-          query: currentQueryTemplate,
-          key: item.id,
-          name: item.attributes[property],
-          queryParam: item.attributes[property] + "=" + label,
-        },
-      ]);
+      const queryParams = new URLSearchParams(window.location.search);
+      queryParams.append(queryTemplate.slice(1, -1), item.id);
+      const newUrl = window.location.pathname + "?" + queryParams.toString();
+      window.history.replaceState(null, "", newUrl);
     } else {
-      const removedQuery = filter.filter((query: any) => query.key !== item.id);
-      setFilter(removedQuery);
+      const queryParams = new URLSearchParams(window.location.search);
+      const allQueryParams = queryParams.getAll(queryTemplate.slice(1, -1));
+      const newQueryParams = allQueryParams.filter(
+        (query: any) => query !== String(item.id),
+      );
+      queryParams.delete(queryTemplate.slice(1, -1));
+      newQueryParams.forEach((param: string) => {
+        queryParams.append(queryTemplate.slice(1, -1), param);
+      });
+      const newUrl = window.location.pathname + "?" + queryParams.toString();
+      window.history.replaceState(null, "", newUrl);
     }
   };
   if (data)
