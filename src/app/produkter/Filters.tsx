@@ -30,13 +30,13 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
     queryParams,
   };
   return (
-    <div className="  relative flex max-h-screen flex-col  overflow-y-scroll">
+    <div className="relative flex max-h-screen flex-col overflow-y-scroll">
       <div className="flex justify-between gap-4">
         <button
           onClick={() => {
             setOpen(true);
           }}
-          className=" flex items-center rounded border border-gray-300 p-2 px-4 sm:hover:bg-gray-200"
+          className="flex items-center rounded border border-gray-300 p-2 px-4 sm:hover:bg-gray-200"
         >
           <SlidersHorizontal size={24} weight="thin" />
           <p className="">Filter</p>
@@ -55,7 +55,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               <X size={28} />
             </div>
           </div>
-          <div className="grow ">
+          <div className="grow">
             <Filter
               {...FilterProps}
               data={SexData}

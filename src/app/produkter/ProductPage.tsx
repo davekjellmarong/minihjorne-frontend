@@ -18,7 +18,7 @@ const ProductPage = () => {
   const searchParams = useSearchParams();
   const [page, setPage] = useState(1);
   const [filterQuery, setFilterQuery] = useState("");
-
+  console.log(React);
   const { data: products, isPending } = useQuery(
     ProductQueries.filtered(filterQuery, page),
   );
