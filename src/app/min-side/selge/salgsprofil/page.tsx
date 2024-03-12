@@ -27,18 +27,7 @@ import { toast } from "react-toastify";
 import Salgsprofil from "./Salgsprofil";
 import EditSalgsprofil from "./EditSalgsprofil";
 
-interface UserData {
-  username: string;
-  id: number;
-  email: string;
-  header: string;
-  icon: string;
-  description: string;
-  color: string;
-}
 const Page = () => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
   const { data: userData } = useQuery<UserBackend>({
     queryKey: ["login-user"],
   });
@@ -85,25 +74,10 @@ const Page = () => {
       });
     }
   }, [userData]);
-  // const userId = userData?.id;
-  // const { data, isLoading } = useQuery<ProductBackend[]>({
-  //   queryKey: ["products", userId],
-  //   queryFn: () => {
-  //     return ProductsMethods.getByUserId(userId);
-  //   },
-  //   enabled: !!userId,
-  // });
-
-  // if (isLoading) return <Loading />;
   if (userData)
     return (
       <>
-        {/* <Dialog dialogRef={dialogRef} formik={formik} /> */}
-        <EditSalgsprofil
-          dialogRef={dialogRef}
-          formik={formik}
-          id={userData.id}
-        />
+        <EditSalgsprofil formik={formik} user={userData} />
       </>
     );
 };

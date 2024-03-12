@@ -22,19 +22,14 @@ import {
 } from "@phosphor-icons/react";
 import SalgsprofilHeader from "./SalgsprofilHeader";
 import Link from "next/link";
+import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
+
 interface EditSalgsprofilProps {
   formik: any;
-  id: number;
-  dialogRef: React.RefObject<HTMLDialogElement>;
+  user: UserBackend;
 }
-const EditSalgsprofil = ({ formik, dialogRef, id }: EditSalgsprofilProps) => {
-  const [editMode, setEditMode] = useState(false);
-  const { data } = useQuery({
-    queryKey: ["products", id],
-    queryFn: () => {
-      return ProductsMethods.getByUserId(id);
-    },
-  });
+const EditSalgsprofil = ({ formik, user }: EditSalgsprofilProps) => {
+  const { data: products } = useQuery(ProductQueries.userId(String(user.id)));
   const tailwindColor = tailwindColorsUserButton[formik.values.colorName];
   return (
     <div
@@ -49,9 +44,9 @@ const EditSalgsprofil = ({ formik, dialogRef, id }: EditSalgsprofilProps) => {
           <Pencil size={20} color="indigo" />
           <p>Rediger</p>
         </Link>
-        <SalgsprofilHeader user={formik.values} />
+        <SalgsprofilHeader user={formik.values} username={user.username} />
         <div>
-          <Products data={data} />
+          <Products data={products} />
         </div>
       </div>
     </div>

@@ -13,8 +13,10 @@ import { UserBackend } from "@/utils/types";
 
 interface SalgsprofilHeaderProps {
   user: UserBackend;
+  username: string;
 }
-const SalgsprofilHeader = ({ user }: SalgsprofilHeaderProps) => {
+const SalgsprofilHeader = ({ user, username }: SalgsprofilHeaderProps) => {
+  console.log(user);
   const icons: any = {
     Star: {
       component: <Star size={52} weight="fill" color={user.color} />,
@@ -50,7 +52,7 @@ const SalgsprofilHeader = ({ user }: SalgsprofilHeaderProps) => {
       </div>
       <p className="flex items-center gap-1 text-gray-500">
         <User size={28} />
-        <span>{user.username}</span>
+        <span>{username}</span>
       </p>
       <p className="px-6 text-sm">{user.description}</p>
     </>

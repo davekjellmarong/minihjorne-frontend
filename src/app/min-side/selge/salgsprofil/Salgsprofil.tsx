@@ -18,16 +18,14 @@ import {
   User,
   UserCircle,
 } from "@phosphor-icons/react";
+import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 interface SalgsprofilProps {
   user: UserBackend;
 }
 const Salgsprofil = ({ user }: SalgsprofilProps) => {
-  const { data } = useQuery({
-    queryKey: ["products", user.id],
-    queryFn: () => {
-      return ProductsMethods.getByUserId(user.id);
-    },
-  });
+  const { data: products, isPending } = useQuery(
+    ProductQueries.userId(String(user.id)),
+  );
   const icons: any = {
     Star: {
       component: <Star size={52} weight="fill" color={user.color} />,
@@ -76,7 +74,7 @@ const Salgsprofil = ({ user }: SalgsprofilProps) => {
           <div className="rounded bg-gray-300 px-6 py-2">Unisex 40-200</div>
         </div>
         <div className="w-5/6">
-          <Products data={data} />
+          <Products data={products} />
         </div>
       </div>
     </div>

@@ -23,11 +23,13 @@ export const ProductsMethods = {
   ): Promise<ProductsPagination> => {
     return getProductsFiltered(query, page);
   },
-  // getFilteredInfinite: async (query: string): Promise<ProductsPagination> => {
-  //   return getProductsFiltered(query);
-  // },
   put: async (id: string, data: any, token: any): Promise<Product> => {
     return putData(`/products/${id}`, token, data);
+  },
+  getByUserId: async (id: any): Promise<Product[]> => {
+    return getPublicData(
+      `/products?populate=*&filters[sold][$eq]=false&filters[active][$eq]=true&filters[user][id][$eq]=${id}`,
+    );
   },
   getAllMyProducts: async (token: any): Promise<ProductBackend[]> => {
     return getAuthData("/products/me/all", token);
@@ -49,13 +51,11 @@ export const ProductQueries = {
       queryKey: [...ProductQueries.all(), query],
       queryFn: () => ProductsMethods.getFiltered(query, page),
     }),
-  // infinite: (query: string) =>
-  //   queryOptions({
-  //     queryKey: [...ProductQueries.all(), query],
-  //     queryFn: () => ProductsMethods.getFilteredInfinite(query, page),
-  //     initialPageParam: 0,
-  //     getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
-  //   }),
+  userId: (id: string) =>
+    queryOptions({
+      queryKey: [...ProductQueries.all(), "user", id],
+      queryFn: () => ProductsMethods.getByUserId(id),
+    }),
   me_all: (jwt: any) =>
     queryOptions({
       queryKey: [...ProductQueries.all(), "me", "all"],
