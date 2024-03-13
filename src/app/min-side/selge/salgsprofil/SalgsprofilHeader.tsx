@@ -7,7 +7,6 @@ import {
   Rainbow,
   Star,
   User,
-  UserCircle,
 } from "@phosphor-icons/react";
 import { UserBackend } from "@/utils/types";
 
@@ -16,7 +15,6 @@ interface SalgsprofilHeaderProps {
   username: string;
 }
 const SalgsprofilHeader = ({ user, username }: SalgsprofilHeaderProps) => {
-  console.log(user);
   const icons: any = {
     Star: {
       component: <Star size={52} weight="fill" color={user.color} />,

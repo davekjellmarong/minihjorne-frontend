@@ -1,6 +1,5 @@
 "use client";
-import { ColorsRQ, UserBackend } from "@/utils/types";
-import { UserMethods, fetchColors } from "@/utils/utils";
+import { UserMethods } from "@/utils/utils";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import {
@@ -10,8 +9,6 @@ import {
   Leaf,
   Rainbow,
   Star,
-  User,
-  UserCircle,
 } from "@phosphor-icons/react";
 import Color from "@/components/form/product/Color";
 import { toast } from "react-toastify";
@@ -19,8 +16,10 @@ import { useFormik } from "formik";
 import { UserQueries } from "@/queryFactory/UserQueryFactory";
 import { AuthQueries } from "@/queryFactory/AuthQueryFactory";
 import { FilterQueries } from "@/queryFactory/FilterQueryFactory";
+import { useRouter } from "next/navigation";
 
 const EditSalgsprofilForm = () => {
+  const router = useRouter();
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: colors } = useQuery(FilterQueries.colors());
@@ -31,7 +30,8 @@ const EditSalgsprofilForm = () => {
     },
     onSuccess: (data) => {
       toast.info(`Salgsprofil lagret`);
-      console.log(data);
+      router.back();
+      queryClient.invalidateQueries(UserQueries.me(jwt));
     },
   });
   const formik = useFormik({
@@ -50,7 +50,6 @@ const EditSalgsprofilForm = () => {
         icon: values.icon,
       };
       updateUser(data);
-      console.log("Form data submitted:", values);
     },
   });
   const icons: any = {
@@ -160,13 +159,23 @@ const EditSalgsprofilForm = () => {
             </div>
           )}
         </div>
-        <button
-          type="submit"
-          onClick={() => {}}
-          className="rounded-lg border border-sky-600 bg-sky-800 px-5 py-2.5 text-sm font-medium text-sky-100 focus:z-10 focus:outline-none focus:ring-0 focus:ring-sky-700 sm:hover:bg-sky-700 sm:hover:text-white"
-        >
-          Lagre
-        </button>
+        <div className="flex gap-10">
+          <button
+            type="button"
+            onClick={() => {
+              router.back();
+            }}
+            className="grow rounded-lg border-2 border-brand-600 px-5 py-2.5 text-sm font-medium text-brand-800 "
+          >
+            Avbryt
+          </button>
+          <button
+            type="submit"
+            className="grow rounded-lg border border-brand-400 bg-brand-600 px-5 py-2.5 text-sm font-medium text-sky-100 "
+          >
+            Lagre
+          </button>
+        </div>
       </form>
     </div>
   );

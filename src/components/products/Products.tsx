@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { Product as ProductType, ProductBackend } from "@/utils/types";
+import React from "react";
+import { Product as ProductType } from "@/utils/types";
 import SmallProductSkeleton from "../skeleton/SmallProductSkeleton";
 import Product from "./Product";
 
@@ -9,7 +9,6 @@ interface ProductsProps {
   data: ProductType[] | undefined;
 }
 const Products = ({ isLoading, data }: ProductsProps) => {
-  console.log(data);
   if (isLoading)
     return (
       <div className="mt-10 flex flex-wrap justify-center gap-10">

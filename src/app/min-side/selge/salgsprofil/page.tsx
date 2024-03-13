@@ -1,39 +1,17 @@
 "use client";
-import Products from "@/components/products/Products";
-import Loading from "@/components/loading/Loading";
-import { productByIdOption } from "@/components/reactQuery/Options";
-import {
-  Baby,
-  Bird,
-  HeartStraight,
-  Leaf,
-  Rainbow,
-  Star,
-  User,
-  UserCircle,
-} from "@phosphor-icons/react";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import React, { use, useEffect, useRef } from "react";
-import Dialog from "./Dialog";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { ColorsRQ, ProductBackend, UserBackend } from "@/utils/types";
-import { ProductsMethods, UserMethods, fetchColors } from "@/utils/utils";
-import {
-  tailwindColors,
-  tailwindColorsObject,
-  tailwindColorsUserButton,
-} from "@/utils/constants";
+import { UserMethods } from "@/utils/utils";
 import { toast } from "react-toastify";
-import Salgsprofil from "./Salgsprofil";
 import EditSalgsprofil from "./EditSalgsprofil";
+import { AuthQueries } from "@/queryFactory/AuthQueryFactory";
+import { UserQueries } from "@/queryFactory/UserQueryFactory";
 
 const Page = () => {
-  const { data: userData } = useQuery<UserBackend>({
-    queryKey: ["login-user"],
-  });
-  const { data: jwt } = useQuery({
-    queryKey: ["jwt"],
-  });
+  const queryClient = useQueryClient();
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: userData } = useQuery(UserQueries.me(jwt));
   const { mutate: updateUser } = useMutation({
     mutationFn: (values: any) => {
       return UserMethods.put(values, userData?.id, jwt);
