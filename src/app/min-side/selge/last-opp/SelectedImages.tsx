@@ -7,7 +7,7 @@ interface SelectedImageProps {
 
 const SelectedImages = ({ selectedImages }: SelectedImageProps) => {
   return (
-    <div className="flex justify-start sm:justify-center">
+    <div className="flex w-full justify-center sm:gap-10">
       {selectedImages.map((image) => {
         return (
           <Image
@@ -16,7 +16,7 @@ const SelectedImages = ({ selectedImages }: SelectedImageProps) => {
             height={300}
             width={300}
             alt=""
-            className="size-32 max-w-none ml-4 sm:ml-0 sm:w-80 sm:h-80 shadow-xl rounded"
+            className="ml-4 size-32 max-w-none rounded shadow-xl"
           />
         );
       })}

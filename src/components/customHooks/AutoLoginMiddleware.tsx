@@ -6,7 +6,6 @@ import {
 import { cookies } from "next/headers";
 import React from "react";
 import axios from "axios";
-import { apiUrl } from "@/utils/constants";
 interface AutoLoginMiddlewareProps {
   children: React.ReactNode;
 }
@@ -26,7 +25,7 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   queryClient.setQueryData(["jwt"], token.value);
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      {children};
+      {children}
     </HydrationBoundary>
   );
 };

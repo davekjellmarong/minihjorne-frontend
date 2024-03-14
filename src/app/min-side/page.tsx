@@ -16,14 +16,15 @@ const MinSide = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col gap-6 bg-brand-200 pt-14 pb-24">
+      <div className="flex flex-col gap-6 bg-brand-200 pb-24 pt-14">
         <div className="flex justify-center ">
           <AvatarLetter username={userData?.username} />
         </div>
-        <p className="text-center font-semibold text-lg">
+        <p className="text-center text-lg font-semibold">
           {userData?.username}
         </p>
       </div>
+
       <Menu />
     </div>
   );

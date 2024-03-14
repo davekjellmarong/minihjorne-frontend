@@ -33,11 +33,11 @@ const ProductPage = () => {
   }, [page]);
   return (
     <>
-      <div className="relative flex w-full flex-col items-center">
-        <div className="w-full px-6 py-10 sm:px-24">
+      <div className="relative flex w-full flex-col items-center px-4">
+        <div className="w-full px-6 py-10 ">
           <h2 className="text-3xl font-bold">Produkter</h2>
         </div>
-        <div className="flex w-full border-y border-gray-200 px-6 py-2 sm:px-24">
+        <div className="flex w-full  border-gray-200 px-6 py-2">
           <Filters setFilterQuery={setFilterQuery} />
           <div className="flex grow items-center justify-end">
             <Pagination
@@ -48,7 +48,7 @@ const ProductPage = () => {
             />
           </div>
         </div>
-        <div className="w-full px-6 sm:px-24">
+        <div className="w-full px-6">
           <FilterChips />
         </div>
         <div className="px-3">

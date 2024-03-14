@@ -14,13 +14,14 @@ const Product = ({ product }: ProductProps) => {
   return (
     <Link
       href={`/produkter/${product.id}`}
-      className="w-40 cursor-pointer rounded border-2 border-gray-100 sm:hover:bg-gray-50 sm:hover:shadow"
+      className="w-40 cursor-pointer rounded border-2 border-gray-100 "
       key={product.id}
       onClick={() => {}}
     >
-      <div className="relative">
+      <div className="aspect-w-3 aspect-h-4 relative">
         <img
           className="h-60 w-full object-cover"
+          // className="rounded-8 border-bluegray-300 h-full w-full border object-cover object-center"
           src={`${image.data[0].attributes.url}`}
           alt=""
         />

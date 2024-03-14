@@ -54,7 +54,7 @@ const Menu = () => {
   ];
   return (
     <div className="relative">
-      <div className="relative bottom-10 m-auto w-3/4 rounded-lg bg-white p-6 shadow">
+      <div className="relative bottom-10 m-auto w-3/4 max-w-[500px] rounded-lg bg-white p-6 shadow">
         {navItems.map((item) => {
           return (
             <div key={item.header}>

@@ -9,7 +9,7 @@ const FilterChips = () => {
     <div className="mb-4 mt-2 flex w-full flex-wrap gap-2  rounded-lg">
       {flatQueryParams?.map((filter: any) => (
         <div
-          className="flex gap-1 rounded border border-gray-300 px-3 py-2"
+          className="flex gap-1 rounded-full border border-gray-300 p-1.5 px-3"
           key={filter.attributes.createdAt}
         >
           <XCircle
@@ -29,7 +29,7 @@ const FilterChips = () => {
             }}
           />
 
-          <p>
+          <p className="text-sm font-light">
             {filter.attributes?.name?.length > 1
               ? filter.attributes?.name
               : filter.attributes?.number}

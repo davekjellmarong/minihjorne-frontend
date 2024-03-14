@@ -1,21 +1,17 @@
 "use client";
-import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ImageUploader from "./ImageUploader";
 import ProductForm from "../../../../components/form/product/ProductForm";
 import ImagesList from "./ImagesList";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import SelectedImages from "./SelectedImages";
-import Stepper from "./Stepper";
 import { useFormik } from "formik";
 import { ProductsMethods } from "@/utils/utils";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { User } from "@/utils/types";
 import { toast } from "react-toastify";
-import PreviewValues from "./PreviewValues";
 import Dialog from "@/components/dialog/Dialog";
 import FilterDialog from "@/app/produkter/FilterDialog";
-import CarouselComponent from "@/components/carousel/Carousel";
 import { Question } from "@phosphor-icons/react";
 import IntroCarousel from "./IntroCarousel";
 import Link from "next/link";
@@ -33,6 +29,9 @@ const LeggUt = () => {
   const [modal, setModal] = useState(false);
   const [introModal, setIntroModal] = useState(false);
   const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
+  const [selectedImageIndexes, setSelectedImageIndexes] = useState<number[]>(
+    [],
+  );
   const [images, setImages] = useState<ImageUpload[]>([]);
   const [nextProduct, setNextProduct] = useState(false);
   useAutoLogIn();
@@ -157,11 +156,11 @@ const LeggUt = () => {
       <div className="relative flex flex-col gap-2">
         <LoadingOverlay loading={loading} />
         <div className="flex  flex-col-reverse items-center justify-center overflow-scroll border-r-2 border-gray-200 bg-white shadow">
-          <div className="p-6" onClick={() => setModal(true)}>
+          <div className="w-full p-6" onClick={() => setModal(true)}>
             <SelectedImages selectedImages={selectedImages} />
           </div>
         </div>
-        <div className="">
+        <div>
           {nextProduct ? (
             <div className="flex flex-col items-center gap-8">
               <p>Vil du registrere flere produkter?</p>
@@ -182,7 +181,9 @@ const LeggUt = () => {
               </Link>
             </div>
           ) : (
-            <ProductForm formik={formik} />
+            <div className="m-auto max-w-[500px]">
+              <ProductForm formik={formik} />
+            </div>
           )}
         </div>
       </div>

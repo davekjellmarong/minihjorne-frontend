@@ -24,9 +24,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <AutoLoginMiddleware>
-            {/* <UpperNav /> */}
-            <Nav />
-            <main>
+            <header className="mb-2  h-[48px] w-full">
+              <Nav />
+            </header>
+            <main className="relative m-auto max-w-[978px]">
               {children}
               <ToastContainer
                 theme="colored"

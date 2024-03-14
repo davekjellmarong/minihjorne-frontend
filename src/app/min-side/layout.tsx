@@ -8,12 +8,12 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Breadcrumb />
-      <div className="relative sm:pt-14 sm:p-0 sm:flex">
-        <div className="z-10 absolute top-0 left-0 hidden">
-          <div className="block sm:hidden">
-            <button className="flex items-center px-3 py-2 rounded ">
+      <div className="relative">
+        <div className="absolute left-0 top-0 z-10 hidden">
+          <div className="block">
+            <button className="flex items-center rounded px-3 py-2 ">
               <svg
-                className={`fill-current h-8 w-8 }`}
+                className={`} h-8 w-8 fill-current`}
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >

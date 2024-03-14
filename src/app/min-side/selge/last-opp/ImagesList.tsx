@@ -14,20 +14,24 @@ const ImagesList = ({
   selectedImages,
 }: ImageListProps) => {
   return (
-    <div className="flex justify-center flex-wrap gap-4 mx-12">
+    <div className="mx-12 flex flex-wrap justify-center gap-4">
       {images?.map((image, index) => (
         <div
           className="relative"
           key={image.name}
           onClick={() => {
             if (selectedImages.includes(image)) {
-              setSelectedImages(selectedImages.filter((img) => img !== image));
+              const withoutImage = selectedImages.filter(
+                (img) => img !== image,
+              );
+
+              setSelectedImages(withoutImage);
             } else if (selectedImages.length === 3) {
             } else setSelectedImages([...selectedImages, image]);
           }}
         >
           <span
-            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white opacity-70 ${
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform bg-white opacity-70 ${
               selectedImages.includes(image) ? "" : "hidden"
             } `}
           >
@@ -36,7 +40,7 @@ const ImagesList = ({
           <Image
             width={75}
             height={75}
-            className={`shadow-lg size-24 object-scale-down`}
+            className={`size-24 object-scale-down shadow-lg`}
             src={URL.createObjectURL(image)}
             alt={`uploaded-image-${index}`}
           />
