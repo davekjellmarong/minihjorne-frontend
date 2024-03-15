@@ -52,7 +52,7 @@ const SalgsprofilHeader = ({ user, username }: SalgsprofilHeaderProps) => {
         <User size={28} />
         <span>{username}</span>
       </p>
-      <p className="px-6 text-sm">{user.description}</p>
+      <p className="max-w-[500px] px-6 text-sm">{user.description}</p>
     </>
   );
 };

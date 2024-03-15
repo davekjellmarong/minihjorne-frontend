@@ -3,9 +3,16 @@ import React from "react";
 
 interface SelectedImageProps {
   selectedImages: any[];
+  images: any[];
 }
 
 const SelectedImages = ({ selectedImages }: SelectedImageProps) => {
+  // const selectedImages = images.filter((_, index) =>
+  //   selectedImageIndexes.includes(index),
+  // );
+  // const selecedImages = useMemo(() => {
+  //   return images.filter((_, index) => selectedImageIndexes.includes(index));
+  // }, [images, selectedImageIndexes]);
   return (
     <div className="flex w-full justify-center sm:gap-10">
       {selectedImages.map((image) => {

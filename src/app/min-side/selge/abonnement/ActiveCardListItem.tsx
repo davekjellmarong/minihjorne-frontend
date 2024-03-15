@@ -2,8 +2,8 @@ import React from "react";
 
 const ActiveCardListItem = ({ text }: { text: string }) => {
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-      <div className="flex space-x-4 items-center py-3 px-4 rounded-md bg-blue-200 ">
+    <div className="w-full ">
+      <div className="flex items-center space-x-4 rounded-md bg-blue-200 px-4 py-3 ">
         <div
           className="icon-container icon-md text-blue-600"
           aria-hidden="true"

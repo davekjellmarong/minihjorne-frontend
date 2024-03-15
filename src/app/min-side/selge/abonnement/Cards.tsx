@@ -54,7 +54,7 @@ export const planCards = [
 
 const Cards = ({ setPlanId }: any) => {
   return (
-    <div className="flex w-full flex-col items-center gap-8 px-10 lg:flex-row">
+    <div className="flex w-full flex-col items-center gap-8 px-10 ">
       {planCards.map((plan) => {
         return (
           <div
@@ -65,7 +65,7 @@ const Cards = ({ setPlanId }: any) => {
             <p className="mb-4 text-sm font-light">{plan.description}</p>
             <p className="text-2xl font-bold">{plan.price}</p>
             <button
-              className={`mt-4 w-full rounded-md bg-brand-400 px-4 py-2 transition duration-200 ease-in-out sm:hover:bg-brand-600 ${plan.customButtonClass}`}
+              className={`mt-4 w-full rounded-md bg-brand-400 px-4 py-2 transition duration-200 ease-in-out ${plan.customButtonClass}`}
               onClick={() => {
                 setPlanId(plan.id);
               }}

@@ -4,7 +4,6 @@ import { XCircle } from "@phosphor-icons/react";
 
 const FilterChips = () => {
   const { flatQueryParams } = useExtractQueryParams();
-  console.log(flatQueryParams);
   return (
     <div className="mb-4 mt-2 flex w-full flex-wrap gap-2  rounded-lg">
       {flatQueryParams?.map((filter: any) => (

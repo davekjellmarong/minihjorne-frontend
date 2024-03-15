@@ -128,7 +128,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     return;
   if (!product) return;
   return (
-    <div className="px-8">
+    <div className="m-auto max-w-[700px] px-8">
       <LoadingOverlay loading={loading} />
       <Dialog open={modal} setOpen={setModal} height="h-[400px]">
         <DeleteConfirmation
@@ -158,11 +158,13 @@ const Page = ({ params }: { params: { id: string } }) => {
         label="Farger"
         currentValue={formik.values.colorsNorwegianName}
       >
-        <Color
-          formik={formik}
-          colors={colors.data}
-          initialId={product?.attributes.colors.data[0].id}
-        />
+        <div className="flex flex-wrap justify-center gap-x-4  gap-y-14 pb-10 ">
+          <Color
+            formik={formik}
+            colors={colors.data}
+            initialId={product?.attributes.colors.data[0].id}
+          />
+        </div>
       </Accordion>
       <Accordion label="Kategori" currentValue={formik.values.categoryName}>
         <Category

@@ -44,14 +44,16 @@ const ActiveCard = ({ user, planId }: ActiveCardProps) => {
               </p>
             </div>
           </div>
-          {bulletPoints?.map((bulletPoint) => {
-            return (
-              <ActiveCardListItem
-                key={bulletPoint.title}
-                text={bulletPoint.title}
-              />
-            );
-          })}
+          <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
+            {bulletPoints?.map((bulletPoint) => {
+              return (
+                <ActiveCardListItem
+                  key={bulletPoint.title}
+                  text={bulletPoint.title}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

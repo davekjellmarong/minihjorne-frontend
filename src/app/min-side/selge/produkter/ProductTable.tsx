@@ -29,7 +29,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
   // });
   return (
     <>
-      <table className="w-full">
+      <table className="m-auto w-full max-w-[700px]">
         <thead className="border-indigo-100  bg-indigo-400">
           <tr className="">
             <th className="py-4 pl-5 text-left text-xs font-normal text-white">

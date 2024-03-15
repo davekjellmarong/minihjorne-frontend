@@ -1,18 +1,10 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { ProductRQ } from "@/utils/types";
 import BackButton from "@/components/button/BackButton";
 import ColorSquares from "@/components/color/ColorSquares";
 import Loading from "@/components/loading/Loading";
-import { GenderFemale, GenderMale, User } from "@phosphor-icons/react";
-import {
-  BaseballCap,
-  Dress,
-  Pants,
-  Sneaker,
-  TShirt,
-} from "@phosphor-icons/react";
+import { User } from "@phosphor-icons/react";
 import Link from "next/link";
 import AddToCartButtons from "@/components/button/AddToCartButtons";
 import CarouselComponent from "@/components/carousel/Carousel";
@@ -22,23 +14,6 @@ import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   const { data: product } = useQuery(ProductQueries.detail(params.id));
   if (!product) return <Loading />;
-  const iconsList: any = {
-    BaseballCap: <BaseballCap size={22} />,
-    Dress: <Dress size={22} />,
-    Pants: <Pants size={22} />,
-    Sneaker: <Sneaker size={22} />,
-    TShirt: <TShirt size={22} />,
-  };
-  const sexList: any = {
-    Unisex: (
-      <>
-        <GenderMale color="blue" size={28} />
-        <GenderFemale color="red" size={28} />
-      </>
-    ),
-    Gutt: <GenderMale color="blue" size={28} />,
-    Jente: <GenderFemale color="red" size={28} />,
-  };
   const {
     category,
     brand,

@@ -5,12 +5,14 @@ interface FilterDialogProps {
   open: boolean;
   setOpen: (open: boolean) => void;
   width?: string;
+  onClose?: () => void;
 }
 const FilterDialog = ({
   children,
   open,
   setOpen,
   width = "w-screen",
+  onClose,
 }: FilterDialogProps) => {
   const [translate, setTranslate] = useState("-translate-x-96");
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -46,8 +48,9 @@ const FilterDialog = ({
   }, [open]);
   return (
     <dialog
+      onClose={onClose}
       ref={dialogRef}
-      className={`fixed ${width} h-screen sm:w-96 sm:top-0 sm:right-0  m-0  bg-zinc-50 transition-transform duration-300 ease-in-out ${translate}`}
+      className={`fixed ${width} m-0 h-screen bg-zinc-50 transition-transform  duration-300  ease-in-out sm:right-0 sm:top-0 sm:w-96 ${translate}`}
     >
       {children}
     </dialog>

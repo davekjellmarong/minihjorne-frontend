@@ -11,6 +11,7 @@ const useExtractQueryParams = () => {
     size: [],
     tags: [],
     materials: [],
+    sex: [],
   });
   const [flatQueryParams, setFlatQueryParams] = useState<any>([]);
   const searchParams = useSearchParams();
@@ -38,6 +39,7 @@ const useExtractQueryParams = () => {
       size: [],
       tags: [],
       materials: [],
+      sex: [],
     };
     let flatQueryParams: any = [];
     const filterMap: any = {

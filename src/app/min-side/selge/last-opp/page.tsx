@@ -29,12 +29,8 @@ const LeggUt = () => {
   const [modal, setModal] = useState(false);
   const [introModal, setIntroModal] = useState(false);
   const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
-  const [selectedImageIndexes, setSelectedImageIndexes] = useState<number[]>(
-    [],
-  );
   const [images, setImages] = useState<ImageUpload[]>([]);
   const [nextProduct, setNextProduct] = useState(false);
-  useAutoLogIn();
   const { data: jwt } = useQuery({
     queryKey: ["jwt"],
   });
@@ -91,6 +87,16 @@ const LeggUt = () => {
       createProduct(formData);
     },
   });
+  const ImagesListMemo = useMemo(
+    () => (
+      <ImagesList
+        images={images}
+        setSelectedImages={setSelectedImages}
+        selectedImages={selectedImages}
+      />
+    ),
+    [images, selectedImages],
+  );
   if (images.length === 0) {
     return (
       <div className="relative flex h-screen flex-col items-center justify-center gap-6 text-center">
@@ -133,11 +139,7 @@ const LeggUt = () => {
         </div> */}
         <div>
           <p className="text-xl">Last opp bilder til dine produkter her</p>
-          <ImageUploader
-            setImages={setImages}
-            setSelectedImages={setSelectedImages}
-            setModal={setModal}
-          />
+          <ImageUploader setImages={setImages} setModal={setModal} />
         </div>
       </div>
     );
@@ -146,18 +148,21 @@ const LeggUt = () => {
     <>
       <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
         <p className="m-10 text-center">Velg opp til 3 bilder</p>
-        <ImagesList
+        {/* <ImagesList
           images={images}
           setSelectedImages={setSelectedImages}
           selectedImages={selectedImages}
-        />
+          selectedImageIndexes={selectedImageIndexes}
+          setSelectedImageIndexes={setSelectedImageIndexes}
+        /> */}
+        {ImagesListMemo}
       </FilterDialog>
 
       <div className="relative flex flex-col gap-2">
         <LoadingOverlay loading={loading} />
         <div className="flex  flex-col-reverse items-center justify-center overflow-scroll border-r-2 border-gray-200 bg-white shadow">
-          <div className="w-full p-6" onClick={() => setModal(true)}>
-            <SelectedImages selectedImages={selectedImages} />
+          <div className="p-6" onClick={() => setModal(true)}>
+            <SelectedImages images={images} selectedImages={selectedImages} />
           </div>
         </div>
         <div>

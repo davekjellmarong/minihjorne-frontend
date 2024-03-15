@@ -8,10 +8,10 @@ import useExtractQueryParams from "./useExtractQueryParams";
 
 interface FiltersProps {
   setFilterQuery: any;
+  filterQuery: string;
 }
-const Filters = ({ setFilterQuery }: FiltersProps) => {
+const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
   const [open, setOpen] = useState(false);
-
   const [
     TagsData,
     ColorsData,
@@ -23,6 +23,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
 
   const handleFilterFetch = () => {
     const queryParams = new URLSearchParams(window.location.search);
+    if (filterQuery === `?${queryParams.toString()}&pagination[page]=1`) return;
     setFilterQuery(`?${queryParams.toString()}&pagination[page]=1`);
   };
   const { queryParams } = useExtractQueryParams();
@@ -42,7 +43,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
           <p className="">Filter</p>
         </button>
       </div>
-      <FilterDialog open={open} setOpen={setOpen}>
+      <FilterDialog open={open} setOpen={setOpen} onClose={handleFilterFetch}>
         <div className={`relative flex h-screen max-h-screen flex-col `}>
           <div className="flex justify-between border-b border-b-gray-300 px-6  py-6">
             <p className="text-lg font-bold ">Filtrer</p>
@@ -111,6 +112,9 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               className=" my-4 flex items-center rounded-md border-2 border-red-300 p-2 px-4  sm:hover:bg-gray-700"
               onClick={() => {
                 setFilterQuery("");
+                const newUrl = window.location.pathname;
+                window.history.replaceState(null, "", newUrl);
+                // router.push("/produkter");
               }}
             >
               Tøm alle filtre
@@ -118,7 +122,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
             <button
               className="sticky top-0 m-4 block rounded-md bg-gray-500 p-2 px-4 text-white sm:hover:bg-gray-700"
               onClick={() => {
-                handleFilterFetch();
+                // handleFilterFetch();
                 setOpen(false);
                 // router.push(`/produkter?${filterQuery}`);
               }}

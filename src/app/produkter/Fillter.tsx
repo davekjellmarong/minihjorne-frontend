@@ -35,7 +35,7 @@ const Filter = ({
       ...prevCheckboxStates,
       ...filtersObject,
     }));
-  }, [data]);
+  }, [data, queryParams]);
 
   const handleCheckboxChange = (item: any) => {
     const isChecked = !checkboxStates[item.attributes[property]];

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { ImageUpload } from "./page";
 import { CheckCircle } from "@phosphor-icons/react";
+import { setIn } from "formik";
 
 interface ImageListProps {
   images: ImageUpload[];
@@ -13,6 +14,7 @@ const ImagesList = ({
   setSelectedImages,
   selectedImages,
 }: ImageListProps) => {
+  console.log(images);
   return (
     <div className="mx-12 flex flex-wrap justify-center gap-4">
       {images?.map((image, index) => (
@@ -26,8 +28,21 @@ const ImagesList = ({
               );
 
               setSelectedImages(withoutImage);
+              setSelectedImages(withoutImage);
             } else if (selectedImages.length === 3) {
-            } else setSelectedImages([...selectedImages, image]);
+            } else {
+              setSelectedImages([...selectedImages, image]);
+              setSelectedImages([...selectedImages, image]);
+            }
+
+            // const selectedIndex = selectedImageIndexes.indexOf(index); // Check if the image index is already selected
+            // if (selectedIndex !== -1) {
+            //   setSelectedImageIndexes(
+            //     selectedImageIndexes.filter((i) => i !== index),
+            //   ); // If selected, remove it from the array
+            // } else if (selectedImageIndexes.length < 3) {
+            //   setSelectedImageIndexes([...selectedImageIndexes, index]); // If not selected and less than 3 images selected, add it to the array
+            // }
           }}
         >
           <span
