@@ -7,6 +7,8 @@ import FilterChips from "./FilterChips";
 import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 import Pagination from "./Pagination";
 import useInitialQueryParams from "./useInitialQueryParams";
+import Link from "next/link";
+import QuickFilterCards from "./QuickFilterCards";
 
 export interface SelectedFilter {
   query: string;
@@ -25,6 +27,9 @@ const ProductPage = () => {
       <div className="relative flex w-full flex-col items-center px-4">
         <div className="w-full px-6 py-10 ">
           <h2 className="text-3xl font-bold">Produkter</h2>
+        </div>
+        <div className="w-full pb-6">
+          <QuickFilterCards setFilterQuery={setFilterQuery} />
         </div>
         <div className="flex w-full  border-gray-200 px-6 py-2">
           <Filters setFilterQuery={setFilterQuery} filterQuery={filterQuery} />

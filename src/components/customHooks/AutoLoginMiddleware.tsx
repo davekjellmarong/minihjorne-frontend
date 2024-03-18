@@ -12,7 +12,10 @@ interface AutoLoginMiddlewareProps {
 const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   const cookieStore: any = cookies();
   const token = cookieStore.get("Token");
-  if (!token) return <>{children}</>;
+  if (!token) {
+    console.log("No token");
+    return <>{children}</>;
+  }
 
   const url = process.env.NEXT_PUBLIC_API_URL + "/users/me?populate=*";
 

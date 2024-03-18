@@ -10,9 +10,30 @@ import AddToCartButtons from "@/components/button/AddToCartButtons";
 import CarouselComponent from "@/components/carousel/Carousel";
 import { queryTemplates } from "@/utils/constants";
 import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   const { data: product } = useQuery(ProductQueries.detail(params.id));
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 1,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   if (!product) return <Loading />;
   const {
     category,
@@ -41,12 +62,13 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           </p>
           <User size={22} />
         </Link>
-        <CarouselComponent>
+        {/* <CarouselComponent> */}
+        <Carousel showDots responsive={responsive}>
           {image.data.map((image) => {
             return (
               <img
                 key={image.id}
-                className="h-[500px] w-full overflow-hidden object-contain sm:h-[750px]"
+                className="h-[500px] w-full overflow-hidden object-contain sm:h-[750px] sm:w-[500px]"
                 src={`${image.attributes.url}`}
                 height={200}
                 width={200}
@@ -54,7 +76,8 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
               />
             );
           })}
-        </CarouselComponent>
+        </Carousel>
+        {/* </CarouselComponent> */}
       </div>
       <div className="relative flex w-full flex-col items-start overflow-hidden sm:w-1/2">
         <div className="absolute left-10 top-5">

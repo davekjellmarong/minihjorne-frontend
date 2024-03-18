@@ -32,7 +32,7 @@ const FilterDialog = ({
         setOpen(false);
       }
     });
-  }, []);
+  });
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;

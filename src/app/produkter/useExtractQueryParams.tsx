@@ -73,7 +73,7 @@ const useExtractQueryParams = () => {
     return () => {
       setQueryParams([]);
     };
-  }, [searchParams]);
+  }, [searchParams, queryClient]);
   return {
     queryParams: queryParams,
     flatQueryParams: flatQueryParams,
