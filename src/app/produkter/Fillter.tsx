@@ -31,12 +31,8 @@ const Filter = ({
       prev[value] = true;
       return prev;
     }, {});
-    setCheckboxStates((prevCheckboxStates: any) => ({
-      ...prevCheckboxStates,
-      ...filtersObject,
-    }));
-  }, [data, queryParams]);
-
+    setCheckboxStates(filtersObject);
+  }, [data, queryParams, filter, property]);
   const handleCheckboxChange = (item: any) => {
     const isChecked = !checkboxStates[item.attributes[property]];
     setCheckboxStates((prevStates: any) => ({
