@@ -23,7 +23,7 @@ const Pagination = ({
   if (pageCount === 0) return null;
   return (
     <>
-      <div className="flex gap-8">
+      <div className="flex items-center gap-4">
         <button
           className={`flex gap-2 text-sm ${prevButtonDisabled ? "text-gray-400" : ""}`}
           disabled={prevButtonDisabled}

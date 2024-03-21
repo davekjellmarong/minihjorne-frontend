@@ -9,8 +9,9 @@ import useExtractQueryParams from "./useExtractQueryParams";
 interface FiltersProps {
   setFilterQuery: any;
   filterQuery: string;
+  setPage: (value: number) => void;
 }
-const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
+const Filters = ({ setFilterQuery, filterQuery, setPage }: FiltersProps) => {
   const [open, setOpen] = useState(false);
   const [
     TagsData,
@@ -23,8 +24,24 @@ const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
 
   const handleFilterFetch = () => {
     const queryParams = new URLSearchParams(window.location.search);
-    if (filterQuery === `?${queryParams.toString()}&pagination[page]=1`) return;
-    setFilterQuery(`?${queryParams.toString()}&pagination[page]=1`);
+    queryParams.set("pagination[page]", "1");
+    window.history.replaceState(null, "", `?${queryParams.toString()}`);
+    console.log("filterquery", filterQuery);
+    console.log(`queryparams - ${queryParams.toString()}`);
+    // if (
+    //   // filterQuery.includes(queryParams.toString())
+    //   filterQuery.includes(`${queryParams.toString()}&pagination`)
+    // ) {
+    //   return;
+    // }
+    // if (
+    //   filterQuery === `?${queryParams.toString()}&pagination[page]=1` ||
+    //   filterQuery === `&${queryParams.toString()}&pagination[page]=1`
+    // ) {
+    //   return;
+    // }
+    setPage(1);
+    setFilterQuery(`&${queryParams.toString()}`);
   };
   const { queryParams } = useExtractQueryParams();
   const FilterProps = {
@@ -122,7 +139,6 @@ const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
             <button
               className="sticky top-0 m-4 block rounded-md bg-gray-500 p-2 px-4 text-white sm:hover:bg-gray-700"
               onClick={() => {
-                // handleFilterFetch();
                 setOpen(false);
                 // router.push(`/produkter?${filterQuery}`);
               }}

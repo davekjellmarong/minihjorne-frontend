@@ -10,7 +10,7 @@ const PageNumber = ({
   pageTotal: number | undefined;
 }) => {
   return (
-    <p className="text-center text-sm text-gray-500">
+    <p className="text-center text-xs text-gray-500">
       Side {page} av {pageCount}
     </p>
   );

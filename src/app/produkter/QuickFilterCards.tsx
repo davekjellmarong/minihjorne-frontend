@@ -4,25 +4,32 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
+const QuickFilterCards = ({
+  setFilterQuery,
+  setPage,
+}: {
+  setFilterQuery: any;
+  setPage: (value: number) => void;
+}) => {
   const router = useRouter();
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 10,
+      items: 9,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 8,
+      items: 7,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 6,
+      items: 5,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 4,
+      items: 3,
     },
   };
   const quickFilterData = [
@@ -73,7 +80,8 @@ const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
       <Carousel responsive={responsive}>
         {quickFilterData.map((filter) => (
           <div
-            className={`mx-2 flex h-12 w-20 items-center justify-center rounded ${filter.bgClass}`}
+            className={` flex h-12 w-24 items-center justify-center rounded border-2 border-brand-300 `}
+            // className={`mx-2 flex h-12 w-20 items-center justify-center rounded ${filter.bgClass}`}
             key={filter.name}
             onClick={() => {
               router.push(filter.link);
@@ -81,7 +89,7 @@ const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
             }}
           >
             {/* <div className={`flex h-full items-center justify-center `}> */}
-            <h3 className=" font-semibold text-white">{filter.name}</h3>
+            <h3 className=" font-semibold text-brand-700">{filter.name}</h3>
             {/* </div> */}
           </div>
         ))}
