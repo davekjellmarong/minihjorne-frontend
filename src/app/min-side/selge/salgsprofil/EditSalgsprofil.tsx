@@ -1,25 +1,9 @@
-import React, { useState } from "react";
-import { UserBackend, User as UserType } from "@/utils/types";
-import {
-  tailwindColorsObject,
-  tailwindColorsUserButton,
-} from "@/utils/constants";
+import React from "react";
+import { UserBackend } from "@/utils/types";
+import { tailwindColorsUserButton } from "@/utils/constants";
 import Products from "@/components/products/Products";
 import { useQuery } from "@tanstack/react-query";
-import { ProductsMethods } from "@/utils/utils";
-import EditSalgsprofilHeader from "./EditSalgsprofilHeader";
-import {
-  Baby,
-  Bird,
-  HeartStraight,
-  Leaf,
-  Pen,
-  Pencil,
-  Rainbow,
-  Star,
-  User,
-  UserCircle,
-} from "@phosphor-icons/react";
+import { Pencil } from "@phosphor-icons/react";
 import SalgsprofilHeader from "./SalgsprofilHeader";
 import Link from "next/link";
 import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
@@ -38,7 +22,6 @@ const EditSalgsprofil = ({ formik, user }: EditSalgsprofilProps) => {
       <div className="m-3 flex w-full flex-col items-center gap-6 rounded bg-white py-10 text-center shadow-2xl">
         <Link
           href="salgsprofil/rediger"
-          // type="button"
           className=" flex gap-2 rounded-lg border border-indigo-300  bg-brand-200 px-2 py-2 text-sm font-medium focus:z-10 focus:outline-none focus:ring-0 focus:ring-indigo-700 sm:hover:bg-indigo-700 sm:hover:text-white"
         >
           <Pencil size={20} color="indigo" />

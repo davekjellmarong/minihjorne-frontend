@@ -1,10 +1,8 @@
 import React from "react";
 import useExtractQueryParams from "./useExtractQueryParams";
 import { XCircle } from "@phosphor-icons/react";
-import { useRouter } from "next/navigation";
 
 const FilterChips = () => {
-  const router = useRouter();
   const { flatQueryParams } = useExtractQueryParams();
   return (
     <div className="mb-4 mt-2 flex w-full flex-wrap gap-2  rounded-lg">

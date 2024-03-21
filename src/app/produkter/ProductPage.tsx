@@ -39,7 +39,6 @@ const ProductPage = () => {
         <div className="flex flex-col gap-4">
           <Pagination
             pageCount={products?.meta?.pagination.pageCount}
-            pageTotal={products?.meta?.pagination.total}
             setFilterQuery={setFilterQuery}
           />
         </div>
@@ -47,7 +46,6 @@ const ProductPage = () => {
         <div className="flex flex-col gap-6 py-6">
           <Pagination
             pageCount={products?.meta?.pagination.pageCount}
-            pageTotal={products?.meta?.pagination.total}
             setFilterQuery={setFilterQuery}
           />
         </div>

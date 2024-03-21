@@ -6,13 +6,8 @@ import PageNumber from "./PageNumber";
 interface PaginationProps {
   pageCount: number | undefined;
   setFilterQuery: (filterQuery: string) => void;
-  pageTotal: number | undefined;
 }
-const Pagination = ({
-  pageCount,
-  setFilterQuery,
-  pageTotal,
-}: PaginationProps) => {
+const Pagination = ({ pageCount, setFilterQuery }: PaginationProps) => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
   const page = Number(params.get("pagination[page]"));
@@ -26,7 +21,6 @@ const Pagination = ({
           className={`flex gap-2 text-sm ${prevButtonDisabled ? "text-gray-400" : ""}`}
           disabled={prevButtonDisabled}
           onClick={() => {
-            const params = new URLSearchParams(searchParams.toString());
             params.set("pagination[page]", String(page - 1));
             window.history.pushState(null, "", `?${params.toString()}`);
             setFilterQuery(`?${params.toString()}`);
@@ -35,12 +29,11 @@ const Pagination = ({
           <ArrowLeft size={20} />
           <p></p>
         </button>
-        <PageNumber page={page} pageCount={pageCount} pageTotal={pageTotal} />
+        <PageNumber page={page} pageCount={pageCount} />
         <button
           className={`flex gap-2 text-sm ${nextButtonDisabled ? "text-gray-400" : ""}`}
           disabled={nextButtonDisabled}
           onClick={() => {
-            const params = new URLSearchParams(searchParams.toString());
             params.set("pagination[page]", String(page + 1));
             window.history.pushState(null, "", `?${params.toString()}`);
             setFilterQuery(`?${params.toString()}`);
