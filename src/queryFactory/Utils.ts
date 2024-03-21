@@ -1,4 +1,4 @@
-export const getProductsFiltered = async (query: string, page?: number) => {
+export const getProductsFiltered = async (query: string) => {
   // const pageQuery = page ? `&pagination[page]=${page}` : "";
   const baseUrl =
     apiUrl +

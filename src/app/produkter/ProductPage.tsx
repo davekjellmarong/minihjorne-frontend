@@ -7,7 +7,6 @@ import FilterChips from "./FilterChips";
 import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
 import Pagination from "./Pagination";
 import useInitialQueryParams from "./useInitialQueryParams";
-import Link from "next/link";
 import QuickFilterCards from "./QuickFilterCards";
 
 export interface SelectedFilter {
@@ -16,12 +15,11 @@ export interface SelectedFilter {
   name: string;
 }
 const ProductPage = () => {
-  const { filterQuery, setFilterQuery, page, setPage } =
-    useInitialQueryParams();
+  const { filterQuery, setFilterQuery } = useInitialQueryParams();
 
   // todo to-do - use page value from filterQuery instead of page state, to stop refetching on page change aka move page state to url
   const { data: products, isPending } = useQuery(
-    ProductQueries.filtered(filterQuery, page),
+    ProductQueries.filtered(filterQuery),
   );
   return (
     <>
@@ -30,35 +28,27 @@ const ProductPage = () => {
           <h2 className="text-3xl font-bold">Produkter</h2>
         </div>
         <div className="w-full  pb-6">
-          <QuickFilterCards setPage={setPage} setFilterQuery={setFilterQuery} />
+          <QuickFilterCards setFilterQuery={setFilterQuery} />
         </div>
         <div className="flex w-full  border-gray-200  py-2">
-          <Filters
-            setPage={setPage}
-            setFilterQuery={setFilterQuery}
-            filterQuery={filterQuery}
-          />
+          <Filters setFilterQuery={setFilterQuery} filterQuery={filterQuery} />
         </div>
         <div className="w-full ">
           <FilterChips />
         </div>
         <div className="flex flex-col gap-4">
           <Pagination
-            page={page}
-            setPage={setPage}
             pageCount={products?.meta?.pagination.pageCount}
-            setFilterQuery={setFilterQuery}
             pageTotal={products?.meta?.pagination.total}
+            setFilterQuery={setFilterQuery}
           />
         </div>
         <Products data={products?.data} isLoading={isPending} />
         <div className="flex flex-col gap-6 py-6">
           <Pagination
-            page={page}
-            setPage={setPage}
             pageCount={products?.meta?.pagination.pageCount}
-            setFilterQuery={setFilterQuery}
             pageTotal={products?.meta?.pagination.total}
+            setFilterQuery={setFilterQuery}
           />
         </div>
       </div>

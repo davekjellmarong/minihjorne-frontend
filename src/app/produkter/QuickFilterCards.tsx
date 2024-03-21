@@ -1,18 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const QuickFilterCards = ({
-  setFilterQuery,
-  setPage,
-}: {
-  setFilterQuery: any;
-  setPage: (value: number) => void;
-}) => {
-  const router = useRouter();
-
+const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -84,8 +75,12 @@ const QuickFilterCards = ({
             // className={`mx-2 flex h-12 w-20 items-center justify-center rounded ${filter.bgClass}`}
             key={filter.name}
             onClick={() => {
-              router.push(filter.link);
-              setFilterQuery(filter.link);
+              window.history.pushState(
+                null,
+                "",
+                `${filter.link}&pagination[page]=1`,
+              );
+              setFilterQuery(`${filter.link}&pagination[page]=1`);
             }}
           >
             {/* <div className={`flex h-full items-center justify-center `}> */}

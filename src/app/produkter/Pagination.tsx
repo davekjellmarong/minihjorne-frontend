@@ -4,20 +4,19 @@ import React from "react";
 import PageNumber from "./PageNumber";
 
 interface PaginationProps {
-  page: number;
-  setPage: (page: number) => void;
   pageCount: number | undefined;
   setFilterQuery: (filterQuery: string) => void;
   pageTotal: number | undefined;
 }
 const Pagination = ({
-  page,
-  setPage,
   pageCount,
   setFilterQuery,
   pageTotal,
 }: PaginationProps) => {
   const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+  const page = Number(params.get("pagination[page]"));
+  console.log("page", page);
   const nextButtonDisabled = pageCount === undefined || pageCount === page;
   const prevButtonDisabled = page === undefined || page === 1;
   if (pageCount === 0) return null;
@@ -31,7 +30,7 @@ const Pagination = ({
             const params = new URLSearchParams(searchParams.toString());
             params.set("pagination[page]", String(page - 1));
             window.history.pushState(null, "", `?${params.toString()}`);
-            setPage(page - 1);
+            setFilterQuery(`?${params.toString()}`);
           }}
         >
           <ArrowLeft size={20} />
@@ -45,7 +44,7 @@ const Pagination = ({
             const params = new URLSearchParams(searchParams.toString());
             params.set("pagination[page]", String(page + 1));
             window.history.pushState(null, "", `?${params.toString()}`);
-            setPage(page + 1);
+            setFilterQuery(`?${params.toString()}`);
           }}
         >
           <p></p>

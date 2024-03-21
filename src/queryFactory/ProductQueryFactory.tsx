@@ -17,11 +17,8 @@ export const ProductsMethods = {
   getById: async (id: any): Promise<Product> => {
     return getPublicData(`/products/${id}?populate=*`);
   },
-  getFiltered: async (
-    query: string,
-    page: number,
-  ): Promise<ProductsPagination> => {
-    return getProductsFiltered(query, page);
+  getFiltered: async (query: string): Promise<ProductsPagination> => {
+    return getProductsFiltered(query);
   },
   put: async (id: string, data: any, token: any): Promise<Product> => {
     return putData(`/products/${id}`, token, data);
@@ -46,10 +43,10 @@ export const ProductQueries = {
       queryKey: [...ProductQueries.all(), id],
       queryFn: () => ProductsMethods.getById(id),
     }),
-  filtered: (query: string, page: number) =>
+  filtered: (query: string) =>
     queryOptions({
       queryKey: [...ProductQueries.all(), query],
-      queryFn: () => ProductsMethods.getFiltered(query, page),
+      queryFn: () => ProductsMethods.getFiltered(query),
     }),
   userId: (id: string) =>
     queryOptions({

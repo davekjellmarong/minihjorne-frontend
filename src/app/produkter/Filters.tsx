@@ -9,9 +9,8 @@ import useExtractQueryParams from "./useExtractQueryParams";
 interface FiltersProps {
   setFilterQuery: any;
   filterQuery: string;
-  setPage: (value: number) => void;
 }
-const Filters = ({ setFilterQuery, filterQuery, setPage }: FiltersProps) => {
+const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
   const [open, setOpen] = useState(false);
   const [
     TagsData,
@@ -40,7 +39,6 @@ const Filters = ({ setFilterQuery, filterQuery, setPage }: FiltersProps) => {
     // ) {
     //   return;
     // }
-    setPage(1);
     setFilterQuery(`&${queryParams.toString()}`);
   };
   const { queryParams } = useExtractQueryParams();
