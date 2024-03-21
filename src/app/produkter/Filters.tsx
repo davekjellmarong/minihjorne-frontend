@@ -25,20 +25,6 @@ const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
     const queryParams = new URLSearchParams(window.location.search);
     queryParams.set("pagination[page]", "1");
     window.history.replaceState(null, "", `?${queryParams.toString()}`);
-    console.log("filterquery", filterQuery);
-    console.log(`queryparams - ${queryParams.toString()}`);
-    // if (
-    //   // filterQuery.includes(queryParams.toString())
-    //   filterQuery.includes(`${queryParams.toString()}&pagination`)
-    // ) {
-    //   return;
-    // }
-    // if (
-    //   filterQuery === `?${queryParams.toString()}&pagination[page]=1` ||
-    //   filterQuery === `&${queryParams.toString()}&pagination[page]=1`
-    // ) {
-    //   return;
-    // }
     setFilterQuery(`&${queryParams.toString()}`);
   };
   const { queryParams } = useExtractQueryParams();
@@ -129,7 +115,6 @@ const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
                 setFilterQuery("");
                 const newUrl = window.location.pathname;
                 window.history.replaceState(null, "", newUrl);
-                // router.push("/produkter");
               }}
             >
               Tøm alle filtre
@@ -138,7 +123,6 @@ const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
               className="sticky top-0 m-4 block rounded-md bg-gray-500 p-2 px-4 text-white sm:hover:bg-gray-700"
               onClick={() => {
                 setOpen(false);
-                // router.push(`/produkter?${filterQuery}`);
               }}
             >
               Bruk filter

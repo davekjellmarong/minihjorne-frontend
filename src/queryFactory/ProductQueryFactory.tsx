@@ -1,10 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import {
-  Product,
-  ProductBackend,
-  ProductRQ,
-  ProductsPagination,
-} from "@/utils/types";
+import { Product, ProductBackend, ProductsPagination } from "@/utils/types";
 import {
   deleteData,
   getAuthData,

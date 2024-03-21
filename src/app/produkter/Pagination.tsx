@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 import PageNumber from "./PageNumber";
 
@@ -16,7 +16,6 @@ const Pagination = ({
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
   const page = Number(params.get("pagination[page]"));
-  console.log("page", page);
   const nextButtonDisabled = pageCount === undefined || pageCount === page;
   const prevButtonDisabled = page === undefined || page === 1;
   if (pageCount === 0) return null;

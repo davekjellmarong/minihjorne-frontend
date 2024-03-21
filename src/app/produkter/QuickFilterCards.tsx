@@ -72,7 +72,6 @@ const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
         {quickFilterData.map((filter) => (
           <div
             className={` flex h-12 w-24 items-center justify-center rounded border-2 border-brand-300 `}
-            // className={`mx-2 flex h-12 w-20 items-center justify-center rounded ${filter.bgClass}`}
             key={filter.name}
             onClick={() => {
               window.history.pushState(
@@ -83,9 +82,7 @@ const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
               setFilterQuery(`${filter.link}&pagination[page]=1`);
             }}
           >
-            {/* <div className={`flex h-full items-center justify-center `}> */}
             <h3 className=" font-semibold text-brand-700">{filter.name}</h3>
-            {/* </div> */}
           </div>
         ))}
       </Carousel>
