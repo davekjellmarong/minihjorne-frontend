@@ -11,7 +11,7 @@ import { FilterQueries } from "@/queryFactory/FilterQueryFactory";
 const ProductProvider = async () => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(ProductQueries.filtered("", 1));
+  await queryClient.prefetchQuery(ProductQueries.filtered(""));
   await queryClient.prefetchQuery(FilterQueries.categories());
   await queryClient.prefetchQuery(FilterQueries.colors());
   await queryClient.prefetchQuery(FilterQueries.sizes());
