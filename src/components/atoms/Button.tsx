@@ -28,16 +28,25 @@ const Button = ({
     arrowLeft: <ArrowLeft size={24} />,
     arrowRight: <ArrowRight size={24} />,
   };
-  const colors = {
-    brand: "bg-brand-500 text-white",
-    danger: "bg-red-500 text-white",
-    outline: "bg-white text-black border border-gray-300",
-  };
+  let colors;
+  if (disabled) {
+    colors = {
+      brand: "bg-brand-300 text-white",
+      danger: "bg-red-300 text-white",
+      outline: "bg-gray-300 text-gray-500 border border-gray-300",
+    };
+  } else {
+    colors = {
+      brand: "bg-brand-500 text-white",
+      danger: "bg-red-500 text-white",
+      outline: "bg-white text-black border border-gray-300",
+    };
+  }
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`${colors[type]}  flex items-center gap-2 rounded p-4 px-6`}
+      className={`${colors[type]}  flex items-center gap-2 rounded p-4 px-6 `}
     >
       {icon && <span>{iconElement[icon]}</span>}
       <p>{children}</p>

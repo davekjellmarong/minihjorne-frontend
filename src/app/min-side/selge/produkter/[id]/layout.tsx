@@ -4,7 +4,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import React, { Suspense } from "react";
+import React from "react";
 
 const layout = async ({
   children,

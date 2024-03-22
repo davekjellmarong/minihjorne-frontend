@@ -7,7 +7,6 @@ import Loading from "@/components/molecules/loading/Loading";
 import { User } from "@phosphor-icons/react";
 import Link from "next/link";
 import AddToCartButtons from "@/components/molecules/AddToCartButtons";
-import CarouselComponent from "@/components/carousel/Carousel";
 import { queryTemplates } from "@/utils/constants";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import Carousel from "react-multi-carousel";

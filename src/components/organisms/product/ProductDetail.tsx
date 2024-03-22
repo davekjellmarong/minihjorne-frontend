@@ -26,7 +26,7 @@ import {
 import Link from "next/link";
 import AddToCartButtons from "@/components/molecules/AddToCartButtons";
 import ColorSquaresBackend from "@/components/organisms/filters/color/ColorSquaresBackend";
-import CarouselComponent from "@/components/carousel/Carousel";
+import CarouselComponent from "../Carousel";
 
 interface ProductProps {
   selectedProduct: ProductBackend | undefined;

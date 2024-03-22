@@ -1,6 +1,6 @@
 import React from "react";
-import CarouselComponent from "@/components/carousel/Carousel";
 import Image from "next/image";
+import CarouselComponent from "../../Carousel";
 const IntroCarousel = () => {
   const instruction1 = {
     title: "Steg 1",
@@ -16,13 +16,13 @@ const IntroCarousel = () => {
     <CarouselComponent>
       <div
         key={instruction1.title}
-        className="flex flex-col gap-6 text-center justify-center items-center mx-2 h-[500px]"
+        className="mx-2 flex h-[500px] flex-col items-center justify-center gap-6 text-center"
       >
-        <p className="font-light text-sm text-purple-700">
+        <p className="text-sm font-light text-purple-700">
           {instruction1.title}
         </p>
         <p className=" mx-4">{instruction1.text}</p>
-        <div className="flex gap-8 w-full max-h-[350px]">
+        <div className="flex max-h-[350px] w-full gap-8">
           <Image
             src="/camera-screenshot.png"
             height={100}
@@ -44,13 +44,13 @@ const IntroCarousel = () => {
 
       <div
         key={instruction2.title}
-        className="flex flex-col gap-6 text-center justify-center items-center mx-2 h-[500px]"
+        className="mx-2 flex h-[500px] flex-col items-center justify-center gap-6 text-center"
       >
-        <p className="font-light text-sm text-purple-700">
+        <p className="text-sm font-light text-purple-700">
           {instruction2.title}
         </p>
         <p className=" mx-4">{instruction2.text}</p>
-        <div className="flex gap-8 w-full max-h-[350px]">
+        <div className="flex max-h-[350px] w-full gap-8">
           <Image
             src="/knapp-bilder.png"
             height={100}

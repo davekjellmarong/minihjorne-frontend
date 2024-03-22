@@ -30,15 +30,15 @@ import ProductStatusChip from "@/components/organisms/ProductStatusChip";
 import Button from "@/components/atoms/Button";
 import { DeleteConfirmation } from "@/components/organisms/dialog/DeleteConfirmation";
 import Dialog from "@/components/organisms/dialog/Dialog";
-import Color from "@/components/organisms/Form/product/Color";
-import Category from "@/components/organisms/Form/product/Category";
-import Size from "@/components/organisms/Form/product/Size";
-import Tags from "@/components/organisms/Form/product/Tags";
-import Sex from "@/components/organisms/Form/product/Sex";
-import { State } from "@/components/organisms/Form/product/State";
-import Materials from "@/components/organisms/Form/product/Materials";
-import Brand from "@/components/organisms/Form/product/Brand";
-import Price from "@/components/organisms/Form/product/Price";
+import Category from "@/components/organisms/form/product/Category";
+import Size from "@/components/organisms/form/product/Size";
+import Tags from "@/components/organisms/form/product/Tags";
+import Sex from "@/components/organisms/form/product/Sex";
+import { State } from "@/components/organisms/form/product/State";
+import Materials from "@/components/organisms/form/product/Materials";
+import Brand from "@/components/organisms/form/product/Brand";
+import Price from "@/components/organisms/form/product/Price";
+import Color from "@/components/organisms/form/product/Color";
 const Page = ({ params }: { params: { id: string } }) => {
   const { data: product } = useQuery(ProductQueries.detail(params.id));
   const queryClient = useQueryClient();
@@ -128,7 +128,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     return;
   if (!product) return;
   return (
-    <div className="m-auto max-w-[700px] px-8">
+    <div className="m-auto max-w-[700px] px-6">
       <LoadingOverlay loading={loading} />
       <Dialog open={modal} setOpen={setModal} height="h-[400px]">
         <DeleteConfirmation
@@ -145,12 +145,13 @@ const Page = ({ params }: { params: { id: string } }) => {
           sold={product?.attributes.sold}
         />
       </div>
-      <div className="mb-8 flex flex-wrap justify-evenly gap-4">
+      <div className="mb-8 flex flex-wrap justify-evenly gap-2">
         {product?.attributes.image.data.map((image) => (
           <img
             key={image.id}
             src={image.attributes.url}
-            className="h-80 w-2/5 object-cover"
+            // className="h-80 w-2/5 object-cover"
+            className="h-80  object-cover"
           />
         ))}
       </div>
@@ -202,12 +203,13 @@ const Page = ({ params }: { params: { id: string } }) => {
       <Accordion label="Pris" currentValue={formik.values.price}>
         <Price formik={formik} />
       </Accordion>
-      <div className="flex justify-center gap-8">
+
+      <div className="flex justify-center gap-8 pb-8">
         <Button
           icon="trash"
           type="danger"
+          disabled={product?.attributes.sold}
           onClick={() => {
-            // deleteProduct();
             setModal(true);
             scrollTo(0, 0);
           }}
@@ -216,6 +218,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         </Button>
         <Button
           icon="save"
+          disabled={product?.attributes.sold}
           onClick={() => {
             formik.handleSubmit();
           }}
