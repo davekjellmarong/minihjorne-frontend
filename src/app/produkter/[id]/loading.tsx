@@ -1,4 +1,4 @@
-import LargeProductSkeleton from "@/components/skeleton/LargeProductSkeleton";
+import LargeProductSkeleton from "@/components/organisms/skeleton/LargeProductSkeleton";
 import React from "react";
 
 const loading = () => {

@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import BackButton from "@/components/button/BackButton";
-import ColorSquares from "@/components/color/ColorSquares";
-import Loading from "@/components/loading/Loading";
+import BackButton from "@/components/atoms/BackButton";
+import ColorSquares from "@/components/organisms/filters/color/ColorSquares";
+import Loading from "@/components/molecules/loading/Loading";
 import { User } from "@phosphor-icons/react";
 import Link from "next/link";
-import AddToCartButtons from "@/components/button/AddToCartButtons";
+import AddToCartButtons from "@/components/molecules/AddToCartButtons";
 import CarouselComponent from "@/components/carousel/Carousel";
 import { queryTemplates } from "@/utils/constants";
-import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
+import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 

@@ -15,30 +15,30 @@ import {
   SizesRQ,
   TagsRQ,
 } from "@/utils/types";
-import Color from "@/components/form/product/Color";
 import { useFormik } from "formik";
-import Category from "@/components/form/product/Category";
-import Size from "@/components/form/product/Size";
-import Tags from "@/components/form/product/Tags";
-import Sex from "@/components/form/product/Sex";
-import { State } from "@/components/form/product/State";
-import Materials from "@/components/form/product/Materials";
-import Brand from "@/components/form/product/Brand";
-import Price from "@/components/form/product/Price";
-import Accordion from "./Accordion";
+import Accordion from "../../../../../components/organisms/minSide/produkter/Accordion";
 import {
   ProductQueries,
   ProductsMethods,
-} from "@/queryFactory/ProductQueryFactory";
+} from "@/reactQuery/ProductQueryFactory";
 import { useRouter } from "next/navigation";
-import { AuthQueries } from "@/queryFactory/AuthQueryFactory";
-import { UserQueries } from "@/queryFactory/UserQueryFactory";
-import LoadingOverlay from "@/components/loading/LoadingOverlay";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
 import { toast } from "react-toastify";
-import ProductStatusChip from "@/components/chip/ProductStatusChip";
-import Button from "@/components/button/Button";
-import { DeleteConfirmation } from "@/components/dialog/DeleteConfirmation";
-import Dialog from "@/components/dialog/Dialog";
+import ProductStatusChip from "@/components/organisms/ProductStatusChip";
+import Button from "@/components/atoms/Button";
+import { DeleteConfirmation } from "@/components/organisms/dialog/DeleteConfirmation";
+import Dialog from "@/components/organisms/dialog/Dialog";
+import Color from "@/components/organisms/Form/product/Color";
+import Category from "@/components/organisms/Form/product/Category";
+import Size from "@/components/organisms/Form/product/Size";
+import Tags from "@/components/organisms/Form/product/Tags";
+import Sex from "@/components/organisms/Form/product/Sex";
+import { State } from "@/components/organisms/Form/product/State";
+import Materials from "@/components/organisms/Form/product/Materials";
+import Brand from "@/components/organisms/Form/product/Brand";
+import Price from "@/components/organisms/Form/product/Price";
 const Page = ({ params }: { params: { id: string } }) => {
   const { data: product } = useQuery(ProductQueries.detail(params.id));
   const queryClient = useQueryClient();

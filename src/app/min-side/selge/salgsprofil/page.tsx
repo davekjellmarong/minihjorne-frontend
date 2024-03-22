@@ -4,9 +4,9 @@ import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { UserMethods } from "@/utils/utils";
 import { toast } from "react-toastify";
-import EditSalgsprofil from "./EditSalgsprofil";
-import { AuthQueries } from "@/queryFactory/AuthQueryFactory";
-import { UserQueries } from "@/queryFactory/UserQueryFactory";
+import EditSalgsprofil from "../../../../components/organisms/minSide/salgsprofil/EditSalgsprofil";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
 
 const Page = () => {
   const queryClient = useQueryClient();

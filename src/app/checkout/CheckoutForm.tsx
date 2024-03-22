@@ -7,7 +7,7 @@ import {
   PaymentElement,
   AddressElement,
 } from "@stripe/react-stripe-js";
-import { clearCartInLocalStorage } from "@/components/cart/Utils";
+import { clearCartInLocalStorage } from "@/utils/CartUtils";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -22,7 +22,7 @@ const CheckoutForm = () => {
     }
 
     const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
+      "payment_intent_client_secret",
     );
 
     if (!clientSecret) {
@@ -93,7 +93,7 @@ const CheckoutForm = () => {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      className="w-full flex flex-col gap-16 items-center my-14"
+      className="my-14 flex w-full flex-col items-center gap-16"
     >
       <div className="w-[400px]">
         <h3 className="text-xl">Frakt</h3>
@@ -120,7 +120,7 @@ const CheckoutForm = () => {
         <PaymentElement id="payment-element" options={paymentElementOptions} />
       </div>
       <button
-        className="w-[400px] bg-purple-600 text-white p-4 rounded-md mt-8"
+        className="mt-8 w-[400px] rounded-md bg-purple-600 p-4 text-white"
         disabled={isLoading || !stripe || !elements}
         id="submit"
       >

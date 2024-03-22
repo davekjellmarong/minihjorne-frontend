@@ -10,12 +10,12 @@ import {
   Rainbow,
   Star,
 } from "@phosphor-icons/react";
-import Color from "@/components/form/product/Color";
+import Color from "@/components/organisms/form/product/Color";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
-import { UserQueries } from "@/queryFactory/UserQueryFactory";
-import { AuthQueries } from "@/queryFactory/AuthQueryFactory";
-import { FilterQueries } from "@/queryFactory/FilterQueryFactory";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
 import { useRouter } from "next/navigation";
 
 const EditSalgsprofilForm = () => {

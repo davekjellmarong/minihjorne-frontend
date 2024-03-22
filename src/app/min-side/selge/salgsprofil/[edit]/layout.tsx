@@ -1,5 +1,5 @@
-import { FilterQueries } from "@/queryFactory/FilterQueryFactory";
-import { UserQueries } from "@/queryFactory/UserQueryFactory";
+import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import {
   HydrationBoundary,
   QueryClient,

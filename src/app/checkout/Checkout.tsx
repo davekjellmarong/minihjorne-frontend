@@ -15,8 +15,8 @@ import {
   clearCartInLocalStorage,
   getItemsFromLocalStorage,
   getSavedProductIds,
-} from "@/components/cart/Utils";
-import Loading from "@/components/loading/Loading";
+} from "@/utils/CartUtils";
+import Loading from "@/components/molecules/loading/Loading";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -35,7 +35,7 @@ const Checkout = () => {
     }
 
     const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
+      "payment_intent_client_secret",
     );
 
     if (!clientSecret) {

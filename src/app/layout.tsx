@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
-import Providers from "../components/reactQuery/Provider";
-import Nav from "@/components/nav/Nav";
+import Providers from "../reactQuery/Provider";
+import Nav from "@/components/organisms/nav/Nav";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import UpperNav from "@/components/nav/UpperNav";
+import UpperNav from "@/components/organisms/nav/UpperNav";
 import AutoLoginMiddleware from "@/components/customHooks/AutoLoginMiddleware";
 
 export const metadata: Metadata = {

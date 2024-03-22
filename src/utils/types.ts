@@ -1,4 +1,4 @@
-import Product from "@/components/products/Product";
+import Product from "@/components/organisms/product/Product";
 
 export interface CommonSize {
   number: string;

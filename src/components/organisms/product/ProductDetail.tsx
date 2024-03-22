@@ -1,0 +1,177 @@
+"use client";
+import React, { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { ProductBackend, ProductRQ } from "@/utils/types";
+import { ProductsMethods } from "@/utils/utils";
+import { baseUrl } from "@/utils/constants";
+import BackButton from "@/components/atoms/BackButton";
+import ColorSquares from "@/components/organisms/filters/color/ColorSquares";
+import Loading from "@/components/molecules/loading/Loading";
+import {
+  GenderFemale,
+  GenderMale,
+  GenderNeuter,
+  Tag,
+  User,
+  XCircle,
+} from "@phosphor-icons/react";
+import {
+  BaseballCap,
+  Dress,
+  Pants,
+  Sneaker,
+  TShirt,
+} from "@phosphor-icons/react";
+import Link from "next/link";
+import AddToCartButtons from "@/components/molecules/AddToCartButtons";
+import ColorSquaresBackend from "@/components/organisms/filters/color/ColorSquaresBackend";
+import CarouselComponent from "@/components/carousel/Carousel";
+
+interface ProductProps {
+  selectedProduct: ProductBackend | undefined;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const ProductDetail = ({ selectedProduct, setOpen }: ProductProps) => {
+  const iconsList: any = {
+    BaseballCap: <BaseballCap size={22} />,
+    Dress: <Dress size={22} />,
+    Pants: <Pants size={22} />,
+    Sneaker: <Sneaker size={22} />,
+    TShirt: <TShirt size={22} />,
+  };
+  const sexList: any = {
+    Unisex: (
+      <>
+        <GenderMale color="blue" size={28} />
+        <GenderFemale color="red" size={28} />
+      </>
+    ),
+    Gutt: <GenderMale color="blue" size={28} />,
+    Jente: <GenderFemale color="red" size={28} />,
+  };
+
+  if (!selectedProduct) return <Loading />;
+  return (
+    <div className="flex w-full flex-wrap justify-center overflow-hidden sm:max-h-[750px]  sm:flex-nowrap">
+      <div className="relative w-full sm:w-1/2">
+        <Link
+          href={`profiler/${selectedProduct.user.username}`}
+          className="absolute bottom-4 right-4 flex rounded border-2 border-transparent bg-white px-4 py-2 sm:bottom-auto sm:top-4"
+        >
+          <p className="text-sm text-purple-500">
+            {selectedProduct.user.username}
+          </p>
+          <User size={22} />
+        </Link>
+        <CarouselComponent>
+          {selectedProduct.image.map((image) => {
+            return (
+              <img
+                key={image.id}
+                className="h-[500px] w-full overflow-hidden object-cover sm:h-[750px]"
+                src={`${image.url}`}
+                height={200}
+                width={200}
+                alt=""
+              />
+            );
+          })}
+        </CarouselComponent>
+      </div>
+      <div className="relative flex w-full flex-col items-start overflow-hidden sm:w-1/2">
+        <div className="absolute left-10 top-5">
+          <ColorSquaresBackend colors={selectedProduct.colors} size="size-8" />
+          {/* <span className="flex">{sexList[selectedProduct.sex.name]}</span> */}
+        </div>
+        <div className="relative  flex w-full flex-col gap-3">
+          <p className="mt-8 w-full  text-center text-3xl font-semibold">
+            {selectedProduct.price} kr
+          </p>
+          <div className="mb-4 flex w-full items-center justify-center">
+            <p className="">{selectedProduct.category.name}</p>
+            {/* <span>{{iconsList[selectedProduct.category.icon]} }</span> */}
+          </div>
+          <div className="absolute flex w-full justify-end">
+            <button className=" pr-4 pt-4" onClick={() => setOpen(false)}>
+              <XCircle size={26} />
+            </button>
+          </div>
+        </div>
+
+        <div className="flex w-full flex-col">
+          <div className="flex w-full px-12 py-8 ">
+            <p className="flex w-1/5 text-sm text-gray-500">
+              Størrelse
+              {/* <Tag size={22} /> */}
+            </p>
+            <p className="grow text-center text-xl font-light">
+              {" "}
+              {selectedProduct.size.number} / {selectedProduct.size.text}
+            </p>
+            <div className="w-1/5"></div>
+          </div>
+          <div className="flex w-full bg-gray-100 px-12  py-8">
+            <p className="flex w-1/5 text-sm text-gray-500">
+              Merke
+              {/* <Tag size={22} /> */}
+            </p>
+            <p className="grow text-center text-xl font-light">
+              {selectedProduct.brand}
+            </p>
+            <div className="w-1/5"></div>
+          </div>
+          <div className="flex w-full px-12 py-8 ">
+            <p className="flex w-1/5 text-sm text-gray-500">
+              Materiale
+              {/* <Tag size={22} /> */}
+            </p>
+            <p className="grow text-center text-xl font-light">
+              {" "}
+              {selectedProduct.material?.name}
+            </p>
+            <div className="w-1/5"></div>
+          </div>
+          <div className="flex w-full bg-gray-100 px-12  py-8">
+            <p className="flex w-1/5 text-sm text-gray-500">
+              Tilstand
+              {/* <Tag size={22} /> */}
+            </p>
+            <p className="grow text-center text-xl font-light">
+              {" "}
+              {selectedProduct.state?.name}
+            </p>
+            <div className="w-1/5"></div>
+          </div>
+          {/* <div className="py-8 px-12 w-full flex bg-gray-100">
+            <p className="w-1/5 flex text-sm text-gray-500">
+              Farger
+              <Tag size={22} />
+            </p>
+            <p className="grow text-xl font-light text-center">
+              {" "}
+              {selectedProduct.colors[0]?.name}
+            </p>
+            <div className="w-1/5"></div>
+          </div> */}
+        </div>
+        <div className="my-6 flex justify-center px-12">
+          <div className=" mt-2 rounded border border-gray-200 bg-white px-12 py-2">
+            {selectedProduct.tags.map((tag) => {
+              return <p key={tag.id}>{tag.name}</p>;
+            })}
+          </div>
+        </div>
+
+        <div className="w-full">
+          <hr className=" mx-12 mt-6" />
+        </div>
+        <div className="mb-10 flex h-full w-full items-center justify-center px-12 sm:mb-0">
+          {/* <AddToCartButtons product={selectedProduct} /> */}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetail;

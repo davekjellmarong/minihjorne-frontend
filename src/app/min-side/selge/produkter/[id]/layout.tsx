@@ -1,4 +1,4 @@
-import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
+import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import {
   HydrationBoundary,
   QueryClient,

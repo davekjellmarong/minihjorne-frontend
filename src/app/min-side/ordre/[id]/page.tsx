@@ -1,6 +1,6 @@
 "use client";
-import ColorSquares from "@/components/color/ColorSquares";
-import Loading from "@/components/loading/Loading";
+import ColorSquares from "@/components/organisms/filters/color/ColorSquares";
+import Loading from "@/components/molecules/loading/Loading";
 import { baseUrl, tailwindColors } from "@/utils/constants";
 import { OrderRQ, ProductsRQ } from "@/utils/types";
 import { OrderMethods, ProductsMethods } from "@/utils/utils";

@@ -1,5 +1,5 @@
 import React from "react";
-import Breadcrumb from "./Breadcrumb";
+import Breadcrumb from "../../components/organisms/minSide/Breadcrumb";
 
 interface LayoutProps {
   children: any;

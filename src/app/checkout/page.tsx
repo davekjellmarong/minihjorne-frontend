@@ -12,12 +12,12 @@ import {
   getCart,
   getItemsFromLocalStorage,
   getSavedProductIds,
-} from "@/components/cart/Utils";
+} from "@/utils/CartUtils";
 import { Check } from "@phosphor-icons/react";
 import CheckoutForm from "./CheckoutForm";
 import { useRouter } from "next/navigation";
 const stripePromise = loadStripe(
-  "pk_test_51JOhigA29RXGmicfdKhyh1kC7i8Psetyj3BNwoc7gFwus1AfgNeftLvr0w6hrPmNuWS1zogfahqR0YbjBcv2V9Y300D7TbsjW9"
+  "pk_test_51JOhigA29RXGmicfdKhyh1kC7i8Psetyj3BNwoc7gFwus1AfgNeftLvr0w6hrPmNuWS1zogfahqR0YbjBcv2V9Y300D7TbsjW9",
 );
 
 const Page = () => {

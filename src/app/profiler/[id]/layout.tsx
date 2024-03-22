@@ -4,7 +4,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { UserQueries } from "@/queryFactory/UserQueryFactory";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
 
 const Provider = async ({
   params,

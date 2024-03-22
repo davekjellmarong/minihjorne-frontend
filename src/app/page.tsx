@@ -1,23 +1,9 @@
 "use client";
-import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
-import HomeHeroImage from "@/components/heroImage/HomeHeroImage";
-import {
-  ArrowDown,
-  Handshake,
-  Upload,
-  UploadSimple,
-  User,
-  UserCircle,
-} from "@phosphor-icons/react";
+import HomeHeroImage from "@/components/organisms/HomeHeroImage";
 import Link from "next/link";
-import { cookies } from "next/headers";
-import useAutoLoginServer from "@/components/customHooks/AutoLoginMiddleware";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
-  const { data } = useQuery({
-    queryKey: ["login-user"],
-  });
   return (
     <div>
       <HomeHeroImage />

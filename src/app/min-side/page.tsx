@@ -1,8 +1,8 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import AvatarLetter from "@/components/avatar/AvatarLetter";
-import Menu from "./Menu";
+import AvatarLetter from "@/components/molecules/AvatarLetter";
+import Menu from "../../components/organisms/minSide/Menu";
 
 interface UserData {
   username: string;

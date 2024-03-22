@@ -1,6 +1,6 @@
 "use client";
-import Salgsprofil from "@/app/min-side/selge/salgsprofil/Salgsprofil";
-import { UserQueries } from "@/queryFactory/UserQueryFactory";
+import Salgsprofil from "@/components/organisms/minSide/salgsprofil/Salgsprofil";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import { UserMethods } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useSearchParams } from "next/navigation";

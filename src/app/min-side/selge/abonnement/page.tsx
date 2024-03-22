@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SuccessDialog from "./SuccessDialog";
+import SuccessDialog from "../../../../components/organisms/minSide/abbonoment/SuccessDialog";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { PaymentMethods } from "@/utils/utils";
-import Cards from "./Cards";
-import ActiveCard from "./ActiveCard";
-import { UserQueries } from "@/queryFactory/UserQueryFactory";
-import { AuthQueries } from "@/queryFactory/AuthQueryFactory";
+import Cards from "../../../../components/organisms/minSide/abbonoment/Cards";
+import ActiveCard from "../../../../components/organisms/minSide/abbonoment/ActiveCard";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 
 const Abonnement = () => {
   const router = useRouter();

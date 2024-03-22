@@ -3,7 +3,7 @@ import {
   calculateTotalPrice,
   getItemsFromLocalStorage,
   removeItemFromCart,
-} from "@/components/cart/Utils";
+} from "@/utils/CartUtils";
 import { Product } from "@/utils/types";
 import { XCircle } from "@phosphor-icons/react";
 import Link from "next/link";

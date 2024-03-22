@@ -4,12 +4,12 @@ import { ProductBackend, User } from "@/utils/types";
 import { ProductsMethods } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import ProductTable from "./ProductTable";
-import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
+import ProductTable from "../../../../components/organisms/minSide/produkter/ProductTable";
+import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import Link from "next/link";
-import { EmptyList } from "@/components/empty/EmptyList";
-import { DataTable } from "@/components/table/ProductsTable/Table";
-import { columns } from "@/components/table/ProductsTable/Columns";
+import { EmptyList } from "@/components/organisms/EmptyList";
+import { DataTable } from "@/components/organisms/table/ProductsTable/Table";
+import { columns } from "@/components/organisms/table/ProductsTable/Columns";
 
 const Produkter = () => {
   const { data: jwt } = useQuery<string>({

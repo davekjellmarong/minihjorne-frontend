@@ -1,29 +1,57 @@
-import {
-  HydrationBoundary,
-  QueryClient,
-  dehydrate,
-} from "@tanstack/react-query";
+"use client";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import ProductPage from "./ProductPage";
-import { ProductQueries } from "@/queryFactory/ProductQueryFactory";
-import { FilterQueries } from "@/queryFactory/FilterQueryFactory";
+import Products from "../../components/organisms/product/Products";
+import Filters from "../../components/organisms/product/Filters";
+import FilterChips from "../../components/organisms/product/FilterChips";
+import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import Pagination from "../../components/organisms/product/Pagination";
+import useInitialQueryParams from "../../components/organisms/product/useInitialQueryParams";
+import QuickFilterCards from "../../components/organisms/product/QuickFilterCards";
 
-const ProductProvider = async () => {
-  const queryClient = new QueryClient();
+export interface SelectedFilter {
+  query: string;
+  id: number;
+  name: string;
+}
+const ProductPage = () => {
+  const { filterQuery, setFilterQuery } = useInitialQueryParams();
 
-  await queryClient.prefetchQuery(ProductQueries.filtered(""));
-  await queryClient.prefetchQuery(FilterQueries.categories());
-  await queryClient.prefetchQuery(FilterQueries.colors());
-  await queryClient.prefetchQuery(FilterQueries.sizes());
-  await queryClient.prefetchQuery(FilterQueries.tags());
-  await queryClient.prefetchQuery(FilterQueries.materials());
-  await queryClient.prefetchQuery(FilterQueries.sexes());
-
+  // todo to-do - use page value from filterQuery instead of page state, to stop refetching on page change aka move page state to url
+  const { data: products, isPending } = useQuery(
+    ProductQueries.filtered(filterQuery),
+  );
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <ProductPage />
-    </HydrationBoundary>
+    <>
+      <div className="relative flex w-full flex-col items-center px-4">
+        <div className="w-full  py-10 ">
+          <h2 className="text-3xl font-bold">Produkter</h2>
+        </div>
+        <div className="w-full  pb-6">
+          <QuickFilterCards setFilterQuery={setFilterQuery} />
+        </div>
+        <div className="flex w-full  border-gray-200  py-2">
+          <Filters setFilterQuery={setFilterQuery} filterQuery={filterQuery} />
+        </div>
+        <div className="w-full ">
+          <FilterChips />
+        </div>
+        <div className="flex flex-col gap-4">
+          <Pagination
+            pageCount={products?.meta?.pagination.pageCount}
+            setFilterQuery={setFilterQuery}
+          />
+        </div>
+        <Products data={products?.data} isLoading={isPending} />
+        <div className="flex flex-col gap-6 py-6">
+          <Pagination
+            pageCount={products?.meta?.pagination.pageCount}
+            setFilterQuery={setFilterQuery}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 
-export default ProductProvider;
+export default ProductPage;

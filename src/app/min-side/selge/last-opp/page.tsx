@@ -1,21 +1,21 @@
 "use client";
 import { useMemo, useState } from "react";
-import ImageUploader from "./ImageUploader";
-import ProductForm from "../../../../components/form/product/ProductForm";
-import ImagesList from "./ImagesList";
+import ImageUploader from "../../../../components/organisms/minSide/lastOpp/ImageUploader";
+import ProductForm from "../../../../components/organisms/form/product/ProductForm";
+import ImagesList from "../../../../components/organisms/minSide/lastOpp/ImagesList";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
-import SelectedImages from "./SelectedImages";
+import SelectedImages from "../../../../components/organisms/minSide/lastOpp/SelectedImages";
 import { useFormik } from "formik";
 import { ProductsMethods } from "@/utils/utils";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { User } from "@/utils/types";
 import { toast } from "react-toastify";
-import Dialog from "@/components/dialog/Dialog";
-import FilterDialog from "@/app/produkter/FilterDialog";
+import Dialog from "@/components/organisms/dialog/Dialog";
+import FilterDialog from "@/components/organisms/product/FilterDialog";
 import { Question } from "@phosphor-icons/react";
-import IntroCarousel from "./IntroCarousel";
+import IntroCarousel from "../../../../components/organisms/minSide/lastOpp/IntroCarousel";
 import Link from "next/link";
-import LoadingOverlay from "@/components/loading/LoadingOverlay";
+import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
 
 export interface ImageUpload extends Blob {
   lastModified: number;
