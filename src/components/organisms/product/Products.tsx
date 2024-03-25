@@ -21,7 +21,7 @@ const Products = ({ isLoading, data }: ProductsProps) => {
     );
   if (data)
     return (
-      <ul className="mt-10 grid w-full grid-cols-2 justify-items-center gap-16 sm:grid-cols-3 md:grid-cols-4">
+      <ul className="mt-10 grid w-full grid-cols-2 justify-items-center gap-x-4 gap-y-16 sm:grid-cols-3 md:grid-cols-4">
         {data.map((product) => {
           return (
             <React.Fragment key={product.id}>

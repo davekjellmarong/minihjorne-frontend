@@ -36,12 +36,12 @@ const ProductPage = () => {
         <div className="w-full ">
           <FilterChips />
         </div>
-        <div className="flex flex-col gap-4">
+        {/* <div className="flex flex-col gap-4">
           <Pagination
             pageCount={products?.meta?.pagination.pageCount}
             setFilterQuery={setFilterQuery}
           />
-        </div>
+        </div> */}
         <Products data={products?.data} isLoading={isPending} />
         <div className="flex flex-col gap-6 py-6">
           <Pagination

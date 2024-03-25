@@ -23,16 +23,16 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const icons: any = {
-    minSide: <UserCircle size={26} weight="thin" />,
-    lastOpp: <PlusCircle size={26} weight="thin" />,
-    handlekurv: <ShoppingCart size={26} weight="thin" />,
-    hjem: <House size={26} weight="thin" />,
+    minSide: <UserCircle size={30} weight="thin" color="gray" />,
+    lastOpp: <PlusCircle size={30} weight="thin" color="gray" />,
+    handlekurv: <ShoppingCart size={30} weight="thin" color="gray" />,
+    hjem: <House size={30} weight="thin" color="gray" />,
   };
   return (
     <nav className="fixed z-20 flex w-full justify-center border-b bg-white px-4">
       <div className="flex w-full max-w-[978px] flex-wrap items-center justify-between py-2">
         <MenuDropDown isOpen={isOpen} setIsOpen={setIsOpen} />
-        <div className="flex w-1/3 justify-end">
+        <div className="flex w-1/3 justify-end gap-5">
           {navItemsRightEnd.map((item) => {
             return (
               <Link key={item.path} href={item.path} className="w-500">

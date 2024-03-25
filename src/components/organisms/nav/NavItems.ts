@@ -45,6 +45,12 @@ export const navItemsAuth = [
   },
   {
     label: "",
+    path: "/min-side/selge/last-opp",
+    color: "transparent",
+    icon: "lastOpp",
+  },
+  {
+    label: "",
     path: "/min-side",
     color: "transparent",
     icon: "minSide",

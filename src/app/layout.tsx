@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <AutoLoginMiddleware>
-            <header className="mb-2  h-[48px] w-full">
+            <header className="mb-2  h-[56px] w-full">
               <Nav />
             </header>
             <main className="relative m-auto max-w-[978px]">
