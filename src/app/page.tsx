@@ -1,6 +1,7 @@
 "use client";
 import Card from "@/components/home/Card";
 import QuickLinks from "@/components/home/QuickLinks";
+import SearchField from "@/components/home/SearchField";
 import Products from "@/components/organisms/product/Products";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import { useQuery } from "@tanstack/react-query";
@@ -11,10 +12,13 @@ const Home = () => {
   console.log(products);
   return (
     <div className="px-3">
+      <div>
+        <SearchField />
+      </div>
       <div className="pt-4">
         <QuickLinks />
       </div>
-      <div className="flex flex-col items-center gap-7  py-6">
+      <div className="flex flex-col items-center gap-7 px-3 py-6">
         <Card
           title="Hva er Minibruket?"
           description="MiniBruket er en tjeneste som lar deg kjøpe og selge barneklær."
