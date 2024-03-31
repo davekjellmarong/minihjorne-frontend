@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import ColorSquares from "../organisms/filters/color/ColorSquares";
+import Link from "next/link";
 
 interface OrderTableProps {
   products: Product[];
@@ -38,8 +39,13 @@ const OrderTable = ({ products }: OrderTableProps) => {
           <tbody>
             {products.map((product) => {
               return (
+                // <Link
+                //   className="w-full"
+                //   href={`/produkter/${product.id}`}
+                //   key={product.id}
+                // >
                 <tr
-                  className="cursor-pointer border-2 border-gray-100 sm:hover:bg-gray-100"
+                  className="w-full cursor-pointer border-2 border-gray-100 sm:hover:bg-gray-100"
                   onClick={() => {
                     router.push(`/produkter/${product.id}`);
                   }}
@@ -64,6 +70,7 @@ const OrderTable = ({ products }: OrderTableProps) => {
                     />
                   </td>
                 </tr>
+                // </Link>
               );
             })}
           </tbody>

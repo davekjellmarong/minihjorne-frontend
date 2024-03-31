@@ -135,11 +135,11 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
               {/* <Tag size={22} /> */}
             </p>
             <Link
-              href={`/produkter/?${queryTemplates.materialQueryTemplate}${material.data.id}`}
+              href={`/produkter/?${queryTemplates.materialQueryTemplate}${material.data?.id}`}
               className="grow text-center text-xl font-light"
             >
               {" "}
-              {material.data.attributes.name}
+              {material.data?.attributes.name}
             </Link>
             <div className="w-1/5"></div>
           </div>
@@ -168,7 +168,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
         </div>
         <div className="my-6 flex justify-center px-12">
           <div className=" mt-2 rounded border border-gray-200 bg-white px-12 py-2">
-            {tags.data.map((tag) => {
+            {tags.data?.map((tag) => {
               return (
                 <Link
                   href={`/produkter/?${queryTemplates.tagQueryTemplate}${tag.id}`}

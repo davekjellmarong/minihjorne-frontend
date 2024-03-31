@@ -7,6 +7,7 @@ import {
   House,
   PlusCircle,
   ShoppingCart,
+  TShirt,
   User,
   UserCircle,
 } from "@phosphor-icons/react";
@@ -27,6 +28,7 @@ const Nav = () => {
     lastOpp: <PlusCircle size={30} weight="thin" color="gray" />,
     handlekurv: <ShoppingCart size={30} weight="thin" color="gray" />,
     hjem: <House size={30} weight="thin" color="gray" />,
+    tShirt: <TShirt size={30} weight="thin" color="gray" />,
   };
   return (
     <nav className="fixed z-20 flex w-full justify-center border-b bg-white px-4">
@@ -59,7 +61,6 @@ const Nav = () => {
                   className={` flex items-center rounded p-4 text-sm text-brand-700 transition-colors duration-150`}
                   key={item.label}
                 >
-                  {/* {icons[item.icon]} */}
                   {item.label}
                 </button>
               </Link>

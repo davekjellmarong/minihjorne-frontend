@@ -3,10 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 import Providers from "../reactQuery/Provider";
-import Nav from "@/components/organisms/nav/Nav";
+import Nav from "@/components/nav/Nav";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import UpperNav from "@/components/organisms/nav/UpperNav";
+import UpperNav from "@/components/nav/UpperNav";
 import AutoLoginMiddleware from "@/components/customHooks/AutoLoginMiddleware";
 
 export const metadata: Metadata = {

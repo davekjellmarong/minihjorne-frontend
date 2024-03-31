@@ -39,6 +39,12 @@ export const navItemsAuth = [
   // },
   {
     label: "",
+    path: "/produkter",
+    color: "transparent",
+    icon: "tShirt",
+  },
+  {
+    label: "",
     path: "/handlekurv",
     color: "transparent",
     icon: "handlekurv",
