@@ -12,9 +12,9 @@ const Home = () => {
   console.log(products);
   return (
     <div className="px-3">
-      <div>
+      {/* <div>
         <SearchField />
-      </div>
+      </div> */}
       <div className="pt-4">
         <QuickLinks />
       </div>

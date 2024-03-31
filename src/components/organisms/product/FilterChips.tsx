@@ -20,7 +20,7 @@ const FilterChips = () => {
 
       {flatQueryParams?.map((filter: any) => (
         <div
-          className="flex gap-1 rounded-full border border-gray-300 p-1.5 px-3"
+          className="flex gap-1 rounded-full border border-gray-300 bg-brand-400 p-1.5 px-3 text-white"
           key={filter.attributes.createdAt}
         >
           <p className="text-sm font-light">

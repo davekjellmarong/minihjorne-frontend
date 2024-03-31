@@ -15,6 +15,7 @@ interface AddToCartButtonsProps {
 const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
   const [addedProductsIds, setAddedProductsIds] =
     useState<number[]>(getSavedProductIds());
+  if (product.attributes.sold) return null;
   return (
     <>
       {addedProductsIds?.includes(product.id) ? (

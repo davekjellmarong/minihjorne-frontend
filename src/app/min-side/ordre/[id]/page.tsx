@@ -8,6 +8,7 @@ import { ArrowArcLeft, ArrowCircleLeft } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
+import OrderTable from "@/components/orders/OrderTable";
 
 const Page = () => {
   const { id } = useParams();
@@ -24,14 +25,11 @@ const Page = () => {
     enabled: !!order?.data.id,
   });
   if (isPending) return <Loading />;
+  console.log(order);
+  if (!products?.data) return null;
   return (
     <div>
-      {id}
-      {order?.data.attributes.address}
-      {order?.data.attributes.amount}
-      {order?.data.attributes.city}
-      {order?.data.attributes.postalCode}
-      <table className="w-full">
+      {/* <table className="w-full">
         <thead className="border-2 border-gray-100 bg-gray-100">
           <tr>
             <th className="py-4 pl-10 text-left text-sm font-normal">
@@ -78,8 +76,8 @@ const Page = () => {
             );
           })}
         </tbody>
-      </table>
-      {order?.data.attributes.status.data.attributes.name}
+      </table> */}
+      <OrderTable products={products?.data} />
     </div>
   );
 };

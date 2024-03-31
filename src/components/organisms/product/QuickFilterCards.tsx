@@ -67,25 +67,26 @@ const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
   ];
 
   return (
-    <div className="w-full">
-      <Carousel responsive={responsive}>
-        {quickFilterData.map((filter) => (
-          <div
-            className={` flex h-12 w-24 items-center justify-center rounded border-2 border-brand-300 `}
-            key={filter.name}
-            onClick={() => {
-              window.history.pushState(
-                null,
-                "",
-                `${filter.link}&pagination[page]=1`,
-              );
-              setFilterQuery(`${filter.link}&pagination[page]=1`);
-            }}
-          >
-            <h3 className=" font-semibold text-brand-700">{filter.name}</h3>
-          </div>
-        ))}
-      </Carousel>
+    <div className="mb-4 mt-2 flex  w-full gap-2 overflow-scroll">
+      {/* <Carousel responsive={responsive}> */}
+      {quickFilterData.map((filter) => (
+        <div
+          className={`flex h-10 items-center justify-center rounded-full border border-gray-300 p-1.5 px-3`}
+          // className={` flex h-12 w-24 items-center justify-center rounded border-2 border-brand-300 `}
+          key={filter.name}
+          onClick={() => {
+            window.history.pushState(
+              null,
+              "",
+              `${filter.link}&pagination[page]=1`,
+            );
+            setFilterQuery(`${filter.link}&pagination[page]=1`);
+          }}
+        >
+          <p className="text-sm font-light text-brand-700">{filter.name}</p>
+        </div>
+      ))}
+      {/* </Carousel> */}
     </div>
   );
 };
