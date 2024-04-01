@@ -44,7 +44,7 @@ const QuickLinks = () => {
         return (
           <Link
             className="flex flex-col items-center"
-            href={filter.link}
+            href={`${filter.link}&pagination[page]=1`}
             key={filter.name}
           >
             <Dress size={30} color="purple" weight="thin" />

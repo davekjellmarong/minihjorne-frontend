@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UpperNav from "@/components/nav/UpperNav";
 import AutoLoginMiddleware from "@/components/customHooks/AutoLoginMiddleware";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -36,6 +37,7 @@ export default function RootLayout({
                 hideProgressBar={true}
               />
             </main>
+            <Footer />
           </AutoLoginMiddleware>
         </Providers>
       </body>
