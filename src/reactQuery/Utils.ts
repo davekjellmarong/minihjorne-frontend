@@ -2,7 +2,7 @@ export const getProductsFiltered = async (query: string) => {
   // const pageQuery = page ? `&pagination[page]=${page}` : "";
   const baseUrl =
     apiUrl +
-    `/products?pagination[pageSize]=10&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
+    `/products?pagination[pageSize]=10&sort=createdAt:desc&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
   const url = query?.length > 0 ? baseUrl + query : baseUrl;
   const response = await fetch(url, { cache: "no-cache" });
   const data = await response.json();
