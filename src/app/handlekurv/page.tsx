@@ -9,9 +9,14 @@ import { XCircle } from "@phosphor-icons/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 
 const Page = () => {
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+
   let productItems: Product[] = [];
   if (typeof window !== "undefined") {
     // Perform localStorage action
@@ -89,7 +94,7 @@ const Page = () => {
         </p>
         <p className="text-sm">Frakt pris beregnes ved checkout</p>
         <Link
-          href="/checkout"
+          href={jwt ? "/checkout" : "/auth?redirect=/checkout&type=login"}
           className="rounded border-2 border-gray-500 px-8 py-4 transition-colors duration-150 sm:hover:bg-gray-500 sm:hover:text-white"
         >
           <button>Gå videre</button>

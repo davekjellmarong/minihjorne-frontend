@@ -51,6 +51,17 @@ const Menu = () => {
         },
       ],
     },
+    // {
+    //   header: "Konto",
+    //   items: [
+    //     {
+    //       id: 1,
+    //       title: "Logg ut",
+    //       path: "/min-side/konto/personlig-informasjon",
+    //       icon: <UserSquare size={32} weight="thin" color="purple" />,
+    //     },
+    //   ],
+    // },
   ];
   return (
     <div className="relative">
@@ -59,19 +70,17 @@ const Menu = () => {
           return (
             <div key={item.header}>
               <p className="font-semibold">{item.header}</p>
-              <ul>
-                <ul className="flex flex-col gap-8 pt-2">
-                  {item.items.map((item) => (
-                    <Link
-                      href={item.path}
-                      key={item.id}
-                      className={`flex items-center rounded p-4 sm:hover:bg-gray-100 `}
-                    >
-                      <span className="pr-6">{item.icon}</span>
-                      <span>{item.title}</span>
-                    </Link>
-                  ))}
-                </ul>
+              <ul className="flex flex-col gap-4">
+                {item.items.map((item) => (
+                  <Link
+                    href={item.path}
+                    key={item.id}
+                    className={`flex items-center rounded p-4  sm:hover:bg-gray-100 `}
+                  >
+                    <span className="pr-6">{item.icon}</span>
+                    <span>{item.title}</span>
+                  </Link>
+                ))}
               </ul>
             </div>
           );

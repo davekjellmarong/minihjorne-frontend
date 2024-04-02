@@ -1,16 +1,16 @@
 export const navItemsPublic = [
-  // {
-  //   label: "Hjem",
-  //   path: "/",
-  //   color: "transparent",
-  //   icon: "hjem'",
-  // },
-  // {
-  //   label: "Produkter",
-  //   path: "/produkter",
-  //   color: "transparent",
-  //   icon: "minSide",
-  // },
+  {
+    label: "",
+    path: "/produkter",
+    color: "transparent",
+    icon: "tShirt",
+  },
+  {
+    label: "",
+    path: "/handlekurv",
+    color: "transparent",
+    icon: "handlekurv",
+  },
   {
     label: "Logg inn/Registrer",
     path: "/auth",
@@ -19,24 +19,6 @@ export const navItemsPublic = [
   },
 ];
 export const navItemsAuth = [
-  // {
-  //   label: "Hjem",
-  //   path: "/",
-  //   color: "transparent",
-  //   icon: "hjem'",
-  // },
-  // {
-  //   label: "Produkter",
-  //   path: "/produkter",
-  //   color: "transparent",
-  //   icon: "minSide",
-  // },
-  // {
-  //   label: "Last Opp",
-  //   path: "/last-opp",
-  //   color: "transparent",
-  //   icon: "lastOpp",
-  // },
   {
     label: "",
     path: "/produkter",

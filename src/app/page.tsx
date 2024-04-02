@@ -12,9 +12,6 @@ const Home = () => {
   console.log(products);
   return (
     <div className="px-3">
-      {/* <div>
-        <SearchField />
-      </div> */}
       <div className="pt-4">
         <QuickLinks />
       </div>
@@ -22,14 +19,17 @@ const Home = () => {
         <Card
           title="Hva er Minibruket?"
           description="MiniBruket er en tjeneste som lar deg kjøpe og selge barneklær."
+          link="/hva-er-minibruket"
         />
         <Card
           title="Priser?"
           description="Se abbonoment prise for deg som vil selge klær"
+          link="/priser"
         />
         <Card
           title="Hvordan funker det?"
           description="Registrer en bruker, last opp bilder og lever klærne til oss. Så legger vi de ut for salg."
+          link="/hvordan-funker-det"
         />
       </div>
       <div className="">

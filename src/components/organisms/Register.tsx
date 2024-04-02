@@ -3,15 +3,34 @@ import React from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { registerUser } from "../../utils/utils";
+import { useCookies } from "react-cookie";
 
-const Register = () => {
+interface RegisterProps {
+  redirect?: string;
+}
+const Register = ({ redirect }: RegisterProps) => {
   // Request API.
+  const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { mutate: register, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return registerUser(values);
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      queryClient.setQueryData(["login-user"], data.user);
+      queryClient.setQueryData(["jwt"], data.jwt);
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 30);
+      setCookie("Token", data.jwt, { expires: expirationDate });
+      if (redirect) {
+        router.push(redirect);
+      } else {
+        router.push("/");
+      }
     },
   });
   const formik = useFormik({
@@ -27,7 +46,7 @@ const Register = () => {
   });
 
   return (
-    <form className="w-96" onSubmit={formik.handleSubmit}>
+    <form className="w-full" onSubmit={formik.handleSubmit}>
       <div className="mb-6">
         <label
           htmlFor="username"
@@ -84,7 +103,7 @@ const Register = () => {
       </div>
       <button
         type="submit"
-        className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto sm:hover:bg-blue-800"
+        className="w-full rounded-lg bg-brand-500 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 "
       >
         Registrer
       </button>

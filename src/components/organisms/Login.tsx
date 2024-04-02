@@ -5,7 +5,10 @@ import { useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUser } from "../../utils/utils";
 import { useCookies } from "react-cookie";
-const Login = () => {
+interface LoginProps {
+  redirect?: string;
+}
+const Login = ({ redirect }: LoginProps) => {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
@@ -19,14 +22,18 @@ const Login = () => {
       const expirationDate = new Date();
       expirationDate.setDate(expirationDate.getDate() + 30);
       setCookie("Token", data.jwt, { expires: expirationDate });
-      router.push("/");
+      if (redirect) {
+        router.push(redirect);
+      } else {
+        router.push("/");
+      }
     },
   });
   // Request API.
   const formik = useFormik({
     initialValues: {
-      identifier: "davemarong",
-      password: "dave1011",
+      identifier: "",
+      password: "",
     },
     onSubmit: (values) => {
       console.log("Form data submitted:", values);
@@ -35,7 +42,7 @@ const Login = () => {
   });
 
   return (
-    <form className="w-96" onSubmit={formik.handleSubmit}>
+    <form className="w-full" onSubmit={formik.handleSubmit}>
       <div className="mb-6">
         <label
           htmlFor="identifier"
@@ -74,7 +81,7 @@ const Login = () => {
       </div>
       <button
         type="submit"
-        className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto sm:hover:bg-blue-800"
+        className="w-full rounded-lg bg-brand-500 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 "
       >
         Login
       </button>
