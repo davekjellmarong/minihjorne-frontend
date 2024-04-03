@@ -47,7 +47,8 @@ const Page = () => {
                   <img
                     src={`${product.attributes.image.data[0].attributes.url}`}
                     alt=""
-                    className="h-28 w-28 rounded p-4 shadow"
+                    // className="h-28 w-28 rounded p-4 shadow"
+                    className="h-40 w-32  rounded object-cover"
                     onClick={() => {
                       router.push(`/produkter/${product.id}`);
                     }}
@@ -69,7 +70,7 @@ const Page = () => {
                   })} */}
                   </div>
                 </div>
-                <div className="flex w-96 items-start justify-center gap-8">
+                <div className="flex w-80 items-start justify-center gap-8">
                   <p>{product.attributes.price}kr</p>
                   <button
                     onClick={() => {

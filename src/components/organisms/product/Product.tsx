@@ -8,9 +8,8 @@ interface ProductProps {
   product: ProductType;
 }
 const Product = ({ product }: ProductProps) => {
-  const { color, username } = product.attributes.user.data.attributes;
+  const { color } = product.attributes.user.data.attributes;
   const { image, brand, price, size } = product.attributes;
-  const tailwindColor = tailwindColorsUserButton[color];
   return (
     <Link
       href={`/produkter/${product.id}`}
