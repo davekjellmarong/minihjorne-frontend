@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { navItemsPublic, navItemsAuth } from "./NavItems";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
@@ -8,7 +8,6 @@ import {
   PlusCircle,
   ShoppingCart,
   TShirt,
-  User,
   UserCircle,
 } from "@phosphor-icons/react";
 import { authUpperNavItems, upperNavItems } from "./UpperNavItems";
@@ -34,12 +33,12 @@ const Nav = () => {
     <nav className="fixed z-20 flex w-full justify-center border-b bg-white px-4">
       <div className="flex w-full max-w-[978px] flex-wrap items-center justify-between py-2">
         <MenuDropDown isOpen={isOpen} setIsOpen={setIsOpen} />
-        <div className="flex w-1/3 justify-end gap-5">
+        <div className="flex  justify-end gap-3">
           {navItemsRightEnd.map((item) => {
             return (
               <Link key={item.path} href={item.path} className="w-500">
                 <button
-                  className={` flex items-center rounded p-2 transition-colors duration-150 `}
+                  className={` flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded-lg bg-brand-400 px-4 text-white" : ""}`}
                   key={item.label}
                 >
                   {icons[item.icon]} {item.label}
@@ -58,7 +57,7 @@ const Nav = () => {
             return (
               <Link key={item.path} href={item.path} className="w-500">
                 <button
-                  className={` flex items-center rounded p-4 text-sm text-brand-700 transition-colors duration-150`}
+                  className={` flex items-center rounded p-4 text-sm text-brand-700 transition-colors duration-150 `}
                   key={item.label}
                 >
                   {item.label}

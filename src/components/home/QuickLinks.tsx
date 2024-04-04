@@ -1,5 +1,6 @@
 "use client";
 import { Dress } from "@phosphor-icons/react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -39,16 +40,23 @@ const QuickLinks = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-4 grid-rows-2 justify-items-center gap-y-6">
+    <div className="flex overflow-auto">
       {quickFilterData.map((filter) => {
         return (
           <Link
-            className="flex flex-col items-center"
+            className="flex min-w-32 flex-col items-center"
             href={`${filter.link}&pagination[page]=1`}
             key={filter.name}
           >
-            <Dress size={30} color="purple" weight="thin" />
-            <p className="text-xs">{filter.name}</p>
+            {/* <Dress size={30} color="purple" weight="thin" /> */}
+            <Image
+              src="/boy-lego.jpg"
+              className="rounded-full object-cover"
+              width={100}
+              height={100}
+              alt=""
+            />
+            <p className="text-sm">{filter.name}</p>
           </Link>
         );
       })}

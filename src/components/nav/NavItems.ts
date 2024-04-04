@@ -12,9 +12,9 @@ export const navItemsPublic = [
     icon: "handlekurv",
   },
   {
-    label: "Logg inn/Registrer",
+    label: "Logg inn",
     path: "/auth",
-    color: "transparent",
+    color: "brand",
     icon: "",
   },
 ];

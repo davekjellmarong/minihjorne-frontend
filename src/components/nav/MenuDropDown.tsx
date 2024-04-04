@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -28,8 +29,8 @@ export const MenuDropDown = ({ setIsOpen, isOpen }: MenuDropDownProps) => {
         </svg>
       </button> */}
       <Link href="/" className="mb-0   pb-0 ">
-        {/* <Image src="/logoo.png" alt="logo" width={250} height={250} /> */}
-        Mini Hjørne
+        <Image src="/minihjørne.png" alt="logo" width={175} height={175} />
+        {/* Mini Hjørne */}
       </Link>
     </div>
   );
