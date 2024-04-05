@@ -109,7 +109,7 @@ const EditSalgsprofilForm = () => {
             id="header"
             name="header"
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
-            placeholder=""
+            placeholder="Eks: Leon's lille butikk eller Babyklær 1-2 år."
             required
             value={formik.values.header}
             onChange={formik.handleChange}
@@ -121,7 +121,9 @@ const EditSalgsprofilForm = () => {
             id="description"
             name="description"
             className="block h-56 w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
-            placeholder=""
+            placeholder="Eks: Velkommen til min lille butikk. Her finner du klær til barn i alle aldre. 
+            Jeg har klær fra kjente merker og klær som er laget av resirkulerte materialer.
+            Håper du finner noe du liker."
             required
             value={formik.values.description}
             onChange={formik.handleChange}

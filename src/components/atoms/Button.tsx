@@ -4,14 +4,15 @@ import {
   Trash,
   ArrowLeft,
   ArrowRight,
+  Plus,
 } from "@phosphor-icons/react";
 import { on } from "events";
 import React from "react";
 
 interface ButtonProps {
-  icon?: "save" | "trash" | "arrowLeft" | "arrowRight";
+  icon?: "save" | "trash" | "arrowLeft" | "arrowRight" | "plus";
   children: React.ReactNode;
-  type?: "brand" | "danger" | "outline";
+  type?: "brand" | "danger" | "outline" | "flat";
   onClick?: () => void;
   disabled?: boolean;
 }
@@ -27,6 +28,7 @@ const Button = ({
     save: <FloppyDisk size={24} />,
     arrowLeft: <ArrowLeft size={24} />,
     arrowRight: <ArrowRight size={24} />,
+    plus: <Plus size={24} />,
   };
   let colors;
   if (disabled) {
@@ -34,12 +36,14 @@ const Button = ({
       brand: "bg-brand-300 text-white",
       danger: "bg-red-300 text-white",
       outline: "bg-gray-300 text-gray-500 border border-gray-300",
+      flat: "bg-white text-gray-500",
     };
   } else {
     colors = {
       brand: "bg-brand-500 text-white",
       danger: "bg-red-500 text-white",
       outline: "bg-white text-black border border-gray-300",
+      flat: "bg-white text-brand-600",
     };
   }
   return (

@@ -12,7 +12,6 @@ const Page = () => {
   const [view, setView] = useState(ViewEnum.Login);
   const [message, setMessage] = useState("");
   const searchParams = useSearchParams();
-
   useEffect(() => {
     const messageType = searchParams.get("type");
     if (messageType === "login") {
@@ -46,8 +45,8 @@ const Page = () => {
         )}
       </div>
       <div className="w-full max-w-96 px-6">
-        {view === ViewEnum.Login && <Login redirect="/handlekurv" />}
-        {view === ViewEnum.Register && <Register redirect="/handlekurv" />}
+        {view === ViewEnum.Login && <Login />}
+        {view === ViewEnum.Register && <Register />}
       </div>
     </div>
   );

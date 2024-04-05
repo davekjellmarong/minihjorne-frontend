@@ -34,6 +34,18 @@ const config = {
           800: "#322a59",
           900: "#19152d",
         },
+
+        tan: {
+          100: "#f7f6f4",
+          200: "#efede9",
+          300: "#e7e5dd",
+          400: "#dfdcd2",
+          500: "#d7d3c7",
+          600: "#aca99f",
+          700: "#817f77",
+          800: "#565450",
+          900: "#2b2a28",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

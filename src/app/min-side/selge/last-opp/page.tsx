@@ -182,7 +182,7 @@ const LeggUt = () => {
                 href="/min-side/selge/produkter"
                 className="w-52 rounded border-2 border-brand-600 bg-white px-6 py-4 text-center"
               >
-                Se mine produkter
+                Avslutt og se mine produkter
               </Link>
             </div>
           ) : (

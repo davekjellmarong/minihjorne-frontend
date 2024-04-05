@@ -24,7 +24,7 @@ const OrdersTable = ({ orders }: OrdersTableProps) => {
         <thead className="border-indigo-100  bg-indigo-400">
           <tr className="">
             <th className="py-4 pl-5 text-left text-xs font-normal text-white">
-              Nummer
+              Ordre nr
             </th>
             <th className="py-4 pl-4 text-left text-xs font-normal text-white">
               Dato

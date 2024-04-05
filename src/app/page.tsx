@@ -11,15 +11,11 @@ import React from "react";
 
 const Home = () => {
   const { data: products } = useQuery(ProductQueries.filtered(""));
-  console.log(products);
   return (
     <>
       <HomeHeroImage />
       <div className="px-3">
-        {/* <p className="text">
-        Minihjørne - En platform for kjøp og salg av barneklær
-      </p> */}
-        <div className="my-6 flex flex-col items-center gap-10  py-10">
+        <div className="my-6 flex flex-col items-center gap-6 py-5">
           <Card
             title="Hva er Minihjørne?"
             description="MiniHjørne er en tjeneste som lar deg kjøpe og selge barneklær."

@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
 import { useFormik } from "formik";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUser } from "../../utils/utils";
 import { useCookies } from "react-cookie";
-interface LoginProps {
-  redirect?: string;
-}
-const Login = ({ redirect }: LoginProps) => {
+const Login = () => {
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect");
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
@@ -24,16 +23,18 @@ const Login = ({ redirect }: LoginProps) => {
       setCookie("Token", data.jwt, { expires: expirationDate });
       if (redirect) {
         router.push(redirect);
+        console.log("Redirecting to", redirect);
       } else {
-        router.push("/");
+        console.log("Redirecting to /");
+        router.push("/min-side");
       }
     },
   });
   // Request API.
   const formik = useFormik({
     initialValues: {
-      identifier: "",
-      password: "",
+      identifier: "davemarong",
+      password: "dave1011",
     },
     onSubmit: (values) => {
       console.log("Form data submitted:", values);

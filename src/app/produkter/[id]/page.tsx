@@ -184,7 +184,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
         <div className="w-full">
           <hr className=" mx-12 mt-6" />
         </div>
-        <div className="mb-10 flex h-full w-full items-center justify-center px-12 sm:mb-0">
+        <div className="mb-10 mt-4 flex h-full w-full items-center justify-center px-12 sm:mb-0">
           <AddToCartButtons product={product} />
         </div>
       </div>

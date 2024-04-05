@@ -5,7 +5,7 @@ import {
   removeItemFromCart,
 } from "../../utils/CartUtils";
 import { toast } from "react-toastify";
-import { MinusCircle, PlusCircle } from "@phosphor-icons/react";
+import { MinusCircle, PlusCircle, ShoppingCart } from "@phosphor-icons/react";
 import { Product } from "@/utils/types";
 
 interface AddToCartButtonsProps {
@@ -39,9 +39,10 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
             setAddedProductsIds([...addedProductsIds, product.id]);
             toast.info("Lagt til", { position: toast.POSITION.BOTTOM_RIGHT });
           }}
-          className="flex h-20 w-full items-center justify-center gap-1 rounded border-2 border-gray-400 px-6 text-lg sm:hover:bg-gray-200"
+          className=" flex  gap-2 rounded border-2 border-green-500 bg-green-500 p-4 "
         >
-          Legg til <PlusCircle size={22} />
+          <p className="text-white">Legg til</p>
+          <ShoppingCart size={22} color="white" />
         </button>
       )}
     </>

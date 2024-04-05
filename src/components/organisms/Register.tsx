@@ -2,16 +2,15 @@
 import React from "react";
 import axios from "axios";
 import { useFormik } from "formik";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { registerUser } from "../../utils/utils";
 import { useCookies } from "react-cookie";
 
-interface RegisterProps {
-  redirect?: string;
-}
-const Register = ({ redirect }: RegisterProps) => {
+const Register = () => {
   // Request API.
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect");
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
@@ -29,7 +28,7 @@ const Register = ({ redirect }: RegisterProps) => {
       if (redirect) {
         router.push(redirect);
       } else {
-        router.push("/");
+        router.push("/min-side");
       }
     },
   });
