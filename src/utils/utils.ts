@@ -118,7 +118,7 @@ export const getAuthData = async (query: string, token: string) => {
 export const postAuthRequest = async (
   values: any,
   endpoint: string,
-  token: string
+  token: string,
 ) => {
   try {
     const url = apiUrl + endpoint;
@@ -135,7 +135,7 @@ export const postAuthRequest = async (
 export const putAuthRequest = async (
   values: any,
   endpoint: string,
-  token: string
+  token: string,
 ) => {
   try {
     const url = apiUrl + endpoint;
@@ -153,11 +153,11 @@ export const fetchProductsFiltered = async (query: string) => {
   let data;
   if (query?.length > 0) {
     data = await fetchPublicData(
-      "/products?populate=*&filters[sold][$eq]=false" + query
+      "/products?populate=*&filters[sold][$eq]=false" + query,
     );
   } else {
     data = await fetchPublicData(
-      "/products?populate=*&filters[sold][$eq]=false"
+      "/products?populate=*&filters[sold][$eq]=false",
     );
   }
   return data;
@@ -214,7 +214,7 @@ export const ProductsMethods = {
   },
   getByUserId: async (id: any) => {
     return fetchPublicData(
-      `/products?populate=*&filters[sold][$eq]=false&filters[user][id][$eq]=${id}`
+      `/products?populate=*&filters[sold][$eq]=false&filters[user][id][$eq]=${id}`,
     );
   },
   getAllMyProducts: async (token: any) => {
@@ -223,7 +223,7 @@ export const ProductsMethods = {
   getByOrderId: async (id: any, token: any) => {
     return getAuthData(
       `/products?populate=*&filters[order][id][$eq]=${id}`,
-      token
+      token,
     );
   },
   getInactive: async (id: any, token: any) => {
@@ -248,7 +248,7 @@ export const OrderMethods = {
   getByUserId: async (id: any, token: any) => {
     return getAuthData(
       `/orders?populate=*&filters[user][id][$eq]=${id}`,
-      token
+      token,
     );
   },
   getById: async (id: any, token: any) => {

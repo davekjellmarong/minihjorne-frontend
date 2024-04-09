@@ -16,17 +16,20 @@ const Login = () => {
       return loginUser(values);
     },
     onSuccess: (data) => {
-      queryClient.setQueryData(["login-user"], data.user);
-      queryClient.setQueryData(["jwt"], data.jwt);
-      const expirationDate = new Date();
-      expirationDate.setDate(expirationDate.getDate() + 30);
-      setCookie("Token", data.jwt, { expires: expirationDate });
-      if (redirect) {
-        router.push(redirect);
-        console.log("Redirecting to", redirect);
-      } else {
-        console.log("Redirecting to /");
-        router.push("/min-side");
+      if (data.jwt.length > 0) {
+        console.log({ data });
+        queryClient.setQueryData(["login-user"], data.user);
+        queryClient.setQueryData(["jwt"], data.jwt);
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 30);
+        setCookie("Token", data.jwt, { expires: expirationDate });
+        if (redirect) {
+          router.push(redirect);
+          console.log("Redirecting to", redirect);
+        } else {
+          console.log("Redirecting to /");
+          router.push("/min-side");
+        }
       }
     },
   });

@@ -13,6 +13,7 @@ const MinSide = () => {
   const { data: userData } = useQuery<UserData>({
     queryKey: ["login-user"],
   });
+  console.log(userData);
 
   return (
     <div className="flex flex-col">
