@@ -1,10 +1,20 @@
 import React from "react";
 import Breadcrumb from "../../components/organisms/minSide/Breadcrumb";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 interface LayoutProps {
   children: any;
 }
 const Layout = ({ children }: LayoutProps) => {
+  const cookieStore: any = cookies();
+  const token = cookieStore.get("Token");
+  console.log(token);
+  console.log(token?.value);
+  if (!token || token?.value?.length === 0) {
+    console.log("No token");
+    redirect("/auth?redirect=/min-side/");
+  }
   return (
     <>
       <Breadcrumb />
