@@ -19,19 +19,19 @@ const Home = () => {
           <Card
             title="Hva er Minihjørne?"
             description="MiniHjørne er en tjeneste som lar deg kjøpe og selge barneklær."
-            link="/hva-er-minibruket"
+            link="/hva-er-minihjorne"
             image="/what.svg"
           />
           <Card
-            title="Hvordan funker det?"
+            title="Hvordan funker minihjørne?"
             description="Registrer en bruker, last opp bilder og lever klærne til oss. Så legger vi de ut for salg."
-            link="/hvordan-funker-det"
+            link="/hvordan-funker-minihjorne"
             image="/how.svg"
           />
           <Card
             title="Hvorfor bruke Minihjørne?"
             description="Vi gjør det enkelt for deg å selge klærne du ikke trenger lenger."
-            link="/hvordan-funker-det"
+            link="/hvorfor-bruke-minihjorne"
             image="/how.svg"
           />
           <Card
