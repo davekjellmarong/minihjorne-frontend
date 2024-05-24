@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { registerUser } from "../../utils/utils";
 import { useCookies } from "react-cookie";
+import LoadingOverlay from "../molecules/loading/LoadingOverlay";
 
 const Register = () => {
   // Request API.
@@ -14,7 +15,7 @@ const Register = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
-  const { mutate: register } = useMutation({
+  const { mutate: register, isPending } = useMutation({
     mutationFn: (values: any) => {
       return registerUser(values);
     },
@@ -49,6 +50,7 @@ const Register = () => {
 
   return (
     <form className="w-full" onSubmit={formik.handleSubmit}>
+      <LoadingOverlay loading={isPending} />
       <div className="mb-6">
         <label
           htmlFor="username"

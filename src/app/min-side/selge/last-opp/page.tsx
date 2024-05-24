@@ -3,7 +3,6 @@ import { useMemo, useState } from "react";
 import ImageUploader from "../../../../components/organisms/minSide/lastOpp/ImageUploader";
 import ProductForm from "../../../../components/organisms/form/product/ProductForm";
 import ImagesList from "../../../../components/organisms/minSide/lastOpp/ImagesList";
-import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import SelectedImages from "../../../../components/organisms/minSide/lastOpp/SelectedImages";
 import { useFormik } from "formik";
 import { ProductsMethods } from "@/utils/utils";
@@ -16,6 +15,7 @@ import { Question } from "@phosphor-icons/react";
 import IntroCarousel from "../../../../components/organisms/minSide/lastOpp/IntroCarousel";
 import Link from "next/link";
 import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
+import Image from "next/image";
 
 export interface ImageUpload extends Blob {
   lastModified: number;
@@ -99,7 +99,7 @@ const LeggUt = () => {
   );
   if (images.length === 0) {
     return (
-      <div className="relative flex h-screen flex-col items-center justify-center gap-6 text-center">
+      <div className="relative flex h-screen flex-col items-center  gap-6 pt-32 text-center">
         {/* /create a little help icon button that will open the modal when click */}
 
         <button
@@ -137,10 +137,17 @@ const LeggUt = () => {
             </p>
           </Link>
         </div> */}
-        <div>
-          <p className="text-xl">Last opp bilder til dine produkter her</p>
-          <ImageUploader setImages={setImages} setModal={setModal} />
-        </div>
+        {/* <div className=""> */}
+        <p className="text-xl text-brand-800">Last opp produkt bilder</p>
+        <Image
+          src="/addFiles.svg"
+          width={300}
+          height={300}
+          alt=""
+          className="pr-10"
+        />
+        <ImageUploader setImages={setImages} setModal={setModal} />
+        {/* </div> */}
       </div>
     );
   }

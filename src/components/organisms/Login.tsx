@@ -5,13 +5,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUser } from "../../utils/utils";
 import { useCookies } from "react-cookie";
+import LoadingOverlay from "../molecules/loading/LoadingOverlay";
 const Login = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
-  const { mutate: login, isPaused: loading } = useMutation({
+  const { mutate: login, isPending } = useMutation({
     mutationFn: (values: any) => {
       return loginUser(values);
     },
@@ -47,6 +48,7 @@ const Login = () => {
 
   return (
     <form className="w-full" onSubmit={formik.handleSubmit}>
+      <LoadingOverlay loading={isPending} />
       <div className="mb-6">
         <label
           htmlFor="identifier"
