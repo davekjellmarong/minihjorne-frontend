@@ -100,44 +100,23 @@ const LeggUt = () => {
   if (images.length === 0) {
     return (
       <div className="relative flex h-screen flex-col items-center  gap-6 pt-32 text-center">
-        {/* /create a little help icon button that will open the modal when click */}
-
-        <button
+        <Link
+          href="/min-side/selge/last-opp/intro"
+          className="absolute left-8 top-8"
+          // onClick={() => setIntroModal(true)}
+        >
+          <Question size={32} weight="thin" color="blue" />
+        </Link>
+        {/* <button
           className="absolute left-8 top-8"
           onClick={() => setIntroModal(true)}
         >
           <Question size={32} weight="thin" color="blue" />
-        </button>
+        </button> */}
 
-        {/* <p className="text-center text-xl">Laste opp klær</p> */}
         <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
           <IntroCarousel />
         </Dialog>
-        {/* <div className="flex flex-col items-center gap-10 sm:flex-row sm:gap-4 ">
-          <Link
-            href="/min-side/selge/last-opp/bilder"
-            key={1}
-            className="flex flex-col justify-center gap-2 border-2 border-gray-200 p-8 rounded w-96 sm:hover:bg-gray-100 sm:hover:border-gray-300"
-          >
-            <p className="font-bold text-lg">Last opp bilder</p>
-            <p className="text-gray-500">
-              Dette er det første steget når du skal selge klær. Start med å
-              laste opp bildene du skal bruke til å swlge
-            </p>
-          </Link>
-          <Link
-            href="/min-side/selge/last-opp/produkt"
-            key={1}
-            className="flex flex-col justify-center gap-2 border-2 border-gray-200 p-8 rounded w-96 sm:hover:bg-gray-100 sm:hover:border-gray-300"
-          >
-            <p className="font-bold text-lg">Registrer dine produkter</p>
-            <p className="text-gray-500/p">
-              Dette er det andre steget når du skal selge klær. Lag pruduktene
-              dine ogknyytt dem til bildene du har lastet opp
-            </p>
-          </Link>
-        </div> */}
-        {/* <div className=""> */}
         <p className="text-xl text-brand-800">Last opp produkt bilder</p>
         <Image
           src="/addFiles.svg"
@@ -147,21 +126,14 @@ const LeggUt = () => {
           className="pr-10"
         />
         <ImageUploader setImages={setImages} setModal={setModal} />
-        {/* </div> */}
       </div>
     );
   }
   return (
     <>
       <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
-        <p className="m-10 text-center">Velg opp til 3 bilder</p>
-        {/* <ImagesList
-          images={images}
-          setSelectedImages={setSelectedImages}
-          selectedImages={selectedImages}
-          selectedImageIndexes={selectedImageIndexes}
-          setSelectedImageIndexes={setSelectedImageIndexes}
-        /> */}
+        <p className="m-10 text-center">0 produkter lastet opp</p>
+        <p className="m-10 text-center">Velg opp til 3 bilder per produkt</p>
         {ImagesListMemo}
       </FilterDialog>
 

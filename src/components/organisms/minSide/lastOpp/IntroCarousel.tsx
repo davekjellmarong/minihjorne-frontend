@@ -13,22 +13,23 @@ const IntroCarousel = () => {
   };
 
   return (
-    <CarouselComponent>
+    // <CarouselComponent>
+    <>
       <div
-        key={instruction1.title}
+        // key={instruction1.title}
         className="mx-2 flex h-[500px] flex-col items-center justify-center gap-6 text-center"
       >
         <p className="text-sm font-light text-purple-700">
           {instruction1.title}
         </p>
         <p className=" mx-4">{instruction1.text}</p>
-        <div className="flex max-h-[350px] w-full gap-8">
+        <div className="flex  w-full justify-center gap-8">
           <Image
             src="/camera-screenshot.png"
             height={100}
             width={100}
             alt=""
-            className="w-1/2"
+            className="object-contain"
             // placeholder="blur"
           />
           <Image
@@ -36,27 +37,27 @@ const IntroCarousel = () => {
             height={100}
             width={100}
             alt=""
-            className="w-1/2"
+            className="object-contain"
             // placeholder="blur"
           />
         </div>
       </div>
 
       <div
-        key={instruction2.title}
+        // key={instruction2.title}
         className="mx-2 flex h-[500px] flex-col items-center justify-center gap-6 text-center"
       >
         <p className="text-sm font-light text-purple-700">
           {instruction2.title}
         </p>
         <p className=" mx-4">{instruction2.text}</p>
-        <div className="flex max-h-[350px] w-full gap-8">
+        <div className="flex  w-full justify-center gap-8">
           <Image
             src="/knapp-bilder.png"
             height={100}
             width={100}
             alt=""
-            className="w-1/2"
+            className="object-contain"
             // placeholder="blur"
           />
           <Image
@@ -64,12 +65,14 @@ const IntroCarousel = () => {
             height={100}
             width={100}
             alt=""
-            className="w-1/2"
+            className="object-contain"
             // placeholder="blur"
           />
         </div>
       </div>
-    </CarouselComponent>
+    </>
+
+    // </CarouselComponent>
   );
 };
 
