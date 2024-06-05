@@ -26,16 +26,16 @@ const IntroCarousel = () => {
         <div className="flex  w-full justify-center gap-8">
           <Image
             src="/camera-screenshot.png"
-            height={100}
-            width={100}
+            height={150}
+            width={150}
             alt=""
             className="object-contain"
             // placeholder="blur"
           />
           <Image
             src="/gallery-clothes.png"
-            height={100}
-            width={100}
+            height={150}
+            width={150}
             alt=""
             className="object-contain"
             // placeholder="blur"
@@ -54,16 +54,16 @@ const IntroCarousel = () => {
         <div className="flex  w-full justify-center gap-8">
           <Image
             src="/knapp-bilder.png"
-            height={100}
-            width={100}
+            height={150}
+            width={150}
             alt=""
             className="object-contain"
             // placeholder="blur"
           />
           <Image
             src="/velg-bilder.png"
-            height={100}
-            width={100}
+            height={150}
+            width={150}
             alt=""
             className="object-contain"
             // placeholder="blur"
