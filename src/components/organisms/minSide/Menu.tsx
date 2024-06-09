@@ -7,9 +7,13 @@ import {
   TShirt,
   UploadSimple,
   UserSquare,
+  SignOut,
 } from "@phosphor-icons/react";
+import { useCookies } from "react-cookie";
 
 const Menu = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
+
   const navItems = [
     {
       header: "Ordre",
@@ -19,6 +23,7 @@ const Menu = () => {
           title: "Mine ordre",
           path: "/min-side/ordre",
           icon: <Note size={32} weight="thin" color="purple" />,
+          action: null,
         },
       ],
     },
@@ -30,52 +35,62 @@ const Menu = () => {
           title: "Last opp klær",
           path: "/min-side/selge/last-opp",
           icon: <UploadSimple size={32} weight="thin" color="purple" />,
+          action: null,
         },
         {
           id: 2,
           title: "Mine produkter",
           path: "/min-side/selge/produkter/",
           icon: <TShirt size={32} weight="thin" color="purple" />,
+          action: null,
         },
         {
           id: 3,
           title: "Salgsprofil",
           path: "/min-side/selge/salgsprofil",
           icon: <UserSquare size={32} weight="thin" color="purple" />,
+          action: null,
         },
         {
           id: 4,
           title: "Abonnement",
           path: "/min-side/selge/abonnement",
           icon: <CreditCard size={32} weight="thin" color="purple" />,
+          action: null,
         },
       ],
     },
-    // {
-    //   header: "Konto",
-    //   items: [
-    //     {
-    //       id: 1,
-    //       title: "Logg ut",
-    //       path: "/min-side/konto/personlig-informasjon",
-    //       icon: <UserSquare size={32} weight="thin" color="purple" />,
-    //     },
-    //   ],
-    // },
+    {
+      header: "Innstillinger",
+      items: [
+        {
+          id: 1,
+          title: "Logg ut",
+          path: "/",
+          icon: <SignOut size={32} weight="thin" color="red" />,
+          action: () => {
+            removeCookie("Token");
+          },
+        },
+      ],
+    },
   ];
   return (
     <div className="relative">
       <div className="relative bottom-10 m-auto w-3/4 max-w-[500px] rounded-lg bg-white p-6 shadow">
-        {navItems.map((item) => {
+        {navItems.map((headerItem) => {
           return (
-            <div key={item.header}>
-              <p className="font-semibold">{item.header}</p>
+            <div key={headerItem.header}>
+              <p className="font-medium">{headerItem.header}</p>
               <ul className="flex flex-col gap-4">
-                {item.items.map((item) => (
+                {headerItem.items.map((item) => (
                   <Link
                     href={item.path}
                     key={item.id}
                     className={`flex items-center rounded p-4  sm:hover:bg-gray-100 `}
+                    onClick={() => {
+                      item.action && item.action();
+                    }}
                   >
                     <span className="pr-6">{item.icon}</span>
                     <span>{item.title}</span>
