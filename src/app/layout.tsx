@@ -26,21 +26,21 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <AutoLoginMiddleware>
-            <CSPostHogProvider>
-              <header className="mb-2  h-[56px] w-full">
-                <Nav />
-              </header>
-              <main className="relative m-auto max-w-[978px]">
-                {children}
-                <ToastContainer
-                  theme="colored"
-                  position="top-right"
-                  autoClose={5000}
-                  hideProgressBar={true}
-                />
-              </main>
-              <Footer />
-            </CSPostHogProvider>
+            {/* <CSPostHogProvider> */}
+            <header className="mb-2  h-[56px] w-full">
+              <Nav />
+            </header>
+            <main className="relative m-auto max-w-[978px]">
+              {children}
+              <ToastContainer
+                theme="colored"
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={true}
+              />
+            </main>
+            <Footer />
+            {/* </CSPostHogProvider> */}
           </AutoLoginMiddleware>
         </Providers>
       </body>
