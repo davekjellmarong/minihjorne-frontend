@@ -10,6 +10,7 @@ import {
   SignOut,
 } from "@phosphor-icons/react";
 import { useCookies } from "react-cookie";
+import posthog from "posthog-js";
 
 const Menu = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
