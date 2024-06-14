@@ -12,8 +12,6 @@ interface AutoLoginMiddlewareProps {
 const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   const cookieStore: any = cookies();
   const token = cookieStore.get("Token");
-  console.log(token);
-  console.log(token?.value);
   if (!token || token?.value?.length === 0) {
     console.log("No token");
     return <>{children}</>;
