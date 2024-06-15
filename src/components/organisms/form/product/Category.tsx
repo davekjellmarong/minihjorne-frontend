@@ -9,7 +9,7 @@ import {
   Sneaker,
   TShirt,
 } from "@phosphor-icons/react";
-import { Category } from "@/utils/types";
+import { Category as CategoryType } from "@/utils/types";
 import {
   Jacket,
   OutdoorSuit,
@@ -17,11 +17,12 @@ import {
   Skirt,
   Sweater,
   Body,
+  Set,
 } from "@/components/molecules/SVGicons";
 import InputHeader from "@/components/atoms/InputHeader";
 import FormFieldContainer from "./FormFieldContainer";
 interface CategoryProps {
-  categories: Category[];
+  categories: CategoryType[];
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
@@ -45,6 +46,7 @@ const Category = ({
     Shorts: <Shorts />,
     Skirt: <Skirt />,
     OutdoorSuit: <OutdoorSuit />,
+    Set: <Set />,
   };
   return (
     <FormFieldContainer header="Katergori">
