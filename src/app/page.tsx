@@ -40,6 +40,12 @@ const Home = () => {
             link="/priser"
             image="/price.svg"
           />
+          <Card
+            title="Levere klær"
+            description="Hvordan levere klær til oss."
+            link="/levering"
+            image="/price.svg"
+          />
           {/* <div className="flex gap-7">
           <Button>Kjøp klær</Button>
           <Button>Selge klær</Button>

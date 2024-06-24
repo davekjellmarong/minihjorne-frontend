@@ -8,8 +8,9 @@ import {
   AddressElement,
 } from "@stripe/react-stripe-js";
 import { clearCartInLocalStorage } from "@/utils/CartUtils";
+import { CurrencyDollar, Pants, Truck } from "@phosphor-icons/react";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ price }: any) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -119,13 +120,38 @@ const CheckoutForm = () => {
         <h3 className="text-xl">Betaling</h3>
         <PaymentElement id="payment-element" options={paymentElementOptions} />
       </div>
+      <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
+          <Pants size={24} color="gray" />
+          <p className="w-24 text-gray-500">Varer </p>
+          <span className="text-xl font-light text-black">{price} kr </span>
+        </div>
+        <div className="flex gap-2">
+          <Truck size={24} color="gray" />
+          <p className="w-24 text-gray-500">Frakt </p>
+          <span className="text-xl font-light text-black"> 159 kr</span>
+        </div>
+        <hr className="w-52 border" />
+        <div className="flex gap-2">
+          <CurrencyDollar size={24} color="gray" />
+          <p className="w-24 text-gray-500">Total </p>
+          <span className="text-xl font-light text-black">
+            {" "}
+            {price + 159} kr
+          </span>
+        </div>
+      </div>
       <button
         className="mt-8 w-[400px] rounded-md bg-purple-600 p-4 text-white"
         disabled={isLoading || !stripe || !elements}
         id="submit"
       >
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          {isLoading ? (
+            <div className="spinner" id="spinner"></div>
+          ) : (
+            "Betal nå"
+          )}
         </span>
       </button>
       {/* Show any error or success messages */}

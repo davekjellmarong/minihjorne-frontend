@@ -75,7 +75,7 @@ const Page = () => {
     <div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm price={cart.totalPrice} />
         </Elements>
       )}
     </div>

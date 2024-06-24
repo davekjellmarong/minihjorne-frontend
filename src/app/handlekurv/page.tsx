@@ -5,7 +5,7 @@ import {
   removeItemFromCart,
 } from "@/utils/CartUtils";
 import { Product } from "@/utils/types";
-import { XCircle } from "@phosphor-icons/react";
+import { CurrencyDollar, Pants, Truck, XCircle } from "@phosphor-icons/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -31,72 +31,76 @@ const Page = () => {
   }, [cartItems]);
   return (
     <div className="relative flex flex-col">
-      <div className="ml-8  ">
-        <div className="mb-8 mt-14 flex items-center gap-10">
-          <h2 className="text-2xl font-semibold">Handlekurv</h2>
-          <p className="text-gray-700">{cartItems.length} produkter</p>
+      <div className="max-w-[500px] px-4 ">
+        <div className="mb-8 mt-8 grid grid-cols-5 grid-rows-1 items-center gap-2">
+          <h2 className="col-span-2 text-2xl font-semibold">Handlekurv</h2>
+          <p className="col-span-1 text-gray-700">{cartItems.length} stk</p>
+          <p className="col-span-1 text-gray-700">{totalPrice} kr</p>
         </div>
-        <ul
-          className="flex flex-col gap-12 overflow-scroll pb-8"
-          style={{ height: 700 }}
-        >
+        <ul className="flex flex-col gap-12 pb-8">
           {cartItems.map((product: Product) => {
             return (
-              <li key={product.id} className="flex justify-start">
-                <div className="flex gap-8 ">
-                  <img
-                    src={`${product.attributes.image.data[0].attributes.url}`}
-                    alt=""
-                    // className="h-28 w-28 rounded p-4 shadow"
-                    className="h-40 w-32  rounded object-cover"
-                    onClick={() => {
-                      router.push(`/produkter/${product.id}`);
-                    }}
-                  />
-                  <div className="flex flex-col justify-start gap-4">
-                    <div>
-                      <p className="font-semibold">
-                        {product.attributes.category.data.attributes.name}{" "}
-                      </p>
-                      <p className="font-light text-gray-500">
-                        Str {product.attributes.size.data.attributes.number}
-                      </p>
-                    </div>
-                    <p className="font-light text-gray-500">
-                      {product.attributes.brand}
-                    </p>
-                    {/* {product.colors.data.map((color) => {
-                    return <p key={color.id}>{color.name}</p>;
-                  })} */}
-                  </div>
-                </div>
-                <div className="flex w-80 items-start justify-center gap-8">
-                  <p>{product.attributes.price}kr</p>
-                  <button
-                    onClick={() => {
-                      const updatedCart = removeItemFromCart(product.id);
-                      setCartItems(updatedCart);
-                    }}
-                  >
-                    <XCircle color="gray" size={32} weight="thin" />
-                  </button>
-                </div>
+              <li
+                key={product.id}
+                className=" grid grid-cols-5 grid-rows-4  gap-2"
+              >
+                <img
+                  src={`${product.attributes.image.data[0].attributes.url}`}
+                  alt=""
+                  className="col-span-2 row-span-full h-40 w-32 rounded object-cover"
+                  onClick={() => {
+                    router.push(`/produkter/${product.id}`);
+                  }}
+                />
+                <p className="row-span-1 font-semibold">
+                  {product.attributes.category.data.attributes.name}
+                </p>
+                <p className="row-span-1">{product.attributes.price}kr</p>
+                <button
+                  className="flex flex-col justify-start"
+                  onClick={() => {
+                    const updatedCart = removeItemFromCart(product.id);
+                    setCartItems(updatedCart);
+                  }}
+                >
+                  <XCircle color="gray" size={32} weight="thin" />
+                </button>
+                <p className="col-span-3 row-span-1 font-light text-gray-500">
+                  Str {product.attributes.size.data.attributes.number}
+                </p>
+                <p className="col-span-3 row-span-1 font-light text-gray-500">
+                  {product.attributes.brand}
+                </p>
               </li>
             );
           })}
         </ul>
       </div>
-      <div className="sticky bottom-0  flex flex-col  gap-10 bg-gray-100 p-10">
-        <p className="text-gray-500">
-          Total pris er{" "}
+      <div className="sticky bottom-0 flex flex-col justify-center gap-4 border-t bg-white px-4 py-8">
+        <div className="flex gap-2">
+          <Pants size={24} color="gray" />
+          <p className="w-24 text-gray-500">Varer </p>
           <span className="text-xl font-light text-black">
             {totalPrice} kr{" "}
           </span>
-        </p>
-        <p className="text-sm">Frakt pris beregnes ved checkout</p>
+        </div>
+        <div className="flex gap-2">
+          <Truck size={24} color="gray" />
+          <p className="w-24 text-gray-500">Frakt </p>
+          <span className="text-xl font-light text-black"> 159 kr</span>
+        </div>
+        <hr className="w-52 border" />
+        <div className="flex gap-2">
+          <CurrencyDollar size={24} color="gray" />
+          <p className="w-24 text-gray-500">Total </p>
+          <span className="text-xl font-light text-black">
+            {" "}
+            {totalPrice + 159} kr
+          </span>
+        </div>
         <Link
           href={jwt ? "/checkout" : "/auth?redirect=/checkout&type=login"}
-          className="rounded border-2 border-gray-500 px-8 py-4 transition-colors duration-150 sm:hover:bg-gray-500 sm:hover:text-white"
+          className="shadow- max-w-[350px] rounded bg-brand-500 px-8 py-4 text-center font-semibold text-white  "
         >
           <button>Gå videre</button>
         </Link>
