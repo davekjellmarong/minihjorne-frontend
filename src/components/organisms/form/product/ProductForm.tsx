@@ -7,7 +7,7 @@ import Sex from "./Sex";
 import Price from "./Price";
 import Size from "./Size";
 import Brand from "./Brand";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import {
   fetchCategories,
   fetchColors,
@@ -32,23 +32,23 @@ interface ProductFormProps {
   formik: any;
 }
 const ProductForm = ({ formik }: ProductFormProps) => {
-  const { data: colors } = useQuery<ColorsRQ>({
+  const { data: colors } = useSuspenseQuery<ColorsRQ>({
     queryKey: ["colors"],
     queryFn: fetchColors,
   });
-  const { data: tags } = useQuery<TagsRQ>({
+  const { data: tags } = useSuspenseQuery<TagsRQ>({
     queryKey: ["tags"],
     queryFn: fetchTags,
   });
-  const { data: categories } = useQuery<CategoryRQ>({
+  const { data: categories } = useSuspenseQuery<CategoryRQ>({
     queryKey: ["categories"],
     queryFn: fetchCategories,
   });
-  const { data: materials } = useQuery<MaterialsRQ>({
+  const { data: materials } = useSuspenseQuery<MaterialsRQ>({
     queryKey: ["materials"],
     queryFn: fetchMaterials,
   });
-  const { data: sizes } = useQuery<SizesRQ>({
+  const { data: sizes } = useSuspenseQuery<SizesRQ>({
     queryKey: ["sizes"],
     queryFn: fetchSizes,
   });
@@ -77,14 +77,7 @@ const ProductForm = ({ formik }: ProductFormProps) => {
       CarouselRef.current.next();
     }
   };
-  if (
-    !colors?.data ||
-    !tags?.data ||
-    !categories?.data ||
-    !materials?.data ||
-    !sizes?.data
-  )
-    return <Loading />;
+
   return (
     <form className="" onSubmit={formik.handleSubmit}>
       <Carousel

@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowCircleLeft } from "@phosphor-icons/react";
-import React from "react";
+import React, { Suspense } from "react";
 import { useParams, useRouter } from "next/navigation";
 
 interface LayoutProps {
@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
         }}
         size={30}
       />
-      {children}
+      <Suspense>{children}</Suspense>
     </div>
   );
 };
