@@ -4,8 +4,6 @@ import Loading from "@/components/molecules/loading/Loading";
 import { LoginUser, OrdersRQ } from "@/utils/types";
 import { OrderMethods } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { Suspense } from "react";
 import OrdersTable from "@/components/orders/OrdersTable";
