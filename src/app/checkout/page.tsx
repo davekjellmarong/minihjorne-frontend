@@ -16,9 +16,8 @@ import {
 import { Check } from "@phosphor-icons/react";
 import CheckoutForm from "./CheckoutForm";
 import { useRouter } from "next/navigation";
-const stripePromise = loadStripe(
-  "pk_test_51JOhigA29RXGmicfdKhyh1kC7i8Psetyj3BNwoc7gFwus1AfgNeftLvr0w6hrPmNuWS1zogfahqR0YbjBcv2V9Y300D7TbsjW9",
-);
+// NEXT_PUBLIC_STRIPE_PK
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK as string);
 
 const Page = () => {
   useAutoLogIn();
