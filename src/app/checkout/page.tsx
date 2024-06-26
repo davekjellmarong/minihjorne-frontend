@@ -1,22 +1,13 @@
 "use client";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-
-import Checkout from "./Checkout";
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import { useEffect, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { PaymentMethods } from "@/utils/utils";
-import {
-  getCart,
-  getItemsFromLocalStorage,
-  getSavedProductIds,
-} from "@/utils/CartUtils";
-import { Check } from "@phosphor-icons/react";
+import { getCart } from "@/utils/CartUtils";
 import CheckoutForm from "./CheckoutForm";
 import { useRouter } from "next/navigation";
-// NEXT_PUBLIC_STRIPE_PK
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK as string);
 
 const Page = () => {
@@ -25,15 +16,11 @@ const Page = () => {
   const [clientSecret, setClientSecret] = useState("");
   let cart: any;
   if (typeof window !== "undefined") {
-    // Perform localStorage action
     cart = getCart();
   }
 
   const { data: jwt } = useQuery({
     queryKey: ["jwt"],
-    // queryFn: () => {
-    //   return localStorage.getItem("jwt");
-    // },
   });
   const { mutate: createPayment, isPaused: loading } = useMutation({
     mutationFn: (values: any) => {
