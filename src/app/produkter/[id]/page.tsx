@@ -14,6 +14,7 @@ import "react-multi-carousel/lib/styles.css";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   const { data: product } = useQuery(ProductQueries.detail(params.id));
+  console.log(product);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.

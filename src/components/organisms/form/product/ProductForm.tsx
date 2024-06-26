@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
+import "react-multi-carousel/lib/styles.css";
 import Category from "./Category";
 import Color from "./Color";
 import { State } from "./State";
@@ -54,21 +55,8 @@ const ProductForm = ({ formik }: ProductFormProps) => {
   });
   const CarouselRef: any = useRef(null);
   const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-    },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 4000, min: 0 },
       items: 1,
     },
   };
@@ -109,8 +97,8 @@ const ProductForm = ({ formik }: ProductFormProps) => {
           formik={formik}
           materials={materials.data}
         />
-        <Brand formik={formik} />
-        <Price formik={formik} />
+        <Brand nextSlide={nextSlide} formik={formik} />
+        <Price nextSlide={nextSlide} formik={formik} />
 
         <div className="flex h-full flex-col flex-wrap items-center justify-center gap-8 px-10">
           <button

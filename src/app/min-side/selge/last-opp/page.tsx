@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import ImageUploader from "../../../../components/organisms/minSide/lastOpp/ImageUploader";
 import ProductForm from "../../../../components/organisms/form/product/ProductForm";
 import ImagesList from "../../../../components/organisms/minSide/lastOpp/ImagesList";
@@ -166,7 +166,9 @@ const LeggUt = () => {
             </div>
           ) : (
             <div className="m-auto max-w-[500px]">
-              <ProductForm formik={formik} />
+              <Suspense fallback={<p>Loading...</p>}>
+                <ProductForm formik={formik} />
+              </Suspense>
             </div>
           )}
         </div>
