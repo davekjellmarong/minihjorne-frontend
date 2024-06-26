@@ -33,7 +33,7 @@ const Nav = () => {
     <nav className="fixed z-20 flex w-full justify-center border-b bg-white px-4">
       <div className="flex w-full max-w-[978px] flex-wrap items-center justify-between py-2">
         <MenuDropDown isOpen={isOpen} setIsOpen={setIsOpen} />
-        <div className="flex  justify-end gap-3">
+        <div className="flex justify-end gap-0 sm:gap-3">
           {navItemsRightEnd.map((item) => {
             return (
               <Link key={item.path} href={item.path} className="w-500">
