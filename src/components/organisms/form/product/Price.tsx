@@ -4,7 +4,7 @@ import FormFieldContainer from "./FormFieldContainer";
 
 interface SexProps {
   formik: any;
-  nextSlide: () => void;
+  nextSlide?: () => void;
 }
 const Price = ({ formik, nextSlide }: SexProps) => {
   const priceArray = [
@@ -69,7 +69,9 @@ const Price = ({ formik, nextSlide }: SexProps) => {
               type="button"
               onClick={() => {
                 formik.setFieldValue("price", item.price);
-                nextSlide();
+                if (nextSlide) {
+                  nextSlide();
+                }
               }}
               className="w-20 rounded border-2 border-gray-200 px-4 py-2 font-light text-gray-700 sm:hover:bg-gray-400"
             >
