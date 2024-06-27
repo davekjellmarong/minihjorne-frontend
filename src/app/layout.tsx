@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="NO">
       <body className={inter.className}>
         <Providers>
           <AutoLoginMiddleware>
