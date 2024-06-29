@@ -4,8 +4,9 @@ import FormFieldContainer from "./FormFieldContainer";
 
 interface ColorProps {
   formik: any;
+  nextSlide?: () => void;
 }
-const Brand = ({ formik }: ColorProps) => {
+const Brand = ({ formik, nextSlide }: ColorProps) => {
   const brands = ["Lille lam", "H&M", "Cubus", "Babyshop", "Vet ikke"];
   return (
     <FormFieldContainer header="Klesmerke">
@@ -27,6 +28,9 @@ const Brand = ({ formik }: ColorProps) => {
               type="button"
               onClick={() => {
                 formik.setFieldValue("brand", brand);
+                if (nextSlide) {
+                  nextSlide();
+                }
               }}
               className="rounded border-2 border-gray-200 px-4 py-2 font-light text-gray-700 sm:hover:bg-gray-400"
             >

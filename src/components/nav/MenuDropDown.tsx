@@ -29,7 +29,13 @@ export const MenuDropDown = ({ setIsOpen, isOpen }: MenuDropDownProps) => {
         </svg>
       </button> */}
       <Link href="/" className="mb-0   pb-0 ">
-        <Image src="/minihjørne.png" alt="logo" width={175} height={175} />
+        <Image
+          src="/minihjørne.png"
+          alt="logo"
+          width={150}
+          height={150}
+          className="mb-1"
+        />
         {/* Mini Hjørne */}
       </Link>
     </div>
