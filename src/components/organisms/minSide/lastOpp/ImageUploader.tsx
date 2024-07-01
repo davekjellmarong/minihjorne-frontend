@@ -15,11 +15,10 @@ const ImageUploader = ({ setImages, setModal }: ImageUploaderProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <input
-        className="file:mr-4 file:cursor-pointer file:rounded file:border-0 file:bg-violet-50 
-      file:px-16 file:py-10
-      file:text-sm file:font-semibold
-      file:text-violet-700 file:shadow-lg
-      sm:hover:file:bg-violet-100"
+        className="file:mr-4 file:cursor-pointer file:rounded file:border-0 file:bg-violet-500 
+      file:px-12 file:py-10
+      file:text-lg file:font-semibold
+      file:text-white file:shadow-lg"
         type="file"
         id="imageInput"
         multiple
