@@ -9,34 +9,42 @@ const QuickLinks = () => {
     {
       name: "Gutt",
       link: "/produkter?&filters[sex][id][$eq]=1",
+      image: "/quicklink-gutt.jpg",
     },
     {
       name: "Jente",
       link: "/produkter?&filters[sex][id][$eq]=2",
+      image: "/quicklink-jente.jpg",
+    },
+    {
+      name: "Unisex",
+      link: "/produkter?&filters[sex][id][$eq]=3",
+      image: "/quicklink-unisex.jpg",
+    },
+    {
+      name: "Nyfødt",
+      link: "/produkter?&filters[size][id][$eq]=21",
+      image: "/quicklink-nyfodt.jpg",
     },
     {
       name: "Body",
       link: "/produkter?&filters[category][id][$eq]=2",
+      image: "/quicklink-body.JPG",
     },
     {
       name: "Kjole",
       link: "/produkter?&filters[category][id][$eq]=4",
+      image: "/quicklink-kjole.jpg",
     },
     {
-      name: "Prinsesse",
-      link: "/produkter?&filters[tags][id][$eq]=12",
+      name: "Sko",
+      link: "/produkter?&filters[category][id][$eq]=7",
+      image: "/quicklink-sko.jpg",
     },
     {
-      name: "Rosa",
-      link: "/produkter?&filters[colors][id][$eq]=13",
-    },
-    {
-      name: "98-104",
-      link: "/produkter?&filters[size][id][$eq]=26",
-    },
-    {
-      name: "122-128",
-      link: "/produkter?&filters[size][id][$eq]=28",
+      name: "Yttertøy",
+      link: "/produkter?&filters[category][id][$eq]=7&filters[category][id][$eq]=14&filters[category][id][$eq]=15",
+      image: "/quicklink-yttertoy.JPG",
     },
   ];
   return (
@@ -44,14 +52,14 @@ const QuickLinks = () => {
       {quickFilterData.map((filter) => {
         return (
           <Link
-            className="flex min-w-32 flex-col items-center"
+            className="flex min-w-40 flex-col items-center"
             href={`${filter.link}&pagination[page]=1`}
             key={filter.name}
           >
             {/* <Dress size={30} color="purple" weight="thin" /> */}
             <Image
-              src="/boy-lego.jpg"
-              className="rounded-full object-cover"
+              src={filter.image}
+              className="h-[150px] w-[150px] rounded-full object-cover"
               width={100}
               height={100}
               alt=""
