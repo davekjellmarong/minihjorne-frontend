@@ -68,7 +68,7 @@ const Register = () => {
           id="username"
           name="username"
           className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
-          placeholder="john.doe@company.com"
+          placeholder="hanneandersen"
           required
           value={formik.values.username}
           onChange={formik.handleChange}
@@ -86,7 +86,7 @@ const Register = () => {
           id="email"
           name="email"
           className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
-          placeholder="john.doe@company.com"
+          placeholder="hanne.andersen@outlook.com"
           required
           value={formik.values.email}
           onChange={formik.handleChange}
