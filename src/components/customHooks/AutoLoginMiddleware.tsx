@@ -22,7 +22,13 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   const headers = {
     Authorization: `Bearer ${token.value}`,
   };
-  const response = await axios.get(url, { headers });
+  const response = await axios.get(url, { headers }).catch((error) => {
+    console.error("Error fetching data:", error.response.data);
+    return error;
+  });
+  if (response instanceof Error) {
+    return <>{children}</>;
+  }
   const queryClient = new QueryClient();
   queryClient.setQueryData(["login-user"], response.data);
   queryClient.setQueryData(["jwt"], token.value);

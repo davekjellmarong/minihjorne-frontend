@@ -73,20 +73,26 @@ const LeggUt = () => {
       state: "",
       sex: "",
       // tags: "",
-      user: 0,
+      // user: user?.id,
     },
 
     onSubmit: (values) => {
+      console.log("Form data submitted:", values);
       const userId: any = user?.id;
-      const data = { ...values, user: userId };
-      var formData = new FormData();
-      selectedImages.forEach((image: any) => {
-        formData.append("files.image", image, image.name);
-      });
-      formData.append("data", JSON.stringify(data));
-      createProduct(formData);
+      if (userId) {
+        const data = { ...values, user: userId };
+        var formData = new FormData();
+        selectedImages.forEach((image: any) => {
+          formData.append("files.image", image, image.name);
+        });
+        formData.append("data", JSON.stringify(data));
+        createProduct(formData);
+      } else {
+        toast.error("Du er ikke logget inn");
+      }
     },
   });
+  console.log(user);
   const ImagesListMemo = useMemo(
     () => (
       <ImagesList

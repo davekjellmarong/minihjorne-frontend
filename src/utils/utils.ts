@@ -15,7 +15,7 @@ export const registerUser = async (values: any) => {
     .catch((error) => {
       // Handle error.
       console.log("An error occurred:", error.response);
-      return error;
+      throw error.response.data.error;
     });
 };
 export const loginUser = async (values: any) => {
@@ -33,7 +33,7 @@ export const loginUser = async (values: any) => {
     .catch((error) => {
       // Handle error.
       console.log("An error occurred:", error.response);
-      return error;
+      throw error.response.data.error;
     });
 };
 export const postRequest = async (values: any, endpoint: string) => {

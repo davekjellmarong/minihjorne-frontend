@@ -15,7 +15,12 @@ const Register = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
-  const { mutate: register, isPending } = useMutation({
+  const {
+    mutate: register,
+    isPending,
+    isError,
+    error,
+  } = useMutation({
     mutationFn: (values: any) => {
       return registerUser(values);
     },
@@ -111,6 +116,11 @@ const Register = () => {
       >
         Registrer
       </button>
+      {error && isError && (
+        <div className="mt-4 rounded-lg bg-red-500 p-4 text-center text-white">
+          <p>{error.message}</p>
+        </div>
+      )}
     </form>
   );
 };

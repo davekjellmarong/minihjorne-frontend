@@ -12,11 +12,18 @@ const Login = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
-  const { mutate: login, isPending } = useMutation({
+  const {
+    mutate: login,
+    isPending,
+    error,
+    isError,
+  } = useMutation({
     mutationFn: (values: any) => {
       return loginUser(values);
     },
     onSuccess: (data) => {
+      console.log("inside success mutation");
+      console.log(data);
       if (data.jwt.length > 0) {
         console.log({ data });
         queryClient.setQueryData(["login-user"], data.user);
@@ -33,19 +40,22 @@ const Login = () => {
         }
       }
     },
+    // onError: (error) => {
+    //   console.log("inside error mutation");
+    //   console.log(error);
+    // },
   });
   // Request API.
   const formik = useFormik({
     initialValues: {
-      identifier: "davemarong",
-      password: "dave1011",
+      identifier: "",
+      password: "",
     },
     onSubmit: (values) => {
       console.log("Form data submitted:", values);
-      login(values);
+      return login(values);
     },
   });
-
   return (
     <form className="w-full" onSubmit={formik.handleSubmit}>
       <LoadingOverlay loading={isPending} />
@@ -91,6 +101,11 @@ const Login = () => {
       >
         Login
       </button>
+      {error && isError && (
+        <div className="mt-4 rounded-lg bg-red-500 p-4 text-center text-white">
+          <p>{error.message}</p>
+        </div>
+      )}
     </form>
   );
 };
