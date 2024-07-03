@@ -6,16 +6,23 @@ import ImagesList from "../../../../components/organisms/minSide/lastOpp/ImagesL
 import SelectedImages from "../../../../components/organisms/minSide/lastOpp/SelectedImages";
 import { useFormik } from "formik";
 import { ProductsMethods } from "@/utils/utils";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { User } from "@/utils/types";
 import { toast } from "react-toastify";
 import Dialog from "@/components/organisms/dialog/Dialog";
 import FilterDialog from "@/components/organisms/product/FilterDialog";
-import { Question } from "@phosphor-icons/react";
+import {
+  ArrowRight,
+  Question,
+  Sidebar,
+  SidebarSimple,
+} from "@phosphor-icons/react";
 import IntroCarousel from "../../../../components/organisms/minSide/lastOpp/IntroCarousel";
 import Link from "next/link";
 import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
 import Image from "next/image";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 
 export interface ImageUpload extends Blob {
   lastModified: number;
@@ -31,12 +38,11 @@ const LeggUt = () => {
   const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
   const [images, setImages] = useState<ImageUpload[]>([]);
   const [nextProduct, setNextProduct] = useState(false);
-  const { data: jwt } = useQuery({
-    queryKey: ["jwt"],
-  });
-  const { data: user } = useQuery<User>({
-    queryKey: ["login-user"],
-  });
+
+  const queryClient = useQueryClient();
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: user } = useQuery(UserQueries.me(jwt));
+
   const { mutate: createProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.post(values, jwt);
@@ -77,7 +83,7 @@ const LeggUt = () => {
     },
 
     onSubmit: (values) => {
-      console.log("Form data submitted:", values);
+      console.log({ values });
       const userId: any = user?.id;
       if (userId) {
         const data = { ...values, user: userId };
@@ -92,7 +98,6 @@ const LeggUt = () => {
       }
     },
   });
-  console.log(user);
   const ImagesListMemo = useMemo(
     () => (
       <ImagesList
@@ -145,10 +150,19 @@ const LeggUt = () => {
 
       <div className="relative flex flex-col gap-2">
         <LoadingOverlay loading={loading} />
-        <div className="flex  flex-col-reverse items-center justify-center overflow-scroll border-r-2 border-gray-200 bg-white shadow">
-          <div className="p-6" onClick={() => setModal(true)}>
-            <SelectedImages images={images} selectedImages={selectedImages} />
-          </div>
+        <div className="flex  flex-col-reverse items-center justify-center overflow-scroll  bg-white ">
+          <SelectedImages
+            images={images}
+            selectedImages={selectedImages}
+            setSelectedImages={setSelectedImages}
+          />
+          <button
+            className="flex items-center self-start pl-4"
+            onClick={() => setModal(true)}
+          >
+            <SidebarSimple size={22} color="gray" />
+            <ArrowRight size={18} color="gray" />
+          </button>
         </div>
         <div>
           {nextProduct ? (

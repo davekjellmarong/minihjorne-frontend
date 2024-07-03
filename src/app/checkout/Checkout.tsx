@@ -19,6 +19,8 @@ import {
 import Loading from "@/components/molecules/loading/Loading";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
 
 const Checkout = () => {
   const router = useRouter();
@@ -59,12 +61,9 @@ const Checkout = () => {
       // }
     });
   }, [stripe]);
-  const { data: jwt } = useQuery({
-    queryKey: ["jwt"],
-  });
-  const { data: userData } = useQuery<LoginUser>({
-    queryKey: ["login-user"],
-  });
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: user } = useQuery(UserQueries.me(jwt));
+
   const { mutate: createOrder, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return OrderMethods.post(values, jwt);
@@ -97,7 +96,7 @@ const Checkout = () => {
         data: {
           ...values,
           token: token?.token?.id,
-          email: userData?.email,
+          email: user?.email,
           products: productsIds,
         },
       });

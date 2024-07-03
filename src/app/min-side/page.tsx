@@ -1,31 +1,26 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
+import {
+  useQuery,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import React from "react";
 import AvatarLetter from "@/components/molecules/AvatarLetter";
 import Menu from "../../components/organisms/minSide/Menu";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { useCookies } from "react-cookie";
 
-interface UserData {
-  username: string;
-  id: number;
-  email: string;
-}
 const MinSide = () => {
-  const { data: userData } = useQuery<UserData>({
-    queryKey: ["login-user"],
-  });
-  console.log(userData);
-
+  const [cookies] = useCookies(["Token"]);
+  const { data: user } = useSuspenseQuery(UserQueries.me(cookies.Token));
   return (
     <div className="flex flex-col">
       <div className="flex flex-col gap-6 bg-brand-200 pb-24 pt-14">
         <div className="flex justify-center ">
-          <AvatarLetter username={userData?.username} />
+          <AvatarLetter username={user.username} />
         </div>
-        <p className="text-center text-lg font-semibold">
-          {userData?.username}
-        </p>
+        <p className="text-center text-lg font-semibold">{user.username}</p>
       </div>
-
       <Menu />
     </div>
   );

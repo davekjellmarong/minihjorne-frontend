@@ -24,6 +24,7 @@ const useAutoLogIn = () => {
     if (user?.data) return;
     if (userZ) return;
     if (me?.data && cookies.Token) {
+      console.log("Setting user and jwt");
       setUserZ(me.data);
       setJwt(cookies.Token);
       queryClient.setQueryData(["login-user"], me.data);

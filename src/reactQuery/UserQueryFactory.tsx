@@ -1,7 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 
-import { apiUrl } from "@/utils/serverUtils";
-import { Product, User, UserBackend } from "@/utils/types";
+import { User, UserBackend } from "@/utils/types";
 import { getAuthData, getPublicData } from "./Utils";
 
 export const UserQueries = {
