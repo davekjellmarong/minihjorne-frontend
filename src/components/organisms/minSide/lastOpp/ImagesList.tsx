@@ -46,11 +46,11 @@ const ImagesList = ({
           }}
         >
           <span
-            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform bg-white opacity-70 ${
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform bg-green-500 opacity-70 ${
               selectedImages.includes(image) ? "" : "hidden"
             } `}
           >
-            <CheckCircle size={34} color={"black"} />
+            <CheckCircle size={34} color={"green"} />
           </span>
           <Image
             width={75}
