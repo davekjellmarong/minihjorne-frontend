@@ -8,7 +8,7 @@ const ImageUploader = ({ setImages, setModal }: ImageUploaderProps) => {
   const handleImageChange = (e: any) => {
     console.log(e.target.files);
     // setSelectedImages(e.target.files[0]);
-    setImages(Object.values(e.target.files));
+    // setImages(Object.values(e.target.files));
     setModal(true);
   };
 
