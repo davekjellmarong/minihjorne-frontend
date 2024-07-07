@@ -104,14 +104,14 @@ const CheckoutForm = ({ price }: any) => {
             fields: { phone: "always" },
             allowedCountries: ["NO"],
             defaultValues: {
-              address: {
-                line1: "Kanohallveien 12a",
-                city: "Oslo",
-                postal_code: "0585",
-                country: "NO",
-              },
-              name: "Dave Marong",
-              phone: "+4798765432",
+              // address: {
+              //   line1: "Kanohallveien 12a",
+              //   city: "Oslo",
+              //   postal_code: "0585",
+              //   country: "NO",
+              // },
+              // name: "Dave Marong",
+              // phone: "+4798765432",
             },
           }}
         />

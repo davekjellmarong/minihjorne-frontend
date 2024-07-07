@@ -8,6 +8,7 @@ interface SavedImagesProps {
   setModal: any;
 }
 const SavedImages = ({ images, setImages, setModal }: SavedImagesProps) => {
+  if (!images) return null;
   const unusedImages = images.filter((image) => !image.caption);
   if (unusedImages.length == 0) return null;
   return (
