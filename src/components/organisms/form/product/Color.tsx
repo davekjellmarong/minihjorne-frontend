@@ -1,10 +1,10 @@
 "use client";
 import { tailwindColorsObject } from "@/utils/constants";
-import { Color } from "@/utils/types";
+import { Color as ColorType } from "@/utils/types";
 import React from "react";
 
 interface ColorProps {
-  colors: Color[];
+  colors: ColorType[];
   formik: any;
   formName?: string;
   onChangeFunc?: () => void;
@@ -32,6 +32,7 @@ const Color = ({
               type="radio"
               name={formName}
               id={formName}
+              title="Velg farge"
               defaultChecked={color.id === initialId}
               value={color.id}
               onChange={(e) => {
