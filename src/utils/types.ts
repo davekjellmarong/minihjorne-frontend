@@ -158,6 +158,7 @@ export interface CommonImage {
   createdAt: string;
   updatedAt: string;
 }
+
 export interface TagBackend extends CommonTags {
   id: number;
 }
@@ -185,6 +186,7 @@ export interface ImageBackend extends CommonImage {
 export interface UserBackend extends CommonUser {
   id: number;
   plan: CommonPlan;
+  productImages: ImageBackend[];
 }
 export interface OrderBackend extends CommonOrder {
   id: number;
@@ -279,6 +281,7 @@ export interface User {
     color: string;
     paid: boolean;
     plan: { data: CommonPlan };
+    productImages: { data: Image[] };
   };
 }
 export interface LoginUser {

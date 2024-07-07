@@ -1,23 +1,22 @@
 import React, { Suspense } from "react";
+import { cookies } from "next/headers";
+import Loading from "@/components/molecules/loading/Loading";
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
-import Loading from "@/components/molecules/loading/Loading";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 
-const Provider = async ({
-  params,
-  children,
-}: {
+interface LayoutProps {
   children: any;
-  params: { id: string };
-}) => {
+}
+const Layout = async ({ children }: LayoutProps) => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(UserQueries.detail(params.id));
-  await queryClient.prefetchQuery(ProductQueries.userId(params.id));
+  const cookieStore: any = cookies();
+
+  const token = cookieStore.get("Token");
+  await queryClient.prefetchQuery(ProductQueries.me_all(token.value));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
@@ -26,4 +25,4 @@ const Provider = async ({
   );
 };
 
-export default Provider;
+export default Layout;

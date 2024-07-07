@@ -1,9 +1,9 @@
 import React from "react";
 
-const AvatarLetter = ({ username }: { username: string | undefined }) => {
+const AvatarLetter = ({ username }: { username: string }) => {
   return (
-    <span className="text-center text-5xl py-6 px-8 rounded-full border bg-white shadow-sm">
-      {username?.slice(0, 1).toUpperCase()}
+    <span className="rounded-full border bg-white px-8 py-6 text-center text-5xl shadow-sm">
+      {username.slice(0, 1).toUpperCase()}
     </span>
   );
 };

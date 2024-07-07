@@ -35,6 +35,7 @@ export const MenuDropDown = ({ setIsOpen, isOpen }: MenuDropDownProps) => {
           width={150}
           height={150}
           className="mb-1"
+          priority
         />
         {/* Mini Hjørne */}
       </Link>

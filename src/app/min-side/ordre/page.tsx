@@ -3,26 +3,26 @@ import { EmptyList } from "@/components/organisms/EmptyList";
 import Loading from "@/components/molecules/loading/Loading";
 import { LoginUser, OrdersRQ } from "@/utils/types";
 import { OrderMethods } from "@/utils/utils";
-import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import {
+  useQuery,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import React, { Suspense } from "react";
 import OrdersTable from "@/components/orders/OrdersTable";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { OrderQueries } from "@/reactQuery/OrderQueryFactory";
 
 const Ordre = () => {
-  const { data: jwt } = useQuery({
-    queryKey: ["jwt"],
-  });
-  const { data: userData } = useQuery<LoginUser>({
-    queryKey: ["login-user"],
-  });
-  const { data: orders } = useQuery<OrdersRQ>({
-    queryKey: ["orders"],
-    queryFn: () => OrderMethods.getByUserId(userData?.id, jwt),
-    enabled: !!jwt && !!userData?.id,
-  });
+  const queryClient = useQueryClient();
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
+  const { data: orders } = useSuspenseQuery(
+    OrderQueries.myOrders(user.id, jwt),
+  );
 
-  // if (loading) return <Loading />;
-  if (!orders?.data)
+  if (orders.length === 0)
     return (
       <EmptyList
         text="Du har ingen ordre"
@@ -34,7 +34,7 @@ const Ordre = () => {
     <div>
       <h2 className="mb-4 text-center text-2xl font-light">Mine ordre</h2>
       <Suspense fallback={<Loading />}>
-        <OrdersTable orders={orders.data} />
+        <OrdersTable orders={orders} />
       </Suspense>
     </div>
   );

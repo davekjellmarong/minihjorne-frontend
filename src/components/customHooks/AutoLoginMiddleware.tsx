@@ -26,6 +26,7 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
     console.error("Error fetching data:", error.response.data);
     return error;
   });
+
   if (response instanceof Error) {
     return <>{children}</>;
   }

@@ -11,12 +11,12 @@ const FormFieldContainer = ({
   optional = false,
 }: FormFieldContainerProps) => {
   return (
-    <div className="flex flex-col justify-center px-12 py-10 ">
+    <div className="flex flex-col justify-center px-12 py-4 ">
       <InputHeader optional={optional} center>
         {header}
       </InputHeader>
 
-      <div className="flex flex-wrap justify-center  gap-x-4 gap-y-14 ">
+      <div className="flex flex-wrap justify-center  gap-x-4 gap-y-6 ">
         {children}
       </div>
     </div>

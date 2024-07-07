@@ -1,20 +1,30 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Breadcrumb from "../../components/organisms/minSide/Breadcrumb";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import Loading from "@/components/molecules/loading/Loading";
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from "@tanstack/react-query";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
 
 interface LayoutProps {
   children: any;
 }
-const Layout = ({ children }: LayoutProps) => {
+const Layout = async ({ children }: LayoutProps) => {
+  const queryClient = new QueryClient();
   const cookieStore: any = cookies();
+
   const token = cookieStore.get("Token");
-  console.log(token);
-  console.log(token?.value);
+  await queryClient.prefetchQuery(UserQueries.me(token.value));
+
   if (!token || token?.value?.length === 0) {
     console.log("No token");
     redirect("/auth?redirect=/min-side/");
   }
+
   return (
     <>
       <Breadcrumb />
@@ -32,7 +42,11 @@ const Layout = ({ children }: LayoutProps) => {
             </button>
           </div>
         </div>
-        <div className="">{children}</div>
+        <div className="">
+          <HydrationBoundary state={dehydrate(queryClient)}>
+            <Suspense fallback={<Loading />}>{children}</Suspense>
+          </HydrationBoundary>
+        </div>
       </div>
     </>
   );

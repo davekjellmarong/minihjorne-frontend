@@ -6,42 +6,41 @@ import ImagesList from "../../../../components/organisms/minSide/lastOpp/ImagesL
 import SelectedImages from "../../../../components/organisms/minSide/lastOpp/SelectedImages";
 import { useFormik } from "formik";
 import { ProductsMethods } from "@/utils/utils";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { User } from "@/utils/types";
+import {
+  useMutation,
+  useQuery,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import Dialog from "@/components/organisms/dialog/Dialog";
 import FilterDialog from "@/components/organisms/product/FilterDialog";
-import { Question } from "@phosphor-icons/react";
+import { ArrowRight, Question, SidebarSimple } from "@phosphor-icons/react";
 import IntroCarousel from "../../../../components/organisms/minSide/lastOpp/IntroCarousel";
 import Link from "next/link";
 import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
 import Image from "next/image";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { Image as ImageType } from "@/utils/types";
+import SavedImages from "@/components/organisms/minSide/lastOpp/SavedImages";
+import { ImageMethods } from "@/reactQuery/UploadQueryFactory";
 
-export interface ImageUpload extends Blob {
-  lastModified: number;
-  lastModifiedDate: Date;
-  name: string;
-  size: number;
-  type: string;
-  webkitRelativePath: string;
-}
 const LeggUt = () => {
   const [modal, setModal] = useState(false);
   const [introModal, setIntroModal] = useState(false);
-  const [selectedImages, setSelectedImages] = useState<ImageUpload[]>([]);
-  const [images, setImages] = useState<ImageUpload[]>([]);
+  const [selectedImages, setSelectedImages] = useState<ImageType[]>([]);
+  const [images, setImages] = useState<ImageType[]>([]);
   const [nextProduct, setNextProduct] = useState(false);
-  const { data: jwt } = useQuery({
-    queryKey: ["jwt"],
-  });
-  const { data: user } = useQuery<User>({
-    queryKey: ["login-user"],
-  });
+  const queryClient = useQueryClient();
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
   const { mutate: createProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.post(values, jwt);
     },
     onSuccess: (data) => {
+      console.log(data);
       toast.info(
         `Produktet '${
           formik.values.colorsNorwegianName
@@ -50,7 +49,9 @@ const LeggUt = () => {
       setImages((prev: any) =>
         prev.filter((image: any) => !selectedImages.includes(image)),
       );
-
+      const selectedImagesIds = selectedImages.map((image) => image.id);
+      ImageMethods.updateMultipleFileInfo(selectedImagesIds, jwt);
+      queryClient.invalidateQueries(UserQueries.me(jwt));
       setSelectedImages([]);
       formik.resetForm();
       setNextProduct(true);
@@ -65,74 +66,42 @@ const LeggUt = () => {
     initialValues: {
       colors: "",
       colorsNorwegianName: "",
-      // material: "",
       brand: "",
       price: 0,
       category: "",
       categoryName: "",
       state: "",
       sex: "",
-      // tags: "",
-      // user: user?.id,
     },
 
     onSubmit: (values) => {
-      console.log("Form data submitted:", values);
-      const userId: any = user?.id;
+      const userId: any = user.id;
       if (userId) {
-        const data = { ...values, user: userId };
-        var formData = new FormData();
-        selectedImages.forEach((image: any) => {
-          formData.append("files.image", image, image.name);
-        });
-        formData.append("data", JSON.stringify(data));
-        createProduct(formData);
+        const imagesIds = selectedImages.map((image) => image.id);
+        const payload = {
+          data: { ...values, user: userId, image: imagesIds },
+        };
+        createProduct(payload);
       } else {
         toast.error("Du er ikke logget inn");
       }
     },
   });
-  console.log(user);
-  const ImagesListMemo = useMemo(
-    () => (
-      <ImagesList
-        images={images}
-        setSelectedImages={setSelectedImages}
-        selectedImages={selectedImages}
-      />
-    ),
-    [images, selectedImages],
-  );
   if (images.length === 0) {
     return (
-      <div className="relative flex h-screen flex-col items-center  gap-6 pt-32 text-center">
-        <Link
-          href="/min-side/selge/last-opp/intro"
-          className="absolute left-8 top-8"
-          // onClick={() => setIntroModal(true)}
-        >
-          <Question size={32} weight="thin" color="blue" />
-        </Link>
-        {/* <button
-          className="absolute left-8 top-8"
-          onClick={() => setIntroModal(true)}
-        >
-          <Question size={32} weight="thin" color="blue" />
-        </button> */}
-
+      <>
         <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
           <IntroCarousel />
         </Dialog>
-        <p className="text-xl text-brand-800">Last opp produkt bilder</p>
-        <Image
-          src="/addFiles.svg"
-          width={300}
-          height={300}
-          alt=""
-          className="pr-10"
-        />
-        <ImageUploader setImages={setImages} setModal={setModal} />
-      </div>
+        <Suspense>
+          <SavedImages
+            images={user.productImages}
+            setImages={setImages}
+            setModal={setModal}
+          />
+          <ImageUploader setImages={setImages} setModal={setModal} />
+        </Suspense>
+      </>
     );
   }
   return (
@@ -140,15 +109,28 @@ const LeggUt = () => {
       <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
         <p className="m-10 text-center">0 produkter lastet opp</p>
         <p className="m-10 text-center">Velg opp til 3 bilder per produkt</p>
-        {ImagesListMemo}
+        <ImagesList
+          images={images}
+          setSelectedImages={setSelectedImages}
+          selectedImages={selectedImages}
+        />
       </FilterDialog>
 
       <div className="relative flex flex-col gap-2">
         <LoadingOverlay loading={loading} />
-        <div className="flex  flex-col-reverse items-center justify-center overflow-scroll border-r-2 border-gray-200 bg-white shadow">
-          <div className="p-6" onClick={() => setModal(true)}>
-            <SelectedImages images={images} selectedImages={selectedImages} />
-          </div>
+        <div className="flex  flex-col-reverse items-center justify-center overflow-scroll  bg-white ">
+          <SelectedImages
+            images={images}
+            selectedImages={selectedImages}
+            setSelectedImages={setSelectedImages}
+          />
+          <button
+            className="flex items-center self-start pl-4"
+            onClick={() => setModal(true)}
+          >
+            <SidebarSimple size={22} color="gray" />
+            <ArrowRight size={18} color="gray" />
+          </button>
         </div>
         <div>
           {nextProduct ? (

@@ -2,7 +2,11 @@
 import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import { ProductBackend, User } from "@/utils/types";
 import { ProductsMethods } from "@/utils/utils";
-import { useQuery } from "@tanstack/react-query";
+import {
+  useQuery,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import React from "react";
 import ProductTable from "../../../../components/organisms/minSide/produkter/ProductTable";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
@@ -12,13 +16,13 @@ import { DataTable } from "@/components/organisms/table/ProductsTable/Table";
 import { columns } from "@/components/organisms/table/ProductsTable/Columns";
 import Button from "@/components/atoms/Button";
 import { Plus, PlusCircle } from "@phosphor-icons/react";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 
 const Produkter = () => {
-  const { data: jwt } = useQuery<string>({
-    queryKey: ["jwt"],
-  });
-  const { data: me } = useQuery(ProductQueries.me_all(jwt));
-  if (!me)
+  const queryClient = useQueryClient();
+  const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: products } = useSuspenseQuery(ProductQueries.me_all(jwt));
+  if (products.length === 0)
     return (
       <EmptyList
         text="Du har ingen produkter lagret"
@@ -38,7 +42,7 @@ const Produkter = () => {
         </Link>
       </div>
       {/* <DataTable columns={columns} data={me} /> */}
-      <ProductTable products={me} />
+      <ProductTable products={products} />
     </div>
   );
 };

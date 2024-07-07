@@ -2,18 +2,17 @@
 import Salgsprofil from "@/components/organisms/minSide/salgsprofil/Salgsprofil";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import { UserMethods } from "@/utils/utils";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { useParams, useSearchParams } from "next/navigation";
 
 const Page = () => {
   const { id } = useParams();
-  const { data: user } = useQuery(UserQueries.detail(id));
-  if (user)
-    return (
-      <div>
-        <Salgsprofil user={user} />
-      </div>
-    );
+  const { data: user } = useSuspenseQuery(UserQueries.detail(id));
+  return (
+    <div>
+      <Salgsprofil user={user} />
+    </div>
+  );
 };
 
 export default Page;
