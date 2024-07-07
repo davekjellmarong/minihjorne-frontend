@@ -37,7 +37,7 @@ const SelectedImages = ({
               <p>{index + 1}</p>
             </div>
             <Image
-              src={URL.createObjectURL(image)}
+              src={image.url}
               height={300}
               width={300}
               alt=""

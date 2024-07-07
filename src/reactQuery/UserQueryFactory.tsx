@@ -1,7 +1,8 @@
 import { queryOptions } from "@tanstack/react-query";
 
 import { User, UserBackend } from "@/utils/types";
-import { getAuthData, getPublicData } from "./Utils";
+import { getAuthData, getPublicData, putData } from "./Utils";
+import { postAuthRequest } from "@/utils/utils";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -26,5 +27,8 @@ export const UserMethods = {
   },
   getMe: async (token: any): Promise<UserBackend> => {
     return getAuthData("/users/me?populate=*", token);
+  },
+  uploadImages: async (data: any, token: any) => {
+    return postAuthRequest(data, "/upload", token);
   },
 };

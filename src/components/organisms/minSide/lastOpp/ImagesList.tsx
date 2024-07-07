@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { ImageUpload } from "../../../../app/min-side/selge/last-opp/page";
 import { CheckCircle } from "@phosphor-icons/react";
 import { setIn } from "formik";
+import { Image as ImageType } from "@/utils/types";
 
 interface ImageListProps {
-  images: ImageUpload[];
-  setSelectedImages: (value: ImageUpload[]) => void;
-  selectedImages: ImageUpload[];
+  images: any[];
+  // images: ImageUpload[];
+  setSelectedImages: (value: ImageType[]) => void;
+  selectedImages: ImageType[];
 }
 const ImagesList = ({
   images,
   setSelectedImages,
   selectedImages,
 }: ImageListProps) => {
-  console.log(images);
   return (
     <div className="mx-12 flex flex-wrap justify-center gap-4">
       {images?.map((image, index) => (
@@ -56,7 +56,7 @@ const ImagesList = ({
             width={75}
             height={75}
             className={`size-24 object-scale-down shadow-lg`}
-            src={URL.createObjectURL(image)}
+            src={image.url}
             alt={`uploaded-image-${index}`}
           />
         </div>
