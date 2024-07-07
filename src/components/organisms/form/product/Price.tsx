@@ -48,6 +48,31 @@ const Price = ({ formik, nextSlide }: SexProps) => {
       price: 275,
       id: 7,
     },
+    {
+      title: "300kr",
+      price: 300,
+      id: 8,
+    },
+    {
+      title: "350kr",
+      price: 350,
+      id: 9,
+    },
+    {
+      title: "400kr",
+      price: 400,
+      id: 10,
+    },
+    {
+      title: "450kr",
+      price: 450,
+      id: 11,
+    },
+    {
+      title: "500kr",
+      price: 500,
+      id: 12,
+    },
   ];
   return (
     <FormFieldContainer header="Pris">

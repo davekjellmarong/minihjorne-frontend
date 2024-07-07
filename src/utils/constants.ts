@@ -19,6 +19,7 @@ export const tailwindColors = [
   { title: "Grå", tailwind: "bg-gray-400" },
   { title: "Bronse", tailwind: "bg-orange-600" },
   { title: "Svart", tailwind: "bg-black" },
+  { title: "Beige", tailwind: "bg-orange-200" },
 ];
 
 export const tailwindColorsObject: any = {
@@ -49,6 +50,9 @@ export const tailwindColorsObject: any = {
   Sølv: "bg-gray-400 checked:bg-gray-400 checked:active:bg-gray-400 checked:focus:bg-gray-400",
   Bronse:
     "bg-orange-600 checked:bg-orange-600 checked:active:bg-orange-600 checked:focus:bg-orange-600",
+  beige:
+    "bg-orange-200 checked:bg-orange-200 checked:active:bg-orange-200 checked:focus:bg-orange-200",
+  multi: "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500",
 };
 
 export const tailwindColorsUserButton: any = {

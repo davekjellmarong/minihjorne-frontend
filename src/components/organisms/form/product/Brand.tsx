@@ -7,7 +7,19 @@ interface ColorProps {
   nextSlide?: () => void;
 }
 const Brand = ({ formik, nextSlide }: ColorProps) => {
-  const brands = ["Lille lam", "H&M", "Cubus", "Babyshop", "Vet ikke"];
+  const brands = [
+    "Cubus",
+    "Gullkorn",
+    "H&M",
+    "Hust & Claire",
+    "Joha",
+    "KappAhl",
+    "Lindex",
+    "NameIt",
+    "Newbe",
+    "Reflex",
+    "Zara",
+  ];
   return (
     <FormFieldContainer header="Klesmerke">
       <div className="mt-2 flex flex-wrap gap-2">
