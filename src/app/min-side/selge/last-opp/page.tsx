@@ -51,6 +51,7 @@ const LeggUt = () => {
       );
       const selectedImagesIds = selectedImages.map((image) => image.id);
       ImageMethods.updateMultipleFileInfo(selectedImagesIds, jwt);
+      queryClient.invalidateQueries(UserQueries.me(jwt));
       setSelectedImages([]);
       formik.resetForm();
       setNextProduct(true);
