@@ -8,6 +8,12 @@ export interface CommonSize {
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonDefect {
+  type: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
 export interface CommonPlan {
   id: number;
   duration: string;
@@ -30,6 +36,7 @@ export interface CommonProduct {
   fabric: string;
   brand: string;
   sold: boolean;
+  soldDate: string;
   active: boolean;
 }
 export interface CommonOrder {
@@ -53,6 +60,7 @@ export interface CommonUser {
   createdAt: string;
   updatedAt: string;
   active: null;
+  activatedDate: string;
   activeUntill: null;
   header: string;
   description: string;
@@ -234,6 +242,7 @@ export interface Product {
   attributes: {
     active: boolean;
     sold: boolean;
+    soldDate: string;
     name: string;
     description: string;
     price: number;
@@ -275,6 +284,7 @@ export interface User {
     updatedAt: string;
     active: null;
     activeUntill: null;
+    activatedDate: string;
     header: string;
     description: string;
     icon: string;
@@ -295,6 +305,7 @@ export interface LoginUser {
   updatedAt: string;
   active: null;
   activeUntill: null;
+  activatedDate: string;
   header: string;
   description: string;
   icon: string;
@@ -323,6 +334,15 @@ export interface Material {
   id: number;
   attributes: {
     name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
+}
+export interface Defect {
+  id: number;
+  attributes: {
+    type: string;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;

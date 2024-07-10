@@ -18,12 +18,12 @@ const Layout = async ({ children }: LayoutProps) => {
   const cookieStore: any = cookies();
 
   const token = cookieStore.get("Token");
-  await queryClient.prefetchQuery(UserQueries.me(token.value));
 
   if (!token || token?.value?.length === 0) {
-    console.log("No token");
+    console.log("No token layout");
     redirect("/auth?redirect=/min-side/");
   }
+  await queryClient.prefetchQuery(UserQueries.me(token.value));
 
   return (
     <>

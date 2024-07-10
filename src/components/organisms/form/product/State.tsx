@@ -34,7 +34,7 @@ export const State = ({ formik, onChangeFunc, initialId }: SexProps) => {
             <input
               type="radio"
               name="state"
-              className="h-8 w-8"
+              className="h-8 w-8 rounded"
               value={state.id}
               defaultChecked={state.id === initialId}
               onChange={(e) => {

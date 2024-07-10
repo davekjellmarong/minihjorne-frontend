@@ -9,6 +9,7 @@ const Page = () => {
     Login: "login",
     Register: "register",
   };
+  console.log("auth page");
   const [view, setView] = useState(ViewEnum.Login);
   const [message, setMessage] = useState("");
   const searchParams = useSearchParams();

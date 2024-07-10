@@ -19,7 +19,7 @@ const HomeHeroImage = () => {
               Kjøp klær
             </button>
           </Link>
-          <Link href="/produkter">
+          <Link href="/min-side/selge/last-opp">
             <button className=" rounded-lg border-2 border-brand-500 bg-brand-500 px-8 py-4 text-white sm:hover:bg-brand-100 sm:hover:text-black">
               Selg klær
             </button>

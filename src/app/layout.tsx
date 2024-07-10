@@ -30,8 +30,8 @@ export default function RootLayout({
     <html lang="NO">
       <body className={inter.className}>
         <Providers>
-          <AutoLoginMiddleware>
-            <PHProvider>
+          <PHProvider>
+            <AutoLoginMiddleware>
               <header className="mb-2  h-[56px] w-full">
                 <Nav />
               </header>
@@ -46,8 +46,8 @@ export default function RootLayout({
                 />
               </main>
               <Footer />
-            </PHProvider>
-          </AutoLoginMiddleware>
+            </AutoLoginMiddleware>
+          </PHProvider>
         </Providers>
       </body>
     </html>

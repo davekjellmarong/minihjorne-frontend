@@ -6,6 +6,9 @@ import {
 import { cookies } from "next/headers";
 import React from "react";
 import axios from "axios";
+import { redirect } from "next/navigation";
+import { NextURL } from "next/dist/server/web/next-url";
+
 interface AutoLoginMiddlewareProps {
   children: React.ReactNode;
 }
@@ -13,7 +16,7 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   const cookieStore: any = cookies();
   const token = cookieStore.get("Token");
   if (!token || token?.value?.length === 0) {
-    console.log("No token");
+    console.log("No token autologin middleware");
     return <>{children}</>;
   }
 
@@ -28,6 +31,7 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
   });
 
   if (response instanceof Error) {
+    // redirect("/auth?redirect=/min-side/");
     return <>{children}</>;
   }
   const queryClient = new QueryClient();

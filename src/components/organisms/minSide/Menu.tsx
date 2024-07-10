@@ -8,12 +8,20 @@ import {
   UploadSimple,
   UserSquare,
   SignOut,
+  ChartBar,
 } from "@phosphor-icons/react";
 import { useCookies } from "react-cookie";
+import path from "path";
+import { useQueryClient } from "@tanstack/react-query";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { useRouter } from "next/navigation";
 
 const Menu = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
-
+  const queryClient = useQueryClient();
+  const router = useRouter();
   const navItems = [
     {
       header: "Ordre",
@@ -35,6 +43,13 @@ const Menu = () => {
           title: "Last opp klær",
           path: "/min-side/selge/last-opp",
           icon: <UploadSimple size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+        {
+          id: 5,
+          title: "Statistikk",
+          path: "/min-side/selge/statistikk",
+          icon: <ChartBar size={32} weight="thin" color="purple" />,
           action: null,
         },
         {
@@ -60,20 +75,24 @@ const Menu = () => {
         },
       ],
     },
-    {
-      header: "Innstillinger",
-      items: [
-        {
-          id: 1,
-          title: "Logg ut",
-          path: "/",
-          icon: <SignOut size={32} weight="thin" color="red" />,
-          action: () => {
-            removeCookie("Token");
-          },
-        },
-      ],
-    },
+    // {
+    //   header: "Innstillinger",
+    //   items: [
+    //     {
+    //       id: 1,
+    //       title: "Logg ut",
+    //       path: "/",
+    //       icon: <SignOut size={32} weight="thin" color="red" />,
+    //       action: () => {
+    //         removeCookie("Token");
+    //         queryClient.removeQueries({ queryKey: UserQueries.all() });
+    //         queryClient.removeQueries({ queryKey: AuthQueries.all() });
+    //         queryClient.removeQueries({ queryKey: ["me"] });
+    //         queryClient.removeQueries({ queryKey: ["login-user"] });
+    //       },
+    //     },
+    //   ],
+    // },
   ];
   return (
     <div className="relative">
@@ -82,14 +101,14 @@ const Menu = () => {
           return (
             <div key={headerItem.header}>
               <p className="font-medium">{headerItem.header}</p>
-              <ul className="flex flex-col gap-4">
+              <ul className="flex flex-col gap-1">
                 {headerItem.items.map((item) => (
                   <Link
                     href={item.path}
                     key={item.id}
                     className={`flex items-center rounded p-4  sm:hover:bg-gray-100 `}
                     onClick={() => {
-                      item.action && item.action();
+                      // item.action && item.action();
                     }}
                   >
                     <span className="pr-6">{item.icon}</span>

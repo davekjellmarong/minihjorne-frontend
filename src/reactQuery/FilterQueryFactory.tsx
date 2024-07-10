@@ -4,6 +4,7 @@ import { apiUrl } from "@/utils/serverUtils";
 import {
   Category,
   Color,
+  Defect,
   Material,
   Product,
   Sex,
@@ -53,6 +54,12 @@ export const FilterQueries = {
       queryFn: () => FilterMethods.getSexes(),
       staleTime: Infinity,
     }),
+  defects: () =>
+    queryOptions({
+      queryKey: [...FilterQueries.all(), "defects"],
+      queryFn: () => FilterMethods.getDefects(),
+      staleTime: Infinity,
+    }),
 };
 
 export const FilterMethods = {
@@ -73,5 +80,8 @@ export const FilterMethods = {
   },
   getSexes: async (): Promise<Sex[]> => {
     return getPublicData("/sexes");
+  },
+  getDefects: async (): Promise<Defect[]> => {
+    return getPublicData("/defects");
   },
 };

@@ -14,13 +14,13 @@ const Breadcrumb = () => {
   return (
     <div className={`p-4 text-gray-500 ${backgroundColor}`}>
       <Link href="/">
-        <span className={` text-sm italic  transition-colors ${textColor}`}>
+        <span className={`text-sm italic transition-colors ${textColor}`}>
           Home
         </span>
       </Link>
       {pathnames.map((value, index) => {
+        if (value === "selge") return null;
         const to = `/${pathnames.slice(0, index + 1).join("/")}`;
-
         return (
           <span key={to} className="mx-2">
             {"> "}
