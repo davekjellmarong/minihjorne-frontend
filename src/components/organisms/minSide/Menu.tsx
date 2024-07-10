@@ -108,7 +108,7 @@ const Menu = () => {
                     key={item.id}
                     className={`flex items-center rounded p-4  sm:hover:bg-gray-100 `}
                     onClick={() => {
-                      item.action && item.action();
+                      // item.action && item.action();
                     }}
                   >
                     <span className="pr-6">{item.icon}</span>
