@@ -12,8 +12,9 @@ import {
 } from "@phosphor-icons/react";
 import { authUpperNavItems, upperNavItems } from "./UpperNavItems";
 import { MenuDropDown } from "./MenuDropDown";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 const Nav = () => {
-  const { data } = useQuery({ queryKey: ["jwt"] });
+  const { data } = useQuery(AuthQueries.jwt());
   let navItemsRightEnd = navItemsPublic;
   let navItems = upperNavItems;
   if (data) {

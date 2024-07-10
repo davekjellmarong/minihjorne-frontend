@@ -10,7 +10,7 @@ import {
 import { clearCartInLocalStorage } from "@/utils/CartUtils";
 import { CurrencyDollar, Pants, Truck } from "@phosphor-icons/react";
 
-const CheckoutForm = ({ price }: any) => {
+const StripeForm = ({ price }: any) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -160,4 +160,4 @@ const CheckoutForm = ({ price }: any) => {
   );
 };
 
-export default CheckoutForm;
+export default StripeForm;

@@ -12,14 +12,14 @@ interface FiltersProps {
 }
 const Filters = ({ setFilterQuery, filterQuery }: FiltersProps) => {
   const [open, setOpen] = useState(false);
-  const [
+  const {
+    SexData,
+    CategoryData,
+    SizesData,
     TagsData,
     ColorsData,
-    SizesData,
-    CategoryData,
     MaterialsData,
-    SexData,
-  ] = useGetFilters();
+  } = useGetFilters();
 
   const handleFilterFetch = () => {
     const queryParams = new URLSearchParams(window.location.search);

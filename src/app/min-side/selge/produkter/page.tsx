@@ -1,5 +1,4 @@
 "use client";
-import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import { ProductBackend, User } from "@/utils/types";
 import { ProductsMethods } from "@/utils/utils";
 import {
@@ -22,6 +21,7 @@ const Produkter = () => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: products } = useSuspenseQuery(ProductQueries.me_all(jwt));
+  console.log(products);
   if (products.length === 0)
     return (
       <EmptyList

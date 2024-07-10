@@ -5,7 +5,7 @@ import { Order } from "@/utils/types";
 
 export const OrderQueries = {
   all: () => ["orders"],
-  detail: (id: string | number, token: any) =>
+  detail: (id: any, token: any) =>
     queryOptions({
       queryKey: [...OrderQueries.all(), id],
       queryFn: () => OrderMethods.getById(id, token),
@@ -32,7 +32,7 @@ const OrderMethods = {
       token,
     );
   },
-  getById: async (id: any, token: any) => {
+  getById: async (id: any, token: any): Promise<Order> => {
     return getAuthData(`/orders/${id}?populate=*`, token);
   },
 };

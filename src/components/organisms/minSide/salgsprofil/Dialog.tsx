@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ColorsRQ } from "@/utils/types";
 import { fetchColors } from "@/utils/utils";
 import { tailwindColors } from "@/utils/constants";
+import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
 
 interface DialogProps {
   formik: any;
@@ -22,10 +23,7 @@ interface DialogProps {
 }
 const Dialog = ({ formik, dialogRef }: DialogProps) => {
   // const dialogRef = useRef<HTMLDialogElement>(null);
-  const { data: colors } = useQuery<ColorsRQ>({
-    queryKey: ["colors"],
-    queryFn: fetchColors,
-  });
+  const { data: colors } = useQuery(FilterQueries.colors());
   const icons: any = {
     Star: {
       component: (
@@ -158,7 +156,7 @@ const Dialog = ({ formik, dialogRef }: DialogProps) => {
             </div>
             <div>
               {colors && (
-                <Color formik={formik} colors={colors.data} formName="color" />
+                <Color formik={formik} colors={colors} formName="color" />
               )}
               <label htmlFor="primaryColor">Primær farge</label>
               {/* <input

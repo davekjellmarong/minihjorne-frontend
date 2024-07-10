@@ -18,15 +18,13 @@ import {
   Shorts,
   Skirt,
 } from "../../../molecules/SVGicons";
+import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
 interface DisplayCategoryProps {
   category: any;
 }
 
 const DisplayCategory = ({ category }: DisplayCategoryProps) => {
-  const { data: categories } = useQuery<CategoryRQ>({
-    queryKey: ["category"],
-    queryFn: fetchCategories,
-  });
+  const { data: categories } = useQuery(FilterQueries.categories());
   const iconsList: any = {
     Head: <BaseballCap size={32} />,
     Dress: <Dress size={32} />,
@@ -41,9 +39,7 @@ const DisplayCategory = ({ category }: DisplayCategoryProps) => {
     Skirt: <Skirt />,
     OutdoorSuit: <OutdoorSuit />,
   };
-  const categoryData = categories?.data.find(
-    ({ id }) => String(id) === category,
-  );
+  const categoryData = categories?.find(({ id }) => String(id) === category);
   if (categoryData) {
     return (
       <div>

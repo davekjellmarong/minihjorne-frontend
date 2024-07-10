@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { authUpperNavItems, upperNavItems } from "./UpperNavItems";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 
 const UpperNav = () => {
   const [navItems, setNavItems] = useState(upperNavItems);
   const [isOpen, setIsOpen] = useState(false);
 
-  const { data } = useQuery({ queryKey: ["jwt"] });
+  const { data } = useQuery(AuthQueries.jwt());
   console.log(data);
 
   useEffect(() => {

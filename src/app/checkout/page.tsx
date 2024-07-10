@@ -1,17 +1,17 @@
 "use client";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 import { useEffect, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { PaymentMethods } from "@/utils/utils";
 import { getCart } from "@/utils/CartUtils";
-import CheckoutForm from "./CheckoutForm";
+import StripeForm from "../../components/organisms/checkout/StripeForm";
 import { useRouter } from "next/navigation";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK as string);
 
 const Page = () => {
-  useAutoLogIn();
   const router = useRouter();
   const [clientSecret, setClientSecret] = useState("");
   let cart: any;
@@ -19,10 +19,8 @@ const Page = () => {
     cart = getCart();
   }
 
-  const { data: jwt } = useQuery({
-    queryKey: ["jwt"],
-  });
-  const { mutate: createPayment, isPaused: loading } = useMutation({
+  const { data: jwt } = useQuery(AuthQueries.jwt());
+  const { mutate: createPayment } = useMutation({
     mutationFn: (values: any) => {
       return PaymentMethods.post(values, jwt);
     },
@@ -61,7 +59,7 @@ const Page = () => {
     <div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm price={cart.totalPrice} />
+          <StripeForm price={cart.totalPrice} />
         </Elements>
       )}
     </div>

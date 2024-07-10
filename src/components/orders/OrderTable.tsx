@@ -1,13 +1,7 @@
 "use client";
-import ProductStatusChip from "@/components/organisms/ProductStatusChip";
-import { Order, Product, ProductBackend } from "@/utils/types";
-import Image from "next/image";
-
+import { Product } from "@/utils/types";
 import { useRouter } from "next/navigation";
 import React from "react";
-import ColorSquares from "../organisms/filters/color/ColorSquares";
-import Link from "next/link";
-
 interface OrderTableProps {
   products: Product[];
 }
@@ -15,7 +9,6 @@ interface OrderTableProps {
 const OrderTable = ({ products }: OrderTableProps) => {
   const router = useRouter();
 
-  console.log(products);
   if (products?.length > 0) {
     return (
       <>
