@@ -8,6 +8,7 @@ import {
   YAxis,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import { getProductsStats } from "./utils";
 interface LineReChartProps {
@@ -37,20 +38,20 @@ const LineReChart = ({ user, products }: LineReChartProps) => {
   );
 
   return (
-    <div>
-      <LineChart
-        width={380}
-        height={250}
-        data={dynamicData}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis ticks={ticks} />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="produkterSolgt" stroke="#8884d8" />
-      </LineChart>
+    <div className="h-64 w-full md:h-96">
+      <ResponsiveContainer>
+        <LineChart
+          data={dynamicData}
+          margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" interval={"preserveStartEnd"} />
+          <YAxis ticks={ticks} />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="produkterSolgt" stroke="#8884d8" />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };
