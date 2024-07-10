@@ -19,8 +19,15 @@ export const getProductsStats = (products: ProductBackend[]) => {
     return acc + product.price;
   }, 0);
   const remainingProducts = products.filter((product) => !product.sold);
-  const productsSoldPercentage = (productsSold.length / products.length) * 100;
-  const revenuePercentage = (revenue / possibleRevenue) * 100;
+
+  let productsSoldPercentage = (productsSold.length / products.length) * 100;
+  let revenuePercentage = (revenue / possibleRevenue) * 100;
+  if (isNaN(productsSoldPercentage)) {
+    productsSoldPercentage = 0;
+  }
+  if (isNaN(revenuePercentage)) {
+    revenuePercentage = 0;
+  }
   return {
     productsSold: productsSold,
     revenue: revenue,

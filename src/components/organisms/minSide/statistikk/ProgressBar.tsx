@@ -1,4 +1,3 @@
-// src/components/ProgressBar.js
 import React, { useEffect, useState } from "react";
 
 interface ProgressBarProps {

@@ -16,6 +16,9 @@ interface LineReChartProps {
   products: ProductBackend[];
 }
 const LineReChart = ({ user, products }: LineReChartProps) => {
+  if (!user.activatedDate) {
+    return null;
+  }
   const { productsSold } = getProductsStats(products);
   let productsSoldAcc = 0;
   const dynamicData = productsSold.map((product) => {
