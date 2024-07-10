@@ -28,31 +28,19 @@ import Materials from "./Materials";
 import Tags from "./Tags";
 import Carousel from "react-multi-carousel";
 import FormFieldContainer from "./FormFieldContainer";
+import Deviation from "./Defect";
+import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
 
 interface ProductFormProps {
   formik: any;
 }
 const ProductForm = ({ formik }: ProductFormProps) => {
-  const { data: colors } = useSuspenseQuery<ColorsRQ>({
-    queryKey: ["colors"],
-    queryFn: fetchColors,
-  });
-  const { data: tags } = useSuspenseQuery<TagsRQ>({
-    queryKey: ["tags"],
-    queryFn: fetchTags,
-  });
-  const { data: categories } = useSuspenseQuery<CategoryRQ>({
-    queryKey: ["categories"],
-    queryFn: fetchCategories,
-  });
-  const { data: materials } = useSuspenseQuery<MaterialsRQ>({
-    queryKey: ["materials"],
-    queryFn: fetchMaterials,
-  });
-  const { data: sizes } = useSuspenseQuery<SizesRQ>({
-    queryKey: ["sizes"],
-    queryFn: fetchSizes,
-  });
+  const { data: colors } = useSuspenseQuery(FilterQueries.colors());
+  const { data: tags } = useSuspenseQuery(FilterQueries.tags());
+  const { data: categories } = useSuspenseQuery(FilterQueries.categories());
+  const { data: materials } = useSuspenseQuery(FilterQueries.materials());
+  const { data: sizes } = useSuspenseQuery(FilterQueries.sizes());
+  const { data: defects } = useSuspenseQuery(FilterQueries.defects());
   const CarouselRef: any = useRef(null);
   const responsive = {
     mobile: {
@@ -77,26 +65,23 @@ const ProductForm = ({ formik }: ProductFormProps) => {
       >
         {/* TO DO TO-DO Decouple FieldComponents and FormFieldContainer */}
         <FormFieldContainer header="Farge">
-          <Color
-            formik={formik}
-            colors={colors.data}
-            onChangeFunc={nextSlide}
-          />
+          <Color formik={formik} colors={colors} onChangeFunc={nextSlide} />
         </FormFieldContainer>
         <Category
           onChangeFunc={nextSlide}
           formik={formik}
-          categories={categories.data}
+          categories={categories}
         />
-        <Size formik={formik} sizes={sizes.data} onChangeFunc={nextSlide} />
-        <Tags onChangeFunc={nextSlide} formik={formik} tags={tags.data} />
+        <Size formik={formik} sizes={sizes} onChangeFunc={nextSlide} />
+        <Tags onChangeFunc={nextSlide} formik={formik} tags={tags} />
         <Sex formik={formik} onChangeFunc={nextSlide} />
         <State formik={formik} onChangeFunc={nextSlide} />
         <Materials
           onChangeFunc={nextSlide}
           formik={formik}
-          materials={materials.data}
+          materials={materials}
         />
+        <Deviation onChangeFunc={nextSlide} formik={formik} defects={defects} />
         <Brand nextSlide={nextSlide} formik={formik} />
         <Price nextSlide={nextSlide} formik={formik} />
 

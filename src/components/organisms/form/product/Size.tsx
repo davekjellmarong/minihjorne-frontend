@@ -1,10 +1,10 @@
 import InputHeader from "@/components/atoms/InputHeader";
-import { Size } from "@/utils/types";
+import { Size as SizeType } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
 
 interface SizeProps {
-  sizes: Size[];
+  sizes: SizeType[];
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
@@ -22,7 +22,7 @@ const Size = ({ sizes, formik, onChangeFunc, initialId }: SizeProps) => {
             <input
               type="radio"
               name="size"
-              className="h-8 w-8"
+              className="h-8 w-8 rounded"
               value={size.id}
               defaultChecked={size.id === initialId}
               onChange={(e) => {

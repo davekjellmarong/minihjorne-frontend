@@ -35,7 +35,7 @@ const Sex = ({ formik, onChangeFunc, initialId }: SexProps) => {
             <input
               type="radio"
               name="sex"
-              className="h-8 w-8"
+              className="h-8 w-8 rounded"
               value={sex.id}
               defaultChecked={sex.id === initialId}
               // onChange={formik.handleChange}

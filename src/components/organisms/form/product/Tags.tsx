@@ -22,7 +22,7 @@ const Tags = ({ tags, formik, onChangeFunc, initialId }: ColorProps) => {
                 {tag.attributes.name}
               </label>
               <input
-                className={`h-8 w-8`}
+                className="h-8 w-8 rounded"
                 type="radio"
                 name="tags"
                 id="tags"

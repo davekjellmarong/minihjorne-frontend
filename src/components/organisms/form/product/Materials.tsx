@@ -26,7 +26,7 @@ const Materials = ({
               {material.attributes.name}
             </label>
             <input
-              className={`h-8 w-8`}
+              className="h-8 w-8 rounded"
               type="radio"
               name="materials"
               id="materials"

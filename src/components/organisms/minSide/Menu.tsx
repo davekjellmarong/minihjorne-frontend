@@ -8,8 +8,10 @@ import {
   UploadSimple,
   UserSquare,
   SignOut,
+  ChartBar,
 } from "@phosphor-icons/react";
 import { useCookies } from "react-cookie";
+import path from "path";
 
 const Menu = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
@@ -35,6 +37,13 @@ const Menu = () => {
           title: "Last opp klær",
           path: "/min-side/selge/last-opp",
           icon: <UploadSimple size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+        {
+          id: 5,
+          title: "Statistikk",
+          path: "/min-side/selge/statistikk",
+          icon: <ChartBar size={32} weight="thin" color="purple" />,
           action: null,
         },
         {
