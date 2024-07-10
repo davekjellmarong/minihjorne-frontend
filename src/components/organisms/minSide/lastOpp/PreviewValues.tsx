@@ -1,5 +1,6 @@
 import DisplayCategory from "@/components/organisms/filters/category/DisplayCategory";
 import ColorSquares from "@/components/organisms/filters/color/ColorSquares";
+import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
 import { CategoryRQ, ColorsRQ } from "@/utils/types";
 import { fetchCategories, fetchColors } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
@@ -10,11 +11,8 @@ interface PreviewValuesProps {
 }
 
 const PreviewValues = ({ formik }: PreviewValuesProps) => {
-  const { data: colors } = useQuery<ColorsRQ>({
-    queryKey: ["colors"],
-    queryFn: fetchColors,
-  });
-  const color = colors?.data.find(
+  const { data: colors } = useQuery(FilterQueries.colors());
+  const color = colors?.find(
     (color) => String(color.id) === formik.values.colors,
   );
 

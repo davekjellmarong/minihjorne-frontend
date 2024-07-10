@@ -29,6 +29,12 @@ export const ProductsMethods = {
   delete: async (id: string, token: any): Promise<Product> => {
     return deleteData(`/products/${id}`, token);
   },
+  getByOrderId: async (id: any, token: any): Promise<Product[]> => {
+    return getAuthData(
+      `/products?populate=*&filters[order][id][$eq]=${id}`,
+      token,
+    );
+  },
 };
 
 export const ProductQueries = {
@@ -52,5 +58,10 @@ export const ProductQueries = {
     queryOptions({
       queryKey: [...ProductQueries.all(), "me", "all"],
       queryFn: () => ProductsMethods.getAllMyProducts(jwt),
+    }),
+  orderId: (id: any, jwt: any) =>
+    queryOptions({
+      queryKey: [...ProductQueries.all(), "order", id],
+      queryFn: () => ProductsMethods.getByOrderId(id, jwt),
     }),
 };

@@ -20,6 +20,8 @@ const useAutoLogIn = () => {
   const user = useQuery({
     queryKey: ["login-user"],
   });
+  console.log("User", user.data);
+  console.log("Me", me.data);
   useEffect(() => {
     if (user?.data) return;
     if (userZ) return;

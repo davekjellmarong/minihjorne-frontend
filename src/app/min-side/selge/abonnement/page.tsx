@@ -2,18 +2,23 @@
 import React, { useEffect, useState } from "react";
 import SuccessDialog from "../../../../components/organisms/minSide/abbonoment/SuccessDialog";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useQuery,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { PaymentMethods } from "@/utils/utils";
 import Cards from "../../../../components/organisms/minSide/abbonoment/Cards";
 import ActiveCard from "../../../../components/organisms/minSide/abbonoment/ActiveCard";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { PaymentQueries } from "@/reactQuery/PaymentQueryFactory";
 
 const Abonnement = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
-  const { data: user } = useQuery(UserQueries.me(jwt));
+  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const searchParams = useSearchParams();
   const [planId, setPlanId] = useState(0);
@@ -23,13 +28,9 @@ const Abonnement = () => {
       setPaymentSuccess(true);
     }
   }, [payment]);
-  const { data: paymentData } = useQuery({
-    queryKey: ["payment-link"],
-    queryFn: () => {
-      return PaymentMethods.getSubscriptionPaymentLink(jwt, planId);
-    },
-    enabled: !!jwt && !!user && planId > 0,
-  });
+  const { data: paymentData } = useSuspenseQuery(
+    PaymentQueries.subscriptionLink(jwt, planId),
+  );
   useEffect(() => {
     if (paymentData?.url) {
       router.push(paymentData.url.url);

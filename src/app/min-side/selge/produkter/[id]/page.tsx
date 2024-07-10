@@ -1,20 +1,11 @@
 "use client";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQuery,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import React, { useState } from "react";
-import {
-  fetchCategories,
-  fetchColors,
-  fetchMaterials,
-  fetchSizes,
-  fetchTags,
-} from "@/utils/utils";
-import {
-  CategoryRQ,
-  ColorsRQ,
-  MaterialsRQ,
-  SizesRQ,
-  TagsRQ,
-} from "@/utils/types";
 import { useFormik } from "formik";
 import Accordion from "../../../../../components/organisms/minSide/produkter/Accordion";
 import {
@@ -39,33 +30,22 @@ import Materials from "@/components/organisms/form/product/Materials";
 import Brand from "@/components/organisms/form/product/Brand";
 import Price from "@/components/organisms/form/product/Price";
 import Color from "@/components/organisms/form/product/Color";
+import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
 const Page = ({ params }: { params: { id: string } }) => {
-  const { data: product } = useQuery(ProductQueries.detail(params.id));
   const queryClient = useQueryClient();
-  const [modal, setModal] = useState(false);
   const router = useRouter();
-  const { data: colors } = useQuery<ColorsRQ>({
-    queryKey: ["colors"],
-    queryFn: fetchColors,
-  });
-  const { data: tags } = useQuery<TagsRQ>({
-    queryKey: ["tags"],
-    queryFn: fetchTags,
-  });
-  const { data: categories } = useQuery<CategoryRQ>({
-    queryKey: ["categories"],
-    queryFn: fetchCategories,
-  });
-  const { data: materials } = useQuery<MaterialsRQ>({
-    queryKey: ["materials"],
-    queryFn: fetchMaterials,
-  });
-  const { data: sizes } = useQuery<SizesRQ>({
-    queryKey: ["sizes"],
-    queryFn: fetchSizes,
-  });
+
+  const [modal, setModal] = useState(false);
+
   const jwt = queryClient.getQueryData(AuthQueries.all());
+  const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
+  const { data: colors } = useSuspenseQuery(FilterQueries.colors());
+  const { data: tags } = useSuspenseQuery(FilterQueries.tags());
+  const { data: categories } = useSuspenseQuery(FilterQueries.categories());
+  const { data: materials } = useSuspenseQuery(FilterQueries.materials());
+  const { data: sizes } = useSuspenseQuery(FilterQueries.sizes());
   const { data: user } = useQuery(UserQueries.me(jwt));
+
   const { mutate: updateProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.put(params.id, values, jwt);
@@ -93,24 +73,25 @@ const Page = ({ params }: { params: { id: string } }) => {
       console.log(err);
     },
   });
+
   const formik = useFormik({
     initialValues: {
-      colors: product?.attributes.colors.data[0].id,
-      colorsNorwegianName: product?.attributes.colors.data[0].attributes.name,
-      material: product?.attributes.material.data?.id,
-      materialName: product?.attributes.material.data?.attributes.name,
-      brand: product?.attributes.brand,
-      price: product?.attributes.price,
-      category: product?.attributes.category.data.id,
-      categoryName: product?.attributes.category.data.attributes.name,
-      state: product?.attributes.state.data.id,
-      stateName: product?.attributes.state.data.attributes.name,
-      size: product?.attributes.size.data.id,
-      sizeName: product?.attributes.size.data.attributes.number,
-      sex: product?.attributes.sex.data.id,
-      sexName: product?.attributes.sex.data.attributes.name,
-      tags: product?.attributes.tags.data[0]?.id,
-      tagName: product?.attributes.tags.data[0]?.attributes.name,
+      colors: product.attributes.colors.data[0]?.id,
+      colorsNorwegianName: product.attributes.colors.data[0].attributes?.name,
+      material: product.attributes.material.data?.id,
+      materialName: product.attributes.material.data?.attributes?.name,
+      brand: product.attributes.brand,
+      price: product.attributes.price,
+      category: product.attributes.category.data?.id,
+      categoryName: product.attributes.category.data.attributes.name,
+      state: product.attributes.state.data?.id,
+      stateName: product.attributes.state.data.attributes.name,
+      size: product.attributes.size.data?.id,
+      sizeName: product.attributes.size.data.attributes.number,
+      sex: product.attributes.sex.data?.id,
+      sexName: product.attributes.sex.data.attributes.name,
+      tags: product.attributes.tags.data[0]?.id,
+      tagName: product.attributes.tags.data[0]?.attributes.name,
     },
 
     onSubmit: (values) => {
@@ -118,15 +99,6 @@ const Page = ({ params }: { params: { id: string } }) => {
       updateProduct({ data: data });
     },
   });
-  if (
-    !colors?.data ||
-    !tags?.data ||
-    !categories?.data ||
-    !materials?.data ||
-    !sizes?.data
-  )
-    return;
-  if (!product) return;
   return (
     <div className="m-auto max-w-[700px] px-6">
       <LoadingOverlay loading={loading} />
@@ -141,12 +113,12 @@ const Page = ({ params }: { params: { id: string } }) => {
       <div className="flex justify-center">
         <ProductStatusChip
           large
-          active={product?.attributes.active}
-          sold={product?.attributes.sold}
+          active={product.attributes.active}
+          sold={product.attributes.sold}
         />
       </div>
       <div className="mb-8 flex flex-wrap justify-evenly gap-2">
-        {product?.attributes.image.data.map((image) => (
+        {product.attributes.image.data.map((image) => (
           <img
             key={image.id}
             src={image.attributes.url}
@@ -162,39 +134,39 @@ const Page = ({ params }: { params: { id: string } }) => {
         <div className="flex flex-wrap justify-center gap-x-4  gap-y-14 pb-10 ">
           <Color
             formik={formik}
-            colors={colors.data}
-            initialId={product?.attributes.colors.data[0].id}
+            colors={colors}
+            initialId={product.attributes.colors.data[0].id}
           />
         </div>
       </Accordion>
       <Accordion label="Kategori" currentValue={formik.values.categoryName}>
         <Category
           formik={formik}
-          categories={categories.data}
-          initialId={product?.attributes.category.data.id}
+          categories={categories}
+          initialId={product.attributes.category.data.id}
         />
       </Accordion>
       <Accordion label="Størrelse" currentValue={formik.values.sizeName}>
         <Size
           formik={formik}
-          sizes={sizes.data}
-          initialId={product?.attributes.size.data.id}
+          sizes={sizes}
+          initialId={product.attributes.size.data.id}
         />
       </Accordion>
       <Accordion label="Tags" currentValue={formik.values.tagName}>
-        <Tags formik={formik} tags={tags.data} initialId={formik.values.tags} />
+        <Tags formik={formik} tags={tags} initialId={formik.values.tags} />
       </Accordion>
       <Accordion label="Kjønn" currentValue={formik.values.sexName}>
-        <Sex formik={formik} initialId={product?.attributes.sex.data.id} />
+        <Sex formik={formik} initialId={product.attributes.sex.data.id} />
       </Accordion>
       <Accordion label="Tilstand" currentValue={formik.values.stateName}>
-        <State formik={formik} initialId={product?.attributes.state.data.id} />
+        <State formik={formik} initialId={product.attributes.state.data.id} />
       </Accordion>
       <Accordion label="Materialer" currentValue={formik.values.materialName}>
         <Materials
           formik={formik}
-          materials={materials.data}
-          initialId={product?.attributes.material.data?.id}
+          materials={materials}
+          initialId={product.attributes.material.data?.id}
         />
       </Accordion>
       <Accordion label="Merke" currentValue={formik.values.brand}>
@@ -208,7 +180,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Button
           icon="trash"
           type="danger"
-          disabled={product?.attributes.sold}
+          disabled={product.attributes.sold}
           onClick={() => {
             setModal(true);
             scrollTo(0, 0);
@@ -218,7 +190,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         </Button>
         <Button
           icon="save"
-          disabled={product?.attributes.sold}
+          disabled={product.attributes.sold}
           onClick={() => {
             formik.handleSubmit();
           }}

@@ -88,7 +88,7 @@ const Filter = ({
           </span>
         </div>
         <ul ref={FilterRef} className="hidden">
-          {data.data.map((item: any) => {
+          {data.map((item: any) => {
             return (
               <li
                 key={item.attributes[property]}
