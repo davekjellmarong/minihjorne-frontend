@@ -8,6 +8,8 @@ const useGetFilters = () => {
   const { data: MaterialsData } = useQuery(FilterQueries.materials());
   const { data: SizesData } = useQuery(FilterQueries.sizes());
   const { data: SexData } = useQuery(FilterQueries.sexes());
+  const { data: CategoryTypesData } = useQuery(FilterQueries.categoryTypes());
+  const { data: DefectsData } = useQuery(FilterQueries.defects());
 
   return {
     ColorsData,
@@ -16,6 +18,8 @@ const useGetFilters = () => {
     MaterialsData,
     SizesData,
     SexData,
+    CategoryTypesData,
+    DefectsData,
   };
 };
 

@@ -77,19 +77,19 @@ const Page = ({ params }: { params: { id: string } }) => {
   const formik = useFormik({
     initialValues: {
       colors: product.attributes.colors.data[0]?.id,
-      colorsNorwegianName: product.attributes.colors.data[0].attributes?.name,
+      colorsNorwegianName: product.attributes.colors.data[0]?.attributes?.name,
       material: product.attributes.material.data?.id,
       materialName: product.attributes.material.data?.attributes?.name,
       brand: product.attributes.brand,
       price: product.attributes.price,
       category: product.attributes.category.data?.id,
-      categoryName: product.attributes.category.data.attributes.name,
+      categoryName: product.attributes.category.data?.attributes.name,
       state: product.attributes.state.data?.id,
-      stateName: product.attributes.state.data.attributes.name,
+      stateName: product.attributes.state.data?.attributes.name,
       size: product.attributes.size.data?.id,
-      sizeName: product.attributes.size.data.attributes.number,
+      sizeName: product.attributes.size.data?.attributes.number,
       sex: product.attributes.sex.data?.id,
-      sexName: product.attributes.sex.data.attributes.name,
+      sexName: product.attributes.sex.data?.attributes.name,
       tags: product.attributes.tags.data[0]?.id,
       tagName: product.attributes.tags.data[0]?.attributes.name,
     },
@@ -139,13 +139,14 @@ const Page = ({ params }: { params: { id: string } }) => {
           />
         </div>
       </Accordion>
-      <Accordion label="Kategori" currentValue={formik.values.categoryName}>
+      {/* <Accordion label="Kategori" currentValue={formik.values.categoryName}>
         <Category
+
           formik={formik}
           categories={categories}
           initialId={product.attributes.category.data.id}
         />
-      </Accordion>
+      </Accordion> */}
       <Accordion label="Størrelse" currentValue={formik.values.sizeName}>
         <Size
           formik={formik}

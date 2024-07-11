@@ -3,6 +3,7 @@ import { queryOptions } from "@tanstack/react-query";
 import { apiUrl } from "@/utils/serverUtils";
 import {
   Category,
+  CategoryType,
   Color,
   Defect,
   Material,
@@ -48,6 +49,12 @@ export const FilterQueries = {
       queryFn: () => FilterMethods.getCategories(),
       staleTime: Infinity,
     }),
+  categoryTypes: () =>
+    queryOptions({
+      queryKey: [...FilterQueries.all(), "categoryTypes"],
+      queryFn: () => FilterMethods.getCategoryTypes(),
+      staleTime: Infinity,
+    }),
   sexes: () =>
     queryOptions({
       queryKey: [...FilterQueries.all(), "sexes"],
@@ -76,12 +83,15 @@ export const FilterMethods = {
     return getPublicData("/tags");
   },
   getCategories: async (): Promise<Category[]> => {
-    return getPublicData("/categories");
+    return getPublicData("/categories?populate=*");
   },
   getSexes: async (): Promise<Sex[]> => {
     return getPublicData("/sexes");
   },
   getDefects: async (): Promise<Defect[]> => {
     return getPublicData("/defects");
+  },
+  getCategoryTypes: async (): Promise<CategoryType[]> => {
+    return getPublicData("/category-types?populate=*");
   },
 };

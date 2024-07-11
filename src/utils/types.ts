@@ -323,11 +323,22 @@ export interface Tag {
 export interface Category {
   id: number;
   attributes: {
+    category_types: { data: CategoryType[] };
     name: string;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
     icon: string;
+  };
+}
+export interface CategoryType {
+  id: number;
+  attributes: {
+    categories: { data: Category[] };
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
   };
 }
 export interface Material {

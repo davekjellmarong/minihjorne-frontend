@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useState } from "react";
 import ImageUploader from "../../../../components/organisms/minSide/lastOpp/ImageUploader";
 import ProductForm from "../../../../components/organisms/form/product/ProductForm";
 import ImagesList from "../../../../components/organisms/minSide/lastOpp/ImagesList";
@@ -8,18 +8,16 @@ import { useFormik } from "formik";
 import { ProductsMethods } from "@/utils/utils";
 import {
   useMutation,
-  useQuery,
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import Dialog from "@/components/organisms/dialog/Dialog";
 import FilterDialog from "@/components/organisms/product/FilterDialog";
-import { ArrowRight, Question, SidebarSimple } from "@phosphor-icons/react";
+import { ArrowRight, SidebarSimple } from "@phosphor-icons/react";
 import IntroCarousel from "../../../../components/organisms/minSide/lastOpp/IntroCarousel";
 import Link from "next/link";
 import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
-import Image from "next/image";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import { Image as ImageType } from "@/utils/types";
@@ -107,7 +105,6 @@ const LeggUt = () => {
   return (
     <>
       <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
-        {/* <p className="m-10 text-center">0 produkter lastet opp</p> */}
         <p className="m-10 text-center">Velg opp til 3 bilder per produkt</p>
         <ImagesList
           images={images}
