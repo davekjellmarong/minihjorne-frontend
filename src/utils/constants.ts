@@ -83,3 +83,10 @@ export const queryTemplates = {
   colorQueryTemplate: "&filters[colors][id][$eq]=",
   materialQueryTemplate: "&filters[materials][id][$eq]=",
 };
+
+export enum CategoryTypeEnum {
+  Uteklær = 1,
+  Regnklær = 2,
+  Vinterklær = 3,
+  Inneklær = 4,
+}

@@ -26,15 +26,27 @@ const Defect = ({ defects, formik, onChangeFunc, initialId }: DefectProps) => {
               defaultChecked={defect.id === initialId}
               onChange={(e) => {
                 const defectId = e.target.value;
-                const defectName = defect.attributes.type;
 
                 // Set both color ID and color name to Formik values
-                formik.setFieldValue("defect", defectId);
+                formik.setFieldValue("defects", defectId);
                 if (onChangeFunc) {
                   onChangeFunc();
                 }
               }}
             />
+            {/* { 
+
+              <input
+              type="text"
+              name="defectDescription"
+              className="w-48"
+              placeholder="Beskrivelse"
+              onChange={(e) => {
+                const defectDescription = e.target.value;
+                formik.setFieldValue("defectDescription", defectDescription);
+              }}
+              />
+            } */}
           </div>
         );
       })}

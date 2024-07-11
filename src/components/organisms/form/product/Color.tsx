@@ -2,6 +2,7 @@
 import { tailwindColorsObject } from "@/utils/constants";
 import { Color as ColorType } from "@/utils/types";
 import React from "react";
+import FormFieldContainer from "./FormFieldContainer";
 
 interface ColorProps {
   colors: ColorType[];
@@ -19,7 +20,7 @@ const Color = ({
   initialId,
 }: ColorProps) => {
   return (
-    <>
+    <FormFieldContainer header="Farge">
       {colors.map((color) => {
         const tailwindColor = tailwindColorsObject[color.attributes.tailwind];
         return (
@@ -54,7 +55,7 @@ const Color = ({
           </div>
         );
       })}
-    </>
+    </FormFieldContainer>
   );
 };
 

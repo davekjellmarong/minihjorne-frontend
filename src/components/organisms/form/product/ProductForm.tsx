@@ -8,39 +8,30 @@ import Sex from "./Sex";
 import Price from "./Price";
 import Size from "./Size";
 import Brand from "./Brand";
-import { useMutation, useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import {
-  fetchCategories,
-  fetchColors,
-  fetchMaterials,
-  fetchSizes,
-  fetchTags,
-} from "@/utils/utils";
-import {
-  CategoryRQ,
-  ColorsRQ,
-  MaterialsRQ,
-  SizesRQ,
-  TagsRQ,
-} from "@/utils/types";
-import Loading from "@/components/molecules/loading/Loading";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import Materials from "./Materials";
 import Tags from "./Tags";
 import Carousel from "react-multi-carousel";
-import FormFieldContainer from "./FormFieldContainer";
 import Deviation from "./Defect";
 import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import CategoryTypes from "./CategoryType";
+import { CategoryTypeEnum } from "@/utils/constants";
 
 interface ProductFormProps {
   formik: any;
 }
 const ProductForm = ({ formik }: ProductFormProps) => {
+  const [categoryType, setCategoryType] = useState(CategoryTypeEnum.Inneklær);
   const { data: colors } = useSuspenseQuery(FilterQueries.colors());
   const { data: tags } = useSuspenseQuery(FilterQueries.tags());
   const { data: categories } = useSuspenseQuery(FilterQueries.categories());
   const { data: materials } = useSuspenseQuery(FilterQueries.materials());
   const { data: sizes } = useSuspenseQuery(FilterQueries.sizes());
   const { data: defects } = useSuspenseQuery(FilterQueries.defects());
+  const { data: categoryTypes } = useSuspenseQuery(
+    FilterQueries.categoryTypes(),
+  );
+  console.log("categoryTypes", categoryTypes);
   const CarouselRef: any = useRef(null);
   const responsive = {
     mobile: {
@@ -64,14 +55,21 @@ const ProductForm = ({ formik }: ProductFormProps) => {
         transitionDuration={800}
       >
         {/* TO DO TO-DO Decouple FieldComponents and FormFieldContainer */}
-        <FormFieldContainer header="Farge">
-          <Color formik={formik} colors={colors} onChangeFunc={nextSlide} />
-        </FormFieldContainer>
+        <CategoryTypes
+          setCategoryType={setCategoryType}
+          categoryTypes={categoryTypes}
+          formik={formik}
+          onChangeFunc={nextSlide}
+        />
+
         <Category
+          categoryType={categoryType}
+          categoryTypes={categoryTypes}
           onChangeFunc={nextSlide}
           formik={formik}
           categories={categories}
         />
+        <Color formik={formik} colors={colors} onChangeFunc={nextSlide} />
         <Size formik={formik} sizes={sizes} onChangeFunc={nextSlide} />
         <Tags onChangeFunc={nextSlide} formik={formik} tags={tags} />
         <Sex formik={formik} onChangeFunc={nextSlide} />
