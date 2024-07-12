@@ -13,7 +13,7 @@ const Product = ({ product }: ProductProps) => {
   return (
     <Link
       href={`/produkter/${product.id}`}
-      className="w-full cursor-pointer rounded border-2 border-gray-100 "
+      className="w-full cursor-pointer rounded border-2 border-gray-100 active:bg-gray-200"
       key={product.id}
       onClick={() => {}}
     >
