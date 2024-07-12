@@ -13,6 +13,7 @@ import { useCookies } from "react-cookie";
 const MinSide = () => {
   const [cookies] = useCookies(["Token"]);
   const { data: user } = useSuspenseQuery(UserQueries.me(cookies.Token));
+  console.log(user);
 
   return (
     <div className="flex flex-col">

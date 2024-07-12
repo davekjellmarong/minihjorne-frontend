@@ -6,6 +6,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUser } from "../../utils/utils";
 import { useCookies } from "react-cookie";
 import LoadingOverlay from "../molecules/loading/LoadingOverlay";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 const Login = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");
@@ -26,8 +28,10 @@ const Login = () => {
       console.log(data);
       if (data.jwt.length > 0) {
         console.log({ data });
-        queryClient.setQueryData(["login-user"], data.user);
-        queryClient.setQueryData(["jwt"], data.jwt);
+        // queryClient.setQueryData(["login-user"], data.user);
+        queryClient.setQueryData(UserQueries.me(data.jwt).queryKey, data.user);
+
+        queryClient.setQueryData(AuthQueries.jwt().queryKey, data.jwt);
         const expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + 30);
         setCookie("Token", data.jwt, { expires: expirationDate });

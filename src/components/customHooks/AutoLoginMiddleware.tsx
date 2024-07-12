@@ -8,6 +8,8 @@ import React from "react";
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { NextURL } from "next/dist/server/web/next-url";
+import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 
 interface AutoLoginMiddlewareProps {
   children: React.ReactNode;
@@ -35,8 +37,8 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
     return <>{children}</>;
   }
   const queryClient = new QueryClient();
-  queryClient.setQueryData(["login-user"], response.data);
-  queryClient.setQueryData(["jwt"], token.value);
+  queryClient.setQueryData(UserQueries.me(token).queryKey, response.data);
+  queryClient.setQueryData(AuthQueries.jwt().queryKey, token.value);
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       {children}
