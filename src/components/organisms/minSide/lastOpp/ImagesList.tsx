@@ -16,7 +16,7 @@ const ImagesList = ({
   selectedImages,
 }: ImageListProps) => {
   return (
-    <div className="mx-12 flex flex-wrap justify-center gap-4">
+    <div className="mx-4 flex flex-wrap justify-center gap-2">
       {images?.map((image, index) => (
         <div
           className="relative"
@@ -55,7 +55,7 @@ const ImagesList = ({
           <Image
             width={75}
             height={75}
-            className={`size-24 object-scale-down shadow-lg`}
+            className={`size-20 object-scale-down shadow-lg`}
             src={image.url}
             alt={`uploaded-image-${index}`}
           />

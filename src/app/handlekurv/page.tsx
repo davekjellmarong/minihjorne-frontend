@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import Button from "@/components/atoms/Button";
 
 const Page = () => {
   const router = useRouter();
@@ -56,7 +57,7 @@ const Page = () => {
                   {product.attributes.category.data.attributes.name}
                 </p>
                 <p className="row-span-1">{product.attributes.price}kr</p>
-                <button
+                <Button
                   className="flex flex-col justify-start"
                   onClick={() => {
                     const updatedCart = removeItemFromCart(product.id);
@@ -64,7 +65,7 @@ const Page = () => {
                   }}
                 >
                   <XCircle color="gray" size={32} weight="thin" />
-                </button>
+                </Button>
                 <p className="col-span-3 row-span-1 font-light text-gray-500">
                   Str {product.attributes.size.data.attributes.number}
                 </p>

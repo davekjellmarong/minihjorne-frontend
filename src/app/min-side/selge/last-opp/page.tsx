@@ -104,7 +104,7 @@ const LeggUt = () => {
   }
   return (
     <>
-      <FilterDialog open={modal} setOpen={setModal} width="w-3/4">
+      <FilterDialog open={modal} setOpen={setModal} width="w-5/6">
         <p className="m-10 text-center">Velg opp til 3 bilder per produkt</p>
         <ImagesList
           images={images}

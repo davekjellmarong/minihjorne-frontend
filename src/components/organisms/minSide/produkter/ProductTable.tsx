@@ -5,28 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-  getPaginationRowModel,
-} from "@tanstack/react-table";
-// import { columns } from "@/components/table/ProductsTable/Columns";
 
 interface ProductTableProps {
   products: ProductBackend[];
-  // columns: ColumnDef<ProductBackend>[];
 }
 
 const ProductTable = ({ products }: ProductTableProps) => {
   const router = useRouter();
-  // const table = useReactTable({
-  //   products,
-  //   columns,
-  //   getCoreRowModel: getCoreRowModel(),
-  //   getPaginationRowModel: getPaginationRowModel(),
-  // });
   return (
     <>
       <table className="m-auto w-full max-w-[700px]">
@@ -63,7 +48,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
             return (
               <tr
                 key={product.id}
-                className="cursor-pointer border-b border-indigo-100 sm:hover:bg-indigo-100"
+                className="cursor-pointer border-b border-indigo-100 active:bg-indigo-100 sm:hover:bg-indigo-100"
                 onClick={() => {
                   router.push(`produkter/${product.id}`);
                 }}
