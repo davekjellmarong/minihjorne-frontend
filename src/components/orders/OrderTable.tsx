@@ -38,7 +38,7 @@ const OrderTable = ({ products }: OrderTableProps) => {
                 //   key={product.id}
                 // >
                 <tr
-                  className="w-full cursor-pointer border-2 border-gray-100 sm:hover:bg-gray-100"
+                  className="w-full cursor-pointer border-2 border-gray-100 active:bg-gray-100 sm:hover:bg-gray-100"
                   onClick={() => {
                     router.push(`/produkter/${product.id}`);
                   }}

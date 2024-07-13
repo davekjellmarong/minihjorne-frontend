@@ -15,6 +15,8 @@ interface ButtonProps {
   type?: "brand" | "danger" | "outline" | "flat";
   onClick?: () => void;
   disabled?: boolean;
+  className?: string;
+  submit?: boolean;
 }
 const Button = ({
   icon,
@@ -22,6 +24,8 @@ const Button = ({
   type = "brand",
   onClick,
   disabled,
+  className = "",
+  submit = false,
 }: ButtonProps) => {
   const iconElement = {
     trash: <Trash size={24} />,
@@ -33,24 +37,27 @@ const Button = ({
   let colors;
   if (disabled) {
     colors = {
-      brand: "bg-brand-300 text-white",
-      danger: "bg-red-300 text-white",
-      outline: "bg-gray-300 text-gray-500 border border-gray-300",
-      flat: "bg-white text-gray-500",
+      brand: "bg-brand-300 text-white active:bg-brand-400",
+      danger: "bg-red-300 text-white active:bg-red-400",
+      outline:
+        "bg-brand-300 text-gray-500 border-2 border-brand-300 active:bg-brand-400",
+      flat: "bg-white text-gray-500 active:bg-gray-100",
     };
   } else {
     colors = {
-      brand: "bg-brand-500 text-white",
-      danger: "bg-red-500 text-white",
-      outline: "bg-white text-black border border-gray-300",
-      flat: "bg-white text-brand-600",
+      brand: "bg-brand-500 text-white active:bg-brand-700",
+      danger: "bg-red-500 text-white active:bg-red-700",
+      outline:
+        "bg-white text-black border-2 border-brand-300 active:bg-brand-100",
+      flat: "bg-white text-brand-600 active:bg-gray-100",
     };
   }
   return (
     <button
+      type={submit ? "submit" : "button"}
       onClick={onClick}
       disabled={disabled}
-      className={`${colors[type]}  flex items-center gap-2 rounded p-4 px-6 `}
+      className={`${colors[type]}  flex items-center justify-center gap-2 rounded p-4 px-6 ${className}`}
     >
       {icon && <span>{iconElement[icon]}</span>}
       <p>{children}</p>

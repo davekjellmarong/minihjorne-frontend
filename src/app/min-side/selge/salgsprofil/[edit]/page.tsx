@@ -17,6 +17,7 @@ import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
 import { useRouter } from "next/navigation";
+import Button from "@/components/atoms/Button";
 
 const EditSalgsprofilForm = () => {
   const router = useRouter();
@@ -162,21 +163,18 @@ const EditSalgsprofilForm = () => {
           )}
         </div>
         <div className="flex gap-10">
-          <button
-            type="button"
+          <Button
+            type="outline"
             onClick={() => {
               router.back();
             }}
-            className="grow rounded-lg border-2 border-brand-600 px-5 py-2.5 text-sm font-medium text-brand-800 "
+            className="grow"
           >
             Avbryt
-          </button>
-          <button
-            type="submit"
-            className="grow rounded-lg border border-brand-400 bg-brand-600 px-5 py-2.5 text-sm font-medium text-sky-100 "
-          >
+          </Button>
+          <Button submit className="grow">
             Lagre
-          </button>
+          </Button>
         </div>
       </form>
     </div>
