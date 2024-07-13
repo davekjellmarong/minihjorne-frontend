@@ -1,8 +1,6 @@
 "use client";
 import { EmptyList } from "@/components/organisms/EmptyList";
 import Loading from "@/components/molecules/loading/Loading";
-import { LoginUser, OrdersRQ } from "@/utils/types";
-import { OrderMethods } from "@/utils/utils";
 import {
   useQuery,
   useQueryClient,

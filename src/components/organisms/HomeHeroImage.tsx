@@ -15,12 +15,12 @@ const HomeHeroImage = () => {
         </h1>
         <div className="flex gap-8">
           <Link href="/produkter">
-            <button className=" rounded-lg border-2 border-brand-500 bg-brand-500 px-8 py-4 text-white sm:hover:bg-brand-100 sm:hover:text-black">
+            <button className=" rounded-lg border-2 border-brand-500 bg-brand-500 px-8 py-4 text-white active:bg-brand-700 sm:hover:bg-brand-100 sm:hover:text-black">
               Kjøp klær
             </button>
           </Link>
           <Link href="/min-side/selge/last-opp">
-            <button className=" rounded-lg border-2 border-brand-500 bg-brand-500 px-8 py-4 text-white sm:hover:bg-brand-100 sm:hover:text-black">
+            <button className=" rounded-lg border-2 border-brand-500 bg-brand-500 px-8 py-4 text-white active:bg-brand-700 sm:hover:bg-brand-100 sm:hover:text-black">
               Selg klær
             </button>
           </Link>

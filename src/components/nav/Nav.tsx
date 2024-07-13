@@ -13,6 +13,7 @@ import {
 import { authUpperNavItems, upperNavItems } from "./UpperNavItems";
 import { MenuDropDown } from "./MenuDropDown";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { usePathname } from "next/navigation";
 const Nav = () => {
   const { data } = useQuery(AuthQueries.jwt());
   let navItemsRightEnd = navItemsPublic;
@@ -22,7 +23,7 @@ const Nav = () => {
     navItems = authUpperNavItems;
   }
   const [isOpen, setIsOpen] = useState(false);
-
+  const path = usePathname();
   const icons: any = {
     minSide: <UserCircle size={30} weight="thin" color="gray" />,
     lastOpp: <PlusCircle size={30} weight="thin" color="gray" />,
@@ -39,7 +40,7 @@ const Nav = () => {
             return (
               <Link key={item.path} href={item.path} className="w-500">
                 <button
-                  className={` flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded-lg bg-brand-400 px-4 text-white" : ""}`}
+                  className={`flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded-lg bg-brand-400 px-4 text-white" : ""} ${path === item.path ? "bg-brand-100" : ""}  active:bg-brand-200`}
                   key={item.label}
                 >
                   {icons[item.icon]} {item.label}

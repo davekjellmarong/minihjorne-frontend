@@ -52,7 +52,7 @@ const QuickLinks = () => {
       {quickFilterData.map((filter) => {
         return (
           <Link
-            className="flex min-w-40 flex-col items-center"
+            className="flex min-w-40 flex-col items-center active:bg-gray-200"
             href={`${filter.link}&pagination[page]=1`}
             key={filter.name}
           >

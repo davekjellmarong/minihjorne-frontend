@@ -7,21 +7,10 @@ import {
   TShirt,
   UploadSimple,
   UserSquare,
-  SignOut,
   ChartBar,
 } from "@phosphor-icons/react";
-import { useCookies } from "react-cookie";
-import path from "path";
-import { useQueryClient } from "@tanstack/react-query";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import { useRouter } from "next/navigation";
 
 const Menu = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
-  const queryClient = useQueryClient();
-  const router = useRouter();
   const navItems = [
     {
       header: "Ordre",
@@ -106,7 +95,7 @@ const Menu = () => {
                   <Link
                     href={item.path}
                     key={item.id}
-                    className={`flex items-center rounded p-4  sm:hover:bg-gray-100 `}
+                    className={`flex items-center rounded p-4  active:bg-brand-100 sm:hover:bg-gray-100`}
                     onClick={() => {
                       // item.action && item.action();
                     }}

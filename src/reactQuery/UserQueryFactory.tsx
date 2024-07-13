@@ -13,7 +13,7 @@ export const UserQueries = {
     }),
   me: (token: any) =>
     queryOptions({
-      queryKey: ["me"],
+      queryKey: [...UserQueries.all(), "me"],
       queryFn: () => UserMethods.getMe(token),
     }),
 };

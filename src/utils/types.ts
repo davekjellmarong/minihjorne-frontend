@@ -294,23 +294,6 @@ export interface User {
     productImages: { data: Image[] };
   };
 }
-export interface LoginUser {
-  id: number;
-  username: string;
-  email: string;
-  provider: string;
-  confirmed: boolean;
-  blocked: boolean;
-  createdAt: string;
-  updatedAt: string;
-  active: null;
-  activeUntill: null;
-  activatedDate: string;
-  header: string;
-  description: string;
-  icon: string;
-  color: string;
-}
 export interface Tag {
   id: number;
   attributes: {

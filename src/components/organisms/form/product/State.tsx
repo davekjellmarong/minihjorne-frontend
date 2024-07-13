@@ -1,4 +1,3 @@
-import InputHeader from "@/components/atoms/InputHeader";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
 
@@ -10,16 +9,20 @@ interface SexProps {
 export const State = ({ formik, onChangeFunc, initialId }: SexProps) => {
   const states = [
     {
-      title: "Ny",
+      title: "Ny/ubrukt",
       id: 1,
     },
     {
-      title: "Lite brukt",
+      title: "Pent brukt",
       id: 2,
     },
     {
       title: "Godt brukt",
       id: 3,
+    },
+    {
+      title: "Brukt",
+      id: 4,
     },
   ];
   return (

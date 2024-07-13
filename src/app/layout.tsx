@@ -36,7 +36,7 @@ export default function RootLayout({
                 <Nav />
               </header>
               <main className="relative m-auto max-w-[978px]">
-                <PostHogPageView />
+                {/* <PostHogPageView /> */}
                 {children}
                 <ToastContainer
                   theme="colored"

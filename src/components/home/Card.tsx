@@ -12,7 +12,7 @@ const Card = ({ title, description, link, image }: CardProps) => {
   return (
     <Link
       href={link}
-      className=" flex w-full justify-between gap-4  rounded-lg   bg-tan-500 p-4"
+      className="flex w-full justify-between gap-4 rounded-lg bg-tan-500 p-4 active:bg-tan-600"
     >
       <div className=" flex flex-col  justify-center gap-2">
         <h2 className="text-lg ">{title}</h2>
