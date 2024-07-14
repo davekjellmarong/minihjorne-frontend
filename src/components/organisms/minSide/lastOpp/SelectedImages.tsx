@@ -41,7 +41,7 @@ const SelectedImages = ({
               height={300}
               width={300}
               alt=""
-              className="ml-4 size-32 max-w-none rounded shadow"
+              className="ml-4 size-28 max-w-none rounded shadow"
             />
           </div>
         );

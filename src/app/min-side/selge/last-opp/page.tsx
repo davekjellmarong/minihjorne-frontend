@@ -23,8 +23,10 @@ import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import { Image as ImageType } from "@/utils/types";
 import SavedImages from "@/components/organisms/minSide/lastOpp/SavedImages";
 import { ImageMethods } from "@/reactQuery/UploadQueryFactory";
+import { useStore } from "@/stateManagment/ZustandStore";
 
 const LeggUt = () => {
+  const showNav = useStore((state) => state.showNav);
   const [modal, setModal] = useState(false);
   const [introModal, setIntroModal] = useState(false);
   const [selectedImages, setSelectedImages] = useState<ImageType[]>([]);
@@ -146,6 +148,7 @@ const LeggUt = () => {
               <Link
                 href="/min-side/selge/produkter"
                 className="w-52 rounded border-2 border-brand-600 bg-white px-6 py-4 text-center"
+                onClick={showNav}
               >
                 Avslutt og se mine produkter
               </Link>

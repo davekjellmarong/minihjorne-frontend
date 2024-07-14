@@ -1,8 +1,10 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useStore } from "@/stateManagment/ZustandStore";
 
 const Breadcrumb = () => {
+  const showNav = useStore((state) => state.showNav);
   const pathname = usePathname();
   const pathnames = pathname.split("/").filter((x) => x);
   const backgroundColor =
@@ -13,7 +15,7 @@ const Breadcrumb = () => {
       : "text-purple-500 sm:hover:text-purple-700";
   return (
     <div className={`p-4 text-gray-500 ${backgroundColor}`}>
-      <Link href="/">
+      <Link href="/" onClick={showNav}>
         <span className={`text-sm italic transition-colors ${textColor}`}>
           Home
         </span>
@@ -24,7 +26,7 @@ const Breadcrumb = () => {
         return (
           <span key={to} className="mx-2">
             {"> "}
-            <Link href={to}>
+            <Link href={to} onClick={showNav}>
               <span
                 className={` text-sm italic  transition-colors ${textColor}`}
               >

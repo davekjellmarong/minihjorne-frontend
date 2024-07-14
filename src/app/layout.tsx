@@ -30,24 +30,22 @@ export default function RootLayout({
     <html lang="NO">
       <body className={inter.className}>
         <Providers>
-          <PHProvider>
-            <AutoLoginMiddleware>
-              <header className="mb-2  h-[56px] w-full">
-                <Nav />
-              </header>
-              <main className="relative m-auto max-w-[978px]">
-                {/* <PostHogPageView /> */}
-                {children}
-                <ToastContainer
-                  theme="colored"
-                  position="top-right"
-                  autoClose={5000}
-                  hideProgressBar={true}
-                />
-              </main>
-              <Footer />
-            </AutoLoginMiddleware>
-          </PHProvider>
+          {/* <PHProvider> */}
+          <AutoLoginMiddleware>
+            <Nav />
+            <main className="relative m-auto max-w-[978px]">
+              {/* <PostHogPageView /> */}
+              {children}
+              <ToastContainer
+                theme="colored"
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={true}
+              />
+            </main>
+            <Footer />
+          </AutoLoginMiddleware>
+          {/* </PHProvider> */}
         </Providers>
       </body>
     </html>
