@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import Button from "@/components/atoms/Button";
+import Image from "next/image";
 
 const Page = () => {
   const router = useRouter();
@@ -30,6 +31,19 @@ const Page = () => {
     const updatedTotalPrice = calculateTotalPrice(cartItems);
     setTotalPrice(updatedTotalPrice);
   }, [cartItems]);
+  if (cartItems.length === 0)
+    return (
+      <div className="flex h-screen flex-col items-center justify-center gap-4">
+        <p className="text-lg">Handlekurven er desverre tom</p>
+        <Image src="/empty-cart.svg" width={200} height={200} alt="emptyCart" />
+        <Link
+          href="/produkter"
+          className="rounded bg-brand-500 px-8 py-4 text-center text-white shadow"
+        >
+          <button>Se produkter</button>
+        </Link>
+      </div>
+    );
   return (
     <div className="relative flex flex-col">
       <div className="max-w-[500px] px-4 ">

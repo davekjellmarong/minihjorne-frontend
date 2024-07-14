@@ -1,4 +1,5 @@
 import Button from "@/components/atoms/Button";
+import { useStore } from "@/stateManagment/ZustandStore";
 import { ImageBackend } from "@/utils/types";
 import React from "react";
 
@@ -8,7 +9,9 @@ interface SavedImagesProps {
   setModal: any;
 }
 const SavedImages = ({ images, setImages, setModal }: SavedImagesProps) => {
+  const hideNav = useStore((state) => state.hideNav);
   if (!images) return null;
+
   const unusedImages = images.filter((image) => !image.caption);
   if (unusedImages.length == 0) return null;
   return (
@@ -18,6 +21,7 @@ const SavedImages = ({ images, setImages, setModal }: SavedImagesProps) => {
           onClick={() => {
             setImages(unusedImages);
             setModal(true);
+            hideNav();
           }}
         >
           Fortsett med {unusedImages.length} lagrede bilder

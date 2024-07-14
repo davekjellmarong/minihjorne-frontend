@@ -14,6 +14,7 @@ import { Question } from "@phosphor-icons/react";
 import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
 import { ImageMethods } from "@/reactQuery/UploadQueryFactory";
 import { ImageBackend } from "@/utils/types";
+import { useStore } from "@/stateManagment/ZustandStore";
 
 interface ImageUploaderProps {
   setImages: any;
@@ -21,6 +22,7 @@ interface ImageUploaderProps {
 }
 
 const ImageUploader = ({ setImages, setModal }: ImageUploaderProps) => {
+  const hideNav = useStore((state) => state.hideNav);
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
@@ -36,6 +38,7 @@ const ImageUploader = ({ setImages, setModal }: ImageUploaderProps) => {
       setImages(data);
       setLoading(false);
       setModal(true);
+      hideNav();
     },
     onError: (error) => {
       toast.error("Failed to upload images");
