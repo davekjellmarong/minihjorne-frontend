@@ -1,8 +1,6 @@
 "use client";
-import Button from "@/components/atoms/Button";
 import Card from "@/components/home/Card";
 import QuickLinks from "@/components/home/QuickLinks";
-import SearchField from "@/components/home/SearchField";
 import HomeHeroImage from "@/components/organisms/HomeHeroImage";
 import Products from "@/components/organisms/product/Products";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
@@ -19,31 +17,37 @@ const Home = () => {
           <Card
             title="Hva er Minihjørne?"
             description="MiniHjørne er en tjeneste som lar deg kjøpe og selge barneklær."
-            link="/hva-er-minihjorne"
+            link="/om-oss/hva-er-minihjorne"
             image="/what.svg"
           />
-          <Card
+          {/* <Card
             title="Hvordan funker Minihjørne?"
             description="Registrer en bruker, last opp bilder og lever klærne til oss. Så legger vi de ut for salg."
-            link="/hvordan-funker-minihjorne"
+            link="/om-oss/hvordan-funker-minihjorne"
+            image="/how.svg"
+          /> */}
+          <Card
+            title="Selge klær"
+            description="Vi gjør det enkelt for deg å selge klærne du ikke trenger lenger."
+            link="/om-oss/hvordan-selge"
             image="/how.svg"
           />
           <Card
-            title="Hvorfor bruke oss?"
+            title="Kjøpe klær"
             description="Vi gjør det enkelt for deg å selge klærne du ikke trenger lenger."
-            link="/hvorfor-bruke-minihjorne"
+            link="/om-oss/kjope"
             image="/how.svg"
           />
           <Card
             title="Priser?"
             description="Se abbonoment prise for deg som vil selge klær på MiniBruket."
-            link="/priser"
+            link="/om-oss/priser"
             image="/price.svg"
           />
           <Card
             title="Levere klær"
             description="Hvordan levere klær til oss."
-            link="/levering"
+            link="/om-oss/levering"
             image="/price.svg"
           />
           {/* <div className="flex gap-7">

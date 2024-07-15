@@ -1,22 +1,11 @@
+import Header from "@/components/common/OmOss/Header";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
-const OmOss = () => {
+const page = () => {
   return (
     <>
-      <div className="flex flex-col items-center gap-6 py-14">
-        <h1 className="px-10 text-center text-3xl">
-          La oss gjøre gjenbruk gøy og rimelig
-        </h1>
-        <Image
-          className="w-full"
-          src="/klær-gulvet.jpg"
-          alt="logo"
-          width={350}
-          height={350}
-        />
-      </div>
+      <Header text="Hvordan fungerer Minihjørne?" />
       <div className="flex flex-col items-center gap-10 px-10 ">
         <div className="p">
           <div>
@@ -87,4 +76,4 @@ const OmOss = () => {
   );
 };
 
-export default OmOss;
+export default page;

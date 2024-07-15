@@ -20,7 +20,10 @@ const MinSide = () => {
         <div className="flex justify-center ">
           <AvatarLetter username={user.username} />
         </div>
-        <p className="text-center text-lg font-semibold">{user.username}</p>
+        <div>
+          <p className="text-center text-lg font-semibold">{user.username}</p>
+          <p className="text-center text-sm">{user.email}</p>
+        </div>
       </div>
       <Menu />
     </div>

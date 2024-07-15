@@ -7,6 +7,8 @@ import { Globe, Pencil } from "@phosphor-icons/react";
 import SalgsprofilHeader from "./SalgsprofilHeader";
 import Link from "next/link";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import Image from "next/image";
+import { EmptyList } from "../../EmptyList";
 
 interface EditSalgsprofilProps {
   formik: any;
@@ -37,6 +39,15 @@ const EditSalgsprofil = ({ formik, user }: EditSalgsprofilProps) => {
           </Link>
         </div>
         <SalgsprofilHeader user={formik.values} username={user.username} />
+        {products?.length === 0 && (
+          <div className="mt-20">
+            <EmptyList
+              text="Du har ingen produkter lagret"
+              path="/min-side/selge/last-opp"
+              buttonLabel="Registrer ditt første produkt"
+            />
+          </div>
+        )}
         <div className="px-4">
           <Products data={products} />
         </div>
