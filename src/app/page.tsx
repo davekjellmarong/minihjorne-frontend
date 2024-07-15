@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <HomeHeroImage />
       <div className="px-3">
-        <div className="my-6 flex flex-wrap items-center gap-4 py-5">
+        <div className="my-3 flex flex-wrap items-center gap-6 py-5">
           <Card
             title="Hva er Minihjørne?"
             description="MiniHjørne er en tjeneste som lar deg kjøpe og selge barneklær."
