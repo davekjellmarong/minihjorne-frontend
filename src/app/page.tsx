@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <HomeHeroImage />
       <div className="px-3">
-        <div className="my-6 flex flex-col items-center gap-6 py-5">
+        <div className="my-6 flex flex-wrap items-center gap-4 py-5">
           <Card
             title="Hva er Minihjørne?"
             description="MiniHjørne er en tjeneste som lar deg kjøpe og selge barneklær."
@@ -23,13 +23,13 @@ const Home = () => {
             image="/what.svg"
           />
           <Card
-            title="Hvordan funker minihjørne?"
+            title="Hvordan funker Minihjørne?"
             description="Registrer en bruker, last opp bilder og lever klærne til oss. Så legger vi de ut for salg."
             link="/hvordan-funker-minihjorne"
             image="/how.svg"
           />
           <Card
-            title="Hvorfor bruke Minihjørne?"
+            title="Hvorfor bruke oss?"
             description="Vi gjør det enkelt for deg å selge klærne du ikke trenger lenger."
             link="/hvorfor-bruke-minihjorne"
             image="/how.svg"
