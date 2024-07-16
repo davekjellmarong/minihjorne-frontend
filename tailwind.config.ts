@@ -46,6 +46,17 @@ const config = {
           800: "#565450",
           900: "#2b2a28",
         },
+        secondary: {
+          100: "#fdfaf1",
+          200: "#faf6e3",
+          300: "#f8f1d4",
+          400: "#f5edc6",
+          500: "#f3e8b8",
+          600: "#c2ba93",
+          700: "#928b6e",
+          800: "#615d4a",
+          900: "#312e25",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -55,10 +66,10 @@ const config = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
+        // secondary: {
+        //   DEFAULT: "hsl(var(--secondary))",
+        //   foreground: "hsl(var(--secondary-foreground))",
+        // },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
