@@ -22,7 +22,6 @@ const Provider = async ({
   const token = cookieStore.get("Token");
   await queryClient.prefetchQuery(UserQueries.detail(params.id));
   await queryClient.prefetchQuery(ProductQueries.userId(params.id));
-  await queryClient.prefetchQuery(ProductQueries.me_all(token.value));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
