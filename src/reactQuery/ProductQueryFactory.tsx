@@ -20,7 +20,7 @@ export const ProductsMethods = {
   },
   getByUserId: async (id: any): Promise<Product[]> => {
     return getPublicData(
-      `/products?populate=*&sort=createdAt:desc&filters[sold][$eq]=false&filters[active][$eq]=true&filters[user][id][$eq]=${id}`,
+      `/products?populate=*&sort=createdAt:desc&filters[sold][$eq]=false&filters[active][$eq]=true&filters[user][id][$eq]=${id}&pagination[page]=1&pagination[pageSize]=100`,
     );
   },
   getAllMyProducts: async (token: any): Promise<ProductBackend[]> => {
