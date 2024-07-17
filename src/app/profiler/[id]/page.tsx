@@ -8,6 +8,7 @@ import { useParams, useSearchParams } from "next/navigation";
 const Page = () => {
   const { id } = useParams();
   const { data: user } = useSuspenseQuery(UserQueries.detail(id));
+  console.log(user);
   return (
     <div>
       <Salgsprofil user={user} />

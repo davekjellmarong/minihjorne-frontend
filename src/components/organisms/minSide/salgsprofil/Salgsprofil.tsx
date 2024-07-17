@@ -10,6 +10,7 @@ interface SalgsprofilProps {
 }
 const Salgsprofil = ({ user }: SalgsprofilProps) => {
   const { data: products } = useQuery(ProductQueries.userId(String(user.id)));
+  console.log(products);
   const tailwindColor = tailwindColorsUserButton[user.color];
   return (
     <div
