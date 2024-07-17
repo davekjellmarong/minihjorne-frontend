@@ -30,9 +30,13 @@ const OmOssLinks = () => {
       name: "Levere klær",
       href: "/om-oss/levering",
     },
+    {
+      name: "Sende klær",
+      href: "/om-oss/sende",
+    },
   ];
   return (
-    <div className="bg-secondary-400 flex flex-col gap-4 p-4">
+    <div className="flex flex-col gap-4 bg-tan-500 p-4">
       {links.map((link) => (
         <Link
           href={link.href}

@@ -6,34 +6,34 @@ const page = () => {
     <>
       <div className="flex flex-col items-center gap-6 pb-6">
         <h1 className="px-10 text-center text-3xl">
-          Levere dine klær til Minihjørnet
+          Levere dine klær til Minihjørne
         </h1>
-        <Image
+        {/* <Image
           className="w-full"
           src="/klær-gulvet.jpg"
           alt="logo"
           width={350}
           height={350}
-        />
+        /> */}
       </div>
-      <div className="mx-10 my-8 rounded-xl bg-yellow-300 p-6 text-center">
+      <div className="mx-4 my-8 rounded-xl bg-yellow-300 p-4 text-center">
         Husk, før du leverer klær til oss, må du <strong>registrere </strong>{" "}
         dine klær og kjøpe et
         <strong> abbonoment.</strong>
       </div>
-      <div className="flex flex-col items-center gap-10 px-10 ">
+      <div className="flex flex-col items-center gap-10 ">
         <div className="p">
           <div>
             <p className="text-sm font-light text-purple-700">Steg 1</p>
             <h2 className="text-2xl">Kom til oss</h2>
           </div>
-          <Image
+          {/* <Image
             className="my-4 w-full rounded-lg"
             src="/bretter-forklet.jpg"
             alt="logo"
             width={350}
             height={350}
-          />
+          /> */}
           <p>Vi holder til på Løren, ved Peer Gynt parken:</p>
           <p className="my-4 text-center font-bold">
             Kanonhallveien 12A, 0585 Oslo.
@@ -49,19 +49,14 @@ const page = () => {
         <div>
           <p className="text-sm font-light text-purple-700">Steg 2</p>
           <h2 className="text-2xl">Overrekk klærne</h2>
-          <Image
+          {/* <Image
             src="/sokker-gulv.jpg"
             alt="logo"
             width={350}
             height={350}
             className="my-4 w-full rounded-lg"
-          />
-          <p>
-            Vi gleder oss til å se deg og klærne dine. Når du har gitt oss
-            klærne, så går vi raskt i gjennom din brukerkonto for å se at alt er
-            i orden. Dermed kan vi publisere alle dine klær på vår nettside!
-          </p>
-          <br />
+          /> */}
+          <p>Vi gleder oss til å se deg og klærne dine!</p>
           <p>
             Har du noen spørsmål om nettsiden, prossessen fremover eller noe
             annet, så er det bare å spørre {":)"}
@@ -70,18 +65,27 @@ const page = () => {
         <div>
           <p className="text-sm font-light text-purple-700">Steg 3</p>
           <h2 className="text-2xl">Lagring av klær</h2>
-          <Image
+          {/* <Image
             src="/sokker-gulv.jpg"
             alt="logo"
             width={350}
             height={350}
             className="my-4 w-full rounded-lg"
-          />
+          /> */}
           <p>
             Når klærne er overrekt til oss, så lagrer vi klærne dine i vår
             leilighet. Vi er nå i en startfase, og har derfor ikke et
-            lagerlokale. Vi har derfor valgt å lagre klærne i vår leilighet. Vi
-            har god plass, og klærne dine vil bli lagret trygt og sikkert.
+            lagerlokale. Vi har god plass, og klærne dine vil bli lagret trygt
+            og sikkert.
+          </p>
+        </div>
+        <div>
+          <p className="text-sm font-light text-purple-700">Steg 4</p>
+          <h2 className="text-2xl">Publisering</h2>
+          <p>
+            Når vi har gått gjennom alle klærne dine, så vil de bli publisert på
+            nettsiden vår. Du vil da få en epost om at klærne dine er publisert.
+            Du kan da se dine klær på nettsiden vår.
           </p>
         </div>
       </div>

@@ -39,12 +39,14 @@ const page = () => {
             <b>Kommunikasjon med potensielle kjøpere.</b>
           </li>
           <li>
+            <b>Samle småkjøp:</b>
             Hvis du vil selge et plagg til mindre enn 100 kr, så vil ofte en
-            <b> fraktpris</b> på rundt 70-130kr gjøre handelen ulønnsom.
+            fraktpris på rundt 70-130kr gjøre handelen ulønnsom for kundene.
           </li>
           <li>
-            Ikke designet for barneklær. Eks, plagg som Body og vinterdress har
-            ofte ingen kategori
+            <b>Filtrering og søking: </b> Ikke designet for barneklær. Eks,
+            plagg som Body og vinterdress har ofte ingen kategori og kan ikke
+            filtreres og søkes etter.
           </li>
         </ul>
         <p className="my-4">
@@ -110,7 +112,12 @@ const page = () => {
             <b>Frakt.</b> Vi tar oss av frakten, så du slipper å tenke på dette
           </li>
           <li>
-            <b>Designet for barneklær.</b> Vi har kategorier for alle barneklær
+            <b>Filtrering og søking. </b> Vi har kategorier for alle barneklær
+            som kan søkes og filtreres etter
+          </li>
+          <li>
+            <b>Samle småkjøp:</b> Kundene kan samle småkjøp i en bestilling, som
+            gjør at fler kunder kjøper flere plagg.
           </li>
           <li>
             <b>Kø.</b> Vi har ingen kø, så dine klær blir lagt ut for salg med

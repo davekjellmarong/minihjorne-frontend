@@ -7,7 +7,7 @@ const layout = ({ children }: any) => {
     <>
       <Links />
       <div className="px-4 py-8">{children}</div>
-      <Links />
+      {/* <Links /> */}
     </>
   );
 };

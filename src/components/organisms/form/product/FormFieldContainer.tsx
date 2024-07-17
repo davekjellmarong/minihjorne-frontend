@@ -26,7 +26,7 @@ const FormFieldContainer = ({
     >
       <FilterDialog open={modal} setOpen={setModal}>
         {Tips && (
-          <div>
+          <div className="flex flex-wrap justify-center gap-4 px-4 py-4">
             <Tips />
             <Button
               onClick={() => {

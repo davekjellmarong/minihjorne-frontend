@@ -23,6 +23,7 @@ import { Image as ImageType } from "@/utils/types";
 import SavedImages from "@/components/organisms/minSide/lastOpp/SavedImages";
 import { ImageMethods } from "@/reactQuery/UploadQueryFactory";
 import { useStore } from "@/stateManagment/ZustandStore";
+import Loading from "@/components/molecules/loading/Loading";
 
 const LeggUt = () => {
   const showNav = useStore((state) => state.showNav);
@@ -155,7 +156,7 @@ const LeggUt = () => {
             </div>
           ) : (
             <div className="m-auto max-w-[500px]">
-              <Suspense fallback={<p>Loading...</p>}>
+              <Suspense fallback={<Loading />}>
                 <ProductForm formik={formik} />
               </Suspense>
             </div>
