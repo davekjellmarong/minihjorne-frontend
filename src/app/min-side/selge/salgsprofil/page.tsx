@@ -27,7 +27,7 @@ const Page = () => {
       description: "",
       color: "",
       colorName: "",
-      icon: "",
+      // icon: "",
     },
 
     onSubmit: (values) => {
@@ -35,7 +35,7 @@ const Page = () => {
         header: values.header,
         description: values.description,
         color: values.colorName,
-        icon: values.icon,
+        // icon: values.icon,
       };
       updateUser(data);
       console.log("Form data submitted:", values);
@@ -48,7 +48,7 @@ const Page = () => {
         description: userData.description,
         color: userData.color,
         colorName: userData.color,
-        icon: userData.icon,
+        // icon: userData.icon,
       });
     }
   }, [userData]);

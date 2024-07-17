@@ -40,7 +40,7 @@ const EditSalgsprofilForm = () => {
       header: userData?.header,
       description: userData?.description,
       colorName: userData?.color,
-      icon: userData?.icon,
+      // icon: userData?.icon,
     },
 
     onSubmit: (values) => {
@@ -48,53 +48,53 @@ const EditSalgsprofilForm = () => {
         header: values.header,
         description: values.description,
         color: values.colorName,
-        icon: values.icon,
+        // icon: values.icon,
       };
       updateUser(data);
     },
   });
-  const icons: any = {
-    Star: {
-      component: (
-        <Star size={52} weight="fill" color={formik.values.colorName} />
-      ),
-      title: "Star",
-    },
-    HeartStraight: {
-      component: (
-        <HeartStraight
-          size={52}
-          weight="fill"
-          color={formik.values.colorName}
-        />
-      ),
-      title: "HeartStraight",
-    },
-    Baby: {
-      component: (
-        <Baby size={52} weight="fill" color={formik.values.colorName} />
-      ),
-      title: "Baby",
-    },
-    Rainbow: {
-      component: (
-        <Rainbow size={52} weight="fill" color={formik.values.colorName} />
-      ),
-      title: "Rainbow",
-    },
-    Leaf: {
-      component: (
-        <Leaf size={52} weight="fill" color={formik.values.colorName} />
-      ),
-      title: "Leaf",
-    },
-    Bird: {
-      component: (
-        <Bird size={52} weight="fill" color={formik.values.colorName} />
-      ),
-      title: "Bird",
-    },
-  };
+  // const icons: any = {
+  //   Star: {
+  //     component: (
+  //       <Star size={52} weight="fill" color={formik.values.colorName} />
+  //     ),
+  //     title: "Star",
+  //   },
+  //   HeartStraight: {
+  //     component: (
+  //       <HeartStraight
+  //         size={52}
+  //         weight="fill"
+  //         color={formik.values.colorName}
+  //       />
+  //     ),
+  //     title: "HeartStraight",
+  //   },
+  //   Baby: {
+  //     component: (
+  //       <Baby size={52} weight="fill" color={formik.values.colorName} />
+  //     ),
+  //     title: "Baby",
+  //   },
+  //   Rainbow: {
+  //     component: (
+  //       <Rainbow size={52} weight="fill" color={formik.values.colorName} />
+  //     ),
+  //     title: "Rainbow",
+  //   },
+  //   Leaf: {
+  //     component: (
+  //       <Leaf size={52} weight="fill" color={formik.values.colorName} />
+  //     ),
+  //     title: "Leaf",
+  //   },
+  //   Bird: {
+  //     component: (
+  //       <Bird size={52} weight="fill" color={formik.values.colorName} />
+  //     ),
+  //     title: "Bird",
+  //   },
+  // };
   return (
     <div className="flex flex-col items-center gap-3 p-8">
       <h1 className="text-xl font-bold">Rediger din salgsprofil</h1>
@@ -130,7 +130,7 @@ const EditSalgsprofilForm = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="icon">Icon</label>
           <div className="flex flex-wrap justify-evenly">
             {Object.values(icons).map((icon: any) => {
@@ -153,12 +153,17 @@ const EditSalgsprofilForm = () => {
               );
             })}
           </div>
-        </div>
+        </div> */}
         <div>
           <label>Farge</label>
           {colors && (
             <div className="flex flex-wrap gap-4 py-4">
-              <Color formik={formik} colors={colors} formName="color" />
+              <Color
+                padding={true}
+                formik={formik}
+                colors={colors}
+                formName="color"
+              />
             </div>
           )}
         </div>

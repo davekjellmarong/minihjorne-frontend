@@ -1,5 +1,6 @@
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
+import Tilstand from "../../minSide/lastOpp/Tips/Tilstand";
 
 interface SexProps {
   formik: any;
@@ -26,7 +27,7 @@ export const State = ({ formik, onChangeFunc, initialId }: SexProps) => {
     },
   ];
   return (
-    <FormFieldContainer header="Tilstand">
+    <FormFieldContainer header="Tilstand" Tips={Tilstand}>
       {states.map((state) => {
         return (
           <div

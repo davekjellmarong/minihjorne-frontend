@@ -44,9 +44,9 @@ const SalgsprofilHeader = ({ user, username }: SalgsprofilHeaderProps) => {
   return (
     <>
       <div className="flex items-center gap-14">
-        {icons[user.icon]?.component}
+        {/* {icons[user.icon]?.component} */}
         <p className="text-lg font-semibold">{user.header}</p>
-        {icons[user.icon]?.component}
+        {/* {icons[user.icon]?.component} */}
       </div>
       <p className="flex items-center gap-1 text-gray-500">
         <User size={28} />

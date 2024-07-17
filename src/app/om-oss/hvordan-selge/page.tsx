@@ -5,7 +5,7 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <Header text="Hvordan selge klær hos Minihjørne" />
+      <Header text="Hvordan bli Minihjørne selger?" />
       {/* <p className="pb-6 text-center text-2xl">
         Hvordan selger jeg klær hos dere?
       </p> */}

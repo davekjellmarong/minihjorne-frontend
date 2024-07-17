@@ -2,6 +2,7 @@ import InputHeader from "@/components/atoms/InputHeader";
 import { Size as SizeType } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
+import Størrelse from "../../minSide/lastOpp/Tips/Størrelse";
 
 interface SizeProps {
   sizes: SizeType[];
@@ -11,10 +12,10 @@ interface SizeProps {
 }
 const Size = ({ sizes, formik, onChangeFunc, initialId }: SizeProps) => {
   return (
-    <FormFieldContainer header="Størrelse">
+    <FormFieldContainer header="Størrelse" Tips={Størrelse}>
       {sizes.map((size) => {
         return (
-          <div key={size.id} className="flex w-20 flex-col items-center">
+          <div key={size.id} className="flex w-14 flex-col items-center">
             <label className="text-sm font-light">
               {size.attributes.number}
             </label>

@@ -15,7 +15,6 @@ import { toast } from "react-toastify";
 import Dialog from "@/components/organisms/dialog/Dialog";
 import FilterDialog from "@/components/organisms/product/FilterDialog";
 import { ArrowRight, SidebarSimple } from "@phosphor-icons/react";
-import IntroCarousel from "../../../../components/organisms/minSide/lastOpp/IntroCarousel";
 import Link from "next/link";
 import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
@@ -24,6 +23,7 @@ import { Image as ImageType } from "@/utils/types";
 import SavedImages from "@/components/organisms/minSide/lastOpp/SavedImages";
 import { ImageMethods } from "@/reactQuery/UploadQueryFactory";
 import { useStore } from "@/stateManagment/ZustandStore";
+import Loading from "@/components/molecules/loading/Loading";
 
 const LeggUt = () => {
   const showNav = useStore((state) => state.showNav);
@@ -90,9 +90,10 @@ const LeggUt = () => {
   if (images.length === 0) {
     return (
       <>
-        <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
+        {/* <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
           <IntroCarousel />
-        </Dialog>
+        </Dialog> */}
+
         <Suspense>
           <SavedImages
             images={user.productImages}
@@ -155,7 +156,7 @@ const LeggUt = () => {
             </div>
           ) : (
             <div className="m-auto max-w-[500px]">
-              <Suspense fallback={<p>Loading...</p>}>
+              <Suspense fallback={<Loading />}>
                 <ProductForm formik={formik} />
               </Suspense>
             </div>
