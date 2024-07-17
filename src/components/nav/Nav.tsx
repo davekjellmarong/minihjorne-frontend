@@ -43,9 +43,13 @@ const Nav = () => {
           <div className="flex justify-end gap-0 sm:gap-3">
             {navItemsRightEnd.map((item) => {
               return (
-                <Link key={item.path} href={item.path} className="w-500">
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  className="w-500 flex items-center "
+                >
                   <button
-                    className={`flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded-lg bg-brand-400 px-4 text-white" : ""} ${path === item.path ? "bg-brand-100" : ""}  active:bg-brand-200`}
+                    className={`flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded-lg bg-brand-400 px-2 text-sm text-white" : ""} ${path === item.path ? "bg-brand-100" : ""}  active:bg-brand-200`}
                     key={item.label}
                   >
                     {icons[item.icon]} {item.label}

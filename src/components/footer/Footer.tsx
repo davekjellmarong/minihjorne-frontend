@@ -17,6 +17,16 @@ const Footer = () => {
       href: "/om-oss/levering",
     },
   ];
+  const bottomLinks = [
+    {
+      name: "Personvern",
+      href: "/personvern",
+    },
+    {
+      name: "Kjøpebetingelser",
+      href: "/kjopebetingelser",
+    },
+  ];
   return (
     <footer className="flex flex-col items-center gap-6 py-8">
       <hr className="w-full" />
@@ -40,6 +50,17 @@ const Footer = () => {
           <Image src="/instagram.svg" alt="logo" width={35} height={35} />
           <p>mini_hjorne</p>
         </Link>
+      </div>
+      <div className="flex justify-center gap-4">
+        {bottomLinks.map((link) => (
+          <Link
+            href={link.href}
+            key={link.href}
+            className="text-sm text-gray-400"
+          >
+            {link.name}
+          </Link>
+        ))}
       </div>
       <p className="text-xs text-brand-400">Marong Utvikling - 2024</p>
     </footer>

@@ -18,6 +18,7 @@ const SavedImages = ({ images, setImages, setModal }: SavedImagesProps) => {
     <div className="bg-brand-100 p-4">
       <div className="flex justify-center gap-2 pb-4">
         <Button
+          size="small"
           onClick={() => {
             setImages(unusedImages);
             setModal(true);
@@ -27,7 +28,7 @@ const SavedImages = ({ images, setImages, setModal }: SavedImagesProps) => {
           Fortsett med {unusedImages.length} lagrede bilder
         </Button>
       </div>
-      <ul className="flex max-h-[400px] flex-wrap justify-center gap-8 overflow-scroll">
+      <ul className="flex max-h-[250px] flex-wrap justify-center gap-8 overflow-scroll">
         {unusedImages.map((image) => (
           <li key={image.id}>
             <img

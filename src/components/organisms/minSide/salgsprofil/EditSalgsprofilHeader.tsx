@@ -55,9 +55,9 @@ const EditSalgsprofilHeader = ({
   return (
     <>
       <div className="flex items-center gap-14">
-        {icons[formik.values.icon]?.component}
+        {/* {icons[formik.values.icon]?.component} */}
         <input type="text" value={header} className="text-lg font-semibold" />
-        {icons[formik.values.icon]?.component}
+        {/* {icons[formik.values.icon]?.component} */}
       </div>
       <p className="flex items-center gap-1 text-gray-500">
         <User size={28} />

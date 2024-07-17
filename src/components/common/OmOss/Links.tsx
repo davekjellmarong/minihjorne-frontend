@@ -11,7 +11,7 @@ const OmOssLinks = () => {
       href: "/om-oss/hva-er-minihjorne",
     },
     {
-      name: "Hvordan selge klær",
+      name: "Bli Minihjørne selger",
       href: "/om-oss/hvordan-selge",
     },
     {

@@ -1,12 +1,10 @@
 import {
-  File,
   FloppyDisk,
   Trash,
   ArrowLeft,
   ArrowRight,
   Plus,
 } from "@phosphor-icons/react";
-import { on } from "events";
 import React from "react";
 
 interface ButtonProps {
@@ -17,6 +15,7 @@ interface ButtonProps {
   disabled?: boolean;
   className?: string;
   submit?: boolean;
+  size?: "small" | "medium" | "large";
 }
 const Button = ({
   icon,
@@ -26,6 +25,7 @@ const Button = ({
   disabled,
   className = "",
   submit = false,
+  size = "medium",
 }: ButtonProps) => {
   const iconElement = {
     trash: <Trash size={24} />,
@@ -52,12 +52,20 @@ const Button = ({
       flat: "bg-white text-brand-600 active:bg-gray-100",
     };
   }
+  let sizeClass;
+  if (size === "small") {
+    sizeClass = "p-3 px-5 text-sm";
+  } else if (size === "medium") {
+    sizeClass = "p-4 px-6";
+  } else if (size === "large") {
+    sizeClass = "p-6 px-8 text-lg";
+  }
   return (
     <button
       type={submit ? "submit" : "button"}
       onClick={onClick}
       disabled={disabled}
-      className={`${colors[type]}  flex items-center justify-center gap-2 rounded p-4 px-6 ${className}`}
+      className={`${colors[type]} flex items-center justify-center gap-2 rounded ${className} ${sizeClass}`}
     >
       {icon && <span>{iconElement[icon]}</span>}
       <p>{children}</p>

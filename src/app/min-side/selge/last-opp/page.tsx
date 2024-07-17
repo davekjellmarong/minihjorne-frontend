@@ -15,7 +15,6 @@ import { toast } from "react-toastify";
 import Dialog from "@/components/organisms/dialog/Dialog";
 import FilterDialog from "@/components/organisms/product/FilterDialog";
 import { ArrowRight, SidebarSimple } from "@phosphor-icons/react";
-import IntroCarousel from "../../../../components/organisms/minSide/lastOpp/IntroCarousel";
 import Link from "next/link";
 import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
@@ -90,9 +89,10 @@ const LeggUt = () => {
   if (images.length === 0) {
     return (
       <>
-        <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
+        {/* <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
           <IntroCarousel />
-        </Dialog>
+        </Dialog> */}
+
         <Suspense>
           <SavedImages
             images={user.productImages}

@@ -10,6 +10,8 @@ interface ColorProps {
   formName?: string;
   onChangeFunc?: () => void;
   initialId?: number;
+  width?: string;
+  padding?: boolean;
 }
 
 const Color = ({
@@ -18,13 +20,14 @@ const Color = ({
   formName = "colors",
   onChangeFunc,
   initialId,
+  padding = true,
 }: ColorProps) => {
   return (
-    <FormFieldContainer header="Farge">
+    <FormFieldContainer header="Farge" padding={padding}>
       {colors.map((color) => {
         const tailwindColor = tailwindColorsObject[color.attributes.tailwind];
         return (
-          <div key={color.id} className="flex w-20 flex-col items-center">
+          <div key={color.id} className={`flex w-12 flex-col items-center`}>
             <label className={`text-sm font-light`}>
               {color.attributes.name}
             </label>
