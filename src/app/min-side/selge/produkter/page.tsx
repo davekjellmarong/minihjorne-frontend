@@ -1,27 +1,17 @@
 "use client";
-import { ProductBackend, User } from "@/utils/types";
-import { ProductsMethods } from "@/utils/utils";
-import {
-  useQuery,
-  useQueryClient,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
+import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import React from "react";
-import ProductTable from "../../../../components/organisms/minSide/produkter/ProductTable";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import Link from "next/link";
-import { EmptyList } from "@/components/organisms/EmptyList";
-import { DataTable } from "@/components/organisms/table/ProductsTable/Table";
-import { columns } from "@/components/organisms/table/ProductsTable/Columns";
-import Button from "@/components/atoms/Button";
-import { Plus, PlusCircle } from "@phosphor-icons/react";
+import { PlusCircle } from "@phosphor-icons/react";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { EmptyList } from "@/components/common/EmptyList";
+import ProductTable from "@/components/features/minSide/produkter/ProductTable";
 
 const Produkter = () => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: products } = useSuspenseQuery(ProductQueries.me_all(jwt));
-  console.log(products);
   if (products.length === 0)
     return (
       <EmptyList
@@ -41,7 +31,6 @@ const Produkter = () => {
           <PlusCircle size={36} color="green" />
         </Link>
       </div>
-      {/* <DataTable columns={columns} data={me} /> */}
       <ProductTable products={products} />
     </div>
   );

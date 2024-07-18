@@ -1,6 +1,6 @@
 import React from "react";
 import OmOss from "./page";
-import Links from "@/components/common/OmOss/Links";
+import Links from "@/components/features/omOss/Links";
 
 const layout = ({ children }: any) => {
   return (

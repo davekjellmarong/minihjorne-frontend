@@ -1,13 +1,13 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import Products from "../../components/organisms/product/Products";
-import Filters from "../../components/organisms/product/Filters";
-import FilterChips from "../../components/organisms/product/FilterChips";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
-import Pagination from "../../components/organisms/product/Pagination";
-import useInitialQueryParams from "../../components/organisms/product/useInitialQueryParams";
-import QuickFilterCards from "../../components/organisms/product/QuickFilterCards";
+import useInitialQueryParams from "@/components/features/product/useInitialQueryParams";
+import QuickFilterCards from "@/components/features/product/QuickFilterCards";
+import Filters from "@/components/features/product/Filters";
+import FilterChips from "@/components/features/product/FilterChips";
+import Products from "@/components/features/product/Products";
+import Pagination from "@/components/features/product/Pagination";
 
 export interface SelectedFilter {
   query: string;
@@ -31,17 +31,11 @@ const ProductPage = () => {
           <QuickFilterCards setFilterQuery={setFilterQuery} />
         </div>
         <div className="flex w-full  border-gray-200  py-2">
-          <Filters setFilterQuery={setFilterQuery} filterQuery={filterQuery} />
+          <Filters setFilterQuery={setFilterQuery} />
         </div>
         <div className="w-full ">
           <FilterChips />
         </div>
-        {/* <div className="flex flex-col gap-4">
-          <Pagination
-            pageCount={products?.meta?.pagination.pageCount}
-            setFilterQuery={setFilterQuery}
-          />
-        </div> */}
         <Products data={products?.data} isLoading={isPending} />
         <div className="flex flex-col gap-6 py-6">
           <Pagination

@@ -1,16 +1,12 @@
 "use client";
-import { EmptyList } from "@/components/organisms/EmptyList";
-import Loading from "@/components/molecules/loading/Loading";
-import {
-  useQuery,
-  useQueryClient,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
+import Loading from "@/components/common/loading/Loading";
+import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
-import OrdersTable from "@/components/orders/OrdersTable";
+import OrdersTable from "@/components/features/orders/OrdersTable";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import { OrderQueries } from "@/reactQuery/OrderQueryFactory";
+import { EmptyList } from "@/components/common/EmptyList";
 
 const Ordre = () => {
   const queryClient = useQueryClient();
@@ -29,12 +25,12 @@ const Ordre = () => {
       />
     );
   return (
-    <div>
+    <>
       <h2 className="mb-4 text-center text-2xl font-light">Mine ordre</h2>
       <Suspense fallback={<Loading />}>
         <OrdersTable orders={orders} />
       </Suspense>
-    </div>
+    </>
   );
 };
 

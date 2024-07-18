@@ -1,12 +1,9 @@
 "use client";
-import { OrderRQ, ProductsRQ } from "@/utils/types";
-import { OrderMethods, ProductsMethods } from "@/utils/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React from "react";
-import OrderTable from "@/components/orders/OrderTable";
+import OrderTable from "@/components/features/orders/OrderTable";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import { OrderQueries } from "@/reactQuery/OrderQueryFactory";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 
 const Page = () => {

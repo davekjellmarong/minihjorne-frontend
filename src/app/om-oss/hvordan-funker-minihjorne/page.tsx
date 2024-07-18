@@ -1,4 +1,4 @@
-import Header from "@/components/common/OmOss/Header";
+import Header from "@/components/features/omOss/Header";
 import Image from "next/image";
 import React from "react";
 

@@ -1,9 +1,8 @@
 "use client";
-import Button from "@/components/atoms/Button";
-import HvordanTaBilder from "@/components/organisms/minSide/lastOpp/Tips/HvordanTaBilder";
-import HvorMangeBilder from "@/components/organisms/minSide/lastOpp/Tips/HvorMangeBilder";
-import Størrelse from "@/components/organisms/minSide/lastOpp/Tips/Størrelse";
-import Tilstand from "@/components/organisms/minSide/lastOpp/Tips/Tilstand";
+import HvordanTaBilder from "@/components/features/minSide/lastOpp/Tips/HvordanTaBilder";
+import HvorMangeBilder from "@/components/features/minSide/lastOpp/Tips/HvorMangeBilder";
+import Størrelse from "@/components/features/minSide/lastOpp/Tips/Størrelse";
+import Tilstand from "@/components/features/minSide/lastOpp/Tips/Tilstand";
 import React, { useState } from "react";
 
 const Page = () => {

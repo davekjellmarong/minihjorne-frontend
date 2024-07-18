@@ -1,7 +1,7 @@
 "use client";
-import LineReChart from "@/components/organisms/minSide/statistikk/LineChart";
-import ProgressBar from "@/components/organisms/minSide/statistikk/ProgressBar";
-import { getProductsStats } from "@/components/organisms/minSide/statistikk/utils";
+import LineReChart from "@/components/features/minSide/statistikk/LineChart";
+import ProgressBar from "@/components/features/minSide/statistikk/ProgressBar";
+import { getProductsStats } from "@/components/features/minSide/statistikk/utils";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";

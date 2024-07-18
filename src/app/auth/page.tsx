@@ -1,6 +1,6 @@
 "use client";
-import Login from "@/components/organisms/Login";
-import Register from "@/components/organisms/Register";
+import Login from "@/components/features/auth/Login";
+import Register from "@/components/features/auth/Register";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -9,7 +9,6 @@ const Page = () => {
     Login: "login",
     Register: "register",
   };
-  console.log("auth page");
   const [view, setView] = useState(ViewEnum.Login);
   const [message, setMessage] = useState("");
   const searchParams = useSearchParams();
@@ -22,6 +21,7 @@ const Page = () => {
   return (
     <div className="mt-8 flex flex-col items-center justify-center gap-14">
       <div className="flex gap-6">
+        {/* TO-DO use button componnt */}
         <button
           className={`${view === ViewEnum.Login ? "border-b-2" : ""}  border-brand-700 px-4 py-2 `}
           onClick={() => setView(ViewEnum.Login)}

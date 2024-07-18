@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import Loading from "@/components/molecules/loading/Loading";
+import Loading from "@/components/common/loading/Loading";
 import {
   HydrationBoundary,
   QueryClient,

@@ -1,23 +1,22 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import BackButton from "@/components/atoms/BackButton";
-import ColorSquares from "@/components/organisms/filters/color/ColorSquares";
-import Loading from "@/components/molecules/loading/Loading";
+import ColorSquares from "@/components/features/filters/color/ColorSquares";
+import Loading from "@/components/common/loading/Loading";
 import { User } from "@phosphor-icons/react";
 import Link from "next/link";
-import AddToCartButtons from "@/components/molecules/AddToCartButtons";
 import { queryTemplates } from "@/utils/constants";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import BackButton from "@/components/common/buttons/BackButton";
+import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
+  // TO-DO use suspsenseQuery
   const { data: product } = useQuery(ProductQueries.detail(params.id));
-  console.log(product);
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 1,
     },
@@ -62,7 +61,6 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           </p>
           <User size={22} />
         </Link>
-        {/* <CarouselComponent> */}
         <Carousel showDots responsive={responsive}>
           {image.data.map((image) => {
             return (
@@ -77,15 +75,10 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
             );
           })}
         </Carousel>
-        {/* </CarouselComponent> */}
       </div>
       <div className="relative flex w-full flex-col items-start overflow-hidden sm:w-1/2">
         <div className="absolute left-10 top-5">
-          <ColorSquares
-            colors={colors.data}
-            // size="size-8"
-          />
-          {/* <span className="flex">{sexList[data.sex.name]}</span> */}
+          <ColorSquares colors={colors.data} />
         </div>
         <div className="relative  flex w-full flex-col gap-3">
           <p className="mt-8 w-full  text-center text-3xl font-semibold">
@@ -98,21 +91,11 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
             >
               {category.data.attributes.name}
             </Link>
-            {/* <span>{iconsList[data.category.icon]}</span> */}
           </div>
-          {/* <div className="absolute flex w-full justify-end">
-            <button className=" pt-4 pr-4">
-              <XCircle size={26} />
-            </button>
-          </div> */}
         </div>
-
         <div className="flex w-full flex-col">
           <div className="flex w-full px-12 py-8 ">
-            <p className="flex w-1/5 text-sm text-gray-500">
-              Størrelse
-              {/* <Tag size={22} /> */}
-            </p>
+            <p className="flex w-1/5 text-sm text-gray-500">Størrelse</p>
             <Link
               href={`/produkter/?${queryTemplates.sizeQueryTemplate}${size.data.id}`}
               className="grow text-center text-xl font-light"
@@ -123,18 +106,12 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
             <div className="w-1/5"></div>
           </div>
           <div className="flex w-full bg-gray-100 px-12  py-8">
-            <p className="flex w-1/5 text-sm text-gray-500">
-              Merke
-              {/* <Tag size={22} /> */}
-            </p>
+            <p className="flex w-1/5 text-sm text-gray-500">Merke</p>
             <p className="grow text-center text-xl font-light">{brand}</p>
             <div className="w-1/5"></div>
           </div>
           <div className="flex w-full px-12 py-8 ">
-            <p className="flex w-1/5 text-sm text-gray-500">
-              Materiale
-              {/* <Tag size={22} /> */}
-            </p>
+            <p className="flex w-1/5 text-sm text-gray-500">Materiale</p>
             <Link
               href={`/produkter/?${queryTemplates.materialQueryTemplate}${material.data?.id}`}
               className="grow text-center text-xl font-light"
@@ -145,27 +122,13 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
             <div className="w-1/5"></div>
           </div>
           <div className="flex w-full bg-gray-100 px-12  py-8">
-            <p className="flex w-1/5 text-sm text-gray-500">
-              Tilstand
-              {/* <Tag size={22} /> */}
-            </p>
+            <p className="flex w-1/5 text-sm text-gray-500">Tilstand</p>
             <p className="grow text-center text-xl font-light">
               {" "}
               {state.data.attributes.name}
             </p>
             <div className="w-1/5"></div>
           </div>
-          {/* <div className="py-8 px-12 w-full flex bg-gray-100">
-            <p className="w-1/5 flex text-sm text-gray-500">
-              Farger
-              <Tag size={22} />
-            </p>
-            <p className="grow text-xl font-light text-center">
-              {" "}
-              {data.colors[0]?.name}
-            </p>
-            <div className="w-1/5"></div>
-          </div> */}
         </div>
         <div className="my-6 flex justify-center px-12">
           <div className=" mt-2 rounded border border-gray-200 bg-white px-12 py-2">
@@ -181,7 +144,6 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
             })}
           </div>
         </div>
-
         <div className="w-full">
           <hr className=" mx-12 mt-6" />
         </div>
