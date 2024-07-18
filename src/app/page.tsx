@@ -5,7 +5,7 @@ import QuickLinks from "@/components/features/home/QuickLinks";
 import Products from "@/components/features/product/Products";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { Suspense } from "react";
 
 const Home = () => {
   const { data: products } = useQuery(ProductQueries.filtered(""));
@@ -26,7 +26,9 @@ const Home = () => {
         <div className="pt-4">
           <QuickLinks />
         </div>
-        <Products data={products?.data} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Products data={products?.data} />
+        </Suspense>
       </div>
     </>
   );

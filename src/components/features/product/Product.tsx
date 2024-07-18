@@ -16,7 +16,7 @@ const Product = ({ product }: ProductProps) => {
       {/* TO-DO Image tag */}
       <img
         className="h-60 w-full rounded object-cover"
-        src={`${image.data[0].attributes.url}`}
+        src={`${image.data[0].attributes.formats.small.url}`}
         alt=""
       />
       <div className="flex flex-col gap-4  p-6">
