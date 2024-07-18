@@ -7,7 +7,6 @@ import {
 } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import Accordion from "../../../../../components/organisms/minSide/produkter/Accordion";
 import {
   ProductQueries,
   ProductsMethods,
@@ -15,22 +14,22 @@ import {
 import { useRouter } from "next/navigation";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
-import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
+import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import { toast } from "react-toastify";
-import ProductStatusChip from "@/components/organisms/ProductStatusChip";
-import Button from "@/components/atoms/Button";
-import { DeleteConfirmation } from "@/components/organisms/dialog/DeleteConfirmation";
-import Dialog from "@/components/organisms/dialog/Dialog";
-import Category from "@/components/organisms/form/product/Category";
-import Size from "@/components/organisms/form/product/Size";
-import Tags from "@/components/organisms/form/product/Tags";
-import Sex from "@/components/organisms/form/product/Sex";
-import { State } from "@/components/organisms/form/product/State";
-import Materials from "@/components/organisms/form/product/Materials";
-import Brand from "@/components/organisms/form/product/Brand";
-import Price from "@/components/organisms/form/product/Price";
-import Color from "@/components/organisms/form/product/Color";
+import Button from "@/components/common/buttons/Button";
+import { DeleteConfirmation } from "@/components/common/dialog/DeleteConfirmation";
+import Dialog from "@/components/common/dialog/Dialog";
 import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import ProductStatusChip from "@/components/features/product/ProductStatusChip";
+import Accordion from "@/components/features/minSide/produkter/Accordion";
+import Color from "@/components/features/productForm/Color";
+import Size from "@/components/features/productForm/Size";
+import Tags from "@/components/features/productForm/Tags";
+import Sex from "@/components/features/productForm/Sex";
+import { State } from "@/components/features/productForm/State";
+import Materials from "@/components/features/productForm/Materials";
+import Brand from "@/components/features/productForm/Brand";
+import Price from "@/components/features/productForm/Price";
 const Page = ({ params }: { params: { id: string } }) => {
   const queryClient = useQueryClient();
   const router = useRouter();
@@ -41,7 +40,6 @@ const Page = ({ params }: { params: { id: string } }) => {
   const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
   const { data: colors } = useSuspenseQuery(FilterQueries.colors());
   const { data: tags } = useSuspenseQuery(FilterQueries.tags());
-  const { data: categories } = useSuspenseQuery(FilterQueries.categories());
   const { data: materials } = useSuspenseQuery(FilterQueries.materials());
   const { data: sizes } = useSuspenseQuery(FilterQueries.sizes());
   const { data: user } = useQuery(UserQueries.me(jwt));
@@ -119,10 +117,10 @@ const Page = ({ params }: { params: { id: string } }) => {
       </div>
       <div className="mb-8 flex flex-wrap justify-evenly gap-2">
         {product.attributes.image.data.map((image) => (
+          // TO-DO Next image component
           <img
             key={image.id}
             src={image.attributes.url}
-            // className="h-80 w-2/5 object-cover"
             className="h-80  object-cover"
           />
         ))}
@@ -139,14 +137,6 @@ const Page = ({ params }: { params: { id: string } }) => {
           />
         </div>
       </Accordion>
-      {/* <Accordion label="Kategori" currentValue={formik.values.categoryName}>
-        <Category
-
-          formik={formik}
-          categories={categories}
-          initialId={product.attributes.category.data.id}
-        />
-      </Accordion> */}
       <Accordion label="Størrelse" currentValue={formik.values.sizeName}>
         <Size
           formik={formik}

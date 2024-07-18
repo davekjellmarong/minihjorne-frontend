@@ -1,4 +1,4 @@
-import Loading from "@/components/molecules/loading/Loading";
+import Loading from "@/components/common/loading/Loading";
 import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
 import {
   HydrationBoundary,

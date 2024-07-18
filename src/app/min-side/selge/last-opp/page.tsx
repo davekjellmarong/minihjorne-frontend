@@ -1,9 +1,5 @@
 "use client";
 import { Suspense, useState } from "react";
-import ImageUploader from "../../../../components/organisms/minSide/lastOpp/ImageUploader";
-import ProductForm from "../../../../components/organisms/form/product/ProductForm";
-import ImagesList from "../../../../components/organisms/minSide/lastOpp/ImagesList";
-import SelectedImages from "../../../../components/organisms/minSide/lastOpp/SelectedImages";
 import { useFormik } from "formik";
 import { ProductsMethods } from "@/utils/utils";
 import {
@@ -12,23 +8,25 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import Dialog from "@/components/organisms/dialog/Dialog";
-import FilterDialog from "@/components/organisms/product/FilterDialog";
 import { ArrowRight, SidebarSimple } from "@phosphor-icons/react";
 import Link from "next/link";
-import LoadingOverlay from "@/components/molecules/loading/LoadingOverlay";
+import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import { Image as ImageType } from "@/utils/types";
-import SavedImages from "@/components/organisms/minSide/lastOpp/SavedImages";
 import { ImageMethods } from "@/reactQuery/UploadQueryFactory";
 import { useStore } from "@/stateManagment/ZustandStore";
-import Loading from "@/components/molecules/loading/Loading";
+import Loading from "@/components/common/loading/Loading";
+import SavedImages from "@/components/features/minSide/lastOpp/SavedImages";
+import ImageUploader from "@/components/features/minSide/lastOpp/ImageUploader";
+import FilterDialog from "@/components/features/product/FilterDialog";
+import ImagesList from "@/components/features/minSide/lastOpp/ImagesList";
+import SelectedImages from "@/components/features/minSide/lastOpp/SelectedImages";
+import ProductForm from "@/components/features/productForm/ProductForm";
 
 const LeggUt = () => {
   const showNav = useStore((state) => state.showNav);
   const [modal, setModal] = useState(false);
-  const [introModal, setIntroModal] = useState(false);
   const [selectedImages, setSelectedImages] = useState<ImageType[]>([]);
   const [images, setImages] = useState<ImageType[]>([]);
   const [nextProduct, setNextProduct] = useState(false);
@@ -90,10 +88,6 @@ const LeggUt = () => {
   if (images.length === 0) {
     return (
       <>
-        {/* <Dialog open={introModal} setOpen={setIntroModal} height="h-[500px]">
-          <IntroCarousel />
-        </Dialog> */}
-
         <Suspense>
           <SavedImages
             images={user.productImages}
@@ -137,6 +131,7 @@ const LeggUt = () => {
           {nextProduct ? (
             <div className="flex flex-col items-center gap-8">
               <p>Vil du registrere flere produkter?</p>
+              {/* TO-DO use button component */}
               <button
                 onClick={() => {
                   setNextProduct(false);

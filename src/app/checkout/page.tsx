@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { PaymentMethods } from "@/utils/utils";
 import { getCart } from "@/utils/CartUtils";
-import StripeForm from "../../components/organisms/checkout/StripeForm";
+import StripeForm from "../../components/features/checkout/StripeForm";
 import { useRouter } from "next/navigation";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import useAutoLogIn from "@/components/customHooks/useAutoLogIn";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK as string);
 
 const Page = () => {
@@ -56,13 +55,13 @@ const Page = () => {
     business: "Mini Hjørne",
   };
   return (
-    <div>
+    <>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <StripeForm price={cart.totalPrice} />
         </Elements>
       )}
-    </div>
+    </>
   );
 };
 

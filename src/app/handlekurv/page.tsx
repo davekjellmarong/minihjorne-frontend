@@ -9,9 +9,9 @@ import { CurrencyDollar, Pants, Truck, XCircle } from "@phosphor-icons/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import Button from "@/components/atoms/Button";
+import Button from "@/components/common/buttons/Button";
 import Image from "next/image";
 
 const Page = () => {
@@ -59,6 +59,7 @@ const Page = () => {
                 key={product.id}
                 className=" grid grid-cols-5 grid-rows-4  gap-2"
               >
+                {/* TO-DO uSE nextjs image */}
                 <img
                   src={`${product.attributes.image.data[0].attributes.url}`}
                   alt=""

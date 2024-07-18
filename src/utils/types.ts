@@ -1,5 +1,3 @@
-import Product from "@/components/organisms/product/Product";
-
 export interface CommonSize {
   number: string;
   text: null;

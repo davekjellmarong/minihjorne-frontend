@@ -1,14 +1,10 @@
 "use client";
-import {
-  useQuery,
-  useQueryClient,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import React from "react";
-import AvatarLetter from "@/components/molecules/AvatarLetter";
-import Menu from "../../components/organisms/minSide/Menu";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
 import { useCookies } from "react-cookie";
+import AvatarLetter from "@/components/features/minSide/AvatarLetter";
+import Menu from "@/components/features/minSide/Menu";
 
 const MinSide = () => {
   const [cookies] = useCookies(["Token"]);

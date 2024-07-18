@@ -4,9 +4,9 @@ import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { UserMethods } from "@/utils/utils";
 import { toast } from "react-toastify";
-import EditSalgsprofil from "../../../../components/organisms/minSide/salgsprofil/EditSalgsprofil";
 import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import EditSalgsprofil from "@/components/features/minSide/salgsprofil/EditSalgsprofil";
 
 const Page = () => {
   const queryClient = useQueryClient();
@@ -27,7 +27,6 @@ const Page = () => {
       description: "",
       color: "",
       colorName: "",
-      // icon: "",
     },
 
     onSubmit: (values) => {
@@ -35,7 +34,6 @@ const Page = () => {
         header: values.header,
         description: values.description,
         color: values.colorName,
-        // icon: values.icon,
       };
       updateUser(data);
       console.log("Form data submitted:", values);
@@ -48,7 +46,6 @@ const Page = () => {
         description: userData.description,
         color: userData.color,
         colorName: userData.color,
-        // icon: userData.icon,
       });
     }
   }, [userData]);
@@ -56,7 +53,6 @@ const Page = () => {
     return (
       <>
         <div className="flex flex-col items-center justify-center py-6">
-          {/* <h2 className="font-semibold">Min salgsprofil</h2> */}
           <p className="max-w-[500px] px-6">
             Dette er din egen salgsprofil. Under ser du siden som en kjøper vil
             se når de trykker seg inn på profilen din. Her har du mulighet til å

@@ -1,14 +1,14 @@
 import React, { Suspense } from "react";
-import Breadcrumb from "../../components/organisms/minSide/Breadcrumb";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import Loading from "@/components/molecules/loading/Loading";
+import Loading from "@/components/common/loading/Loading";
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
 import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import Breadcrumb from "@/components/features/minSide/Breadcrumb";
 
 interface LayoutProps {
   children: any;

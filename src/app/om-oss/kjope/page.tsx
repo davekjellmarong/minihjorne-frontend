@@ -1,5 +1,5 @@
-import Header from "@/components/common/OmOss/Header";
-import Step from "@/components/common/OmOss/Step";
+import Header from "@/components/features/omOss/Header";
+import Step from "@/components/features/omOss/Step";
 import React from "react";
 
 const page = () => {
