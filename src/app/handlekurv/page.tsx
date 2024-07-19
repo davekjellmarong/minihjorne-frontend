@@ -59,7 +59,6 @@ const Page = () => {
                 key={product.id}
                 className=" grid grid-cols-5 grid-rows-4  gap-2"
               >
-                {/* TO-DO uSE nextjs image */}
                 <Image
                   height={160}
                   width={128}

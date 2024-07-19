@@ -1,6 +1,7 @@
 import Button from "@/components/common/buttons/Button";
 import { useStore } from "@/stateManagment/ZustandStore";
 import { ImageBackend } from "@/utils/types";
+import Image from "next/image";
 import React from "react";
 
 interface SavedImagesProps {
@@ -31,11 +32,12 @@ const SavedImages = ({ images, setImages, setModal }: SavedImagesProps) => {
       <ul className="flex max-h-[250px] flex-wrap justify-center gap-8 overflow-scroll">
         {unusedImages.map((image) => (
           <li key={image.id}>
-            {/* TO-DO use nect js Image */}
-            <img
+            <Image
               src={image.formats.thumbnail.url}
               alt={image.name}
               className="size-20 rounded-md object-cover"
+              width={80}
+              height={80}
             />
           </li>
         ))}
