@@ -8,42 +8,50 @@ const QuickLinks = () => {
     {
       name: "Gutt",
       link: "/produkter?&filters[sex][id][$eq]=1",
-      image: "/quicklink-gutt.jpg",
+      image:
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369331/StaticAssets/quicklink-gutt_njuiva.jpg",
     },
     {
       name: "Jente",
       link: "/produkter?&filters[sex][id][$eq]=2",
-      image: "/quicklink-jente.jpg",
+      image:
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369327/StaticAssets/quicklink-jente_cnnn6i.jpg",
     },
     {
       name: "Unisex",
       link: "/produkter?&filters[sex][id][$eq]=3",
-      image: "/quicklink-unisex.jpg",
+      image:
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369326/StaticAssets/quicklink-unisex_ksqzh1.jpg",
     },
     {
       name: "Nyfødt",
       link: "/produkter?&filters[size][id][$eq]=21",
-      image: "/quicklink-nyfodt.jpg",
+      image:
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369328/StaticAssets/quicklink-nyfodt_f1cxos.jpg",
     },
     {
       name: "Body",
       link: "/produkter?&filters[category][id][$eq]=2",
-      image: "/quicklink-body.JPG",
+      image:
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369328/StaticAssets/quicklink-nyfodt_f1cxos.jpg",
     },
     {
       name: "Kjole",
       link: "/produkter?&filters[category][id][$eq]=4",
-      image: "/quicklink-kjole.jpg",
+      image:
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369326/StaticAssets/quicklink-kjole_i3c20q.jpg",
     },
     {
       name: "Sko",
       link: "/produkter?&filters[category][id][$eq]=7",
-      image: "/quicklink-sko.jpg",
+      image:
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369325/StaticAssets/quicklink-sko_iolpap.jpg",
     },
     {
       name: "Yttertøy",
       link: "/produkter?&filters[category][id][$eq]=7&filters[category][id][$eq]=14&filters[category][id][$eq]=15",
-      image: "/quicklink-yttertoy.JPG",
+      image:
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369325/StaticAssets/quicklink-yttertoy_ynhh0u.jpg",
     },
   ];
   return (

@@ -9,7 +9,7 @@ const Header = ({ text }: HeaderProps) => {
       <h1 className="px-10 text-center text-3xl">{text}</h1>
       <Image
         className=" px-4"
-        src="/icon.svg"
+        src="/minihjørne-icon.svg"
         alt="logo"
         width={250}
         height={250}

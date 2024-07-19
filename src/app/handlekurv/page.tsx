@@ -60,8 +60,10 @@ const Page = () => {
                 className=" grid grid-cols-5 grid-rows-4  gap-2"
               >
                 {/* TO-DO uSE nextjs image */}
-                <img
-                  src={`${product.attributes.image.data[0].attributes.url}`}
+                <Image
+                  height={160}
+                  width={128}
+                  src={`${product.attributes.image.data[0].attributes.formats.small.url}`}
                   alt=""
                   className="col-span-2 row-span-full h-40 w-32 rounded object-cover"
                   onClick={() => {

@@ -8,7 +8,7 @@ const HomeHeroImage = () => {
       <Image
         height={500}
         width={500}
-        src="/home-hero-mobile.jpg"
+        src="https://res.cloudinary.com/dylzaicv5/image/upload/v1721369345/StaticAssets/home-hero-mobile_zg8aoz.jpg"
         alt="home-hero"
         priority
         className="absolute inset-0 h-full w-full object-cover object-center"
