@@ -11,7 +11,7 @@ const SalgsprofilHeader = ({ user, username }: SalgsprofilHeaderProps) => {
     if (item === "") {
       return (
         <React.Fragment key={index}>
-          <br />;
+          <br />
         </React.Fragment>
       );
     } else {

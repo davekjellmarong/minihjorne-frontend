@@ -46,7 +46,12 @@ const Footer = () => {
           href="https://instagram.com/mini_hjorne"
           className="flex items-center gap-2"
         >
-          <Image src="/instagram.svg" alt="logo" width={35} height={35} />
+          <Image
+            src="https://res.cloudinary.com/dylzaicv5/image/upload/v1721371518/StaticAssets/instagram-logo_w6uhtt.png"
+            alt="logo"
+            width={35}
+            height={35}
+          />
           <p>mini_hjorne</p>
         </Link>
       </div>
