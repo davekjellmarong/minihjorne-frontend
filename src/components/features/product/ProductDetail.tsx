@@ -6,6 +6,7 @@ import { User, XCircle } from "@phosphor-icons/react";
 import Link from "next/link";
 import ColorSquaresBackend from "@/components/features/filters/color/ColorSquaresBackend";
 import CarouselComponent from "@/components/common/Carousel";
+import Image from "next/image";
 
 interface ProductProps {
   selectedProduct: ProductBackend | undefined;
@@ -29,12 +30,11 @@ const ProductDetail = ({ selectedProduct, setOpen }: ProductProps) => {
         <CarouselComponent>
           {selectedProduct.image.map((image) => {
             return (
-              <img
+              <Image
                 key={image.id}
                 className="h-[500px] w-full overflow-hidden object-cover sm:h-[750px]"
                 src={`${image.url}`}
-                height={200}
-                width={200}
+                fill
                 alt=""
               />
             );

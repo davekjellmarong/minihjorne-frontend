@@ -1,4 +1,5 @@
 import { Product as ProductType } from "@/utils/types";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -13,11 +14,12 @@ const Product = ({ product }: ProductProps) => {
       className="w-full cursor-pointer rounded border-2 border-gray-100 active:bg-gray-200"
       key={product.id}
     >
-      {/* TO-DO Image tag */}
-      <img
+      <Image
         className="h-60 w-full rounded object-cover"
         src={`${image.data[0].attributes.formats.small.url}`}
         alt=""
+        height={240}
+        width={240}
       />
       <div className="flex flex-col gap-4  p-6">
         <p className="text-center font-semibold text-gray-800">{price} kr</p>

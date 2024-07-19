@@ -11,6 +11,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import BackButton from "@/components/common/buttons/BackButton";
 import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
+import Image from "next/image";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   // TO-DO use suspsenseQuery
@@ -64,11 +65,11 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
         <Carousel showDots responsive={responsive}>
           {image.data.map((image) => {
             return (
-              <img
+              <Image
                 key={image.id}
                 className="h-[500px] w-full overflow-hidden object-contain sm:h-[750px] sm:w-[500px]"
                 src={`${image.attributes.url}`}
-                height={200}
+                height={500}
                 width={200}
                 alt=""
               />

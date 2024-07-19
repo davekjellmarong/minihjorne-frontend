@@ -1,5 +1,6 @@
 "use client";
 import { Product } from "@/utils/types";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 interface OrderTableProps {
@@ -49,11 +50,11 @@ const OrderTable = ({ products }: OrderTableProps) => {
                     kr {product.attributes.price}
                   </td>
                   <td className=" px-4 text-left">
-                    <img
+                    <Image
                       className="h-14 w-14 shadow-sm"
-                      src={`${product.attributes.image.data?.[0].attributes.url}`}
-                      height={200}
-                      width={200}
+                      src={`${product.attributes.image.data?.[0].attributes.formats.thumbnail.url}`}
+                      height={56}
+                      width={56}
                       alt=""
                     />
                   </td>

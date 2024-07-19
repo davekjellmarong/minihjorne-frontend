@@ -30,6 +30,7 @@ import { State } from "@/components/features/productForm/State";
 import Materials from "@/components/features/productForm/Materials";
 import Brand from "@/components/features/productForm/Brand";
 import Price from "@/components/features/productForm/Price";
+import Image from "next/image";
 const Page = ({ params }: { params: { id: string } }) => {
   const queryClient = useQueryClient();
   const router = useRouter();
@@ -117,11 +118,13 @@ const Page = ({ params }: { params: { id: string } }) => {
       </div>
       <div className="mb-8 flex flex-wrap justify-evenly gap-2">
         {product.attributes.image.data.map((image) => (
-          // TO-DO Next image component
-          <img
+          <Image
             key={image.id}
             src={image.attributes.url}
             className="h-80  object-cover"
+            height={320}
+            width={320}
+            alt=""
           />
         ))}
       </div>
