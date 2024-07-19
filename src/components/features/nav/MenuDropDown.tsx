@@ -7,7 +7,7 @@ export const MenuDropDown = () => {
     <div className="flex items-center gap-6 ">
       <Link href="/" className="mb-0   pb-0 ">
         <Image
-          src="/minihjørne.png"
+          src="/minihjørne-logo.png"
           alt="logo"
           width={150}
           height={150}
