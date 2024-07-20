@@ -4,15 +4,16 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import React from "react";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
-import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
+import { FilterQueries } from "@/queryFactory/Filter";
 
 interface LayoutProps {
   children: any;
 }
+
 const layout = async ({ children }: LayoutProps) => {
   const queryClient = new QueryClient();
-
+  // to-do group featch or prefetch and cache infitite somewere
   await queryClient.prefetchQuery(ProductQueries.filtered(""));
   await queryClient.prefetchQuery(FilterQueries.categories());
   await queryClient.prefetchQuery(FilterQueries.colors());

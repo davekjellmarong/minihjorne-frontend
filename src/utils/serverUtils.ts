@@ -1,4 +1,14 @@
+import { FeatureFlagServerSideMethods } from "@/queryFactory/FeatureFlag";
 import { Product } from "./types";
+
+export const isFeatureFlagActive = async (flagId: number, token: any) => {
+  const data = await FeatureFlagServerSideMethods.get(token);
+  const featureFlag = data.find((flag) => flag.id === flagId);
+  if (!featureFlag) {
+    return false;
+  }
+  return featureFlag.attributes.active;
+};
 
 export const fetchProductsFiltered = async (query: string) => {
   const baseUrl = apiUrl + "/products?populate=*&filters[sold][$eq]=false";

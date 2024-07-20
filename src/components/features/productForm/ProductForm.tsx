@@ -13,7 +13,7 @@ import Materials from "./Materials";
 import Tags from "./Tags";
 import Carousel from "react-multi-carousel";
 import Deviation from "./Defect";
-import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import { FilterQueries } from "@/queryFactory/Filter";
 import CategoryTypes from "./CategoryType";
 import { CategoryTypeEnum } from "@/utils/constants";
 

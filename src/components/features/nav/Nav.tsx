@@ -1,6 +1,5 @@
 "use client";
-import React, { useState } from "react";
-import { navItemsPublic, navItemsAuth } from "./NavItems";
+import React from "react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -10,23 +9,30 @@ import {
   TShirt,
   UserCircle,
 } from "@phosphor-icons/react";
-import { authUpperNavItems, upperNavItems } from "./UpperNavItems";
-import { MenuDropDown } from "./MenuDropDown";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { AuthQueries } from "@/queryFactory/Auth";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/stateManagment/ZustandStore";
+import Image from "next/image";
+type NavItem = {
+  label: string;
+  path: string;
+  color: string;
+  icon: string;
+};
 
-const Nav = () => {
+interface NavProps {
+  navItemsPublic: NavItem[];
+  navItemsAuth: NavItem[];
+}
+const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
   // TO-DO: Fix Nav messy components
   const { data } = useQuery(AuthQueries.jwt());
+  // FIGURE OUT NAV RERENDERING AND AUTH AND IF WE CAN MOVE PUBLIC/AUTH UP TO PARENT
   const navVisible = useStore((state) => state.navVisible);
   let navItemsRightEnd = navItemsPublic;
-  let navItems = upperNavItems;
   if (data) {
     navItemsRightEnd = navItemsAuth;
-    navItems = authUpperNavItems;
   }
-  const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
   const icons: any = {
     minSide: <UserCircle size={30} weight="thin" color="gray" />,
@@ -40,8 +46,17 @@ const Nav = () => {
     <header className="mb-2  h-[56px] w-full">
       <nav className="fixed z-20 flex w-full justify-center border-b bg-white px-4">
         <div className="flex w-full max-w-[978px] flex-wrap items-center justify-between py-2">
-          <MenuDropDown />
-          <div className="flex justify-end gap-0 sm:gap-3">
+          <Link href="/" className="mb-0   pb-0 ">
+            <Image
+              src="/minihjørne-logo.png"
+              alt="logo"
+              width={150}
+              height={150}
+              className="mb-1"
+              priority
+            />
+          </Link>
+          <div className={`flex justify-end gap-0 sm:gap-3`}>
             {navItemsRightEnd.map((item) => {
               return (
                 <Link
@@ -54,25 +69,6 @@ const Nav = () => {
                     key={item.label}
                   >
                     {icons[item.icon]} {item.label}
-                  </button>
-                </Link>
-              );
-            })}
-          </div>
-
-          <div
-            className={`mt-4 flex w-full flex-grow flex-col gap-6  ${
-              isOpen ? "flex" : "hidden"
-            }`}
-          >
-            {navItems.map((item) => {
-              return (
-                <Link key={item.path} href={item.path} className="w-500">
-                  <button
-                    className={` flex items-center rounded p-4 text-sm text-brand-700 transition-colors duration-150 `}
-                    key={item.label}
-                  >
-                    {item.label}
                   </button>
                 </Link>
               );

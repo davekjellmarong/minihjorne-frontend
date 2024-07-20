@@ -1,7 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 import useInitialQueryParams from "@/components/features/product/useInitialQueryParams";
 import QuickFilterCards from "@/components/features/product/QuickFilterCards";
 import Filters from "@/components/features/product/Filters";

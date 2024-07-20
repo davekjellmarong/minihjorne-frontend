@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Globe, Pencil } from "@phosphor-icons/react";
 import SalgsprofilHeader from "./SalgsprofilHeader";
 import Link from "next/link";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 import { EmptyList } from "@/components/common/EmptyList";
 import Products from "../../product/Products";
 

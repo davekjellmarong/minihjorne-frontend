@@ -7,19 +7,16 @@ import {
 } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import {
-  ProductQueries,
-  ProductsMethods,
-} from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries, ProductsMethods } from "@/queryFactory/Product";
 import { useRouter } from "next/navigation";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { AuthQueries } from "@/queryFactory/Auth";
+import { UserQueries } from "@/queryFactory/User";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import { toast } from "react-toastify";
 import Button from "@/components/common/buttons/Button";
 import { DeleteConfirmation } from "@/components/common/dialog/DeleteConfirmation";
 import Dialog from "@/components/common/dialog/Dialog";
-import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import { FilterQueries } from "@/queryFactory/Filter";
 import ProductStatusChip from "@/components/features/product/ProductStatusChip";
 import Accordion from "@/components/features/minSide/produkter/Accordion";
 import Color from "@/components/features/productForm/Color";

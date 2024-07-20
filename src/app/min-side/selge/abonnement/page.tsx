@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import { PaymentQueries } from "@/reactQuery/PaymentQueryFactory";
+import { UserQueries } from "@/queryFactory/User";
+import { AuthQueries } from "@/queryFactory/Auth";
+import { PaymentQueries } from "@/queryFactory/Payment";
 import SuccessDialog from "@/components/features/minSide/abbonoment/SuccessDialog";
 import ActiveCard from "@/components/features/minSide/abbonoment/ActiveCard";
 import Cards from "@/components/features/minSide/abbonoment/Cards";

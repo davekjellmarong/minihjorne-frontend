@@ -3,8 +3,8 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React from "react";
 import OrderTable from "@/components/features/orders/OrderTable";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { AuthQueries } from "@/queryFactory/Auth";
+import { ProductQueries } from "@/queryFactory/Product";
 
 const Page = () => {
   const { id } = useParams();

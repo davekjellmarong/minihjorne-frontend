@@ -1,3 +1,4 @@
+import Header from "@/components/features/omOss/Header";
 import Image from "next/image";
 import React from "react";
 
@@ -5,35 +6,18 @@ const page = () => {
   return (
     <>
       <div className="flex flex-col items-center gap-6 pb-6">
-        <h1 className="px-10 text-center text-3xl">
-          Levere dine klær til Minihjørne
-        </h1>
-        {/* <Image
-          className="w-full"
-          src="/klær-gulvet.jpg"
-          alt="logo"
-          width={350}
-          height={350}
-        /> */}
+        <Header text="Levere klær til Minihjørne" />
       </div>
       <div className="mx-4 my-8 rounded-xl bg-yellow-300 p-4 text-center">
-        Husk, før du leverer klær til oss, må du <strong>registrere </strong>{" "}
-        dine klær og kjøpe et
-        <strong> abbonoment.</strong>
+        Husk, før du leverer klær til oss, må du{" "}
+        <strong>registrere klærne og kjøpe en leieavtale.</strong>
       </div>
       <div className="flex flex-col items-center gap-10 ">
         <div className="p">
           <div>
             <p className="text-sm font-light text-purple-700">Steg 1</p>
-            <h2 className="text-2xl">Kom til oss</h2>
+            <h2 className="text-2xl">Besøk oss</h2>
           </div>
-          {/* <Image
-            className="my-4 w-full rounded-lg"
-            src="/bretter-forklet.jpg"
-            alt="logo"
-            width={350}
-            height={350}
-          /> */}
           <p>Vi holder til på Løren, ved Peer Gynt parken:</p>
           <p className="my-4 text-center font-bold">
             Kanonhallveien 12A, 0585 Oslo.
@@ -42,13 +26,13 @@ const page = () => {
           <p>Onsdag 17:00-19:00</p>
           <p>Fredag 17:00-19:00</p>
           <p className="my-4">
-            Når du ankommer addressen kan du enten ringe oss på 46947922
-            (Iselin), eller ringe på vår ringeklokke 121 ved hovedingangen
+            Når du ankommer adressen, kan du ringe oss på 46947922 (Iselin),
+            eller ringe på vår ringeklokke 121 ved hovedinngangen.
           </p>
         </div>
         <div>
           <p className="text-sm font-light text-purple-700">Steg 2</p>
-          <h2 className="text-2xl">Overrekk klærne</h2>
+          <h2 className="text-2xl">Lever klærne</h2>
           {/* <Image
             src="/sokker-gulv.jpg"
             alt="logo"
@@ -56,10 +40,10 @@ const page = () => {
             height={350}
             className="my-4 w-full rounded-lg"
           /> */}
-          <p>Vi gleder oss til å se deg og klærne dine!</p>
+          <p>Vi ser frem til å ta imot deg og klærne dine!</p>
           <p>
-            Har du noen spørsmål om nettsiden, prossessen fremover eller noe
-            annet, så er det bare å spørre {":)"}
+            Har du spørsmål om nettsiden, prosessen videre eller noe annet, er
+            det bare å spørre {":)"}
           </p>
         </div>
         <div>
@@ -73,19 +57,18 @@ const page = () => {
             className="my-4 w-full rounded-lg"
           /> */}
           <p>
-            Når klærne er overrekt til oss, så lagrer vi klærne dine i vår
-            leilighet. Vi er nå i en startfase, og har derfor ikke et
-            lagerlokale. Vi har god plass, og klærne dine vil bli lagret trygt
-            og sikkert.
+            Etter at klærne er levert til oss, blir de lagret i vår leilighet. I
+            oppstartsfasen har vi ikke eget lager, men vi har god plass til å
+            lagre klærne trygt og sikkert.
           </p>
         </div>
         <div>
           <p className="text-sm font-light text-purple-700">Steg 4</p>
           <h2 className="text-2xl">Publisering</h2>
           <p>
-            Når vi har gått gjennom alle klærne dine, så vil de bli publisert på
-            nettsiden vår. Du vil da få en epost om at klærne dine er publisert.
-            Du kan da se dine klær på nettsiden vår.
+            Når vi har gjennomgått alle klærne dine, vil de bli publisert på
+            nettsiden vår. Du vil motta en e-post når klærne dine er publisert,
+            slik at du kan se dem på vår nettside.
           </p>
         </div>
       </div>

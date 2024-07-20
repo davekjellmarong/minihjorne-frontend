@@ -7,7 +7,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { UserQueries } from "@/queryFactory/User";
 import Breadcrumb from "@/components/features/minSide/Breadcrumb";
 
 interface LayoutProps {

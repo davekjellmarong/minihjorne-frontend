@@ -1,7 +1,7 @@
 "use client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import React from "react";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { UserQueries } from "@/queryFactory/User";
 import { useCookies } from "react-cookie";
 import AvatarLetter from "@/components/features/minSide/AvatarLetter";
 import Menu from "@/components/features/minSide/Menu";

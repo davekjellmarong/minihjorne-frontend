@@ -1,10 +1,10 @@
 "use client";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import React from "react";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 import Link from "next/link";
 import { PlusCircle } from "@phosphor-icons/react";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { AuthQueries } from "@/queryFactory/Auth";
 import { EmptyList } from "@/components/common/EmptyList";
 import ProductTable from "@/components/features/minSide/produkter/ProductTable";
 

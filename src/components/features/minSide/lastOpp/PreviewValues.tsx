@@ -1,6 +1,6 @@
 import DisplayCategory from "@/components/features/filters/category/DisplayCategory";
 import ColorSquares from "@/components/features/filters/color/ColorSquares";
-import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import { FilterQueries } from "@/queryFactory/Filter";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 

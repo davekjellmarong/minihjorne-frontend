@@ -4,8 +4,8 @@ import { useFormik } from "formik";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { UserQueries } from "@/queryFactory/User";
+import { AuthQueries } from "@/queryFactory/Auth";
 import { registerUser } from "@/utils/utils";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 

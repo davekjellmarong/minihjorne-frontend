@@ -3,7 +3,7 @@ import HomeHeroImage from "@/components/common/HomeHeroImage";
 import Card from "@/components/features/home/Card";
 import QuickLinks from "@/components/features/home/QuickLinks";
 import Products from "@/components/features/product/Products";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 import { useQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 

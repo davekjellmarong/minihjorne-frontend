@@ -2,7 +2,7 @@ import React from "react";
 import { UserBackend } from "@/utils/types";
 import { tailwindColorsUserButton } from "@/utils/constants";
 import { useQuery } from "@tanstack/react-query";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 import SalgsprofilHeader from "./SalgsprofilHeader";
 import Products from "../../product/Products";
 interface SalgsprofilProps {

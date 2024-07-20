@@ -1,5 +1,5 @@
 "use client";
-import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import { FilterQueries } from "@/queryFactory/Filter";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

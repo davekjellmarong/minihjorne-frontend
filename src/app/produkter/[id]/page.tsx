@@ -6,7 +6,7 @@ import Loading from "@/components/common/loading/Loading";
 import { User } from "@phosphor-icons/react";
 import Link from "next/link";
 import { queryTemplates } from "@/utils/constants";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import BackButton from "@/components/common/buttons/BackButton";

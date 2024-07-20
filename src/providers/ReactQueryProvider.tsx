@@ -6,10 +6,12 @@ import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-interface ProviderProps {
+interface ReactQueryProviderProps {
   children: any;
 }
-export default function Provider({ children }: ProviderProps) {
+export default function ReactQueryProvider({
+  children,
+}: ReactQueryProviderProps) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -20,7 +22,7 @@ export default function Provider({ children }: ProviderProps) {
             staleTime: 60 * 1000,
           },
         },
-      })
+      }),
   );
 
   return (

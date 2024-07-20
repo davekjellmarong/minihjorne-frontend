@@ -1,4 +1,4 @@
-import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import { FilterQueries } from "@/queryFactory/Filter";
 import { useQuery } from "@tanstack/react-query";
 
 const useGetFilters = () => {
