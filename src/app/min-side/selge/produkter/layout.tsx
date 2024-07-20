@@ -6,7 +6,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 
 interface LayoutProps {
   children: any;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { authUpperNavItems, upperNavItems } from "./UpperNavItems";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { AuthQueries } from "@/queryFactory/Auth";
 
 const UpperNav = () => {
   const [navItems, setNavItems] = useState(upperNavItems);

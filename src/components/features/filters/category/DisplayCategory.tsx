@@ -16,7 +16,7 @@ import {
   Shorts,
   Skirt,
 } from "../../../common/icons/SVGicons";
-import { FilterQueries } from "@/reactQuery/FilterQueryFactory";
+import { FilterQueries } from "@/queryFactory/Filter";
 interface DisplayCategoryProps {
   category: any;
 }

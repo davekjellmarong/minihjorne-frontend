@@ -7,24 +7,20 @@ const OmOssLinks = () => {
   const path = usePathname();
   const links = [
     {
-      name: "Hva er Minihjørnet?",
+      name: "Hva er Minihjørne?",
       href: "/om-oss/hva-er-minihjorne",
     },
     {
-      name: "Bli Minihjørne selger",
-      href: "/om-oss/hvordan-selge",
+      name: "Hvorfor bruke oss",
+      href: "/om-oss/hvorfor-selge",
     },
     {
-      name: "Hvorfor selge klær",
-      href: "/om-oss/hvorfor-selge",
+      name: "Selge klær",
+      href: "/om-oss/hvordan-selge",
     },
     {
       name: "Kjøpe klær",
       href: "/om-oss/kjope",
-    },
-    {
-      name: "Priser?",
-      href: "/om-oss/priser",
     },
     {
       name: "Levere klær",
@@ -34,19 +30,26 @@ const OmOssLinks = () => {
       name: "Sende klær",
       href: "/om-oss/sende",
     },
+    {
+      name: "Priser?",
+      href: "/om-oss/priser",
+    },
   ];
   return (
-    <div className="flex flex-col gap-4 bg-tan-500 p-4">
-      {links.map((link) => (
-        <Link
-          href={link.href}
-          key={link.href}
-          className={`${path === link.href ? "text-brand-600" : ""}`}
-        >
-          {link.name}
-        </Link>
-      ))}
-    </div>
+    <>
+      <div className="flex flex-wrap justify-evenly gap-4  p-4">
+        {links.map((link) => (
+          <Link
+            href={link.href}
+            key={link.href}
+            className={`w-[45%] rounded-lg border px-2 py-3 text-center ${path === link.href ? "border-brand-400 bg-brand-400 text-white shadow-lg" : "bg-white"} transition-all duration-300`}
+          >
+            {link.name}
+          </Link>
+        ))}
+      </div>
+      <hr />
+    </>
   );
 };
 

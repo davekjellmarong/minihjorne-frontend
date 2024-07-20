@@ -6,13 +6,13 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { AuthQueries } from "@/queryFactory/Auth";
+import { UserQueries } from "@/queryFactory/User";
 import Image from "next/image";
 import Link from "next/link";
 import { Question } from "@phosphor-icons/react";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
-import { ImageMethods } from "@/reactQuery/UploadQueryFactory";
+import { ImageMethods } from "@/queryFactory/Upload";
 import { useStore } from "@/stateManagment/ZustandStore";
 
 interface ImageUploaderProps {

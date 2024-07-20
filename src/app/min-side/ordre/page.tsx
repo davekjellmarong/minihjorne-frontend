@@ -3,9 +3,9 @@ import Loading from "@/components/common/loading/Loading";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 import OrdersTable from "@/components/features/orders/OrdersTable";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
-import { OrderQueries } from "@/reactQuery/OrderQueryFactory";
+import { AuthQueries } from "@/queryFactory/Auth";
+import { UserQueries } from "@/queryFactory/User";
+import { OrderQueries } from "@/queryFactory/Order";
 import { EmptyList } from "@/components/common/EmptyList";
 
 const Ordre = () => {

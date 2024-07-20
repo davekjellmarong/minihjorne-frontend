@@ -6,8 +6,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUser } from "../../../utils/utils";
 import { useCookies } from "react-cookie";
 import LoadingOverlay from "../../common/loading/LoadingOverlay";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { UserQueries } from "@/queryFactory/User";
+import { AuthQueries } from "@/queryFactory/Auth";
 const Login = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");

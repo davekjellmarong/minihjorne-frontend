@@ -4,9 +4,9 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
+import { UserQueries } from "@/queryFactory/User";
 import Loading from "@/components/common/loading/Loading";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 
 const Provider = async ({
   params,

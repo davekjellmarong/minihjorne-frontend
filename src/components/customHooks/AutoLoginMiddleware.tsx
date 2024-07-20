@@ -6,8 +6,8 @@ import {
 import { cookies } from "next/headers";
 import React from "react";
 import axios from "axios";
-import { UserQueries } from "@/reactQuery/UserQueryFactory";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { UserQueries } from "@/queryFactory/User";
+import { AuthQueries } from "@/queryFactory/Auth";
 
 interface AutoLoginMiddlewareProps {
   children: React.ReactNode;

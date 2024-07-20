@@ -6,6 +6,14 @@ export interface CommonSize {
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonFeatureFlag {
+  name: string;
+  description: string;
+  active: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
 export interface CommonDefect {
   type: string;
   createdAt: string;
@@ -234,7 +242,6 @@ export interface Order {
     user: { data: User[] };
   };
 }
-
 export interface Product {
   id: number;
   attributes: {
@@ -269,6 +276,10 @@ export interface CartItem {
 export interface Cart {
   items: Product[];
   totalPrice: number;
+}
+export interface FeatureFlag {
+  id: number;
+  attributes: CommonFeatureFlag;
 }
 export interface User {
   id: number;

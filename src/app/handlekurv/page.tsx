@@ -10,7 +10,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
-import { AuthQueries } from "@/reactQuery/AuthQueryFactory";
+import { AuthQueries } from "@/queryFactory/Auth";
 import Button from "@/components/common/buttons/Button";
 import Image from "next/image";
 

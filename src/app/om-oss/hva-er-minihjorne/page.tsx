@@ -1,66 +1,84 @@
 import Header from "@/components/features/omOss/Header";
+import Step from "@/components/features/omOss/Step";
 import React from "react";
 
-const page = () => {
+const MinihjornePage = () => {
   return (
     <>
       <Header text="Hva er Minihjørne?" />
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="mb-4 text-4xl font-bold">Hva er Minihjørne?</h1>
-
-        <p className="mb-4">
-          <strong>Minihjørne</strong> er en plattform dedikert til kjøp og salg
-          av brukte barneklær. Vi forstår at barn vokser raskt og ofte trenger
-          nye klær. Vårt mål er å skape en enkel og trygg markedsplass hvor
-          foreldre kan handle barneklær på en mer økonomisk og bærekraftig måte.
-        </p>
-
-        <h2 className="mb-2 text-2xl font-semibold">Vår Visjon</h2>
-        <p className="mb-4">
-          Vi ønsker å fremme gjenbruk av barneklær og redusere tekstilavfall.
-          Ved å tilby en plattform hvor foreldre kan kjøpe og selge brukte klær,
-          bidrar vi til en grønnere planet og en mer bærekraftig fremtid for
-          våre barn.
-        </p>
-
-        <h2 className="mb-2 text-2xl font-semibold">Hva Vi Tilbyr</h2>
-        <p className="mb-4">
-          Minihjørne tilbyr en brukervennlig plattform hvor foreldre kan:
-        </p>
-        <ul className="mb-4 list-inside list-disc">
-          <li>Opprette annonser for brukte barneklær.</li>
-          <li>Bla gjennom og kjøpe kvalitetsklær til reduserte priser.</li>
-          <li>
-            Delta i et fellesskap av likesinnede foreldre som deler våre verdier
-            om bærekraft og økonomisk bevissthet.
-          </li>
-        </ul>
-
-        <h2 className="mb-2 text-2xl font-semibold">Vår Forpliktelse</h2>
-        <p className="mb-4">
-          Vi er forpliktet til å tilby en trygg og sikker handelsplattform. Alle
-          våre transaksjoner håndteres gjennom pålitelige betalingsløsninger, og
-          vi oppfordrer til åpen kommunikasjon og tilbakemelding mellom kjøpere
-          og selgere.
-        </p>
-
-        <h2 className="mb-2 text-2xl font-semibold">
-          Bli Med i Vårt Fellesskap
-        </h2>
-        <p className="mb-4">
-          Når du blir en del av Minihjørne, blir du med i et fellesskap som
-          verdsetter miljøvennlige valg og økonomisk bevissthet. Vår plattform
-          gjør det enkelt å gi barneklær et nytt liv, og vi er her for å støtte
-          deg hele veien.
-        </p>
-
-        <p className="mt-4">
-          Oppdag Minihjørne i dag og bli med i vårt voksende fellesskap av
-          foreldre som jobber sammen for en mer bærekraftig fremtid.
-        </p>
+      <div className="flex flex-col gap-10">
+        <div>
+          <div>
+            <p className="text-sm font-light text-purple-700">Historie</p>
+            <h2 className="text-2xl">Hvordan ble Minihjørne til?</h2>
+          </div>
+          <p>
+            {" "}
+            Minihjørne startet som et svar på de utfordringene vi opplevde som
+            småbarnsforeldre innen kjøp og salg av barneklær. Lange køer og
+            vanskeligheter med å finne riktige klesplagg i kjøp-salg barneklær
+            butikker, og høye fraktkostnader ved småkjøp på online plattformer
+            inspirerte oss til å skape Minihjørne. Plattformen ble et svar på
+            behovet for en enklere og mer bærekraftig måte å handle barneklær
+            på.
+          </p>
+        </div>
+        <div>
+          <div>
+            <p className="text-sm font-light text-purple-700">Minihjørne</p>
+            <h2 className="text-2xl">Hva er Minihjørne?</h2>
+          </div>
+          <p>
+            Minihjørne er en plattform dedikert til kjøp og salg av brukte
+            barneklær fra størrelse 44 til 158. Vi forstår at barn vokser raskt
+            og ofte trenger nye klær. Vårt mål er å gjøre det enkelt og rimelig
+            å handle vakre og holdbare klær til barna våre. Samtidig ønsker vi
+            at det skal være like enkelt å selge barneklær etter at de er blitt
+            for små. På denne måten bidrar vi til å skåne miljøet og lommeboken
+            din, og sammen kan vi sørge for at barneklærne får et langt og
+            meningsfylt liv.
+          </p>
+        </div>
+        <div>
+          <div>
+            <p className="text-sm font-light text-purple-700">Vår plattform</p>
+            <h2 className="text-2xl">Brukervennlig og effektiv</h2>
+          </div>
+          <p>
+            Hos Minihjørne har vi lagt stor vekt på å utvikle en brukervennlig
+            plattform som gjør det enkelt å både kjøpe og selge brukte
+            barneklær. Vi tilbyr en sømløs opplevelse som gjør det mulig å finne
+            akkurat det du leter etter, enten det er en ny babydress eller en
+            fin vinterjakke til barnet ditt.
+          </p>
+        </div>
+        <div>
+          <p className="text-sm font-light text-purple-700">
+            Hvordan det fungerer
+          </p>
+          <h2 className="text-2xl">Enkelt og praktisk</h2>
+          <p>
+            Når du vil selge klær hos Minihjørne, trenger du bare å registrere
+            klærne dine og kjøpe et abonnement. Deretter kan du levere eller
+            sende klærne til oss, og vi tar oss av resten – inkludert betaling,
+            frakt og kundekommunikasjon. Det har aldri vært enklere å få
+            barneklærne til å finne nye hjem.
+          </p>
+        </div>
+        <div>
+          <p className="text-sm font-light text-purple-700">Vår visjon</p>
+          <h2 className="text-2xl">Bærekraft og økonomi</h2>
+          <p>
+            Vi er opptatt av å fremme bærekraftig handel og bidra til å redusere
+            klesavfall. Ved å handle på Minihjørne bidrar du til å forlenge
+            levetiden til barneklærne og spare både penger og ressurser. Sammen
+            kan vi gjøre en forskjell for miljøet og samtidig sikre at barna
+            dine alltid har klær som passer og som de trives i.
+          </p>
+        </div>
       </div>
     </>
   );
 };
 
-export default page;
+export default MinihjornePage;

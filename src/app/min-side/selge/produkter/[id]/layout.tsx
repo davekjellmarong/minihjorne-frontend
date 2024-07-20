@@ -1,5 +1,5 @@
 import Loading from "@/components/common/loading/Loading";
-import { ProductQueries } from "@/reactQuery/ProductQueryFactory";
+import { ProductQueries } from "@/queryFactory/Product";
 import {
   HydrationBoundary,
   QueryClient,

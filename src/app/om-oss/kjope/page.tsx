@@ -6,100 +6,99 @@ const page = () => {
   return (
     <>
       <Header text="Hvorfor kjøpe klær hos Minihjørne?" />
-      {/* <Step header="Hvorfor kjøpe via Minihjørnet?" description="Finn.no" /> */}
       <p className="pb-6 text-center text-2xl">
         Finn.no, Loppeliten eller Minihjørne?
       </p>
       <p>
-        Når det kommer til kjøp av brukte barneklær, så har man hovedsaklig 2
-        metoder å kjøpe på. Den ene er en online kjøp og salg platform, slik som
-        Finn.no og Tise. Den andre er fysiske butikker som tar imot klærne til
-        selgere og som får sin egen stand i buttikken. Begge disse metodene har
-        mange fantastiske sider, og noen litt mindre gode sider. La oss ta en
-        titt.
+        Når det gjelder kjøp av brukte barneklær, har man hovedsakelig to
+        metoder å velge mellom. Den ene er en online kjøp og salg plattform, som
+        for eksempel Finn.no og Tise. Den andre er fysiske butikker som tar imot
+        klærne fra selgere og tilbyr dem sin egen stand i butikken. Begge disse
+        metodene har sine fordeler og ulemper. La oss se nærmere på det.
       </p>
       <div className="my-4">
         <Step header="Finn.no og Tise" description="" />
         <p>
           Dette har lenge vært hvordan de fleste kjøper brukte barneklær, og er
-          meget populært. Men det er noen poenger å tenke på ved disse
-          løsningen:{" "}
+          meget populært. Men det er noen ting å huske på ved disse løsningene:
         </p>
         <ul className="mt-6 flex list-inside list-disc flex-col gap-4">
           <li>
-            <b>Kommunikasjon med selgere.</b>
+            <b>Kommunikasjon med selgere:</b> Kommunikasjon med selgeren er ofte
+            en del av prosessen.
           </li>
           <li>
-            <b>Samle småkjøp:</b> Kundene kan samle småkjøp i en bestilling, som
-            gjør at fler kunder kjøper flere plagg.
+            <b>Samle småkjøp:</b> Ved kjøp av enkeltplagg til lav pris kan
+            fraktkostnadene raskt bli høye, da hver vare ofte har separate
+            fraktkostnader.
           </li>
           <li>
-            <b>Filtrering og søking: </b> Ikke designet for barneklær. Eks,
-            plagg som Body og vinterdress har ofte ingen kategori og kan ikke
-            filtreres og søkes etter.
+            <b>Filtrering og søking:</b> Plattformene er ikke alltid optimalt
+            tilpasset barneklær. For eksempel kan plagg som body og vinterdress
+            mangle kategorier og være vanskelige å søke og filtrere etter.
           </li>
         </ul>
         <p className="my-4">
-          Og husk at alle disse stegene må gjøres fort hvert plagg du vil kjøpe.
-          Skal du kjøpe 10 plagg, blir det fort tidskrevende.
+          Og husk at alle disse trinnene må gjentas for hvert plagg du vil
+          kjøpe. Å kjøpe flere plagg kan derfor være tidkrevende.
         </p>
       </div>
       <div className="my-4">
-        <Step header="Fysiske butikker (eks: Loppeliten)" description="" />
+        <Step header="Fysiske butikker (f.eks. Loppeliten)" description="" />
         <p>
-          Dette er en nyere trend som har kommet til Norge, hvor en fysisk
-          butikk som tar imot klærne fra hvem som helst og selger de for dem i
-          butikken. Dette er en fantastisk tjeneste som fikset flere av {"'"}
-          problemene{"'"} med online platformer, men det er her også noen ting å
-          tenke på:
+          Dette er en nyere trend som har kommet til Norge, der fysiske butikker
+          tar imot klærne fra hvem som helst og selger dem videre i butikken.
+          Dette er en flott tjeneste som løser flere av utfordringene med online
+          plattformer, men det er også noen ting å tenke på:
         </p>
         <ul className="mt-6 flex list-inside list-disc flex-col gap-4">
           <li>
-            <b>Begrenset antall plagg</b>. De fleste butikker tar kun imot 20-30
-            plagg, så utvalget blir begrenset.
+            <b>Begrenset antall plagg:</b> Butikkene tar kun imot et begrenset
+            antall plagg, noe som kan begrense utvalget.
           </li>
           <li>
-            <b>Sortering av plagg</b> i butikken. Hvis du skal til butikken for
-            å kjøpe vinterdress i strl 90, så må du lete gjennom hele butikken.{" "}
+            <b>Sortering av plagg i butikken:</b> Det kan være nødvendig å lete
+            gjennom hele butikken for å finne spesifikke plagg, som for eksempel
+            en vinterdress i størrelse 90.
           </li>
           <li>
-            <b>Rekkevidde:</b> Butikken har kun kunder i nærheten av butikken,
-            som begresner utvalget.
+            <b>Rekkevidde:</b> Butikken når kun kunder som er geografisk nær
+            butikken, og dette begrenser også tilgangen til utvalget.
           </li>
         </ul>
       </div>
       <div>
         <Step header="Minihjørne" description="" />
         <p>
-          Minihjørne er en kombinasjon av disse to metodene. Vi er en online
-          plattform som tar imot klærne dine og selger de for deg. La oss se på
-          alle punktene over:
+          Minihjørne kombinerer det beste fra begge verdener. Vi er en online
+          plattform som tar imot klærne dine og selger dem videre for deg. La
+          oss se nærmere på alle punktene ovenfor:
         </p>
         <ul className="mt-6 flex list-inside list-disc flex-col gap-4">
           <li>
-            <b>Kommunikasjon med selgere.</b> Vi tar oss av dette, så du slipper
-            å tenke på dette
-          </li>
-
-          <li>
-            <b>Filtrering og søking. </b> Vi har kategorier for alle barneklær
-            som kan søkes og filtreres etter
+            <b>Kommunikasjon med selgere:</b> Vi håndterer all kommunikasjon med
+            selgere, slik at du slipper å tenke på dette.
           </li>
           <li>
-            <b>Samle småkjøp:</b> Du kan samle alle dine småkjøp i en
-            bestilling.
+            <b>Filtrering og søking:</b> Vi tilbyr kategorier for alle
+            barneklær, slik at det er enkelt å søke og filtrere etter ønsket
+            plagg.
           </li>
           <li>
-            <b>Ubegrenset antall plagg.</b> Vi tar et ubregrenset antall plagg
-            fra våre selgere, slik at utvalget blir bedre
+            <b>Samle småkjøp:</b> Du kan samle alle dine småkjøp i én enkelt
+            bestilling, noe som gjør det mer attraktivt å handle flere plagg.
           </li>
           <li>
-            <b>Sortering av plagg i butikken.</b> Vi har en søkefunksjon og
-            filtrering, så du enkelt kan finne det de leter etter.
+            <b>Ubegrenset antall plagg:</b> Vi tar imot et ubegrenset antall
+            plagg fra våre selgere, noe som sikrer et bredt utvalg for kundene.
           </li>
           <li>
-            <b>Rekkevidde.</b> Vi har selgere fra hele Norge, slik at utvalget
-            blir større.
+            <b>Sortering av plagg i butikken:</b> Vi tilbyr søkefunksjoner og
+            filtrering, slik at kundene enkelt kan finne det de leter etter.
+          </li>
+          <li>
+            <b>Rekkevidde:</b> Vi når kunder over hele Norge, noe som gir et
+            større utvalg og flere muligheter for kjøperne.
           </li>
         </ul>
       </div>
