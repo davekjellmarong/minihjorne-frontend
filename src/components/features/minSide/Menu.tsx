@@ -57,8 +57,8 @@ const Menu = () => {
         },
         {
           id: 4,
-          title: "Abonnement",
-          path: "/min-side/selge/abonnement",
+          title: "Leie",
+          path: "/min-side/selge/leie",
           icon: <CreditCard size={32} weight="thin" color="purple" />,
           action: null,
         },

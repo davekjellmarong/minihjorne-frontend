@@ -1,8 +1,8 @@
 "use client";
-import { CategoryTypeEnum } from "@/utils/constants";
 import { CategoryType } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
+import { CategoryTypeEnum } from "@/utils/Enums";
 
 interface ColorProps {
   categoryTypes: CategoryType[];

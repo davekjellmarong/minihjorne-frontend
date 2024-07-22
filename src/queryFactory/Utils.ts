@@ -55,7 +55,7 @@ export const getAuthData = async (query: string, token: string) => {
   }
 };
 
-export const putData = async (query: string, token: string, data: any) => {
+export const putData = async (data: any, query: string, token: string) => {
   try {
     const url = apiUrl + query;
     const response = await fetch(url, {

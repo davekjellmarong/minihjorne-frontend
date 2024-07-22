@@ -22,11 +22,11 @@ const ActiveCard = ({ user, planId }: ActiveCardProps) => {
           <div className="flex flex-col items-center justify-center space-y-6">
             {user.active ? (
               <p className="text-h1 text-center font-semibold text-blue-500">
-                Ditt abbonement er aktivert frem til {user.activeUntill}
+                Din leieperiode er aktivert frem til {user.activeUntill}
               </p>
             ) : (
               <p className="text-h1 text-center font-semibold text-blue-500">
-                Ditt abbonement er ikke aktivert. Det vil bli aktivert når du
+                Din leieperiode er ikke aktivert. Det vil bli aktivert når du
                 leverer dine klær til oss.
               </p>
             )}
@@ -35,7 +35,7 @@ const ActiveCard = ({ user, planId }: ActiveCardProps) => {
             </div>
             <div className="flex flex-col items-center justify-center space-y-2">
               <p className="text-h1 text-center font-semibold text-blue-500">
-                Du har {activeCard?.title} abonnement
+                Du har {activeCard?.title} leie-pakke
               </p>
               <p className="max-w-lg text-center text-base text-gray-600">
                 Takk for at du bruker MiniHjørne. Som en del av denne pakken,
