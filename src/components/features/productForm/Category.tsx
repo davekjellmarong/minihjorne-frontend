@@ -24,7 +24,7 @@ import {
   Pajamas,
 } from "@/components/common/icons/SVGicons";
 import FormFieldContainer from "./FormFieldContainer";
-import { CategoryTypeEnum } from "@/utils/constants";
+import { CategoryTypeEnum } from "@/utils/Enums";
 interface CategoryProps {
   categories: CategoryType[];
   formik: any;

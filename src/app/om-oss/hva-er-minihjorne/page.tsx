@@ -59,7 +59,7 @@ const MinihjornePage = () => {
           <h2 className="text-2xl">Enkelt og praktisk</h2>
           <p>
             Når du vil selge klær hos Minihjørne, trenger du bare å registrere
-            klærne dine og kjøpe et abonnement. Deretter kan du levere eller
+            klærne dine og kjøpe en leieperiode. Deretter kan du levere eller
             sende klærne til oss, og vi tar oss av resten – inkludert betaling,
             frakt og kundekommunikasjon. Det har aldri vært enklere å få
             barneklærne til å finne nye hjem.

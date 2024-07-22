@@ -2,7 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 
 import { User, UserBackend } from "@/utils/types";
 import { getAuthData, getPublicData, putData } from "./Utils";
-import { postAuthRequest } from "@/utils/utils";
+import { postAuthRequest, putAuthRequest } from "@/utils/utils";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -30,5 +30,8 @@ export const UserMethods = {
   },
   uploadImages: async (data: any, token: any) => {
     return postAuthRequest(data, "/upload", token);
+  },
+  put: async (data: any, id: any, jwt: any) => {
+    return putData(data, `/users/${id}`, jwt);
   },
 };

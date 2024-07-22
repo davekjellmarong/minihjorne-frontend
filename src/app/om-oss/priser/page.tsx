@@ -1,3 +1,4 @@
+import GoodNewsBox from "@/components/common/messageBox/GoodNewsBox";
 import Header from "@/components/features/omOss/Header";
 import React from "react";
 
@@ -6,17 +7,12 @@ const PriserPage = () => {
     <>
       <Header text="Priser" />
       <div className="flex flex-col gap-10">
-        <div className="rounded-md bg-yellow-100 p-4">
-          <p className="font-semibold text-yellow-800">
-            Gratis leieperiode ut september!
-          </p>
-          <p>
-            Som en oppstartskampanje tilbyr vi gratis leie av plass på
-            Minihjørne ut september. Dette betyr at du kan registrere og selge
-            dine barneklær uten å betale leiepris frem til oktober. Benytt
-            sjansen til å prøve vår plattform uten kostnader!
-          </p>
-        </div>
+        <GoodNewsBox title="Gratis leieperiode ut september!">
+          Som en oppstartskampanje tilbyr vi gratis leie av plass på Minihjørne
+          ut september. Dette betyr at du kan registrere og selge dine barneklær
+          uten å betale leiepris frem til oktober. Benytt sjansen til å prøve
+          vår plattform uten kostnader!
+        </GoodNewsBox>
         <div>
           <div>
             <p className="text-sm font-light text-purple-700">Leiepris</p>

@@ -1,15 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
+import {
+  useQuery,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { PaymentQueries } from "@/queryFactory/Payment";
-import SuccessDialog from "@/components/features/minSide/abbonoment/SuccessDialog";
-import ActiveCard from "@/components/features/minSide/abbonoment/ActiveCard";
-import Cards from "@/components/features/minSide/abbonoment/Cards";
+import SuccessDialog from "@/components/features/minSide/leie/SuccessDialog";
+import ActiveCard from "@/components/features/minSide/leie/ActiveCard";
+import Cards from "@/components/features/minSide/leie/Cards";
 
-const Abonnement = () => {
+const Leie = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
@@ -23,9 +27,11 @@ const Abonnement = () => {
       setPaymentSuccess(true);
     }
   }, [payment]);
-  const { data: paymentData } = useSuspenseQuery(
-    PaymentQueries.subscriptionLink(jwt, planId),
-  );
+  const { data: paymentData } = useQuery({
+    queryKey: PaymentQueries.subscriptionLink(jwt, planId).queryKey,
+    queryFn: PaymentQueries.subscriptionLink(jwt, planId).queryFn,
+    enabled: planId > 0,
+  });
   useEffect(() => {
     if (paymentData?.url) {
       router.push(paymentData.url.url);
@@ -35,7 +41,7 @@ const Abonnement = () => {
   if (!user)
     return (
       <div>
-        <h1>Abonnement</h1>
+        <h1>Leie</h1>
         <p>Du må være logget inn for å se denne siden</p>
       </div>
     );
@@ -54,7 +60,7 @@ const Abonnement = () => {
         <div className="mt-8">
           <div className="flex justify-center">
             <p className="mb-12 text-center text-2xl">
-              Velg lengde på ditt abonnement
+              Velg lengde på din leieperiode
             </p>
           </div>
           <Cards setPlanId={setPlanId} />
@@ -64,4 +70,4 @@ const Abonnement = () => {
   );
 };
 
-export default Abonnement;
+export default Leie;

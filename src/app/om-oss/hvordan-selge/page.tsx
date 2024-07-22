@@ -50,7 +50,7 @@ const page = () => {
             Du kan også sende klærne med posten til oss på samme adresse.
           </p>
           <p className="my-4 text-center font-bold">
-            Minihjørnet, Kanonhallveien 12A, 0585 Oslo.
+            Minihjørne, Kanonhallveien 12A, 0585 Oslo.
           </p>
         </div>
         <div>

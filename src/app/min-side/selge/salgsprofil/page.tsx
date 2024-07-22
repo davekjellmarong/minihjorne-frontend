@@ -12,6 +12,7 @@ const Page = () => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: userData } = useQuery(UserQueries.me(jwt));
+  // TO-DO The user can just update their active field here. we need a way to prevent this. change update user permissions to false and allways use secret token from server action to update user
   const { mutate: updateUser } = useMutation({
     mutationFn: (values: any) => {
       return UserMethods.put(values, userData?.id, jwt);

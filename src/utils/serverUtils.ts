@@ -20,7 +20,7 @@ export const fetchProductsFiltered = async (query: string) => {
   return data;
 };
 
-export const putData = async (query: string, jwt: string, data: any) => {
+export const putData = async (data: any, query: string, jwt: string) => {
   try {
     const url = apiUrl + query;
     const response = await fetch(url, {

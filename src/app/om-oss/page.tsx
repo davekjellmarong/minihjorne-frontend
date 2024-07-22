@@ -33,18 +33,17 @@ const OmOss = () => {
             height={350}
           />
           <p>
-            Velkommen til Minihjørnet, ditt foretrukne reisemål for en
-            fantastisk verden av barneklær og tilbehør. Hos oss handler vi ikke
-            bare om å kle barna dine, men om å gi dem en unik stil og uttrykk
-            som passer til deres personlighet. Vi tror på å skape magiske
-            øyeblikk gjennom nøye kuraterte kolleksjoner av klær, leker og
-            tilbehør som kombinerer komfort, kvalitet og estetikk. Vårt utvalg
-            er plukket med omhu for å tilby deg det beste innen barnemote og
-            design.
+            Velkommen til Minihjørne, ditt foretrukne reisemål for en fantastisk
+            verden av barneklær og tilbehør. Hos oss handler vi ikke bare om å
+            kle barna dine, men om å gi dem en unik stil og uttrykk som passer
+            til deres personlighet. Vi tror på å skape magiske øyeblikk gjennom
+            nøye kuraterte kolleksjoner av klær, leker og tilbehør som
+            kombinerer komfort, kvalitet og estetikk. Vårt utvalg er plukket med
+            omhu for å tilby deg det beste innen barnemote og design.
           </p>
           <br />
           <p>
-            Minihjørnet er mer enn bare en butikk; det er et fellesskap av
+            Minihjørne er mer enn bare en butikk; det er et fellesskap av
             foreldre som deler lidenskapen for å kle opp barna sine med omtanke.
             Vår dedikerte team jobber hardt for å gi deg en sømløs
             handleopplevelse, fra trendy antrekk til leker som stimulerer
@@ -64,7 +63,7 @@ const OmOss = () => {
             className="w-full rounded-lg"
           />
           <p>
-            Vi er et dedikert team hos Minihjørnet, sammensatt av engasjerte
+            Vi er et dedikert team hos Minihjørne, sammensatt av engasjerte
             enkeltpersoner som deler en felles kjærlighet for barnemote og
             foreldreskap. Vår visjon er å skape en unik plattform der
             kvalitetsklær og tilbehør kombineres med en personlig og varm
@@ -78,7 +77,7 @@ const OmOss = () => {
             hver vare gjenspeiler våre verdier om komfort, stil og lekenhet. Vi
             forstår at hvert barn er unikt, og derfor legger vi vekt på å tilby
             et variert utvalg som appellerer til ulike smaker og personligheter.
-            Hos Minihjørnet tror vi på å være mer enn bare en butikk; vi er dine
+            Hos Minihjørne tror vi på å være mer enn bare en butikk; vi er dine
             medreisende på reisen gjennom barndommens magi.
           </p>
         </div>

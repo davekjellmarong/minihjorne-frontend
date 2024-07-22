@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import { apiUrl } from "@/utils/constants";
+import { UserBackend } from "./types";
 export const registerUser = async (values: any) => {
   const url = apiUrl + "/auth/local/register";
   return axios
@@ -198,7 +199,7 @@ export const UserMethods = {
   put: async (values: any, id: any, jwt: any) => {
     return putAuthRequest(values, `/users/${id}`, jwt);
   },
-  getMe: async (token: any) => {
+  getMe: async (token: any): Promise<UserBackend> => {
     return getAuthData("/users/me?populate=*", token);
   },
 };

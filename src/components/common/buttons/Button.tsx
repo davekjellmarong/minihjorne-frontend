@@ -1,3 +1,4 @@
+"use client";
 import {
   FloppyDisk,
   Trash,
@@ -37,11 +38,10 @@ const Button = ({
   let colors;
   if (disabled) {
     colors = {
-      brand: "bg-brand-300 text-white active:bg-brand-400",
-      danger: "bg-red-300 text-white active:bg-red-400",
-      outline:
-        "bg-brand-300 text-gray-500 border-2 border-brand-300 active:bg-brand-400",
-      flat: "bg-white text-gray-500 active:bg-gray-100",
+      brand: "bg-brand-300 text-white",
+      danger: "bg-red-300 text-white",
+      outline: "bg-brand-300 text-gray-500 border-2 border-brand-300",
+      flat: "bg-white text-gray-500",
     };
   } else {
     colors = {

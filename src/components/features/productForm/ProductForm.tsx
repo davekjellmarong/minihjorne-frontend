@@ -15,7 +15,7 @@ import Carousel from "react-multi-carousel";
 import Deviation from "./Defect";
 import { FilterQueries } from "@/queryFactory/Filter";
 import CategoryTypes from "./CategoryType";
-import { CategoryTypeEnum } from "@/utils/constants";
+import { CategoryTypeEnum } from "@/utils/Enums";
 
 interface ProductFormProps {
   formik: any;
