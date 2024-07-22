@@ -22,6 +22,7 @@ const FreeRent = () => {
   const { mutate: updateUser } = useMutation({
     mutationFn: activeUserProfile,
     onSuccess: () => {
+      queryClient.invalidateQueries(UserQueries.me(jwt));
       toast.success("Gratis leie aktivert!");
     },
   });
