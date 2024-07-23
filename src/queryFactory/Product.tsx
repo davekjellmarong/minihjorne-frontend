@@ -16,7 +16,7 @@ export const ProductsMethods = {
     return getProductsFiltered(query);
   },
   put: async (id: string, data: any, token: any): Promise<Product> => {
-    return putData(`/products/${id}`, token, data);
+    return putData(data, `/products/${id}`, token);
   },
   getByUserId: async (id: any): Promise<Product[]> => {
     return getPublicData(
