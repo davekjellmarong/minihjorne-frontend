@@ -52,7 +52,7 @@ const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
               alt="logo"
               width={150}
               height={150}
-              className="mb-1"
+              // className="mb-1"
               priority
             />
           </Link>

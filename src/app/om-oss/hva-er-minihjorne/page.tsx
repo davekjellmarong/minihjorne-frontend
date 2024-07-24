@@ -7,7 +7,7 @@ const MinihjornePage = () => {
     <>
       <Header text="Hva er Minihjørne?" />
       <div className="flex flex-col gap-10">
-        <div>
+        {/* <div>
           <div>
             <p className="text-sm font-light text-purple-700">Historie</p>
             <h2 className="text-2xl">Hvordan ble Minihjørne til?</h2>
@@ -22,50 +22,52 @@ const MinihjornePage = () => {
             behovet for en enklere og mer bærekraftig måte å handle barneklær
             på.
           </p>
-        </div>
+        </div> */}
         <div>
           <div>
-            <p className="text-sm font-light text-purple-700">Minihjørne</p>
+            {/* <p className="text-sm font-light text-purple-700">Minihjørne</p> */}
             <h2 className="text-2xl">Hva er Minihjørne?</h2>
           </div>
           <p>
-            Minihjørne er en plattform dedikert til kjøp og salg av brukte
-            barneklær fra størrelse 44 til 158. Vi forstår at barn vokser raskt
-            og ofte trenger nye klær. Vårt mål er å gjøre det enkelt og rimelig
-            å handle vakre og holdbare klær til barna våre. Samtidig ønsker vi
-            at det skal være like enkelt å selge barneklær etter at de er blitt
-            for små. På denne måten bidrar vi til å skåne miljøet og lommeboken
-            din, og sammen kan vi sørge for at barneklærne får et langt og
-            meningsfylt liv.
+            Minihjørne er rett og slett en bruktbutikk på internett, der man kan
+            kjøpe og selge barneklær. Det fungerer ved av privatpersoner leier
+            en spot i nettbutikken og leverer inn klærne de ønsker å selge til
+            Minihjørne. Klærne blir stilt ut sammen med mange andre fine
+            bruktklær, og så står vi for gjennomføring av salg og sending av
+            plagg til nye små eiere!
           </p>
         </div>
         <div>
           <div>
-            <p className="text-sm font-light text-purple-700">Vår plattform</p>
-            <h2 className="text-2xl">Brukervennlig og effektiv</h2>
+            {/* <p className="text-sm font-light text-purple-700">Vår plattform</p> */}
+            <h2 className="text-2xl">Vår visjon</h2>
           </div>
           <p>
-            Hos Minihjørne har vi lagt stor vekt på å utvikle en brukervennlig
-            plattform som gjør det enkelt å både kjøpe og selge brukte
-            barneklær. Vi tilbyr en sømløs opplevelse som gjør det mulig å finne
-            akkurat det du leter etter, enten det er en ny babydress eller en
-            fin vinterjakke til barnet ditt.
+            Barn vokser fort og har stadig vekk behov for nye klær. Målet til
+            Minihjørne er å gjøre det lettere å finne brukte plagg til akkurat
+            ditt barn, uten å måtte betale unødvendige høye fraktpriser.
+            Samtidig vil vi at det skal være enkelt og stressfritt å selge
+            utvokste barneklær, og tilbyr derfor å være din personlige
+            nettbutikk som står for både salg og sending av varer.
           </p>
-        </div>
-        <div>
-          <p className="text-sm font-light text-purple-700">
-            Hvordan det fungerer
-          </p>
-          <h2 className="text-2xl">Enkelt og praktisk</h2>
+          <br />
           <p>
-            Når du vil selge klær hos Minihjørne, trenger du bare å registrere
-            klærne dine og kjøpe en leieperiode. Deretter kan du levere eller
-            sende klærne til oss, og vi tar oss av resten – inkludert betaling,
-            frakt og kundekommunikasjon. Det har aldri vært enklere å få
-            barneklærne til å finne nye hjem.
+            Sammen kan vi bidra til en mer bærekraftig hverdag som gjør godt for
+            både jorda vår og lommeboken din.
           </p>
         </div>
         <div>
+          {/* <p className="text-sm font-light text-purple-700">
+            Hvordan det fungerer
+          </p> */}
+          <h2 className="text-2xl">Hvem er vi?</h2>
+          <p>
+            Minihjørne er en bitteliten familiebedrift drevet av foreldreparet
+            Iselin og Dave. Sammen har vi to barn på ett og fire år. Vi er glade
+            i å handle gjenbruk og klær er selvfølgelig ikke noe unntak.
+          </p>
+        </div>
+        {/* <div>
           <p className="text-sm font-light text-purple-700">Vår visjon</p>
           <h2 className="text-2xl">Bærekraft og økonomi</h2>
           <p>
@@ -75,7 +77,7 @@ const MinihjornePage = () => {
             kan vi gjøre en forskjell for miljøet og samtidig sikre at barna
             dine alltid har klær som passer og som de trives i.
           </p>
-        </div>
+        </div> */}
       </div>
     </>
   );
