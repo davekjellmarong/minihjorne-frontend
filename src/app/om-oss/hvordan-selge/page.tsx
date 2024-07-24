@@ -9,7 +9,9 @@ const page = () => {
       {/* <p className="pb-6  text-2xl">
         Hvordan selger jeg klær hos dere?
       </p> */}
-      <p className="py-4  text-2xl">Følg disse 6 stegene så er du i gang!</p>
+      <p className="py-4  text-2xl">
+        Her er alt du trenger å vite for å selge klær hos Minihjørne
+      </p>
       <div className="flex flex-col gap-8">
         <div>
           <Step header="Lag bruker" description="" />
@@ -68,7 +70,7 @@ const page = () => {
           </p>
         </div>
         <div>
-          <p className="pb-6  text-2xl">Etter produkt registrering</p>
+          <p className="pb-6  text-2xl">Etter produktregistrering</p>
           <p>
             I løpet av leieperioden kan du følge med på salgstallene dine og
             sjekke statistikk. Husk at du når som helst kan forlenge leietiden
@@ -91,32 +93,21 @@ const page = () => {
               av avviket samt at det skal hukes av for type avvik i selve
               registreringsprosessen.
             </p>
+            <br />
             <p>
               Vi selger også vintage barneklær. Med det mener vi barneklær som
               er minst 20 år gamle.
             </p>
+            <br />
+
             <p>
               Pr nå tar vi ikke i mot:
-              <b>sko, sokker, hodeplagg, accessories, undertøy og badetøy.</b>
+              <b> sko, sokker, hodeplagg, accessories, undertøy og badetøy.</b>
               Vi selger heller ikke klær fra nettsider som wish, shein og temu,
               piratkopier og falske varer, plagg med print av våpen, rusmidler
               og annet som kan oppfattes som støtende.
             </p>
           </div>
-        </div>
-        <div>
-          <p className="pb-6  text-2xl">Neste steg</p>
-          <p>
-            I løpet av leieperioden kan du følge med på salgstallene dine og
-            sjekke statistikk. Husk at du når som helst kan forlenge leietiden
-            din. Når leieperioden er over overfører vi 80% av salgssummen til
-            din konto. Plaggene som eventuelt er igjen må hentes innen 3 dager
-            etter leieforholdet er avsluttet. Vi kan også sende plaggene i retur
-            dersom du betaler frakt. Send oss en mail dersom du ønsker at vi
-            sender plaggene i retur. Ønsker du å donere resterende plagg til
-            oss, send oss en mail! Plaggene vil bli solgt på nettsiden og
-            inntekten går til å videreutvikle Minihjørne.
-          </p>
         </div>
         <div>
           <p className="pb-6  text-2xl">Priser</p>
@@ -138,13 +129,13 @@ const page = () => {
           </p>
           <ul className="mt-4 flex list-inside list-disc flex-col gap-4">
             <li>
-              <b>Bruk en enkel, ren flate.</b>
+              <b>Bruk en enkel, ren flate. </b>
               Feks et bord, gulvet eller en vegg (ta ned et veggbilde og bruk
               spikeren til å henge kleshengeren i). Bruk evt et ensfarget
               teppe/duk/laken til bakgrunn.
             </li>
             <li>
-              <b>Legg ned eller heng opp plagget</b>
+              <b>Legg ned eller heng opp plagget </b>
               og knips bilde. Sørg for at hele plagget kommer med.
             </li>
             <li>
@@ -153,7 +144,7 @@ const page = () => {
               at plaggets farge blir feil.
             </li>
             <li>
-              <b>Ett bilde pr annonse.</b>
+              <b>Ett bilde pr annonse. </b>
               Unntak: dersom plagget har betydelige forskjeller på bak og
               fremsiden: da tar du bilder av begge sider. Og plagg med avvik: ta
               bilde, gjerne nærbilde, av avviket. En annonse kan ha opp til tre
@@ -162,7 +153,7 @@ const page = () => {
           </ul>
         </div>
         <div>
-          <p className="pb-6  text-2xl">Viktig angående størrlses</p>
+          <p className="pb-6  text-2xl">Viktig angående størrelse</p>
           <div>
             <p>
               Dersom plagget viser en dobbel størrelse, feks 74-80, før opp den
@@ -181,7 +172,7 @@ const page = () => {
         </div>
 
         <div>
-          <p className="pb-6  text-2xl">Tilstand</p>
+          <p className="pb-6  text-2xl">Plaggets tilstand</p>
           <ul className="flex list-inside list-disc flex-col gap-4">
             <li>
               <b>Ny:</b> plagget er ubrukt. I noen tilfeller er lappen fremdeles

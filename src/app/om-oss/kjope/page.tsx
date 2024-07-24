@@ -21,7 +21,7 @@ const page = () => {
           bruksslitasje. MEN plaggene skal være hele og brukbare. Og alle avvik
           skal være dokumentert.
         </p>
-        <p className="text-2xl">4 kategorier</p>
+        <p className="pt-4 text-2xl">Fire kategorier</p>
         <p>
           Vi har laget en mal på hvordan selgerne skal klassifisere standarden
           på klærne de selger:

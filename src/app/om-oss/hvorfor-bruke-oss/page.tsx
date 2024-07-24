@@ -32,7 +32,7 @@ const page = () => {
           </li>
         </ul>
       </div>
-      <div className="my-4">
+      <div className="my-8">
         <Step header="Når du skal selge klær hos oss får du:" description="" />
         <ul className="mt-6 flex list-inside list-disc flex-col gap-4">
           <li>
