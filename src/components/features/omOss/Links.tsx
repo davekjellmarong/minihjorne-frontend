@@ -12,7 +12,7 @@ const OmOssLinks = () => {
     },
     {
       name: "Hvorfor bruke oss",
-      href: "/om-oss/hvorfor-selge",
+      href: "/om-oss/hvorfor-bruke-oss",
     },
     {
       name: "Selge klær",
@@ -34,6 +34,10 @@ const OmOssLinks = () => {
       name: "Priser?",
       href: "/om-oss/priser",
     },
+    // {
+    //   name: "Våre produkter",
+    //   href: "/om-oss/tilstand",
+    // },
   ];
   return (
     <>

@@ -5,102 +5,81 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <Header text="Hvorfor kjøpe klær hos Minihjørne?" />
-      <p className="pb-6 text-center text-2xl">
-        Finn.no, Loppeliten eller Minihjørne?
-      </p>
+      <Header text="Kjøpe klær hos Minihjørne" />
       <p>
-        Når det gjelder kjøp av brukte barneklær, har man hovedsakelig to
-        metoder å velge mellom. Den ene er en online kjøp og salg plattform, som
-        for eksempel Finn.no og Tise. Den andre er fysiske butikker som tar imot
-        klærne fra selgere og tilbyr dem sin egen stand i butikken. Begge disse
-        metodene har sine fordeler og ulemper. La oss se nærmere på det.
+        Her kommer litt nytting informasjon til deg som skal handle i
+        nettbuttikken vår.
       </p>
-      <div className="my-4">
-        <Step header="Finn.no og Tise" description="" />
+      <div className="my-4 flex flex-col gap-4">
+        <p className="text-2xl">Plaggets tilstand</p>
         <p>
-          Dette har lenge vært hvordan de fleste kjøper brukte barneklær, og er
-          meget populært. Men det er noen ting å huske på ved disse løsningene:
+          Husk at hos oss selges det hovedsaklig barneklær som allerede har levd
+          et liv før det kommer hjem til deg. Det vil si at standarden på
+          plagget ikke kan forventes å være likt som om du handler fra en
+          ordinær klesforhandler. Plaggenes tilstand vil variere fra å være helt
+          ny med lappen fremdeles på, til godt brukt hvor det er synlig
+          bruksslitasje. MEN plaggene skal være hele og brukbare. Og alle avvik
+          skal være dokumentert.
+        </p>
+        <p className="text-2xl">4 kategorier</p>
+        <p>
+          Vi har laget en mal på hvordan selgerne skal klassifisere standarden
+          på klærne de selger:
         </p>
         <ul className="mt-6 flex list-inside list-disc flex-col gap-4">
           <li>
-            <b>Kommunikasjon med selgere:</b> Kommunikasjon med selgeren er ofte
-            en del av prosessen.
+            <b>Ny:</b> plagget er ubrukt. I noen tilfeller er lappen fremdeles
+            på.
           </li>
           <li>
-            <b>Samle småkjøp:</b> Ved kjøp av enkeltplagg til lav pris kan
-            fraktkostnadene raskt bli høye, da hver vare ofte har separate
-            fraktkostnader.
+            <b>Pent brukt:</b> plagget har ingen slitasje eller bruksmerker
           </li>
           <li>
-            <b>Filtrering og søking:</b> Plattformene er ikke alltid optimalt
-            tilpasset barneklær. For eksempel kan plagg som body og vinterdress
-            mangle kategorier og være vanskelige å søke og filtrere etter.
+            <b>Brukt:</b> plagget har noe slitasje eller enkelte bruksmerker
+          </li>
+          <li>
+            <b>Godt brukt:</b> plagget har en del slitasje eller bruksmerker
           </li>
         </ul>
-        <p className="my-4">
-          Og husk at alle disse trinnene må gjentas for hvert plagg du vil
-          kjøpe. Å kjøpe flere plagg kan derfor være tidkrevende.
-        </p>
-      </div>
-      <div className="my-4">
-        <Step header="Fysiske butikker (f.eks. Loppeliten)" description="" />
-        <p>
-          Dette er en nyere trend som har kommet til Norge, der fysiske butikker
-          tar imot klærne fra hvem som helst og selger dem videre i butikken.
-          Dette er en flott tjeneste som løser flere av utfordringene med online
-          plattformer, men det er også noen ting å tenke på:
-        </p>
-        <ul className="mt-6 flex list-inside list-disc flex-col gap-4">
-          <li>
-            <b>Begrenset antall plagg:</b> Butikkene tar kun imot et begrenset
-            antall plagg, noe som kan begrense utvalget.
-          </li>
-          <li>
-            <b>Sortering av plagg i butikken:</b> Det kan være nødvendig å lete
-            gjennom hele butikken for å finne spesifikke plagg, som for eksempel
-            en vinterdress i størrelse 90.
-          </li>
-          <li>
-            <b>Rekkevidde:</b> Butikken når kun kunder som er geografisk nær
-            butikken, og dette begrenser også tilgangen til utvalget.
-          </li>
-        </ul>
-      </div>
-      <div>
-        <Step header="Minihjørne" description="" />
-        <p>
-          Minihjørne kombinerer det beste fra begge verdener. Vi er en online
-          plattform som tar imot klærne dine og selger dem videre for deg. La
-          oss se nærmere på alle punktene ovenfor:
-        </p>
-        <ul className="mt-6 flex list-inside list-disc flex-col gap-4">
-          <li>
-            <b>Kommunikasjon med selgere:</b> Vi håndterer all kommunikasjon med
-            selgere, slik at du slipper å tenke på dette.
-          </li>
-          <li>
-            <b>Filtrering og søking:</b> Vi tilbyr kategorier for alle
-            barneklær, slik at det er enkelt å søke og filtrere etter ønsket
-            plagg.
-          </li>
-          <li>
-            <b>Samle småkjøp:</b> Du kan samle alle dine småkjøp i én enkelt
-            bestilling, noe som gjør det mer attraktivt å handle flere plagg.
-          </li>
-          <li>
-            <b>Ubegrenset antall plagg:</b> Vi tar imot et ubegrenset antall
-            plagg fra våre selgere, noe som sikrer et bredt utvalg for kundene.
-          </li>
-          <li>
-            <b>Sortering av plagg i butikken:</b> Vi tilbyr søkefunksjoner og
-            filtrering, slik at kundene enkelt kan finne det de leter etter.
-          </li>
-          <li>
-            <b>Rekkevidde:</b> Vi når kunder over hele Norge, noe som gir et
-            større utvalg og flere muligheter for kjøperne.
-          </li>
-        </ul>
+        <div className="flex flex-col gap-4">
+          <p className="pt-4">
+            Har plagget flekk, hull/rift, mangler knapp skal denne informasjon
+            komme i tillegg.
+          </p>
+          <p>
+            Husk at plaggets farge på bilde kan avvike noe fra virkeligheten pga
+            lysforhold, bakgrunn og kamera. Vi ber våre selgere om å unngå
+            filter på bildene sine.{" "}
+          </p>
+        </div>
+        <div>
+          <p className="pb-2 pt-4 text-2xl">Retur/klager</p>
+          <p>
+            Opplever du som kjøper å motta et plagg som tydelig avviker fra
+            annonsen ber vi deg sende oss en mail på xxxxxxxx så hjelper vi deg.
+          </p>
+        </div>
+        <div>
+          <p className="pb-2 pt-4 text-2xl">Størrelse</p>
+          <p>
+            Størrelsene hos oss vil naturligvis variere noe etter hvilke merke
+            klærne er fra. Dersom et plagg er oppført med en dobbel størrelse,
+            feks 74/80, ber vi selgerne om å alltid føre opp den minste
+            størrelsen. Det er som oftes bedre med litt for stort enn litt for
+            smått.
+          </p>
+        </div>
+        <div>
+          <p className="pb-2 pt-4 text-2xl">Hjemmelaget</p>
+          <p>
+            Når det gjelder hjemmestrikk og hjemmesydde plagg ber vi selgerne
+            sammenligne plagget med et tilsvarende plagg fra et velkjent
+            merke,(feks h&m, Lindex, KappAhl) og føre opp den størrelsen som
+            ligner mest. Hjemmelagde plagg kan derfor ha enda større variajson
+            på størrelser, noe vi synes at du som kjøper bør være klar over på
+            forhånd.
+          </p>
+        </div>
       </div>
     </>
   );

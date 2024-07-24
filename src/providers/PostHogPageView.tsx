@@ -10,8 +10,8 @@ export default function PostHogPageView(): null {
   const posthog = usePostHog();
   // Track pageviews
   useEffect(() => {
-    if (process.env.NODE_ENV != "production") {
-      console.log(process.env.NODE_ENV);
+    if (process.env.NEXT_PUBLIC_POSTHOG_KEY === "undefined") {
+      console.log("not in production, skipping pageview tracking");
       return;
     }
     if (pathname && posthog) {

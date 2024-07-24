@@ -5,16 +5,16 @@ import React from "react";
 const Footer = () => {
   const links = [
     {
-      name: "Om Oss",
-      href: "/om-oss",
+      name: "Hva er Minihjørne?",
+      href: "/om-oss/hva-er-minihjorne",
+    },
+    {
+      name: "Selge klær",
+      href: "/om-oss/hvordan-selge",
     },
     {
       name: "Priser",
       href: "/om-oss/priser",
-    },
-    {
-      name: "Levere klær",
-      href: "/om-oss/levering",
     },
   ];
   const bottomLinks = [
