@@ -15,7 +15,7 @@ const EditSalgsprofilForm = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
-  const { data: colors } = useQuery(FilterQueries.colors());
+  // const { data: colors } = useQuery(FilterQueries.colors());
   const { data: userData } = useQuery(UserQueries.me(jwt));
   const { mutate: updateUser } = useMutation({
     mutationFn: (values: any) => {
@@ -31,14 +31,14 @@ const EditSalgsprofilForm = () => {
     initialValues: {
       header: userData?.header,
       description: userData?.description,
-      colorName: userData?.color,
+      // colorName: userData?.color,
     },
 
     onSubmit: (values) => {
       const data = {
         header: values.header,
         description: values.description,
-        color: values.colorName,
+        // color: values.colorName,
       };
       updateUser(data);
     },
@@ -78,7 +78,7 @@ const EditSalgsprofilForm = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div>
+        {/* <div>
           <label>Farge</label>
           {colors && (
             <div className="flex flex-wrap gap-4 py-4">
@@ -90,7 +90,7 @@ const EditSalgsprofilForm = () => {
               />
             </div>
           )}
-        </div>
+        </div> */}
         <div className="flex gap-10">
           <Button
             type="outline"

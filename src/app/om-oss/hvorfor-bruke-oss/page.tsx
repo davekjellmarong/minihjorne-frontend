@@ -28,7 +28,7 @@ const page = () => {
             <b>Betaling:</b> Trygg og sikker betaling.
           </li>
           <li>
-            <b>Kommunikasjon:</b> Slippe å kommunisere med selgere.
+            <b>Kommunikasjon:</b> Slipper kommunikasjon med selgere.
           </li>
         </ul>
       </div>
@@ -42,10 +42,10 @@ const page = () => {
             ferieavvikling).
           </li>
           <li>
-            <b>Kommunikasjon:</b> Slippe å kommunisere med potensielle kjøpere.
+            <b>Kommunikasjon:</b> Slipper kommunikasjon med kjøpere.
           </li>
           <li>
-            <b>Logistikk:</b> Slippe å tenke på betaling og sending av klær med
+            <b>Logistikk:</b> Slipper å tenke på betaling og sending av klær med
             posten.
           </li>
           <li>

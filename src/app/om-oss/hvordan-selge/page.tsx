@@ -54,10 +54,14 @@ const page = () => {
           </p>
           <LeveringsDager />
           <p className="my-4">
-            Du kan også sende klærne med posten til oss på samme adresse:
+            Du kan også sende klærne med posten til oss dersom du selv står for
+            fraktkostnader. Husk å pakke plaggene inn i passende eske eller
+            pose. Du er selv ansvarlig for plaggene inntil de er mottatt av oss.
+            Plaggene sendes til:
           </p>
+          <p className="my-4 text-center font-bold">Iselin Gamst Bernhart</p>
           <p className="my-4 text-center font-bold">
-            Minihjørne, Kanonhallveien 12A, 0585 Oslo.
+            Kanonhallveien 12A, 0585 Oslo.
           </p>
         </div>
         <div>
@@ -65,7 +69,8 @@ const page = () => {
           <p>
             Gå inn på din personlige salgsprofil og skriv litt om hva slags klær
             du selger. Kanskje er det en kjøper der ute som synes stilen din er
-            ekstra fin, eller har barn i akkurat den størrelsen du selger mye av
+            ekstra fin, eller har barn i akkurat den størrelsen du selger mye
+            av.
           </p>
         </div>
         <div>
@@ -74,7 +79,7 @@ const page = () => {
             I løpet av leieperioden kan du følge med på salgstallene dine og
             sjekke statistikk. Husk at du når som helst kan forlenge leietiden
             din. Når leieperioden er over overfører vi 80% av salgssummen til
-            din konto. Plaggene som eventuelt er igjen må hentes innen 3 dager
+            din konto. Plaggene som eventuelt er igjen må hentes innen 5 dager
             etter leieforholdet er avsluttet. Vi kan også sende plaggene i retur
             dersom du betaler frakt. Send oss en mail dersom du ønsker at vi
             sender plaggene i retur. Ønsker du å donere resterende plagg til
@@ -178,18 +183,18 @@ const page = () => {
               på.
             </li>
             <li>
-              <b>Pent brukt:</b> plagget har ingen slitasje eller bruksmerker
+              <b>Pent brukt:</b> plagget har ingen slitasje eller bruksmerker.
             </li>
             <li>
-              <b>Brukt:</b> plagget har noe slitasje eller enkelte bruksmerker
+              <b>Brukt:</b> plagget har noe slitasje eller enkelte bruksmerker.
             </li>
             <li>
-              <b>Godt brukt:</b> plagget har en del slitasje eller bruksmerker
+              <b>Godt brukt:</b> plagget har en del slitasje eller bruksmerker.
             </li>
           </ul>
         </div>
         <div>
-          <p className="pb-6  text-2xl">Produkt administrasjon</p>
+          <p className="pb-6  text-2xl">Produktadministrasjon</p>
           <ul className="flex list-inside list-disc flex-col gap-4">
             <li>
               <b>Legge til eller bytte bilde </b>i en allerede opprettet
@@ -207,11 +212,12 @@ const page = () => {
             <li>
               <b>Oppdager du en feil </b>
               eller noe som må rettes på med produktene dine som du ikke får til
-              selv, send oss en mail så hjelper vi deg.
+              selv, send oss en mail på kontakt@minihjorne.no, så hjelper vi deg
+              så fort vi har mulighet.
             </li>
             <li>
               <b>Om du selger sett:</b> bind/knyt eller legg i en gjennomsiktig
-              pose plaggene som hører sammen i et sett
+              pose plaggene som hører sammen i et sett.
             </li>
           </ul>
         </div>

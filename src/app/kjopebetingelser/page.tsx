@@ -192,8 +192,8 @@ const Kjøpebetingelser = () => {
         skade eller tap under transport.
       </p>
       <p className="mt-2 text-gray-700">
-        Utbetaling av salgssum vil skje etter endt leieperiode. Kjøperen får
-        utbetalt 80% av sin salgssum.
+        Utbetaling av salgssum vil skje etter endt leieperiode, innen 7 dager.
+        Kjøperen får utbetalt 80% av sin salgssum. Vi overførere
       </p>
       <p className="mt-2 text-gray-700">
         Etter at leieperioden er avsluttet må plaggene hentes i løpet av fem

@@ -11,7 +11,7 @@ interface SizeProps {
 }
 const Size = ({ sizes, formik, onChangeFunc, initialId }: SizeProps) => {
   return (
-    <FormFieldContainer header="Størrelse" Tips={Størrelse}>
+    <FormFieldContainer header="Størrelse">
       {sizes.map((size) => {
         return (
           <div key={size.id} className="flex w-14 flex-col items-center">

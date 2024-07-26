@@ -51,12 +51,12 @@ const ImageUploader = ({ setImages, setModal }: ImageUploaderProps) => {
     <div className="relative flex flex-col items-center gap-6 pb-10 pt-16 text-center">
       <LoadingOverlay loading={loading} />
       <>
-        <Link
+        {/* <Link
           href="/min-side/selge/last-opp/tips"
           className="absolute left-4 top-4 flex items-center"
         >
           <Question size={32} weight="thin" color="blue" />
-        </Link>
+        </Link> */}
         <p className="text-lg text-brand-800">Last opp nye produkt bilder</p>
         <Image
           src="/addFiles.svg"

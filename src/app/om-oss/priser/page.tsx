@@ -10,7 +10,7 @@ const PriserPage = () => {
         <GoodNewsBox title="Gratis leieperiode ut september!">
           Som en oppstartskampanje tilbyr vi gratis leie av plass på Minihjørne
           ut september. Dette betyr at du kan registrere og selge dine barneklær
-          uten å betale leiepris frem til oktober. Benytt sjansen til å prøve
+          uten å betale leiepris frem til 1. Oktober. Benytt sjansen til å prøve
           vår plattform uten kostnader!
         </GoodNewsBox>
         <div>
@@ -19,10 +19,9 @@ const PriserPage = () => {
             <h2 className="text-2xl">Hva er leiepris?</h2>
           </div>
           <p>
-            Leiepris hos Minihjørne er en ukespris på 170 kr. Dette beløpet
-            dekker leie av plass for dine klær på plattformen vår i en uke av
-            gangen. Du bestemmer selv hvor lenge du vil leie plassen, og betaler
-            for den perioden på forhånd.
+            Prisen for å leie en salgsplass hos Minihjørne er 170 kr/uke. Du
+            bestemmer selv hvor mange uker du vil leie og betaler for den valgte
+            perioden på forhånd.
           </p>
         </div>
         <div>
