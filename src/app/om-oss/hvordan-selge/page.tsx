@@ -1,3 +1,4 @@
+import LeveringsDager from "@/components/common/leveringsDager/LeveringsDager";
 import Header from "@/components/features/omOss/Header";
 import Step from "@/components/features/omOss/Step";
 import React from "react";
@@ -51,9 +52,7 @@ const page = () => {
           <p className="text-center font-bold">
             Kanonhallveien 12A, 0585 Oslo.
           </p>
-          <p className="my-4 ">Vi tar imot klær på følgende tidspunkter:</p>
-          <p>Onsdag 17:00-19:00</p>
-          <p>Fredag 17:00-19:00</p>
+          <LeveringsDager />
           <p className="my-4">
             Du kan også sende klærne med posten til oss på samme adresse:
           </p>

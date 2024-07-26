@@ -1,3 +1,4 @@
+import LeveringsDager from "@/components/common/leveringsDager/LeveringsDager";
 import Header from "@/components/features/omOss/Header";
 import Image from "next/image";
 import React from "react";
@@ -12,19 +13,15 @@ const page = () => {
         Husk, før du leverer klær til oss, må du{" "}
         <strong>registrere klærne og kjøpe en leieavtale.</strong>
       </div>
-      <div className="flex flex-col items-center gap-10 ">
-        <div className="p">
+      <div className="flex flex-col  gap-10 ">
+        <div className="">
           <div>
             <p className="text-sm font-light text-purple-700">Steg 1</p>
             <h2 className="text-2xl">Besøk oss</h2>
           </div>
           <p>Vi holder til på Løren, ved Peer Gynt parken:</p>
-          <p className="my-4 text-center font-bold">
-            Kanonhallveien 12A, 0585 Oslo.
-          </p>
-          <p className="my-4 ">Vi tar imot klær på følgende tidspunkt:</p>
-          <p>Onsdag 17:00-19:00</p>
-          <p>Fredag 17:00-19:00</p>
+          <p className="my-4 font-bold">Kanonhallveien 12A, 0585 Oslo.</p>
+          <LeveringsDager />
           <p className="my-4">
             Når du ankommer adressen, kan du ringe oss på 46947922 (Iselin),
             eller ringe på vår ringeklokke 121 ved hovedinngangen.
