@@ -33,7 +33,7 @@ const QuickLinks = () => {
       name: "Body",
       link: "/produkter?&filters[category][id][$eq]=2",
       image:
-        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369328/StaticAssets/quicklink-nyfodt_f1cxos.jpg",
+        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369328/StaticAssets/quicklink-body_lk6z2n.jpg",
     },
     {
       name: "Kjole",
@@ -41,12 +41,12 @@ const QuickLinks = () => {
       image:
         "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369326/StaticAssets/quicklink-kjole_i3c20q.jpg",
     },
-    {
-      name: "Sko",
-      link: "/produkter?&filters[category][id][$eq]=7",
-      image:
-        "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369325/StaticAssets/quicklink-sko_iolpap.jpg",
-    },
+    // {
+    //   name: "Sko",
+    //   link: "/produkter?&filters[category][id][$eq]=7",
+    //   image:
+    //     "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369325/StaticAssets/quicklink-sko_iolpap.jpg",
+    // },
     {
       name: "Yttertøy",
       link: "/produkter?&filters[category][id][$eq]=7&filters[category][id][$eq]=14&filters[category][id][$eq]=15",

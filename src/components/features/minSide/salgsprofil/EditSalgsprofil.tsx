@@ -17,9 +17,7 @@ const EditSalgsprofil = ({ formik, user }: EditSalgsprofilProps) => {
   const { data: products } = useQuery(ProductQueries.userId(String(user.id)));
   const tailwindColor = tailwindColorsUserButton[formik.values.colorName];
   return (
-    <div
-      className={`${tailwindColor} relative flex h-full w-full items-center justify-center`}
-    >
+    <div className={` relative flex h-full w-full items-center justify-center`}>
       <div className="m-3 flex w-full flex-col items-center gap-6 rounded bg-white py-10 text-center shadow-2xl">
         <div className="flex gap-5">
           <Link

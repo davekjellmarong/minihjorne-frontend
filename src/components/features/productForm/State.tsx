@@ -28,7 +28,7 @@ export const State = ({ formik, onChangeFunc, initialId }: SexProps) => {
     },
   ];
   return (
-    <FormFieldContainer header="Tilstand" Tips={Tilstand}>
+    <FormFieldContainer header="Tilstand">
       {states.map((state) => {
         return (
           <div

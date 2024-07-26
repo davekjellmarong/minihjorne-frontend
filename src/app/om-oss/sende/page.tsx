@@ -19,7 +19,9 @@ const page = () => {
             <h2 className="text-2xl">Pakk klærne</h2>
           </div>
           <p>
-            Du bestemmer selv hvordan du pakker klærne. Vennligst{" "}
+            Du bestemmer selv hvordan du pakker klærne, vi anbefaler en passende
+            eske eller pose. Husk at du selv står får fraktkostnader og at du
+            selv er ansvarlig for klærne inntil de er mottatt av oss. Vennligst{" "}
             <b>legg ved en lapp med ditt brukernavn inne i pakken</b>, slik at
             vi kan identifisere hvem klærne tilhører. Brukernavn finner du på{" "}
             {"'"}Min Side{"'"}.
@@ -31,9 +33,9 @@ const page = () => {
           <div className="">
             <p>På pakken skriver du:</p>
             <div className="my-2 text-center font-bold">
+              <p>Iselin Gamst Bernhart</p>
               <p>Kanonhallveien 12A,</p>
               <p>0585 Oslo,</p>
-              <p>Iselin Gamst Bernhart - Minihjørne</p>
             </div>
           </div>
         </div>

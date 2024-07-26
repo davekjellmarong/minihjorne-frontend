@@ -16,7 +16,7 @@ const Brand = ({ formik, nextSlide }: ColorProps) => {
     "KappAhl",
     "Lindex",
     "NameIt",
-    "Newbe",
+    "Newbie",
     "Reflex",
     "Zara",
   ];
