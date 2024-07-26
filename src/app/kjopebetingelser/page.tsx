@@ -60,10 +60,10 @@
 //         Hvis du har spørsmål angående våre kjøpebetingelser, vennligst kontakt
 //         oss på{" "}
 //         <a
-//           href="mailto:support@minihjorne.no"
+//           href="mailto:kontakt@minihjorne.no"
 //           className="text-blue-500 hover:underline"
 //         >
-//           support@minihjorne.no
+//           kontakt@minihjorne.no
 //         </a>
 //         .
 //       </p>
