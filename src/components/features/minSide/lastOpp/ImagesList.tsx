@@ -9,12 +9,14 @@ interface ImageListProps {
   setSelectedImages: (value: ImageType[]) => void;
   selectedImages: ImageType[];
   setModal: (value: boolean) => void;
+  formik: any;
 }
 const ImagesList = ({
   images,
   setSelectedImages,
   selectedImages,
   setModal,
+  formik,
 }: ImageListProps) => {
   return (
     <>
@@ -30,11 +32,11 @@ const ImagesList = ({
                 );
 
                 setSelectedImages(withoutImage);
-                setSelectedImages(withoutImage);
+                formik.setFieldValue("image", withoutImage);
               } else if (selectedImages.length === 3) {
               } else {
                 setSelectedImages([...selectedImages, image]);
-                setSelectedImages([...selectedImages, image]);
+                formik.setFieldValue("image", [...selectedImages, image]);
               }
             }}
           >
@@ -55,12 +57,20 @@ const ImagesList = ({
           </div>
         ))}
       </div>
-      <div className="mt-4 flex justify-center">
+      <div className="mt-4 flex flex-col items-center gap-4">
+        {selectedImages.length === 0 && (
+          <div className="text-center">
+            <span className="text-sm text-red-500">
+              Du må velge minst 1 bilde
+            </span>
+          </div>
+        )}
         <Button
           onClick={() => {
             setModal(false);
           }}
           icon="arrowRight"
+          disabled={selectedImages.length === 0}
         >
           Fortsett
         </Button>

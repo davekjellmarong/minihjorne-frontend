@@ -37,22 +37,28 @@ const LeggUt = () => {
     mutationFn: (values: any) => {
       return ProductsMethods.post(values, jwt);
     },
-    onSuccess: (data) => {
-      console.log(data);
-      toast.info(
-        `Produktet '${
-          formik.values.colorsNorwegianName
-        } ${formik.values.categoryName.toLowerCase()}' lagret`,
-      );
+    onSuccess: async (data) => {
       setImages((prev: any) =>
         prev.filter((image: any) => !selectedImages.includes(image)),
       );
       const selectedImagesIds = selectedImages.map((image) => image.id);
-      ImageMethods.updateMultipleFileInfo(selectedImagesIds, jwt);
-      queryClient.invalidateQueries(UserQueries.me(jwt));
-      setSelectedImages([]);
-      formik.resetForm();
-      setNextProduct(true);
+      const response = await ImageMethods.updateMultipleFileInfo(
+        selectedImagesIds,
+        jwt,
+      );
+      if (response.length > 0) {
+        queryClient.invalidateQueries(UserQueries.me(jwt));
+        setSelectedImages([]);
+        formik.resetForm();
+        setNextProduct(true);
+        toast.info(
+          `Produktet '${
+            formik.values.colorsNorwegianName
+          } ${formik.values.categoryName.toLowerCase()}' lagret`,
+        );
+      } else {
+        toast.error(`Produkt kunne ikke lagres`);
+      }
     },
     onError: (err: any) => {
       console.log(err);
@@ -65,24 +71,45 @@ const LeggUt = () => {
       colors: "",
       colorsNorwegianName: "",
       brand: "",
+      user: user.id,
+      image: [],
       price: 0,
       category: "",
       categoryName: "",
       state: "",
       sex: "",
     },
-
-    onSubmit: (values) => {
-      const userId: any = user.id;
-      if (userId) {
-        const imagesIds = selectedImages.map((image) => image.id);
-        const payload = {
-          data: { ...values, user: userId, image: imagesIds },
-        };
-        createProduct(payload);
-      } else {
-        toast.error("Du er ikke logget inn");
+    validate: (values) => {
+      const errors: any = {};
+      if (!values.colors) {
+        errors.colors = "Farge er påkrevd";
       }
+      if (!values.brand) {
+        errors.brand = "Merke er påkrevd";
+      }
+      if (!values.price) {
+        errors.price = "Pris er påkrevd";
+      }
+      if (!values.category) {
+        errors.category = "Kategori er påkrevd";
+      }
+      if (!values.state) {
+        errors.state = "Tilstand er påkrevd";
+      }
+      if (selectedImages.length < 1) {
+        errors.imageIds = "Velg minst ett bilde";
+      }
+      if (user.id < 1 || !user.id) {
+        errors.user = "Du er ikke logget inn";
+      }
+
+      return errors;
+    },
+    onSubmit: (values) => {
+      const payload = {
+        data: values,
+      };
+      createProduct(payload);
     },
   });
   if (images.length === 0) {
@@ -108,6 +135,7 @@ const LeggUt = () => {
           setSelectedImages={setSelectedImages}
           selectedImages={selectedImages}
           setModal={setModal}
+          formik={formik}
         />
       </FilterDialog>
 
