@@ -96,7 +96,7 @@ const LeggUt = () => {
       if (!values.state) {
         errors.state = "Tilstand er påkrevd";
       }
-      if (selectedImages.length < 1) {
+      if (!values.image) {
         errors.imageIds = "Velg minst ett bilde";
       }
       if (user.id < 1 || !user.id) {

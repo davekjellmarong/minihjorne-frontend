@@ -33,10 +33,12 @@ const ImagesList = ({
 
                 setSelectedImages(withoutImage);
                 formik.setFieldValue("image", withoutImage);
+                formik.validateForm();
               } else if (selectedImages.length === 3) {
               } else {
                 setSelectedImages([...selectedImages, image]);
                 formik.setFieldValue("image", [...selectedImages, image]);
+                formik.validateForm();
               }
             }}
           >
