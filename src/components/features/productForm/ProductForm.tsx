@@ -45,7 +45,7 @@ const ProductForm = ({ formik }: ProductFormProps) => {
   };
 
   return (
-    <form className="" onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
       <Carousel
         responsive={responsive}
         ref={CarouselRef}
@@ -59,7 +59,6 @@ const ProductForm = ({ formik }: ProductFormProps) => {
           formik={formik}
           onChangeFunc={nextSlide}
         />
-
         <Category
           categoryType={categoryType}
           categoryTypes={categoryTypes}
@@ -83,9 +82,20 @@ const ProductForm = ({ formik }: ProductFormProps) => {
 
         {/* TO-DO use button components */}
         <div className="flex h-full flex-col flex-wrap items-center justify-center gap-8 px-10">
+          {Object.keys(formik.errors).length > 0 && (
+            <div>
+              {Object.entries(formik.errors).map(([key, error]) => (
+                <div className="text-red-600" key={key}>
+                  {String(error)}!
+                </div>
+              ))}
+            </div>
+          )}
+
           <button
+            disabled={Object.keys(formik.errors).length > 0}
             type="submit"
-            className=" h-14 w-56 rounded bg-brand-500 px-6 py-2 text-white"
+            className=" h-14 w-56 rounded bg-brand-500 px-6 py-2 text-white disabled:opacity-50"
           >
             Lagre produkt
           </button>
