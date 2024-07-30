@@ -31,6 +31,13 @@ const Produkter = () => {
           <PlusCircle size={36} color="green" />
         </Link>
       </div>
+      <div className="flex justify-center gap-6">
+        <p className="pb-4 text-center italic">
+          <b className="text-lg text-brand-500">
+            {products.length} {products.length === 1 ? "produkt" : "produkter"}
+          </b>
+        </p>
+      </div>
       <ProductTable products={products} />
     </div>
   );
