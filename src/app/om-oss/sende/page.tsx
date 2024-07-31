@@ -32,11 +32,12 @@ const page = () => {
           <h2 className="text-2xl">Adresse</h2>
           <div className="">
             <p>På pakken skriver du:</p>
-            <div className="my-2 text-center font-bold">
+            <div className="my-2 font-bold">
               <p>Iselin Gamst Bernhart</p>
               <p>Kanonhallveien 12A,</p>
               <p>0585 Oslo,</p>
             </div>
+            <p>Tlf nummer: 46947922</p>
           </div>
         </div>
         <div>
