@@ -59,10 +59,18 @@ const page = () => {
             pose. Du er selv ansvarlig for plaggene inntil de er mottatt av oss.
             Plaggene sendes til:
           </p>
-          <p className="my-4 text-center font-bold">Iselin Gamst Bernhart</p>
+          <div className="">
+            <div className="my-2 font-bold">
+              <p>Iselin Gamst Bernhart</p>
+              <p>Kanonhallveien 12A,</p>
+              <p>0585 Oslo,</p>
+            </div>
+            <p>Tlf nummer: 46947922</p>
+          </div>
+          {/* <p className="my-4 text-center font-bold">Iselin Gamst Bernhart</p>
           <p className="my-4 text-center font-bold">
             Kanonhallveien 12A, 0585 Oslo.
-          </p>
+          </p> */}
         </div>
         <div>
           <Step header="Salgsprofil" description="" />
