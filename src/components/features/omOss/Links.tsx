@@ -34,6 +34,10 @@ const OmOssLinks = () => {
       name: "Priser?",
       href: "/om-oss/priser",
     },
+    {
+      name: "Selger garanti",
+      href: "/om-oss/selger-garanti",
+    },
     // {
     //   name: "Våre produkter",
     //   href: "/om-oss/tilstand",

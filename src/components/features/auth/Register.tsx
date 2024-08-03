@@ -15,6 +15,7 @@ const Register = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const queryClient = useQueryClient();
   const router = useRouter();
+
   const {
     mutate: register,
     isPending,

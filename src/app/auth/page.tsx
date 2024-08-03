@@ -9,7 +9,7 @@ const Page = () => {
     Login: "login",
     Register: "register",
   };
-  const [view, setView] = useState(ViewEnum.Login);
+  const [view, setView] = useState(ViewEnum.Register);
   const [message, setMessage] = useState("");
   const searchParams = useSearchParams();
   useEffect(() => {
@@ -23,16 +23,16 @@ const Page = () => {
       <div className="flex gap-6">
         {/* TO-DO use button componnt */}
         <button
-          className={`${view === ViewEnum.Login ? "border-b-2" : ""}  border-brand-700 px-4 py-2 `}
-          onClick={() => setView(ViewEnum.Login)}
-        >
-          Logg inn
-        </button>
-        <button
           className={`${view === ViewEnum.Register ? "border-b-2" : ""} border-brand-700 px-4 py-2 `}
           onClick={() => setView(ViewEnum.Register)}
         >
           Registrer
+        </button>
+        <button
+          className={`${view === ViewEnum.Login ? "border-b-2" : ""}  border-brand-700 px-4 py-2 `}
+          onClick={() => setView(ViewEnum.Login)}
+        >
+          Logg inn
         </button>
       </div>
       <div>
@@ -46,8 +46,8 @@ const Page = () => {
         )}
       </div>
       <div className="w-full max-w-96 px-6">
-        {view === ViewEnum.Login && <Login />}
         {view === ViewEnum.Register && <Register />}
+        {view === ViewEnum.Login && <Login />}
       </div>
     </div>
   );

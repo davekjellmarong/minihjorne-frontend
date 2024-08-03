@@ -1,5 +1,7 @@
 "use client";
-import HomeHeroImage from "@/components/common/HomeHeroImage";
+import GratisLeie from "@/components/UI/GratisLeie";
+import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
+import OpeningSoon from "@/components/UI/heroImage/OpeningSoon";
 import Card from "@/components/features/home/Card";
 import QuickLinks from "@/components/features/home/QuickLinks";
 import Products from "@/components/features/product/Products";
@@ -11,7 +13,16 @@ const Home = () => {
   const { data: products } = useQuery(ProductQueries.filtered(""));
   return (
     <>
-      <HomeHeroImage />
+      <OpeningSoon />
+      <ActionsColoredBox
+        header="🎉 Gratis Leieperiode!"
+        button="Kom i Gang"
+        path="/min-side/selge/leie"
+        color="purple"
+      >
+        Registrer deg nå og nyt gratis leie frem til oktober! Vi har nettopp
+        lansert og ønsker å gi deg dette spesialtilbudet som velkomst.
+      </ActionsColoredBox>
       <div className="px-3">
         <div className="my-3 flex flex-wrap items-center gap-6 py-5">
           <Card title="Hva er Minihjørne?" link="/om-oss/hva-er-minihjorne" />

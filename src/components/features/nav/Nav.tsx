@@ -65,7 +65,7 @@ const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
                   className="w-500 flex items-center "
                 >
                   <button
-                    className={`flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded-lg bg-brand-400 px-2 text-sm text-white" : ""} ${path === item.path ? "bg-brand-100" : ""}  active:bg-brand-200`}
+                    className={`flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded border border-brand-300 px-2 text-sm text-brand-800 " : ""} ${path === item.path ? "bg-brand-100" : ""}  active:bg-brand-200`}
                     key={item.label}
                   >
                     {icons[item.icon]} {item.label}
