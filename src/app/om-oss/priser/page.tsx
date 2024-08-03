@@ -1,5 +1,5 @@
-import GoodNewsBox from "@/components/common/messageBox/GoodNewsBox";
 import Header from "@/components/features/omOss/Header";
+import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
 import React from "react";
 
 const PriserPage = () => {
@@ -7,12 +7,12 @@ const PriserPage = () => {
     <>
       <Header text="Priser" />
       <div className="flex flex-col gap-10">
-        <GoodNewsBox title="Gratis leieperiode ut september!">
+        <InfoColoredBox title="Gratis leieperiode ut september!" color="yellow">
           Som en oppstartskampanje tilbyr vi gratis leie av plass på Minihjørne
           ut september. Dette betyr at du kan registrere og selge dine barneklær
           uten å betale leiepris frem til 1. Oktober. Benytt sjansen til å prøve
           vår plattform uten kostnader!
-        </GoodNewsBox>
+        </InfoColoredBox>
         <div>
           <div>
             <p className="text-sm font-light text-purple-700">Leiepris</p>
