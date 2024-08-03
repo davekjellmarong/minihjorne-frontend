@@ -80,34 +80,6 @@ const SellerGuaranteePage = () => {
         solgt en viss verdi. Følg med for oppdateringer - vi er dedikert til å
         gjøre salgsopplevelsen din både trygg og lønnsom!
       </InfoColoredBox>
-      <InfoColoredBox color="green" title="Selgergaranti - På vei!🚀">
-        Vi jobber hardt med å utvikle en selgergaranti som sikrer at du som
-        selger ikke taper penger. Selv om vi ennå ikke har de endelige detaljene
-        klare, er vårt mål å tilby en løsning der du ikke betaler noe før du har
-        solgt en viss verdi. Følg med for oppdateringer - vi er dedikert til å
-        gjøre salgsopplevelsen din både trygg og lønnsom!
-      </InfoColoredBox>
-      <InfoColoredBox color="purple" title="Selgergaranti - På vei!🚀">
-        Vi jobber hardt med å utvikle en selgergaranti som sikrer at du som
-        selger ikke taper penger. Selv om vi ennå ikke har de endelige detaljene
-        klare, er vårt mål å tilby en løsning der du ikke betaler noe før du har
-        solgt en viss verdi. Følg med for oppdateringer - vi er dedikert til å
-        gjøre salgsopplevelsen din både trygg og lønnsom!
-      </InfoColoredBox>
-      <InfoColoredBox color="red" title="Selgergaranti - På vei!🚀">
-        Vi jobber hardt med å utvikle en selgergaranti som sikrer at du som
-        selger ikke taper penger. Selv om vi ennå ikke har de endelige detaljene
-        klare, er vårt mål å tilby en løsning der du ikke betaler noe før du har
-        solgt en viss verdi. Følg med for oppdateringer - vi er dedikert til å
-        gjøre salgsopplevelsen din både trygg og lønnsom!
-      </InfoColoredBox>
-      <InfoColoredBox color="yellow" title="Selgergaranti - På vei!🚀">
-        Vi jobber hardt med å utvikle en selgergaranti som sikrer at du som
-        selger ikke taper penger. Selv om vi ennå ikke har de endelige detaljene
-        klare, er vårt mål å tilby en løsning der du ikke betaler noe før du har
-        solgt en viss verdi. Følg med for oppdateringer - vi er dedikert til å
-        gjøre salgsopplevelsen din både trygg og lønnsom!
-      </InfoColoredBox>
     </>
   );
 };
