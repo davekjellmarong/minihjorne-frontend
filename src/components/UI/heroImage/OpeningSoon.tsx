@@ -41,7 +41,7 @@ const OpeningSoon = () => {
       <Image
         height={500}
         width={500}
-        src="/klesbunke.JPG"
+        src="https://res.cloudinary.com/dylzaicv5/image/upload/v1722686912/StaticAssets/klesbunke_bkyozu.jpg"
         alt="home-hero"
         priority
         className="absolute inset-0 h-full w-full object-cover object-center"
