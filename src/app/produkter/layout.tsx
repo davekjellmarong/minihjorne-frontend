@@ -3,7 +3,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import React from "react";
+import React, { Suspense } from "react";
 import { ProductQueries } from "@/queryFactory/Product";
 import { FilterQueries } from "@/queryFactory/Filter";
 

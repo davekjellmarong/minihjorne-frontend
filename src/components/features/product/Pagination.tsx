@@ -1,14 +1,14 @@
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import PageNumber from "./PageNumber";
 
 interface PaginationProps {
   pageCount: number | undefined;
-  setFilterQuery: (filterQuery: string) => void;
 }
-const Pagination = ({ pageCount, setFilterQuery }: PaginationProps) => {
+const Pagination = ({ pageCount }: PaginationProps) => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const params = new URLSearchParams(searchParams.toString());
   const page = Number(params.get("pagination[page]"));
   const nextButtonDisabled = pageCount === undefined || pageCount === page;
@@ -22,8 +22,7 @@ const Pagination = ({ pageCount, setFilterQuery }: PaginationProps) => {
           disabled={prevButtonDisabled}
           onClick={() => {
             params.set("pagination[page]", String(page - 1));
-            window.history.pushState(null, "", `?${params.toString()}`);
-            setFilterQuery(`?${params.toString()}`);
+            router.push(`?${params.toString()}`);
           }}
         >
           <ArrowLeft size={20} />
@@ -35,8 +34,7 @@ const Pagination = ({ pageCount, setFilterQuery }: PaginationProps) => {
           disabled={nextButtonDisabled}
           onClick={() => {
             params.set("pagination[page]", String(page + 1));
-            window.history.pushState(null, "", `?${params.toString()}`);
-            setFilterQuery(`?${params.toString()}`);
+            router.push(`?${params.toString()}`);
           }}
         >
           <p></p>

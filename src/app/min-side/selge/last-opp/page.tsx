@@ -19,7 +19,7 @@ import { useStore } from "@/stateManagment/ZustandStore";
 import Loading from "@/components/common/loading/Loading";
 import SavedImages from "@/components/features/minSide/lastOpp/SavedImages";
 import ImageUploader from "@/components/features/minSide/lastOpp/ImageUploader";
-import FilterDialog from "@/components/features/product/FilterDialog";
+import FilterDialog from "@/components/features/product/filter/FilterDialog";
 import ImagesList from "@/components/features/minSide/lastOpp/ImagesList";
 import SelectedImages from "@/components/features/minSide/lastOpp/SelectedImages";
 import ProductForm from "@/components/features/productForm/ProductForm";
@@ -51,11 +51,7 @@ const LeggUt = () => {
         setSelectedImages([]);
         formik.resetForm();
         setNextProduct(true);
-        toast.info(
-          `Produktet '${
-            formik.values.colorsNorwegianName
-          } ${formik.values.categoryName.toLowerCase()}' lagret`,
-        );
+        toast.info(`Produktet er lagret`);
       } else {
         toast.error(`Produkt kunne ikke lagres`);
       }
@@ -68,12 +64,14 @@ const LeggUt = () => {
 
   const formik = useFormik({
     initialValues: {
-      colors: "",
+      color1: "",
+      color2: "",
+      // todo - remove all "name" fields
       colorsNorwegianName: "",
       brand: "",
       user: user.id,
       image: [],
-      price: 0,
+      price: "",
       category: "",
       categoryName: "",
       state: "",
@@ -81,7 +79,7 @@ const LeggUt = () => {
     },
     validate: (values) => {
       const errors: any = {};
-      if (!values.colors) {
+      if (!values.color1) {
         errors.colors = "Farge er påkrevd";
       }
       if (!values.brand) {
@@ -107,7 +105,7 @@ const LeggUt = () => {
     },
     onSubmit: (values) => {
       const payload = {
-        data: values,
+        data: { ...values, colors: [values.color1, values.color2] },
       };
       createProduct(payload);
     },
@@ -126,6 +124,8 @@ const LeggUt = () => {
       </>
     );
   }
+  console.log(formik.values.color1);
+  console.log(formik.values.color2);
   return (
     <>
       <FilterDialog open={modal} setOpen={setModal}>

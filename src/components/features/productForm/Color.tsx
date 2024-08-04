@@ -12,6 +12,7 @@ interface ColorProps {
   initialId?: number;
   width?: string;
   padding?: boolean;
+  header?: string;
 }
 
 const Color = ({
@@ -21,9 +22,10 @@ const Color = ({
   onChangeFunc,
   initialId,
   padding = true,
+  header = "Farge",
 }: ColorProps) => {
   return (
-    <FormFieldContainer header="Farge" padding={padding}>
+    <FormFieldContainer header={header} padding={padding}>
       {colors.map((color) => {
         const tailwindColor = tailwindColorsObject[color.attributes.tailwind];
         return (

@@ -9,12 +9,12 @@ import Menu from "@/components/features/minSide/Menu";
 const MinSide = () => {
   const [cookies] = useCookies(["Token"]);
   const { data: user } = useSuspenseQuery(UserQueries.me(cookies.Token));
-
+  console.log("user", user);
   return (
     <div className="flex flex-col">
       <div className="flex flex-col gap-6 bg-brand-200 pb-24 pt-14">
         <div className="flex justify-center ">
-          <AvatarLetter username={user.username} />
+          <AvatarLetter username={user.username} admin={user.admin} />
         </div>
         <div>
           <p className="text-center text-lg font-semibold">{user.username}</p>

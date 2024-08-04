@@ -44,6 +44,11 @@ export const ProductQueries = {
       queryKey: [...ProductQueries.all(), id],
       queryFn: () => ProductsMethods.getById(id),
     }),
+  searchParamsTest: (query: string) =>
+    queryOptions({
+      queryKey: [...ProductQueries.all(), "test", query],
+      queryFn: () => ProductsMethods.getFiltered(query),
+    }),
   filtered: (query: string) =>
     queryOptions({
       queryKey: [...ProductQueries.all(), query],

@@ -1,5 +1,5 @@
 import { FeatureFlagServerSideMethods } from "@/queryFactory/FeatureFlag";
-import { Product } from "./types";
+import { Product, UserBackend } from "./types";
 
 export const isFeatureFlagActive = async (flagId: number, token: any) => {
   const data = await FeatureFlagServerSideMethods.get(token);
@@ -10,6 +10,11 @@ export const isFeatureFlagActive = async (flagId: number, token: any) => {
   return featureFlag.attributes.active;
 };
 
+// getMe: async (token: any): Promise<UserBackend> => {
+//   return getAuthData("/users/me?populate=*", token);
+export const getMe = async (token: any): Promise<UserBackend> => {
+  return getAuthData("/users/me?populate=role", token);
+};
 export const fetchProductsFiltered = async (query: string) => {
   const baseUrl = apiUrl + "/products?populate=*&filters[sold][$eq]=false";
   const url = query?.length > 0 ? baseUrl + query : baseUrl;
@@ -18,6 +23,25 @@ export const fetchProductsFiltered = async (query: string) => {
   const data = await response.json();
   console.log(data, "this is the data again");
   return data;
+};
+
+export const getAuthData = async (query: string, token: string) => {
+  try {
+    const url = apiUrl + query;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await fetch(url, { headers, cache: "no-cache" });
+    const data = await response.json();
+    if (data?.data) {
+      return data.data;
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
 };
 
 export const putData = async (data: any, query: string, jwt: string) => {

@@ -1,7 +1,7 @@
 import { Question } from "@phosphor-icons/react";
 import React, { useState } from "react";
 import Button from "@/components/common/buttons/Button";
-import FilterDialog from "../product/FilterDialog";
+import FilterDialog from "../product/filter/FilterDialog";
 import InputHeader from "./InputHeader";
 interface FormFieldContainerProps {
   header: string;

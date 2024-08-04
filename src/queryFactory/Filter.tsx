@@ -1,21 +1,16 @@
 import { queryOptions } from "@tanstack/react-query";
-
-import { apiUrl } from "@/utils/serverUtils";
 import {
   Category,
   CategoryType,
   Color,
   Defect,
   Material,
-  Product,
   Sex,
   Size,
+  State,
   Tag,
-  User,
-  UserBackend,
 } from "@/utils/types";
 import { getPublicData } from "./Utils";
-import { fetchColors } from "@/utils/utils";
 
 export const FilterQueries = {
   all: () => ["filters"],
@@ -67,6 +62,12 @@ export const FilterQueries = {
       queryFn: () => FilterMethods.getDefects(),
       staleTime: Infinity,
     }),
+  states: () =>
+    queryOptions({
+      queryKey: [...FilterQueries.all(), "states"],
+      queryFn: () => FilterMethods.getStates(),
+      staleTime: Infinity,
+    }),
 };
 
 export const FilterMethods = {
@@ -93,5 +94,8 @@ export const FilterMethods = {
   },
   getCategoryTypes: async (): Promise<CategoryType[]> => {
     return getPublicData("/category-types?populate=*");
+  },
+  getStates: async (): Promise<State[]> => {
+    return getPublicData("/states");
   },
 };

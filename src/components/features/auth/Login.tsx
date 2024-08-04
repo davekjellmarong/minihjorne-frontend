@@ -12,6 +12,7 @@ const Login = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
+  const [cookie, setAdminCookie] = useCookies(["Admin"]);
   const queryClient = useQueryClient();
   const router = useRouter();
   const {
@@ -30,6 +31,9 @@ const Login = () => {
         const expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + 30);
         setCookie("Token", data.jwt, { expires: expirationDate });
+        if (data.user.admin) {
+          setAdminCookie("Admin", "true");
+        }
         if (redirect) {
           router.push(redirect);
           console.log("Redirecting to", redirect);

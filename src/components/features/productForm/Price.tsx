@@ -8,69 +8,64 @@ interface SexProps {
 const Price = ({ formik, nextSlide }: SexProps) => {
   const priceArray = [
     {
-      title: "50kr",
-      price: 50,
-      id: 0,
+      title: "25kr",
+      price: 25,
+      id: 13,
     },
     {
-      title: "99kr",
-      price: 99,
-      id: 1,
+      title: "50kr",
+      price: 50,
+      id: 14,
+    },
+    {
+      title: "75kr",
+      price: 75,
+      id: 15,
+    },
+    {
+      title: "100kr",
+      price: 100,
+      id: 16,
     },
     {
       title: "125kr",
       price: 125,
-      id: 2,
+      id: 17,
     },
     {
       title: "150kr",
       price: 150,
-      id: 3,
+      id: 18,
     },
     {
       title: "175kr",
       price: 175,
-      id: 4,
+      id: 19,
+    },
+    {
+      title: "200kr",
+      price: 200,
+      id: 20,
     },
     {
       title: "225kr",
       price: 225,
-      id: 5,
+      id: 21,
     },
     {
       title: "250kr",
       price: 250,
-      id: 6,
+      id: 22,
     },
     {
       title: "275kr",
       price: 275,
-      id: 7,
+      id: 23,
     },
     {
       title: "300kr",
       price: 300,
-      id: 8,
-    },
-    {
-      title: "350kr",
-      price: 350,
-      id: 9,
-    },
-    {
-      title: "400kr",
-      price: 400,
-      id: 10,
-    },
-    {
-      title: "450kr",
-      price: 450,
-      id: 11,
-    },
-    {
-      title: "500kr",
-      price: 500,
-      id: 12,
+      id: 24,
     },
   ];
   return (

@@ -4,12 +4,14 @@ import useGetFilters from "@/components/customHooks/useGetFilters";
 import { SlidersHorizontal, X } from "@phosphor-icons/react";
 import FilterDialog from "./FilterDialog";
 import { queryTemplates } from "@/utils/constants";
-import useExtractQueryParams from "./useExtractQueryParams";
-
+import useExtractQueryParams from "../useExtractQueryParams";
+import { ProductsPagination } from "@/utils/types";
+import FilterButtons from "./FilterButtons";
+import FilterHeader from "./FilterHeader";
 interface FiltersProps {
-  setFilterQuery: any;
+  products: ProductsPagination;
 }
-const Filters = ({ setFilterQuery }: FiltersProps) => {
+const Filters = ({ products }: FiltersProps) => {
   const [open, setOpen] = useState(false);
   const {
     SexData,
@@ -18,18 +20,11 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
     TagsData,
     ColorsData,
     MaterialsData,
+    CategoryTypesData,
+    DefectsData,
+    StatesData,
   } = useGetFilters();
-
-  const handleFilterFetch = () => {
-    const queryParams = new URLSearchParams(window.location.search);
-    queryParams.set("pagination[page]", "1");
-    window.history.replaceState(null, "", `?${queryParams.toString()}`);
-    setFilterQuery(`&${queryParams.toString()}`);
-  };
   const { queryParams } = useExtractQueryParams();
-  const FilterProps = {
-    queryParams,
-  };
   return (
     <div className="relative flex max-h-screen flex-col overflow-y-scroll">
       <div className="flex justify-between gap-4">
@@ -43,22 +38,12 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
           <p className="">Filter</p>
         </button>
       </div>
-      <FilterDialog open={open} setOpen={setOpen} onClose={handleFilterFetch}>
+      <FilterDialog open={open} setOpen={setOpen}>
         <div className={`relative flex h-screen max-h-screen flex-col `}>
-          <div className="flex justify-between border-b border-b-gray-300 px-6  py-6">
-            <p className="text-lg font-bold ">Filtrer</p>
-            <div
-              onClick={() => {
-                setOpen(false);
-              }}
-              className="cursor-pointer"
-            >
-              <X size={28} />
-            </div>
-          </div>
+          <FilterHeader setOpen={setOpen} products={products} />
           <div className="grow">
             <Filter
-              {...FilterProps}
+              queryParams={queryParams}
               data={SexData}
               property="name"
               label="Kjønn"
@@ -66,7 +51,7 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               queryTemplate={queryTemplates.sexQueryTemplate}
             />
             <Filter
-              {...FilterProps}
+              queryParams={queryParams}
               data={CategoryData}
               property="name"
               label="Kategori"
@@ -74,7 +59,16 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               queryTemplate={queryTemplates.categoryQueryTemplate}
             />
             <Filter
-              {...FilterProps}
+              queryParams={queryParams}
+              data={CategoryTypesData}
+              property="name"
+              label="Kategori Type"
+              filter="category_type"
+              queryTemplate={queryTemplates.categoryTypeQueryTemplate}
+            />
+
+            <Filter
+              queryParams={queryParams}
               data={SizesData}
               property="number"
               label="Størrelse"
@@ -82,15 +76,16 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               queryTemplate={queryTemplates.sizeQueryTemplate}
             />
             <Filter
-              {...FilterProps}
+              queryParams={queryParams}
               data={TagsData}
               property="name"
               label="Tags"
               filter="tags"
               queryTemplate={queryTemplates.tagQueryTemplate}
             />
+
             <Filter
-              {...FilterProps}
+              queryParams={queryParams}
               data={ColorsData}
               property="name"
               label="Farger"
@@ -98,36 +93,31 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               queryTemplate={queryTemplates.colorQueryTemplate}
             />
             <Filter
-              {...FilterProps}
+              queryParams={queryParams}
               data={MaterialsData}
               property="name"
               label="Stoff"
               filter="materials"
               queryTemplate={queryTemplates.materialQueryTemplate}
             />
+            <Filter
+              queryParams={queryParams}
+              data={StatesData}
+              property="name"
+              label="Tilstand"
+              filter="state"
+              queryTemplate={queryTemplates.stateQueryTemplate}
+            />
+            <Filter
+              queryParams={queryParams}
+              data={DefectsData}
+              property="type"
+              label="Avvik"
+              filter="defects"
+              queryTemplate={queryTemplates.defectQueryTemplate}
+            />
           </div>
-
-          <div className="sticky bottom-0 flex justify-between  bg-gray-100 px-6 shadow-inner">
-            {/* TO-DO use button compomnents */}
-            <button
-              className=" my-4 flex items-center rounded-md border-2 border-red-300 p-2 px-4  sm:hover:bg-gray-700"
-              onClick={() => {
-                setFilterQuery("");
-                const newUrl = window.location.pathname;
-                window.history.replaceState(null, "", newUrl);
-              }}
-            >
-              Tøm alle filtre
-            </button>
-            <button
-              className="sticky top-0 m-4 block rounded-md bg-gray-500 p-2 px-4 text-white sm:hover:bg-gray-700"
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              Bruk filter
-            </button>
-          </div>
+          <FilterButtons setOpen={setOpen} products={products} />
         </div>
       </FilterDialog>
     </div>
