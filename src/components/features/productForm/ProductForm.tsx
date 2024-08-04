@@ -66,7 +66,20 @@ const ProductForm = ({ formik }: ProductFormProps) => {
           formik={formik}
           categories={categories}
         />
-        <Color formik={formik} colors={colors} onChangeFunc={nextSlide} />
+        <Color
+          formik={formik}
+          colors={colors}
+          onChangeFunc={nextSlide}
+          formName="color1"
+          header="Farge 1"
+        />
+        <Color
+          formik={formik}
+          colors={colors}
+          onChangeFunc={nextSlide}
+          formName="color2"
+          header="Farge 2"
+        />
         <Size formik={formik} sizes={sizes} onChangeFunc={nextSlide} />
         <Tags onChangeFunc={nextSlide} formik={formik} tags={tags} />
         <Sex formik={formik} onChangeFunc={nextSlide} />
