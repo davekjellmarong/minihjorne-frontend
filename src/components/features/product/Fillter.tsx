@@ -1,4 +1,5 @@
 "use client";
+import { addQueryParam, removeQueryParam } from "@/utils/QueryParamUtils";
 import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 
@@ -19,7 +20,6 @@ const Filter = ({
   queryTemplate,
   queryParams,
 }: FilterProps) => {
-  // When inside this component, use the Label to check if there are any searchParams for this Label. If there are, loop through thoose and set the checkboxStates to true for each of them. and also set the setFilter data as well
   const [checkboxStates, setCheckboxStates] = useState<{
     [key: string]: boolean;
   }>({});
@@ -27,6 +27,7 @@ const Filter = ({
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
+  // Sync checkbox states with URL query parameters
   useEffect(() => {
     const localFilters = queryParams[filter];
     const filtersObject = localFilters?.reduce((prev: any, curr: any) => {
@@ -36,30 +37,17 @@ const Filter = ({
     }, {});
     setCheckboxStates(filtersObject);
   }, [data, queryParams, filter, property]);
+
   const handleCheckboxChange = (item: any) => {
     const isChecked = !checkboxStates[item.attributes[property]];
     setCheckboxStates((prevStates: any) => ({
       ...prevStates,
       [item.attributes[property]]: isChecked,
     }));
-
     if (isChecked) {
-      const queryParams = new URLSearchParams(window.location.search);
-      queryParams.append(queryTemplate.slice(1, -1), item.id);
-      const newUrl = window.location.pathname + "?" + queryParams.toString();
-      router.push(newUrl);
+      addQueryParam(router, queryTemplate, item.id);
     } else {
-      const queryParams = new URLSearchParams(window.location.search);
-      const allQueryParams = queryParams.getAll(queryTemplate.slice(1, -1));
-      const newQueryParams = allQueryParams.filter(
-        (query: any) => query !== String(item.id),
-      );
-      queryParams.delete(queryTemplate.slice(1, -1));
-      newQueryParams.forEach((param: string) => {
-        queryParams.append(queryTemplate.slice(1, -1), param);
-      });
-      const newUrl = window.location.pathname + "?" + queryParams.toString();
-      router.push(newUrl);
+      removeQueryParam(router, queryTemplate, item.id);
     }
   };
   if (data)

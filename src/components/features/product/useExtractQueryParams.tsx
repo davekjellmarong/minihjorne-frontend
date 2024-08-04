@@ -1,40 +1,14 @@
 "use client";
-import { FilterQueries } from "@/queryFactory/Filter";
-import { useQueryClient } from "@tanstack/react-query";
+import useGetFiltersSynchronous from "@/components/customHooks/useGetFiltersSynchronous";
+import { allFiltersObject } from "@/utils/constants";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const useExtractQueryParams = () => {
-  const [queryParams, setQueryParams] = useState<any>({
-    category: [],
-    colors: [],
-    size: [],
-    tags: [],
-    materials: [],
-    sex: [],
-    defects: [],
-    category_type: [],
-    state: [],
-  });
+  const [queryParams, setQueryParams] = useState<any>(allFiltersObject);
   const searchParams = useSearchParams();
-  const queryClient = useQueryClient();
+  const { allFilters } = useGetFiltersSynchronous();
   useEffect(() => {
-    const category = queryClient.getQueryData(
-      FilterQueries.categories().queryKey,
-    );
-    const colors = queryClient.getQueryData(FilterQueries.colors().queryKey);
-    const size = queryClient.getQueryData(FilterQueries.sizes().queryKey);
-    const tags = queryClient.getQueryData(FilterQueries.tags().queryKey);
-    const materials = queryClient.getQueryData(
-      FilterQueries.materials().queryKey,
-    );
-    const sex = queryClient.getQueryData(FilterQueries.sexes().queryKey);
-    const defects = queryClient.getQueryData(FilterQueries.defects().queryKey);
-    const category_type = queryClient.getQueryData(
-      FilterQueries.categoryTypes().queryKey,
-    );
-    const state = queryClient.getQueryData(FilterQueries.states().queryKey);
-
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const path = current
       .toString()
@@ -51,26 +25,15 @@ const useExtractQueryParams = () => {
       category_type: [],
       state: [],
     };
-    const filterMap: any = {
-      category,
-      colors,
-      size,
-      tags,
-      materials,
-      sex,
-      defects,
-      category_type,
-      state,
-    };
     for (const query of path) {
       if (query.includes("pagination")) continue;
 
       const startIndex = query.indexOf("[") + 1;
       const endIndex = query.indexOf("]");
       const filter = query.substring(startIndex, endIndex);
-      if (filterMap[filter]) {
+      if (allFilters[filter]) {
         const filterValues = query.split("=")[1];
-        const filterData = filterMap[filter].find(
+        const filterData = allFilters[filter].find(
           (item: any) => item.id === Number(filterValues),
         );
         if (filterData) {
@@ -83,7 +46,7 @@ const useExtractQueryParams = () => {
     return () => {
       setQueryParams([]);
     };
-  }, [searchParams, queryClient]);
+  }, [searchParams]);
   return {
     queryParams: queryParams,
   };

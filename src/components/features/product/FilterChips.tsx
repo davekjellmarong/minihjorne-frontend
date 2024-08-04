@@ -2,10 +2,10 @@ import React from "react";
 import useExtractQueryParams from "./useExtractQueryParams";
 import { XCircle } from "@phosphor-icons/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { handleRemoveFilter } from "@/utils/QueryParamUtils";
 
 const FilterChips = () => {
   const { queryParams } = useExtractQueryParams();
-  console.log(queryParams);
   const filterEntries = Object.entries(queryParams);
 
   const searchParams = useSearchParams();
@@ -14,24 +14,7 @@ const FilterChips = () => {
   const params = new URLSearchParams(searchParams.toString());
 
   const handleClearAll = () => {
-    router.push(pathname); // Navigates to the same page with no query parameters
-  };
-
-  const handleRemoveFilter = (key: string, filterId: number) => {
-    const queryKey = `filters[${key}][id][$eq]`;
-    const allQueryParams = params.getAll(queryKey);
-    const newQueryParams = allQueryParams.filter(
-      (param) => param !== String(filterId),
-    );
-
-    if (newQueryParams.length > 0) {
-      params.delete(queryKey);
-      newQueryParams.forEach((param) => params.append(queryKey, param));
-    } else {
-      params.delete(queryKey);
-    }
-
-    router.push(`${pathname}?${params.toString()}`); // Update the URL
+    router.push(pathname);
   };
 
   return (
@@ -48,32 +31,31 @@ const FilterChips = () => {
 
       {filterEntries.map(([key, filters]: any) =>
         filters.length > 0
-          ? filters.map(
-              (filter: any) => (
-                console.log(filter.attributes.type),
-                (
-                  <div
-                    className="flex gap-1 rounded-full border border-gray-300 bg-brand-400 p-1.5 px-3 text-white"
-                    key={filter.id}
-                  >
-                    <p className="text-sm font-light">
-                      {filter.attributes?.name?.length > 1
-                        ? filter.attributes?.name
-                        : filter.attributes?.number}
-                    </p>
-                    {filter.attributes?.type && (
-                      <p className="text-sm font-light">
-                        {filter.attributes?.type}
-                      </p>
-                    )}
+          ? filters.map((filter: any) => (
+              <div
+                className="flex gap-1 rounded-full border border-gray-300 bg-brand-400 p-1.5 px-3 text-white"
+                key={filter.id}
+              >
+                <p className="text-sm font-light">
+                  {filter.attributes?.name?.length > 1
+                    ? filter.attributes?.name
+                    : filter.attributes?.number}
+                </p>
+                {filter.attributes?.type && (
+                  <p className="text-sm font-light">
+                    {filter.attributes?.type}
+                  </p>
+                )}
 
-                    <button onClick={() => handleRemoveFilter(key, filter.id)}>
-                      <XCircle size={20} color="white" />
-                    </button>
-                  </div>
-                )
-              ),
-            )
+                <button
+                  onClick={() =>
+                    handleRemoveFilter(router, pathname, params, key, filter.id)
+                  }
+                >
+                  <XCircle size={20} color="white" />
+                </button>
+              </div>
+            ))
           : null,
       )}
     </div>
