@@ -12,8 +12,10 @@ const useExtractQueryParams = () => {
     tags: [],
     materials: [],
     sex: [],
+    defects: [],
+    category_type: [],
+    state: [],
   });
-  const [flatQueryParams, setFlatQueryParams] = useState<any>([]);
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();
   useEffect(() => {
@@ -27,6 +29,11 @@ const useExtractQueryParams = () => {
       FilterQueries.materials().queryKey,
     );
     const sex = queryClient.getQueryData(FilterQueries.sexes().queryKey);
+    const defects = queryClient.getQueryData(FilterQueries.defects().queryKey);
+    const category_type = queryClient.getQueryData(
+      FilterQueries.categoryTypes().queryKey,
+    );
+    const state = queryClient.getQueryData(FilterQueries.states().queryKey);
 
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const path = current
@@ -40,8 +47,10 @@ const useExtractQueryParams = () => {
       tags: [],
       materials: [],
       sex: [],
+      defects: [],
+      category_type: [],
+      state: [],
     };
-    let flatQueryParams: any = [];
     const filterMap: any = {
       category,
       colors,
@@ -49,6 +58,9 @@ const useExtractQueryParams = () => {
       tags,
       materials,
       sex,
+      defects,
+      category_type,
+      state,
     };
     for (const query of path) {
       if (query.includes("pagination")) continue;
@@ -63,12 +75,10 @@ const useExtractQueryParams = () => {
         );
         if (filterData) {
           queryParamsObject[filter]?.push(filterData);
-          flatQueryParams.push(filterData);
         }
       }
     }
     setQueryParams(queryParamsObject);
-    setFlatQueryParams(flatQueryParams);
 
     return () => {
       setQueryParams([]);
@@ -76,7 +86,6 @@ const useExtractQueryParams = () => {
   }, [searchParams, queryClient]);
   return {
     queryParams: queryParams,
-    flatQueryParams: flatQueryParams,
   };
 };
 

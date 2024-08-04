@@ -5,11 +5,9 @@ import { SlidersHorizontal, X } from "@phosphor-icons/react";
 import FilterDialog from "./FilterDialog";
 import { queryTemplates } from "@/utils/constants";
 import useExtractQueryParams from "./useExtractQueryParams";
+import { useRouter } from "next/navigation";
 
-interface FiltersProps {
-  setFilterQuery: any;
-}
-const Filters = ({ setFilterQuery }: FiltersProps) => {
+const Filters = () => {
   const [open, setOpen] = useState(false);
   const {
     SexData,
@@ -18,13 +16,15 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
     TagsData,
     ColorsData,
     MaterialsData,
+    CategoryTypesData,
+    DefectsData,
+    StatesData,
   } = useGetFilters();
-
+  const router = useRouter();
   const handleFilterFetch = () => {
     const queryParams = new URLSearchParams(window.location.search);
     queryParams.set("pagination[page]", "1");
-    window.history.replaceState(null, "", `?${queryParams.toString()}`);
-    setFilterQuery(`&${queryParams.toString()}`);
+    router.push(`?${queryParams.toString()}`);
   };
   const { queryParams } = useExtractQueryParams();
   const FilterProps = {
@@ -75,6 +75,23 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
             />
             <Filter
               {...FilterProps}
+              data={CategoryTypesData}
+              property="name"
+              label="Kategori Type"
+              filter="category_type"
+              queryTemplate={queryTemplates.categoryTypeQueryTemplate}
+            />
+            <Filter
+              {...FilterProps}
+              data={DefectsData}
+              property="type"
+              label="Avvik"
+              filter="defects"
+              queryTemplate={queryTemplates.defectQueryTemplate}
+            />
+
+            <Filter
+              {...FilterProps}
               data={SizesData}
               property="number"
               label="Størrelse"
@@ -88,6 +105,14 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
               label="Tags"
               filter="tags"
               queryTemplate={queryTemplates.tagQueryTemplate}
+            />
+            <Filter
+              {...FilterProps}
+              data={StatesData}
+              property="name"
+              label="Tilstand"
+              filter="state"
+              queryTemplate={queryTemplates.stateQueryTemplate}
             />
             <Filter
               {...FilterProps}
@@ -112,9 +137,8 @@ const Filters = ({ setFilterQuery }: FiltersProps) => {
             <button
               className=" my-4 flex items-center rounded-md border-2 border-red-300 p-2 px-4  sm:hover:bg-gray-700"
               onClick={() => {
-                setFilterQuery("");
                 const newUrl = window.location.pathname;
-                window.history.replaceState(null, "", newUrl);
+                router.push(newUrl);
               }}
             >
               Tøm alle filtre

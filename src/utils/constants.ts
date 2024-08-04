@@ -78,8 +78,23 @@ export const tailwindColorsUserButton: any = {
 export const queryTemplates = {
   sexQueryTemplate: "&filters[sex][id][$eq]=",
   categoryQueryTemplate: "&filters[category][id][$eq]=",
+  categoryTypeQueryTemplate: "&filters[category_type][id][$eq]=",
+  defectQueryTemplate: "&filters[defects][id][$eq]=",
   sizeQueryTemplate: "&filters[size][id][$eq]=",
   tagQueryTemplate: "&filters[tags][id][$eq]=",
   colorQueryTemplate: "&filters[colors][id][$eq]=",
   materialQueryTemplate: "&filters[materials][id][$eq]=",
+  stateQueryTemplate: "&filters[state][id][$eq]=",
+};
+
+export const allFiltersObject = {
+  category: [],
+  colors: [],
+  size: [],
+  tags: [],
+  materials: [],
+  sex: [],
+  defects: [],
+  category_type: [],
+  state: [],
 };

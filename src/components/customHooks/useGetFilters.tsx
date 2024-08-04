@@ -10,6 +10,7 @@ const useGetFilters = () => {
   const { data: SexData } = useQuery(FilterQueries.sexes());
   const { data: CategoryTypesData } = useQuery(FilterQueries.categoryTypes());
   const { data: DefectsData } = useQuery(FilterQueries.defects());
+  const { data: StatesData } = useQuery(FilterQueries.states());
 
   return {
     ColorsData,
@@ -20,6 +21,7 @@ const useGetFilters = () => {
     SexData,
     CategoryTypesData,
     DefectsData,
+    StatesData,
   };
 };
 

@@ -1,5 +1,6 @@
 "use client";
 import { CaretDown, CaretUp } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
 
 import React, { useEffect, useRef, useState } from "react";
 interface FilterProps {
@@ -24,6 +25,8 @@ const Filter = ({
   }>({});
   const FilterRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
   useEffect(() => {
     const localFilters = queryParams[filter];
     const filtersObject = localFilters?.reduce((prev: any, curr: any) => {
@@ -44,7 +47,7 @@ const Filter = ({
       const queryParams = new URLSearchParams(window.location.search);
       queryParams.append(queryTemplate.slice(1, -1), item.id);
       const newUrl = window.location.pathname + "?" + queryParams.toString();
-      window.history.replaceState(null, "", newUrl);
+      router.push(newUrl);
     } else {
       const queryParams = new URLSearchParams(window.location.search);
       const allQueryParams = queryParams.getAll(queryTemplate.slice(1, -1));
@@ -56,7 +59,7 @@ const Filter = ({
         queryParams.append(queryTemplate.slice(1, -1), param);
       });
       const newUrl = window.location.pathname + "?" + queryParams.toString();
-      window.history.replaceState(null, "", newUrl);
+      router.push(newUrl);
     }
   };
   if (data)

@@ -1,7 +1,9 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
+const QuickFilterCards = () => {
+  const router = useRouter();
   const quickFilterData = [
     {
       name: "Gutt",
@@ -52,12 +54,7 @@ const QuickFilterCards = ({ setFilterQuery }: { setFilterQuery: any }) => {
           className={`flex h-10 items-center justify-center rounded-full border border-gray-300 p-1.5 px-3`}
           key={filter.name}
           onClick={() => {
-            window.history.pushState(
-              null,
-              "",
-              `${filter.link}&pagination[page]=1`,
-            );
-            setFilterQuery(`${filter.link}&pagination[page]=1`);
+            router.push(`${filter.link}&pagination[page]=1`);
           }}
         >
           <p className="text-sm font-light text-brand-700">{filter.name}</p>
