@@ -5,7 +5,7 @@ const AvatarLetter = ({
   admin,
 }: {
   username: string;
-  admin: boolean;
+  admin?: boolean;
 }) => {
   return (
     <span
