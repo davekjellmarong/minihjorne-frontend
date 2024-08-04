@@ -73,6 +73,7 @@ export interface CommonUser {
   icon: string;
   color: string;
   paid: boolean;
+  admin: boolean;
 }
 
 export interface CommonTags {
@@ -299,6 +300,7 @@ export interface User {
     icon: string;
     color: string;
     paid: boolean;
+    admin: boolean;
     plan: { data: CommonPlan };
     productImages: { data: Image[] };
   };

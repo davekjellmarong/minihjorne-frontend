@@ -5,7 +5,6 @@ import { SlidersHorizontal, X } from "@phosphor-icons/react";
 import FilterDialog from "./FilterDialog";
 import { queryTemplates } from "@/utils/constants";
 import useExtractQueryParams from "../useExtractQueryParams";
-import { useRouter } from "next/navigation";
 import { ProductsPagination } from "@/utils/types";
 import FilterButtons from "./FilterButtons";
 import FilterHeader from "./FilterHeader";
@@ -67,14 +66,6 @@ const Filters = ({ products }: FiltersProps) => {
               filter="category_type"
               queryTemplate={queryTemplates.categoryTypeQueryTemplate}
             />
-            <Filter
-              queryParams={queryParams}
-              data={DefectsData}
-              property="type"
-              label="Avvik"
-              filter="defects"
-              queryTemplate={queryTemplates.defectQueryTemplate}
-            />
 
             <Filter
               queryParams={queryParams}
@@ -92,14 +83,7 @@ const Filters = ({ products }: FiltersProps) => {
               filter="tags"
               queryTemplate={queryTemplates.tagQueryTemplate}
             />
-            <Filter
-              queryParams={queryParams}
-              data={StatesData}
-              property="name"
-              label="Tilstand"
-              filter="state"
-              queryTemplate={queryTemplates.stateQueryTemplate}
-            />
+
             <Filter
               queryParams={queryParams}
               data={ColorsData}
@@ -115,6 +99,22 @@ const Filters = ({ products }: FiltersProps) => {
               label="Stoff"
               filter="materials"
               queryTemplate={queryTemplates.materialQueryTemplate}
+            />
+            <Filter
+              queryParams={queryParams}
+              data={StatesData}
+              property="name"
+              label="Tilstand"
+              filter="state"
+              queryTemplate={queryTemplates.stateQueryTemplate}
+            />
+            <Filter
+              queryParams={queryParams}
+              data={DefectsData}
+              property="type"
+              label="Avvik"
+              filter="defects"
+              queryTemplate={queryTemplates.defectQueryTemplate}
             />
           </div>
           <FilterButtons setOpen={setOpen} products={products} />

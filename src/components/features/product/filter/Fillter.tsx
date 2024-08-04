@@ -4,6 +4,7 @@ import { CaretDown, CaretUp, XCircle } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 
 import React, { useEffect, useRef, useState } from "react";
+import FilterChipsInner from "./FilterChipsInner";
 interface FilterProps {
   data: any;
   property: string;
@@ -23,7 +24,7 @@ const Filter = ({
   const [checkboxStates, setCheckboxStates] = useState<{
     [key: string]: boolean;
   }>({});
-  const FilterRef = useRef<HTMLUListElement | null>(null);
+  const FilterRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -53,73 +54,71 @@ const Filter = ({
   if (data)
     return (
       <div className="">
-        <div className="ml-0 flex w-full justify-between border-b border-b-gray-300 p-6 sm:hover:bg-gray-200">
-          <p className=" font-light">{label}&nbsp;</p>
-          <div className="mx-6 overflow-auto">
-            {Object.keys(checkboxStates).filter(
-              (key) => checkboxStates[key] === true,
-            ).length > 0 ? (
-              <div className="flex gap-2">
-                {Object.keys(checkboxStates)
-                  .filter((key) => checkboxStates[key] === true)
-                  .map((key) => (
-                    <button
-                      key={key}
-                      className="flex h-10 items-center rounded bg-brand-200 p-2 text-sm font-light"
-                      onClick={() => {
-                        const filterId = queryParams[filter].find(
-                          (item: any) => item.attributes[property] === key,
-                        )?.id;
-                        removeQueryParam(router, queryTemplate, filterId);
-                      }}
-                    >
-                      <XCircle size={20} color="white" />
-                      <span>{key}</span>
-                    </button>
-                  ))}
-              </div>
-            ) : null}
+        <div className="ml-0 flex w-full flex-col justify-between border-b border-b-gray-300 p-6 sm:hover:bg-gray-200">
+          <div className="flex justify-between">
+            <div className="flex gap-2 ">
+              <p className="font-light">{label}&nbsp;</p>
+              <FilterChipsInner
+                checkboxStates={checkboxStates}
+                queryParams={queryParams}
+                filter={filter}
+                property={property}
+                queryTemplate={queryTemplate}
+              />
+            </div>
+
+            <div
+              onClick={() => {
+                if (FilterRef.current) {
+                  FilterRef.current.classList.toggle("hidden");
+                  setOpen(!open);
+                }
+              }}
+            >
+              <span className={`${open ? "" : "hidden"}`}>
+                <CaretUp size={32} weight="thin" />
+              </span>
+              <span className={`${open ? "hidden" : ""}`}>
+                <CaretDown size={32} weight="thin" />
+              </span>
+            </div>
           </div>
-          <div
-            onClick={() => {
-              if (FilterRef.current) {
-                FilterRef.current.classList.toggle("hidden");
-                setOpen(!open);
-              }
-            }}
-          >
-            <span className={`${open ? "" : "hidden"}`}>
-              <CaretUp size={32} weight="thin" />
-            </span>
-            <span className={`${open ? "hidden" : ""}`}>
-              <CaretDown size={32} weight="thin" />
-            </span>
+
+          <div ref={FilterRef} className="hidden">
+            <ul className="grid grid-cols-3 gap-2 py-6">
+              {data.map((item: any) => {
+                const isChecked =
+                  checkboxStates[item.attributes[property]] || false;
+                return (
+                  <li
+                    key={item.attributes[property]}
+                    className="my-2 flex w-full items-center"
+                  >
+                    <label
+                      htmlFor={item.attributes[property]}
+                      className={`flex h-12 w-full cursor-pointer items-center gap-2 rounded-lg border border-gray-300 p-2 text-center text-sm transition-colors duration-200 ${
+                        isChecked
+                          ? "bg-blue-400 text-white"
+                          : "bg-white text-gray-700"
+                      }`}
+                    >
+                      <input
+                        id={item.attributes[property]}
+                        type="checkbox"
+                        onChange={() => handleCheckboxChange(item)}
+                        checked={isChecked}
+                        className="hidden"
+                      />
+                      <span className="flex-1">
+                        {item.attributes[property]}
+                      </span>
+                    </label>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
-        <ul ref={FilterRef} className="hidden">
-          {data.map((item: any) => {
-            return (
-              <li
-                key={item.attributes[property]}
-                className="my-2 flex gap-4 px-6"
-              >
-                <input
-                  id={item.attributes[property]}
-                  type="checkbox"
-                  onChange={() => handleCheckboxChange(item)}
-                  checked={checkboxStates[item.attributes[property]] || false}
-                  className="size-6 cursor-pointer rounded-sm"
-                />
-                <label
-                  htmlFor={item.attributes[property]}
-                  className="w-full text-sm"
-                >
-                  {item.attributes[property]}
-                </label>
-              </li>
-            );
-          })}
-        </ul>
       </div>
     );
 };

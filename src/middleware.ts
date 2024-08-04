@@ -1,11 +1,19 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { FeatureFlagsEnum } from "./utils/FeatureFlags";
-import { isFeatureFlagActive } from "./utils/serverUtils";
+import { getMe, isFeatureFlagActive } from "./utils/serverUtils";
 
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
-
+  const admin = request.cookies.get("Admin");
+  const token = request.cookies.get("Token");
+  if (admin?.value === "true" && token?.value) {
+    const response = await getMe(token?.value);
+    if (response.admin) {
+      console.log("Admin is logged in, and you shall pass");
+      return NextResponse.next();
+    }
+  }
   const E_COMMERCE = request.cookies.get(
     `featureFlag_${FeatureFlagsEnum.E_COMMERCE}`,
   );
