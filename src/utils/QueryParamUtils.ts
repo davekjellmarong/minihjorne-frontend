@@ -8,6 +8,7 @@ export const addQueryParam = (
   const newUrl = window.location.pathname + "?" + queryParams.toString();
   router.push(newUrl);
 };
+
 // todo - clean up these functions with less params and split them up into 3 maybe?
 export const removeQueryParam = (
   router: any,

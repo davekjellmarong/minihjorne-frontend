@@ -19,7 +19,7 @@ import { useStore } from "@/stateManagment/ZustandStore";
 import Loading from "@/components/common/loading/Loading";
 import SavedImages from "@/components/features/minSide/lastOpp/SavedImages";
 import ImageUploader from "@/components/features/minSide/lastOpp/ImageUploader";
-import FilterDialog from "@/components/features/product/FilterDialog";
+import FilterDialog from "@/components/features/product/filter/FilterDialog";
 import ImagesList from "@/components/features/minSide/lastOpp/ImagesList";
 import SelectedImages from "@/components/features/minSide/lastOpp/SelectedImages";
 import ProductForm from "@/components/features/productForm/ProductForm";

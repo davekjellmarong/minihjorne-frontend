@@ -3,11 +3,11 @@ import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import React from "react";
 import { ProductQueries } from "@/queryFactory/Product";
 import QuickFilterCards from "@/components/features/product/QuickFilterCards";
-import Filters from "@/components/features/product/Filters";
-import FilterChips from "@/components/features/product/FilterChips";
 import Products from "@/components/features/product/Products";
 import Pagination from "@/components/features/product/Pagination";
 import { useSearchParams } from "next/navigation";
+import Filters from "@/components/features/product/filter/Filters";
+import FilterChips from "@/components/features/product/filter/FilterChips";
 
 export interface SelectedFilter {
   query: string;
@@ -31,7 +31,7 @@ const ProductPage = () => {
           <QuickFilterCards />
         </div>
         <div className="flex w-full  border-gray-200  py-2">
-          <Filters />
+          <Filters products={products} />
         </div>
         <div className="w-full ">
           <FilterChips />

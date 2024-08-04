@@ -1,6 +1,6 @@
 "use client";
 import { addQueryParam, removeQueryParam } from "@/utils/QueryParamUtils";
-import { CaretDown, CaretUp } from "@phosphor-icons/react";
+import { CaretDown, CaretUp, XCircle } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -53,22 +53,48 @@ const Filter = ({
   if (data)
     return (
       <div className="">
-        <div
-          onClick={() => {
-            if (FilterRef.current) {
-              FilterRef.current.classList.toggle("hidden");
-              setOpen(!open);
-            }
-          }}
-          className="ml-0 flex w-full justify-between border-b border-b-gray-300 p-6 sm:hover:bg-gray-200"
-        >
+        <div className="ml-0 flex w-full justify-between border-b border-b-gray-300 p-6 sm:hover:bg-gray-200">
           <p className=" font-light">{label}&nbsp;</p>
-          <span className={`${open ? "" : "hidden"}`}>
-            <CaretUp size={32} weight="thin" />
-          </span>
-          <span className={`${open ? "hidden" : ""}`}>
-            <CaretDown size={32} weight="thin" />
-          </span>
+          <div className="mx-6 overflow-auto">
+            {Object.keys(checkboxStates).filter(
+              (key) => checkboxStates[key] === true,
+            ).length > 0 ? (
+              <div className="flex gap-2">
+                {Object.keys(checkboxStates)
+                  .filter((key) => checkboxStates[key] === true)
+                  .map((key) => (
+                    <button
+                      key={key}
+                      className="flex h-10 items-center rounded bg-brand-200 p-2 text-sm font-light"
+                      onClick={() => {
+                        const filterId = queryParams[filter].find(
+                          (item: any) => item.attributes[property] === key,
+                        )?.id;
+                        removeQueryParam(router, queryTemplate, filterId);
+                      }}
+                    >
+                      <XCircle size={20} color="white" />
+                      <span>{key}</span>
+                    </button>
+                  ))}
+              </div>
+            ) : null}
+          </div>
+          <div
+            onClick={() => {
+              if (FilterRef.current) {
+                FilterRef.current.classList.toggle("hidden");
+                setOpen(!open);
+              }
+            }}
+          >
+            <span className={`${open ? "" : "hidden"}`}>
+              <CaretUp size={32} weight="thin" />
+            </span>
+            <span className={`${open ? "hidden" : ""}`}>
+              <CaretDown size={32} weight="thin" />
+            </span>
+          </div>
         </div>
         <ul ref={FilterRef} className="hidden">
           {data.map((item: any) => {

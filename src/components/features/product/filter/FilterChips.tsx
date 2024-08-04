@@ -1,5 +1,5 @@
 import React from "react";
-import useExtractQueryParams from "./useExtractQueryParams";
+import useExtractQueryParams from "../useExtractQueryParams";
 import { XCircle } from "@phosphor-icons/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { handleRemoveFilter } from "@/utils/QueryParamUtils";
@@ -8,9 +8,9 @@ const FilterChips = () => {
   const { queryParams } = useExtractQueryParams();
   const filterEntries = Object.entries(queryParams);
 
-  const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
 
   const handleClearAll = () => {
