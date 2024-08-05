@@ -7,10 +7,17 @@ interface DefectProps {
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
+  header?: string;
 }
-const Defect = ({ defects, formik, onChangeFunc, initialId }: DefectProps) => {
+const Defect = ({
+  defects,
+  formik,
+  onChangeFunc,
+  initialId,
+  header = "Avvik",
+}: DefectProps) => {
   return (
-    <FormFieldContainer header="Avvik" optional={true}>
+    <FormFieldContainer optional header={header}>
       {defects.map((defect) => {
         return (
           <div key={defect.id} className="flex w-20 flex-col items-center">

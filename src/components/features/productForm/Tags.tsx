@@ -8,11 +8,18 @@ interface ColorProps {
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
+  header?: string;
 }
-const Tags = ({ tags, formik, onChangeFunc, initialId }: ColorProps) => {
+const Tags = ({
+  tags,
+  formik,
+  onChangeFunc,
+  initialId,
+  header = "Kategori",
+}: ColorProps) => {
   return (
     <>
-      <FormFieldContainer optional header="Katergori">
+      <FormFieldContainer optional header={header}>
         {tags.map((tag) => {
           return (
             <div key={tag.id} className="flex w-20 flex-col items-center">

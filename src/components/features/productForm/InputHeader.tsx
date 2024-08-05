@@ -11,7 +11,7 @@ const InputHeader = ({ children, center, optional }: InputHeaderProps) => {
   const required = optional ? "Valgfri" : "Påkrevd";
   return (
     <div className={`mb-2 text-2xl font-thin ${centerClass}`}>
-      <p className="text-center text-sm font-thin text-gray-500">{required}</p>
+      {/* <p className="text-center text-sm font-thin text-gray-500">{required}</p> */}
       {children}
     </div>
   );
