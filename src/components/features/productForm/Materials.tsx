@@ -8,15 +8,17 @@ interface ColorProps {
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
+  header?: string;
 }
 const Materials = ({
   materials,
   formik,
   onChangeFunc,
   initialId,
+  header = "Materiale",
 }: ColorProps) => {
   return (
-    <FormFieldContainer optional header="Materiale">
+    <FormFieldContainer optional header={header}>
       {materials.map((material) => {
         return (
           <div key={material.id} className="flex w-20 flex-col items-center">

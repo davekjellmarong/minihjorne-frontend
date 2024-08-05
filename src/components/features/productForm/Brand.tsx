@@ -19,6 +19,7 @@ const Brand = ({ formik, nextSlide }: ColorProps) => {
     "Newbie",
     "Reflex",
     "Zara",
+    "Ukjent",
   ];
   return (
     <FormFieldContainer header="Klesmerke">

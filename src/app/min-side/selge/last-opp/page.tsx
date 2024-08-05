@@ -104,8 +104,9 @@ const LeggUt = () => {
       return errors;
     },
     onSubmit: (values) => {
+      const colors = [values.color1, values.color2].filter((color) => color);
       const payload = {
-        data: { ...values, colors: [values.color1, values.color2] },
+        data: { ...values, colors: colors },
       };
       createProduct(payload);
     },
@@ -124,8 +125,6 @@ const LeggUt = () => {
       </>
     );
   }
-  console.log(formik.values.color1);
-  console.log(formik.values.color2);
   return (
     <>
       <FilterDialog open={modal} setOpen={setModal}>
