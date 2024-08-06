@@ -83,7 +83,6 @@ const ProductForm = ({ formik }: ProductFormProps) => {
         />
         <Size formik={formik} sizes={sizes} onChangeFunc={nextSlide} />
         <Brand nextSlide={nextSlide} formik={formik} />
-        <State formik={formik} onChangeFunc={nextSlide} />
         <Materials
           header="Materiale (valgfri)"
           onChangeFunc={nextSlide}
@@ -91,11 +90,12 @@ const ProductForm = ({ formik }: ProductFormProps) => {
           materials={materials}
         />
         <Tags
-          header="Kategori (valgfri)"
+          header="Tema (valgfri)"
           onChangeFunc={nextSlide}
           formik={formik}
           tags={tags}
         />
+        <State formik={formik} onChangeFunc={nextSlide} />
         <Deviation
           onChangeFunc={nextSlide}
           formik={formik}
