@@ -16,7 +16,7 @@ const Tags = ({
   formik,
   onChangeFunc,
   initialId,
-  header = "Kategori",
+  header = "Tema",
 }: ColorProps) => {
   return (
     <>
