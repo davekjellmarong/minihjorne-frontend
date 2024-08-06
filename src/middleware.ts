@@ -7,6 +7,7 @@ export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const admin = request.cookies.get("Admin");
   const token = request.cookies.get("Token");
+
   if (admin?.value === "true" && token?.value) {
     const response = await getMe(token?.value);
     if (response.admin) {

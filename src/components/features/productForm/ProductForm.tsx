@@ -53,6 +53,7 @@ const ProductForm = ({ formik }: ProductFormProps) => {
         transitionDuration={800}
       >
         {/* TO DO TO-DO Decouple FieldComponents and FormFieldContainer */}
+        <Sex formik={formik} onChangeFunc={nextSlide} />
         <CategoryTypes
           setCategoryType={setCategoryType}
           categoryTypes={categoryTypes}
@@ -81,13 +82,7 @@ const ProductForm = ({ formik }: ProductFormProps) => {
           header="Farge 2 (valgfri)"
         />
         <Size formik={formik} sizes={sizes} onChangeFunc={nextSlide} />
-        <Tags
-          header="Kategori (valgfri)"
-          onChangeFunc={nextSlide}
-          formik={formik}
-          tags={tags}
-        />
-        <Sex formik={formik} onChangeFunc={nextSlide} />
+        <Brand nextSlide={nextSlide} formik={formik} />
         <State formik={formik} onChangeFunc={nextSlide} />
         <Materials
           header="Materiale (valgfri)"
@@ -95,13 +90,18 @@ const ProductForm = ({ formik }: ProductFormProps) => {
           formik={formik}
           materials={materials}
         />
+        <Tags
+          header="Kategori (valgfri)"
+          onChangeFunc={nextSlide}
+          formik={formik}
+          tags={tags}
+        />
         <Deviation
           onChangeFunc={nextSlide}
           formik={formik}
           defects={defects}
           header="Avvik (valgfri)"
         />
-        <Brand nextSlide={nextSlide} formik={formik} />
         <Price nextSlide={nextSlide} formik={formik} />
 
         {/* TO-DO use button components */}

@@ -19,7 +19,7 @@ const CategoryTypes = ({
   initialId,
 }: ColorProps) => {
   return (
-    <FormFieldContainer header="Plagg type">
+    <FormFieldContainer header="Type plagg">
       {categoryTypes.map((categoryType) => {
         return (
           <div
