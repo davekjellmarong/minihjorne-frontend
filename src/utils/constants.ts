@@ -1,4 +1,6 @@
 "use client";
+import { GenderFemale, GenderMale, GenderNeuter } from "@phosphor-icons/react";
+
 // export const apiUrl = "http://localhost:1337/api";
 // export const baseUrl = "http://localhost:1337";
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -85,6 +87,7 @@ export const queryTemplates = {
   colorQueryTemplate: "&filters[colors][id][$eq]=",
   materialQueryTemplate: "&filters[materials][id][$eq]=",
   stateQueryTemplate: "&filters[state][id][$eq]=",
+  brand_linkQueryTemplate: "&filters[brand][id][$eq]=",
 };
 
 export const allFiltersObject = {
@@ -97,4 +100,5 @@ export const allFiltersObject = {
   defects: [],
   category_type: [],
   state: [],
+  brand_link: [],
 };

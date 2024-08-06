@@ -3,21 +3,22 @@ import { Color } from "@/utils/types";
 import React from "react";
 interface ColorSquaresProps {
   colors: Color[];
+  size?: "small" | "medium" | "large";
 }
 const ColorSquares = ({ colors }: ColorSquaresProps) => {
   return (
     <div className="flex justify-between">
-      <ul className="flex gap-2 ">
+      <ul className="flex flex-col gap-2 ">
         {colors.map((color) => {
           const colorClass = tailwindColors.find(
             (item) => item.title === color.attributes.name,
           );
           return (
-            <li key={color.id} className="flex flex-col items-center">
-              <p>{color.attributes.name}</p>
+            <li key={color.id} className="flex items-center gap-2">
               <div
-                className={`${colorClass?.tailwind} h-6 w-6 rounded border-2 border-gray-200`}
+                className={`${colorClass?.tailwind} size-7 rounded border-2 border-gray-200`}
               ></div>
+              <p className="text-sm text-gray-700">{color.attributes.name}</p>
             </li>
           );
         })}
