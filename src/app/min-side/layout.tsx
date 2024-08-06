@@ -18,7 +18,6 @@ const Layout = async ({ children }: LayoutProps) => {
   const cookieStore: any = cookies();
 
   const token = cookieStore.get("Token");
-  const admin = cookieStore.get("Admin");
 
   if (!token || token?.value?.length === 0) {
     console.log("No token layout");

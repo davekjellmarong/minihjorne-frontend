@@ -26,20 +26,19 @@ const Login = () => {
     },
     onSuccess: (data) => {
       if (data.jwt.length > 0) {
-        queryClient.setQueryData(UserQueries.me(data.jwt).queryKey, data.user);
-        queryClient.setQueryData(AuthQueries.jwt().queryKey, data.jwt);
         const expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + 30);
         setCookie("Token", data.jwt, { expires: expirationDate });
-        if (data.user.admin) {
-          setAdminCookie("Admin", "true");
-        }
         if (redirect) {
           router.push(redirect);
-          console.log("Redirecting to", redirect);
+          console.log("redirect");
         } else {
-          console.log("Redirecting to /");
           router.push("/min-side");
+        }
+        queryClient.setQueryData(UserQueries.me(data.jwt).queryKey, data.user);
+        queryClient.setQueryData(AuthQueries.jwt().queryKey, data.jwt);
+        if (data.user.admin) {
+          setAdminCookie("Admin", "true");
         }
       }
     },

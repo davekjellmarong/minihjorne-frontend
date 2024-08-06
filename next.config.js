@@ -1,4 +1,3 @@
-const MillionLint = require('@million/lint');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -21,6 +20,4 @@ const nextConfig = {
     }]
   }
 };
-module.exports = MillionLint.next({
-  rsc: true
-})(nextConfig);
+module.exports = nextConfig;

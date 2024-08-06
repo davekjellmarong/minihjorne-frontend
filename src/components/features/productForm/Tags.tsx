@@ -2,6 +2,7 @@
 import { Tag } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
+import NextSlideButton from "./NextSlideButton";
 
 interface ColorProps {
   tags: Tag[];
@@ -49,6 +50,7 @@ const Tags = ({
           );
         })}
       </FormFieldContainer>
+      <NextSlideButton onChangeFunc={onChangeFunc} />
     </>
   );
 };
