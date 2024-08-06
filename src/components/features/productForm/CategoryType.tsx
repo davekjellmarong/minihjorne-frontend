@@ -45,6 +45,7 @@ const CategoryTypes = ({
                 formik.setFieldValue("category_type", categoryTypeId);
                 formik.setFieldValue(`categoryTypeName`, categoryTypeName);
 
+                // todo - do this dynamically based on fetched data from categoryTypes
                 switch (categoryTypeName) {
                   case "Uteklær":
                     setCategoryType(CategoryTypeEnum.Uteklær);
@@ -58,6 +59,8 @@ const CategoryTypes = ({
                   case "Inneklær":
                     setCategoryType(CategoryTypeEnum.Inneklær);
                     break;
+                  case "Penklær":
+                    setCategoryType(CategoryTypeEnum.Penklær);
                 }
 
                 if (onChangeFunc) {

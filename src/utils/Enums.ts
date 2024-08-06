@@ -3,6 +3,7 @@ export enum CategoryTypeEnum {
   Regnklær = 2,
   Vinterklær = 3,
   Inneklær = 4,
+  Penklær = 5,
 }
 
 export enum PlanEnum {
