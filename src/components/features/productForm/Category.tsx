@@ -22,6 +22,9 @@ import {
   Set,
   OnePiece,
   Pajamas,
+  Shirt,
+  Blouse,
+  Singlet,
 } from "@/components/common/icons/SVGicons";
 import FormFieldContainer from "./FormFieldContainer";
 import { CategoryTypeEnum } from "@/utils/Enums";
@@ -72,6 +75,9 @@ const Category = ({
     Socks: <Socks />,
     OnePiece: <OnePiece />,
     Pajamas: <Pajamas />,
+    Shirt: <Shirt />,
+    Blouse: <Blouse />,
+    Singlet: <Singlet />,
   };
   return (
     <>
