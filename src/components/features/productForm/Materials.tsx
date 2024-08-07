@@ -8,7 +8,7 @@ interface ColorProps {
   materials: Material[];
   formik: any;
   onChangeFunc?: () => void;
-  initialId?: number;
+  initialId?: number | null;
   header?: string;
 }
 const Materials = ({

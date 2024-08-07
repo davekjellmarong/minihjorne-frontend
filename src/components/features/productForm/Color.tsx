@@ -26,6 +26,8 @@ const Color = ({
   padding = true,
   header = "Farge",
 }: ColorProps) => {
+  // todo - move queries to inside filter components
+
   return (
     <>
       <FormFieldContainer header={header} padding={padding}>

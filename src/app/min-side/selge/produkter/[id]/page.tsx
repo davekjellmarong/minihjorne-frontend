@@ -28,6 +28,7 @@ import Materials from "@/components/features/productForm/Materials";
 import Brand from "@/components/features/productForm/Brand";
 import Price from "@/components/features/productForm/Price";
 import Image from "next/image";
+import { isMaterial, isTag } from "@/utils/types";
 const Page = ({ params }: { params: { id: string } }) => {
   const queryClient = useQueryClient();
   const router = useRouter();
@@ -35,11 +36,12 @@ const Page = ({ params }: { params: { id: string } }) => {
   const [modal, setModal] = useState(false);
 
   const jwt = queryClient.getQueryData(AuthQueries.all());
+  // todo - move queries to inside filter components
   const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
-  const { data: colors } = useSuspenseQuery(FilterQueries.colors());
-  const { data: tags } = useSuspenseQuery(FilterQueries.tags());
-  const { data: materials } = useSuspenseQuery(FilterQueries.materials());
-  const { data: sizes } = useSuspenseQuery(FilterQueries.sizes());
+  const { data: colorsFilter } = useSuspenseQuery(FilterQueries.colors());
+  const { data: tagsFilter } = useSuspenseQuery(FilterQueries.tags());
+  const { data: materialsFilter } = useSuspenseQuery(FilterQueries.materials());
+  const { data: sizesFilter } = useSuspenseQuery(FilterQueries.sizes());
   const { data: user } = useQuery(UserQueries.me(jwt));
 
   const { mutate: updateProduct, isPending: loading } = useMutation({
@@ -69,25 +71,49 @@ const Page = ({ params }: { params: { id: string } }) => {
       console.log(err);
     },
   });
+  const {
+    category,
+    brand,
+    colors,
+    image,
+    material,
+    price,
+    size,
+    state,
+    tags,
+    active,
+    sold,
+    sex,
+  } = product.attributes;
+  const materialFields = isMaterial(material.data)
+    ? {
+        material: material.data.id,
+        materialName: material.data.attributes?.name,
+      }
+    : null;
+  const tagFields = isTag(tags.data)
+    ? {
+        tags: tags.data[0]?.id,
+        tagName: tags.data[0]?.attributes.name,
+      }
+    : null;
 
   const formik = useFormik({
     initialValues: {
-      colors: product.attributes.colors.data[0]?.id,
-      colorsNorwegianName: product.attributes.colors.data[0]?.attributes?.name,
-      material: product.attributes.material.data?.id,
-      materialName: product.attributes.material.data?.attributes?.name,
-      brand: product.attributes.brand,
-      price: product.attributes.price,
-      category: product.attributes.category.data?.id,
-      categoryName: product.attributes.category.data?.attributes.name,
-      state: product.attributes.state.data?.id,
-      stateName: product.attributes.state.data?.attributes.name,
-      size: product.attributes.size.data?.id,
-      sizeName: product.attributes.size.data?.attributes.number,
-      sex: product.attributes.sex.data?.id,
-      sexName: product.attributes.sex.data?.attributes.name,
-      tags: product.attributes.tags.data[0]?.id,
-      tagName: product.attributes.tags.data[0]?.attributes.name,
+      colors: colors.data[0].id,
+      colorsNorwegianName: colors.data[0].attributes?.name,
+      brand: brand,
+      price: price,
+      category: category.data.id,
+      categoryName: category.data.attributes.name,
+      state: state.data.id,
+      stateName: state.data.attributes.name,
+      size: size.data.id,
+      sizeName: size.data.attributes.number,
+      sex: sex.data.id,
+      sexName: sex.data.attributes.name,
+      ...materialFields,
+      ...tagFields,
     },
 
     onSubmit: (values) => {
@@ -107,14 +133,10 @@ const Page = ({ params }: { params: { id: string } }) => {
         />
       </Dialog>
       <div className="flex justify-center">
-        <ProductStatusChip
-          large
-          active={product.attributes.active}
-          sold={product.attributes.sold}
-        />
+        <ProductStatusChip large active={active} sold={sold} />
       </div>
       <div className="mb-8 flex flex-wrap justify-evenly gap-2">
-        {product.attributes.image.data.map((image) => (
+        {image.data.map((image) => (
           <Image
             key={image.id}
             src={image.attributes.url}
@@ -132,32 +154,32 @@ const Page = ({ params }: { params: { id: string } }) => {
         <div className="flex flex-wrap justify-center gap-x-4  gap-y-14 pb-10 ">
           <Color
             formik={formik}
-            colors={colors}
-            initialId={product.attributes.colors.data[0].id}
+            colors={colorsFilter}
+            initialId={colors.data[0].id}
           />
         </div>
       </Accordion>
       <Accordion label="Størrelse" currentValue={formik.values.sizeName}>
-        <Size
-          formik={formik}
-          sizes={sizes}
-          initialId={product.attributes.size.data.id}
-        />
+        <Size formik={formik} sizes={sizesFilter} initialId={size.data.id} />
       </Accordion>
       <Accordion label="Tags" currentValue={formik.values.tagName}>
-        <Tags formik={formik} tags={tags} initialId={formik.values.tags} />
+        <Tags
+          formik={formik}
+          tags={tagsFilter}
+          initialId={formik.values.tags}
+        />
       </Accordion>
       <Accordion label="Kjønn" currentValue={formik.values.sexName}>
-        <Sex formik={formik} initialId={product.attributes.sex.data.id} />
+        <Sex formik={formik} initialId={sex.data.id} />
       </Accordion>
       <Accordion label="Tilstand" currentValue={formik.values.stateName}>
-        <State formik={formik} initialId={product.attributes.state.data.id} />
+        <State formik={formik} initialId={state.data.id} />
       </Accordion>
       <Accordion label="Materialer" currentValue={formik.values.materialName}>
         <Materials
           formik={formik}
-          materials={materials}
-          initialId={product.attributes.material.data?.id}
+          materials={materialsFilter}
+          initialId={isMaterial(material.data) ? material.data.id : null}
         />
       </Accordion>
       <Accordion label="Merke" currentValue={formik.values.brand}>
@@ -171,7 +193,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Button
           icon="trash"
           type="danger"
-          disabled={product.attributes.sold}
+          disabled={sold}
           onClick={() => {
             setModal(true);
             scrollTo(0, 0);
@@ -181,7 +203,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         </Button>
         <Button
           icon="save"
-          disabled={product.attributes.sold}
+          disabled={sold}
           onClick={() => {
             formik.handleSubmit();
           }}
