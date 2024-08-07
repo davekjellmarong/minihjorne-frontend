@@ -1,15 +1,16 @@
-import { Size as SizeType } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
-import Størrelse from "../minSide/lastOpp/Tips/Størrelse";
+import { FilterQueries } from "@/queryFactory/Filter";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 interface SizeProps {
-  sizes: SizeType[];
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
 }
-const Size = ({ sizes, formik, onChangeFunc, initialId }: SizeProps) => {
+const Size = ({ formik, onChangeFunc, initialId }: SizeProps) => {
+  const { data: sizes } = useSuspenseQuery(FilterQueries.sizes());
+
   return (
     <FormFieldContainer header="Størrelse">
       {sizes.map((size) => {

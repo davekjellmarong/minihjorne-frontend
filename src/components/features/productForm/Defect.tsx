@@ -1,22 +1,23 @@
-import { Defect as DefectType } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
 import NextSlideButton from "./NextSlideButton";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { FilterQueries } from "@/queryFactory/Filter";
 
 interface DefectProps {
-  defects: DefectType[];
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
   header?: string;
 }
 const Defect = ({
-  defects,
   formik,
   onChangeFunc,
   initialId,
   header = "Avvik",
 }: DefectProps) => {
+  const { data: defects } = useSuspenseQuery(FilterQueries.defects());
+
   return (
     <>
       <FormFieldContainer optional header={header}>

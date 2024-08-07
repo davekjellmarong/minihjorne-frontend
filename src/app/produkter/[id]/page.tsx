@@ -3,7 +3,13 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import ColorSquares from "@/components/features/filters/color/ColorSquares";
 import Loading from "@/components/common/loading/Loading";
-import { User } from "@phosphor-icons/react";
+import {
+  GenderFemale,
+  GenderIntersex,
+  GenderMale,
+  Tag,
+  User,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 import { queryTemplates } from "@/utils/constants";
 import { ProductQueries } from "@/queryFactory/Product";
@@ -12,6 +18,8 @@ import "react-multi-carousel/lib/styles.css";
 import BackButton from "@/components/common/buttons/BackButton";
 import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
 import Image from "next/image";
+import ProductFieldRow from "@/components/features/product/ProductFieldRow";
+import { isBrand_link, isDefect, isMaterial, isTag } from "@/utils/types";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   // TO-DO use suspsenseQuery
@@ -46,6 +54,10 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
     state,
     tags,
     user,
+    sex,
+    category_type,
+    defects,
+    brand_link,
   } = product.attributes;
   return (
     <div className="flex w-full flex-wrap justify-center  overflow-hidden">
@@ -78,73 +90,102 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
         </Carousel>
       </div>
       <div className="relative flex w-full flex-col items-start overflow-hidden sm:w-1/2">
-        <div className="absolute left-10 top-5">
-          <ColorSquares colors={colors.data} />
-        </div>
-        <div className="relative  flex w-full flex-col gap-3">
-          <p className="mt-8 w-full  text-center text-3xl font-semibold">
-            {price} kr
-          </p>
-          <div className="mb-4 flex w-full items-center justify-center">
-            <Link
-              href={`/produkter/?${queryTemplates.categoryQueryTemplate}${category.data.id}`}
-              className=""
-            >
-              {category.data.attributes.name}
-            </Link>
+        <div className="flex w-full justify-between px-4 py-2">
+          <div className="">
+            <ColorSquares size="small" colors={colors.data} />
           </div>
-        </div>
-        <div className="flex w-full flex-col">
-          <div className="flex w-full px-12 py-8 ">
-            <p className="flex w-1/5 text-sm text-gray-500">Størrelse</p>
-            <Link
-              href={`/produkter/?${queryTemplates.sizeQueryTemplate}${size.data.id}`}
-              className="grow text-center text-xl font-light"
-            >
-              {" "}
-              {size.data.attributes.number} / {size.data.attributes.text}
-            </Link>
-            <div className="w-1/5"></div>
-          </div>
-          <div className="flex w-full bg-gray-100 px-12  py-8">
-            <p className="flex w-1/5 text-sm text-gray-500">Merke</p>
-            <p className="grow text-center text-xl font-light">{brand}</p>
-            <div className="w-1/5"></div>
-          </div>
-          <div className="flex w-full px-12 py-8 ">
-            <p className="flex w-1/5 text-sm text-gray-500">Materiale</p>
-            <Link
-              href={`/produkter/?${queryTemplates.materialQueryTemplate}${material.data?.id}`}
-              className="grow text-center text-xl font-light"
-            >
-              {" "}
-              {material.data?.attributes.name}
-            </Link>
-            <div className="w-1/5"></div>
-          </div>
-          <div className="flex w-full bg-gray-100 px-12  py-8">
-            <p className="flex w-1/5 text-sm text-gray-500">Tilstand</p>
-            <p className="grow text-center text-xl font-light">
-              {" "}
-              {state.data.attributes.name}
+          <div className=" flex w-full flex-col gap-3">
+            <p className="mt-6 w-full  text-center text-3xl font-semibold">
+              {price} kr
             </p>
-            <div className="w-1/5"></div>
+            <div className="mb-4 flex w-full items-center justify-center">
+              <Link
+                href={`/produkter/?${queryTemplates.categoryQueryTemplate}${category.data.id}`}
+                className=""
+              >
+                {category_type.data.attributes.name} /{" "}
+                {category.data.attributes.name}
+              </Link>
+            </div>
+          </div>
+          <div>
+            <Link
+              href={`/produkter/?${queryTemplates.sexQueryTemplate}${sex.data.id}`}
+              className="flex items-center"
+            >
+              {sex.data.attributes.name === "Gutt" && (
+                <GenderMale size={28} color="blue" />
+              )}
+              {sex.data.attributes.name === "Jente" && (
+                <GenderFemale size={28} color="red" />
+              )}
+              {sex.data.attributes.name === "Unisex" && (
+                <GenderIntersex size={28} />
+              )}
+              <p className="text-sm text-gray-700">
+                {sex.data.attributes.name}
+              </p>
+            </Link>
           </div>
         </div>
-        <div className="my-6 flex justify-center px-12">
-          <div className=" mt-2 rounded border border-gray-200 bg-white px-12 py-2">
-            {tags.data?.map((tag) => {
-              return (
-                <Link
-                  href={`/produkter/?${queryTemplates.tagQueryTemplate}${tag.id}`}
-                  key={tag.id}
-                >
-                  {tag.attributes.name}
-                </Link>
-              );
-            })}
-          </div>
+
+        <div className="flex w-full flex-col">
+          <ProductFieldRow
+            label="Størrelse"
+            value={`${size.data.attributes.number} / ${size.data.attributes.text}`}
+            queryParam={`${queryTemplates.sizeQueryTemplate}${size.data.id}`}
+          />
+          {brand && (
+            <ProductFieldRow
+              label="Merke"
+              value={brand}
+              queryParam={`${queryTemplates.brand_linkQueryTemplate}${brand}`}
+            />
+          )}
+          {isBrand_link(brand_link.data) && (
+            <ProductFieldRow
+              label="Merke"
+              value={brand_link.data.attributes.name}
+              queryParam={`${queryTemplates.brand_linkQueryTemplate}${brand_link}`}
+            />
+          )}
+
+          {isMaterial(material.data) && (
+            <ProductFieldRow
+              label="Materiale"
+              value={material.data.attributes.name}
+              queryParam={`${queryTemplates.materialQueryTemplate}${material.data?.id}`}
+            />
+          )}
+          <ProductFieldRow
+            label="Tilstand"
+            value={state.data.attributes.name}
+            queryParam={`${queryTemplates.stateQueryTemplate}${state.data.id}`}
+          />
+          {isDefect(defects.data) && (
+            <ProductFieldRow
+              label="Feil"
+              value={defects.data.attributes.type}
+              queryParam={`${queryTemplates.defectQueryTemplate}${defects.data.id}`}
+            />
+          )}
         </div>
+        {isTag(tags.data) && (
+          <div className="my-6 w-full px-12 ">
+            <div className="mt-2 flex justify-center rounded border border-gray-200 bg-white px-12 py-2">
+              {tags.data?.map((tag) => {
+                return (
+                  <Link
+                    href={`/produkter/?${queryTemplates.tagQueryTemplate}${tag.id}`}
+                    key={tag.id}
+                  >
+                    {tag.attributes.name}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
         <div className="w-full">
           <hr className=" mx-12 mt-6" />
         </div>

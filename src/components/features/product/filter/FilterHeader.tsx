@@ -10,7 +10,7 @@ const FilterHeader = ({ setOpen, products }: FilterHeaderProps) => {
     <div className="flex justify-between border-b border-b-gray-300 px-6  py-6">
       <p className="text-lg font-bold ">Filtrer</p>
       <p>
-        {products.data.length === 20 ? "20+" : products.data.length} produkter
+        {products.data?.length === 20 ? "20+" : products.data?.length} produkter
       </p>
       <div
         onClick={() => {

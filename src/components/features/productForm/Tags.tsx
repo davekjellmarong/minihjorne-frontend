@@ -1,23 +1,24 @@
 "use client";
-import { Tag } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
 import NextSlideButton from "./NextSlideButton";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { FilterQueries } from "@/queryFactory/Filter";
 
 interface ColorProps {
-  tags: Tag[];
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
   header?: string;
 }
 const Tags = ({
-  tags,
   formik,
   onChangeFunc,
   initialId,
   header = "Tema",
 }: ColorProps) => {
+  const { data: tags } = useSuspenseQuery(FilterQueries.tags());
+
   return (
     <>
       <FormFieldContainer optional header={header}>

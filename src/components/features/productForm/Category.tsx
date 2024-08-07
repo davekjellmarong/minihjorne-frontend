@@ -28,22 +28,24 @@ import {
 } from "@/components/common/icons/SVGicons";
 import FormFieldContainer from "./FormFieldContainer";
 import { CategoryTypeEnum } from "@/utils/Enums";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { FilterQueries } from "@/queryFactory/Filter";
 interface CategoryProps {
-  categories: CategoryType[];
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
   categoryType: CategoryTypeEnum;
-  categoryTypes: CategoryTypes[];
 }
 const Category = ({
-  categories,
   formik,
   onChangeFunc,
   initialId,
   categoryType,
-  categoryTypes,
 }: CategoryProps) => {
+  const { data: categories } = useSuspenseQuery(FilterQueries.categories());
+  const { data: categoryTypes } = useSuspenseQuery(
+    FilterQueries.categoryTypes(),
+  );
   const [categoriesFiltered, setCategoriesFiltered] =
     useState<CategoryType[]>();
 

@@ -1,23 +1,24 @@
 "use client";
-import { Material } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
 import NextSlideButton from "./NextSlideButton";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { FilterQueries } from "@/queryFactory/Filter";
 
 interface ColorProps {
-  materials: Material[];
   formik: any;
   onChangeFunc?: () => void;
-  initialId?: number;
+  initialId?: number | null;
   header?: string;
 }
 const Materials = ({
-  materials,
   formik,
   onChangeFunc,
   initialId,
   header = "Materiale",
 }: ColorProps) => {
+  const { data: materials } = useSuspenseQuery(FilterQueries.materials());
+
   return (
     <>
       <FormFieldContainer optional header={header}>

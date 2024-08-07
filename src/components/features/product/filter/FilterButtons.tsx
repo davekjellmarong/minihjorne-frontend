@@ -23,7 +23,7 @@ const FilterButtons = ({ setOpen, products }: FilterButtonsProps) => {
           setOpen(false);
         }}
       >
-        Se {products.data.length === 20 ? "20+" : products.data.length}{" "}
+        Se {products.data?.length === 20 ? "20+" : products.data?.length}{" "}
         produkter
       </button>
     </div>

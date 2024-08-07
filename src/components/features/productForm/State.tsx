@@ -1,6 +1,5 @@
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
-import Tilstand from "../minSide/lastOpp/Tips/Tilstand";
 
 interface SexProps {
   formik: any;

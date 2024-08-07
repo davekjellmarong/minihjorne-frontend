@@ -13,6 +13,7 @@ interface ProductProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const ProductDetail = ({ selectedProduct, setOpen }: ProductProps) => {
+  console.log(selectedProduct);
   // TO-DO : use suspense query
   if (!selectedProduct) return <Loading />;
   return (

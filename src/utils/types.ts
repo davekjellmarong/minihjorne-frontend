@@ -39,7 +39,6 @@ export interface CommonProduct {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  fabric: string;
   brand: string;
   sold: boolean;
   soldDate: string;
@@ -248,7 +247,7 @@ export interface Product {
   attributes: {
     active: boolean;
     sold: boolean;
-    soldDate: string;
+    soldDate: string | null;
     name: string;
     description: string;
     price: number;
@@ -256,18 +255,20 @@ export interface Product {
     updatedAt: string;
     publishedAt: string;
     sex: { data: Sex };
-    fabric: string;
-    brand: string;
+    brand: string | null;
     image: {
       data: Image[];
     };
     user: { data: User };
-    tags: { data: Tag[] };
+    tags: { data: Tag[] | null };
     colors: { data: Color[] };
     size: { data: Size };
-    material: { data: Material };
+    material: { data: Material | [] };
     category: { data: Category };
     state: { data: State };
+    defects: { data: Defect[] | [] };
+    category_type: { data: CategoryType };
+    brand_link: { data: Brand_link | null };
   };
 }
 export interface CartItem {
@@ -312,6 +313,7 @@ export interface Tag {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    order: number;
   };
 }
 export interface Category {
@@ -323,6 +325,17 @@ export interface Category {
     updatedAt: string;
     publishedAt: string;
     icon: string;
+    order: number;
+  };
+}
+export interface Brand_link {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    order: number;
+    publishedAt: string;
   };
 }
 export interface CategoryType {
@@ -333,6 +346,7 @@ export interface CategoryType {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    order: number;
   };
 }
 export interface Material {
@@ -342,6 +356,7 @@ export interface Material {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    order: number;
   };
 }
 export interface Defect {
@@ -351,6 +366,7 @@ export interface Defect {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    order: number;
   };
 }
 
@@ -362,6 +378,7 @@ export interface Color {
     updatedAt: string;
     publishedAt: string;
     tailwind: string;
+    order: number;
   };
 }
 export interface Image {
@@ -427,6 +444,7 @@ export interface Size {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    order: number;
   };
 }
 export interface Status {
@@ -448,6 +466,7 @@ export interface State {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    order: number;
   };
 }
 export interface Sex {
@@ -457,6 +476,7 @@ export interface Sex {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    order: number;
   };
 }
 export interface ColorsRQ {
@@ -510,3 +530,19 @@ export interface ProductsPagination {
   data: Product[];
   meta: Pagination;
 }
+// todo - split interfaces into mutliple files, and split bakcend interfaces, and remove the ones not needed
+export const isMaterial = (material: any): material is Material => {
+  return material?.id !== undefined && material?.attributes?.name !== undefined;
+};
+
+export const isTag = (tag: any): tag is Tag => {
+  return tag?.id !== undefined || tag?.name !== undefined;
+};
+
+export const isBrand_link = (brand_link: any): brand_link is Brand_link => {
+  return brand_link?.id !== undefined || brand_link?.url !== undefined;
+};
+
+export const isDefect = (defect: any): defect is Defect => {
+  return defect?.id !== undefined || defect?.description !== undefined;
+};

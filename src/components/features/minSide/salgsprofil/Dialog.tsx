@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FilterQueries } from "@/queryFactory/Filter";
 import Color from "../../productForm/Color";
+import Loading from "@/components/common/loading/Loading";
 
 interface DialogProps {
   formik: any;
@@ -64,9 +65,9 @@ const Dialog = ({ formik, dialogRef }: DialogProps) => {
               />
             </div>
             <div>
-              {colors && (
-                <Color formik={formik} colors={colors} formName="color" />
-              )}
+              <Suspense fallback={<Loading />}>
+                {colors && <Color formik={formik} formName="color" />}
+              </Suspense>
               <label htmlFor="primaryColor">Primær farge</label>
             </div>
             {/* TO-DO use button component */}
