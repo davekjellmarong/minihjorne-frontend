@@ -5,7 +5,7 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useFormik } from "formik";
 import { ProductQueries, ProductsMethods } from "@/queryFactory/Product";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,6 @@ import { toast } from "react-toastify";
 import Button from "@/components/common/buttons/Button";
 import { DeleteConfirmation } from "@/components/common/dialog/DeleteConfirmation";
 import Dialog from "@/components/common/dialog/Dialog";
-import { FilterQueries } from "@/queryFactory/Filter";
 import ProductStatusChip from "@/components/features/product/ProductStatusChip";
 import Accordion from "@/components/features/minSide/produkter/Accordion";
 import Color from "@/components/features/productForm/Color";
@@ -29,19 +28,15 @@ import Brand from "@/components/features/productForm/Brand";
 import Price from "@/components/features/productForm/Price";
 import Image from "next/image";
 import { isMaterial, isTag } from "@/utils/types";
+import RectangleSkeleton from "@/components/common/skeleton/RectangleSkeleton";
 const Page = ({ params }: { params: { id: string } }) => {
-  const queryClient = useQueryClient();
   const router = useRouter();
 
   const [modal, setModal] = useState(false);
 
+  const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
-  // todo - move queries to inside filter components
   const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
-  const { data: colorsFilter } = useSuspenseQuery(FilterQueries.colors());
-  const { data: tagsFilter } = useSuspenseQuery(FilterQueries.tags());
-  const { data: materialsFilter } = useSuspenseQuery(FilterQueries.materials());
-  const { data: sizesFilter } = useSuspenseQuery(FilterQueries.sizes());
   const { data: user } = useQuery(UserQueries.me(jwt));
 
   const { mutate: updateProduct, isPending: loading } = useMutation({
@@ -147,47 +142,40 @@ const Page = ({ params }: { params: { id: string } }) => {
           />
         ))}
       </div>
-      <Accordion
-        label="Farger"
-        currentValue={formik.values.colorsNorwegianName}
-      >
-        <div className="flex flex-wrap justify-center gap-x-4  gap-y-14 pb-10 ">
-          <Color
+      <Suspense fallback={<RectangleSkeleton />}>
+        <Accordion
+          label="Farger"
+          currentValue={formik.values.colorsNorwegianName}
+        >
+          <div className="flex flex-wrap justify-center gap-x-4  gap-y-14 pb-10 ">
+            <Color formik={formik} initialId={colors.data[0].id} />
+          </div>
+        </Accordion>
+        <Accordion label="Størrelse" currentValue={formik.values.sizeName}>
+          <Size formik={formik} initialId={size.data.id} />
+        </Accordion>
+        <Accordion label="Tags" currentValue={formik.values.tagName}>
+          <Tags formik={formik} initialId={formik.values.tags} />
+        </Accordion>
+        <Accordion label="Kjønn" currentValue={formik.values.sexName}>
+          <Sex formik={formik} initialId={sex.data.id} />
+        </Accordion>
+        <Accordion label="Tilstand" currentValue={formik.values.stateName}>
+          <State formik={formik} initialId={state.data.id} />
+        </Accordion>
+        <Accordion label="Materialer" currentValue={formik.values.materialName}>
+          <Materials
             formik={formik}
-            colors={colorsFilter}
-            initialId={colors.data[0].id}
+            initialId={isMaterial(material.data) ? material.data.id : null}
           />
-        </div>
-      </Accordion>
-      <Accordion label="Størrelse" currentValue={formik.values.sizeName}>
-        <Size formik={formik} sizes={sizesFilter} initialId={size.data.id} />
-      </Accordion>
-      <Accordion label="Tags" currentValue={formik.values.tagName}>
-        <Tags
-          formik={formik}
-          tags={tagsFilter}
-          initialId={formik.values.tags}
-        />
-      </Accordion>
-      <Accordion label="Kjønn" currentValue={formik.values.sexName}>
-        <Sex formik={formik} initialId={sex.data.id} />
-      </Accordion>
-      <Accordion label="Tilstand" currentValue={formik.values.stateName}>
-        <State formik={formik} initialId={state.data.id} />
-      </Accordion>
-      <Accordion label="Materialer" currentValue={formik.values.materialName}>
-        <Materials
-          formik={formik}
-          materials={materialsFilter}
-          initialId={isMaterial(material.data) ? material.data.id : null}
-        />
-      </Accordion>
-      <Accordion label="Merke" currentValue={formik.values.brand}>
-        <Brand formik={formik} />
-      </Accordion>
-      <Accordion label="Pris" currentValue={formik.values.price}>
-        <Price formik={formik} />
-      </Accordion>
+        </Accordion>
+        <Accordion label="Merke" currentValue={formik.values.brand}>
+          <Brand formik={formik} />
+        </Accordion>
+        <Accordion label="Pris" currentValue={formik.values.price}>
+          <Price formik={formik} />
+        </Accordion>
+      </Suspense>
 
       <div className="flex justify-center gap-8 pb-8">
         <Button

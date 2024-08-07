@@ -3,21 +3,24 @@ import { CategoryType } from "@/utils/types";
 import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
 import { CategoryTypeEnum } from "@/utils/Enums";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { FilterQueries } from "@/queryFactory/Filter";
 
 interface ColorProps {
-  categoryTypes: CategoryType[];
   formik: any;
   onChangeFunc?: () => void;
   initialId?: number;
   setCategoryType: (categoryType: CategoryTypeEnum) => void;
 }
 const CategoryTypes = ({
-  categoryTypes,
   setCategoryType,
   formik,
   onChangeFunc,
   initialId,
 }: ColorProps) => {
+  const { data: categoryTypes } = useSuspenseQuery(
+    FilterQueries.categoryTypes(),
+  );
   return (
     <FormFieldContainer header="Type plagg">
       {categoryTypes.map((categoryType) => {

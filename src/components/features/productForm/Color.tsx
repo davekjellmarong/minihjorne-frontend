@@ -5,9 +5,10 @@ import React from "react";
 import FormFieldContainer from "./FormFieldContainer";
 import Button from "@/components/common/buttons/Button";
 import NextSlideButton from "./NextSlideButton";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { FilterQueries } from "@/queryFactory/Filter";
 
 interface ColorProps {
-  colors: ColorType[];
   formik: any;
   formName?: string;
   onChangeFunc?: () => void;
@@ -18,7 +19,6 @@ interface ColorProps {
 }
 
 const Color = ({
-  colors,
   formik,
   formName = "colors",
   onChangeFunc,
@@ -26,7 +26,7 @@ const Color = ({
   padding = true,
   header = "Farge",
 }: ColorProps) => {
-  // todo - move queries to inside filter components
+  const { data: colors } = useSuspenseQuery(FilterQueries.colors());
 
   return (
     <>
