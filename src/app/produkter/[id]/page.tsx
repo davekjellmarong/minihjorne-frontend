@@ -132,7 +132,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
         <div className="flex w-full flex-col">
           <ProductFieldRow
             label="Størrelse"
-            value={`${size.data.attributes.number} / ${size.data.attributes.text}`}
+            value={size.data.attributes.number}
             queryParam={`${queryTemplates.sizeQueryTemplate}${size.data.id}`}
           />
           {brand && (
