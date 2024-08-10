@@ -1,10 +1,9 @@
 "use client";
-import { UserMethods } from "@/utils/utils";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
-import { UserQueries } from "@/queryFactory/User";
+import { UserMethods, UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { FilterQueries } from "@/queryFactory/Filter";
 import { useRouter } from "next/navigation";

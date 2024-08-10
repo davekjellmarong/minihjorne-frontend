@@ -57,7 +57,7 @@ const Page = () => {
             return (
               <li
                 key={product.id}
-                className=" grid grid-cols-5 grid-rows-4  gap-2"
+                className=" grid grid-cols-5 grid-rows-2  gap-2"
               >
                 <Image
                   height={160}
@@ -74,7 +74,8 @@ const Page = () => {
                 </p>
                 <p className="row-span-1">{product.attributes.price}kr</p>
                 <Button
-                  className="flex flex-col justify-start"
+                  type="flat"
+                  className="flex flex-col justify-start p-0"
                   onClick={() => {
                     const updatedCart = removeItemFromCart(product.id);
                     setCartItems(updatedCart);
@@ -85,9 +86,9 @@ const Page = () => {
                 <p className="col-span-3 row-span-1 font-light text-gray-500">
                   Str {product.attributes.size.data.attributes.number}
                 </p>
-                <p className="col-span-3 row-span-1 font-light text-gray-500">
+                {/* <p className="col-span-3 row-span-1 font-light text-gray-500">
                   {product.attributes.brand}
-                </p>
+                </p> */}
               </li>
             );
           })}

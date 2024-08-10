@@ -6,8 +6,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
 import { UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
-import { registerUser } from "@/utils/utils";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
+import { registerUser } from "@/queryFactory/Utils";
 
 const Register = () => {
   const searchParams = useSearchParams();

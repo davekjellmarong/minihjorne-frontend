@@ -3,6 +3,7 @@
 import { UserMethods } from "@/queryFactory/User";
 import { cookies } from "next/headers";
 import { PlanEnum } from "./Enums";
+import { emailSchema } from "@/zod/Zod";
 
 export const activeUserProfile = async (cool: any) => {
   const cookieStore: any = cookies();
@@ -21,4 +22,29 @@ export const activeUserProfile = async (cool: any) => {
     process.env.UPDATE_USER_TOKEN,
   );
   return response;
+};
+
+export const sendPasswordResetEmail = async (formdata: FormData) => {
+  const email = formdata.get("email");
+  const dude = emailSchema.parse(email);
+  if (dude) {
+    console.log("Error undeer");
+    console.log(dude);
+    throw new Error(dude);
+  }
+  const response = await UserMethods.sendResetPasswordMail({ email: email });
+  return response;
+};
+
+export const resetPassword = async (formdata: FormData) => {
+  const code = formdata.get("code");
+  const password = formdata.get("password");
+  const passwordConfirmation = formdata.get("passwordConfirmation");
+
+  // const response = await UserMethods.resetPassword({
+  //   code: code,
+  //   password: password,
+  //   passwordConfirmation: passwordConfirmation,
+  // });
+  return "response";
 };

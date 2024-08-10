@@ -1,7 +1,6 @@
 "use client";
 import { Suspense, useState } from "react";
 import { useFormik } from "formik";
-import { ProductsMethods } from "@/utils/utils";
 import {
   useMutation,
   useQueryClient,
@@ -23,6 +22,7 @@ import FilterDialog from "@/components/features/product/filter/FilterDialog";
 import ImagesList from "@/components/features/minSide/lastOpp/ImagesList";
 import SelectedImages from "@/components/features/minSide/lastOpp/SelectedImages";
 import ProductForm from "@/components/features/productForm/ProductForm";
+import { ProductsMethods } from "@/queryFactory/Product";
 
 const LeggUt = () => {
   const showNav = useStore((state) => state.showNav);
@@ -74,6 +74,7 @@ const LeggUt = () => {
       price: "",
       category: "",
       categoryName: "",
+      category_type: "",
       state: "",
       sex: "",
     },
@@ -90,6 +91,12 @@ const LeggUt = () => {
       }
       if (!values.category) {
         errors.category = "Kategori er påkrevd";
+      }
+      if (!values.sex) {
+        errors.sex = "Kjønn er påkrevd";
+      }
+      if (!values.category_type) {
+        errors.category_type = "Type plagg er påkrevd";
       }
       if (!values.state) {
         errors.state = "Tilstand er påkrevd";

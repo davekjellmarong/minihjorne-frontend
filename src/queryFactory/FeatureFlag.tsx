@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { getAuthData } from "./Utils";
+import { getData } from "./Utils";
 import { FeatureFlag } from "@/utils/types";
 
 export const FeatureFlagServerSideQueries = {
@@ -23,9 +23,9 @@ export const FeatureFlagServerSideQueries = {
 
 export const FeatureFlagServerSideMethods = {
   get: async (secretToken: any): Promise<FeatureFlag[]> => {
-    return getAuthData(`/feature-flags`, secretToken);
+    return getData(`/feature-flags`, secretToken);
   },
   getById: async (id: any, secretToken: any): Promise<FeatureFlag> => {
-    return getAuthData(`/feature-flags/${id}`, secretToken);
+    return getData(`/feature-flags/${id}`, secretToken);
   },
 };

@@ -3,11 +3,11 @@ import React from "react";
 import { useFormik } from "formik";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { loginUser } from "../../../utils/utils";
 import { useCookies } from "react-cookie";
 import LoadingOverlay from "../../common/loading/LoadingOverlay";
 import { UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
+import { loginUser } from "@/queryFactory/Utils";
 const Login = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");
@@ -20,6 +20,7 @@ const Login = () => {
     isPending,
     error,
     isError,
+    isSuccess,
   } = useMutation({
     mutationFn: (values: any) => {
       return loginUser(values);
@@ -55,7 +56,7 @@ const Login = () => {
   });
   return (
     <form className="w-full" onSubmit={formik.handleSubmit}>
-      <LoadingOverlay loading={isPending} />
+      <LoadingOverlay loading={isPending || isSuccess} />
       <div className="mb-6">
         <label
           htmlFor="identifier"

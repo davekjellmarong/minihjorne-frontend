@@ -34,7 +34,7 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
     // redirect("/auth?redirect=/min-side/");
     return <>{children}</>;
   }
-  queryClient.setQueryData(UserQueries.me(token).queryKey, response.data);
+  // queryClient.setQueryData(UserQueries.me(token).queryKey, response.data);
   queryClient.setQueryData(AuthQueries.jwt().queryKey, token.value);
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

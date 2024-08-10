@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import ColorSquares from "@/components/features/filters/color/ColorSquares";
-import Loading from "@/components/common/loading/Loading";
 import {
   GenderFemale,
   GenderIntersex,
@@ -20,10 +19,11 @@ import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
 import Image from "next/image";
 import ProductFieldRow from "@/components/features/product/ProductFieldRow";
 import { isBrand_link, isDefect, isMaterial, isTag } from "@/utils/types";
+import "../../../styles/FieldRow.css";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   // TO-DO use suspsenseQuery
-  const { data: product } = useQuery(ProductQueries.detail(params.id));
+  const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -42,7 +42,6 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
       items: 1,
     },
   };
-  if (!product) return <Loading />;
   const {
     category,
     brand,
@@ -67,7 +66,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
         </div>
         <Link
           href={`/profiler/${user.data.id}`}
-          className="absolute right-4 top-4 z-10 flex rounded border-2 border-transparent bg-white px-4 py-2 shadow"
+          className="absolute right-4 top-4 z-10 flex rounded border-2 border-transparent bg-white px-4 py-2 shadow-lg"
         >
           <p className="text-sm text-purple-500">
             {user.data.attributes.username}
@@ -129,7 +128,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
 
-        <div className="flex w-full flex-col">
+        <div className=" flex w-full flex-col">
           <ProductFieldRow
             label="Størrelse"
             value={size.data.attributes.number}
