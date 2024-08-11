@@ -13,6 +13,7 @@ import { AuthQueries } from "@/queryFactory/Auth";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/stateManagment/ZustandStore";
 import Image from "next/image";
+import { getCart, getItemsFromLocalStorage } from "@/utils/CartUtils";
 type NavItem = {
   label: string;
   path: string;
@@ -30,11 +31,20 @@ const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
   // FIGURE OUT NAV RERENDERING AND AUTH AND IF WE CAN MOVE PUBLIC/AUTH UP TO PARENT
   const navVisible = useStore((state) => state.navVisible);
   const cartItems = useStore((state) => state.cartItems);
+  const setCartItems = useStore((state) => state.setCartItems);
+
+  useEffect(() => {
+    const items = getItemsFromLocalStorage();
+    if (items) {
+      setCartItems(items);
+    }
+  }, []);
 
   let navItemsRightEnd = navItemsPublic;
   if (data) {
     navItemsRightEnd = navItemsAuth;
   }
+
   const path = usePathname();
   const icons: any = {
     minSide: <UserCircle size={30} weight="thin" color="gray" />,
