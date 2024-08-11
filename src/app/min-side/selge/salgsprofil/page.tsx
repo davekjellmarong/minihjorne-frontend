@@ -2,10 +2,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { UserMethods } from "@/utils/utils";
 import { toast } from "react-toastify";
 import { AuthQueries } from "@/queryFactory/Auth";
-import { UserQueries } from "@/queryFactory/User";
+import { UserMethods, UserQueries } from "@/queryFactory/User";
 import EditSalgsprofil from "@/components/features/minSide/salgsprofil/EditSalgsprofil";
 
 const Page = () => {
