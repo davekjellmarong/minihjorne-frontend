@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { CaretRight } from "@phosphor-icons/react";
+import { CaretRight } from "@phosphor-icons/react/dist/ssr";
 interface CardProps {
   title: string;
   link: string;

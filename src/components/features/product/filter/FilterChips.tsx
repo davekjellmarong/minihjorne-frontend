@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import useExtractQueryParams from "../useExtractQueryParams";
 import { XCircle } from "@phosphor-icons/react";

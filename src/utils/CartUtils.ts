@@ -42,6 +42,7 @@ export const sendItemsToLocalStorage = (cart: Product[]): void => {
 
 // Function to get items from local storage
 export const getItemsFromLocalStorage = (): Product[] => {
+  if (typeof window === "undefined") return [];
   const storedCart = localStorage.getItem("cart");
   return storedCart ? JSON.parse(storedCart) : [];
 };

@@ -1,24 +1,18 @@
 import { FilterQueries } from "@/queryFactory/Filter";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 
 const useGetFiltersSynchronous = () => {
-  const queryClient = useQueryClient();
-
-  const category = queryClient.getQueryData(
-    FilterQueries.categories().queryKey,
+  const { data: category } = useSuspenseQuery(FilterQueries.categories());
+  const { data: colors } = useSuspenseQuery(FilterQueries.colors());
+  const { data: size } = useSuspenseQuery(FilterQueries.sizes());
+  const { data: tags } = useSuspenseQuery(FilterQueries.tags());
+  const { data: materials } = useSuspenseQuery(FilterQueries.materials());
+  const { data: sex } = useSuspenseQuery(FilterQueries.sexes());
+  const { data: defects } = useSuspenseQuery(FilterQueries.defects());
+  const { data: category_type } = useSuspenseQuery(
+    FilterQueries.categoryTypes(),
   );
-  const colors = queryClient.getQueryData(FilterQueries.colors().queryKey);
-  const size = queryClient.getQueryData(FilterQueries.sizes().queryKey);
-  const tags = queryClient.getQueryData(FilterQueries.tags().queryKey);
-  const materials = queryClient.getQueryData(
-    FilterQueries.materials().queryKey,
-  );
-  const sex = queryClient.getQueryData(FilterQueries.sexes().queryKey);
-  const defects = queryClient.getQueryData(FilterQueries.defects().queryKey);
-  const category_type = queryClient.getQueryData(
-    FilterQueries.categoryTypes().queryKey,
-  );
-  const state = queryClient.getQueryData(FilterQueries.states().queryKey);
+  const { data: state } = useSuspenseQuery(FilterQueries.states());
   const allFilters: any = {
     category,
     colors,

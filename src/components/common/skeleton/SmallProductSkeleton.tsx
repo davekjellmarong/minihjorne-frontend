@@ -4,21 +4,13 @@ import TextSkeleton from "./TextSkeleton";
 
 const SmallProductSkeleton = () => {
   return (
-    <div className="w-44 grid grid-rows-2 h-[385px] border-2 rounded border-gray-100">
-      <div className="">
-        <ImageSkeleton />
+    <li className="grid w-full grid-rows-2 rounded border-2 border-gray-100">
+      <ImageSkeleton size="small" />
+      <div className="flex flex-col gap-4  p-6">
+        <TextSkeleton />
+        <TextSkeleton />
       </div>
-      <div className="px-2">
-        <div className="w-16 m-auto">
-          <TextSkeleton heading />
-        </div>
-        <div className="">
-          <TextSkeleton />
-          <TextSkeleton />
-          <TextSkeleton />
-        </div>
-      </div>
-    </div>
+    </li>
   );
 };
 

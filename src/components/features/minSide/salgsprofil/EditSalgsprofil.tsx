@@ -1,6 +1,5 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { UserBackend } from "@/utils/types";
-import { tailwindColorsUserButton } from "@/utils/constants";
 import { useQuery } from "@tanstack/react-query";
 import { Globe, Pencil } from "@phosphor-icons/react";
 import SalgsprofilHeader from "./SalgsprofilHeader";
@@ -8,17 +7,16 @@ import Link from "next/link";
 import { ProductQueries } from "@/queryFactory/Product";
 import { EmptyList } from "@/components/common/EmptyList";
 import Products from "../../product/Products";
+import ProductsSkeleton from "../../product/ProductsSkeleton";
 
 interface EditSalgsprofilProps {
-  formik: any;
   user: UserBackend;
 }
-const EditSalgsprofil = ({ formik, user }: EditSalgsprofilProps) => {
+const EditSalgsprofil = ({ user }: EditSalgsprofilProps) => {
   const { data: products } = useQuery(ProductQueries.userId(String(user.id)));
-  const tailwindColor = tailwindColorsUserButton[formik.values.colorName];
   return (
     <div className={` relative flex h-full w-full items-center justify-center`}>
-      <div className="m-3 flex w-full flex-col items-center gap-6 rounded bg-white py-10 text-center shadow-2xl">
+      <div className="m-3 flex w-full flex-col items-center gap-6 rounded bg-white px-4 py-10 text-center shadow-2xl">
         <div className="flex gap-5">
           <Link
             href="salgsprofil/rediger"
@@ -35,7 +33,9 @@ const EditSalgsprofil = ({ formik, user }: EditSalgsprofilProps) => {
             <p>Se live</p>
           </Link>
         </div>
-        <SalgsprofilHeader user={formik.values} username={user.username} />
+        <Suspense>
+          <SalgsprofilHeader userId={user.id} />
+        </Suspense>
         {products?.length === 0 && (
           <div className="mt-20">
             <EmptyList
@@ -45,9 +45,11 @@ const EditSalgsprofil = ({ formik, user }: EditSalgsprofilProps) => {
             />
           </div>
         )}
-        <div className="px-4">
-          <Products data={products} />
-        </div>
+        <Suspense fallback={<ProductsSkeleton />}>
+          <div className="px-4">
+            <Products />
+          </div>
+        </Suspense>
       </div>
     </div>
   );

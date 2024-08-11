@@ -1,9 +1,9 @@
+"use client";
 import React, { useState } from "react";
 import { addItemToCart, getSavedProductIds } from "../../../utils/CartUtils";
 import { toast } from "react-toastify";
 import { ShoppingCart } from "@phosphor-icons/react";
 import { Product } from "@/utils/types";
-import Link from "next/link";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 
 interface AddToCartButtonsProps {

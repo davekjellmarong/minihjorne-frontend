@@ -1,15 +1,22 @@
+"use client";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import PageNumber from "./PageNumber";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { ProductQueries } from "@/queryFactory/Product";
 
 interface PaginationProps {
   pageCount: number | undefined;
 }
-const Pagination = ({ pageCount }: PaginationProps) => {
-  const searchParams = useSearchParams();
+const Pagination = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
+  const { data: products } = useSuspenseQuery(
+    ProductQueries.searchParamsTest(params.toString()),
+  );
+  const pageCount = products.meta.pagination.pageCount;
   const page = Number(params.get("pagination[page]"));
   const nextButtonDisabled = pageCount === undefined || pageCount === page;
   const prevButtonDisabled = page === undefined || page === 1;

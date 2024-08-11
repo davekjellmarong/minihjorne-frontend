@@ -6,9 +6,8 @@ import {
   GenderFemale,
   GenderIntersex,
   GenderMale,
-  Tag,
   User,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { queryTemplates } from "@/utils/constants";
 import { ProductQueries } from "@/queryFactory/Product";
@@ -22,7 +21,6 @@ import { isBrand_link, isDefect, isMaterial, isTag } from "@/utils/types";
 import "../../../styles/FieldRow.css";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
-  // TO-DO use suspsenseQuery
   const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
   const responsive = {
     superLargeDesktop: {

@@ -5,10 +5,8 @@ import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { UserMethods, UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
-import { FilterQueries } from "@/queryFactory/Filter";
 import { useRouter } from "next/navigation";
 import Button from "@/components/common/buttons/Button";
-import Color from "@/components/features/productForm/Color";
 
 const EditSalgsprofilForm = () => {
   const router = useRouter();
