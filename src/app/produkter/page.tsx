@@ -35,6 +35,7 @@ const ProductPage = () => {
           <div className="w-full">
             <FilterChips />
           </div>
+
           <Products />
           <div className="flex flex-col gap-6 py-6">
             <Pagination />

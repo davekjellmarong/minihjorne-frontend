@@ -1,6 +1,4 @@
-"use client";
 import React from "react";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import ColorSquares from "@/components/features/filters/color/ColorSquares";
 import {
   GenderFemale,
@@ -10,36 +8,19 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { queryTemplates } from "@/utils/constants";
-import { ProductQueries } from "@/queryFactory/Product";
-import Carousel from "react-multi-carousel";
+import { ProductsMethods } from "@/queryFactory/Product";
 import "react-multi-carousel/lib/styles.css";
 import BackButton from "@/components/common/buttons/BackButton";
 import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
 import Image from "next/image";
 import ProductFieldRow from "@/components/features/product/ProductFieldRow";
 import { isBrand_link, isDefect, isMaterial, isTag } from "@/utils/types";
+import CarouselComponent from "@/components/common/Carousel";
 import "../../../styles/FieldRow.css";
 
-const ProductDetail = ({ params }: { params: { id: string } }) => {
-  const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+const ProductDetail = async ({ params }: { params: { id: string } }) => {
+  const product = await ProductsMethods.getById(params.id);
+
   const {
     category,
     brand,
@@ -71,7 +52,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           </p>
           <User size={22} />
         </Link>
-        <Carousel showDots responsive={responsive}>
+        <CarouselComponent>
           {image.data.map((image) => {
             return (
               <Image
@@ -84,7 +65,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
               />
             );
           })}
-        </Carousel>
+        </CarouselComponent>
       </div>
       <div className="relative flex w-full flex-col items-start overflow-hidden sm:w-1/2">
         <div className="flex w-full justify-between px-4 py-2">

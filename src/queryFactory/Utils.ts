@@ -6,6 +6,7 @@ export const getProductsFiltered = async (query: string) => {
     `/products?pagination[pageSize]=20&sort=createdAt:desc&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
   const url = query?.length > 0 ? baseUrl + "&" + query : baseUrl;
   const data = await axios.get(url);
+  console.log("done fetching");
   return data.data;
 };
 

@@ -1,9 +1,6 @@
-"use client";
 import React, { Suspense } from "react";
-import AvatarLetter from "@/components/features/minSide/AvatarLetter";
 import Menu from "@/components/features/minSide/Menu";
 import Header from "@/components/features/minSide/Header";
-import Loading from "@/components/common/loading/Loading";
 
 const MinSide = () => {
   return (

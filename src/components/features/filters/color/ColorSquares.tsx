@@ -1,3 +1,4 @@
+"use client";
 import { tailwindColors } from "@/utils/constants";
 import { Color } from "@/utils/types";
 import React from "react";
