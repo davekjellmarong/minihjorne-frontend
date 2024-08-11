@@ -29,8 +29,7 @@ export default function ReactQueryProvider({
         },
         queryCache: new QueryCache({
           onError: (error) => {
-            console.log(error);
-            toast.error(`Something went wrong: ${error.message}`);
+            toast.error(`Something went wrong`);
           },
         }),
       }),

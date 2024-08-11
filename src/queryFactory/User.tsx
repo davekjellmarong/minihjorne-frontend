@@ -44,9 +44,9 @@ export const UserMethods = {
     return postPublicData(email, "/auth/forgot-password");
   },
   resetPassword: async (data: {
-    code: string;
-    password: string;
-    passwordConfirmation: string;
+    code: any;
+    password: any;
+    passwordConfirmation: any;
   }) => {
     return postPublicData(data, "/auth/reset-password");
   },

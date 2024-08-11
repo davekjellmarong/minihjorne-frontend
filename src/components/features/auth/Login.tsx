@@ -8,6 +8,7 @@ import LoadingOverlay from "../../common/loading/LoadingOverlay";
 import { UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { loginUser } from "@/queryFactory/Utils";
+import Link from "next/link";
 const Login = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");
@@ -55,56 +56,66 @@ const Login = () => {
     },
   });
   return (
-    <form className="w-full" onSubmit={formik.handleSubmit}>
-      <LoadingOverlay loading={isPending || isSuccess} />
-      <div className="mb-6">
-        <label
-          htmlFor="identifier"
-          className="mb-2 block text-sm font-medium text-gray-900 "
-        >
-          Brukernavn/email
-        </label>
-        <input
-          type="identifier"
-          id="identifier"
-          name="identifier"
-          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
-          placeholder="hanneAndersen"
-          required
-          value={formik.values.identifier}
-          onChange={formik.handleChange}
-        />
-      </div>
-      <div className="mb-6">
-        <label
-          htmlFor="password"
-          className="mb-2 block text-sm font-medium text-gray-900 "
-        >
-          Passord
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
-          placeholder="•••••••••"
-          required
-          value={formik.values.password}
-          onChange={formik.handleChange}
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full rounded-lg bg-brand-500 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 "
-      >
-        Login
-      </button>
-      {error && isError && (
-        <div className="mt-4 rounded-lg bg-red-500 p-4 text-center text-white">
-          <p>{error.message}</p>
+    <>
+      <form className="w-full" onSubmit={formik.handleSubmit}>
+        <LoadingOverlay loading={isPending || isSuccess} />
+        <div className="mb-6">
+          <label
+            htmlFor="identifier"
+            className="mb-2 block text-sm font-medium text-gray-900 "
+          >
+            Brukernavn/email
+          </label>
+          <input
+            type="identifier"
+            id="identifier"
+            name="identifier"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
+            placeholder="hanneAndersen"
+            required
+            value={formik.values.identifier}
+            onChange={formik.handleChange}
+          />
         </div>
-      )}
-    </form>
+        <div className="mb-6">
+          <label
+            htmlFor="password"
+            className="mb-2 block text-sm font-medium text-gray-900 "
+          >
+            Passord
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
+            placeholder="•••••••••"
+            required
+            value={formik.values.password}
+            onChange={formik.handleChange}
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full rounded-lg bg-brand-500 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 "
+        >
+          Login
+        </button>
+        {error && isError && (
+          <div className="mt-4 rounded-lg bg-red-500 p-4 text-center text-white">
+            <p>{error.message}</p>
+          </div>
+        )}
+      </form>
+      <div className="flex py-4">
+        <Link
+          href="/auth/glemt-passord"
+          className="w-full text-center text-sm text-brand-600 hover:underline"
+        >
+          Glemt passord?
+        </Link>
+      </div>
+    </>
   );
 };
 
