@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
-import { resetPassword } from "@/utils/ServerActions";
+import { resetPassword } from "@/serverActions/ServerActions";
 
 const ResetPasswordPage: React.FC = () => {
   const searchParams = useSearchParams();

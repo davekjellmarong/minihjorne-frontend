@@ -27,11 +27,11 @@ export default function ReactQueryProvider({
             staleTime: 60 * 1000,
           },
         },
-        queryCache: new QueryCache({
-          onError: (error) => {
-            toast.error(`Something went wrong`);
-          },
-        }),
+        // queryCache: new QueryCache({
+        //   onError: (error) => {
+        //     toast.error(`Something went wrong`);
+        //   },
+        // }),
       }),
   );
 

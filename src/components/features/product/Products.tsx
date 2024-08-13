@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Product from "./Product";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductQueries } from "@/queryFactory/Product";
 import { useSearchParams } from "next/navigation";
 
@@ -12,11 +12,6 @@ const Products = () => {
   const { data: products } = useSuspenseQuery(
     ProductQueries.searchParamsTest(params.toString()),
   );
-  // const { data: products } = useQuery(
-  //   ProductQueries.searchParamsTest(params.toString()),
-  // );
-  // console.log("dude");
-  // if (!products?.data) return <div>Loading...</div>;
   return (
     <ul className="mt-10 grid w-full grid-cols-2 justify-items-center gap-x-4 gap-y-16 sm:grid-cols-3 md:grid-cols-4">
       {products.data.map((product) => {

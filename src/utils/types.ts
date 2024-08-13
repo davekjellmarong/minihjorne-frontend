@@ -283,6 +283,10 @@ export interface FeatureFlag {
   id: number;
   attributes: CommonFeatureFlag;
 }
+export interface AuthUserResponse {
+  jwt: string;
+  user: CommonUser;
+}
 export interface User {
   id: number;
   attributes: {

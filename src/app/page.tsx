@@ -1,3 +1,4 @@
+"use client";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import OpeningSoon from "@/components/UI/heroImage/OpeningSoon";
 import Card from "@/components/features/home/Card";

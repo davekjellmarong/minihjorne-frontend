@@ -55,7 +55,6 @@ export const putData = async (data: any, query: string, jwt: string) => {
       body: JSON.stringify(data),
     });
     const res = await response.json();
-    console.log(res, "this is the response");
     return res;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -68,7 +67,6 @@ export const getPublicData = async (query: string) => {
     const url = apiUrl + query;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data, "this is the data again");
     if (data?.data) {
       return data.data;
     } else {

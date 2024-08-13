@@ -2,9 +2,9 @@
 
 import { UserMethods } from "@/queryFactory/User";
 import { cookies } from "next/headers";
-import { PlanEnum } from "./Enums";
 import { emailSchema, resetPasswordSchema } from "@/zod/Zod";
 import { z } from "zod";
+import { PlanEnum } from "@/utils/Enums";
 
 export const activeUserProfile = async (cool: any) => {
   const cookieStore: any = cookies();

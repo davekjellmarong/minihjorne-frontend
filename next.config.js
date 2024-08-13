@@ -9,6 +9,7 @@ const withPWA = require('next-pwa')({
 const nextConfig = {
   experimental: {
     scrollRestoration: true,
+    
   },
   images: {
     remotePatterns: [

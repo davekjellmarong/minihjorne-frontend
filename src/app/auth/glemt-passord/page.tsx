@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/common/buttons/Button";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
-import { sendPasswordResetEmail } from "@/utils/ServerActions";
+import { sendPasswordResetEmail } from "@/serverActions/ServerActions";
 import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-toastify";

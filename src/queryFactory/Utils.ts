@@ -6,7 +6,6 @@ export const getProductsFiltered = async (query: string) => {
     `/products?pagination[pageSize]=20&sort=createdAt:desc&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
   const url = query?.length > 0 ? baseUrl + "&" + query : baseUrl;
   const data = await axios.get(url);
-  console.log("done fetching");
   return data.data;
 };
 
@@ -110,32 +109,21 @@ export const registerUser = async (values: any) => {
     .post(url, values)
     .then((response) => {
       // Handle success.
-      console.log("Well done!");
-      console.log("User profile", response.data.user);
-      console.log("User token", response.data.jwt);
       return response.data;
     })
     .catch((error) => {
       // Handle error.
-      console.log("An error occurred:", error.response);
       throw error.response.data.error;
     });
 };
 export const loginUser = async (values: any) => {
   const url = apiUrl + "/auth/local";
-
   return axios
     .post(url, values)
     .then((response) => {
-      // Handle success.
-      console.log("Well done!");
-      console.log("User profile", response.data.user);
-      console.log("User token", response.data.jwt);
       return response.data;
     })
     .catch((error) => {
-      // Handle error.
-      console.log("An error occurred:", error.response);
       throw error.response.data.error;
     });
 };

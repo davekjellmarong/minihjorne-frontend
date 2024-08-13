@@ -48,7 +48,6 @@ const Register = () => {
       password: "",
     },
     onSubmit: (values) => {
-      console.log("Form data submitted:", values);
       register(values);
     },
   });

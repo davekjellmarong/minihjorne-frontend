@@ -9,7 +9,6 @@ interface LayoutProps {
 const Layout = async ({ children }: LayoutProps) => {
   const cookieStore: any = cookies();
   const token = cookieStore.get("Token");
-
   if (!token || token?.value?.length === 0) {
     redirect("/auth?redirect=/min-side/");
   }

@@ -60,12 +60,6 @@ const Login = () => {
       <form className="w-full" onSubmit={formik.handleSubmit}>
         <LoadingOverlay loading={isPending || isSuccess} />
         <div className="mb-6">
-          <label
-            htmlFor="identifier"
-            className="mb-2 block text-sm font-medium text-gray-900 "
-          >
-            Brukernavn/email
-          </label>
           <input
             type="identifier"
             id="identifier"
