@@ -1,19 +1,23 @@
 import React, { Suspense } from "react";
-import { UserBackend } from "@/utils/types";
-import { useQuery } from "@tanstack/react-query";
-import { Globe, Pencil } from "@phosphor-icons/react";
 import SalgsprofilHeader from "./SalgsprofilHeader";
 import Link from "next/link";
-import { ProductQueries } from "@/queryFactory/Product";
+import { ProductsMethods } from "@/queryFactory/Product";
 import { EmptyList } from "@/components/common/EmptyList";
 import Products from "../../product/Products";
 import ProductsSkeleton from "../../product/ProductsSkeleton";
+import { UserMethods } from "@/queryFactory/User";
+import { cookies } from "next/headers";
+import { Globe, Pencil } from "@phosphor-icons/react/dist/ssr";
 
 interface EditSalgsprofilProps {
-  user: UserBackend;
+  id: string;
 }
-const EditSalgsprofil = ({ user }: EditSalgsprofilProps) => {
-  const { data: products } = useQuery(ProductQueries.userId(String(user.id)));
+const EditSalgsprofil = async () => {
+  const cookieStore: any = cookies();
+  const token = cookieStore.get("Token");
+  // TRY WITH TOKEN.VALUE INSTEAD. MAYBE THAT WAS THE ERROR. HOPEFULLY
+  const user = await UserMethods.getMe(token.value);
+  const products = await ProductsMethods.getByUserId(user.id);
   return (
     <div className={` relative flex h-full w-full items-center justify-center`}>
       <div className="m-3 flex w-full flex-col items-center gap-6 rounded bg-white px-4 py-10 text-center shadow-2xl">
@@ -34,7 +38,7 @@ const EditSalgsprofil = ({ user }: EditSalgsprofilProps) => {
           </Link>
         </div>
         <Suspense>
-          <SalgsprofilHeader userId={user.id} />
+          <SalgsprofilHeader id={user.id} />
         </Suspense>
         {products?.length === 0 && (
           <div className="mt-20">

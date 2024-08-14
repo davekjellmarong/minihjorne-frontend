@@ -31,8 +31,12 @@ export const getData = async (query: string, token: string) => {
     };
     const response = await axios.get(url, { headers });
     if (response?.data?.data) {
+      console.log("double");
+      // console.log(response.data.data);
       return response.data.data;
     } else {
+      console.log("single");
+      // console.log(response.data);
       return response.data;
     }
   } catch (error) {

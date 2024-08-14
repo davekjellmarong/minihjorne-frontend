@@ -1,13 +1,12 @@
-"use client";
-import { UserQueries } from "@/queryFactory/User";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import React from "react";
-import { useCookies } from "react-cookie";
+import { UserMethods, UserQueries } from "@/queryFactory/User";
+import React, { use } from "react";
 import AvatarLetter from "./AvatarLetter";
+import { cookies } from "next/headers";
 
 const Header = () => {
-  const [cookies] = useCookies(["Token"]);
-  const { data: user } = useSuspenseQuery(UserQueries.me(cookies.Token));
+  const cookieStore: any = cookies();
+  const token = cookieStore.get("Token");
+  const user = use(UserMethods.getMe(token.value));
   return (
     <>
       <div className="flex justify-center ">

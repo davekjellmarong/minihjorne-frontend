@@ -22,7 +22,7 @@ const ProductPage = () => {
         <div className="w-full  py-10 ">
           <h2 className="text-3xl font-bold">Produkter</h2>
         </div>
-        <div className="w-full  pb-6">
+        <div className="w-full pb-6">
           <QuickFilterCards />
         </div>
         <div className="flex w-full  border-gray-200  py-2">

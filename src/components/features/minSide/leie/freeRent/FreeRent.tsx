@@ -11,8 +11,8 @@ import Link from "next/link";
 import React from "react";
 import { toast } from "react-toastify";
 import Form from "./Form";
-import { activeUserProfile } from "@/utils/ServerActions";
 import FreeRentActivated from "./FreeRentActivated";
+import { activeUserProfile } from "@/serverActions/ServerActions";
 
 const FreeRent = () => {
   const queryClient = useQueryClient();

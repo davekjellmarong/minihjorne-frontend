@@ -1,17 +1,12 @@
-"use client";
-import React from "react";
-import { User } from "@phosphor-icons/react";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { UserQueries } from "@/queryFactory/User";
-import { useParams } from "next/navigation";
+import React, { use } from "react";
+import { User } from "@phosphor-icons/react/dist/ssr";
+import { UserMethods } from "@/queryFactory/User";
 interface SalgsprofilHeaderProps {
-  userId?: number;
+  id: string | number;
 }
-const SalgsprofilHeader = ({ userId }: SalgsprofilHeaderProps) => {
-  const { id } = useParams();
-  let userIdNumber = id ? id : userId;
-  const { data: user } = useSuspenseQuery(UserQueries.detail(userIdNumber));
-  const description = user.description?.split("\n").map((item, index) => {
+const SalgsprofilHeader = async ({ id }: SalgsprofilHeaderProps) => {
+  const userData = await UserMethods.getById(id);
+  const description = userData.description?.split("\n").map((item, index) => {
     if (item === "") {
       return (
         <React.Fragment key={index}>
@@ -25,13 +20,13 @@ const SalgsprofilHeader = ({ userId }: SalgsprofilHeaderProps) => {
   return (
     <>
       <div className="flex items-center gap-14">
-        <p className="text-lg font-semibold">{user.header}</p>
+        <p className="text-lg font-semibold">{userData.header}</p>
       </div>
       <p className="flex items-center gap-1 text-gray-500">
         <User size={28} />
-        <span>{user.username}</span>
+        <span>{userData.username}</span>
       </p>
-      <p className="max-w-[500px] px-6 text-sm">{description}</p>
+      <div className="max-w-[500px] px-6 text-sm">{description}</div>
     </>
   );
 };

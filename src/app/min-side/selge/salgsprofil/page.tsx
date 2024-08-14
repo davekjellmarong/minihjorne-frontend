@@ -1,14 +1,7 @@
-"use client";
-import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import React from "react";
-import { AuthQueries } from "@/queryFactory/Auth";
-import { UserQueries } from "@/queryFactory/User";
 import EditSalgsprofil from "@/components/features/minSide/salgsprofil/EditSalgsprofil";
 
 const Page = () => {
-  const queryClient = useQueryClient();
-  const jwt = queryClient.getQueryData(AuthQueries.all());
-  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
   return (
     <>
       <div className="flex flex-col items-center justify-center py-6">
@@ -18,7 +11,7 @@ const Page = () => {
           endre på utseende til å gjøre din salgsprofil personlig.{" "}
         </p>
       </div>
-      <EditSalgsprofil user={user} />
+      <EditSalgsprofil />
     </>
   );
 };
