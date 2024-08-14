@@ -1,12 +1,12 @@
-import { UserMethods, UserQueries } from "@/queryFactory/User";
-import React, { use } from "react";
+import { UserMethods } from "@/queryFactory/User";
+import React from "react";
 import AvatarLetter from "./AvatarLetter";
 import { cookies } from "next/headers";
 
-const Header = () => {
+const Header = async () => {
   const cookieStore: any = cookies();
   const token = cookieStore.get("Token");
-  const user = use(UserMethods.getMe(token.value));
+  const user = await UserMethods.getMe(token.value)
   return (
     <>
       <div className="flex justify-center ">
