@@ -2,10 +2,12 @@ import { queryOptions } from "@tanstack/react-query";
 import { User, UserBackend } from "@/utils/types";
 import {
   getData,
+  getDataFetch,
   getPublicData,
   postData,
   postPublicData,
   putData,
+  putDataFetch,
 } from "./Utils";
 
 export const UserQueries = {
@@ -34,11 +36,17 @@ export const UserMethods = {
   getMe: async (token: any): Promise<UserBackend> => {
     return getData("/users/me?populate=*", token);
   },
+  getMeFetch: async (token: any): Promise<UserBackend> => {
+    return getDataFetch("/users/me?populate=*", token);
+  },
   uploadImages: async (data: any, token: any) => {
     return postData(data, "/upload", token);
   },
   put: async (data: any, id: any, jwt: any) => {
     return putData(data, `/users/${id}`, jwt);
+  },
+  putFetch: async (data: any, id: any, jwt: any) => {
+    return putDataFetch(data, `/users/${id}`, jwt);
   },
   sendResetPasswordMail: async (email: any) => {
     return postPublicData(email, "/auth/forgot-password");

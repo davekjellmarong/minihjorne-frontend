@@ -13,10 +13,8 @@ interface EditSalgsprofilProps {
   id: string;
 }
 const EditSalgsprofil = async () => {
-  const cookieStore: any = cookies();
-  const token = cookieStore.get("Token");
-  // TRY WITH TOKEN.VALUE INSTEAD. MAYBE THAT WAS THE ERROR. HOPEFULLY
-  const user = await UserMethods.getMe(token.value);
+  const token = cookies().get("Token")?.value
+  const user = await UserMethods.getMeFetch(token);
   const products = await ProductsMethods.getByUserId(user.id);
   return (
     <div className={` relative flex h-full w-full items-center justify-center`}>

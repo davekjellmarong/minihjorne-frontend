@@ -5,6 +5,8 @@ import { cookies } from "next/headers";
 import { emailSchema, resetPasswordSchema } from "@/zod/Zod";
 import { z } from "zod";
 import { PlanEnum } from "@/utils/Enums";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export const activeUserProfile = async (cool: any) => {
   const cookieStore: any = cookies();
@@ -55,4 +57,22 @@ export const resetPassword = async (formdata: FormData) => {
     passwordConfirmation: passwordConfirmation,
   });
   return response;
+};
+
+export const updateUserSaleProfile = async (formdata: FormData) => {
+  const token = cookies().get("Token")?.value;
+  const header = formdata.get("header");
+  const description = formdata.get("description");
+  const data = {
+    header: header,
+    description: description,
+  };
+  const user = await UserMethods.getMe(token);
+  const response = await UserMethods.putFetch(data, user.id, token);
+  if (response.id === user.id) {
+    revalidatePath("/users/me?populate=*");
+    redirect("/min-side/selge/salgsprofil");
+  } else {
+    throw new Error("Error updating user sale profile");
+  }
 };

@@ -32,6 +32,7 @@ const Page = () => {
       router.push("/handlekurv?handlekurv=feil");
     },
   });
+  console.log("running");
   useEffect(() => {
     if (jwt) {
       createPayment({
@@ -52,7 +53,7 @@ const Page = () => {
   const options: any = {
     clientSecret,
     appearance,
-    business: "Mini Hjørne",
+    business: "Minihjørne",
   };
   return (
     <>

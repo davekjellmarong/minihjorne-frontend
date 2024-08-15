@@ -62,8 +62,8 @@ const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
             <Image
               src="/minihjørne-logo.png"
               alt="logo"
-              width={150}
-              height={150}
+              width={125}
+              height={125}
               // className="mb-1"
               priority
             />

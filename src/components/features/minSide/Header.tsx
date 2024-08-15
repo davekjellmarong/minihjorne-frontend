@@ -4,9 +4,8 @@ import AvatarLetter from "./AvatarLetter";
 import { cookies } from "next/headers";
 
 const Header = async () => {
-  const cookieStore: any = cookies();
-  const token = cookieStore.get("Token");
-  const user = await UserMethods.getMe(token.value)
+  const token = cookies().get("Token")?.value;
+  const user = await UserMethods.getMe(token)
   return (
     <>
       <div className="flex justify-center ">

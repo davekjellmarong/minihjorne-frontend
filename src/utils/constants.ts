@@ -1,6 +1,3 @@
-"use client";
-import { GenderFemale, GenderMale, GenderNeuter } from "@phosphor-icons/react";
-
 // export const apiUrl = "http://localhost:1337/api";
 // export const baseUrl = "http://localhost:1337";
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;

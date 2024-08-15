@@ -23,7 +23,7 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
           path="/handlekurv"
           color="green"
         >
-          Denne ligger i handlekurven din
+          Produktet ligger i handlekurven din
         </ActionsColoredBox>
       ) : (
         <button

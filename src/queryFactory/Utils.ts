@@ -45,6 +45,29 @@ export const getData = async (query: string, token: string) => {
   }
 };
 
+export const getDataFetch = async (query: string, token: string) => {
+  try {
+    const url = apiUrl + query;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await fetch(url, { headers });
+    const data = await response.json();
+    if (data?.data) {
+      console.log("double");
+      // console.log(response.data.data);
+      return data.data;
+    } else {
+      console.log("single");
+      // console.log(response.data);
+      return data;
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
 export const putData = async (data: any, query: string, token: string) => {
   try {
     const url = apiUrl + query;
@@ -56,6 +79,35 @@ export const putData = async (data: any, query: string, token: string) => {
       return response.data.data;
     } else {
       return response.data;
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+export const putDataFetch = async (data: any, query: string, token: string) => {
+  try {
+    const url = apiUrl + query;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
+
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: headers,
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    if (result?.data) {
+      console.log("double");
+      // console.log(response.data.data);
+      return result.data;
+    } else {
+      console.log("single");
+      // console.log(response.data);
+      return result;
     }
   } catch (error) {
     console.error("Error fetching data:", error);

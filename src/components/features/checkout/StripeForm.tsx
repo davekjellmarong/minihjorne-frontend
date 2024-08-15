@@ -85,6 +85,7 @@ const StripeForm = ({ price }: any) => {
 
   const paymentElementOptions: any = {
     layout: "tabs",
+
     defaultValues: {
       cvc: 555,
     },
@@ -95,7 +96,7 @@ const StripeForm = ({ price }: any) => {
       onSubmit={handleSubmit}
       className="my-14 flex w-full flex-col items-center gap-16"
     >
-      <div className="w-[400px]">
+      <div className="">
         <h3 className="text-xl">Frakt</h3>
         <AddressElement
           options={{
@@ -105,7 +106,7 @@ const StripeForm = ({ price }: any) => {
           }}
         />
       </div>
-      <div className="w-[400px]">
+      <div className="">
         <h3 className="text-xl">Betaling</h3>
         <PaymentElement id="payment-element" options={paymentElementOptions} />
       </div>
