@@ -53,7 +53,10 @@ const OpeningSoon = () => {
           17. august!
         </h1>
         {/* <div className="w-full bg-white py-2 opacity-70"> */}
-        <p className="text-center text-2xl font-bold text-white opacity-100 ">
+        <p
+          className="text-center text-2xl font-bold text-white opacity-100 "
+          suppressHydrationWarning
+        >
           {`${timeLeft.days}d ${timeLeft.hours}t ${timeLeft.minutes}m ${timeLeft.seconds}s`}
         </p>
         {/* </div> */}

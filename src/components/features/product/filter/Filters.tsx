@@ -10,6 +10,7 @@ import FilterHeader from "./FilterHeader";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductQueries } from "@/queryFactory/Product";
 import { useSearchParams } from "next/navigation";
+import { FilterQueriesCached } from "@/queryFactory/Filter";
 interface FiltersProps {
   setOpen: (open: boolean) => void;
   open: boolean;
@@ -22,26 +23,31 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
     ProductQueries.searchParamsTest(params.toString()),
   );
   const {
-    SexData,
-    CategoryData,
-    SizesData,
-    TagsData,
-    ColorsData,
-    MaterialsData,
-    CategoryTypesData,
-    DefectsData,
-    StatesData,
-  } = useGetFilters();
+    data: {
+      colors,
+      materials,
+      sizes,
+      sexes,
+      tags,
+      categories,
+      categoryTypes,
+      states,
+      defects,
+    },
+  } = useSuspenseQuery(FilterQueriesCached.allFilter());
+
   const { queryParams } = useExtractQueryParams();
   return (
     <div className="relative flex max-h-screen flex-col overflow-y-scroll">
+      {/* <FilterIcon setOpen={setOpen} /> */}
+
       <FilterDialog open={open} setOpen={setOpen}>
         <div className={`relative flex h-screen max-h-screen flex-col `}>
           <FilterHeader setOpen={setOpen} products={products} />
           <div className="grow">
             <Filter
               queryParams={queryParams}
-              data={SexData}
+              data={sexes}
               property="name"
               label="Kjønn"
               filter="sex"
@@ -49,7 +55,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={CategoryData}
+              data={categories}
               property="name"
               label="Kategori"
               filter="category"
@@ -57,7 +63,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={CategoryTypesData}
+              data={categoryTypes}
               property="name"
               label="Kategori Type"
               filter="category_type"
@@ -66,7 +72,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
 
             <Filter
               queryParams={queryParams}
-              data={SizesData}
+              data={sizes}
               property="number"
               label="Størrelse"
               filter="size"
@@ -74,7 +80,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={TagsData}
+              data={tags}
               property="name"
               label="Tags"
               filter="tags"
@@ -83,7 +89,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
 
             <Filter
               queryParams={queryParams}
-              data={ColorsData}
+              data={colors}
               property="name"
               label="Farger"
               filter="colors"
@@ -91,7 +97,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={MaterialsData}
+              data={materials}
               property="name"
               label="Stoff"
               filter="materials"
@@ -99,7 +105,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={StatesData}
+              data={states}
               property="name"
               label="Tilstand"
               filter="state"
@@ -107,7 +113,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={DefectsData}
+              data={defects}
               property="type"
               label="Avvik"
               filter="defects"

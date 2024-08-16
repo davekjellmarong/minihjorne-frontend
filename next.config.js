@@ -7,6 +7,12 @@ const withPWA = require('next-pwa')({
 });
 
 const nextConfig = {
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+
   experimental: {
     scrollRestoration: true,
     

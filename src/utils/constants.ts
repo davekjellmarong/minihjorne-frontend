@@ -1,5 +1,3 @@
-// export const apiUrl = "http://localhost:1337/api";
-// export const baseUrl = "http://localhost:1337";
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 export const baseUrl = process.env.NEXT_PUBLIC_URL;
 export const tailwindColors = [

@@ -1,5 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import {
+  AllFilters,
   Category,
   CategoryType,
   Color,
@@ -10,7 +11,7 @@ import {
   State,
   Tag,
 } from "@/utils/types";
-import { getPublicData } from "./Utils";
+import { getPublicData, getPublicDataFetch, getRouteHandler } from "./Utils";
 
 export const FilterQueries = {
   all: () => ["filters"],
@@ -69,7 +70,14 @@ export const FilterQueries = {
       staleTime: Infinity,
     }),
 };
-
+export const FilterQueriesCached = {
+  allFilter: () =>
+    queryOptions({
+      queryKey: ["filters", "all"],
+      queryFn: () => FilterMethodsCached.getAll(),
+      staleTime: Infinity,
+    }),
+};
 export const FilterMethods = {
   getColors: async (): Promise<Color[]> => {
     return getPublicData("/colors");
@@ -97,5 +105,37 @@ export const FilterMethods = {
   },
   getStates: async (): Promise<State[]> => {
     return getPublicData("/states");
+  },
+};
+export const FilterMethodsCached = {
+  getAll: async (): Promise<AllFilters> => {
+    return getRouteHandler("/api/filters");
+  },
+  getColors: async (): Promise<Color[]> => {
+    return getPublicDataFetch("/colors");
+  },
+  getMaterials: async (): Promise<Material[]> => {
+    return getPublicDataFetch("/materials");
+  },
+  getSizes: async (): Promise<Size[]> => {
+    return getPublicDataFetch("/sizes");
+  },
+  getTags: async (): Promise<Tag[]> => {
+    return getPublicDataFetch("/tags");
+  },
+  getCategories: async (): Promise<Category[]> => {
+    return getPublicDataFetch("/categories?populate=*");
+  },
+  getSexes: async (): Promise<Sex[]> => {
+    return getPublicDataFetch("/sexes");
+  },
+  getDefects: async (): Promise<Defect[]> => {
+    return getPublicDataFetch("/defects");
+  },
+  getCategoryTypes: async (): Promise<CategoryType[]> => {
+    return getPublicDataFetch("/category-types?populate=*");
+  },
+  getStates: async (): Promise<State[]> => {
+    return getPublicDataFetch("/states");
   },
 };

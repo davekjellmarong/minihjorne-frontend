@@ -32,7 +32,6 @@ const Page = () => {
       router.push("/handlekurv?handlekurv=feil");
     },
   });
-  console.log("running");
   useEffect(() => {
     if (jwt) {
       createPayment({

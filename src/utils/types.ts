@@ -530,6 +530,17 @@ export interface Pagination {
   };
 }
 
+export interface AllFilters {
+  colors: Color[];
+  materials: Material[];
+  sizes: Size[];
+  sexes: Sex[];
+  tags: Tag[];
+  categories: Category[];
+  categoryTypes: CategoryType[];
+  states: State[];
+  defects: Defect[];
+}
 export interface ProductsPagination {
   data: Product[];
   meta: Pagination;

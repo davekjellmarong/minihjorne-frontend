@@ -23,6 +23,39 @@ export const getPublicData = async (query: string) => {
     throw error;
   }
 };
+export const getPublicDataFetch = async (query: string) => {
+  try {
+    const url = apiUrl + query;
+    const response = await fetch(url, {
+      next: { revalidate: 3600 },
+      // cache: "force-cache",
+    });
+    const data = await response.json();
+    if (data?.data) {
+      return data.data;
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+export const getRouteHandler = async (query: string) => {
+  try {
+    const url = publicUrl + query;
+    const response = await fetch(url, { next: { revalidate: 3600 } });
+    const data = await response.json();
+    if (data?.data) {
+      return data.data;
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 export const getData = async (query: string, token: string) => {
   try {
     const url = apiUrl + query;
@@ -31,11 +64,9 @@ export const getData = async (query: string, token: string) => {
     };
     const response = await axios.get(url, { headers });
     if (response?.data?.data) {
-      console.log("double");
       // console.log(response.data.data);
       return response.data.data;
     } else {
-      console.log("single");
       // console.log(response.data);
       return response.data;
     }
@@ -54,12 +85,8 @@ export const getDataFetch = async (query: string, token: string) => {
     const response = await fetch(url, { headers });
     const data = await response.json();
     if (data?.data) {
-      console.log("double");
-      // console.log(response.data.data);
       return data.data;
     } else {
-      console.log("single");
-      // console.log(response.data);
       return data;
     }
   } catch (error) {
@@ -101,11 +128,9 @@ export const putDataFetch = async (data: any, query: string, token: string) => {
 
     const result = await response.json();
     if (result?.data) {
-      console.log("double");
       // console.log(response.data.data);
       return result.data;
     } else {
-      console.log("single");
       // console.log(response.data);
       return result;
     }
@@ -184,3 +209,4 @@ export const loginUser = async (values: any) => {
     });
 };
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+export const publicUrl = process.env.NEXT_PUBLIC_URL;

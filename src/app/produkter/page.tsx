@@ -35,7 +35,9 @@ const ProductPage = () => {
           <div className="w-full">
             <FilterChips />
           </div>
+        </Suspense>
 
+        <Suspense fallback={<ProductsSkeleton />}>
           <Products />
           <div className="flex flex-col gap-6 py-6">
             <Pagination />
