@@ -27,7 +27,7 @@ export const getPublicDataFetch = async (query: string) => {
   try {
     const url = apiUrl + query;
     const response = await fetch(url, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
       // cache: "force-cache",
     });
     const data = await response.json();
@@ -44,7 +44,7 @@ export const getPublicDataFetch = async (query: string) => {
 export const getRouteHandler = async (query: string) => {
   try {
     const url = publicUrl + query;
-    const response = await fetch(url, { next: { revalidate: 3600 } });
+    const response = await fetch(url, { next: { revalidate: 60 } });
     const data = await response.json();
     if (data?.data) {
       return data.data;

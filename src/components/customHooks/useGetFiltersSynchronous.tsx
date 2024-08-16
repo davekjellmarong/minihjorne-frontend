@@ -1,18 +1,18 @@
-import { FilterQueries } from "@/queryFactory/Filter";
+import { FilterQueries, FilterQueriesCached } from "@/queryFactory/Filter";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 
 const useGetFiltersSynchronous = () => {
-  const { data: category } = useSuspenseQuery(FilterQueries.categories());
-  const { data: colors } = useSuspenseQuery(FilterQueries.colors());
-  const { data: size } = useSuspenseQuery(FilterQueries.sizes());
-  const { data: tags } = useSuspenseQuery(FilterQueries.tags());
-  const { data: materials } = useSuspenseQuery(FilterQueries.materials());
-  const { data: sex } = useSuspenseQuery(FilterQueries.sexes());
-  const { data: defects } = useSuspenseQuery(FilterQueries.defects());
+  const { data: category } = useSuspenseQuery(FilterQueriesCached.categories());
+  const { data: colors } = useSuspenseQuery(FilterQueriesCached.colors());
+  const { data: size } = useSuspenseQuery(FilterQueriesCached.sizes());
+  const { data: tags } = useSuspenseQuery(FilterQueriesCached.tags());
+  const { data: materials } = useSuspenseQuery(FilterQueriesCached.materials());
+  const { data: sex } = useSuspenseQuery(FilterQueriesCached.sexes());
+  const { data: defects } = useSuspenseQuery(FilterQueriesCached.defects());
   const { data: category_type } = useSuspenseQuery(
-    FilterQueries.categoryTypes(),
+    FilterQueriesCached.categoryTypes(),
   );
-  const { data: state } = useSuspenseQuery(FilterQueries.states());
+  const { data: state } = useSuspenseQuery(FilterQueriesCached.states());
   const allFilters: any = {
     category,
     colors,
