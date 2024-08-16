@@ -1,7 +1,7 @@
 import { FilterQueriesCached } from "@/queryFactory/Filter";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-const useGetFiltersSynchronous = () => {
+const useGetFiltersRouteHandler = () => {
   const {
     data: {
       colors,
@@ -40,4 +40,4 @@ const useGetFiltersSynchronous = () => {
   };
 };
 
-export default useGetFiltersSynchronous;
+export default useGetFiltersRouteHandler;

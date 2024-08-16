@@ -13,6 +13,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { AuthQueries } from "@/queryFactory/Auth";
 import Button from "@/components/common/buttons/Button";
 import Image from "next/image";
+import { shippingPrice } from "@/utils/constants";
 
 const Page = () => {
   const router = useRouter();
@@ -37,7 +38,7 @@ const Page = () => {
         <p className="text-lg">Handlekurven er desverre tom</p>
         <Image src="/empty-cart.svg" width={200} height={200} alt="emptyCart" />
         <Link
-          href="/produkter"
+          href="/produkter?pagination[page]=1"
           className="rounded bg-brand-500 px-8 py-4 text-center text-white shadow"
         >
           <button>Se produkter</button>
@@ -48,7 +49,7 @@ const Page = () => {
     <div className="relative flex flex-col">
       <div className="max-w-[500px] px-4 ">
         <div className="mb-8 mt-8 grid grid-cols-5 grid-rows-1 items-center gap-2">
-          <h2 className="col-span-2 text-2xl font-semibold">Handlekurv</h2>
+          <h2 className="col-span-2 text-2xl">Handlekurv</h2>
           <p className="col-span-1 text-gray-700">{cartItems.length} stk</p>
           <p className="col-span-1 text-gray-700">{totalPrice} kr</p>
         </div>
@@ -105,7 +106,10 @@ const Page = () => {
         <div className="flex gap-2">
           <Truck size={24} color="gray" />
           <p className="w-24 text-gray-500">Frakt </p>
-          <span className="text-xl font-light text-black"> 159 kr</span>
+          <span className="text-xl font-light text-black">
+            {" "}
+            {shippingPrice} kr
+          </span>
         </div>
         <hr className="w-52 border" />
         <div className="flex gap-2">
@@ -113,7 +117,7 @@ const Page = () => {
           <p className="w-24 text-gray-500">Total </p>
           <span className="text-xl font-light text-black">
             {" "}
-            {totalPrice + 159} kr
+            {totalPrice + shippingPrice} kr
           </span>
         </div>
         <Link

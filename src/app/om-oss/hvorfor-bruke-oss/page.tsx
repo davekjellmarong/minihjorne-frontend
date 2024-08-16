@@ -1,5 +1,6 @@
 import Header from "@/components/features/omOss/Header";
 import Step from "@/components/features/omOss/Step";
+import { shippingPrice } from "@/utils/constants";
 import React from "react";
 
 const page = () => {
@@ -22,7 +23,8 @@ const page = () => {
             etter.
           </li>
           <li>
-            <b>Fraktkostnad:</b> Fast fraktkostnad på 120 kr pr ordre.
+            <b>Fraktkostnad:</b> Fast fraktkostnad på {shippingPrice} kr pr
+            ordre.
           </li>
           <li>
             <b>Betaling:</b> Trygg og sikker betaling.

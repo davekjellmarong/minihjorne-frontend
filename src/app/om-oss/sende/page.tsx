@@ -1,5 +1,4 @@
 import Header from "@/components/features/omOss/Header";
-import Image from "next/image";
 import React from "react";
 
 const page = () => {

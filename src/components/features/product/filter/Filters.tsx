@@ -54,7 +54,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
               queryParams={queryParams}
               data={categories}
               property="name"
-              label="Kategori"
+              label="Plagg"
               filter="category"
               queryTemplate={queryTemplates.categoryQueryTemplate}
             />
@@ -62,7 +62,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
               queryParams={queryParams}
               data={categoryTypes}
               property="name"
-              label="Kategori Type"
+              label="Plagg Type"
               filter="category_type"
               queryTemplate={queryTemplates.categoryTypeQueryTemplate}
             />
@@ -79,7 +79,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
               queryParams={queryParams}
               data={tags}
               property="name"
-              label="Tags"
+              label="Tema"
               filter="tags"
               queryTemplate={queryTemplates.tagQueryTemplate}
             />
@@ -96,7 +96,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
               queryParams={queryParams}
               data={materials}
               property="name"
-              label="Stoff"
+              label="Tekstil"
               filter="materials"
               queryTemplate={queryTemplates.materialQueryTemplate}
             />

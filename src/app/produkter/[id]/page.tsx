@@ -78,7 +78,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
             </p>
             <div className="mb-4 flex w-full items-center justify-center">
               <Link
-                href={`/produkter/?${queryTemplates.categoryQueryTemplate}${category.data.id}`}
+                href={`/produkter/?${queryTemplates.categoryQueryTemplate}${category.data.id}&pagination[page]=1`}
                 className=""
               >
                 {category_type.data.attributes.name} /{" "}
@@ -88,7 +88,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
           </div>
           <div>
             <Link
-              href={`/produkter/?${queryTemplates.sexQueryTemplate}${sex.data.id}`}
+              href={`/produkter/?${queryTemplates.sexQueryTemplate}${sex.data.id}&pagination[page]=1`}
               className="flex items-center"
             >
               {sex.data.attributes.name === "Gutt" && (
@@ -130,7 +130,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
 
           {isMaterial(material.data) && (
             <ProductFieldRow
-              label="Materiale"
+              label="Tesktil"
               value={material.data.attributes.name}
               queryParam={`${queryTemplates.materialQueryTemplate}${material.data?.id}`}
             />
@@ -154,7 +154,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
               {tags.data?.map((tag) => {
                 return (
                   <Link
-                    href={`/produkter/?${queryTemplates.tagQueryTemplate}${tag.id}`}
+                    href={`/produkter/?${queryTemplates.tagQueryTemplate}${tag.id}&pagination[page]=1`}
                     key={tag.id}
                   >
                     {tag.attributes.name}

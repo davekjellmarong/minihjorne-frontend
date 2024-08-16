@@ -16,34 +16,29 @@ const QuickFilterCards = () => {
       bgClass: "bg-blue-400",
     },
     {
+      name: "Unisex",
+      link: "/produkter?&filters[sex][id][$eq]=3",
+    },
+    {
       name: "Body",
       link: "/produkter?&filters[category][id][$eq]=2",
       bgClass: "bg-yellow-400",
     },
     {
-      name: "Kjole",
+      name: "Ull",
       link: "/produkter?&filters[category][id][$eq]=4",
-      bgClass: "bg-green-400",
     },
     {
-      name: "Prinsesse",
-      link: "/produkter?&filters[tags][id][$eq]=12",
-      bgClass: "bg-pink-400",
+      name: "Sett",
+      link: "/produkter?&filters[category][id][$eq]=7",
     },
     {
-      name: "Rosa",
-      link: "/produkter?&filters[colors][id][$eq]=13",
-      bgClass: "bg-purple-400",
+      name: "Bukse",
+      link: "/produkter?&filters[category][id][$eq]=14",
     },
     {
-      name: "98-104",
-      link: "/produkter?&filters[size][id][$eq]=26",
-      bgClass: "bg-indigo-400",
-    },
-    {
-      name: "122-128",
-      link: "/produkter?&filters[size][id][$eq]=28",
-      bgClass: "bg-gray-400",
+      name: "Genser",
+      link: "/produkter?&filters[category][id][$eq]=15",
     },
   ];
 

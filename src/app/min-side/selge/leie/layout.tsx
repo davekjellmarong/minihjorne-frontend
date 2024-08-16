@@ -16,7 +16,7 @@ const Layout = async ({ children }: LayoutProps) => {
   if (featureFlagActive) {
     return (
       <Suspense>
-        <FreeRent />;
+        <FreeRent />
       </Suspense>
     );
   }

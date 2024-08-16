@@ -20,7 +20,7 @@ const ProductPage = () => {
     <>
       <div className="relative flex w-full flex-col items-center px-4">
         <div className="w-full  py-10 ">
-          <h2 className="text-3xl font-bold">Produkter</h2>
+          <h2 className="text-3xl ">Produkter</h2>
         </div>
         <div className="w-full pb-6">
           <QuickFilterCards />
@@ -28,7 +28,7 @@ const ProductPage = () => {
         <div className="flex w-full  border-gray-200  py-2">
           <FilterIcon setOpen={setOpen} />
         </div>
-        <Suspense fallback={<ProductsSkeleton />}>
+        <Suspense>
           <div className="flex w-full  border-gray-200  py-2">
             <Filters open={open} setOpen={setOpen} />
           </div>

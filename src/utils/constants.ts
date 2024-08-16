@@ -116,3 +116,5 @@ export const responsive = {
     items: 1,
   },
 };
+
+export const shippingPrice = 99;

@@ -1,5 +1,5 @@
 "use client";
-import useGetFiltersSynchronous from "@/components/customHooks/useGetFiltersSynchronous";
+import useGetFiltersRouteHandler from "@/components/customHooks/useGetFiltersRouteHandler";
 import { allFiltersObject } from "@/utils/constants";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const useExtractQueryParams = () => {
   const [queryParams, setQueryParams] = useState<any>(allFiltersObject);
   const searchParams = useSearchParams();
-  const { allFilters } = useGetFiltersSynchronous();
+  const { allFilters } = useGetFiltersRouteHandler();
   useEffect(() => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const path = current
