@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   console.log("START ROUTE HANDLER");
 
-  const [
+  const {
     colors,
     materials,
     sizes,
@@ -14,17 +14,7 @@ export async function GET() {
     categoryTypes,
     states,
     defects,
-  ] = await Promise.all([
-    FilterMethodsCached.getColors(),
-    FilterMethodsCached.getMaterials(),
-    FilterMethodsCached.getSizes(),
-    FilterMethodsCached.getSexes(),
-    FilterMethodsCached.getTags(),
-    FilterMethodsCached.getCategories(),
-    FilterMethodsCached.getCategoryTypes(),
-    FilterMethodsCached.getStates(),
-    FilterMethodsCached.getDefects(),
-  ]);
+  } = await FilterMethodsCached.getAll();
   const data = {
     colors,
     materials,

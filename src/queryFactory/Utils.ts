@@ -27,8 +27,7 @@ export const getPublicDataFetch = async (query: string) => {
   try {
     const url = apiUrl + query;
     const response = await fetch(url, {
-      next: { revalidate: 60 },
-      // cache: "force-cache",
+      next: { revalidate: 86400 },
     });
     const data = await response.json();
     if (data?.data) {

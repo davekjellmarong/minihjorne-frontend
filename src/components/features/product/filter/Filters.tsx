@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Filter from "./Fillter";
-import useGetFilters from "@/components/customHooks/useGetFilters";
 import FilterDialog from "./FilterDialog";
 import { queryTemplates } from "@/utils/constants";
 import useExtractQueryParams from "../useExtractQueryParams";
@@ -23,18 +22,16 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
     ProductQueries.searchParamsTest(params.toString()),
   );
   const {
-    data: {
-      colors,
-      materials,
-      sizes,
-      sexes,
-      tags,
-      categories,
-      categoryTypes,
-      states,
-      defects,
-    },
-  } = useSuspenseQuery(FilterQueriesCached.allFilter());
+    colors,
+    materials,
+    sizes,
+    sexes,
+    tags,
+    categories,
+    categoryTypes,
+    states,
+    defects,
+  } = useSuspenseQuery(FilterQueriesCached.allFilter()).data;
 
   const { queryParams } = useExtractQueryParams();
   return (

@@ -74,7 +74,7 @@ export const FilterQueriesCached = {
   allFilter: () =>
     queryOptions({
       queryKey: ["filters", "all"],
-      queryFn: () => FilterMethodsCached.getAll(),
+      queryFn: () => FilterMethodsCached.getAllRouteHandler(),
       staleTime: Infinity,
     }),
   colors: () =>
@@ -196,9 +196,9 @@ export const FilterMethodsCached = {
       defects,
     };
   },
-  // getAll: async (): Promise<AllFilters> => {
-  //   return getRouteHandler("/filters");
-  // },
+  getAllRouteHandler: async (): Promise<AllFilters> => {
+    return getRouteHandler("/filters");
+  },
   getColors: async (): Promise<Color[]> => {
     return getPublicDataFetch("/colors");
   },
