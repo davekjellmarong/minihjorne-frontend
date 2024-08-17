@@ -79,7 +79,7 @@ const Kjøpebetingelser = () => {
   return (
     <div className="px-4 py-6">
       <h1 className="mb-4 text-2xl font-bold">
-        Kjøpebetingelser for Minihjørne
+        Salgsbetingelser for leie hos Minihjørne
       </h1>
 
       <h2 className="mt-6 text-xl font-semibold">1. Innledning</h2>
