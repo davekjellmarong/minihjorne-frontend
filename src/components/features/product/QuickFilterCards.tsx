@@ -30,15 +30,15 @@ const QuickFilterCards = () => {
     },
     {
       name: "Sett",
-      link: "/produkter?&filters[category][id][$eq]=7",
+      link: "/produkter?&filters[category][id][$eq]=16",
     },
     {
       name: "Bukse",
-      link: "/produkter?&filters[category][id][$eq]=14",
+      link: "/produkter?&filters[category][id][$eq]=6",
     },
     {
       name: "Genser",
-      link: "/produkter?&filters[category][id][$eq]=15",
+      link: "/produkter?&filters[category][id][$eq]=3",
     },
   ];
 
