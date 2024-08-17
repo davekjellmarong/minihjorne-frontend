@@ -11,8 +11,8 @@ const Header = ({ text }: HeaderProps) => {
         className=" px-4"
         src="/minihjørne-icon.svg"
         alt="logo"
-        width={250}
-        height={250}
+        width={150}
+        height={150}
       />
     </div>
   );
