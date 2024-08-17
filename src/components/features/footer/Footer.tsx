@@ -23,8 +23,12 @@ const Footer = () => {
       href: "/personvern",
     },
     {
-      name: "Kjøpebetingelser",
+      name: "Salgsbetingelser leie",
       href: "/kjopebetingelser",
+    },
+    {
+      name: "Salgsbetingelser kjøp",
+      href: "/salgsbetingelser",
     },
   ];
   return (
@@ -56,7 +60,7 @@ const Footer = () => {
         ))}
       </div>
 
-      <div className="flex justify-center gap-4">
+      <div className="flex justify-center gap-6">
         {bottomLinks.map((link) => (
           <Link
             href={link.href}
