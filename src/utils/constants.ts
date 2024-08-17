@@ -80,7 +80,7 @@ export const queryTemplates = {
   sizeQueryTemplate: "&filters[size][id][$eq]=",
   tagQueryTemplate: "&filters[tags][id][$eq]=",
   colorQueryTemplate: "&filters[colors][id][$eq]=",
-  materialQueryTemplate: "&filters[materials][id][$eq]=",
+  materialQueryTemplate: "&filters[material][id][$eq]=",
   stateQueryTemplate: "&filters[state][id][$eq]=",
   brand_linkQueryTemplate: "&filters[brand][id][$eq]=",
 };
@@ -90,7 +90,7 @@ export const allFiltersObject = {
   colors: [],
   size: [],
   tags: [],
-  materials: [],
+  material: [],
   sex: [],
   defects: [],
   category_type: [],

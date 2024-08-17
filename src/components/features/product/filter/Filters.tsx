@@ -34,6 +34,9 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
   } = useSuspenseQuery(FilterQueriesCached.allFilter()).data;
 
   const { queryParams } = useExtractQueryParams();
+  console.log("queryParams", queryParams);
+  console.log(materials);
+  console.log(states);
   return (
     <div className="relative flex max-h-screen flex-col overflow-y-scroll">
       {/* <FilterIcon setOpen={setOpen} /> */}
@@ -97,7 +100,7 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
               data={materials}
               property="name"
               label="Tekstil"
-              filter="materials"
+              filter="material"
               queryTemplate={queryTemplates.materialQueryTemplate}
             />
             <Filter

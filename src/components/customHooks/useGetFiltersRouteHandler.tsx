@@ -5,7 +5,7 @@ const useGetFiltersRouteHandler = () => {
   const {
     data: {
       colors,
-      materials,
+      materials: material,
       sizes: size,
       categories: category,
       categoryTypes: category_type,
@@ -20,7 +20,7 @@ const useGetFiltersRouteHandler = () => {
     colors,
     size,
     tags,
-    materials,
+    material,
     sex,
     defects,
     category_type,
@@ -31,7 +31,7 @@ const useGetFiltersRouteHandler = () => {
     colors,
     size,
     tags,
-    materials,
+    material,
     sex,
     defects,
     category_type,

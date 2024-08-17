@@ -25,7 +25,7 @@ const QuickLinks = () => {
     },
     {
       name: "Nyfødt",
-      link: "/produkter?&filters[size][id][$eq]=21",
+      link: "/produkter?&filters[size][id][$eq]=1&filters[size][id][$eq]=2&filters[size][id][$eq]=3",
       image:
         "https://res.cloudinary.com/dylzaicv5/image/upload/v1721369328/StaticAssets/quicklink-nyfodt_f1cxos.jpg",
     },
