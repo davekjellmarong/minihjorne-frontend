@@ -1,7 +1,7 @@
 export const navItemsPublic = [
   {
     label: "",
-    path: "/produkter",
+    path: "/produkter?pagination[page]=1",
     color: "transparent",
     icon: "tShirt",
   },
@@ -21,7 +21,7 @@ export const navItemsPublic = [
 export const navItemsAuth = [
   {
     label: "",
-    path: "/produkter",
+    path: "/produkter?pagination[page]=1",
     color: "transparent",
     icon: "tShirt",
   },

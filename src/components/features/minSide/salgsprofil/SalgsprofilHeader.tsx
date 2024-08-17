@@ -1,13 +1,12 @@
-import React from "react";
-import { User } from "@phosphor-icons/react";
-import { UserBackend } from "@/utils/types";
-
+import React, { use } from "react";
+import { User } from "@phosphor-icons/react/dist/ssr";
+import { UserMethods } from "@/queryFactory/User";
 interface SalgsprofilHeaderProps {
-  user: UserBackend;
-  username: string;
+  id: string | number;
 }
-const SalgsprofilHeader = ({ user, username }: SalgsprofilHeaderProps) => {
-  const description = user.description?.split("\n").map((item, index) => {
+const SalgsprofilHeader = async ({ id }: SalgsprofilHeaderProps) => {
+  const userData = await UserMethods.getById(id);
+  const description = userData.description?.split("\n").map((item, index) => {
     if (item === "") {
       return (
         <React.Fragment key={index}>
@@ -21,13 +20,13 @@ const SalgsprofilHeader = ({ user, username }: SalgsprofilHeaderProps) => {
   return (
     <>
       <div className="flex items-center gap-14">
-        <p className="text-lg font-semibold">{user.header}</p>
+        <p className="text-lg font-semibold">{userData.header}</p>
       </div>
       <p className="flex items-center gap-1 text-gray-500">
         <User size={28} />
-        <span>{username}</span>
+        <span>{userData.username}</span>
       </p>
-      <p className="max-w-[500px] px-6 text-sm">{description}</p>
+      <div className="max-w-[500px] px-6 text-sm">{description}</div>
     </>
   );
 };

@@ -1,6 +1,5 @@
-import { postAuthRequest } from "@/utils/utils";
 import { queryOptions } from "@tanstack/react-query";
-import { getAuthData } from "./Utils";
+import { getData, postData } from "./Utils";
 import { Order } from "@/utils/types";
 
 export const OrderQueries = {
@@ -24,15 +23,12 @@ export const OrderQueries = {
 
 const OrderMethods = {
   post: async (data: any, token: any) => {
-    return postAuthRequest(data, "/orders", token);
+    return postData(data, "/orders", token);
   },
   getByUserId: async (id: any, token: any): Promise<Order[]> => {
-    return getAuthData(
-      `/orders?populate=*&filters[user][id][$eq]=${id}`,
-      token,
-    );
+    return getData(`/orders?populate=*&filters[user][id][$eq]=${id}`, token);
   },
   getById: async (id: any, token: any): Promise<Order> => {
-    return getAuthData(`/orders/${id}?populate=*`, token);
+    return getData(`/orders/${id}?populate=*`, token);
   },
 };

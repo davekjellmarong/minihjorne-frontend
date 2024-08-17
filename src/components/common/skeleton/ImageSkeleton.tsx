@@ -1,11 +1,11 @@
 import React from "react";
 
 const ImageSkeleton = ({ size }: { size?: "large" | "small" }) => {
-  const sizeClass = size === "large" ? "h-72" : "h-24";
+  const sizeClass = size === "large" ? "h-72" : "h-60";
   return (
-    <div className="flex items-center animate-pulse justify-center w-full h-full bg-gray-400 rounded ">
+    <div className="flex h-full  animate-pulse items-center justify-center rounded bg-gray-400 ">
       <svg
-        className={`${sizeClass} text-gray-200 `}
+        className={`${sizeClass} w-full text-gray-200 `}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"

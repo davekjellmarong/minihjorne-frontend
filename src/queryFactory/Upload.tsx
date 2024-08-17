@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { postAuthRequest } from "@/utils/utils";
-import { getAuthData } from "./Utils";
+import { getData, postData } from "./Utils";
 import { ImageBackend } from "@/utils/types";
 
 export const ImageMethods = {
@@ -8,10 +7,10 @@ export const ImageMethods = {
     formData: FormData,
     token: any,
   ): Promise<ImageBackend[]> => {
-    return postAuthRequest(formData, "/upload", token);
+    return postData(formData, "/upload", token);
   },
   getById: async (id: string, token: any): Promise<any> => {
-    return getAuthData(`/upload/files/${id}`, token);
+    return getData(`/upload/files/${id}`, token);
   },
   updateFileInfo: async (fileId: string | number, token: any): Promise<any> => {
     const form = new FormData();
@@ -21,7 +20,7 @@ export const ImageMethods = {
         caption: true,
       }),
     );
-    return postAuthRequest(form, `/upload?id=${fileId}`, token);
+    return postData(form, `/upload?id=${fileId}`, token);
   },
   updateMultipleFileInfo: async (
     fileIds: string[] | number[],
@@ -35,7 +34,7 @@ export const ImageMethods = {
           caption: true,
         }),
       );
-      return postAuthRequest(form, `/upload?id=${fileId}`, token);
+      return postData(form, `/upload?id=${fileId}`, token);
     });
     return Promise.all(promises);
   },

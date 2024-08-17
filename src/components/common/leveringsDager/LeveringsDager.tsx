@@ -7,12 +7,14 @@ const LeveringsDager = () => {
         Vi har levering følgende dager i <b>August</b>:
       </p>
       <ul className="font-bold">
-        <li>6. August</li>
-        <li>8. August</li>
-        <li>13. August</li>
-        <li>15. August</li>
+        <li>21. August</li>
+        <li>22. August</li>
+        <li>26. August</li>
+        <li>28. August</li>
+        <li>29. August</li>
+        <li>30. August</li>
         <li className="text-sm font-normal italic">
-          Resten av dagene kommer snart...
+          Leveringsdager for september kommer 1 september
         </li>
       </ul>
       <p>

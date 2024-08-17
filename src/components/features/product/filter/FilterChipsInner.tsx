@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { XCircle } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";

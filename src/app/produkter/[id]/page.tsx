@@ -1,48 +1,26 @@
-"use client";
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import ColorSquares from "@/components/features/filters/color/ColorSquares";
-import Loading from "@/components/common/loading/Loading";
 import {
   GenderFemale,
   GenderIntersex,
   GenderMale,
-  Tag,
   User,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { queryTemplates } from "@/utils/constants";
-import { ProductQueries } from "@/queryFactory/Product";
-import Carousel from "react-multi-carousel";
+import { ProductsMethods } from "@/queryFactory/Product";
 import "react-multi-carousel/lib/styles.css";
 import BackButton from "@/components/common/buttons/BackButton";
 import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
 import Image from "next/image";
 import ProductFieldRow from "@/components/features/product/ProductFieldRow";
 import { isBrand_link, isDefect, isMaterial, isTag } from "@/utils/types";
+import CarouselComponent from "@/components/common/Carousel";
+import "../../../styles/FieldRow.css";
 
-const ProductDetail = ({ params }: { params: { id: string } }) => {
-  // TO-DO use suspsenseQuery
-  const { data: product } = useQuery(ProductQueries.detail(params.id));
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
-  if (!product) return <Loading />;
+const ProductDetail = async ({ params }: { params: { id: string } }) => {
+  const product = await ProductsMethods.getById(params.id);
+
   const {
     category,
     brand,
@@ -67,14 +45,14 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
         </div>
         <Link
           href={`/profiler/${user.data.id}`}
-          className="absolute right-4 top-4 z-10 flex rounded border-2 border-transparent bg-white px-4 py-2 shadow"
+          className="absolute right-4 top-4 z-10 flex rounded border-2 border-transparent bg-white px-4 py-2 shadow-lg"
         >
           <p className="text-sm text-purple-500">
             {user.data.attributes.username}
           </p>
           <User size={22} />
         </Link>
-        <Carousel showDots responsive={responsive}>
+        <CarouselComponent>
           {image.data.map((image) => {
             return (
               <Image
@@ -87,7 +65,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
               />
             );
           })}
-        </Carousel>
+        </CarouselComponent>
       </div>
       <div className="relative flex w-full flex-col items-start overflow-hidden sm:w-1/2">
         <div className="flex w-full justify-between px-4 py-2">
@@ -100,7 +78,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
             </p>
             <div className="mb-4 flex w-full items-center justify-center">
               <Link
-                href={`/produkter/?${queryTemplates.categoryQueryTemplate}${category.data.id}`}
+                href={`/produkter/?${queryTemplates.categoryQueryTemplate}${category.data.id}&pagination[page]=1`}
                 className=""
               >
                 {category_type.data.attributes.name} /{" "}
@@ -110,7 +88,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           </div>
           <div>
             <Link
-              href={`/produkter/?${queryTemplates.sexQueryTemplate}${sex.data.id}`}
+              href={`/produkter/?${queryTemplates.sexQueryTemplate}${sex.data.id}&pagination[page]=1`}
               className="flex items-center"
             >
               {sex.data.attributes.name === "Gutt" && (
@@ -129,10 +107,10 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
 
-        <div className="flex w-full flex-col">
+        <div className=" flex w-full flex-col">
           <ProductFieldRow
             label="Størrelse"
-            value={`${size.data.attributes.number} / ${size.data.attributes.text}`}
+            value={size.data.attributes.number}
             queryParam={`${queryTemplates.sizeQueryTemplate}${size.data.id}`}
           />
           {brand && (
@@ -152,7 +130,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
 
           {isMaterial(material.data) && (
             <ProductFieldRow
-              label="Materiale"
+              label="Tesktil"
               value={material.data.attributes.name}
               queryParam={`${queryTemplates.materialQueryTemplate}${material.data?.id}`}
             />
@@ -176,7 +154,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
               {tags.data?.map((tag) => {
                 return (
                   <Link
-                    href={`/produkter/?${queryTemplates.tagQueryTemplate}${tag.id}`}
+                    href={`/produkter/?${queryTemplates.tagQueryTemplate}${tag.id}&pagination[page]=1`}
                     key={tag.id}
                   >
                     {tag.attributes.name}

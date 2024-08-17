@@ -1,5 +1,6 @@
 import { FeatureFlagServerSideMethods } from "@/queryFactory/FeatureFlag";
 import { Product, UserBackend } from "./types";
+import axios from "axios";
 
 export const isFeatureFlagActive = async (flagId: number, token: any) => {
   const data = await FeatureFlagServerSideMethods.get(token);
@@ -11,28 +12,24 @@ export const isFeatureFlagActive = async (flagId: number, token: any) => {
 };
 
 // getMe: async (token: any): Promise<UserBackend> => {
-//   return getAuthData("/users/me?populate=*", token);
+//   return getData("/users/me?populate=*", token);
 export const getMe = async (token: any): Promise<UserBackend> => {
-  return getAuthData("/users/me?populate=role", token);
+  return getData("/users/me?populate=role", token);
 };
 export const fetchProductsFiltered = async (query: string) => {
   const baseUrl = apiUrl + "/products?populate=*&filters[sold][$eq]=false";
   const url = query?.length > 0 ? baseUrl + query : baseUrl;
-  console.log(url);
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data, "this is the data again");
+  const data = await axios(url);
   return data;
 };
 
-export const getAuthData = async (query: string, token: string) => {
+export const getData = async (query: string, token: string) => {
   try {
     const url = apiUrl + query;
     const headers = {
       Authorization: `Bearer ${token}`,
     };
-    const response = await fetch(url, { headers, cache: "no-cache" });
-    const data = await response.json();
+    const data = await axios(url, { headers });
     if (data?.data) {
       return data.data;
     } else {
@@ -58,7 +55,6 @@ export const putData = async (data: any, query: string, jwt: string) => {
       body: JSON.stringify(data),
     });
     const res = await response.json();
-    console.log(res, "this is the response");
     return res;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -71,7 +67,6 @@ export const getPublicData = async (query: string) => {
     const url = apiUrl + query;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data, "this is the data again");
     if (data?.data) {
       return data.data;
     } else {

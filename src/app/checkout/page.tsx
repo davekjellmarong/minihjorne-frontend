@@ -3,11 +3,11 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { PaymentMethods } from "@/utils/utils";
 import { getCart } from "@/utils/CartUtils";
 import StripeForm from "../../components/features/checkout/StripeForm";
 import { useRouter } from "next/navigation";
 import { AuthQueries } from "@/queryFactory/Auth";
+import { PaymentMethods } from "@/queryFactory/Payment";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK as string);
 
 const Page = () => {
@@ -52,7 +52,7 @@ const Page = () => {
   const options: any = {
     clientSecret,
     appearance,
-    business: "Mini Hjørne",
+    business: "Minihjørne",
   };
   return (
     <>

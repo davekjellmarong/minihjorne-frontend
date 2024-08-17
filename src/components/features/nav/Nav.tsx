@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -13,6 +13,7 @@ import { AuthQueries } from "@/queryFactory/Auth";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/stateManagment/ZustandStore";
 import Image from "next/image";
+import { getCart, getItemsFromLocalStorage } from "@/utils/CartUtils";
 type NavItem = {
   label: string;
   path: string;
@@ -29,10 +30,21 @@ const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
   const { data } = useQuery(AuthQueries.jwt());
   // FIGURE OUT NAV RERENDERING AND AUTH AND IF WE CAN MOVE PUBLIC/AUTH UP TO PARENT
   const navVisible = useStore((state) => state.navVisible);
+  const cartItems = useStore((state) => state.cartItems);
+  const setCartItems = useStore((state) => state.setCartItems);
+
+  useEffect(() => {
+    const items = getItemsFromLocalStorage();
+    if (items) {
+      setCartItems(items);
+    }
+  }, []);
+
   let navItemsRightEnd = navItemsPublic;
   if (data) {
     navItemsRightEnd = navItemsAuth;
   }
+
   const path = usePathname();
   const icons: any = {
     minSide: <UserCircle size={30} weight="thin" color="gray" />,
@@ -50,8 +62,8 @@ const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
             <Image
               src="/minihjørne-logo.png"
               alt="logo"
-              width={150}
-              height={150}
+              width={125}
+              height={125}
               // className="mb-1"
               priority
             />
@@ -64,12 +76,28 @@ const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
                   href={item.path}
                   className="w-500 flex items-center "
                 >
-                  <button
-                    className={`flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded border border-brand-300 px-2 text-sm text-brand-800 " : ""} ${path === item.path ? "bg-brand-100" : ""}  active:bg-brand-200`}
-                    key={item.label}
-                  >
-                    {icons[item.icon]} {item.label}
-                  </button>
+                  {item.path === "/handlekurv" ? (
+                    <div className="relative">
+                      <div
+                        className={`absolute right-0 top-0 flex size-5 items-center justify-center rounded-full ${cartItems.length > 0 ? "bg-brand-500" : ""} text-sm text-white`}
+                      >
+                        {cartItems.length > 0 ? cartItems.length : null}
+                      </div>
+                      <button
+                        className={`flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded border border-brand-300 px-2 text-sm text-brand-800 " : ""} ${path === item.path ? "bg-brand-100" : ""}  active:bg-brand-200`}
+                        key={item.label}
+                      >
+                        {icons[item.icon]} {item.label}
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      className={`flex items-center rounded p-2 transition-colors duration-150 ${item.color === "brand" ? "rounded border border-brand-300 px-2 text-sm text-brand-800 " : ""} ${path === item.path ? "bg-brand-100" : ""}  active:bg-brand-200`}
+                      key={item.label}
+                    >
+                      {icons[item.icon]} {item.label}
+                    </button>
+                  )}
                 </Link>
               );
             })}

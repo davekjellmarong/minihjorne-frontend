@@ -15,7 +15,7 @@ const Materials = ({
   formik,
   onChangeFunc,
   initialId,
-  header = "Materiale",
+  header = "Tekstil",
 }: ColorProps) => {
   const { data: materials } = useSuspenseQuery(FilterQueries.materials());
 

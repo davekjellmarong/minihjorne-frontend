@@ -1,6 +1,5 @@
-import { postAuthRequest } from "@/utils/utils";
 import { queryOptions } from "@tanstack/react-query";
-import { getAuthData } from "./Utils";
+import { getData, postData } from "./Utils";
 import { Order } from "@/utils/types";
 
 export const PaymentQueries = {
@@ -14,11 +13,11 @@ export const PaymentQueries = {
     }),
 };
 
-const PaymentMethods = {
+export const PaymentMethods = {
   post: async (data: any, token: any) => {
-    return postAuthRequest(data, "/payments", token);
+    return postData(data, "/payments", token);
   },
   getSubscriptionPaymentLink: async (token: any, planId: number) => {
-    return getAuthData(`/payments/subscription?planId=${planId}`, token);
+    return getData(`/payments/subscription?planId=${planId}`, token);
   },
 };

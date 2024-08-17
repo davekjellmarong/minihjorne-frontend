@@ -8,6 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { clearCartInLocalStorage } from "@/utils/CartUtils";
 import { CurrencyDollar, Pants, Truck } from "@phosphor-icons/react";
+import { shippingPrice } from "@/utils/constants";
 
 const StripeForm = ({ price }: any) => {
   const stripe = useStripe();
@@ -65,7 +66,7 @@ const StripeForm = ({ price }: any) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${process.env.NEXT_PUBLIC_URL}/min-side/ordre`,
+        return_url: `${process.env.NEXT_PUBLIC_URL}/min-side/ordre?payment=success`,
       },
     });
 
@@ -95,7 +96,7 @@ const StripeForm = ({ price }: any) => {
       onSubmit={handleSubmit}
       className="my-14 flex w-full flex-col items-center gap-16"
     >
-      <div className="w-[400px]">
+      <div className="">
         <h3 className="text-xl">Frakt</h3>
         <AddressElement
           options={{
@@ -105,7 +106,7 @@ const StripeForm = ({ price }: any) => {
           }}
         />
       </div>
-      <div className="w-[400px]">
+      <div className="">
         <h3 className="text-xl">Betaling</h3>
         <PaymentElement id="payment-element" options={paymentElementOptions} />
       </div>
@@ -118,7 +119,10 @@ const StripeForm = ({ price }: any) => {
         <div className="flex gap-2">
           <Truck size={24} color="gray" />
           <p className="w-24 text-gray-500">Frakt </p>
-          <span className="text-xl font-light text-black"> 159 kr</span>
+          <span className="text-xl font-light text-black">
+            {" "}
+            {shippingPrice} kr
+          </span>
         </div>
         <hr className="w-52 border" />
         <div className="flex gap-2">
@@ -126,7 +130,7 @@ const StripeForm = ({ price }: any) => {
           <p className="w-24 text-gray-500">Total </p>
           <span className="text-xl font-light text-black">
             {" "}
-            {price + 159} kr
+            {price + shippingPrice} kr
           </span>
         </div>
       </div>

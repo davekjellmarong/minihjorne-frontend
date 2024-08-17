@@ -11,7 +11,6 @@ export default function PostHogPageView(): null {
   // Track pageviews
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_POSTHOG_KEY === "undefined") {
-      console.log("not in production, skipping pageview tracking");
       return;
     }
     if (pathname && posthog) {

@@ -1,8 +1,14 @@
 import { queryOptions } from "@tanstack/react-query";
-
 import { User, UserBackend } from "@/utils/types";
-import { getAuthData, getPublicData, putData } from "./Utils";
-import { postAuthRequest, putAuthRequest } from "@/utils/utils";
+import {
+  getData,
+  getDataFetch,
+  getPublicData,
+  postData,
+  postPublicData,
+  putData,
+  putDataFetch,
+} from "./Utils";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -10,11 +16,13 @@ export const UserQueries = {
     queryOptions({
       queryKey: [...UserQueries.all(), id],
       queryFn: () => UserMethods.getById(id),
+      throwOnError: true,
     }),
   me: (token: any) =>
     queryOptions({
       queryKey: [...UserQueries.all(), "me"],
       queryFn: () => UserMethods.getMe(token),
+      throwOnError: true,
     }),
 };
 
@@ -26,12 +34,28 @@ export const UserMethods = {
     return getPublicData(`/users/${id}`);
   },
   getMe: async (token: any): Promise<UserBackend> => {
-    return getAuthData("/users/me?populate=*", token);
+    return getData("/users/me?populate=*", token);
+  },
+  getMeFetch: async (token: any): Promise<UserBackend> => {
+    return getDataFetch("/users/me?populate=*", token);
   },
   uploadImages: async (data: any, token: any) => {
-    return postAuthRequest(data, "/upload", token);
+    return postData(data, "/upload", token);
   },
   put: async (data: any, id: any, jwt: any) => {
     return putData(data, `/users/${id}`, jwt);
+  },
+  putFetch: async (data: any, id: any, jwt: any) => {
+    return putDataFetch(data, `/users/${id}`, jwt);
+  },
+  sendResetPasswordMail: async (email: any) => {
+    return postPublicData(email, "/auth/forgot-password");
+  },
+  resetPassword: async (data: {
+    code: any;
+    password: any;
+    passwordConfirmation: any;
+  }) => {
+    return postPublicData(data, "/auth/reset-password");
   },
 };

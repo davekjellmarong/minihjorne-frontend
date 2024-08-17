@@ -1,10 +1,5 @@
 import React, { Suspense } from "react";
 import Loading from "@/components/common/loading/Loading";
-import {
-  HydrationBoundary,
-  QueryClient,
-  dehydrate,
-} from "@tanstack/react-query";
 import { isFeatureFlagActive } from "@/utils/serverUtils";
 import { FeatureFlagsEnum } from "@/utils/FeatureFlags";
 import FreeRent from "@/components/features/minSide/leie/freeRent/FreeRent";
@@ -19,16 +14,14 @@ const Layout = async ({ children }: LayoutProps) => {
   );
 
   if (featureFlagActive) {
-    return <FreeRent />;
+    return (
+      <Suspense>
+        <FreeRent />
+      </Suspense>
+    );
   }
 
-  const queryClient = new QueryClient();
-
-  return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Suspense fallback={<Loading />}>{children}</Suspense>
-    </HydrationBoundary>
-  );
+  return <Suspense fallback={<Loading />}>{children}</Suspense>;
 };
 
 export default Layout;

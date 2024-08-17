@@ -1,50 +1,50 @@
-import React, { useState } from "react";
+"use client";
+import React from "react";
 import Filter from "./Fillter";
-import useGetFilters from "@/components/customHooks/useGetFilters";
-import { SlidersHorizontal, X } from "@phosphor-icons/react";
 import FilterDialog from "./FilterDialog";
 import { queryTemplates } from "@/utils/constants";
 import useExtractQueryParams from "../useExtractQueryParams";
-import { ProductsPagination } from "@/utils/types";
 import FilterButtons from "./FilterButtons";
 import FilterHeader from "./FilterHeader";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { ProductQueries } from "@/queryFactory/Product";
+import { useSearchParams } from "next/navigation";
+import { FilterQueriesCached } from "@/queryFactory/Filter";
 interface FiltersProps {
-  products: ProductsPagination;
+  setOpen: (open: boolean) => void;
+  open: boolean;
 }
-const Filters = ({ products }: FiltersProps) => {
-  const [open, setOpen] = useState(false);
+const Filters = ({ setOpen, open }: FiltersProps) => {
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+
+  const { data: products } = useSuspenseQuery(
+    ProductQueries.searchParamsTest(params.toString()),
+  );
   const {
-    SexData,
-    CategoryData,
-    SizesData,
-    TagsData,
-    ColorsData,
-    MaterialsData,
-    CategoryTypesData,
-    DefectsData,
-    StatesData,
-  } = useGetFilters();
+    colors,
+    materials,
+    sizes,
+    sexes,
+    tags,
+    categories,
+    categoryTypes,
+    states,
+    defects,
+  } = useSuspenseQuery(FilterQueriesCached.allFilter()).data;
+
   const { queryParams } = useExtractQueryParams();
   return (
     <div className="relative flex max-h-screen flex-col overflow-y-scroll">
-      <div className="flex justify-between gap-4">
-        <button
-          onClick={() => {
-            setOpen(true);
-          }}
-          className="flex items-center rounded border border-gray-300 p-2 px-4 sm:hover:bg-gray-200"
-        >
-          <SlidersHorizontal size={24} weight="thin" />
-          <p className="">Filter</p>
-        </button>
-      </div>
+      {/* <FilterIcon setOpen={setOpen} /> */}
+
       <FilterDialog open={open} setOpen={setOpen}>
         <div className={`relative flex h-screen max-h-screen flex-col `}>
           <FilterHeader setOpen={setOpen} products={products} />
           <div className="grow">
             <Filter
               queryParams={queryParams}
-              data={SexData}
+              data={sexes}
               property="name"
               label="Kjønn"
               filter="sex"
@@ -52,24 +52,24 @@ const Filters = ({ products }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={CategoryData}
+              data={categories}
               property="name"
-              label="Kategori"
+              label="Plagg"
               filter="category"
               queryTemplate={queryTemplates.categoryQueryTemplate}
             />
             <Filter
               queryParams={queryParams}
-              data={CategoryTypesData}
+              data={categoryTypes}
               property="name"
-              label="Kategori Type"
+              label="Plagg Type"
               filter="category_type"
               queryTemplate={queryTemplates.categoryTypeQueryTemplate}
             />
 
             <Filter
               queryParams={queryParams}
-              data={SizesData}
+              data={sizes}
               property="number"
               label="Størrelse"
               filter="size"
@@ -77,16 +77,16 @@ const Filters = ({ products }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={TagsData}
+              data={tags}
               property="name"
-              label="Tags"
+              label="Tema"
               filter="tags"
               queryTemplate={queryTemplates.tagQueryTemplate}
             />
 
             <Filter
               queryParams={queryParams}
-              data={ColorsData}
+              data={colors}
               property="name"
               label="Farger"
               filter="colors"
@@ -94,15 +94,15 @@ const Filters = ({ products }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={MaterialsData}
+              data={materials}
               property="name"
-              label="Stoff"
+              label="Tekstil"
               filter="materials"
               queryTemplate={queryTemplates.materialQueryTemplate}
             />
             <Filter
               queryParams={queryParams}
-              data={StatesData}
+              data={states}
               property="name"
               label="Tilstand"
               filter="state"
@@ -110,7 +110,7 @@ const Filters = ({ products }: FiltersProps) => {
             />
             <Filter
               queryParams={queryParams}
-              data={DefectsData}
+              data={defects}
               property="type"
               label="Avvik"
               filter="defects"

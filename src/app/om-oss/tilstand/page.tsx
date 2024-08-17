@@ -52,8 +52,8 @@ const page = () => {
             <p className="pb-2 pt-4 text-2xl">Retur/klager</p>
             <p>
               Opplever du som kjøper å motta et plagg som tydelig avviker fra
-              annonsen ber vi deg sende oss en mail på xxxxxxxx så hjelper vi
-              deg.
+              annonsen ber vi deg sende oss en mail på kontakt@minihjorne så
+              hjelper vi deg.
             </p>
           </div>
           <div>

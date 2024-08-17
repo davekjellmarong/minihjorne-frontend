@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import {
@@ -8,7 +7,7 @@ import {
   UploadSimple,
   UserSquare,
   ChartBar,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/dist/ssr";
 
 const Menu = () => {
   const navItems = [
@@ -96,9 +95,6 @@ const Menu = () => {
                     href={item.path}
                     key={item.id}
                     className={`flex items-center rounded p-4  active:bg-brand-100 sm:hover:bg-gray-100`}
-                    onClick={() => {
-                      // item.action && item.action();
-                    }}
                   >
                     <span className="pr-6">{item.icon}</span>
                     <span>{item.title}</span>

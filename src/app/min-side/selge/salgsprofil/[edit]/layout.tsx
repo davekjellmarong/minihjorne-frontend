@@ -14,7 +14,6 @@ const layout = async ({ children }: any) => {
 
   const token = cookieStore.get("Token");
   await queryClient.prefetchQuery(UserQueries.me(token.value));
-  await queryClient.prefetchQuery(FilterQueries.colors());
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

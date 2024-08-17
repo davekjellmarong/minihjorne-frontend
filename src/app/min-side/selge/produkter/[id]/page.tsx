@@ -163,7 +163,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Accordion label="Tilstand" currentValue={formik.values.stateName}>
           <State formik={formik} initialId={state.data.id} />
         </Accordion>
-        <Accordion label="Materialer" currentValue={formik.values.materialName}>
+        <Accordion label="Tekstil" currentValue={formik.values.materialName}>
           <Materials
             formik={formik}
             initialId={isMaterial(material.data) ? material.data.id : null}

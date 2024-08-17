@@ -1,8 +1,3 @@
-"use client";
-import { GenderFemale, GenderMale, GenderNeuter } from "@phosphor-icons/react";
-
-// export const apiUrl = "http://localhost:1337/api";
-// export const baseUrl = "http://localhost:1337";
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 export const baseUrl = process.env.NEXT_PUBLIC_URL;
 export const tailwindColors = [
@@ -102,3 +97,24 @@ export const allFiltersObject = {
   state: [],
   brand_link: [],
 };
+
+export const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+export const shippingPrice = 99;

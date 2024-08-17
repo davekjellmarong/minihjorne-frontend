@@ -10,12 +10,11 @@ const ProductFieldRow = ({
   label,
   queryParam,
 }: ProductFieldRowProps) => {
-  console.log(value);
   return (
-    <div className="flex w-full px-12 py-8 ">
+    <div className="field_row flex w-full px-12 py-8">
       <p className="flex w-1/5 text-sm text-gray-500">{label}</p>
       <Link
-        href={`/produkter/?${queryParam}`}
+        href={`/produkter/?${queryParam}&pagination[page]=1`}
         className="grow text-center text-xl font-light"
       >
         {value}

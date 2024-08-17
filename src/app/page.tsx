@@ -1,16 +1,12 @@
-"use client";
-import GratisLeie from "@/components/UI/GratisLeie";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import OpeningSoon from "@/components/UI/heroImage/OpeningSoon";
 import Card from "@/components/features/home/Card";
 import QuickLinks from "@/components/features/home/QuickLinks";
 import Products from "@/components/features/product/Products";
-import { ProductQueries } from "@/queryFactory/Product";
-import { useQuery } from "@tanstack/react-query";
+import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
 import React, { Suspense } from "react";
 
 const Home = () => {
-  const { data: products } = useQuery(ProductQueries.filtered(""));
   return (
     <>
       <OpeningSoon />
@@ -37,8 +33,8 @@ const Home = () => {
         <div className="pt-4">
           <QuickLinks />
         </div>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Products data={products?.data} />
+        <Suspense fallback={<ProductsSkeleton number={20} />}>
+          <Products />
         </Suspense>
       </div>
     </>

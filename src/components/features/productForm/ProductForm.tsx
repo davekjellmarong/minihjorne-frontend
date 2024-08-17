@@ -70,7 +70,7 @@ const ProductForm = ({ formik }: ProductFormProps) => {
           <Size formik={formik} onChangeFunc={nextSlide} />
           <Brand nextSlide={nextSlide} formik={formik} />
           <Materials
-            header="Materiale (valgfri)"
+            header="Tekstil (valgfri)"
             onChangeFunc={nextSlide}
             formik={formik}
           />

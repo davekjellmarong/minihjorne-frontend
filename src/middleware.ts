@@ -11,7 +11,6 @@ export async function middleware(request: NextRequest) {
   if (admin?.value === "true" && token?.value) {
     const response = await getMe(token?.value);
     if (response.admin) {
-      console.log("Admin is logged in, and you shall pass");
       return NextResponse.next();
     }
   }

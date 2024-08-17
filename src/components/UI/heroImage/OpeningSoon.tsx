@@ -1,10 +1,11 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const OpeningSoon = () => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date("2024-08-17T00:00:00");
+    const targetDate = new Date("2024-08-17T12:00:00");
     const now = new Date();
     const difference = targetDate.getTime() - now.getTime();
 
@@ -28,6 +29,7 @@ const OpeningSoon = () => {
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,25 +38,32 @@ const OpeningSoon = () => {
 
     return () => clearInterval(timer);
   }, []);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   return (
     <div className="relative h-[500px] w-full">
       <Image
         height={500}
         width={500}
-        src="https://res.cloudinary.com/dylzaicv5/image/upload/v1722686912/StaticAssets/klesbunke_bkyozu.jpg"
+        src="https://res.cloudinary.com/dylzaicv5/image/upload/v1723850366/StaticAssets/hero-klesbunke_hhrmn6.jpg"
         alt="home-hero"
         priority
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
       <div className="relative flex h-full w-full flex-col items-center justify-center gap-8 backdrop-brightness-[0.6]">
         <h1 className="text-center text-4xl font-bold text-white">
-          Nettbutikken åpner <br />
-          17. august!
+          Nettbutikken åpner <br />I DAG!
         </h1>
         {/* <div className="w-full bg-white py-2 opacity-70"> */}
-        <p className="text-center text-2xl font-bold text-white opacity-100 ">
-          {`${timeLeft.days}d ${timeLeft.hours}t ${timeLeft.minutes}m ${timeLeft.seconds}s`}
-        </p>
+        {isClient && (
+          <p
+            className="text-center text-2xl font-bold text-white opacity-100 "
+            suppressHydrationWarning
+          >
+            {`${timeLeft.days}d ${timeLeft.hours}t ${timeLeft.minutes}m ${timeLeft.seconds}s`}
+          </p>
+        )}
         {/* </div> */}
         <div className="flex gap-8">
           {/* <Button type="outline" className="rounded border-2">

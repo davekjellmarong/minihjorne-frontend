@@ -2,9 +2,10 @@ import { queryOptions } from "@tanstack/react-query";
 import { Product, ProductBackend, ProductsPagination } from "@/utils/types";
 import {
   deleteData,
-  getAuthData,
+  getData,
   getProductsFiltered,
   getPublicData,
+  postData,
   putData,
 } from "./Utils";
 
@@ -24,16 +25,16 @@ export const ProductsMethods = {
     );
   },
   getAllMyProducts: async (token: any): Promise<ProductBackend[]> => {
-    return getAuthData("/products/me/all", token);
+    return getData("/products/me/all", token);
   },
   delete: async (id: string, token: any): Promise<Product> => {
     return deleteData(`/products/${id}`, token);
   },
   getByOrderId: async (id: any, token: any): Promise<Product[]> => {
-    return getAuthData(
-      `/products?populate=*&filters[order][id][$eq]=${id}`,
-      token,
-    );
+    return getData(`/products?populate=*&filters[order][id][$eq]=${id}`, token);
+  },
+  post: async (data: any, token: any) => {
+    return postData(data, "/products", token);
   },
 };
 

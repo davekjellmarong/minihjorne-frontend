@@ -10,7 +10,6 @@ interface ProductTableProps {
 }
 
 const ProductTable = ({ products }: ProductTableProps) => {
-  console.log(products);
   const router = useRouter();
   return (
     <>
