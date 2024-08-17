@@ -28,19 +28,16 @@ const Login = () => {
     },
     onSuccess: (data) => {
       if (data.jwt.length > 0) {
-        const expirationDate = new Date();
-        expirationDate.setDate(expirationDate.getDate() + 30);
-        setCookie("Token", data.jwt, { expires: expirationDate });
-        if (redirect) {
-          router.push(redirect);
-          console.log("redirect");
-        } else {
-          router.push("/min-side");
-        }
+        setCookie("Token", data.jwt);
         queryClient.setQueryData(UserQueries.me(data.jwt).queryKey, data.user);
         queryClient.setQueryData(AuthQueries.jwt().queryKey, data.jwt);
         if (data.user.admin) {
           setAdminCookie("Admin", "true");
+        }
+        if (redirect) {
+          router.push(redirect);
+        } else {
+          router.push("/min-side");
         }
       }
     },

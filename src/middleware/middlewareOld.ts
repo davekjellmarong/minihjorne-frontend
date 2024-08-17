@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { FeatureFlagsEnum } from "./utils/FeatureFlags";
-import { getMe, isFeatureFlagActive } from "./utils/serverUtils";
+import { FeatureFlagsEnum } from "../utils/FeatureFlags";
+import { getMe, isFeatureFlagActive } from "../utils/serverUtils";
 
-export async function middleware(request: NextRequest) {
+export async function middlewareOld(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const admin = request.cookies.get("Admin");
   const token = request.cookies.get("Token");

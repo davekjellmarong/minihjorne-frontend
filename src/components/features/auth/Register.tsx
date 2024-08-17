@@ -27,16 +27,14 @@ const Register = () => {
     },
     onSuccess: (data) => {
       if (data.jwt.length > 0) {
-        const expirationDate = new Date();
-        expirationDate.setDate(expirationDate.getDate() + 30);
-        setCookie("Token", data.jwt, { expires: expirationDate });
+        setCookie("Token", data.jwt);
+        queryClient.setQueryData(UserQueries.me(data.jwt).queryKey, data.user);
+        queryClient.setQueryData(AuthQueries.jwt().queryKey, data.jwt);
         if (redirect) {
           router.push(redirect);
         } else {
           router.push("/min-side");
         }
-        queryClient.setQueryData(UserQueries.me(data.jwt).queryKey, data.user);
-        queryClient.setQueryData(AuthQueries.jwt().queryKey, data.jwt);
       }
     },
   });
@@ -48,7 +46,7 @@ const Register = () => {
       password: "",
     },
     onSubmit: (values) => {
-      register(values);
+      return register(values);
     },
   });
 
