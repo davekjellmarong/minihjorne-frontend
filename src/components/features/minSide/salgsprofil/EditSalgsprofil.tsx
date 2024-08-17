@@ -8,12 +8,13 @@ import ProductsSkeleton from "../../product/ProductsSkeleton";
 import { UserMethods } from "@/queryFactory/User";
 import { cookies } from "next/headers";
 import { Globe, Pencil } from "@phosphor-icons/react/dist/ssr";
+import SalgsProfilProducts from "../../product/SalgsProfilProducts";
 
 interface EditSalgsprofilProps {
   id: string;
 }
 const EditSalgsprofil = async () => {
-  const token = cookies().get("Token")?.value
+  const token = cookies().get("Token")?.value;
   const user = await UserMethods.getMeFetch(token);
   const products = await ProductsMethods.getByUserId(user.id);
   return (
@@ -49,7 +50,7 @@ const EditSalgsprofil = async () => {
         )}
         <Suspense fallback={<ProductsSkeleton />}>
           <div className="px-4">
-            <Products />
+            <SalgsProfilProducts id={user.id} />
           </div>
         </Suspense>
       </div>

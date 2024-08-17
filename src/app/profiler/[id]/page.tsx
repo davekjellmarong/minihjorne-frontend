@@ -2,6 +2,7 @@ import TextSkeleton from "@/components/common/skeleton/TextSkeleton";
 import SalgsprofilHeader from "@/components/features/minSide/salgsprofil/SalgsprofilHeader";
 import Products from "@/components/features/product/Products";
 import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
+import SalgsProfilProducts from "@/components/features/product/SalgsProfilProducts";
 import { Suspense } from "react";
 
 const Page = async ({ params }: { params: { id: string } }) => {
@@ -19,7 +20,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           }
         >
           <SalgsprofilHeader id={params.id} />
-          <Products />
+          <SalgsProfilProducts id={params.id} />
         </Suspense>
       </div>
     </div>
