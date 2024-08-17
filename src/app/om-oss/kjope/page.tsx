@@ -10,7 +10,33 @@ const page = () => {
         Her kommer litt nytting informasjon til deg som skal handle i
         nettbuttikken vår.
       </p>
+
       <div className="my-4 flex flex-col gap-4">
+        <p className="text-2xl">Frakt</p>
+
+        <p>
+          Vi har fast fraktkostnad på 99 kr og sender til alle adresser i Norge.
+        </p>
+        <p className="text-2xl">Hente selv?</p>
+
+        <p>
+          Du kan selv hente bestillingen sentralt på Løren, Oslo. Dette
+          leveringsalternativet er gratis og bestillingen må hentes innen 10
+          dager. Etter at bestillingen er bekreftet til vi sende en sms til deg
+          for å avtale hentetidspunkt.
+        </p>
+        <p className="text-2xl">Betaling</p>
+
+        <p>Vi bruker Stripe betalingsløsning.</p>
+        <p className="text-2xl">Bortall av angrerett</p>
+        <p>
+          Hos Minihjørne er det privatpersoner som selger klær. Kjøpet ansees
+          derfor som salg mellom privatpersoner og angreretten bortfaller. Vi
+          vil likevel at du som handler brukte barneklær hos oss skal være
+          fornøyd! Dersom du skulle være så uheldig å motta et plagg som er i
+          dårligere stand enn hva annonsen sier, ber vi deg ta kontakt på
+          kontakt@minihjorne.no slik at vi får ordnet opp!
+        </p>
         <p className="text-2xl">Plaggets tilstand</p>
         <p>
           Husk at hos oss selges det hovedsaklig barneklær som allerede har levd
@@ -52,14 +78,14 @@ const page = () => {
             filter på bildene sine.{" "}
           </p>
         </div>
-        <div>
+        {/* <div>
           <p className="pb-2 pt-4 text-2xl">Retur/klager</p>
           <p>
             Opplever du som kjøper å motta et plagg som tydelig avviker fra
             annonsen ber vi deg sende oss en mail på kontakt@minihjorne.no så
             hjelper vi deg.
           </p>
-        </div>
+        </div> */}
         <div>
           <p className="pb-2 pt-4 text-2xl">Størrelse</p>
           <p>

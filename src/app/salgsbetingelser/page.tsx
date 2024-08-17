@@ -3,9 +3,37 @@ import React from "react";
 const Salgsbetingelser = () => {
   return (
     <div className="px-4 py-6">
-      <h1 className="mb-4 text-2xl font-bold">
-        Salgsbetingelser for Minihjørne
-      </h1>
+      <h1 className="mb-4 text-2xl font-semibold">Salgsvilkår</h1>
+      <div className="space-y-4">
+        <p>
+          Minihjørne benytter seg av standard salgsbetingelser for forbrukerkjøp
+          av varer over Internett. Likevel vil vi tydeligjøre at vi er en
+          bruktbutikk som i all hovedsak selger brukte barneklær. Det kan dermed
+          ikke forventes at varene vil holde samme stand som ved kjøp av nye
+          varer og bruksslitasje vil forekomme. Klærne i vår nettbutikk eies av
+          privatpersoner, og det er også disse personene som tar produktbildene,
+          registrerer produktinformasjon og prissetter varene. Disse
+          opplysningene vil til en viss grad være subjektive. Hull, flekk og
+          annet avvik dokumenteres i annonsen. Farger kan avvike. Klærne som
+          selges hos Minihjørne skal være i brukbar stand, og skal ikke være
+          utslitte eller ha uttalte flekker og hull.
+        </p>
+        <p>
+          Klærne som selges på Minihjørne eies av privatpersoner og salget anses
+          derfor som kjøp mellom to privatpersoner. Kjøpsavtalen er derfor
+          unntatt fra angreretten og det er ikke mulig å angre kjøp hos
+          Minihjørne. Likevel ønsker vi at du som handler bruktklær hos oss skal
+          være fornøyd! Opplever du å motta et plagg som er i en annen/dårligere
+          tilstand enn beskrevet i annonsen, send oss en mail på{" "}
+          <a
+            href="mailto:kontakt@minihjorne.no"
+            className="text-blue-600 underline"
+          >
+            kontakt@minihjorne.no
+          </a>{" "}
+          så ordner vi opp.
+        </p>
+      </div>
 
       <h2 className="mt-6 text-xl font-semibold">1. Innledning</h2>
       <p className="mt-2 text-gray-700">

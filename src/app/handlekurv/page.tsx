@@ -19,7 +19,7 @@ const Page = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
-
+  const [checked, setChecked] = useState(false);
   let productItems: Product[] = [];
   if (typeof window !== "undefined") {
     // Perform localStorage action
@@ -120,12 +120,35 @@ const Page = () => {
             {totalPrice + shippingPrice} kr
           </span>
         </div>
-        <Link
+        <label className="flex items-center">
+          <input
+            id="default-checkbox"
+            type="checkbox"
+            checked={checked}
+            onChange={() => setChecked(!checked)}
+            className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-brand-600 focus:ring-2 focus:ring-brand-500"
+          />
+          <Link href="/salgsbetingelser" className="ml-2">
+            Godtar du våre{" "}
+            <span className="text-blue-500">kjøpebetingelser?</span>
+          </Link>
+        </label>
+        {/* <Link
           href={jwt ? "/checkout" : "/auth?redirect=/checkout&type=login"}
           className="shadow- max-w-[350px] rounded bg-brand-500 px-8 py-4 text-center font-semibold text-white  "
+        > */}
+        <button
+          className={`shadow- max-w-[350px] rounded  px-8 py-4 text-center font-semibold text-white ${checked ? "bg-brand-500" : "bg-gray-300"}`}
+          onClick={() => {
+            router.push(
+              jwt ? "/checkout" : "/auth?redirect=/checkout&type=login",
+            );
+          }}
+          disabled={!checked}
         >
-          <button>Gå videre</button>
-        </Link>
+          Gå videre
+        </button>
+        {/* </Link> */}
       </div>
     </div>
   );
