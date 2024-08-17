@@ -13,7 +13,7 @@ const FilterButtons = ({ setOpen, products }: FilterButtonsProps) => {
         className=" my-4 flex items-center rounded-md border-2 border-red-300 p-2 px-4  sm:hover:bg-gray-700"
         onClick={() => {
           const newUrl = window.location.pathname;
-          router.push(newUrl);
+          router.push(newUrl + "?pagination[page]=1");
         }}
       >
         Tøm alle filtre

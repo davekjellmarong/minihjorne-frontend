@@ -19,7 +19,7 @@ const useExtractQueryParams = () => {
       colors: [],
       size: [],
       tags: [],
-      materials: [],
+      material: [],
       sex: [],
       defects: [],
       category_type: [],

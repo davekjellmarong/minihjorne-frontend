@@ -22,23 +22,22 @@ const QuickFilterCards = () => {
     {
       name: "Body",
       link: "/produkter?&filters[category][id][$eq]=2",
-      bgClass: "bg-yellow-400",
     },
     {
       name: "Ull",
-      link: "/produkter?&filters[category][id][$eq]=4",
+      link: "/produkter?&filters[material][id][$eq]=4",
     },
     {
       name: "Sett",
-      link: "/produkter?&filters[category][id][$eq]=7",
+      link: "/produkter?&filters[category][id][$eq]=16",
     },
     {
       name: "Bukse",
-      link: "/produkter?&filters[category][id][$eq]=14",
+      link: "/produkter?&filters[category][id][$eq]=6",
     },
     {
       name: "Genser",
-      link: "/produkter?&filters[category][id][$eq]=15",
+      link: "/produkter?&filters[category][id][$eq]=3",
     },
   ];
 

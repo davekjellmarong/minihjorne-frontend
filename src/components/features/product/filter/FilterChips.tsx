@@ -15,7 +15,7 @@ const FilterChips = () => {
   const params = new URLSearchParams(searchParams.toString());
 
   const handleClearAll = () => {
-    router.push(pathname);
+    router.push(pathname + "?pagination[page]=1");
   };
 
   return (
