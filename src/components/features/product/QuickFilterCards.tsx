@@ -25,7 +25,7 @@ const QuickFilterCards = () => {
     },
     {
       name: "Ull",
-      link: "/produkter?&filters[material][id][$eq]=4",
+      link: "/produkter?&filters[material][id][$eq]=6",
     },
     {
       name: "Sett",
@@ -52,6 +52,11 @@ const QuickFilterCards = () => {
           }}
         >
           <p className="text-sm font-light text-brand-700">{filter.name}</p>
+          <img
+            src="/icons/arrow-right.svg"
+            alt="arrow"
+            className="ml-1 h-3 w-3"
+          />
         </div>
       ))}
     </div>
