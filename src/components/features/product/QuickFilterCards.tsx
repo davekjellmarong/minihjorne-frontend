@@ -25,7 +25,7 @@ const QuickFilterCards = () => {
     },
     {
       name: "Ull",
-      link: "/produkter?&filters[material][id][$eq]=4",
+      link: "/produkter?&filters[material][id][$eq]=6",
     },
     {
       name: "Sett",

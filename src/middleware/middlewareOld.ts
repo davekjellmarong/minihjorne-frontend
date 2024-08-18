@@ -8,6 +8,7 @@ export async function middlewareOld(request: NextRequest) {
   const admin = request.cookies.get("Admin");
   const token = request.cookies.get("Token");
 
+  console.log("pathdsjknfdsnbfjkdsnfsdjhkn");
   if (admin?.value === "true" && token?.value) {
     const response = await getMe(token?.value);
     if (response.admin) {
