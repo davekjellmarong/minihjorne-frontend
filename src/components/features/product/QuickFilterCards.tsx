@@ -52,11 +52,6 @@ const QuickFilterCards = () => {
           }}
         >
           <p className="text-sm font-light text-brand-700">{filter.name}</p>
-          <img
-            src="/icons/arrow-right.svg"
-            alt="arrow"
-            className="ml-1 h-3 w-3"
-          />
         </div>
       ))}
     </div>
