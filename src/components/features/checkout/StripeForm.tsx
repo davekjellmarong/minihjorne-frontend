@@ -119,6 +119,11 @@ const StripeForm = ({ price, user }: StripeFormProps) => {
           options={{
             mode: "shipping",
             fields: { phone: "always" },
+            validation: {
+              phone: {
+                required: "always",
+              },
+            },
             allowedCountries: ["NO"],
           }}
         />
