@@ -73,7 +73,7 @@ const StripeForm = ({ price, user }: StripeFormProps) => {
         // Make sure to change this to your payment completion page
         return_url: user
           ? `${process.env.NEXT_PUBLIC_URL}/min-side/ordre?payment=success`
-          : `${process.env.NEXT_PUBLIC_URL}/ordre-bekreftelse`,
+          : `${process.env.NEXT_PUBLIC_URL}/ordre-bekreftelse?payment=success`,
       },
     });
 

@@ -1,8 +1,19 @@
+"use client";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
+import { clearCartInLocalStorage } from "@/utils/CartUtils";
 import Link from "next/link";
-import React from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useEffect } from "react";
 
 const OrderConfirmationPage = () => {
+  const searchParams = useSearchParams().get("redirect_status");
+  useEffect(() => {
+    if (searchParams === "succeeded") {
+      console.log("Payment succeeded!");
+      clearCartInLocalStorage();
+    }
+  }, [searchParams]);
+
   return (
     <>
       <ActionsColoredBox
