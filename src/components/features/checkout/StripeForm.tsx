@@ -10,8 +10,12 @@ import {
 import { clearCartInLocalStorage } from "@/utils/CartUtils";
 import { CurrencyDollar, Pants, Truck } from "@phosphor-icons/react";
 import { shippingPrice } from "@/utils/constants";
-
-const StripeForm = ({ price }: any) => {
+import { UserBackend } from "@/utils/types";
+interface StripeFormProps {
+  price: any;
+  user: UserBackend | undefined;
+}
+const StripeForm = ({ price, user }: StripeFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -67,7 +71,9 @@ const StripeForm = ({ price }: any) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${process.env.NEXT_PUBLIC_URL}/min-side/ordre?payment=success`,
+        return_url: user
+          ? `${process.env.NEXT_PUBLIC_URL}/min-side/ordre?payment=success`
+          : `${process.env.NEXT_PUBLIC_URL}/ordre-bekreftelse`,
       },
     });
 
@@ -99,7 +105,13 @@ const StripeForm = ({ price }: any) => {
     >
       <div className="">
         <h3 className="text-xl">Email</h3>
-        <LinkAuthenticationElement />
+        <LinkAuthenticationElement
+          options={{
+            defaultValues: {
+              email: user ? user.email : "",
+            },
+          }}
+        />
       </div>
       <div className="">
         <h3 className="text-xl">Frakt</h3>

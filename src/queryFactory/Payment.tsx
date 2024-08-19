@@ -14,8 +14,8 @@ export const PaymentQueries = {
 };
 
 export const PaymentMethods = {
-  post: async (data: any) => {
-    return postPublicData(data, "/payments");
+  post: async (data: any, token?: any) => {
+    return postPublicData(data, "/payments", token);
   },
   getSubscriptionPaymentLink: async (token: any, planId: number) => {
     return getData(`/payments/subscription?planId=${planId}`, token);
