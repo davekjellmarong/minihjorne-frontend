@@ -5,6 +5,7 @@ import {
   useElements,
   PaymentElement,
   AddressElement,
+  LinkAuthenticationElement,
 } from "@stripe/react-stripe-js";
 import { clearCartInLocalStorage } from "@/utils/CartUtils";
 import { CurrencyDollar, Pants, Truck } from "@phosphor-icons/react";
@@ -16,7 +17,7 @@ const StripeForm = ({ price }: any) => {
 
   const [message, setMessage] = useState<any>();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [email, setEmail] = useState("");
   useEffect(() => {
     if (!stripe) {
       return;
@@ -94,8 +95,12 @@ const StripeForm = ({ price }: any) => {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      className="my-14 flex w-full flex-col items-center gap-16"
+      className="my-14 flex w-full flex-col items-center gap-10"
     >
+      <div className="">
+        <h3 className="text-xl">Email</h3>
+        <LinkAuthenticationElement />
+      </div>
       <div className="">
         <h3 className="text-xl">Frakt</h3>
         <AddressElement

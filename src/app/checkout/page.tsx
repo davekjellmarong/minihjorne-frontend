@@ -18,10 +18,9 @@ const Page = () => {
     cart = getCart();
   }
 
-  const { data: jwt } = useQuery(AuthQueries.jwt());
   const { mutate: createPayment } = useMutation({
     mutationFn: (values: any) => {
-      return PaymentMethods.post(values, jwt);
+      return PaymentMethods.post(values);
     },
     onSuccess: (data) => {
       setClientSecret(data.clientSecret);
@@ -33,16 +32,14 @@ const Page = () => {
     },
   });
   useEffect(() => {
-    if (jwt) {
-      createPayment({
-        data: {
-          amount: cart.totalPrice,
-          productsIds: cart.productIds,
-          products: cart.items,
-        },
-      });
-    }
-  }, [jwt]);
+    createPayment({
+      data: {
+        amount: cart.totalPrice,
+        productsIds: cart.productIds,
+        products: cart.items,
+      },
+    });
+  }, []);
   const appearance = {
     theme: "stripe",
     variables: {
