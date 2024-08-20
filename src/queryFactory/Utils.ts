@@ -172,10 +172,16 @@ export const deleteData = async (query: string, token: string) => {
     throw error;
   }
 };
-export const postPublicData = async (data: any, query: string) => {
+export const postPublicData = async (data: any, query: string, token?: any) => {
+  let headers = {};
+  if (token?.length > 10) {
+    headers = {
+      Authorization: `Bearer ${token}`,
+    };
+  }
   try {
     const url = apiUrl + query;
-    const res = await axios.post(url, data);
+    const res = await axios.post(url, data, { headers });
     return res.data;
   } catch (error) {
     console.error("Error fetching data:", error);

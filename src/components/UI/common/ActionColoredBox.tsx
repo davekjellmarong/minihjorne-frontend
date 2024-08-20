@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -7,6 +8,7 @@ interface ActionsColoredBoxProps {
   button: string;
   path: string;
   color: "blue" | "yellow" | "green" | "red" | "purple";
+  image?: boolean;
 }
 
 const ActionsColoredBox = ({
@@ -15,6 +17,7 @@ const ActionsColoredBox = ({
   button,
   path,
   color,
+  image = false,
 }: ActionsColoredBoxProps) => {
   const colorClasses = {
     blue: {
@@ -47,6 +50,16 @@ const ActionsColoredBox = ({
     >
       <div className="mb-4 text-center">
         <h2 className="mb-2 text-lg font-bold">{header}</h2>
+        {image && (
+          <div className="flex justify-center">
+            <Image
+              src="/minihjørne-icon.svg"
+              alt="Minihjørne Icon"
+              width={150}
+              height={150}
+            />
+          </div>
+        )}
         <p className="text-base">{children}</p>
       </div>
       <Link href={path}>

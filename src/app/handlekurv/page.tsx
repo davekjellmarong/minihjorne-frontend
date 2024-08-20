@@ -140,9 +140,7 @@ const Page = () => {
         <button
           className={`shadow- max-w-[350px] rounded  px-8 py-4 text-center font-semibold text-white ${checked ? "bg-brand-500" : "bg-gray-300"}`}
           onClick={() => {
-            router.push(
-              jwt ? "/checkout" : "/auth?redirect=/checkout&type=login",
-            );
+            router.push("/checkout");
           }}
           disabled={!checked}
         >

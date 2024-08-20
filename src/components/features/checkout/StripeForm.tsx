@@ -5,18 +5,23 @@ import {
   useElements,
   PaymentElement,
   AddressElement,
+  LinkAuthenticationElement,
 } from "@stripe/react-stripe-js";
 import { clearCartInLocalStorage } from "@/utils/CartUtils";
 import { CurrencyDollar, Pants, Truck } from "@phosphor-icons/react";
 import { shippingPrice } from "@/utils/constants";
-
-const StripeForm = ({ price }: any) => {
+import { UserBackend } from "@/utils/types";
+interface StripeFormProps {
+  price: any;
+  user: UserBackend | undefined;
+}
+const StripeForm = ({ price, user }: StripeFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const [message, setMessage] = useState<any>();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [email, setEmail] = useState("");
   useEffect(() => {
     if (!stripe) {
       return;
@@ -66,7 +71,9 @@ const StripeForm = ({ price }: any) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${process.env.NEXT_PUBLIC_URL}/min-side/ordre?payment=success`,
+        return_url: user
+          ? `${process.env.NEXT_PUBLIC_URL}/min-side/ordre?payment=success`
+          : `${process.env.NEXT_PUBLIC_URL}/ordre-bekreftelse?payment=success`,
       },
     });
 
@@ -94,14 +101,29 @@ const StripeForm = ({ price }: any) => {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      className="my-14 flex w-full flex-col items-center gap-16"
+      className="my-14 flex w-full flex-col items-center gap-10"
     >
+      <div className="">
+        <h3 className="text-xl">Email</h3>
+        <LinkAuthenticationElement
+          options={{
+            defaultValues: {
+              email: user ? user.email : "",
+            },
+          }}
+        />
+      </div>
       <div className="">
         <h3 className="text-xl">Frakt</h3>
         <AddressElement
           options={{
             mode: "shipping",
             fields: { phone: "always" },
+            validation: {
+              phone: {
+                required: "always",
+              },
+            },
             allowedCountries: ["NO"],
           }}
         />
