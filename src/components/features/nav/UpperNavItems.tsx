@@ -7,7 +7,7 @@ export const upperNavItems = [
   },
   {
     label: "Finn klær",
-    path: "/produkter?pagination[page]=1",
+    path: "/brukte-barne-klaer?pagination[page]=1",
     color: "transparent",
     icon: "minSide",
   },
@@ -51,7 +51,7 @@ export const authUpperNavItems = [
   },
   {
     label: "Finn klær",
-    path: "/produkter?pagination[page]=1",
+    path: "/brukte-barne-klaer?pagination[page]=1",
     color: "transparent",
     icon: "minSide",
   },

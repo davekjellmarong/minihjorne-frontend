@@ -1,3 +1,4 @@
+import { incrementProductViews } from "@/serverActions/ServerActions";
 import { Product as ProductType } from "@/utils/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,9 +11,12 @@ const Product = ({ product }: ProductProps) => {
   const { image, brand, price, size } = product.attributes;
   return (
     <Link
-      href={`/produkter/${product.id}`}
+      href={`/brukte-barne-klaer/${product.id}`}
       className=" w-full cursor-pointer rounded border-2 border-gray-100 active:bg-gray-200"
       key={product.id}
+      onClick={() => {
+        incrementProductViews(product.id, product.attributes.views);
+      }}
     >
       <div className="relative">
         <Image

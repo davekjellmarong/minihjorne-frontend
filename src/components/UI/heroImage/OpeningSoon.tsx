@@ -70,7 +70,7 @@ const OpeningSoon = () => {
           {/* <Button type="outline" className="rounded border-2">
             Registrer deg nå!
           </Button> */}
-          <Link href="/produkter?pagination[page]=1">
+          <Link href="/brukte-barne-klaer?pagination[page]=1">
             <button className="rounded-lg border-gray-50 bg-white px-8 py-4 text-lg shadow-xl active:bg-gray-200">
               Se produkter
             </button>

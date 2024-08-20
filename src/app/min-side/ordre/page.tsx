@@ -29,7 +29,7 @@ const Ordre = () => {
     return (
       <EmptyList
         text="Du har ingen ordre"
-        path="/produkter?pagination[page]=1"
+        path="/brukte-barne-klaer?pagination[page]=1"
         buttonLabel="Se produkter"
       />
     );

@@ -188,6 +188,16 @@ export const postPublicData = async (data: any, query: string, token?: any) => {
     throw error;
   }
 };
+export const putPublicData = async (data: any, query: string) => {
+  try {
+    const url = apiUrl + query;
+    const res = await axios.put(url, data);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 
 export const registerUser = async (values: any) => {
   const url = apiUrl + "/auth/local/register";

@@ -7,37 +7,37 @@ const QuickFilterCards = () => {
   const quickFilterData = [
     {
       name: "Gutt",
-      link: "/produkter?&filters[sex][id][$eq]=1",
+      link: "/brukte-barne-klaer?&filters[sex][id][$eq]=1",
       bgClass: "bg-red-400",
     },
     {
       name: "Jente",
-      link: "/produkter?&filters[sex][id][$eq]=2",
+      link: "/brukte-barne-klaer?&filters[sex][id][$eq]=2",
       bgClass: "bg-blue-400",
     },
     {
       name: "Unisex",
-      link: "/produkter?&filters[sex][id][$eq]=3",
+      link: "/brukte-barne-klaer?&filters[sex][id][$eq]=3",
     },
     {
       name: "Body",
-      link: "/produkter?&filters[category][id][$eq]=2",
+      link: "/brukte-barne-klaer?&filters[category][id][$eq]=2",
     },
     {
       name: "Ull",
-      link: "/produkter?&filters[material][id][$eq]=6",
+      link: "/brukte-barne-klaer?&filters[material][id][$eq]=6",
     },
     {
       name: "Sett",
-      link: "/produkter?&filters[category][id][$eq]=16",
+      link: "/brukte-barne-klaer?&filters[category][id][$eq]=16",
     },
     {
       name: "Bukse",
-      link: "/produkter?&filters[category][id][$eq]=6",
+      link: "/brukte-barne-klaer?&filters[category][id][$eq]=6",
     },
     {
       name: "Genser",
-      link: "/produkter?&filters[category][id][$eq]=3",
+      link: "/brukte-barne-klaer?&filters[category][id][$eq]=3",
     },
   ];
 

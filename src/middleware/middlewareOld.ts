@@ -24,7 +24,7 @@ export async function middlewareOld(request: NextRequest) {
     );
   if (
     path.startsWith("/handlekurv") ||
-    path.startsWith("/produkter") ||
+    path.startsWith("/brukte-barne-klaer") ||
     path.startsWith("/checkout")
   ) {
     const featureFlagActive = await isFeatureFlagActive(
@@ -49,5 +49,9 @@ export async function middlewareOld(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/handlekurv/:path*", "/produkter/:path*", "/checkout/:path*"],
+  matcher: [
+    "/handlekurv/:path*",
+    "/brukte-barne-klaer/:path*",
+    "/checkout/:path*",
+  ],
 };

@@ -38,7 +38,7 @@ const Page = () => {
         <p className="text-lg">Handlekurven er desverre tom</p>
         <Image src="/empty-cart.svg" width={200} height={200} alt="emptyCart" />
         <Link
-          href="/produkter?pagination[page]=1"
+          href="/brukte-barne-klaer?pagination[page]=1"
           className="rounded bg-brand-500 px-8 py-4 text-center text-white shadow"
         >
           <button>Se produkter</button>
@@ -67,7 +67,7 @@ const Page = () => {
                   alt=""
                   className="col-span-2 row-span-full h-40 w-32 rounded object-cover"
                   onClick={() => {
-                    router.push(`/produkter/${product.id}`);
+                    router.push(`/brukte-barne-klaer/${product.id}`);
                   }}
                 />
                 <p className="row-span-1 font-semibold">

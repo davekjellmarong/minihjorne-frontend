@@ -65,7 +65,7 @@ const Button = ({
       type={submit ? "submit" : "button"}
       onClick={onClick}
       disabled={disabled}
-      className={`${colors[type]} flex items-center justify-center gap-2 rounded ${sizeClass} ${className}`}
+      className={`${colors[type]} flex items-center justify-center gap-2 rounded ${sizeClass} ${className} transition duration-200 ease-in-out`}
     >
       {icon && <span>{iconElement[icon]}</span>}
       <p>{children}</p>
