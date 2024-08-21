@@ -1,6 +1,10 @@
 import Header from "@/components/features/omOss/Header";
 import React from "react";
-
+export const metadata = {
+  title: "Minihjørne - Tilstand på produktene",
+  description:
+    "Her finner du informasjon om tilstand på alle brukte barneklær hos Minihjørne",
+};
 const page = () => {
   return (
     <div>

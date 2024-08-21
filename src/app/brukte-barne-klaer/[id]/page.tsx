@@ -17,6 +17,32 @@ import ProductFieldRow from "@/components/features/product/ProductFieldRow";
 import { isBrand_link, isDefect, isMaterial, isTag } from "@/utils/types";
 import CarouselComponent from "@/components/common/Carousel";
 import "../../../styles/FieldRow.css";
+import type { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { id: string };
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // read route params
+  const id = params.id;
+
+  // fetch data
+  const product = await ProductsMethods.getById(id);
+  const color = product.attributes.colors.data[0].attributes.name;
+  const category = product.attributes.category.data.attributes.name;
+  return {
+    title:
+      product.attributes.colors.data[0].attributes.name +
+      " " +
+      product.attributes.category.data.attributes.name +
+      " - Brukte Barneklær | Minihjørne",
+    description: `Se detaljer om ${color} ${category} hos Minihjørne. Kjøp brukte barneklær i god stand til en lav pris.`,
+  };
+}
 
 const ProductDetail = async ({ params }: { params: { id: string } }) => {
   const product = await ProductsMethods.getById(params.id);

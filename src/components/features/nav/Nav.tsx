@@ -56,7 +56,7 @@ const Nav = ({ navItemsPublic, navItemsAuth }: NavProps) => {
   if (!navVisible) return null;
   return (
     <header className="mb-2  h-[56px] w-full">
-      <nav className="fixed z-20 flex w-full justify-center border-b bg-white px-4">
+      <nav className=" z-20 flex w-full justify-center border-b bg-white px-4">
         <div className="flex w-full max-w-[978px] flex-wrap items-center justify-between py-2">
           <Link href="/" className="mb-0   pb-0 ">
             <Image

@@ -2,7 +2,11 @@ import Header from "@/components/features/omOss/Header";
 import Step from "@/components/features/omOss/Step";
 import { shippingPrice } from "@/utils/constants";
 import React from "react";
-
+export const metadata = {
+  title: "Minihjørne - Hvorfor bruke oss?",
+  description:
+    "Oppdag fordelene ved å kjøpe og selge brukte barneklær gjennom Minihjørne",
+};
 const page = () => {
   return (
     <>

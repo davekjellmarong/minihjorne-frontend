@@ -1,7 +1,11 @@
 import Header from "@/components/features/omOss/Header";
 import Step from "@/components/features/omOss/Step";
 import React from "react";
-
+export const metadata = {
+  title: "Minihjørne - Hva er Minihjørne?",
+  description:
+    "Her finner du informasjon om Minihjørne, vår plattform og våre tjenester.",
+};
 const MinihjornePage = () => {
   return (
     <>

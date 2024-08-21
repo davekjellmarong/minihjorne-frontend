@@ -3,7 +3,29 @@ import SalgsprofilHeader from "@/components/features/minSide/salgsprofil/Salgspr
 import Products from "@/components/features/product/Products";
 import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
 import SalgsProfilProducts from "@/components/features/product/SalgsProfilProducts";
+import { UserMethods } from "@/queryFactory/User";
+import { Metadata, ResolvingMetadata } from "next";
 import { Suspense } from "react";
+
+type Props = {
+  params: { id: string };
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // read route params
+  const id = params.id;
+
+  // fetch data
+  const userData = await UserMethods.getById(id);
+
+  return {
+    title: `Salgsprofil - Brukte Barneklær | Minihjørne - ${userData.username}`,
+    description: `Se salgsprofilen til ${userData.username} på Minihjørne. Oppdag brukte barneklær fra pålitelige selgere.`,
+  };
+}
 
 const Page = async ({ params }: { params: { id: string } }) => {
   return (

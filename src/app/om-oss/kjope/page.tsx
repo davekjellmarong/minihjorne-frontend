@@ -1,7 +1,11 @@
 import Header from "@/components/features/omOss/Header";
 import Step from "@/components/features/omOss/Step";
 import React from "react";
-
+export const metadata = {
+  title: "Minihjørne - Kjøpe brukte barneklær hos Minihjørne",
+  description:
+    "Her kommer litt nytting informasjon til deg som skal handle brukte barneklær i nettbuttikken vår.",
+};
 const page = () => {
   return (
     <>

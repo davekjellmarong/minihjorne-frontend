@@ -1,7 +1,13 @@
 import React from "react";
 import OmOss from "./page";
 import Links from "@/components/features/omOss/Links";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Minihjørne - Om oss",
+  description:
+    "Her finner du informasjon om Minihjørne, vår plattform og våre tjenester.",
+};
 const layout = ({ children }: any) => {
   return (
     <>

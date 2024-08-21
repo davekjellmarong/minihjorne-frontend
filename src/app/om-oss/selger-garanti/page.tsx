@@ -1,7 +1,11 @@
 import Header from "@/components/features/omOss/Header";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
 import React from "react";
-
+export const metadata = {
+  title: "Minihjørne - Selgergaranti",
+  description:
+    "Her finner du informasjon om Minihjørne sin selgergaranti og hvordan den fungerer.",
+};
 const SellerGuaranteePage = () => {
   return (
     <>

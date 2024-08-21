@@ -2,7 +2,11 @@ import LeveringsDager from "@/components/common/leveringsDager/LeveringsDager";
 import Header from "@/components/features/omOss/Header";
 import Image from "next/image";
 import React from "react";
-
+export const metadata = {
+  title: "Minihjørne - Levering",
+  description:
+    "Her finner du informasjon om levering av brukte barneklær til Minihjørne når du skal selge.",
+};
 const page = () => {
   return (
     <>
