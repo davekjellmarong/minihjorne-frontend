@@ -22,7 +22,7 @@ const HomeHeroImage = () => {
           Grønt.
         </h1>
         <div className="flex gap-8">
-          <Link href="/produkter?pagination[page]=1">
+          <Link href="/brukte-barne-klaer?pagination[page]=1">
             <button className="rounded-lg border-2 border-brand-500 bg-brand-500 px-8 py-4 text-white active:bg-brand-700 sm:hover:bg-brand-100 sm:hover:text-black">
               Kjøp klær
             </button>

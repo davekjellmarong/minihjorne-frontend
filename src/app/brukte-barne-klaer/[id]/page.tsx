@@ -72,13 +72,13 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
           <div className="">
             <ColorSquares size="small" colors={colors.data} />
           </div>
-          <div className=" flex w-full flex-col gap-3">
+          <div className="flex w-full flex-col gap-3">
             <p className="mt-6 w-full  text-center text-3xl font-semibold">
               {price} kr
             </p>
             <div className="mb-4 flex w-full items-center justify-center">
               <Link
-                href={`/produkter/?${queryTemplates.categoryQueryTemplate}${category.data.id}&pagination[page]=1`}
+                href={`/brukte-barne-klaer/?${queryTemplates.categoryQueryTemplate}${category.data.id}&pagination[page]=1`}
                 className=""
               >
                 {category_type.data.attributes.name} /{" "}
@@ -86,9 +86,9 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
               </Link>
             </div>
           </div>
-          <div>
+          <div className="flex flex-col justify-between">
             <Link
-              href={`/produkter/?${queryTemplates.sexQueryTemplate}${sex.data.id}&pagination[page]=1`}
+              href={`/brukte-barne-klaer/?${queryTemplates.sexQueryTemplate}${sex.data.id}&pagination[page]=1`}
               className="flex items-center"
             >
               {sex.data.attributes.name === "Gutt" && (
@@ -104,6 +104,17 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
                 {sex.data.attributes.name}
               </p>
             </Link>
+            <div className="flex ">
+              {defects.data.map((defect) => {
+                return (
+                  <div className="" key={defect.id}>
+                    <span className="mr-2 inline-flex items-center justify-center rounded-full bg-orange-300 p-2 text-sm">
+                      {defect.attributes.type}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -154,7 +165,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
               {tags.data?.map((tag) => {
                 return (
                   <Link
-                    href={`/produkter/?${queryTemplates.tagQueryTemplate}${tag.id}&pagination[page]=1`}
+                    href={`/brukte-barne-klaer/?${queryTemplates.tagQueryTemplate}${tag.id}&pagination[page]=1`}
                     key={tag.id}
                   >
                     {tag.attributes.name}

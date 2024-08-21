@@ -6,7 +6,9 @@ import {
   getProductsFiltered,
   getPublicData,
   postData,
+  postPublicData,
   putData,
+  putPublicData,
 } from "./Utils";
 
 export const ProductsMethods = {
@@ -35,6 +37,9 @@ export const ProductsMethods = {
   },
   post: async (data: any, token: any) => {
     return postData(data, "/products", token);
+  },
+  incrementProductView: async (data: any, id: number) => {
+    return putPublicData(data, `/products/${id}`);
   },
 };
 

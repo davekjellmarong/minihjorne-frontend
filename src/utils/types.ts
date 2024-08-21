@@ -43,6 +43,7 @@ export interface CommonProduct {
   sold: boolean;
   soldDate: string;
   active: boolean;
+  views: number;
 }
 export interface CommonOrder {
   guid: string;
@@ -219,6 +220,7 @@ export interface ProductBackend extends CommonProduct {
   user: UserBackend;
   state: StateBackend;
   sex: SexBackend;
+  defects: CommonDefect[];
 }
 export interface ProductsData {
   data: Product[];
@@ -254,6 +256,7 @@ export interface Product {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    views: number;
     sex: { data: Sex };
     brand: string | null;
     image: {

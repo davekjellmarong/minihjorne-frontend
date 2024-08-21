@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useTransition } from "react";
 import { useEffect, useState } from "react";
 import {
   useStripe,
@@ -11,17 +11,19 @@ import { clearCartInLocalStorage } from "@/utils/CartUtils";
 import { CurrencyDollar, Pants, Truck } from "@phosphor-icons/react";
 import { shippingPrice } from "@/utils/constants";
 import { UserBackend } from "@/utils/types";
+import Button from "@/components/common/buttons/Button";
+import { updateAmountByShipping } from "@/serverActions/Stripe";
 interface StripeFormProps {
   price: any;
   user: UserBackend | undefined;
+  clientId: string;
 }
-const StripeForm = ({ price, user }: StripeFormProps) => {
+const StripeForm = ({ price, user, clientId }: StripeFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
-
+  const [isShipping, setIsShipping] = useState(true);
   const [message, setMessage] = useState<any>();
   const [isLoading, setIsLoading] = useState(false);
-  const [email, setEmail] = useState("");
   useEffect(() => {
     if (!stripe) {
       return;
@@ -91,6 +93,18 @@ const StripeForm = ({ price, user }: StripeFormProps) => {
     setIsLoading(false);
   };
 
+  const handleShippingChange = async (shipping: boolean) => {
+    setIsLoading(true);
+    updateAmountByShipping(shipping, clientId).then((response) => {
+      if (response === "success") {
+        setIsShipping(shipping);
+        setIsLoading(false);
+      } else {
+        setMessage(response);
+      }
+    });
+  };
+
   const paymentElementOptions: any = {
     layout: "tabs",
     defaultValues: {
@@ -103,8 +117,28 @@ const StripeForm = ({ price, user }: StripeFormProps) => {
       onSubmit={handleSubmit}
       className="my-14 flex w-full flex-col items-center gap-10"
     >
+      <div className="flex flex-col gap-2">
+        <Button
+          onClick={() => {
+            handleShippingChange(true);
+          }}
+          size="small"
+          type={`${isShipping ? "brand" : "outline"}`}
+        >
+          Sendes med post (99kr)
+        </Button>
+        <Button
+          onClick={() => {
+            handleShippingChange(false);
+          }}
+          size="small"
+          type={`${isShipping ? "outline" : "brand"}`}
+        >
+          Hente selv i oslo (gratis)
+        </Button>
+      </div>
       <div className="">
-        <h3 className="text-xl">Email</h3>
+        <h3 className="text-xl text-gray-600">Kontakt</h3>
         <LinkAuthenticationElement
           options={{
             defaultValues: {
@@ -113,23 +147,29 @@ const StripeForm = ({ price, user }: StripeFormProps) => {
           }}
         />
       </div>
-      <div className="">
-        <h3 className="text-xl">Frakt</h3>
-        <AddressElement
-          options={{
-            mode: "shipping",
-            fields: { phone: "always" },
-            validation: {
-              phone: {
-                required: "always",
+
+      {isShipping && (
+        <div className="">
+          <h3 className="text-xl text-gray-600">Frakt</h3>
+          <AddressElement
+            options={{
+              mode: "shipping",
+              display: {
+                name: "full",
               },
-            },
-            allowedCountries: ["NO"],
-          }}
-        />
-      </div>
+              fields: { phone: "always" },
+              validation: {
+                phone: {
+                  required: "always",
+                },
+              },
+              allowedCountries: ["NO"],
+            }}
+          />
+        </div>
+      )}
       <div className="">
-        <h3 className="text-xl">Betaling</h3>
+        <h3 className="text-xl text-gray-600">Betaling</h3>
         <PaymentElement id="payment-element" options={paymentElementOptions} />
       </div>
       <div className="flex flex-col gap-2">
@@ -143,7 +183,7 @@ const StripeForm = ({ price, user }: StripeFormProps) => {
           <p className="w-24 text-gray-500">Frakt </p>
           <span className="text-xl font-light text-black">
             {" "}
-            {shippingPrice} kr
+            {isShipping ? shippingPrice : 0} kr
           </span>
         </div>
         <hr className="w-52 border" />
@@ -152,7 +192,7 @@ const StripeForm = ({ price, user }: StripeFormProps) => {
           <p className="w-24 text-gray-500">Total </p>
           <span className="text-xl font-light text-black">
             {" "}
-            {price + shippingPrice} kr
+            {isShipping ? price + shippingPrice : price} kr
           </span>
         </div>
       </div>

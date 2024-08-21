@@ -1,7 +1,7 @@
 export const navItemsPublic = [
   {
     label: "",
-    path: "/produkter?pagination[page]=1",
+    path: "/brukte-barne-klaer?pagination[page]=1",
     color: "transparent",
     icon: "tShirt",
   },
@@ -21,7 +21,7 @@ export const navItemsPublic = [
 export const navItemsAuth = [
   {
     label: "",
-    path: "/produkter?pagination[page]=1",
+    path: "/brukte-barne-klaer?pagination[page]=1",
     color: "transparent",
     icon: "tShirt",
   },

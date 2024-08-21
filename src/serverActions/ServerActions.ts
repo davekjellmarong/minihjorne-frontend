@@ -7,6 +7,7 @@ import { z } from "zod";
 import { PlanEnum } from "@/utils/Enums";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { ProductsMethods } from "@/queryFactory/Product";
 
 export const activeUserProfile = async (cool: any) => {
   const cookieStore: any = cookies();
@@ -75,4 +76,18 @@ export const updateUserSaleProfile = async (formdata: FormData) => {
   } else {
     throw new Error("Error updating user sale profile");
   }
+};
+
+export const incrementProductViews = async (
+  productId: number,
+  currentViews: number,
+) => {
+  const payload = {
+    views: currentViews + 1,
+  };
+  const response = await ProductsMethods.incrementProductView(
+    payload,
+    productId,
+  );
+  return response;
 };
