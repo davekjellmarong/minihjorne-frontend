@@ -10,14 +10,16 @@ import dynamic from "next/dynamic";
 import { PHProvider } from "@/providers/PosthogProvider";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import NavProvider from "@/components/features/nav/NavProvider";
+import GratisHenting from "@/components/UI/banners/GratisHenting";
 
 const PostHogPageView = dynamic(() => import("@/providers/PostHogPageView"), {
   ssr: false,
 });
 
 export const metadata: Metadata = {
-  title: "Minihjørne",
-  description: "Kjøp og salg av barneklær",
+  title: "Minihjørne - Brukte Barneklær",
+  description:
+    "Velkommen til Minihjørne, din nettbutikk for brukte barneklær. Kjøp, selg, og finn barneklær i god stand til rimelige priser.",
 };
 
 export default function RootLayout({
@@ -31,6 +33,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <PHProvider>
             <AutoLoginMiddleware>
+              <GratisHenting />
               <NavProvider />
               <main className="relative m-auto max-w-[978px]">
                 <PostHogPageView />

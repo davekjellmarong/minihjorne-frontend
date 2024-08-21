@@ -134,8 +134,26 @@ const StripeForm = ({ price, user, clientId }: StripeFormProps) => {
           size="small"
           type={`${isShipping ? "outline" : "brand"}`}
         >
-          Hente selv i oslo (gratis)
+          Hente selv i Oslo (gratis)
         </Button>
+        {!isShipping && (
+          <div className="flex max-w-60 flex-col gap-1 text-center text-sm">
+            <span className="text-xs text-gray-500">
+              Klærne kan hentes på:
+              <br />{" "}
+            </span>
+            <span>
+              <strong>
+                Oslo - Løren
+                <br />
+              </strong>
+            </span>
+
+            <span className="text-xs text-gray-500">
+              Mer info sendes i mail etter bestilling.
+            </span>
+          </div>
+        )}
       </div>
       <div className="">
         <h3 className="text-xl text-gray-600">Kontakt</h3>

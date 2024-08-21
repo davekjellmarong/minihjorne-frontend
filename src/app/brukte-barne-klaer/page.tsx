@@ -13,6 +13,7 @@ export interface SelectedFilter {
   id: number;
   name: string;
 }
+
 const ProductPage = () => {
   const [open, setOpen] = useState(false);
 

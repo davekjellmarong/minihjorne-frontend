@@ -95,8 +95,8 @@ const Page = () => {
           })}
         </ul>
       </div>
-      <div className="sticky bottom-0 flex flex-col justify-center gap-4 border-t bg-white px-4 py-8">
-        <div className="flex gap-2">
+      <div className="sticky bottom-0 flex flex-col justify-center gap-8 border-t bg-white px-4 py-8">
+        {/* <div className="flex gap-2">
           <Pants size={24} color="gray" />
           <p className="w-24 text-gray-500">Varer </p>
           <span className="text-xl font-light text-black">
@@ -111,7 +111,7 @@ const Page = () => {
             {shippingPrice} kr
           </span>
         </div>
-        <hr className="w-52 border" />
+        <hr className="w-52 border" /> */}
         <div className="flex gap-2">
           <CurrencyDollar size={24} color="gray" />
           <p className="w-24 text-gray-500">Total </p>
@@ -120,13 +120,13 @@ const Page = () => {
             {totalPrice + shippingPrice} kr
           </span>
         </div>
-        <label className="flex items-center">
+        <label className="flex items-center gap-2">
           <input
             id="default-checkbox"
             type="checkbox"
             checked={checked}
             onChange={() => setChecked(!checked)}
-            className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-brand-600 focus:ring-2 focus:ring-brand-500"
+            className="size-7 rounded border-gray-300 bg-gray-100 text-brand-600 focus:ring-2 focus:ring-brand-500"
           />
           <Link href="/salgsbetingelser" className="ml-2">
             Godtar du våre{" "}
@@ -144,7 +144,7 @@ const Page = () => {
           }}
           disabled={!checked}
         >
-          Gå videre
+          Gå til betalings informasjon -{">"}
         </button>
         {/* </Link> */}
       </div>

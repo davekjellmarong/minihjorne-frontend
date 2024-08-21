@@ -2,7 +2,10 @@ import LeveringsDager from "@/components/common/leveringsDager/LeveringsDager";
 import Header from "@/components/features/omOss/Header";
 import Step from "@/components/features/omOss/Step";
 import React from "react";
-
+export const metadata = {
+  title: "Minihjørne - Selge klær",
+  description: "Her er alt du trenger å vite for å selge klær hos Minihjørne",
+};
 const page = () => {
   return (
     <>
