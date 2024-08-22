@@ -11,6 +11,7 @@ import { PHProvider } from "@/providers/PosthogProvider";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import NavProvider from "@/components/features/nav/NavProvider";
 import GratisHenting from "@/components/UI/banners/GratisHenting";
+import BotDetection from "@/providers/BotDetection";
 
 const PostHogPageView = dynamic(() => import("@/providers/PostHogPageView"), {
   ssr: false,
@@ -37,6 +38,7 @@ export default function RootLayout({
               <NavProvider />
               <main className="relative m-auto max-w-[978px]">
                 <PostHogPageView />
+                <BotDetection />
                 {children}
                 <ToastContainer
                   theme="colored"

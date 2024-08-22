@@ -172,6 +172,16 @@ export const deleteData = async (query: string, token: string) => {
     throw error;
   }
 };
+export const postPublicEmptyData = async (query: string) => {
+  try {
+    const url = apiUrl + query;
+    const res = await axios.post(url);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 export const postPublicData = async (data: any, query: string, token?: any) => {
   let headers = {};
   if (token?.length > 10) {

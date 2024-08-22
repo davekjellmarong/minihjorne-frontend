@@ -15,7 +15,7 @@ const Product = ({ product }: ProductProps) => {
       className=" w-full cursor-pointer rounded border-2 border-gray-100 active:bg-gray-200"
       key={product.id}
       onClick={() => {
-        incrementProductViews(product.id, product.attributes.views);
+        incrementProductViews(product.id);
       }}
     >
       <div className="relative">

@@ -7,6 +7,7 @@ import {
   getPublicData,
   postData,
   postPublicData,
+  postPublicEmptyData,
   putData,
   putPublicData,
 } from "./Utils";
@@ -38,8 +39,8 @@ export const ProductsMethods = {
   post: async (data: any, token: any) => {
     return postData(data, "/products", token);
   },
-  incrementProductView: async (data: any, id: number) => {
-    return putPublicData(data, `/products/${id}`);
+  incrementProductView: async (id: number) => {
+    return postPublicEmptyData(`/product/view/${id}`);
   },
 };
 
