@@ -1,140 +1,89 @@
+import React from "react";
 import LeveringsDager from "@/components/common/leveringsDager/LeveringsDager";
 import Header from "@/components/features/omOss/Header";
-import Step from "@/components/features/omOss/Step";
-import React from "react";
+import HvordanBliSelger from "@/components/UI/omOss/HvordanBliSelger";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+
 export const metadata = {
   title: "Minihjørne - Selge klær",
   description: "Her er alt du trenger å vite for å selge klær hos Minihjørne",
 };
-const page = () => {
+
+const SellPage = () => {
   return (
     <>
-      <Header text="Selge klær" />
-      {/* <p className="pb-6  text-2xl">
-        Hvordan selger jeg klær hos dere?
-      </p> */}
-      <p className="py-4  text-2xl">
-        Her er alt du trenger å vite for å selge klær hos Minihjørne
-      </p>
-      <div className="flex flex-col gap-8">
-        <div>
-          <Step header="Lag bruker" description="" />
-          <p>Lag deg en bruker hos oss, helt gratis.</p>
-        </div>
-        <div>
-          <Step header="Ta bilder" description="" />
-          <p>
-            Ta bilder av plaggene du vil selge. Et enkelt bilde er ofte nok.
-            Følg denne guiden når du skal ta bilder til Minihjørne.no.
-          </p>
-        </div>
-        <div>
-          <Step header="Registrer klærne" description="" />
-          <p>
-            Last opp bildene og registrer produktinformasjon. Prissettingen gjør
-            du nå.
-          </p>
-        </div>
-        <div>
-          <Step header="Leie periode" description="" />
-          <p>
-            Kjøp leie. Her velger du hvor lenge du ønsker å leie en spot i
-            nettbutikken vår. Perioden kan enkelt forlenges ved behov men det er
-            ikke mulig å korte ned på leieperioden når leieperioden allerede er
-            aktivert (som er når vi mottar plaggene). Vi anbefaler en
-            leieperiode på minimum 2 uker.
-          </p>
-        </div>
-        <div>
-          <Step header="Levering" description="" />
-          <p>
-            Lever plaggene til oss. Du kan enten møte opp og levere de direkte
-            til oss, eller sende de med posten.
-          </p>
-          <p className="my-4">Direkte levering:</p>
-          <p className="text-center font-bold">
-            Kanonhallveien 12A, 0585 Oslo.
-          </p>
+      <Header text="Selge klær hos Minihjørne" />
+      <HvordanBliSelger />
+      <Accordion>
+        <AccordionSummary>Levere klær til oss</AccordionSummary>
+        <AccordionDetails>
+          Du kan levere direkte til oss eller sende klærne med posten. Adresse:
+          Kanonhallveien 12A, 0585 Oslo.
           <LeveringsDager />
-          <p className="my-4">
-            Du kan også sende klærne med posten til oss dersom du selv står for
-            fraktkostnader. Husk å pakke plaggene inn i passende eske eller
-            pose. Du er selv ansvarlig for plaggene inntil de er mottatt av oss.
-            Plaggene sendes til:
-          </p>
-          <div className="">
-            <div className="my-2 font-bold">
-              <p>Iselin Gamst Bernhart</p>
-              <p>Kanonhallveien 12A,</p>
-              <p>0585 Oslo,</p>
-            </div>
-            <p>Tlf nummer: 46947922</p>
-          </div>
-          {/* <p className="my-4 text-center font-bold">Iselin Gamst Bernhart</p>
-          <p className="my-4 text-center font-bold">
-            Kanonhallveien 12A, 0585 Oslo.
-          </p> */}
-        </div>
-        <div>
-          <Step header="Salgsprofil" description="" />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary>Personlig salgsprofil</AccordionSummary>
+        <AccordionDetails>
+          Gå inn på din personlige salgsprofil og skriv litt om hva slags klær
+          du selger. Kanskje er det en kjøper der ute som synes stilen din er
+          ekstra fin, eller har barn i akkurat den størrelsen du selger mye av.
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary>Etter produktregistrering</AccordionSummary>
+        <AccordionDetails>
+          I løpet av leieperioden kan du følge med på salgstallene dine og
+          sjekke statistikk. Husk at du når som helst kan forlenge leietiden
+          din. Når leieperioden er over overfører vi 80% av salgssummen til din
+          konto. Plaggene som eventuelt er igjen må hentes innen 5 dager etter
+          leieforholdet er avsluttet. Vi kan også sende plaggene i retur dersom
+          du betaler frakt. Send oss en mail dersom du ønsker at vi sender
+          plaggene i retur. Ønsker du å donere resterende plagg til oss, send
+          oss en mail! Plaggene vil bli solgt på nettsiden og inntekten går til
+          å videreutvikle Minihjørne.
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary>Hva kan jeg selge?</AccordionSummary>
+        <AccordionDetails>
           <p>
-            Gå inn på din personlige salgsprofil og skriv litt om hva slags klær
-            du selger. Kanskje er det en kjøper der ute som synes stilen din er
-            ekstra fin, eller har barn i akkurat den størrelsen du selger mye
-            av.
+            Nesten alle slags barneklær i str 44 til 140. Klærne skal være rene,
+            hele og i brukbar stand, uten sjenerende lukt. Avvik som hull,
+            flekk, manglende knapp skal dokumenteres synlig med et bilde av
+            avviket samt at det skal hukes av for type avvik i selve
+            registreringsprosessen.
           </p>
-        </div>
-        <div>
-          <p className="pb-6  text-2xl">Etter produktregistrering</p>
+          <br />
           <p>
-            I løpet av leieperioden kan du følge med på salgstallene dine og
-            sjekke statistikk. Husk at du når som helst kan forlenge leietiden
-            din. Når leieperioden er over overfører vi 80% av salgssummen til
-            din konto. Plaggene som eventuelt er igjen må hentes innen 5 dager
-            etter leieforholdet er avsluttet. Vi kan også sende plaggene i retur
-            dersom du betaler frakt. Send oss en mail dersom du ønsker at vi
-            sender plaggene i retur. Ønsker du å donere resterende plagg til
-            oss, send oss en mail! Plaggene vil bli solgt på nettsiden og
-            inntekten går til å videreutvikle Minihjørne.
+            Vi selger også vintage barneklær. Med det mener vi barneklær som er
+            minst 20 år gamle.
           </p>
-        </div>
-        <div>
-          <p className="pb-6  text-2xl">Hva kan jeg selge?</p>
-          <div>
-            <p>
-              Nesten alle slags barneklær i str 44 til 140. Klærne skal være
-              rene, hele og i brukbar stand, uten sjenerende lukt. Avvik som
-              hull, flekk, manglende knapp skal dokumenteres synlig med et bilde
-              av avviket samt at det skal hukes av for type avvik i selve
-              registreringsprosessen.
-            </p>
-            <br />
-            <p>
-              Vi selger også vintage barneklær. Med det mener vi barneklær som
-              er minst 20 år gamle.
-            </p>
-            <br />
+          <br />
 
-            <p>
-              Pr nå tar vi ikke i mot:
-              <b> sko, sokker, hodeplagg, accessories, undertøy og badetøy.</b>
-              Vi selger heller ikke klær fra nettsider som wish, shein og temu,
-              piratkopier og falske varer, plagg med print av våpen, rusmidler
-              og annet som kan oppfattes som støtende.
-            </p>
-          </div>
-        </div>
-        <div>
-          <p className="pb-6  text-2xl">Priser</p>
           <p>
-            Du bestemmer selv prisene på klærne du ønsker å selge. Tenk gjerne
-            på hva plagget har kostet som nytt, samt om det har vært på tilbud,
-            og legg deg gjerne litt under dette nivået igjen. Husk også at
-            prisen avhenger plaggets tilstand, alder, popularitet og lignende.
+            Pr nå tar vi ikke i mot:
+            <b> sko, sokker, hodeplagg, accessories, undertøy og badetøy.</b>
+            Vi selger heller ikke klær fra nettsider som wish, shein og temu,
+            piratkopier og falske varer, plagg med print av våpen, rusmidler og
+            annet som kan oppfattes som støtende.
           </p>
-        </div>
-        <div>
-          <p className="pb-6  text-2xl">Produktbilder</p>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary>Priser</AccordionSummary>
+        <AccordionDetails>
+          Du bestemmer selv prisene på klærne du ønsker å selge. Tenk gjerne på
+          hva plagget har kostet som nytt, samt om det har vært på tilbud, og
+          legg deg gjerne litt under dette nivået igjen. Husk også at prisen
+          avhenger plaggets tilstand, alder, popularitet og lignende.
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary>Produktbilder</AccordionSummary>
+        <AccordionDetails>
           <p>
             Vi vil at det skal være kort prosess å legge ut barneklær for salg.
             Samtidig vil vi at kjøper skal få så mye nødvendig informasjon om
@@ -166,9 +115,11 @@ const page = () => {
               bilder.
             </li>
           </ul>
-        </div>
-        <div>
-          <p className="pb-6  text-2xl">Viktig angående størrelse</p>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary>Størrelse</AccordionSummary>
+        <AccordionDetails>
           <div>
             <p>
               Dersom plagget viser en dobbel størrelse, feks 74-80, før opp den
@@ -184,10 +135,11 @@ const page = () => {
               velkjent merke.
             </p>
           </div>
-        </div>
-
-        <div>
-          <p className="pb-6  text-2xl">Plaggets tilstand</p>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary>Plaggets tilstand</AccordionSummary>
+        <AccordionDetails>
           <ul className="flex list-inside list-disc flex-col gap-4">
             <li>
               <b>Ny:</b> plagget er ubrukt. I noen tilfeller er lappen fremdeles
@@ -203,9 +155,11 @@ const page = () => {
               <b>Godt brukt:</b> plagget har en del slitasje eller bruksmerker.
             </li>
           </ul>
-        </div>
-        <div>
-          <p className="pb-6  text-2xl">Produktadministrasjon</p>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary>Produktadministrasjon</AccordionSummary>
+        <AccordionDetails>
           <ul className="flex list-inside list-disc flex-col gap-4">
             <li>
               <b>Legge til eller bytte bilde </b>i en allerede opprettet
@@ -231,9 +185,10 @@ const page = () => {
               pose plaggene som hører sammen i et sett.
             </li>
           </ul>
-        </div>
-      </div>
+        </AccordionDetails>
+      </Accordion>
     </>
   );
 };
-export default page;
+
+export default SellPage;
