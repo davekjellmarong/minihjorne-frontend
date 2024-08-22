@@ -7,6 +7,7 @@ import Products from "@/components/features/product/Products";
 import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
 import React, { Suspense } from "react";
 import { metadata } from "./layout";
+import Link from "next/link";
 const Home = () => {
   return (
     <>
@@ -39,6 +40,14 @@ const Home = () => {
         <Suspense fallback={<ProductsSkeleton number={20} />}>
           <Products />
         </Suspense>
+        <div className="flex justify-center ">
+          <Link
+            href="/brukte-barne-klaer"
+            className="mt-4 flex w-60 justify-center rounded-lg bg-brand-400 px-4 py-4 text-white"
+          >
+            Se mer brukte barneklær
+          </Link>
+        </div>
       </div>
     </>
   );
