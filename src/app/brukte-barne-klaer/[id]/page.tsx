@@ -71,7 +71,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
         </div>
         <Link
           href={`/profiler/${user.data.id}`}
-          className="absolute right-4 top-4 z-10 flex rounded border-2 border-transparent bg-white px-4 py-2 shadow-lg"
+          className="absolute right-4 top-4 z-10 flex rounded border-brand-400 bg-white px-4 py-2 shadow shadow-orange-200"
         >
           <p className="text-sm text-purple-500">
             {user.data.attributes.username}

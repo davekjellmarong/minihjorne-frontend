@@ -78,16 +78,11 @@ export const updateUserSaleProfile = async (formdata: FormData) => {
   }
 };
 
-export const incrementProductViews = async (
-  productId: number,
-  currentViews: number,
-) => {
-  const payload = {
-    views: currentViews + 1,
-  };
-  const response = await ProductsMethods.incrementProductView(
-    payload,
-    productId,
-  );
-  return response;
+export const incrementProductViews = async (productId: number) => {
+  const isBotCookie: any = cookies().get("isBot")?.value;
+  if (isBotCookie === "false") {
+    await ProductsMethods.incrementProductView(productId);
+    return "Product view incremented";
+  }
+  return "Bot detected";
 };
