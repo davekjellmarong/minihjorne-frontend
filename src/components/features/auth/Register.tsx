@@ -8,6 +8,7 @@ import { UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import { registerUser } from "@/queryFactory/Utils";
+import posthog from "posthog-js";
 
 const Register = () => {
   const searchParams = useSearchParams();
@@ -28,6 +29,7 @@ const Register = () => {
     onSuccess: (data) => {
       if (data.jwt.length > 0) {
         setCookie("Token", data.jwt);
+        posthog.stopSessionRecording();
         queryClient.setQueryData(UserQueries.me(data.jwt).queryKey, data.user);
         queryClient.setQueryData(AuthQueries.jwt().queryKey, data.jwt);
         if (redirect) {

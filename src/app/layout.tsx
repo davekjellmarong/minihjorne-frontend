@@ -4,7 +4,6 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AutoLoginMiddleware from "@/components/customHooks/AutoLoginMiddleware";
 import Footer from "@/components/features/footer/Footer";
 import dynamic from "next/dynamic";
 import { PHProvider } from "@/providers/PosthogProvider";
@@ -12,6 +11,7 @@ import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import NavProvider from "@/components/features/nav/NavProvider";
 import GratisHenting from "@/components/UI/banners/GratisHenting";
 import BotDetection from "@/providers/BotDetection";
+import AutoLoginMiddleware from "@/providers/AutoLoginMiddleware";
 
 const PostHogPageView = dynamic(() => import("@/providers/PostHogPageView"), {
   ssr: false,

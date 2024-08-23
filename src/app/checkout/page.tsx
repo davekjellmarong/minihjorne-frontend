@@ -8,7 +8,7 @@ import StripeForm from "../../components/features/checkout/StripeForm";
 import { useRouter } from "next/navigation";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { PaymentMethods } from "@/queryFactory/Payment";
-import { User, UserBackend } from "@/utils/types";
+import { UserBackend } from "@/utils/types";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK as string);
 
 const Page = () => {

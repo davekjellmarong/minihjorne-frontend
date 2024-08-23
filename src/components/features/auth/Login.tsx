@@ -9,6 +9,7 @@ import { UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { loginUser } from "@/queryFactory/Utils";
 import Link from "next/link";
+import posthog from "posthog-js";
 const Login = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");
@@ -28,6 +29,7 @@ const Login = () => {
     },
     onSuccess: (data) => {
       if (data.jwt.length > 0) {
+        posthog.stopSessionRecording();
         setCookie("Token", data.jwt);
         queryClient.setQueryData(UserQueries.me(data.jwt).queryKey, data.user);
         queryClient.setQueryData(AuthQueries.jwt().queryKey, data.jwt);
