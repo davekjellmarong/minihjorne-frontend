@@ -150,13 +150,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
             value={size.data.attributes.number}
             queryParam={`${queryTemplates.sizeQueryTemplate}${size.data.id}`}
           />
-          {brand && (
-            <ProductFieldRow
-              label="Merke"
-              value={brand}
-              queryParam={`${queryTemplates.brand_linkQueryTemplate}${brand}`}
-            />
-          )}
+          {brand && <ProductFieldRow label="Merke" value={brand} />}
           {isBrand_link(brand_link.data) && (
             <ProductFieldRow
               label="Merke"
