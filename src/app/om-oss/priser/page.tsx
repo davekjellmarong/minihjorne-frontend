@@ -16,7 +16,7 @@ const PriserPage = () => {
           uten å betale leiepris frem til 1. Oktober. Benytt sjansen til å prøve
           vår plattform uten kostnader!
         </InfoColoredBox>
-        <div>
+        {/* <div>
           <div>
             <p className="text-sm font-light text-purple-700">Leiepris</p>
             <h2 className="text-2xl">Hva er leiepris?</h2>
@@ -26,7 +26,7 @@ const PriserPage = () => {
             bestemmer selv hvor mange uker du vil leie og betaler for den valgte
             perioden på forhånd.
           </p>
-        </div>
+        </div> */}
         <div>
           <div>
             <p className="text-sm font-light text-purple-700">Provisjon</p>
