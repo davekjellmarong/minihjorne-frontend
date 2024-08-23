@@ -8,6 +8,7 @@ import React from "react";
 import axios from "axios";
 import { UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
+import posthog from "posthog-js";
 
 interface AutoLoginMiddlewareProps {
   children: React.ReactNode;
@@ -34,6 +35,7 @@ const AutoLoginMiddleware = async ({ children }: AutoLoginMiddlewareProps) => {
     // redirect("/auth?redirect=/min-side/");
     return <>{children}</>;
   }
+  posthog.stopSessionRecording();
   // queryClient.setQueryData(UserQueries.me(token).queryKey, response.data);
   queryClient.setQueryData(AuthQueries.jwt().queryKey, token.value);
   return (
