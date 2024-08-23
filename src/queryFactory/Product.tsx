@@ -11,6 +11,7 @@ import {
   putData,
   putPublicData,
 } from "./Utils";
+import { incrementProductAddedToCart } from "@/serverActions/ServerActions";
 
 export const ProductsMethods = {
   getById: async (id: any): Promise<Product> => {
@@ -41,6 +42,9 @@ export const ProductsMethods = {
   },
   incrementProductView: async (id: number) => {
     return postPublicEmptyData(`/product/view/${id}`);
+  },
+  incrementProductAddedToCart: async (id: number) => {
+    return postPublicEmptyData(`/product/addToCart/${id}`);
   },
 };
 

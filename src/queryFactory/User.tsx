@@ -6,9 +6,11 @@ import {
   getPublicData,
   postData,
   postPublicData,
+  postPublicEmptyData,
   putData,
   putDataFetch,
 } from "./Utils";
+import { incrementUserViews } from "@/serverActions/ServerActions";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -57,5 +59,8 @@ export const UserMethods = {
     passwordConfirmation: any;
   }) => {
     return postPublicData(data, "/auth/reset-password");
+  },
+  incrementUserView: async (id: number) => {
+    return postPublicEmptyData(`/product/view/user/${id}`);
   },
 };

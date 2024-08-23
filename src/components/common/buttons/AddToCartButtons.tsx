@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { ShoppingCart } from "@phosphor-icons/react";
 import { Product } from "@/utils/types";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
+import { incrementProductAddedToCart } from "@/serverActions/ServerActions";
 
 interface AddToCartButtonsProps {
   product: Product;
@@ -31,6 +32,7 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
             addItemToCart(product);
             setAddedProductsIds([...addedProductsIds, product.id]);
             toast.info("Lagt til", { position: toast.POSITION.BOTTOM_RIGHT });
+            incrementProductAddedToCart(product.id);
           }}
           className="flex gap-2 rounded border-2 border-green-500 bg-green-500 px-5 py-3"
         >

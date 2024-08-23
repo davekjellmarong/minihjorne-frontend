@@ -18,6 +18,8 @@ import { isBrand_link, isDefect, isMaterial, isTag } from "@/utils/types";
 import CarouselComponent from "@/components/common/Carousel";
 import "../../../styles/FieldRow.css";
 import type { Metadata, ResolvingMetadata } from "next";
+import { incrementUserViews } from "@/serverActions/ServerActions";
+import SalgsprofilCard from "@/components/common/card/SalgsprofilCard";
 
 type Props = {
   params: { id: string };
@@ -69,15 +71,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
         <div className="absolute left-8 top-4 z-10">
           <BackButton />
         </div>
-        <Link
-          href={`/profiler/${user.data.id}`}
-          className="absolute right-4 top-4 z-10 flex rounded border-brand-400 bg-white px-4 py-2 shadow shadow-orange-200"
-        >
-          <p className="text-sm text-purple-500">
-            {user.data.attributes.username}
-          </p>
-          <User size={22} />
-        </Link>
+        <SalgsprofilCard user={user} />
         <CarouselComponent>
           {image.data.map((image) => {
             return (
