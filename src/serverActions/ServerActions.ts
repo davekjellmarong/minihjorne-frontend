@@ -86,3 +86,21 @@ export const incrementProductViews = async (productId: number) => {
   }
   return "Bot detected";
 };
+
+export const incrementProductAddedToCart = async (productId: number) => {
+  const isBotCookie: any = cookies().get("isBot")?.value;
+  if (isBotCookie === "false") {
+    await ProductsMethods.incrementProductAddedToCart(productId);
+    return "Product added to cart incremented";
+  }
+  return "Bot detected";
+};
+
+export const incrementUserViews = async (userId: number) => {
+  const isBotCookie: any = cookies().get("isBot")?.value;
+  if (isBotCookie === "false") {
+    await UserMethods.incrementUserView(userId);
+    return "User view incremented";
+  }
+  return "Bot detected";
+};
