@@ -39,12 +39,12 @@ const Filter = ({
     setCheckboxStates(filtersObject);
   }, [data, queryParams, filter, property]);
 
-  const handleCheckboxChange = (item: any) => {
+  const handleCheckboxChange = async (item: any) => {
     const isChecked = !checkboxStates[item.attributes[property]];
     if (isChecked) {
-      addQueryParam(router, queryTemplate, item.id);
+      await addQueryParam(router, queryTemplate, item.id);
     } else {
-      removeQueryParam(router, queryTemplate, item.id);
+      await removeQueryParam(router, queryTemplate, item.id);
     }
     setCheckboxStates((prevStates: any) => ({
       ...prevStates,
