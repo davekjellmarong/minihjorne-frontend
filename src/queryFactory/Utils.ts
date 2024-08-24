@@ -8,6 +8,13 @@ export const getProductsFiltered = async (query: string) => {
   const data = await axios.get(url);
   return data.data;
 };
+export const getProductsFilteredByViews = async () => {
+  const url =
+    apiUrl +
+    `/products?pagination[pageSize]=20&sort=views:desc&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
+  const data = await axios.get(url);
+  return data.data;
+};
 
 export const getPublicData = async (query: string) => {
   try {
