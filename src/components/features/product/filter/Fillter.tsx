@@ -41,15 +41,15 @@ const Filter = ({
 
   const handleCheckboxChange = (item: any) => {
     const isChecked = !checkboxStates[item.attributes[property]];
-    setCheckboxStates((prevStates: any) => ({
-      ...prevStates,
-      [item.attributes[property]]: isChecked,
-    }));
     if (isChecked) {
       addQueryParam(router, queryTemplate, item.id);
     } else {
       removeQueryParam(router, queryTemplate, item.id);
     }
+    setCheckboxStates((prevStates: any) => ({
+      ...prevStates,
+      [item.attributes[property]]: isChecked,
+    }));
   };
   if (data)
     return (
