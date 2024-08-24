@@ -1,4 +1,4 @@
-export const addQueryParam = async (
+export const addQueryParam = (
   router: any,
   queryTemplate: string,
   itemId: string,
@@ -6,11 +6,11 @@ export const addQueryParam = async (
   const queryParams = new URLSearchParams(window.location.search);
   queryParams.append(queryTemplate.slice(1, -1), itemId);
   const newUrl = window.location.pathname + "?" + queryParams.toString();
-  await router.push(newUrl);
+  router.push(newUrl);
 };
 
 // todo - clean up these functions with less params and split them up into 3 maybe?
-export const removeQueryParam = async (
+export const removeQueryParam = (
   router: any,
   queryTemplate: string,
   itemId: string,
@@ -30,7 +30,7 @@ export const removeQueryParam = async (
   }
 
   const newUrl = window.location.pathname + "?" + queryParams.toString();
-  await router.push(newUrl);
+  router.push(newUrl);
 };
 
 export const handleRemoveFilter = (

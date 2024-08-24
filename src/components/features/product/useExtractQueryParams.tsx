@@ -8,7 +8,6 @@ const useExtractQueryParams = () => {
   const [queryParams, setQueryParams] = useState<any>(allFiltersObject);
   const searchParams = useSearchParams();
   const { allFilters } = useGetFiltersRouteHandler();
-
   useEffect(() => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const path = current
@@ -45,7 +44,7 @@ const useExtractQueryParams = () => {
     setQueryParams(queryParamsObject);
 
     return () => {
-      setQueryParams(allFiltersObject);
+      setQueryParams([]);
     };
   }, [searchParams]);
   return {
