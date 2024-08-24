@@ -1,13 +1,11 @@
-import GratisHenting from "@/components/UI/banners/GratisHenting";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import OpeningSoon from "@/components/UI/heroImage/OpeningSoon";
 import Card from "@/components/features/home/Card";
 import QuickLinks from "@/components/features/home/QuickLinks";
-import Products from "@/components/features/product/Products";
 import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
 import React, { Suspense } from "react";
-import { metadata } from "./layout";
 import Link from "next/link";
+import HomepageProducts from "@/components/features/productList/HomepageProducts";
 const Home = () => {
   return (
     <>
@@ -38,7 +36,7 @@ const Home = () => {
           <QuickLinks />
         </div>
         <Suspense fallback={<ProductsSkeleton number={20} />}>
-          <Products />
+          <HomepageProducts />
         </Suspense>
         <div className="flex justify-center ">
           <Link

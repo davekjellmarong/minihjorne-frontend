@@ -4,14 +4,12 @@ import {
   deleteData,
   getData,
   getProductsFiltered,
+  getProductsFilteredByViews,
   getPublicData,
   postData,
-  postPublicData,
   postPublicEmptyData,
   putData,
-  putPublicData,
 } from "./Utils";
-import { incrementProductAddedToCart } from "@/serverActions/ServerActions";
 
 export const ProductsMethods = {
   getById: async (id: any): Promise<Product> => {
@@ -19,6 +17,9 @@ export const ProductsMethods = {
   },
   getFiltered: async (query: string): Promise<ProductsPagination> => {
     return getProductsFiltered(query);
+  },
+  getFilteredByViews: async (): Promise<ProductsPagination> => {
+    return getProductsFilteredByViews();
   },
   put: async (id: string, data: any, token: any): Promise<Product> => {
     return putData(data, `/products/${id}`, token);
@@ -56,6 +57,11 @@ export const ProductQueries = {
       queryFn: () => ProductsMethods.getById(id),
     }),
   searchParamsTest: (query: string) =>
+    queryOptions({
+      queryKey: [...ProductQueries.all(), "test", query],
+      queryFn: () => ProductsMethods.getFiltered(query),
+    }),
+  filteredViews: (query: string) =>
     queryOptions({
       queryKey: [...ProductQueries.all(), "test", query],
       queryFn: () => ProductsMethods.getFiltered(query),
