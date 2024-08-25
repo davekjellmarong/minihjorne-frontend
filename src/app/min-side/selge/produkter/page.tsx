@@ -6,7 +6,7 @@ import Link from "next/link";
 import { PlusCircle } from "@phosphor-icons/react";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { EmptyList } from "@/components/common/EmptyList";
-import ProductTable from "@/components/features/minSide/produkter/ProductTable";
+import MyProductsTable from "@/components/features/minSide/produkter/MyProductsTable";
 
 const Produkter = () => {
   const queryClient = useQueryClient();
@@ -38,7 +38,7 @@ const Produkter = () => {
           </b>
         </p>
       </div>
-      <ProductTable products={products} />
+      <MyProductsTable products={products} />
     </div>
   );
 };

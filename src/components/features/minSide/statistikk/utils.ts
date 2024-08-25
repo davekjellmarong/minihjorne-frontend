@@ -20,6 +20,12 @@ export const getProductsStats = (products: ProductBackend[]) => {
   }, 0);
   const remainingProducts = products.filter((product) => !product.sold);
 
+  const productViews = products.reduce((acc, product) => {
+    return acc + product.views;
+  }, 0);
+  const productsAddedToCarts = products.reduce((acc, product) => {
+    return acc + product.added_to_cart;
+  }, 0);
   let productsSoldPercentage = (productsSold.length / products.length) * 100;
   let revenuePercentage = (revenue / possibleRevenue) * 100;
   if (isNaN(productsSoldPercentage)) {
@@ -36,5 +42,7 @@ export const getProductsStats = (products: ProductBackend[]) => {
     remainingProducts: remainingProducts,
     productsSoldPercentage: productsSoldPercentage,
     revenuePercentage: revenuePercentage,
+    productViews: productViews,
+    productsAddedToCarts: productsAddedToCarts,
   };
 };
