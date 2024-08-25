@@ -9,7 +9,7 @@ const ProductStatusChip = ({
   sold: boolean;
   large?: boolean;
 }) => {
-  const size = large ? "text w-40 my-6" : " py-3 px-4 text-sm w";
+  const size = large ? "text w-40 my-6" : " py-3 px-0 text-sm w";
   return (
     <div className={`${size}`}>
       {!active && sold === false && (

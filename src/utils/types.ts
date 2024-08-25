@@ -44,6 +44,7 @@ export interface CommonProduct {
   soldDate: string;
   active: boolean;
   views: number;
+  added_to_cart: number;
 }
 export interface CommonOrder {
   guid: string;
@@ -74,6 +75,7 @@ export interface CommonUser {
   color: string;
   paid: boolean;
   admin: boolean;
+  views: number;
 }
 
 export interface CommonTags {
@@ -202,6 +204,7 @@ export interface UserBackend extends CommonUser {
   id: number;
   plan: CommonPlan;
   productImages: ImageBackend[];
+  products: ProductBackend[];
 }
 export interface OrderBackend extends CommonOrder {
   id: number;
@@ -311,6 +314,7 @@ export interface User {
     admin: boolean;
     plan: { data: CommonPlan };
     productImages: { data: Image[] };
+    views: number;
   };
 }
 export interface Tag {
