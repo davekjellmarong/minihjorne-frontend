@@ -23,11 +23,11 @@ const Footer = () => {
       href: "/personvern",
     },
     {
-      name: "Salgsbetingelser leie",
+      name: "Betingelser leie",
       href: "/kjopebetingelser",
     },
     {
-      name: "Salgsbetingelser kjøp",
+      name: "Betingelser kjøp",
       href: "/salgsbetingelser",
     },
   ];

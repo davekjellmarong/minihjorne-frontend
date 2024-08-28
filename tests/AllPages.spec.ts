@@ -23,7 +23,6 @@ test.describe("Navigation", () => {
 
   test("should navigate to all private pages", async ({ page }) => {
     const privatePages = [
-      "/min-side/selge/leie",
       "/min-side/selge/salgsprofil",
       "/min-side/selge/last-opp",
       "/min-side/selge/produkter",

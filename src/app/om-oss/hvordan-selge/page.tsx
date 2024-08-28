@@ -35,15 +35,14 @@ const SellPage = () => {
       <Accordion>
         <AccordionSummary>Etter produktregistrering</AccordionSummary>
         <AccordionDetails>
-          I løpet av leieperioden kan du følge med på salgstallene dine og
-          sjekke statistikk. Husk at du når som helst kan forlenge leietiden
-          din. Når leieperioden er over overfører vi 80% av salgssummen til din
-          konto. Plaggene som eventuelt er igjen må hentes innen 5 dager etter
-          leieforholdet er avsluttet. Vi kan også sende plaggene i retur dersom
-          du betaler frakt. Send oss en mail dersom du ønsker at vi sender
-          plaggene i retur. Ønsker du å donere resterende plagg til oss, send
-          oss en mail! Plaggene vil bli solgt på nettsiden og inntekten går til
-          å videreutvikle Minihjørne.
+          I løpet av salgsperioden kan du følge med på salgstallene dine og
+          sjekke statistikk. Når salgsperioden er over overfører vi 80% av
+          salgssummen til din konto. Plaggene som eventuelt er igjen må hentes
+          innen 5 dager etter salgsperioden er avsluttet. Vi kan også sende
+          plaggene i retur dersom du betaler frakt. Send oss en mail dersom du
+          ønsker at vi sender plaggene i retur. Ønsker du å donere resterende
+          plagg til oss, send oss en mail! Plaggene vil bli solgt på nettsiden
+          og inntekten går til å videreutvikle Minihjørne.
         </AccordionDetails>
       </Accordion>
       <Accordion>
