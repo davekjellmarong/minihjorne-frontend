@@ -5,6 +5,8 @@ import HvordanBliSelger from "@/components/UI/omOss/HvordanBliSelger";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import Button from "@/components/common/buttons/Button";
+import Link from "next/link";
 
 export const metadata = {
   title: "Minihjørne - Selge klær",
@@ -16,6 +18,14 @@ const SellPage = () => {
     <>
       <Header text="Selge klær hos Minihjørne" />
       <HvordanBliSelger />
+      <div className="flex justify-center py-6">
+        <Link
+          className="rounded bg-brand-500 px-6 py-4 text-white"
+          href="/auth"
+        >
+          Opprett en konto gratis!
+        </Link>
+      </div>
       <Accordion>
         <AccordionSummary>Levere klær til oss</AccordionSummary>
         <AccordionDetails>
@@ -186,6 +196,9 @@ const SellPage = () => {
           </ul>
         </AccordionDetails>
       </Accordion>
+      <div className="py-6 text-center text-brand-600">
+        <Link href="/om-oss/levering">Les mer om levering</Link>
+      </div>
     </>
   );
 };
