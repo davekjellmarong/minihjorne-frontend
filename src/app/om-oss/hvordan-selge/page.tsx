@@ -5,6 +5,8 @@ import HvordanBliSelger from "@/components/UI/omOss/HvordanBliSelger";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import Button from "@/components/common/buttons/Button";
+import Link from "next/link";
 
 export const metadata = {
   title: "Minihjørne - Selge klær",
@@ -16,6 +18,14 @@ const SellPage = () => {
     <>
       <Header text="Selge klær hos Minihjørne" />
       <HvordanBliSelger />
+      <div className="flex justify-center py-6">
+        <Link
+          className="rounded bg-brand-500 px-6 py-4 text-white"
+          href="/auth"
+        >
+          Opprett en konto gratis!
+        </Link>
+      </div>
       <Accordion>
         <AccordionSummary>Levere klær til oss</AccordionSummary>
         <AccordionDetails>
@@ -35,15 +45,14 @@ const SellPage = () => {
       <Accordion>
         <AccordionSummary>Etter produktregistrering</AccordionSummary>
         <AccordionDetails>
-          I løpet av leieperioden kan du følge med på salgstallene dine og
-          sjekke statistikk. Husk at du når som helst kan forlenge leietiden
-          din. Når leieperioden er over overfører vi 80% av salgssummen til din
-          konto. Plaggene som eventuelt er igjen må hentes innen 5 dager etter
-          leieforholdet er avsluttet. Vi kan også sende plaggene i retur dersom
-          du betaler frakt. Send oss en mail dersom du ønsker at vi sender
-          plaggene i retur. Ønsker du å donere resterende plagg til oss, send
-          oss en mail! Plaggene vil bli solgt på nettsiden og inntekten går til
-          å videreutvikle Minihjørne.
+          I løpet av salgsperioden kan du følge med på salgstallene dine og
+          sjekke statistikk. Når salgsperioden er over overfører vi 80% av
+          salgssummen til din konto. Plaggene som eventuelt er igjen må hentes
+          innen 5 dager etter salgsperioden er avsluttet. Vi kan også sende
+          plaggene i retur dersom du betaler frakt. Send oss en mail dersom du
+          ønsker at vi sender plaggene i retur. Ønsker du å donere resterende
+          plagg til oss, send oss en mail! Plaggene vil bli solgt på nettsiden
+          og inntekten går til å videreutvikle Minihjørne.
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -187,6 +196,9 @@ const SellPage = () => {
           </ul>
         </AccordionDetails>
       </Accordion>
+      <div className="py-6 text-center text-brand-600">
+        <Link href="/om-oss/levering">Hvordan levere klær? {"->"}</Link>
+      </div>
     </>
   );
 };

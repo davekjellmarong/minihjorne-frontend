@@ -13,10 +13,6 @@ const page = () => {
       <div className="flex flex-col items-center gap-6 pb-6">
         <Header text="Levere klær til Minihjørne" />
       </div>
-      <div className="mx-4 my-8 rounded-xl bg-yellow-300 p-4 text-center">
-        Husk, før du leverer klær til oss, må du{" "}
-        <strong>registrere klærne og kjøpe en leieavtale.</strong>
-      </div>
       <div className="flex flex-col  gap-10 ">
         <div className="">
           <div>

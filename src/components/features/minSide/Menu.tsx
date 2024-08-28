@@ -54,13 +54,13 @@ const Menu = () => {
           icon: <UserSquare size={32} weight="thin" color="purple" />,
           action: null,
         },
-        {
-          id: 4,
-          title: "Leie",
-          path: "/min-side/selge/leie",
-          icon: <CreditCard size={32} weight="thin" color="purple" />,
-          action: null,
-        },
+        // {
+        //   id: 4,
+        //   title: "Leie",
+        //   path: "/min-side/selge/leie",
+        //   icon: <CreditCard size={32} weight="thin" color="purple" />,
+        //   action: null,
+        // },
       ],
     },
     // {

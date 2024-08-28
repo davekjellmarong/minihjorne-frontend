@@ -7,11 +7,14 @@ import { PlusCircle } from "@phosphor-icons/react";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { EmptyList } from "@/components/common/EmptyList";
 import MyProductsTable from "@/components/features/minSide/produkter/MyProductsTable";
+import { UserQueries } from "@/queryFactory/User";
+import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 
 const Produkter = () => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: products } = useSuspenseQuery(ProductQueries.me_all(jwt));
+  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
   if (products.length === 0)
     return (
       <EmptyList
@@ -23,6 +26,19 @@ const Produkter = () => {
   return (
     <div className="mb-28">
       <p className="mb-4 mt-8 text-center">Mine produkter</p>
+      {!user.active && (
+        <div className="px-6 py-4">
+          <ActionsColoredBox
+            header="Ikke aktivert."
+            color="red"
+            path="/om-oss/levering"
+            button="Les mer"
+          >
+            Din bruker er ikke aktivert. Ingen av dine produkter vil vises i
+            nettbutikken før du har levert klærne til oss.
+          </ActionsColoredBox>
+        </div>
+      )}
       <div className="flex justify-end pb-2 pr-6">
         <Link
           href="/min-side/selge/last-opp"
