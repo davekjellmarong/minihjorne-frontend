@@ -117,7 +117,7 @@ const Page = () => {
           <p className="w-24 text-gray-500">Total </p>
           <span className="text-xl font-light text-black">
             {" "}
-            {totalPrice + shippingPrice} kr
+            {totalPrice} kr
           </span>
         </div>
         <label className="flex items-center gap-2">
