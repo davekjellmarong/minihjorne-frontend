@@ -197,7 +197,7 @@ const SellPage = () => {
         </AccordionDetails>
       </Accordion>
       <div className="py-6 text-center text-brand-600">
-        <Link href="/om-oss/levering">Les mer om levering</Link>
+        <Link href="/om-oss/levering">Hvordan levere klær? {"->"}</Link>
       </div>
     </>
   );
