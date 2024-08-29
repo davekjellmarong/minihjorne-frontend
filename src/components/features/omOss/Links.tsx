@@ -10,28 +10,36 @@ const OmOssLinks = () => {
       name: "Hva er Minihjørne?",
       href: "/om-oss/hva-er-minihjorne",
     },
-    {
-      name: "Hvorfor bruke oss",
-      href: "/om-oss/hvorfor-bruke-oss",
-    },
+    // {
+    //   name: "Hvorfor bruke oss",
+    //   href: "/om-oss/hvorfor-bruke-oss",
+    // },
     {
       name: "Selge klær",
       href: "/om-oss/hvordan-selge",
     },
     {
-      name: "Kjøpe klær",
-      href: "/om-oss/kjope",
+      name: "Registrere klær",
+      href: "/om-oss/registrer-klær",
+    },
+    {
+      name: "Personlig salgsprofil",
+      href: "/om-oss/personlig-salgsprofil",
     },
     {
       name: "Levere klær",
       href: "/om-oss/levering",
     },
+    // {
+    //   name: "Kjøpe klær",
+    //   href: "/om-oss/kjope",
+    // },
+    // {
+    //   name: "Sende klær",
+    //   href: "/om-oss/sende",
+    // },
     {
-      name: "Sende klær",
-      href: "/om-oss/sende",
-    },
-    {
-      name: "Priser?",
+      name: "Priser",
       href: "/om-oss/priser",
     },
     // {
