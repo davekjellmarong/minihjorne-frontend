@@ -1,60 +1,101 @@
 import React from "react";
 import Header from "@/components/features/omOss/Header";
-import AboutUsAccordions from "@/components/UI/omOss/AboutUsAccordions";
-import Link from "next/link";
+import Image from "next/image";
+import Step from "@/components/UI/Step";
+import BottomLinks from "@/components/UI/omOss/BottomLinks";
 
 export const metadata = {
   title: "Minihjørne - Registrering av produkter",
   description:
-    "Lær hvordan du enkelt kan registrere dine brukte barneklær for salg på Minihjørne.",
+    "Lær hvordan du registrerer produkter på Minihjørne med noen enkle steg.",
 };
 
-const RegistreringProdukterPage = () => {
+const RegisteringProductsPage = () => {
   return (
     <>
       <Header text="Registrering av produkter" />
-      <div className="flex flex-col gap-10">
-        <section>
+      <section className="flex flex-col gap-6">
+        <p className="text-lg">
+          Følg disse stegene for å registrere dine barneklær på Minihjørne:
+        </p>
+
+        <Step number="1" title="Ta bilder med telefonen">
+          <p>Ta klare og detaljerte bilder av klærne med telefonen din.</p>
+          <Image
+            src="/images/step-1-take-photos.jpg"
+            alt="Ta bilder med telefonen"
+            width={600}
+            height={400}
+            className="mt-4 rounded-md"
+          />
+        </Step>
+
+        <Step number="2" title="Gå til 'Min side' / 'Last opp'">
           <p>
-            Når du skal selge barneklær på Minihjørne, er det viktig at hvert
-            plagg er riktig registrert. Dette gir potensielle kjøpere all den
-            informasjonen de trenger, og øker sjansen for salg.
+            Naviger til «Min side» og velg «Last opp». Her vil du finne en
+            oversikt over produktene dine.
           </p>
-          <div className="mt-4">
-            <h3 className="text-xl font-semibold text-brand-400">
-              Slik registrerer du dine produkter:
-            </h3>
-            <ol className="ml-6 mt-2 list-decimal">
-              <li>
-                <strong>Ta gode bilder:</strong> Sørg for at bildene er klare og
-                viser detaljene på klærne. Husk å ta bilder fra forskjellige
-                vinkler.
-              </li>
-              <li>
-                <strong>Beskriv klærne nøye:</strong> Inkluder informasjon som
-                størrelse, farge, type plagg, og eventuelle skader eller
-                slitasje.
-              </li>
-              <li>
-                <strong>Velg kategori:</strong> Velg den riktige kategorien for
-                hvert plagg, slik at kjøpere enkelt kan finne det de leter
-                etter.
-              </li>
-              <li>
-                <strong>Sett pris:</strong> Prissett klærne dine
-                konkurransedyktig. Tenk på tilstanden og merkets verdi.
-              </li>
-            </ol>
-          </div>
-        </section>
-        <div className="flex justify-center">
-          <Link href="/om-oss/personlig-salgsprofil" className="text-brand-400">
-            Personlig salgsprofil -{">"}
-          </Link>
-        </div>
-      </div>
+          <Image
+            src="/images/step-2-min-side.jpg"
+            alt="Gå til 'Min side' / 'Last opp'"
+            width={600}
+            height={400}
+            className="mt-4 rounded-md"
+          />
+        </Step>
+
+        <Step number="3" title="Last opp bilder, velg opptil 3 per produkt">
+          <p>
+            Velg opptil 3 bilder per produkt for å gi kjøperne en god
+            presentasjon av varen.
+          </p>
+          <Image
+            src="/images/step-3-upload-photos.jpg"
+            alt="Last opp bilder"
+            width={600}
+            height={400}
+            className="mt-4 rounded-md"
+          />
+        </Step>
+
+        <Step number="4" title="Fyll ut informasjon om produktet">
+          <p>
+            Marker avkrysningsbokser for farge, plaggtype, tilstand, størrelse,
+            pris, kjønn, og merke.
+          </p>
+          <Image
+            src="/images/step-4-select-details.jpg"
+            alt="Fyll ut informasjon om produktet"
+            width={600}
+            height={400}
+            className="mt-4 rounded-md"
+          />
+        </Step>
+
+        <Step number="5" title="Trykk 'Lagre', og last opp neste produkt">
+          <p>
+            Når all informasjon er utfylt, trykk «Lagre» for å fullføre. Du kan
+            deretter laste opp neste produkt.
+          </p>
+          <Image
+            src="/images/step-5-save-upload.jpg"
+            alt="Trykk 'Lagre'"
+            width={600}
+            height={400}
+            className="mt-4 rounded-md"
+          />
+        </Step>
+      </section>
+
+      <BottomLinks
+        prevLink={{ to: "/om-oss/selvregistrering", text: "Selvregistrering" }}
+        nextLink={{
+          to: "/om-oss/full-service-pakke",
+          text: "Full service pakke",
+        }}
+      />
     </>
   );
 };
 
-export default RegistreringProdukterPage;
+export default RegisteringProductsPage;

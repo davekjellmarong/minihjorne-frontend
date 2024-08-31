@@ -1,39 +1,60 @@
+import React from "react";
 import Header from "@/components/features/omOss/Header";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
-import React from "react";
+import BottomLinks from "@/components/UI/omOss/BottomLinks";
+import SubHeader from "@/components/features/omOss/SubHeader";
+import PreviousPageLink from "@/components/UI/omOss/PreviousPageLink";
+
 export const metadata = {
   title: "Minihjørne - Priser",
   description: "Her finner du informasjon om priser på Minihjørne",
 };
+
 const PriserPage = () => {
   return (
     <>
       <Header text="Priser" />
-      <div className="flex flex-col gap-10">
-        {/* <div>
+
+      <section className="">
+        <div className="flex flex-col gap-10">
           <div>
-            <p className="text-sm font-light text-purple-700">Leiepris</p>
-            <h2 className="text-2xl">Hva er leiepris?</h2>
+            <SubHeader>Provisjon</SubHeader>
+            <p>
+              Minihjørne tilbyr to forskjellige prispakker for å møte dine behov
+              som selger. Du kan velge mellom <b>Selvregistrering </b>
+              eller
+              <b> Full service pakke, </b> hver med sine egne betingelser og
+              provisjonssatser.
+            </p>
           </div>
-          <p>
-            Prisen for å leie en salgsplass hos Minihjørne er 170 kr/uke. Du
-            bestemmer selv hvor mange uker du vil leie og betaler for den valgte
-            perioden på forhånd.
-          </p>
-        </div> */}
-        <div>
-          <div>
-            <p className="text-sm font-light text-purple-700">Provisjon</p>
-            <h2 className="text-2xl">Hva er provisjon?</h2>
-          </div>
-          <p>
-            Når du selger et plagg gjennom Minihjørne, tar vi en provisjon på
-            20%. Dette betyr at 20% av salgssummen går til oss, og 80% til deg
-            som selger. Provisjonen dekker kostnadene ved drift av plattformen,
-            betalingsbehandling, kundeservice og annet administrativt arbeid.
-          </p>
+
+          <InfoColoredBox
+            color="green"
+            title="Selvregistrering - 30% provisjon"
+          >
+            <span className="text-lg font-semibold">Selvregistrering</span>
+            <span>
+              Ved selvregistrering oppretter du dine egne produktoppføringer og
+              håndterer salgsprofilen din selv. Provisjonen for selvregistrering
+              er 30% per salg. Dette gir deg mer kontroll over salgsprosessen og
+              en rimeligere provisjonssats.
+            </span>
+          </InfoColoredBox>
+
+          <InfoColoredBox color="blue" title="Full Service - 60% provisjon">
+            <span className="text-lg font-semibold">Full Service</span>
+            <span>
+              Med full service sender du klærne dine til oss, og vi håndterer
+              hele prosessen fra registrering til salg. Provisjonen for full
+              service er 60% per salg. Dette inkluderer alt fra fotografering og
+              oppretting av produktoppføringer til administrasjon og
+              kundeservice.
+            </span>
+          </InfoColoredBox>
         </div>
-      </div>
+      </section>
+
+      <PreviousPageLink to="/om-oss/levering">Levere klær</PreviousPageLink>
     </>
   );
 };

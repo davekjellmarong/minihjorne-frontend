@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "@/components/features/omOss/Header";
-import AboutUsAccordions from "@/components/UI/omOss/AboutUsAccordions";
-import Link from "next/link";
+import NextPageLink from "@/components/UI/omOss/NextPageLink";
 
 export const metadata = {
   title: "Minihjørne - Hva er Minihjørne?",
@@ -72,12 +71,9 @@ const MinihjornePage = () => {
             samme str og lik klessmak som deg og dine plagg.
           </p>
         </section>
-        {/* <HowToSell_Steps /> */}
-        <div className="flex justify-center">
-          <Link href="/om-oss/hvordan-selge" className="text-brand-400">
-            Hvordan selge klær -{">"}
-          </Link>
-        </div>
+        <NextPageLink to="/om-oss/selvregistrering">
+          Selge klær - Selvregistrering
+        </NextPageLink>
       </div>
     </>
   );

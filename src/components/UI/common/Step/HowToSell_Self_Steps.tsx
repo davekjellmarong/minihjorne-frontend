@@ -1,24 +1,26 @@
 import React from "react";
 import Step from "../../Step";
 
-const HowToSell_Steps = () => {
+const HowToSell_Self_Steps = () => {
   return (
     <section>
-      {/* <h2 className="text-2xl font-bold text-brand-500">
-        Hvordan selge på Minihjørne
-      </h2> */}
       <p>
-        Det er enkelt å selge dine brukte barneklær på Minihjørne. Følg disse
-        stegene:
+        <b>Selvregistrering</b> innebærer at du selv registrerer dine brukte
+        barneklær her på minihjorne.no. Dette gir deg full kontroll over
+        prosessen, og du beholder en større andel av salgsinntektene. Ved
+        selvregistrering tar Minihjørne 30% av salgsprisen per solgt plagg.
       </p>
-      <div className="mt-4 flex flex-col gap-4">
+      <p className="mt-4">
+        Følg disse stegene for å komme i gang med selvregistrering:
+      </p>
+      <div className="mt-4 flex flex-col">
         <Step number="1" title="Registrer deg">
           Opprett en konto på Minihjørne.
         </Step>
         <Step number="2" title="Last opp produkter">
-          Ta gode bilder av klærne dine, fyll inn informasjon av hvert plagg,
-          som farge, plagg, str, kjønn osv. Husk at gode bilder øker sjansene
-          for salg!
+          Ta gode bilder av klærne dine, og fyll inn informasjon om hvert plagg,
+          som farge, type plagg, størrelse, kjønn osv. Husk at gode bilder øker
+          sjansene for salg!
         </Step>
         <Step number="3" title="Opprett en personlig salgsprofil">
           Etter at du har registrert produktene, kan du lage din egen
@@ -40,4 +42,4 @@ const HowToSell_Steps = () => {
   );
 };
 
-export default HowToSell_Steps;
+export default HowToSell_Self_Steps;

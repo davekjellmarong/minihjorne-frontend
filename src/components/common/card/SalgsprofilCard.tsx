@@ -10,7 +10,7 @@ interface SalgsprofilCardProps {
 const SalgsprofilCard = ({ user }: SalgsprofilCardProps) => {
   return (
     <Link
-      href={`/profiler/${user.data.id}`}
+      href={`/salgsprofiler/${user.data.id}`}
       className="absolute right-4 top-4 z-10 flex rounded border-brand-400 bg-white px-4 py-2 shadow shadow-orange-200"
       onClick={() => incrementUserViews(user.data.id)}
     >

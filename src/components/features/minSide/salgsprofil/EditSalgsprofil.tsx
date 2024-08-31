@@ -29,7 +29,7 @@ const EditSalgsprofil = async () => {
             <p>Rediger</p>
           </Link>
           <Link
-            href={`/profiler/${user.id}`}
+            href={`/salgsprofiler/${user.id}`}
             className=" flex gap-2 rounded-lg border border-indigo-300  bg-brand-200 px-2 py-2 text-sm font-medium focus:z-10 focus:outline-none focus:ring-0 focus:ring-indigo-700 sm:hover:bg-indigo-700 sm:hover:text-white"
           >
             <Globe size={20} color="indigo" />
