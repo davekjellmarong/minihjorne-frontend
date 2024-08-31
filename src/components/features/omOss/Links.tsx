@@ -7,7 +7,7 @@ const OmOssLinks = () => {
   const path = usePathname();
   useEffect(() => {
     window.scrollTo({
-      top: 0,
+      top: 300,
       behavior: "smooth",
     });
   }, [path]);

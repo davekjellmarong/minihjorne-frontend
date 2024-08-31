@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import Menu from "@/components/features/minSide/Menu";
 import Header from "@/components/features/minSide/Header";
+import SalesSteps from "@/components/features/minSide/SalesSteps";
 
 const MinSide = () => {
   return (
@@ -21,6 +22,7 @@ const MinSide = () => {
             </div>
           }
         >
+          <SalesSteps />
           <Header />
         </Suspense>
       </div>
