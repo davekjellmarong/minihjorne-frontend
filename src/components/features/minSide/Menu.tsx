@@ -24,7 +24,7 @@ const Menu = async () => {
       header: "Ordre",
       items: [
         {
-          id: 1,
+          id: 6,
           title: "Mine ordre",
           path: "/min-side/ordre",
           icon: <Note size={32} weight="thin" color="purple" />,
@@ -110,7 +110,7 @@ const Menu = async () => {
                 {headerItem.items.map((item) => (
                   <li
                     key={item.id}
-                    className={`relative flex p-4 ${currentStep.menuId === item.id ? "rounded bg-green-300" : ""}`}
+                    className={`relative flex p-4 ${currentStep?.menuId === item.id ? "rounded bg-green-300" : ""}`}
                   >
                     <Link
                       href={item.path}
@@ -119,7 +119,7 @@ const Menu = async () => {
                       <span className="pr-6">{item.icon}</span>
                       <span>{item.title}</span>
                     </Link>
-                    {currentStep.menuId === item.id && (
+                    {currentStep && currentStep.menuId === item.id && (
                       <span className=" absolute right-2 top-2 flex items-center justify-center rounded-sm  text-xs text-green-800">
                         NESTE STEG!
                       </span>

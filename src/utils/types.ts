@@ -6,6 +6,12 @@ export interface CommonSize {
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonUserStatus {
+  type: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
 export interface CommonFeatureFlag {
   name: string;
   description: string;
@@ -176,6 +182,9 @@ export interface CommonImage {
   updatedAt: string;
 }
 
+export interface UserStatusBackend extends CommonUserStatus {
+  id: number;
+}
 export interface TagBackend extends CommonTags {
   id: number;
 }
@@ -205,6 +214,7 @@ export interface UserBackend extends CommonUser {
   plan: CommonPlan;
   productImages: ImageBackend[];
   products: ProductBackend[];
+  user_status: UserStatusBackend;
 }
 export interface OrderBackend extends CommonOrder {
   id: number;
@@ -315,6 +325,7 @@ export interface User {
     plan: { data: CommonPlan };
     productImages: { data: Image[] };
     views: number;
+    user_status: { data: CommonUserStatus };
   };
 }
 export interface Tag {

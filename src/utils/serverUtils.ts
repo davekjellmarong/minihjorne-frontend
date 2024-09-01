@@ -80,10 +80,15 @@ export const getPublicData = async (query: string) => {
 };
 
 export const getStepsAndCurrentStep = (user: UserBackend) => {
-  const hasRegisteredProducts = user.products.length > 0;
-  const hasSalesProfile = user.header.length > 4 && user.description.length > 5;
+  // const hasRegisteredProducts = user.products?.length > 0;
+  const hasRegisteredProducts =
+    user.products.filter((product) => {
+      return !product.active && !product.sold;
+    }).length > 0;
+  const hasSalesProfile =
+    user.header?.length > 4 && user.description?.length > 5;
   const hasDelivery =
-    user.products.filter((product) => !product.active).length > 0 &&
+    user.products.filter((product) => !product.active)?.length > 0 &&
     hasSalesProfile;
 
   const steps = [
@@ -114,7 +119,6 @@ export const getStepsAndCurrentStep = (user: UserBackend) => {
   ];
 
   const currentStep = steps.filter((step) => !step.isCompleted)[0];
-
   return { steps, currentStep };
 };
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;

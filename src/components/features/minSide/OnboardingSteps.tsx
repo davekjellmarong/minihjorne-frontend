@@ -5,13 +5,17 @@ import { UserMethods } from "@/queryFactory/User";
 import { Check, Question, QuestionMark } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { getStepsAndCurrentStep } from "@/utils/serverUtils";
+import { UserStatusEnum } from "@/utils/Enums";
 
-const SalesStep = async () => {
+const OnboardingSteps = async () => {
   const token = cookies().get("Token")?.value;
   const user = await UserMethods.getMeFetch(token);
-
+  console.log(user);
+  if (user.user_status.id === UserStatusEnum.Member) {
+    return <div>Velg en salgsplan!</div>;
+  }
   const { steps, currentStep } = getStepsAndCurrentStep(user);
-
+  console.log(currentStep);
   // Define color variables here
   const colors = {
     completed: "border-teal-500 bg-teal-500 text-white shadow-lg", // Teal for completed steps with shadow
@@ -24,14 +28,14 @@ const SalesStep = async () => {
       {steps.map((step, index) => {
         const stepNumber = index + 1;
         const isCompleted = step.isCompleted;
-        const isCurrent = stepNumber === currentStep.stepNumber;
+        const isCurrent = stepNumber === currentStep?.stepNumber;
 
         return (
           <div
             key={stepNumber}
             className="relative flex w-full max-w-[100px] flex-col items-center"
           >
-            {currentStep.menuId === step.menuId && (
+            {currentStep?.menuId === step.menuId && (
               <Link
                 className="absolute right-0 top-[-30px]"
                 href={currentStep.helpUrl}
@@ -63,4 +67,4 @@ const SalesStep = async () => {
   );
 };
 
-export default SalesStep;
+export default OnboardingSteps;

@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import Menu from "@/components/features/minSide/Menu";
 import Header from "@/components/features/minSide/Header";
-import SalesSteps from "@/components/features/minSide/SalesSteps";
+import OnboardingSteps from "@/components/features/minSide/OnboardingSteps";
 
 const MinSide = () => {
   return (
@@ -22,7 +22,7 @@ const MinSide = () => {
             </div>
           }
         >
-          <SalesSteps />
+          <OnboardingSteps />
           <Header />
         </Suspense>
       </div>
