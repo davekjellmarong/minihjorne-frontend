@@ -5,22 +5,19 @@ import { UserMethods } from "@/queryFactory/User";
 import { Check, Question, QuestionMark } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { getStepsAndCurrentStep } from "@/utils/serverUtils";
-import { UserStatusEnum } from "@/utils/Enums";
+import { UserStatus } from "@/utils/Enums";
 
 const OnboardingSteps = async () => {
   const token = cookies().get("Token")?.value;
   const user = await UserMethods.getMeFetch(token);
-  console.log(user);
-  if (user.user_status.id === UserStatusEnum.Member) {
+  if (user.user_status.id === UserStatus.Member) {
     return <div>Velg en salgsplan!</div>;
   }
   const { steps, currentStep } = getStepsAndCurrentStep(user);
-  console.log(currentStep);
-  // Define color variables here
   const colors = {
     completed: "border-teal-500 bg-teal-500 text-white shadow-lg", // Teal for completed steps with shadow
-    current: "border-aqua-500 bg-aqua-500 text-white shadow-lg", // Aqua for current step with shadow
-    default: "border-gray-300 bg-gray-300 text-gray-700 shadow-sm", // Grey for default/uncompleted steps with lighter shadow
+    current: "border-teal-500 bg-teal-500 text-white shadow-lg", // Aqua for current step with shadow
+    default: "border-grey-200 text-gray-700 shadow-sm text-sm", // Grey for default/uncompleted steps with lighter shadow
   };
 
   return (
@@ -49,11 +46,11 @@ const OnboardingSteps = async () => {
             >
               <div
                 className={clsx(
-                  "flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all duration-300",
+                  "flex size-9 items-center justify-center rounded-full border-2 transition-all duration-300",
                   isCompleted ? colors.completed : "",
                   isCurrent ? colors.current : "",
                   !isCompleted && !isCurrent ? colors.default : "",
-                  isCurrent && "h-12 w-12",
+                  isCurrent && "size-12",
                 )}
               >
                 {isCompleted ? <Check size={24} weight="bold" /> : stepNumber}

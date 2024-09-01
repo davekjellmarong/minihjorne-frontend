@@ -6,7 +6,7 @@ import OnboardingSteps from "@/components/features/minSide/OnboardingSteps";
 const MinSide = () => {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col gap-6 bg-brand-200 pb-24 pt-4">
+      <div className="flex flex-col gap-6 bg-brand-200 pb-24 pt-14">
         <Suspense
           fallback={
             <div className="flex flex-col items-center">

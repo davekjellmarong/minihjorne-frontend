@@ -9,6 +9,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { ProductsMethods } from "@/queryFactory/Product";
 
+const cookieStore: any = cookies();
+const token = cookieStore.get("Token");
+
 export const activeUserProfile = async (cool: any) => {
   const cookieStore: any = cookies();
   const token = cookieStore.get("Token");
@@ -103,4 +106,18 @@ export const incrementUserViews = async (userId: number) => {
     return "User view incremented";
   }
   return "Bot detected";
+};
+
+export const activateSalgsMetode = async (formdata: FormData) => {
+  const salgsmetode = formdata.get("salgsmetode");
+  const user = await UserMethods.getMe(token.value);
+  const payload = {
+    user_status: salgsmetode,
+  };
+  const response = await UserMethods.putFetch(
+    payload,
+    user.id,
+    process.env.UPDATE_USER_TOKEN,
+  );
+  return response;
 };

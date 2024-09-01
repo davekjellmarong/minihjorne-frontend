@@ -42,7 +42,7 @@ const Home = () => {
         </Suspense>
         <div className="flex justify-center ">
           <Link
-            href="/brukte-barne-klaer"
+            href="/brukte-barne-klaer?pagination[page]=1"
             className="mt-4 flex w-60 justify-center rounded-lg bg-brand-400 px-4 py-4 text-white"
           >
             Se mer brukte barneklær

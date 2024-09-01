@@ -1,16 +1,14 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Link from "next/link";
 import {
-  CreditCard,
   Note,
   TShirt,
   UploadSimple,
   UserSquare,
   ChartBar,
   Truck,
-  QuestionMark,
+  HandCoins,
 } from "@phosphor-icons/react/dist/ssr";
-import path from "path";
 import { cookies } from "next/headers";
 import { UserMethods } from "@/queryFactory/User";
 import { getStepsAndCurrentStep } from "@/utils/serverUtils";
@@ -71,6 +69,13 @@ const Menu = async () => {
           icon: <Truck size={32} weight="thin" color="purple" />,
           action: null,
         },
+        {
+          id: 7,
+          title: "Salgs metode",
+          path: "/min-side/selge/salgs-metode",
+          icon: <HandCoins size={32} weight="thin" color="purple" />,
+          action: null,
+        },
         // {
         //   id: 4,
         //   title: "Leie",
@@ -110,11 +115,11 @@ const Menu = async () => {
                 {headerItem.items.map((item) => (
                   <li
                     key={item.id}
-                    className={`relative flex p-4 ${currentStep?.menuId === item.id ? "rounded bg-green-300" : ""}`}
+                    className={`relative  ${currentStep?.menuId === item.id ? "rounded bg-green-300" : ""}`}
                   >
                     <Link
                       href={item.path}
-                      className={`flex items-center rounded   active:bg-brand-100 sm:hover:bg-gray-100`}
+                      className={`flex items-center rounded p-4 active:bg-brand-100 sm:hover:bg-gray-100`}
                     >
                       <span className="pr-6">{item.icon}</span>
                       <span>{item.title}</span>

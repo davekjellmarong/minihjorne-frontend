@@ -10,10 +10,10 @@ export enum PlanEnum {
   Free_July_To_October = 4,
 }
 
-export enum UserStatusEnum {
+export enum UserStatus {
   Member = 1,
-  Selvregistrering_onboarding = 2,
-  Full_service_onboarding = 3,
+  Selvregistrering = 2,
+  FullService = 3,
   Seller = 4,
 }
 
