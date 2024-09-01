@@ -1,6 +1,7 @@
 import { FeatureFlagServerSideMethods } from "@/queryFactory/FeatureFlag";
 import { Product, UserBackend } from "./types";
 import axios from "axios";
+import { set } from "zod";
 
 export const isFeatureFlagActive = async (flagId: number, token: any) => {
   const data = await FeatureFlagServerSideMethods.get(token);
@@ -76,5 +77,44 @@ export const getPublicData = async (query: string) => {
     console.error("Error fetching data:", error);
     throw error;
   }
+};
+
+export const getStepsAndCurrentStep = (user: UserBackend) => {
+  const hasRegisteredProducts = user.products.length > 0;
+  const hasSalesProfile = user.header.length > 4 && user.description.length > 5;
+  const hasDelivery =
+    user.products.filter((product) => !product.active).length > 0 &&
+    hasSalesProfile;
+
+  const steps = [
+    {
+      title: "Last opp klær",
+      isCompleted: hasRegisteredProducts,
+      nextStepUrl: "/min-side/selge/last-opp",
+      stepNumber: 1,
+      menuId: 1,
+      helpUrl: "/om-oss/registrering",
+    },
+    {
+      title: "Salgsprofil",
+      isCompleted: hasSalesProfile,
+      nextStepUrl: "/min-side/selge/salgsprofil",
+      stepNumber: 2,
+      menuId: 3,
+      helpUrl: "/om-oss/salgsprofil",
+    },
+    {
+      title: "Levering",
+      isCompleted: hasDelivery,
+      nextStepUrl: "/min-side/selge/levering",
+      stepNumber: 3,
+      menuId: 4,
+      helpUrl: "/om-oss/levering",
+    },
+  ];
+
+  const currentStep = steps.filter((step) => !step.isCompleted)[0];
+
+  return { steps, currentStep };
 };
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;

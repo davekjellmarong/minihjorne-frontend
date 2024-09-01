@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Link from "next/link";
 import {
   CreditCard,
@@ -7,9 +7,18 @@ import {
   UploadSimple,
   UserSquare,
   ChartBar,
+  Truck,
+  QuestionMark,
 } from "@phosphor-icons/react/dist/ssr";
+import path from "path";
+import { cookies } from "next/headers";
+import { UserMethods } from "@/queryFactory/User";
+import { getStepsAndCurrentStep } from "@/utils/serverUtils";
 
-const Menu = () => {
+const Menu = async () => {
+  const token = cookies().get("Token")?.value;
+  const user = await UserMethods.getMeFetch(token);
+  const { currentStep } = getStepsAndCurrentStep(user);
   const navItems = [
     {
       header: "Ordre",
@@ -54,6 +63,14 @@ const Menu = () => {
           icon: <UserSquare size={32} weight="thin" color="purple" />,
           action: null,
         },
+        // levering
+        {
+          id: 4,
+          title: "Levere klær",
+          path: "/min-side/selge/levering",
+          icon: <Truck size={32} weight="thin" color="purple" />,
+          action: null,
+        },
         // {
         //   id: 4,
         //   title: "Leie",
@@ -91,14 +108,23 @@ const Menu = () => {
               <p className="font-medium">{headerItem.header}</p>
               <ul className="flex flex-col gap-1">
                 {headerItem.items.map((item) => (
-                  <Link
-                    href={item.path}
+                  <li
                     key={item.id}
-                    className={`flex items-center rounded p-4  active:bg-brand-100 sm:hover:bg-gray-100`}
+                    className={`relative flex p-4 ${currentStep.menuId === item.id ? "rounded bg-green-300" : ""}`}
                   >
-                    <span className="pr-6">{item.icon}</span>
-                    <span>{item.title}</span>
-                  </Link>
+                    <Link
+                      href={item.path}
+                      className={`flex items-center rounded   active:bg-brand-100 sm:hover:bg-gray-100`}
+                    >
+                      <span className="pr-6">{item.icon}</span>
+                      <span>{item.title}</span>
+                    </Link>
+                    {currentStep.menuId === item.id && (
+                      <span className=" absolute right-2 top-2 flex items-center justify-center rounded-sm  text-xs text-green-800">
+                        NESTE STEG!
+                      </span>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>
