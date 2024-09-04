@@ -39,7 +39,7 @@ export const UserMethods = {
     return getPublicData(`/users/${id}`);
   },
   getMe: async (token: any): Promise<UserBackend> => {
-    return getData("/users/me?populate=*", token);
+    return getDataFetch("/users/me?populate=*", token);
   },
   getMeFetch: async (token: any): Promise<UserBackend> => {
     return getDataFetch("/users/me?populate=*", token);
