@@ -76,7 +76,7 @@ const HowToSell_Summary = () => {
 
       {/* Call to Action */}
       <div className="flex flex-col items-center">
-        <LesMer href="/om-oss/hvordan-selge" />
+        <LesMer href="/om-oss/selvregistrering" />
         <Link
           className="mt-4 flex w-60 justify-center rounded-lg bg-brand-400 px-4 py-4 text-white"
           href="/auth"

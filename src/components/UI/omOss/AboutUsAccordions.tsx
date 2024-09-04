@@ -27,7 +27,7 @@ const AboutUsAccordions = () => {
           Du får en personlig salgsprofil der alle klærne dine blir samlet, slik
           at kjøpere enkelt kan se hva du tilbyr. Du kan også legge til en
           beskrivelse om deg selv og klærne du selger.
-          <LesMer href="/om-oss/personlig-salgsprofil" />
+          <LesMer href="/om-oss/salgsprofil" />
         </AccordionContent>
       </AccordionItem>
 
@@ -37,6 +37,7 @@ const AboutUsAccordions = () => {
           Å registrere klær på Minihjørne er enkelt og kan gjøres direkte fra
           mobilen. Følg stegene på vår nettside, så hjelper vi deg gjennom
           prosessen.
+          <LesMer href="/om-oss/registrering" />
         </AccordionContent>
       </AccordionItem>
 
