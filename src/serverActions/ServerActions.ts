@@ -105,9 +105,26 @@ export const incrementUserViews = async (userId: number) => {
   return "Bot detected";
 };
 
-export const activateSalgsMetode = async (formdata: FormData) => {
+export const activateSalgsMetodeAndCreateDelivery = async (
+  formdata: FormData,
+) => {
   const salgsmetode = formdata.get("salgsmetode");
   const user = await UserMethods.getMe(token);
+  let currentDelivery = user.deliveries.find((delivery) => delivery.inProgress);
+  if (!currentDelivery) {
+    try {
+      const payload = {
+        data: {
+          sales_method: salgsmetode,
+          user: user.id,
+        },
+      };
+      currentDelivery = await UserMethods.createDelivery(payload, token);
+    } catch (error) {
+      console.error("Error creating delivery:", error);
+      throw error;
+    }
+  }
   const payload = {
     user_status: salgsmetode,
   };
@@ -124,29 +141,30 @@ export const activateSalgsMetode = async (formdata: FormData) => {
   return response;
 };
 
-export const createDelivery = async (formdata: FormData) => {
+export const updateDelivery = async (formdata: FormData) => {
   const deliveryType = formdata.get("deliveryType");
   const description = formdata.get("description");
   const user = await UserMethods.getMe(token);
-  // todo - use sales method id from user
-  let sales_method;
-  if (user.user_status.id === UserStatus.FullService) {
-    sales_method = 2;
-  } else if (user.user_status.id === UserStatus.Selvregistrering) {
-    sales_method = 1;
-  } else throw new Error("User status not found");
+  const currentDelivery = user.deliveries.find(
+    (delivery) => delivery.inProgress,
+  );
+  if (!currentDelivery) {
+    throw new Error("No delivery found");
+  }
 
   const payload = {
     data: {
-      sales_method: sales_method,
       delivery_type: deliveryType,
       description: description,
-      user: user.id,
     },
   };
 
   try {
-    const response = await UserMethods.createDelivery(payload, token);
+    const response = await UserMethods.updateDelivery(
+      payload,
+      currentDelivery.id,
+      token,
+    );
     revalidatePath("/users/me?populate=*");
     return response;
   } catch (error) {

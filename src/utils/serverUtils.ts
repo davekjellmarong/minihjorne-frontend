@@ -1,5 +1,5 @@
 import { FeatureFlagServerSideMethods } from "@/queryFactory/FeatureFlag";
-import { UserBackend } from "./types";
+import { Delivery, UserBackend } from "./types";
 import axios from "axios";
 import { UserStatus } from "./Enums";
 
@@ -79,23 +79,28 @@ export const getPublicData = async (query: string) => {
   }
 };
 
-const hasRegisteredProducts = (user: UserBackend) => {
-  return (
-    user.products.filter((product) => {
-      return !product.active && !product.sold;
-    }).length > 0
-  );
+const hasRegisteredProducts = (delivery: Delivery) => {
+  return delivery.attributes.products.data.length > 0;
+  // return (
+  //   user.products.filter((product) => {
+  //     return !product.active && !product.sold;
+  //   }).length > 0
+  // );
 };
 
 const hasSalesProfile = (user: UserBackend) => {
   return user.header?.length > 4 && user.description?.length > 5;
 };
 
-const hasDelivery = (user: UserBackend) => {
-  return (
-    user.deliveries.filter((delivery) => !delivery.receivedFromSeller)
-      .length === 1
-  );
+const hasDelivery = (delivery: Delivery) => {
+  if (delivery.attributes.delivery_type.data) {
+    return true;
+  }
+  // return (
+  //   user.deliveries.filter(
+  //     (delivery) => delivery.inProgress && delivery.delivery_type,
+  //   ).length === 1
+  // );
 };
 
 const hasAutoRegistration = (user: UserBackend) => {
@@ -105,7 +110,7 @@ const hasAutoRegistration = (user: UserBackend) => {
   );
 };
 
-export const getSteps = (user: UserBackend) => {
+export const getSteps = (user: UserBackend, delivery: Delivery | false) => {
   let steps;
   if (user.user_status.id === UserStatus.Member)
     return {
@@ -119,7 +124,7 @@ export const getSteps = (user: UserBackend) => {
         helpUrl: "/om-oss/salgs-metode",
       },
     };
-  else if (user.user_status.id === UserStatus.Seller) {
+  else if (user.user_status.id === UserStatus.Seller || delivery === false) {
     return {
       steps: [],
       currentStep: {
@@ -132,7 +137,7 @@ export const getSteps = (user: UserBackend) => {
     steps = [
       {
         title: "Last opp klær",
-        isCompleted: hasRegisteredProducts(user),
+        isCompleted: hasRegisteredProducts(delivery),
         nextStepUrl: "/min-side/selge/last-opp",
         stepNumber: 1,
         menuId: 1,
@@ -147,8 +152,8 @@ export const getSteps = (user: UserBackend) => {
         helpUrl: "/om-oss/salgsprofil",
       },
       {
-        title: "Levering",
-        isCompleted: hasDelivery(user),
+        title: "Leverings metode",
+        isCompleted: hasDelivery(delivery),
         nextStepUrl: "/min-side/selge/leverings-metode",
         stepNumber: 3,
         menuId: 4,
@@ -158,8 +163,8 @@ export const getSteps = (user: UserBackend) => {
   } else if (user.user_status.id === UserStatus.FullService) {
     steps = [
       {
-        title: "Levering",
-        isCompleted: hasDelivery(user),
+        title: "Leverings metode",
+        isCompleted: hasDelivery(delivery),
         nextStepUrl: "/min-side/selge/leverings-metode",
         stepNumber: 1,
         menuId: 4,

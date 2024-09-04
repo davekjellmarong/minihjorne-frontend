@@ -13,13 +13,84 @@ import {
 import { cookies } from "next/headers";
 import { UserMethods } from "@/queryFactory/User";
 import { getSteps } from "@/utils/serverUtils";
+import { Delivery } from "@/utils/types";
 
 const Menu = async () => {
   const token = cookies().get("Token")?.value;
   const user = await UserMethods.getMeFetch(token);
-
-  const { currentStep } = getSteps(user);
+  const currentDelivery = user.deliveries.find(
+    (delivery) => delivery.inProgress,
+  );
+  let deliveryDetails: boolean | Delivery = false;
+  if (currentDelivery) {
+    deliveryDetails = await UserMethods.getDelivery(currentDelivery?.id, token);
+  }
+  const { currentStep } = getSteps(user, deliveryDetails);
   const navItems = [
+    {
+      header: "Produkter",
+      items: [
+        {
+          id: 1,
+          title: "Last opp klær",
+          path: "/min-side/selge/last-opp",
+          icon: <UploadSimple size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+        {
+          id: 2,
+          title: "Mine produkter",
+          path: "/min-side/selge/produkter/",
+          icon: <TShirt size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+        {
+          id: 5,
+          title: "Statistikk",
+          path: "/min-side/selge/statistikk",
+          icon: <ChartBar size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+      ],
+    },
+    {
+      header: "Profil",
+      items: [
+        {
+          id: 3,
+          title: "Salgsprofil",
+          path: "/min-side/selge/salgsprofil",
+          icon: <UserSquare size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+        {
+          id: 7,
+          title: "Salgs metode",
+          path: "/min-side/selge/salgs-metode",
+          icon: <HandCoins size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+      ],
+    },
+    {
+      header: "Levering",
+      items: [
+        {
+          id: 4,
+          title: "Leverings metode",
+          path: "/min-side/selge/leverings-metode",
+          icon: <Truck size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+        {
+          id: 8,
+          title: "Lever klær",
+          path: "/min-side/selge/levere",
+          icon: <Package size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+      ],
+    },
     {
       header: "Ordre",
       items: [
@@ -32,69 +103,19 @@ const Menu = async () => {
         },
       ],
     },
-    {
-      header: "Selge",
-      items: [
-        {
-          id: 1,
-          title: "Last opp klær",
-          path: "/min-side/selge/last-opp",
-          icon: <UploadSimple size={32} weight="thin" color="purple" />,
-          action: null,
-        },
-        {
-          id: 5,
-          title: "Statistikk",
-          path: "/min-side/selge/statistikk",
-          icon: <ChartBar size={32} weight="thin" color="purple" />,
-          action: null,
-        },
-        {
-          id: 2,
-          title: "Mine produkter",
-          path: "/min-side/selge/produkter/",
-          icon: <TShirt size={32} weight="thin" color="purple" />,
-          action: null,
-        },
-        {
-          id: 3,
-          title: "Salgsprofil",
-          path: "/min-side/selge/salgsprofil",
-          icon: <UserSquare size={32} weight="thin" color="purple" />,
-          action: null,
-        },
-        {
-          id: 4,
-          title: "Leverings metode",
-          path: "/min-side/selge/leverings-metode",
-          icon: <Truck size={32} weight="thin" color="purple" />,
-          action: null,
-        },
-        {
-          id: 7,
-          title: "Salgs metode",
-          path: "/min-side/selge/salgs-metode",
-          icon: <HandCoins size={32} weight="thin" color="purple" />,
-          action: null,
-        },
-        // Lever klær
-        {
-          id: 8,
-          title: "Lever klær",
-          path: "/min-side/selge/levere",
-          icon: <Package size={32} weight="thin" color="purple" />,
-          action: null,
-        },
-
-        // {
-        //   id: 4,
-        //   title: "Leie",
-        //   path: "/min-side/selge/leie",
-        //   icon: <CreditCard size={32} weight="thin" color="purple" />,
-        //   action: null,
-        // },
-      ],
-    },
+    // {
+    //   header: "Selge",
+    //   items: [
+    // Lever klær
+    // {
+    //   id: 4,
+    //   title: "Leie",
+    //   path: "/min-side/selge/leie",
+    //   icon: <CreditCard size={32} weight="thin" color="purple" />,
+    //   action: null,
+    // },
+    // ],
+    // },
     // {
     //   header: "Innstillinger",
     //   items: [

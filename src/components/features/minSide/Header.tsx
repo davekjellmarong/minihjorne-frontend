@@ -2,10 +2,9 @@ import { UserMethods } from "@/queryFactory/User";
 import React from "react";
 import { cookies } from "next/headers";
 import { UserStatus } from "@/utils/Enums";
-import SelvregistreringSteps from "../onboarding/SelvregistreringSteps";
-import FullServiceSteps from "../onboarding/FullServiceSteps";
 import SellerHeader from "./Headers/SellerHeader";
 import MemberHeader from "./Headers/MemberHeader";
+import OnboardingSteps from "../onboarding/OnboardingSteps";
 
 const Header = async () => {
   const token = cookies().get("Token")?.value;
@@ -18,10 +17,11 @@ const Header = async () => {
     return <SellerHeader user={user} />;
   } else if (id === UserStatus.Member) {
     return <MemberHeader />;
-  } else if (id === UserStatus.Selvregistrering) {
-    return <SelvregistreringSteps user={user} />;
-  } else if (id === UserStatus.FullService) {
-    return <FullServiceSteps user={user} />;
+  } else if (
+    id === UserStatus.Selvregistrering ||
+    id === UserStatus.FullService
+  ) {
+    return <OnboardingSteps user={user} />;
   }
 };
 

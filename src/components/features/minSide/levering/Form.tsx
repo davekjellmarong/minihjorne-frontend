@@ -2,11 +2,10 @@
 import Button from "@/components/common/buttons/Button";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
-import { createDelivery } from "@/serverActions/ServerActions";
+import { updateDelivery } from "@/serverActions/ServerActions";
 import { DeliveryType } from "@/utils/Enums";
 import { UserBackend } from "@/utils/types";
 import { useMutation } from "@tanstack/react-query";
-import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -15,13 +14,12 @@ interface FormProps {
 }
 const Form = ({ user }: FormProps) => {
   const [description, setDescription] = useState("");
-  const [termsAccepted, setTermsAccepted] = useState(false);
   const [deliveryType, setDeliveryType] = useState<
     DeliveryType.InPerson | DeliveryType.Shipping | 0
   >(0);
 
   const { mutate, isPending } = useMutation({
-    mutationFn: createDelivery,
+    mutationFn: updateDelivery,
     onSuccess: () => {
       toast.success("Levering lagret!");
     },
@@ -86,28 +84,12 @@ const Form = ({ user }: FormProps) => {
           rows={5}
         />
 
-        <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            id="terms"
-            checked={termsAccepted}
-            onChange={() => setTermsAccepted(!termsAccepted)}
-            className="h-6 w-6 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
-          />
-          <label htmlFor="terms" className="text-sm">
-            Jeg aksepterer{" "}
-            <Link href="/kjopebetingelser" className="text-blue-500 underline">
-              vilkårene
-            </Link>
-          </label>
-        </div>
-
         <Button
           submit
-          disabled={!termsAccepted || !deliveryType}
+          disabled={!deliveryType}
           className="w-full rounded-lg bg-brand-500 px-4 py-2 text-white transition-colors hover:bg-brand-600 disabled:cursor-not-allowed disabled:bg-gray-300"
         >
-          Send
+          Lagre leverings metode
         </Button>
       </form>
     </div>

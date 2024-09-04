@@ -39,7 +39,7 @@ const InfoColoredBox = ({
   const colorClass = colorClasses[color] || colorClasses.blue; // Default to blue if color is not found
 
   return (
-    <div className={`rounded-lg ${colorClass} px-4 py-6 shadow-md`}>
+    <div className={`rounded-lg text-center ${colorClass} px-4 py-6 shadow-md`}>
       <h2 className="mb-2 text-xl font-semibold">{title}</h2>
       {image && (
         <div className="flex justify-center">

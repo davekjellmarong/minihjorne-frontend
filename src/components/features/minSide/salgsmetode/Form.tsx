@@ -2,7 +2,7 @@
 import Button from "@/components/common/buttons/Button";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
-import { activateSalgsMetode } from "@/serverActions/ServerActions";
+import { activateSalgsMetodeAndCreateDelivery } from "@/serverActions/ServerActions";
 import { UserStatus } from "@/utils/Enums";
 import { UserBackend } from "@/utils/types";
 import { useMutation } from "@tanstack/react-query";
@@ -13,14 +13,17 @@ interface FormProps {
   user: UserBackend;
 }
 const Form = ({ user }: FormProps) => {
-  const [selectedOption, setSelectedOption] = useState(user.user_status.id);
+  const [selectedOption, setSelectedOption] = useState(0);
   const [animateAway, setAnimateAway] = useState(false);
   const [animateChosen, setAnimateChosen] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+
   const [disableForm, setDisableForm] = useState(
-    user.user_status.id != UserStatus.Member,
+    user.user_status.id != UserStatus.Member &&
+      user.user_status.id != UserStatus.Seller,
   );
   const { mutate, isPending } = useMutation({
-    mutationFn: activateSalgsMetode,
+    mutationFn: activateSalgsMetodeAndCreateDelivery,
     onSuccess: () => {
       setAnimateAway(true);
       setAnimateChosen(true);
@@ -144,10 +147,27 @@ const Form = ({ user }: FormProps) => {
               className="size-7 rounded border-gray-300 bg-gray-100 text-brand-600 focus:ring-2 focus:ring-brand-500"
             />
           </div>
-
+          <div className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              id="terms"
+              checked={termsAccepted}
+              onChange={() => setTermsAccepted(!termsAccepted)}
+              className="h-6 w-6 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
+            />
+            <label htmlFor="terms" className="text-sm">
+              Jeg aksepterer{" "}
+              <Link
+                href="/kjopebetingelser"
+                className="text-blue-500 underline"
+              >
+                vilkårene
+              </Link>
+            </label>
+          </div>
           <button
             type="submit"
-            disabled={!selectedOption}
+            disabled={!termsAccepted || selectedOption === 0}
             className="w-full rounded-lg bg-brand-500 px-4 py-2 text-white transition-colors hover:bg-brand-600 disabled:cursor-not-allowed disabled:bg-gray-300"
           >
             Velg{" "}

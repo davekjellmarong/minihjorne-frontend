@@ -7,6 +7,7 @@ export interface CommonSize {
   publishedAt: string;
 }
 export interface CommonDelivery {
+  inProgress: boolean;
   receivedFromSeller: boolean;
   receivedAtWarehouseOn: string;
   publishedInWebsite: boolean;
@@ -342,6 +343,7 @@ export interface Delivery {
     publishedOnWebsiteOn: string;
     acceptedTerms: boolean;
     description: string;
+    inProgress: boolean;
     products: { data: Product[] };
     delivery_type: { data: DeliveryType };
     user: { data: User };

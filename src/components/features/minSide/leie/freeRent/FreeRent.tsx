@@ -49,7 +49,7 @@ const FreeRent = () => {
           barneklær uten å betale leiepris frem til oktober!{" "}
           <Link href="/om-oss/priser" className="text-sm">
             (Vi tar kun en{" "}
-            <span className=" text-blue-500"> provisjon på 20% </span>
+            <span className=" text-blue-500"> provisjon på 30% </span>
             fra den totale salgssummen din)
           </Link>
         </p>

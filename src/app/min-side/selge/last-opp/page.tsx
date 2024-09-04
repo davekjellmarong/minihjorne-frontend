@@ -23,6 +23,7 @@ import ImagesList from "@/components/features/minSide/lastOpp/ImagesList";
 import SelectedImages from "@/components/features/minSide/lastOpp/SelectedImages";
 import ProductForm from "@/components/features/productForm/ProductForm";
 import { ProductsMethods } from "@/queryFactory/Product";
+import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 
 const LeggUt = () => {
   const showNav = useStore((state) => state.showNav);
@@ -33,6 +34,7 @@ const LeggUt = () => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
+  const delivery = user.deliveries.find((delivery) => delivery.inProgress);
   const { mutate: createProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.post(values, jwt);
@@ -77,6 +79,7 @@ const LeggUt = () => {
       category_type: "",
       state: "",
       sex: "",
+      delivery: delivery?.id,
     },
     validate: (values) => {
       const errors: any = {};
@@ -112,12 +115,27 @@ const LeggUt = () => {
     },
     onSubmit: (values) => {
       const colors = [values.color1, values.color2].filter((color) => color);
-      const payload = {
+      let payload = {
         data: { ...values, colors: colors },
       };
       createProduct(payload);
     },
   });
+  if (!delivery) {
+    return (
+      <div className="px-4">
+        <ActionsColoredBox
+          header="Du må velge salgsmetode"
+          button="Velg salgsmetode"
+          path="/min-side/selge/salgs-metode"
+          color="green"
+          image={true}
+        >
+          Du må velge salgsmetode før du kan laste opp produkter.
+        </ActionsColoredBox>
+      </div>
+    );
+  }
   if (images.length === 0) {
     return (
       <>

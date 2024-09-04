@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/UI/accordion";
 import LesMer from "@/components/common/buttons/LesMer";
+import Link from "next/link";
 
 const AboutUsAccordions = () => {
   return (
@@ -53,8 +54,18 @@ const AboutUsAccordions = () => {
       <AccordionItem value="item-5">
         <AccordionTrigger>Hva koster det?</AccordionTrigger>
         <AccordionContent>
-          Vi tar 20% provisjon per salg, og resten går til deg. Enkelt, rimelig,
-          og rettferdig.
+          Vi tar 30% eller 60% provisjon per salg, avhenging av om du velger
+          <Link href="om-oss/selvregistrering" className="text-brand-500">
+            {" "}
+            Selgregistrering{" "}
+          </Link>
+          eller
+          <Link href="om-oss/full-service-pakke" className="text-brand-500">
+            {" "}
+            Full service pakke
+          </Link>
+          . Det betyr at du kun betaler når du selger noe, så det er ikke mulig
+          å tape penger på Minihjørne.
           <LesMer href="/om-oss/priser" />
         </AccordionContent>
       </AccordionItem>

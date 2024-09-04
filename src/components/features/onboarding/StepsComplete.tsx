@@ -12,14 +12,13 @@ interface SelvregistreringCompleteProps {
 const StepsComplete = async ({ user }: SelvregistreringCompleteProps) => {
   const token = cookies().get("Token")?.value;
   const currentDelivery = user.deliveries.find(
-    (delivery) => !delivery.publishedOnWebsiteOn,
+    (delivery) => delivery.inProgress,
   );
   const deliveryDetails = await UserMethods.getDelivery(
     currentDelivery?.id,
     token,
   );
-  console.log(deliveryDetails);
-  if (currentDelivery?.receivedAtWarehouseOn) {
+  if (currentDelivery?.receivedFromSeller) {
     return (
       <div className="px-4">
         <InfoColoredBox
@@ -44,6 +43,9 @@ const StepsComplete = async ({ user }: SelvregistreringCompleteProps) => {
         >
           Nå gjenstår det bare å levere klærne dine. Dersom du allerede har
           sendt dem, vennligst vent til vi har mottatt dem på lageret.
+          <br />
+          <br />
+          Hvis du vil laste opp flere klær, kan du fortsatt gjøre det.
         </ActionsColoredBox>
       </div>
     );

@@ -10,7 +10,10 @@ import {
   putData,
   putDataFetch,
 } from "./Utils";
-import { incrementUserViews } from "@/serverActions/ServerActions";
+import {
+  incrementUserViews,
+  updateDelivery,
+} from "@/serverActions/ServerActions";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -65,6 +68,9 @@ export const UserMethods = {
   },
   createDelivery: async (data: any, token: any) => {
     return postData(data, "/deliveries", token);
+  },
+  updateDelivery: async (data: any, id: any, token: any) => {
+    return putData(data, `/deliveries/${id}`, token);
   },
   getDelivery: async (id: any, token: any): Promise<Delivery> => {
     return getData(`/deliveries/${id}?populate=*`, token);

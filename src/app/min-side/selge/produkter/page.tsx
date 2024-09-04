@@ -30,12 +30,13 @@ const Produkter = () => {
         <div className="px-6 py-4">
           <ActionsColoredBox
             header="Ikke aktivert."
-            color="red"
-            path="/om-oss/levering"
+            color="yellow"
+            path="/min-side"
             button="Les mer"
           >
-            Din bruker er ikke aktivert. Ingen av dine produkter vil vises i
-            nettbutikken før du har levert klærne til oss.
+            Din bruker er ikke aktivert og dine produkter vises ikke i
+            nettbuttiken. Gå til Min Side for å se resterende steg før dine
+            produkter blir publisert.
           </ActionsColoredBox>
         </div>
       )}

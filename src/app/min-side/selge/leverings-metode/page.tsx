@@ -9,12 +9,15 @@ const LeveringPage = async () => {
   const token = cookies().get("Token")?.value;
   const user: UserBackend = await UserMethods.getMe(token);
   const currentDelivery = user.deliveries.find(
-    (delivery) => !delivery.receivedFromSeller,
+    (delivery) => delivery.inProgress,
   );
-
+  const deliveryDetails = await UserMethods.getDelivery(
+    currentDelivery?.id,
+    token,
+  );
   return (
     <div className="container mx-auto p-4">
-      {currentDelivery ? (
+      {currentDelivery && deliveryDetails.attributes.delivery_type.data ? (
         <CurrentDelivery delivery={currentDelivery} token={token} />
       ) : (
         <Form user={user} />

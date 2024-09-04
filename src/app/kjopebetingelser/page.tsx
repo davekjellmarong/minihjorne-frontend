@@ -149,7 +149,7 @@ const Kjøpebetingelser = () => {
         kjøper ikke bære.
       </p>
       <p className="mt-2 text-gray-700">
-        I tillegg til leiepris som fremkommer på nettsiden, tar Minihjørne 20%
+        I tillegg til leiepris som fremkommer på nettsiden, tar Minihjørne 30%
         provisjon av den samlede summen som kjøperen selger for på
         minihjørne.no.
       </p>
