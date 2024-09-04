@@ -16,6 +16,10 @@ export enum UserStatus {
   FullService = 3,
   Seller = 4,
 }
+export enum SalgsMetode {
+  Selvregistrering = 1,
+  FullService = 2,
+}
 export enum DeliveryType {
   InPerson = 1,
   Shipping = 2,

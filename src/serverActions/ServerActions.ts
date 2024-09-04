@@ -4,7 +4,7 @@ import { UserMethods } from "@/queryFactory/User";
 import { cookies } from "next/headers";
 import { emailSchema, resetPasswordSchema } from "@/zod/Zod";
 import { z } from "zod";
-import { PlanEnum, UserStatus } from "@/utils/Enums";
+import { PlanEnum, SalgsMetode, UserStatus } from "@/utils/Enums";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { ProductsMethods } from "@/queryFactory/Product";
@@ -120,6 +120,7 @@ export const activateSalgsMetodeAndCreateDelivery = async (
         },
       };
       currentDelivery = await UserMethods.createDelivery(payload, token);
+      console.log(currentDelivery);
       revalidatePath("/users/me?populate=*");
     } catch (error) {
       console.error("Error creating delivery:", error);
@@ -127,7 +128,10 @@ export const activateSalgsMetodeAndCreateDelivery = async (
     }
   }
   const payload = {
-    user_status: salgsmetode,
+    user_status:
+      salgsmetode === String(SalgsMetode.Selvregistrering)
+        ? UserStatus.Selvregistrering
+        : UserStatus.FullService,
   };
   const response = await UserMethods.putFetch(
     payload,
