@@ -44,7 +44,7 @@ const LeverePage = async () => {
           header="Ingen leveringmetode funnet."
           color="yellow"
           path="/min-side/selge/leverings-metode"
-          button="Tilbake til Min side"
+          button="Leveringsmetode"
         >
           Du må først velge om leveringen skal sendes til oss eller leveres
           direkte. Gå hit for å velge leveringsmetode.
@@ -64,7 +64,7 @@ const LeverePage = async () => {
           </div>
           <div className="py-6 ">
             <InfoColoredBox title="Skriv dette på pakken:" color="yellow">
-              <div className="my-2 font-bold">
+              <div className="my-2 text-start font-bold">
                 <p>Iselin Gamst Bernhart</p>
                 <p>Kanonhallveien 12A</p>
                 <p>0585 Oslo</p>
@@ -95,14 +95,16 @@ const LeverePage = async () => {
           </div>
           <div className="py-6 ">
             <InfoColoredBox title="Lever klærne direkte" color="yellow">
-              <p className="text-gray-700">
-                <strong>Adresse:</strong>
-                <br /> Kanonhallveien 12A, 0585 Oslo
-              </p>
-              <p className="text-gray-700">
-                <strong>Telefon:</strong>
-                <br /> 46947922
-              </p>
+              <div className="text-start">
+                <p className="text-gray-700">
+                  <strong>Adresse:</strong>
+                  <br /> Kanonhallveien 12A, 0585 Oslo
+                </p>
+                <p className="text-gray-700">
+                  <strong>Telefon:</strong>
+                  <br /> 46947922
+                </p>
+              </div>
             </InfoColoredBox>
           </div>
           <LeveringsDager />

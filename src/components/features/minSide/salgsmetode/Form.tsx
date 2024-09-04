@@ -1,10 +1,12 @@
 "use client";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
+import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
 import { activateSalgsMetodeAndCreateDelivery } from "@/serverActions/ServerActions";
 import { UserStatus } from "@/utils/Enums";
 import { UserBackend } from "@/utils/types";
 import { useMutation } from "@tanstack/react-query";
+import { Users } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -36,42 +38,21 @@ const Form = ({ user }: FormProps) => {
   const handleOptionChange = (e: any) => {
     setSelectedOption(Number(e.target.value));
   };
-
   return (
     <div className="flex flex-col items-center justify-center bg-white p-6">
       <LoadingOverlay loading={isPending} />
-
       {disableForm ? (
         <>
-          <InfoColoredBox title="Valgt Salgsmetode:" color="green">
-            <p>
-              {user.user_status.id === UserStatus.Selvregistrering
-                ? "Selvregistrering: Du styrer salgsprosessen på egen hånd. 30% av salgsprisen går til Minihjørne."
-                : "Full service pakke: Vi tar oss av alt. 60% av salgsprisen går til Minihjørne."}
-            </p>
-            <Link
-              href={
-                user.user_status.id === UserStatus.Selvregistrering
-                  ? "/om-oss/selvregistrering"
-                  : "/om-oss/full-service-pakke"
-              }
-              className="mt-2 inline-block text-brand-500 underline"
-            >
-              Les mer om din salgsmetode
-            </Link>
-          </InfoColoredBox>
-
-          {/* <p className="mb-4 text-center text-red-500">
-            Du har allerede valgt salgsmetoden{" "}
+          <ActionsColoredBox
+            header={`Salgsmetode - ${user.user_status.type}`}
+            color="green"
+            button="Gå tilbake"
+            path="/min-side"
+          >
             {user.user_status.id === UserStatus.Selvregistrering
-              ? "selvregistrering"
-              : "full service pakke"} */}
-          {/* todo - legg til endring av salgsmetode */}
-          {/* . Vil du endre? */}
-          {/* </p> */}
-          {/* <Button onClick={() => setDisableForm(false)} type="outline">
-            Ja, jeg vil endre
-          </Button> */}
+              ? "Selvregistrering: Du styrer salgsprosessen på egen hånd. 30% av salgsprisen går til Minihjørne."
+              : "Full service pakke: Vi tar oss av alt. 60% av salgsprisen går til Minihjørne."}
+          </ActionsColoredBox>
         </>
       ) : (
         <form action={mutate} className="w-full max-w-md space-y-6">

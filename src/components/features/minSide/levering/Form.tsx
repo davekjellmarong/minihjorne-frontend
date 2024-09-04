@@ -36,10 +36,12 @@ const Form = ({ user }: FormProps) => {
       </div>
       <div className="pb-6">
         <InfoColoredBox title="Adresse informasjon:" color="secondary">
-          <p>Kanonhall veien 12A</p>
-          <p>0585 Oslo</p>
-          <p>Iselin Malene Gamst Bernhart</p>
-          <p>Tlf: 46947922</p>
+          <div className="text-start">
+            <p>Kanonhallveien 12A</p>
+            <p>0585 Oslo</p>
+            <p>Iselin Malene Gamst Bernhart</p>
+            <p>Tlf: 46947922</p>
+          </div>
         </InfoColoredBox>
       </div>
       <form action={mutate} className="w-full max-w-md space-y-6">
