@@ -120,6 +120,7 @@ export const activateSalgsMetodeAndCreateDelivery = async (
         },
       };
       currentDelivery = await UserMethods.createDelivery(payload, token);
+      revalidatePath("/users/me?populate=*");
     } catch (error) {
       console.error("Error creating delivery:", error);
       throw error;

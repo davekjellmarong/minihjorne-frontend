@@ -7,12 +7,13 @@ import Button from "@/components/common/buttons/Button";
 import { updateUserSaleProfile } from "@/serverActions/ServerActions";
 import { UserQueries } from "@/queryFactory/User";
 import { useCookies } from "react-cookie";
+import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 
 const EditSalgsprofilForm = () => {
   const router = useRouter();
   const [cookie] = useCookies(["Token"]);
   const { data: user } = useSuspenseQuery(UserQueries.me(cookie.Token));
-  const { mutate: updateUser } = useMutation({
+  const { mutate: updateUser, isPending } = useMutation({
     mutationFn: updateUserSaleProfile,
     onSuccess: () => {
       toast.info(`Salgsprofil lagret`);
@@ -24,6 +25,7 @@ const EditSalgsprofilForm = () => {
   return (
     <div className="flex flex-col items-center gap-3 p-8">
       <h1 className="text-xl font-bold">Rediger din salgsprofil</h1>
+      <LoadingOverlay loading={isPending} />
       <form className="flex w-full flex-col gap-6" action={updateUser}>
         <div>
           <label htmlFor="header">Overskrift</label>

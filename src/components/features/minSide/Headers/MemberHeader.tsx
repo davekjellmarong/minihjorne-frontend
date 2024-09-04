@@ -12,8 +12,8 @@ const MemberHeader = () => {
         button="Velg salgsmetode"
         headerWeight="semi-bold"
       >
-        Velg en salgsmetode: <b>selvregistrering </b>
-        for full kontroll eller vår <b>full service pakke.</b>
+        Velg mellom salgsmetodene <b>selvregistrering </b>
+        eller vår <b>full service pakke.</b>
         <p className="mt-4 text-sm">
           Bli selger gratis - vi tar kun provision på salg.
         </p>

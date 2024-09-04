@@ -1,5 +1,4 @@
 "use client";
-import Button from "@/components/common/buttons/Button";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
 import { activateSalgsMetodeAndCreateDelivery } from "@/serverActions/ServerActions";

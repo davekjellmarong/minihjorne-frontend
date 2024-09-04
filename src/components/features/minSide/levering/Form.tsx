@@ -29,7 +29,7 @@ const Form = ({ user }: FormProps) => {
   });
   return (
     <div className="flex flex-col items-center justify-center bg-white p-4">
-      <LoadingOverlay loading={false} /> {/* Set loading state as needed */}
+      <LoadingOverlay loading={isPending} /> {/* Set loading state as needed */}
       <div className="mb-6 ">
         <h1 className="text-center text-2xl font-semibold">Levering</h1>
         <p>{user.user_status.type}</p>
