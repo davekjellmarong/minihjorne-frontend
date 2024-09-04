@@ -15,7 +15,7 @@ const OrderConfirmationPage = () => {
   }, [searchParams]);
 
   return (
-    <>
+    <div className="m-4">
       <ActionsColoredBox
         header="Ordrebekreftelse"
         color="green"
@@ -39,7 +39,7 @@ const OrderConfirmationPage = () => {
           .
         </p>
       </ActionsColoredBox>
-    </>
+    </div>
   );
 };
 

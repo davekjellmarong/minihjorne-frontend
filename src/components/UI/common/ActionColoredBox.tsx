@@ -7,8 +7,9 @@ interface ActionsColoredBoxProps {
   children: React.ReactNode;
   button: string;
   path: string;
-  color: "blue" | "yellow" | "green" | "red" | "purple";
+  color: "blue" | "yellow" | "green" | "red" | "purple" | "white";
   image?: boolean;
+  headerWeight?: "bold" | "semi-bold";
 }
 
 const ActionsColoredBox = ({
@@ -18,6 +19,7 @@ const ActionsColoredBox = ({
   path,
   color,
   image = false,
+  headerWeight = "semi-bold",
 }: ActionsColoredBoxProps) => {
   const colorClasses = {
     blue: {
@@ -40,16 +42,21 @@ const ActionsColoredBox = ({
       box: "bg-purple-100 text-purple-900",
       button: "bg-purple-300 text-purple-800 hover:bg-purple-400",
     },
+    white: {
+      box: "bg-white text-gray-600 border border-gray-200",
+      button: "bg-brand-500 text-white hover:bg-brand-600",
+    },
   };
 
   const { box, button: buttonClass } = colorClasses[color] || colorClasses.blue;
-
+  const headerWeightClass =
+    headerWeight === "bold" ? "font-bold" : "font-semibold";
   return (
     <div
-      className={`m-4 flex flex-col items-center justify-end rounded-md ${box} px-6 py-6 shadow-lg`}
+      className={`flex flex-col items-center justify-end rounded-md ${box} px-6 py-6 shadow-lg`}
     >
       <div className="mb-4 text-center">
-        <h2 className="mb-2 text-lg font-bold">{header}</h2>
+        <h2 className={`mb-2 text-lg ${headerWeightClass}`}>{header}</h2>
         {image && (
           <div className="flex justify-center">
             <Image
@@ -60,12 +67,10 @@ const ActionsColoredBox = ({
             />
           </div>
         )}
-        <p className="text-base">{children}</p>
+        <div className="text-base">{children}</div>
       </div>
       <Link href={path}>
-        <button
-          className={`rounded px-4 py-2 font-semibold transition ${buttonClass}`}
-        >
+        <button className={`rounded px-4 py-2  transition ${buttonClass}`}>
           {button}
         </button>
       </Link>

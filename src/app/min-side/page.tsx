@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import Menu from "@/components/features/minSide/Menu";
 import Header from "@/components/features/minSide/Header";
-import OnboardingSteps from "@/components/features/minSide/OnboardingSteps";
 
 const MinSide = () => {
   return (
@@ -22,7 +21,6 @@ const MinSide = () => {
             </div>
           }
         >
-          <OnboardingSteps />
           <Header />
         </Suspense>
       </div>

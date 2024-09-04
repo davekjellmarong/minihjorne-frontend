@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/common/buttons/Button";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
+import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
 import { activateSalgsMetode } from "@/serverActions/ServerActions";
 import { UserStatus } from "@/utils/Enums";
 import { UserBackend } from "@/utils/types";
@@ -40,16 +41,35 @@ const Form = ({ user }: FormProps) => {
 
       {disableForm ? (
         <>
-          <p className="mb-4 text-center text-red-500">
+          <InfoColoredBox title="Valgt Salgsmetode:" color="green">
+            <p>
+              {user.user_status.id === UserStatus.Selvregistrering
+                ? "Selvregistrering: Du styrer salgsprosessen på egen hånd. 30% av salgsprisen går til Minihjørne."
+                : "Full service pakke: Vi tar oss av alt. 60% av salgsprisen går til Minihjørne."}
+            </p>
+            <Link
+              href={
+                user.user_status.id === UserStatus.Selvregistrering
+                  ? "/om-oss/selvregistrering"
+                  : "/om-oss/full-service-pakke"
+              }
+              className="mt-2 inline-block text-brand-500 underline"
+            >
+              Les mer om din salgsmetode
+            </Link>
+          </InfoColoredBox>
+
+          {/* <p className="mb-4 text-center text-red-500">
             Du har allerede valgt salgsmetoden{" "}
             {user.user_status.id === UserStatus.Selvregistrering
               ? "selvregistrering"
-              : "full service pakke"}
-            . Vil du endre?
-          </p>
-          <Button onClick={() => setDisableForm(false)} type="outline">
+              : "full service pakke"} */}
+          {/* todo - legg til endring av salgsmetode */}
+          {/* . Vil du endre? */}
+          {/* </p> */}
+          {/* <Button onClick={() => setDisableForm(false)} type="outline">
             Ja, jeg vil endre
-          </Button>
+          </Button> */}
         </>
       ) : (
         <form action={mutate} className="w-full max-w-md space-y-6">

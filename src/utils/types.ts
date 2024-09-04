@@ -6,12 +6,27 @@ export interface CommonSize {
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonDelivery {
+  receivedFromSeller: boolean;
+  receivedAtWarehouseOn: string;
+  publishedInWebsite: boolean;
+  publishedOnWebsiteOn: string;
+  acceptedTerms: boolean;
+  description: string;
+}
 export interface CommonUserStatus {
   type: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonSalesMethod {
+  name: string;
+  commissionPercent: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface CommonFeatureFlag {
   name: string;
   description: string;
@@ -51,6 +66,7 @@ export interface CommonProduct {
   active: boolean;
   views: number;
   added_to_cart: number;
+  isReceivedAtWarehouse: boolean;
 }
 export interface CommonOrder {
   guid: string;
@@ -182,8 +198,12 @@ export interface CommonImage {
   updatedAt: string;
 }
 
+export interface SalesMethodBackend extends CommonSalesMethod {
+  id: number;
+}
 export interface UserStatusBackend extends CommonUserStatus {
   id: number;
+  sales_method: SalesMethodBackend;
 }
 export interface TagBackend extends CommonTags {
   id: number;
@@ -209,12 +229,20 @@ export interface StateBackend extends CommonStatus {
 export interface ImageBackend extends CommonImage {
   id: number;
 }
+export interface DeliveryBackend extends CommonDelivery {
+  id: number;
+  products: { data: Product[] };
+  delivery_type: { data: DeliveryType };
+  user: { data: User };
+  sales_method: { data: SalesMethod };
+}
 export interface UserBackend extends CommonUser {
   id: number;
   plan: CommonPlan;
   productImages: ImageBackend[];
   products: ProductBackend[];
   user_status: UserStatusBackend;
+  deliveries: DeliveryBackend[];
 }
 export interface OrderBackend extends CommonOrder {
   id: number;
@@ -285,6 +313,39 @@ export interface Product {
     defects: { data: Defect[] | [] };
     category_type: { data: CategoryType };
     brand_link: { data: Brand_link | null };
+    delivery: { data: Delivery };
+  };
+}
+export interface SalesMethod {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    commissionPercent: number;
+  };
+}
+export interface DeliveryType {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+}
+export interface Delivery {
+  id: number;
+  attributes: {
+    receivedFromSeller: boolean;
+    receivedAtWarehouseOn: string;
+    publishedInWebsite: boolean;
+    publishedOnWebsiteOn: string;
+    acceptedTerms: boolean;
+    description: string;
+    products: { data: Product[] };
+    delivery_type: { data: DeliveryType };
+    user: { data: User };
+    sales_method: { data: SalesMethod };
   };
 }
 export interface CartItem {

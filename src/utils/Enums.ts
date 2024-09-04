@@ -16,7 +16,10 @@ export enum UserStatus {
   FullService = 3,
   Seller = 4,
 }
-
+export enum DeliveryType {
+  InPerson = 1,
+  Shipping = 2,
+}
 // {
 //   "version": 2,
 //   "data": {

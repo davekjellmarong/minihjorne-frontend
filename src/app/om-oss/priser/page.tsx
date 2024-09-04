@@ -32,7 +32,7 @@ const PriserPage = () => {
             color="green"
             title="Selvregistrering - 30% provisjon"
           >
-            <span className="text-lg font-semibold">Selvregistrering</span>
+            {/* <span className="text-lg font-semibold">Selvregistrering</span> */}
             <span>
               Ved selvregistrering oppretter du dine egne produktoppføringer og
               håndterer salgsprofilen din selv. Provisjonen for selvregistrering
@@ -42,7 +42,7 @@ const PriserPage = () => {
           </InfoColoredBox>
 
           <InfoColoredBox color="blue" title="Full Service - 60% provisjon">
-            <span className="text-lg font-semibold">Full Service</span>
+            {/* <span className="text-lg font-semibold">Full Service</span> */}
             <span>
               Med full service sender du klærne dine til oss, og vi håndterer
               hele prosessen fra registrering til salg. Provisjonen for full

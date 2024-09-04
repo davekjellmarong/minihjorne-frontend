@@ -8,15 +8,17 @@ import {
   ChartBar,
   Truck,
   HandCoins,
+  Package,
 } from "@phosphor-icons/react/dist/ssr";
 import { cookies } from "next/headers";
 import { UserMethods } from "@/queryFactory/User";
-import { getStepsAndCurrentStep } from "@/utils/serverUtils";
+import { getSteps } from "@/utils/serverUtils";
 
 const Menu = async () => {
   const token = cookies().get("Token")?.value;
   const user = await UserMethods.getMeFetch(token);
-  const { currentStep } = getStepsAndCurrentStep(user);
+
+  const { currentStep } = getSteps(user);
   const navItems = [
     {
       header: "Ordre",
@@ -61,11 +63,10 @@ const Menu = async () => {
           icon: <UserSquare size={32} weight="thin" color="purple" />,
           action: null,
         },
-        // levering
         {
           id: 4,
-          title: "Levere klær",
-          path: "/min-side/selge/levering",
+          title: "Leverings metode",
+          path: "/min-side/selge/leverings-metode",
           icon: <Truck size={32} weight="thin" color="purple" />,
           action: null,
         },
@@ -76,6 +77,15 @@ const Menu = async () => {
           icon: <HandCoins size={32} weight="thin" color="purple" />,
           action: null,
         },
+        // Lever klær
+        {
+          id: 8,
+          title: "Lever klær",
+          path: "/min-side/selge/levere",
+          icon: <Package size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+
         // {
         //   id: 4,
         //   title: "Leie",
@@ -105,8 +115,8 @@ const Menu = async () => {
     // },
   ];
   return (
-    <div className="relative">
-      <div className="relative bottom-10 m-auto w-3/4 max-w-[500px] rounded-lg bg-white p-6 shadow">
+    <div className="relative px-4">
+      <div className="relative bottom-10 m-auto max-w-[500px] rounded-lg bg-white p-6 shadow">
         {navItems.map((headerItem) => {
           return (
             <div key={headerItem.header}>
@@ -124,7 +134,7 @@ const Menu = async () => {
                       <span className="pr-6">{item.icon}</span>
                       <span>{item.title}</span>
                     </Link>
-                    {currentStep && currentStep.menuId === item.id && (
+                    {currentStep && currentStep?.menuId === item.id && (
                       <span className=" absolute right-2 top-2 flex items-center justify-center rounded-sm  text-xs text-green-800">
                         NESTE STEG!
                       </span>

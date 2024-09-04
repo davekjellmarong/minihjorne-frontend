@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { User, UserBackend } from "@/utils/types";
+import { Delivery, User, UserBackend } from "@/utils/types";
 import {
   getData,
   getDataFetch,
@@ -62,5 +62,11 @@ export const UserMethods = {
   },
   incrementUserView: async (id: number) => {
     return postPublicEmptyData(`/product/view/user/${id}`);
+  },
+  createDelivery: async (data: any, token: any) => {
+    return postData(data, "/deliveries", token);
+  },
+  getDelivery: async (id: any, token: any): Promise<Delivery> => {
+    return getData(`/deliveries/${id}?populate=*`, token);
   },
 };

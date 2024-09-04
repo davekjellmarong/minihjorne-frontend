@@ -157,9 +157,9 @@ export const postData = async (data: any, query: string, token: string) => {
     } else {
       return response.data;
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error fetching data:", error);
-    throw error;
+    throw error.response.data.error.message;
   }
 };
 export const deleteData = async (query: string, token: string) => {
