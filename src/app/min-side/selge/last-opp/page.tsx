@@ -34,7 +34,7 @@ const LeggUt = () => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
-  const delivery = user.deliveries.find((delivery) => delivery.inProgress);
+  const delivery = user.deliveries?.find((delivery) => delivery.inProgress);
   const { mutate: createProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.post(values, jwt);
