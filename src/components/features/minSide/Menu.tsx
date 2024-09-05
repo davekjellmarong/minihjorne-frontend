@@ -9,11 +9,13 @@ import {
   Truck,
   HandCoins,
   Package,
+  Key,
 } from "@phosphor-icons/react/dist/ssr";
 import { cookies } from "next/headers";
 import { UserMethods } from "@/queryFactory/User";
 import { getSteps } from "@/utils/serverUtils";
 import { Delivery } from "@/utils/types";
+import path from "path";
 
 const Menu = async () => {
   const token = cookies().get("Token")?.value;
@@ -103,6 +105,18 @@ const Menu = async () => {
         },
       ],
     },
+    {
+      header: "Admin",
+      items: [
+        {
+          id: 9,
+          title: "Produkter",
+          path: "/min-side/admin/produkter",
+          icon: <Key size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+      ],
+    },
     // {
     //   header: "Selge",
     //   items: [
@@ -139,6 +153,7 @@ const Menu = async () => {
     <div className="relative px-4">
       <div className="relative bottom-10 m-auto max-w-[500px] rounded-lg bg-white p-6 shadow">
         {navItems.map((headerItem) => {
+          if (headerItem.header === "Admin" && !user.admin) return null;
           return (
             <div key={headerItem.header}>
               <p className="font-medium">{headerItem.header}</p>
