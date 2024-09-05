@@ -28,8 +28,8 @@ const Form = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: activateSalgsMetodeAndCreateDelivery,
     onSuccess: () => {
-      setAnimateAway(true);
-      setAnimateChosen(true);
+      // setAnimateAway(true);
+      // setAnimateChosen(true);
       toast.success("Salgsmetode lagret!");
       queryClient.invalidateQueries(UserQueries.me(cookies.Token));
     },
