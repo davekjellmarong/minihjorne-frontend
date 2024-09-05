@@ -10,7 +10,7 @@ const HowToSell_Summary = () => {
         Selge klær på Minihjørne.no?
       </p>
       <div>
-        <div className="flex flex-col items-center rounded-md border  p-6 shadow-sm">
+        <div className="flex flex-col items-center rounded-md p-6 ">
           <Image
             src="/account.svg"
             alt="Lag en bruker"
@@ -33,7 +33,7 @@ const HowToSell_Summary = () => {
 
       <div>
         {/* Register Clothes Section */}
-        <div className="flex flex-col items-center rounded-md border  p-6 shadow-sm">
+        <div className="flex flex-col items-center rounded-md p-6 ">
           <Image
             src="/register.svg"
             alt="Registrer klærne"
@@ -56,7 +56,7 @@ const HowToSell_Summary = () => {
 
       {/* Delivery Section */}
       <div>
-        <div className="flex flex-col items-center rounded-md border  p-6 shadow-sm">
+        <div className="flex flex-col items-center rounded-md p-6 ">
           <Image
             src="/deliver.svg"
             alt="Levering"

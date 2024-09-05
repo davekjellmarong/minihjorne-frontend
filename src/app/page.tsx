@@ -18,9 +18,9 @@ const Home = () => {
         </div>
         <div className="pb-6 pt-4">
           <ActionsColoredBox
-            header="Full Service Pakke"
+            header="Fullservice-pakke"
             button="Les mer"
-            color="green"
+            color="white"
             path="/om-oss/full-service-pakke"
           >
             Vi tilbyr en full service pakke for deg som ønsker å selge brukte
