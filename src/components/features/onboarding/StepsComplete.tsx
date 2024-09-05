@@ -43,9 +43,7 @@ const StepsComplete = async ({ user }: SelvregistreringCompleteProps) => {
         >
           Nå gjenstår det bare å levere klærne dine. Dersom du allerede har
           sendt dem, vennligst vent til vi har mottatt dem på lageret.
-          <br />
-          <br />
-          Hvis du vil laste opp flere klær, kan du fortsatt gjøre det.
+          {/* Hvis du vil laste opp flere klær, kan du fortsatt gjøre det. */}
         </ActionsColoredBox>
       </div>
     );
