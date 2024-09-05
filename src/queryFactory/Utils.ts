@@ -157,9 +157,9 @@ export const postData = async (data: any, query: string, token: string) => {
     } else {
       return response.data;
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error fetching data:", error);
-    throw error;
+    throw error.response.data.error.message;
   }
 };
 export const deleteData = async (query: string, token: string) => {
@@ -218,8 +218,14 @@ export const putPublicData = async (data: any, query: string) => {
 
 export const registerUser = async (values: any) => {
   const url = apiUrl + "/auth/local/register";
+  const data = {
+    username: values.username,
+    email: values.email,
+    password: values.password,
+    user_status: 1,
+  };
   return axios
-    .post(url, values)
+    .post(url, data)
     .then((response) => {
       // Handle success.
       return response.data;

@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { User, UserBackend } from "@/utils/types";
+import { Delivery, User, UserBackend } from "@/utils/types";
 import {
   getData,
   getDataFetch,
@@ -10,7 +10,10 @@ import {
   putData,
   putDataFetch,
 } from "./Utils";
-import { incrementUserViews } from "@/serverActions/ServerActions";
+import {
+  incrementUserViews,
+  updateDelivery,
+} from "@/serverActions/ServerActions";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -36,7 +39,7 @@ export const UserMethods = {
     return getPublicData(`/users/${id}`);
   },
   getMe: async (token: any): Promise<UserBackend> => {
-    return getData("/users/me?populate=*", token);
+    return getDataFetch("/users/me?populate=*", token);
   },
   getMeFetch: async (token: any): Promise<UserBackend> => {
     return getDataFetch("/users/me?populate=*", token);
@@ -62,5 +65,14 @@ export const UserMethods = {
   },
   incrementUserView: async (id: number) => {
     return postPublicEmptyData(`/product/view/user/${id}`);
+  },
+  createDelivery: async (data: any, token: any) => {
+    return postData(data, "/deliveries", token);
+  },
+  updateDelivery: async (data: any, id: any, token: any) => {
+    return putData(data, `/deliveries/${id}`, token);
+  },
+  getDelivery: async (id: any, token: any): Promise<Delivery> => {
+    return getData(`/deliveries/${id}?populate=*`, token);
   },
 };

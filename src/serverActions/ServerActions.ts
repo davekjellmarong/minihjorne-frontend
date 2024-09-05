@@ -4,15 +4,16 @@ import { UserMethods } from "@/queryFactory/User";
 import { cookies } from "next/headers";
 import { emailSchema, resetPasswordSchema } from "@/zod/Zod";
 import { z } from "zod";
-import { PlanEnum } from "@/utils/Enums";
+import { PlanEnum, SalgsMetode, UserStatus } from "@/utils/Enums";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { ProductsMethods } from "@/queryFactory/Product";
 
+const cookieStore: any = cookies();
+const token = cookieStore.get("Token").value;
+
 export const activeUserProfile = async (cool: any) => {
-  const cookieStore: any = cookies();
-  const token = cookieStore.get("Token");
-  const user = await UserMethods.getMe(token.value);
+  const user = await UserMethods.getMe(token);
   const payload = {
     active: true,
     paid: true,
@@ -61,7 +62,6 @@ export const resetPassword = async (formdata: FormData) => {
 };
 
 export const updateUserSaleProfile = async (formdata: FormData) => {
-  const token = cookies().get("Token")?.value;
   const header = formdata.get("header");
   const description = formdata.get("description");
   const data = {
@@ -103,4 +103,77 @@ export const incrementUserViews = async (userId: number) => {
     return "User view incremented";
   }
   return "Bot detected";
+};
+
+export const activateSalgsMetodeAndCreateDelivery = async (
+  formdata: FormData,
+) => {
+  const salgsmetode = formdata.get("salgsmetode");
+  const user = await UserMethods.getMe(token);
+  let currentDelivery = user.deliveries.find((delivery) => delivery.inProgress);
+  if (!currentDelivery) {
+    try {
+      const payload = {
+        data: {
+          sales_method: salgsmetode,
+          user: user.id,
+        },
+      };
+      currentDelivery = await UserMethods.createDelivery(payload, token);
+      console.log(currentDelivery);
+      // revalidatePath("/users/me?populate=*");
+    } catch (error) {
+      console.error("Error creating delivery:", error);
+      throw error;
+    }
+  }
+  const payload = {
+    user_status:
+      salgsmetode === String(SalgsMetode.Selvregistrering)
+        ? UserStatus.Selvregistrering
+        : UserStatus.FullService,
+  };
+  const response = await UserMethods.putFetch(
+    payload,
+    user.id,
+    process.env.UPDATE_USER_TOKEN,
+  );
+  if (response.id === user.id) {
+    revalidatePath("/users/me?populate=*");
+  } else {
+    throw new Error("Error updating user status");
+  }
+  return response;
+};
+
+export const updateDelivery = async (formdata: FormData) => {
+  const deliveryType = formdata.get("deliveryType");
+  const description = formdata.get("description");
+  const user = await UserMethods.getMe(token);
+  const currentDelivery = user.deliveries.find(
+    (delivery) => delivery.inProgress,
+  );
+  if (!currentDelivery) {
+    throw new Error("No delivery found");
+  }
+
+  const payload = {
+    data: {
+      delivery_type: deliveryType,
+      description: description,
+    },
+  };
+
+  try {
+    const response = await UserMethods.updateDelivery(
+      payload,
+      currentDelivery.id,
+      token,
+    );
+    revalidatePath("/users/me?populate=*");
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
 };

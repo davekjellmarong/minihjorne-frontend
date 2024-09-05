@@ -1,22 +1,28 @@
 import { UserMethods } from "@/queryFactory/User";
 import React from "react";
-import AvatarLetter from "./AvatarLetter";
 import { cookies } from "next/headers";
+import { UserStatus } from "@/utils/Enums";
+import SellerHeader from "./Headers/SellerHeader";
+import MemberHeader from "./Headers/MemberHeader";
+import OnboardingSteps from "../onboarding/OnboardingSteps";
 
 const Header = async () => {
   const token = cookies().get("Token")?.value;
   const user = await UserMethods.getMeFetch(token);
-  return (
-    <>
-      <div className="flex justify-center ">
-        <AvatarLetter username={user.username} admin={user.admin} />
-      </div>
-      <div>
-        <p className="text-center text-lg font-semibold">{user.username}</p>
-        <p className="text-center text-sm">{user.email}</p>
-      </div>
-    </>
-  );
+  const {
+    user_status: { id },
+  } = user;
+
+  if (id === UserStatus.Seller) {
+    return <SellerHeader user={user} />;
+  } else if (id === UserStatus.Member) {
+    return <MemberHeader />;
+  } else if (
+    id === UserStatus.Selvregistrering ||
+    id === UserStatus.FullService
+  ) {
+    return <OnboardingSteps user={user} />;
+  }
 };
 
 export default Header;

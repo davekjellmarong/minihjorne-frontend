@@ -1,5 +1,4 @@
 import React from "react";
-import OmOss from "./page";
 import Links from "@/components/features/omOss/Links";
 import { Metadata } from "next";
 
