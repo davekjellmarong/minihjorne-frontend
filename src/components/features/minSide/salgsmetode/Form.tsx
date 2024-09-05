@@ -2,28 +2,36 @@
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
+import { UserQueries } from "@/queryFactory/User";
 import { activateSalgsMetodeAndCreateDelivery } from "@/serverActions/ServerActions";
 import { SalgsMetode, UserStatus } from "@/utils/Enums";
 import { UserBackend } from "@/utils/types";
-import { useMutation } from "@tanstack/react-query";
+import {
+  QueryClient,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 interface FormProps {
   user: UserBackend;
 }
 const Form = () => {
+  const queryClient = useQueryClient();
   const [selectedOption, setSelectedOption] = useState(0);
   const [animateAway, setAnimateAway] = useState(false);
   const [animateChosen, setAnimateChosen] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
-
+  const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const { mutate, isPending } = useMutation({
     mutationFn: activateSalgsMetodeAndCreateDelivery,
     onSuccess: () => {
       setAnimateAway(true);
       setAnimateChosen(true);
       toast.success("Salgsmetode lagret!");
+      queryClient.invalidateQueries(UserQueries.me(cookies.Token));
     },
     onError: (error) => {
       toast.error(error.message);
