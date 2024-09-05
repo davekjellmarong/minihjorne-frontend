@@ -47,9 +47,13 @@ export const ProductsMethods = {
   incrementProductAddedToCart: async (id: number) => {
     return postPublicEmptyData(`/product/addToCart/${id}`);
   },
-  adminGetAllProducts: async (token: any): Promise<Product[]> => {
+  adminGetAllProducts: async (
+    token: any,
+    page: number,
+    pagesize: number,
+  ): Promise<Product[]> => {
     return getData(
-      "/products?pagination[page]=1&pagination[pageSize]=600&populate=size&populate=image&filters[sold][$eq]=false",
+      `/products?pagination[page]=${page}&pagination[pageSize]=${pagesize}&populate=size&populate=image&filters[sold][$eq]=false`,
       token,
     );
   },
