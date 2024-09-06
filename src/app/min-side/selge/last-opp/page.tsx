@@ -49,11 +49,14 @@ const LeggUt = () => {
         jwt,
       );
       if (response.length > 0) {
+        const productId = data?.id;
         queryClient.invalidateQueries(UserQueries.me(jwt));
         setSelectedImages([]);
         formik.resetForm();
         setNextProduct(true);
-        toast.info(`Produktet er lagret`);
+        if (productId) {
+          toast.info(`Produktet er lagret: ${productId}`);
+        }
       } else {
         toast.error(`Produkt kunne ikke lagres`);
       }
