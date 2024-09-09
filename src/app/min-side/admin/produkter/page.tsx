@@ -1,4 +1,4 @@
-import Products from "@/components/features/admin/Products";
+import Products from "@/components/features/admin/Delivery/Products";
 import { ProductsMethods } from "@/queryFactory/Product";
 import { cookies } from "next/headers";
 import React from "react";

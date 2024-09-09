@@ -344,6 +344,8 @@ export interface Delivery {
     acceptedTerms: boolean;
     description: string;
     inProgress: boolean;
+    createdAt: string;
+    updatedAt: string;
     products: { data: Product[] };
     delivery_type: { data: DeliveryType };
     user: { data: User };

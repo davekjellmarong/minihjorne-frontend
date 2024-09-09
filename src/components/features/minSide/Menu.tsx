@@ -115,6 +115,13 @@ const Menu = async () => {
           icon: <Key size={32} weight="thin" color="purple" />,
           action: null,
         },
+        {
+          id: 10,
+          title: "Leveringer",
+          path: "/min-side/admin/leveringer",
+          icon: <Truck size={32} weight="thin" color="purple" />,
+          action: null,
+        },
       ],
     },
     // {
