@@ -10,13 +10,14 @@ import {
   putData,
   putDataFetch,
 } from "./Utils";
-import {
-  incrementUserViews,
-  updateDelivery,
-} from "@/serverActions/ServerActions";
 
 export const UserQueries = {
   all: () => ["users"],
+  allUsers: () =>
+    queryOptions({
+      queryKey: UserQueries.all(),
+      queryFn: () => UserMethods.getAll(),
+    }),
   detail: (id: any) =>
     queryOptions({
       queryKey: [...UserQueries.all(), id],
@@ -32,6 +33,9 @@ export const UserQueries = {
 };
 
 export const UserMethods = {
+  getAll: async (): Promise<UserBackend[]> => {
+    return getPublicData("/users");
+  },
   getByUsername: async (username: any): Promise<User[]> => {
     return getPublicData(`/users/?filters[username][$eq]=${username}`);
   },
@@ -63,6 +67,7 @@ export const UserMethods = {
   }) => {
     return postPublicData(data, "/auth/reset-password");
   },
+
   incrementUserView: async (id: number) => {
     return postPublicEmptyData(`/product/view/user/${id}`);
   },
@@ -74,5 +79,12 @@ export const UserMethods = {
   },
   getDelivery: async (id: any, token: any): Promise<Delivery> => {
     return getData(`/deliveries/${id}?populate=*`, token);
+  },
+  relateDeliveryProductsToUser: async (
+    deliveryId: any,
+    userId: any,
+    token: any,
+  ) => {
+    return postData({}, `/delivery/${deliveryId}/relate/${userId}`, token);
   },
 };

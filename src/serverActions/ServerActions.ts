@@ -177,3 +177,21 @@ export const updateDelivery = async (formdata: FormData) => {
     throw error;
   }
 };
+
+export const relateDeliveryProductsToUser = async ({
+  deliveryId,
+  userId,
+}: any) => {
+  try {
+    const response = await UserMethods.relateDeliveryProductsToUser(
+      deliveryId,
+      userId,
+      token,
+    );
+    revalidatePath("/users/me?populate=*");
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
+};
