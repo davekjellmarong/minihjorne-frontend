@@ -58,7 +58,7 @@ const Page = () => {
           Totalt antall visninger av din brukerprofil
         </StatsCard>
 
-        <LineReChart user={user} products={products} />
+        {/* <LineReChart user={user} products={products} /> */}
       </div>
     </div>
   );
