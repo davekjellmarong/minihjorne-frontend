@@ -305,10 +305,10 @@ export interface Product {
       data: Image[];
     };
     user: { data: User };
-    tags: { data: Tag[] | null };
+    tags: { data: Tag[] | [] };
     colors: { data: Color[] };
     size: { data: Size };
-    material: { data: Material | [] };
+    material: { data: Material[] | [] };
     category: { data: Category };
     state: { data: State };
     defects: { data: Defect[] | [] };
