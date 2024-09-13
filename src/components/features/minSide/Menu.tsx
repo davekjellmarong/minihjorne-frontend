@@ -10,12 +10,12 @@ import {
   HandCoins,
   Package,
   Key,
+  Money,
 } from "@phosphor-icons/react/dist/ssr";
 import { cookies } from "next/headers";
 import { UserMethods } from "@/queryFactory/User";
 import { getSteps } from "@/utils/serverUtils";
 import { Delivery } from "@/utils/types";
-import path from "path";
 
 const Menu = async () => {
   const token = cookies().get("Token")?.value;
@@ -70,6 +70,13 @@ const Menu = async () => {
           title: "Salgs metode",
           path: "/min-side/selge/salgs-metode",
           icon: <HandCoins size={32} weight="thin" color="purple" />,
+          action: null,
+        },
+        {
+          id: 11,
+          title: "Betaling",
+          path: "/min-side/selge/betaling",
+          icon: <Money size={32} weight="thin" color="purple" />,
           action: null,
         },
       ],

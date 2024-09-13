@@ -10,6 +10,7 @@ import {
   putData,
   putDataFetch,
 } from "./Utils";
+import { get } from "http";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -86,5 +87,8 @@ export const UserMethods = {
     token: any,
   ) => {
     return postData({}, `/delivery/${deliveryId}/relate/${userId}`, token);
+  },
+  getBankAccountNumber: async (token: any): Promise<string> => {
+    return getData(`/user/me/bankAccountNumber`, token);
   },
 };

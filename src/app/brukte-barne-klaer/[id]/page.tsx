@@ -25,7 +25,11 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
     brand_link,
   } = product.attributes;
 
-  const sellerProducts = await ProductsMethods.getByUserId(user.data.id, 2);
+  const sellerProducts = await ProductsMethods.getByUserId(user.data.id, 20);
+
+  const randomProductSort = sellerProducts
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 2);
   return (
     <div className=" mx-auto rounded-lg bg-white py-8">
       <div className="flex flex-col items-start gap-6">
@@ -123,7 +127,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
                   Se andre klær fra {user.data.attributes.username}
                 </h3>
                 <div className="mt-2 grid grid-cols-2 gap-4 ">
-                  {sellerProducts.map((product) => {
+                  {randomProductSort.map((product) => {
                     return (
                       <Link
                         key={product.id}
