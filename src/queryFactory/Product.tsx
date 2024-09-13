@@ -24,9 +24,13 @@ export const ProductsMethods = {
   put: async (id: string, data: any, token: any): Promise<Product> => {
     return putData(data, `/products/${id}`, token);
   },
-  getByUserId: async (id: any): Promise<Product[]> => {
+  getByUserId: async (id: any, pageSize?: number): Promise<Product[]> => {
+    let page = 200;
+    if (pageSize) {
+      page = pageSize;
+    }
     return getPublicData(
-      `/products?populate=*&sort=createdAt:desc&filters[sold][$eq]=false&filters[active][$eq]=true&filters[user][id][$eq]=${id}&pagination[page]=1&pagination[pageSize]=200`,
+      `/products?populate=*&sort=createdAt:desc&filters[sold][$eq]=false&filters[active][$eq]=true&filters[user][id][$eq]=${id}&pagination[page]=1&pagination[pageSize]=${page}`,
     );
   },
   getAllMyProducts: async (token: any): Promise<ProductBackend[]> => {

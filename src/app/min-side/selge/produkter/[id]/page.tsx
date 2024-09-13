@@ -38,7 +38,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
   const { data: user } = useQuery(UserQueries.me(jwt));
-
+  console.log(product);
   const { mutate: updateProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.put(params.id, values, jwt);
@@ -181,7 +181,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Button
           icon="trash"
           type="danger"
-          disabled={sold}
+          disabled={sold || active}
           onClick={() => {
             setModal(true);
             scrollTo(0, 0);

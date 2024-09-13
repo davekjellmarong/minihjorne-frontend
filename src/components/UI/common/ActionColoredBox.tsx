@@ -10,6 +10,7 @@ interface ActionsColoredBoxProps {
   color: "blue" | "yellow" | "green" | "red" | "purple" | "white";
   image?: boolean;
   headerWeight?: "bold" | "semi-bold";
+  shadow?: boolean;
 }
 
 const ActionsColoredBox = ({
@@ -20,6 +21,7 @@ const ActionsColoredBox = ({
   color,
   image = false,
   headerWeight = "semi-bold",
+  shadow = true,
 }: ActionsColoredBoxProps) => {
   const colorClasses = {
     blue: {
@@ -51,9 +53,10 @@ const ActionsColoredBox = ({
   const { box, button: buttonClass } = colorClasses[color] || colorClasses.blue;
   const headerWeightClass =
     headerWeight === "bold" ? "font-bold" : "font-semibold";
+  const boxShadow = shadow ? "shadow-lg" : "shadow-none";
   return (
     <div
-      className={`flex flex-col items-center justify-end rounded-md ${box} px-6 py-6 shadow-lg`}
+      className={`flex flex-col items-center justify-end rounded-md ${box} px-6 py-6 ${boxShadow}`}
     >
       <div className="mb-4 text-center">
         <h2 className={`mb-2 text-lg ${headerWeightClass}`}>{header}</h2>

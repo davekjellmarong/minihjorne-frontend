@@ -1,54 +1,13 @@
-import React from "react";
-import ColorSquares from "@/components/features/filters/color/ColorSquares";
-import {
-  GenderFemale,
-  GenderIntersex,
-  GenderMale,
-  User,
-} from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { queryTemplates } from "@/utils/constants";
-import { ProductsMethods } from "@/queryFactory/Product";
-import "react-multi-carousel/lib/styles.css";
-import BackButton from "@/components/common/buttons/BackButton";
-import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/UI/avatar";
 import Image from "next/image";
-import ProductFieldRow from "@/components/features/product/ProductFieldRow";
-import { isBrand_link, isDefect, isMaterial, isTag } from "@/utils/types";
+import { ProductsMethods } from "@/queryFactory/Product";
 import CarouselComponent from "@/components/common/Carousel";
-import "../../../styles/FieldRow.css";
-import type { Metadata, ResolvingMetadata } from "next";
-import { incrementUserViews } from "@/serverActions/ServerActions";
-import SalgsprofilCard from "@/components/common/card/SalgsprofilCard";
-
-type Props = {
-  params: { id: string };
-};
-
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  // read route params
-  const id = params.id;
-
-  // fetch data
-  const product = await ProductsMethods.getById(id);
-  const color = product.attributes.colors.data[0].attributes.name;
-  const category = product.attributes.category.data.attributes.name;
-  return {
-    title:
-      product.attributes.colors.data[0].attributes.name +
-      " " +
-      product.attributes.category.data.attributes.name +
-      " - Brukte Barneklær | Minihjørne",
-    description: `Se detaljer om ${color} ${category} hos Minihjørne. Kjøp brukte barneklær i god stand til en lav pris.`,
-  };
-}
+import ColorSquares from "@/components/features/filters/color/ColorSquares";
+import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
 
 const ProductDetail = async ({ params }: { params: { id: string } }) => {
   const product = await ProductsMethods.getById(params.id);
-
   const {
     category,
     brand,
@@ -65,135 +24,131 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
     defects,
     brand_link,
   } = product.attributes;
+
+  const sellerProducts = await ProductsMethods.getByUserId(user.data.id, 2);
   return (
-    <div className="flex w-full flex-wrap justify-center  overflow-hidden">
-      <div className="relative w-full sm:w-1/2">
-        <div className="absolute left-8 top-4 z-10">
-          <BackButton />
-        </div>
-        <SalgsprofilCard user={user} />
-        <CarouselComponent>
-          {image.data.map((image) => {
-            return (
-              <Image
-                key={image.id}
-                className="h-[500px] w-full overflow-hidden object-contain sm:h-[750px] sm:w-[500px]"
-                src={`${image.attributes.url}`}
-                height={500}
-                width={200}
-                alt=""
-              />
-            );
-          })}
-        </CarouselComponent>
-      </div>
-      <div className="relative flex w-full flex-col items-start overflow-hidden sm:w-1/2">
-        <div className="flex w-full justify-between px-4 py-2">
-          <div className="">
-            <ColorSquares size="small" colors={colors.data} />
-          </div>
-          <div className="flex w-full flex-col gap-3">
-            <p className="mt-6 w-full  text-center text-3xl font-semibold">
-              {price} kr
-            </p>
-            <div className="mb-4 flex w-full items-center justify-center">
-              <Link
-                href={`/brukte-barne-klaer/?${queryTemplates.categoryQueryTemplate}${category.data.id}&pagination[page]=1`}
-                className=""
-              >
-                {category_type.data.attributes.name} /{" "}
-                {category.data.attributes.name}
-              </Link>
-            </div>
-          </div>
-          <div className="flex flex-col justify-between">
-            <Link
-              href={`/brukte-barne-klaer/?${queryTemplates.sexQueryTemplate}${sex.data.id}&pagination[page]=1`}
-              className="flex items-center"
-            >
-              {sex.data.attributes.name === "Gutt" && (
-                <GenderMale size={28} color="blue" />
-              )}
-              {sex.data.attributes.name === "Jente" && (
-                <GenderFemale size={28} color="red" />
-              )}
-              {sex.data.attributes.name === "Unisex" && (
-                <GenderIntersex size={28} />
-              )}
-              <p className="text-sm text-gray-700">
-                {sex.data.attributes.name}
-              </p>
-            </Link>
-            <div className="flex ">
-              {defects.data.map((defect) => {
-                return (
-                  <div className="" key={defect.id}>
-                    <span className="mr-2 inline-flex items-center justify-center rounded-full bg-orange-300 p-2 text-sm">
-                      {defect.attributes.type}
-                    </span>
+    <div className=" mx-auto rounded-lg bg-white py-8">
+      <div className="flex flex-col items-start gap-6">
+        <div className="w-full rounded-lg p-4">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <CarouselComponent>
+                {image.data.map((image) => {
+                  return (
+                    <Image
+                      key={image.id}
+                      className="h-[500px] w-full overflow-hidden rounded-lg object-contain sm:h-[750px] sm:w-[500px]"
+                      src={`${image.attributes.url}`}
+                      height={500}
+                      width={200}
+                      alt=""
+                    />
+                  );
+                })}
+              </CarouselComponent>
+              <div className="mt-4 flex items-center gap-2">
+                <div className="text-2xl font-bold">Kr {price}</div>
+                <div className="text-sm text-gray-500">
+                  Størrelse: {size.data.attributes.number}
+                </div>
+              </div>
+              <div className="mt-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <ColorSquares
+                    size="small"
+                    colors={colors.data}
+                    direction="row"
+                  />
+                  <div className="flex items-center gap-2">
+                    <div className="text-sm text-gray-500">Merke: {brand}</div>
                   </div>
-                );
-              })}
+                  <div className="flex items-center gap-2">
+                    <div className="text-sm text-gray-500">
+                      Plagg: {category_type.data.attributes.name} /{" "}
+                      {category.data.attributes.name}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="text-sm text-gray-500">
+                      Tilstand: {state.data.attributes.name}
+                    </div>
+                  </div>
+                  {tags.data.length > 0 && (
+                    <div className="flex items-center gap-2">
+                      <div className="text-sm text-gray-500">
+                        Tema: {tags.data[0].attributes.name}
+                      </div>
+                    </div>
+                  )}
+                  {material.data?.length > 0 && (
+                    <div className="flex items-center gap-2">
+                      <div className="text-sm text-gray-500">
+                        Materiale:
+                        {material.data[0].attributes.name}
+                      </div>
+                    </div>
+                  )}
+                  {defects.data.length > 0 && (
+                    <div className="flex items-center gap-2">
+                      <div className="text-sm text-gray-500">
+                        Avvik: {defects.data[0].attributes.type}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <AddToCartButtons product={product} />
             </div>
-          </div>
-        </div>
-
-        <div className=" flex w-full flex-col">
-          <ProductFieldRow
-            label="Størrelse"
-            value={size.data.attributes.number}
-            queryParam={`${queryTemplates.sizeQueryTemplate}${size.data.id}`}
-          />
-          {brand && <ProductFieldRow label="Merke" value={brand} />}
-          {isBrand_link(brand_link.data) && (
-            <ProductFieldRow
-              label="Merke"
-              value={brand_link.data.attributes.name}
-              queryParam={`${queryTemplates.brand_linkQueryTemplate}${brand_link}`}
-            />
-          )}
-
-          {isMaterial(material.data) && (
-            <ProductFieldRow
-              label="Tesktil"
-              value={material.data.attributes.name}
-              queryParam={`${queryTemplates.materialQueryTemplate}${material.data?.id}`}
-            />
-          )}
-          <ProductFieldRow
-            label="Tilstand"
-            value={state.data.attributes.name}
-            queryParam={`${queryTemplates.stateQueryTemplate}${state.data.id}`}
-          />
-          {isDefect(defects.data) && (
-            <ProductFieldRow
-              label="Feil"
-              value={defects.data.attributes.type}
-              queryParam={`${queryTemplates.defectQueryTemplate}${defects.data.id}`}
-            />
-          )}
-        </div>
-        {isTag(tags.data) && (
-          <div className="my-6 w-full px-12 ">
-            <div className="mt-2 flex justify-center rounded border border-gray-200 bg-white px-12 py-2">
-              {tags.data?.map((tag) => {
-                return (
+            <div>
+              <div className="flex items-center gap-2">
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src="/placeholder-user.jpg" alt="Seller Name" />
+                  <AvatarFallback>
+                    {user.data.attributes.username.slice(0, 2)}
+                  </AvatarFallback>
+                </Avatar>
+                <div>
+                  <h3 className="font-bold">{user.data.attributes.username}</h3>
                   <Link
-                    href={`/brukte-barne-klaer/?${queryTemplates.tagQueryTemplate}${tag.id}&pagination[page]=1`}
-                    key={tag.id}
+                    href={`/salgsprofiler/${user.data.id}`}
+                    className="text-[#7d6adf] hover:underline"
+                    prefetch={false}
                   >
-                    {tag.attributes.name}
+                    Se salgsprofil
                   </Link>
-                );
-              })}
+                </div>
+              </div>
+              <div className="mt-4">
+                <h3 className="font-bold">
+                  Se andre klær fra {user.data.attributes.username}
+                </h3>
+                <div className="mt-2 grid grid-cols-2 gap-4 ">
+                  {sellerProducts.map((product) => {
+                    return (
+                      <Link
+                        key={product.id}
+                        href={`/brukte-barne-klaer/${product.id}`}
+                        className="block"
+                        prefetch={false}
+                      >
+                        <Image
+                          src={`${product.attributes.image.data[0].attributes.formats.medium.url}`}
+                          alt=""
+                          width={150}
+                          height={150}
+                          className="w-full rounded-lg object-cover"
+                          style={{ aspectRatio: "150/150", objectFit: "cover" }}
+                        />
+                        <p className="mt-2 text-sm font-medium">
+                          {product.attributes.category.data.attributes.name}
+                        </p>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
-        )}
-        <div className="w-full">
-          <hr className=" mx-12 mt-6" />
-        </div>
-        <div className="mb-10 mt-4 flex h-full w-full items-center justify-center px-12 sm:mb-0">
-          <AddToCartButtons product={product} />
         </div>
       </div>
     </div>

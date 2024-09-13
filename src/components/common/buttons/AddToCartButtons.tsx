@@ -6,6 +6,7 @@ import { ShoppingCart } from "@phosphor-icons/react";
 import { Product } from "@/utils/types";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import { incrementProductAddedToCart } from "@/serverActions/ServerActions";
+import { Button } from "@/components/UI/button";
 
 interface AddToCartButtonsProps {
   product: Product;
@@ -18,27 +19,31 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
   return (
     <>
       {addedProductsIds?.includes(product.id) ? (
-        <ActionsColoredBox
-          header=""
-          button="Se handlekurv"
-          path="/handlekurv"
-          color="green"
-        >
-          Produktet ligger i handlekurven din
-        </ActionsColoredBox>
+        <div className="py-4">
+          <ActionsColoredBox
+            header=""
+            button="Se handlekurv"
+            path="/handlekurv"
+            color="white"
+            shadow={false}
+          >
+            Produktet ligger i handlekurven din
+          </ActionsColoredBox>
+        </div>
       ) : (
-        <button
+        <Button
+          className="mt-4 w-full rounded-lg bg-brand-600"
           onClick={() => {
             addItemToCart(product);
             setAddedProductsIds([...addedProductsIds, product.id]);
             toast.info("Lagt til", { position: toast.POSITION.BOTTOM_RIGHT });
             incrementProductAddedToCart(product.id);
           }}
-          className="flex gap-2 rounded border-2 border-green-500 bg-green-500 px-5 py-3"
+          // className="flex gap-2 rounded border-2 border-green-500 bg-green-500 px-5 py-3"
         >
-          <p className="text-white">Legg til</p>
+          <p className="text-white">Legg i handlekurv</p>
           <ShoppingCart size={22} color="white" />
-        </button>
+        </Button>
       )}
     </>
   );
