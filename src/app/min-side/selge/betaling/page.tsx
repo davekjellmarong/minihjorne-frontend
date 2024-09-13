@@ -12,7 +12,7 @@ const BetalingPage = async () => {
       <div className="container mx-auto rounded-lg bg-white px-4 py-8 md:px-6">
         <div className="flex flex-col items-start gap-6">
           <div className="flex w-full flex-col items-center justify-between sm:flex-row">
-            <h1 className="text-2xl font-bold">Min utbetaling konto</h1>
+            <h1 className="text-2xl font-bold">Konto for utbetaling</h1>
           </div>
           <div className="w-full rounded-lg p-6">
             <Form user={user} initialBankAccountNumber={bankAccountNumber} />
