@@ -99,6 +99,7 @@ export interface CommonUser {
   paid: boolean;
   admin: boolean;
   views: number;
+  bankAccountNumber: string;
 }
 
 export interface CommonTags {
@@ -390,6 +391,7 @@ export interface User {
     plan: { data: CommonPlan };
     productImages: { data: Image[] };
     views: number;
+    bankAccountNumber: string;
     user_status: { data: CommonUserStatus };
   };
 }

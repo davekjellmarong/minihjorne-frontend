@@ -69,7 +69,11 @@ export const updateUserSaleProfile = async (formdata: FormData) => {
     description: description,
   };
   const user = await UserMethods.getMe(token);
-  const response = await UserMethods.putFetch(data, user.id, token);
+  const response = await UserMethods.putFetch(
+    data,
+    user.id,
+    process.env.UPDATE_USER_TOKEN,
+  );
   if (response.id === user.id) {
     revalidatePath("/users/me?populate=*");
     redirect("/min-side/selge/salgsprofil");
@@ -187,6 +191,28 @@ export const relateDeliveryProductsToUser = async ({
       deliveryId,
       userId,
       token,
+    );
+    revalidatePath("/users/me?populate=*");
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
+};
+
+export const updateBankAccountNumber = async (formdata: FormData) => {
+  const bankAccountNumber = formdata.get("bankAccountNumber");
+  console.log(bankAccountNumber);
+  const user = await UserMethods.getMe(token);
+  const payload = {
+    bankAccountNumber: bankAccountNumber,
+  };
+  try {
+    console.log(user);
+    const response = await UserMethods.put(
+      payload,
+      user.id,
+      process.env.UPDATE_USER_TOKEN,
     );
     revalidatePath("/users/me?populate=*");
     return response;
