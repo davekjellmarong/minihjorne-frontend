@@ -15,8 +15,8 @@ const HowToSell_Summary = () => {
             src="/account.svg"
             alt="Lag en bruker"
             className="mb-4 max-w-80 rounded"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
           />
           <h2 className="mb-2 text-xl font-semibold text-gray-800">
             1. Lag en bruker
@@ -38,8 +38,8 @@ const HowToSell_Summary = () => {
             src="/register.svg"
             alt="Registrer klærne"
             className="mb-4 max-w-80 rounded"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
           />
           <h2 className="mb-2 text-xl font-semibold text-gray-800">
             2. Registrer klærne
@@ -61,8 +61,8 @@ const HowToSell_Summary = () => {
             src="/deliver.svg"
             alt="Levering"
             className="mb-4 max-w-80 rounded"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
           />
           <h2 className="mb-2 text-xl font-semibold text-gray-800">
             3. Levering

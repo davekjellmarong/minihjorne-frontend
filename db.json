@@ -1,1385 +1,1138 @@
 {
   "version": 2,
   "data": {
-    "plugin::email-designer.email-template": {
+    "plugin::users-permissions.permission": {
       "1": {
         "id": 1,
-        "templateReferenceId": 2,
-        "design": {
-          "counters": {
-            "u_row": 1,
-            "u_column": 1,
-            "u_content_menu": 2,
-            "u_content_text": 5,
-            "u_content_image": 2,
-            "u_content_heading": 1
-          },
-          "body": {
-            "id": "7N32YjGBWE",
-            "rows": [
-              {
-                "id": "JarzpQGEqt",
-                "cells": [1],
-                "columns": [
-                  {
-                    "id": "VTuKpvfAgE",
-                    "contents": [
-                      {
-                        "id": "COYI_tmz1-",
-                        "type": "image",
-                        "values": {
-                          "containerPadding": "10px",
-                          "anchor": "",
-                          "src": {
-                            "url": "https://res.cloudinary.com/dylzaicv5/image/upload/v1722549668/StaticAssets/minihj%C3%B8rne-icon_ukvdss.svg",
-                            "width": 500,
-                            "height": 500,
-                            "maxWidth": "50%",
-                            "autoWidth": false
-                          },
-                          "textAlign": "center",
-                          "altText": "",
-                          "action": {
-                            "name": "web",
-                            "values": {
-                              "href": "",
-                              "target": "_blank"
-                            },
-                            "attrs": {
-                              "href": "{{href}}",
-                              "target": "{{target}}"
-                            }
-                          },
-                          "hideDesktop": false,
-                          "displayCondition": null,
-                          "_meta": {
-                            "htmlID": "u_content_image_2",
-                            "htmlClassNames": "u_content_image"
-                          },
-                          "selectable": true,
-                          "draggable": true,
-                          "duplicatable": true,
-                          "deletable": true,
-                          "hideable": true,
-                          "pending": false
-                        }
-                      },
-                      {
-                        "id": "B6Rd7d4yAz",
-                        "type": "heading",
-                        "values": {
-                          "containerPadding": "10px",
-                          "anchor": "",
-                          "headingType": "h1",
-                          "fontSize": "22px",
-                          "textAlign": "center",
-                          "lineHeight": "140%",
-                          "linkStyle": {
-                            "inherit": true,
-                            "linkColor": "#0000ee",
-                            "linkHoverColor": "#0000ee",
-                            "linkUnderline": true,
-                            "linkHoverUnderline": true
-                          },
-                          "hideDesktop": false,
-                          "displayCondition": null,
-                          "_meta": {
-                            "htmlID": "u_content_heading_1",
-                            "htmlClassNames": "u_content_heading"
-                          },
-                          "selectable": true,
-                          "draggable": true,
-                          "duplicatable": true,
-                          "deletable": true,
-                          "hideable": true,
-                          "text": "<span><span><span><span>Velkommen til Minihjørne, {{ USER.name }}!</span></span></span></span>"
-                        }
-                      },
-                      {
-                        "id": "hnEiWQT7n8",
-                        "type": "text",
-                        "values": {
-                          "containerPadding": "10px",
-                          "anchor": "",
-                          "fontSize": "14px",
-                          "textAlign": "left",
-                          "lineHeight": "140%",
-                          "linkStyle": {
-                            "inherit": true,
-                            "linkColor": "#0000ee",
-                            "linkHoverColor": "#0000ee",
-                            "linkUnderline": true,
-                            "linkHoverUnderline": true
-                          },
-                          "hideDesktop": false,
-                          "displayCondition": null,
-                          "_meta": {
-                            "htmlID": "u_content_text_1",
-                            "htmlClassNames": "u_content_text"
-                          },
-                          "selectable": true,
-                          "draggable": true,
-                          "duplicatable": true,
-                          "deletable": true,
-                          "hideable": true,
-                          "text": "<p style=\"line-height: 140%;\">Tusen takk for at du har registrert en bruker! Vi er veldig glade for at du vil være med å lage bruktbutikk sammen med oss❤️ Du er nå bare noen få steg unna å gi dine brukte barneklær nytt liv:</p>"
-                        }
-                      },
-                      {
-                        "id": "x5Qnfc_AMD",
-                        "type": "text",
-                        "values": {
-                          "containerPadding": "10px",
-                          "anchor": "",
-                          "fontSize": "14px",
-                          "textAlign": "left",
-                          "lineHeight": "140%",
-                          "linkStyle": {
-                            "inherit": true,
-                            "linkColor": "#0000ee",
-                            "linkHoverColor": "#0000ee",
-                            "linkUnderline": true,
-                            "linkHoverUnderline": true
-                          },
-                          "hideDesktop": false,
-                          "displayCondition": null,
-                          "_meta": {
-                            "htmlID": "u_content_text_3",
-                            "htmlClassNames": "u_content_text"
-                          },
-                          "selectable": true,
-                          "draggable": true,
-                          "duplicatable": true,
-                          "deletable": true,
-                          "hideable": true,
-                          "text": "<ol>\n<li style=\"line-height: 19.6px;\">Gå til <a rel=\"noopener\" href=\"https://www.minihjorne.no/min-side\" target=\"_blank\" data-u-link-value=\"eyJuYW1lIjoid2ViIiwiYXR0cnMiOnsiaHJlZiI6Int7aHJlZn19IiwidGFyZ2V0Ijoie3t0YXJnZXR9fSJ9LCJ2YWx1ZXMiOnsiaHJlZiI6Imh0dHBzOi8vd3d3Lm1pbmloam9ybmUubm8vbWluLXNpZGUiLCJ0YXJnZXQiOiJfYmxhbmsifX0=\">www.minihjorne.no/min-side</a>.<br /><br /></li>\n<li style=\"line-height: 19.6px;\">\n<p style=\"line-height: 140%;\" data-pm-slice=\"1 1 []\">Ta bilder av plaggene du vil selge og <a rel=\"noopener\" href=\"https://minihjorne.no/min-side/selge/last-opp\" target=\"_blank\" data-u-link-value=\"eyJuYW1lIjoid2ViIiwiYXR0cnMiOnsiaHJlZiI6Int7aHJlZn19IiwidGFyZ2V0Ijoie3t0YXJnZXR9fSJ9LCJ2YWx1ZXMiOnsiaHJlZiI6Imh0dHBzOi8vbWluaWhqb3JuZS5uby9taW4tc2lkZS9zZWxnZS9sYXN0LW9wcCIsInRhcmdldCI6Il9ibGFuayJ9fQ==\">last opp dine produkter</a> inne på mine sider.<br /><br /></p>\n</li>\n<li style=\"line-height: 19.6px;\">Opprett en <a rel=\"noopener\" href=\"https://minihjorne.no/min-side/selge/salgsprofil\" target=\"_blank\" data-u-link-value=\"eyJuYW1lIjoid2ViIiwiYXR0cnMiOnsiaHJlZiI6Int7aHJlZn19IiwidGFyZ2V0Ijoie3t0YXJnZXR9fSJ9LCJ2YWx1ZXMiOnsiaHJlZiI6Imh0dHBzOi8vbWluaWhqb3JuZS5uby9taW4tc2lkZS9zZWxnZS9zYWxnc3Byb2ZpbCIsInRhcmdldCI6Il9ibGFuayJ9fQ==\">salgsprofil</a> for personlig preg.<br /><br /></li>\n<li style=\"line-height: 19.6px;\"><a rel=\"noopener\" href=\"https://minihjorne.no/om-oss/levering\" target=\"_blank\" data-u-link-value=\"eyJuYW1lIjoid2ViIiwiYXR0cnMiOnsiaHJlZiI6Int7aHJlZn19IiwidGFyZ2V0Ijoie3t0YXJnZXR9fSJ9LCJ2YWx1ZXMiOnsiaHJlZiI6Imh0dHBzOi8vbWluaWhqb3JuZS5uby9vbS1vc3MvbGV2ZXJpbmciLCJ0YXJnZXQiOiJfYmxhbmsifX0=\">Send inn</a> eller <a rel=\"noopener\" href=\"https://minihjorne.no/om-oss/levering\" target=\"_blank\" data-u-link-value=\"eyJuYW1lIjoid2ViIiwiYXR0cnMiOnsiaHJlZiI6Int7aHJlZn19IiwidGFyZ2V0Ijoie3t0YXJnZXR9fSJ9LCJ2YWx1ZXMiOnsiaHJlZiI6Imh0dHBzOi8vbWluaWhqb3JuZS5uby9vbS1vc3MvbGV2ZXJpbmciLCJ0YXJnZXQiOiJfYmxhbmsifX0=\">lever plaggene</a> til oss i Oslo.</li>\n</ol>\n<p style=\"line-height: 140%;\"> </p>"
-                        }
-                      },
-                      {
-                        "id": "IJ7aApVoka",
-                        "type": "text",
-                        "values": {
-                          "containerPadding": "10px",
-                          "anchor": "",
-                          "fontSize": "14px",
-                          "textAlign": "left",
-                          "lineHeight": "140%",
-                          "linkStyle": {
-                            "inherit": true,
-                            "linkColor": "#0000ee",
-                            "linkHoverColor": "#0000ee",
-                            "linkUnderline": true,
-                            "linkHoverUnderline": true
-                          },
-                          "hideDesktop": false,
-                          "displayCondition": null,
-                          "_meta": {
-                            "htmlID": "u_content_text_4",
-                            "htmlClassNames": "u_content_text"
-                          },
-                          "selectable": true,
-                          "draggable": true,
-                          "duplicatable": true,
-                          "deletable": true,
-                          "hideable": true,
-                          "text": "<p style=\"line-height: 140%;\" data-pm-slice=\"1 1 []\">Etter vi har mottatt plaggene, vil vi aktivere profilen din slik at alle plaggene blir tilgjengelig for salg i nettbutikken vår.</p>\n<p style=\"line-height: 140%;\"> </p>\n<p style=\"line-height: 140%;\">Du kan følge med på <a rel=\"noopener\" href=\"https://minihjorne.no/min-side/selge/statistikk\" target=\"_blank\" data-u-link-value=\"eyJuYW1lIjoid2ViIiwiYXR0cnMiOnsiaHJlZiI6Int7aHJlZn19IiwidGFyZ2V0Ijoie3t0YXJnZXR9fSJ9LCJ2YWx1ZXMiOnsiaHJlZiI6Imh0dHBzOi8vbWluaWhqb3JuZS5uby9taW4tc2lkZS9zZWxnZS9zdGF0aXN0aWtrIiwidGFyZ2V0IjoiX2JsYW5rIn19\">statistikk</a> inne på \"min side\" under hele din leieperiode.</p>"
-                        }
-                      },
-                      {
-                        "id": "B98dfqO-jL",
-                        "type": "text",
-                        "values": {
-                          "containerPadding": "10px",
-                          "anchor": "",
-                          "fontSize": "14px",
-                          "textAlign": "left",
-                          "lineHeight": "140%",
-                          "linkStyle": {
-                            "inherit": true,
-                            "linkColor": "#0000ee",
-                            "linkHoverColor": "#0000ee",
-                            "linkUnderline": true,
-                            "linkHoverUnderline": true
-                          },
-                          "hideDesktop": false,
-                          "displayCondition": null,
-                          "_meta": {
-                            "htmlID": "u_content_text_5",
-                            "htmlClassNames": "u_content_text"
-                          },
-                          "selectable": true,
-                          "draggable": true,
-                          "duplicatable": true,
-                          "deletable": true,
-                          "hideable": true,
-                          "text": "<p style=\"line-height: 140%;\">Mvh,<br />Minihjørne❤️</p>"
-                        }
-                      }
-                    ],
-                    "values": {
-                      "_meta": {
-                        "htmlID": "u_column_1",
-                        "htmlClassNames": "u_column"
-                      },
-                      "border": {},
-                      "padding": "0px",
-                      "borderRadius": "0px",
-                      "backgroundColor": ""
-                    }
-                  }
-                ],
-                "values": {
-                  "displayCondition": null,
-                  "columns": false,
-                  "backgroundColor": "",
-                  "columnsBackgroundColor": "",
-                  "backgroundImage": {
-                    "url": "",
-                    "fullWidth": true,
-                    "repeat": "no-repeat",
-                    "size": "custom",
-                    "position": "center",
-                    "customPosition": ["50%", "50%"]
-                  },
-                  "padding": "0px",
-                  "anchor": "",
-                  "hideDesktop": false,
-                  "_meta": {
-                    "htmlID": "u_row_1",
-                    "htmlClassNames": "u_row"
-                  },
-                  "selectable": true,
-                  "draggable": true,
-                  "duplicatable": true,
-                  "deletable": true,
-                  "hideable": true,
-                  "_override": {
-                    "desktop": {
-                      "hideDesktop": false
-                    }
-                  }
-                }
-              }
-            ],
-            "headers": [],
-            "footers": [],
-            "values": {
-              "popupPosition": "center",
-              "popupWidth": "600px",
-              "popupHeight": "auto",
-              "borderRadius": "10px",
-              "contentAlign": "center",
-              "contentVerticalAlign": "center",
-              "contentWidth": "500px",
-              "fontFamily": {
-                "label": "Arial",
-                "value": "arial,helvetica,sans-serif"
-              },
-              "textColor": "#000000",
-              "popupBackgroundColor": "#FFFFFF",
-              "popupBackgroundImage": {
-                "url": "",
-                "fullWidth": true,
-                "repeat": "no-repeat",
-                "size": "cover",
-                "position": "center"
-              },
-              "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
-              "popupCloseButton_position": "top-right",
-              "popupCloseButton_backgroundColor": "#DDDDDD",
-              "popupCloseButton_iconColor": "#000000",
-              "popupCloseButton_borderRadius": "0px",
-              "popupCloseButton_margin": "0px",
-              "popupCloseButton_action": {
-                "name": "close_popup",
-                "attrs": {
-                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
-                }
-              },
-              "language": {},
-              "backgroundColor": "#F7F8F9",
-              "preheaderText": "",
-              "linkStyle": {
-                "body": true,
-                "linkColor": "#0000ee",
-                "linkHoverColor": "#0000ee",
-                "linkUnderline": true,
-                "linkHoverUnderline": true
-              },
-              "backgroundImage": {
-                "url": "",
-                "fullWidth": true,
-                "repeat": "no-repeat",
-                "size": "custom",
-                "position": "center"
-              },
-              "_meta": {
-                "htmlID": "u_body",
-                "htmlClassNames": "u_body"
-              }
-            }
-          },
-          "schemaVersion": 16
-        },
-        "name": "Registrer complete ",
-        "subject": "Velkommen til Minihjørne!",
-        "bodyHtml": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<!--[if gte mso 9]>\n<xml>\n  <o:OfficeDocumentSettings>\n    <o:AllowPNG/>\n    <o:PixelsPerInch>96</o:PixelsPerInch>\n  </o:OfficeDocumentSettings>\n</xml>\n<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <!--[if !mso]><!--><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]-->\n  <title></title>\n  \n    <style type=\"text/css\">\n      @media only screen and (min-width: 520px) {\n  .u-row {\n    width: 500px !important;\n  }\n  .u-row .u-col {\n    vertical-align: top;\n  }\n\n  .u-row .u-col-100 {\n    width: 500px !important;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .u-row-container {\n    max-width: 100% !important;\n    padding-left: 0px !important;\n    padding-right: 0px !important;\n  }\n  .u-row .u-col {\n    min-width: 320px !important;\n    max-width: 100% !important;\n    display: block !important;\n  }\n  .u-row {\n    width: 100% !important;\n  }\n  .u-col {\n    width: 100% !important;\n  }\n  .u-col > div {\n    margin: 0 auto;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ntable,\ntr,\ntd {\n  vertical-align: top;\n  border-collapse: collapse;\n}\n\np {\n  margin: 0;\n}\n\n.ie-container table,\n.mso-container table {\n  table-layout: fixed;\n}\n\n* {\n  line-height: inherit;\n}\n\na[x-apple-data-detectors='true'] {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n\ntable, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: underline; }\n    </style>\n  \n  \n\n</head>\n\n<body class=\"clean-body u_body\" style=\"margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #F7F8F9;color: #000000\">\n  <!--[if IE]><div class=\"ie-container\"><![endif]-->\n  <!--[if mso]><div class=\"mso-container\"><![endif]-->\n  <table id=\"u_body\" style=\"border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #F7F8F9;width:100%\" cellpadding=\"0\" cellspacing=\"0\">\n  <tbody>\n  <tr style=\"vertical-align: top\">\n    <td style=\"word-break: break-word;border-collapse: collapse !important;vertical-align: top\">\n    <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" style=\"background-color: #F7F8F9;\"><![endif]-->\n    \n  \n  \n<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n  <div class=\"u-row\" style=\"margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n    <div style=\"border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;\">\n      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color: transparent;\"><![endif]-->\n      \n<!--[if (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n<div class=\"u-col u-col-100\" style=\"max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;\">\n  <div style=\"height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\">\n  <!--[if (!mso)&(!IE)]><!--><div style=\"box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\"><!--<![endif]-->\n  \n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n  <tr>\n    <td style=\"padding-right: 0px;padding-left: 0px;\" align=\"center\">\n      \n      <img align=\"center\" border=\"0\" src=\"https://res.cloudinary.com/dylzaicv5/image/upload/v1722549668/StaticAssets/minihj%C3%B8rne-icon_ukvdss.svg\" alt=\"\" title=\"\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 50%;max-width: 240px;\" width=\"240\"/>\n      \n    </td>\n  </tr>\n</table>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <!--[if mso]><table width=\"100%\"><tr><td><![endif]-->\n    <h1 style=\"margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 22px; font-weight: 400;\"><span><span><span><span>Velkommen til Minihjørne, {{ USER.name }}!</span></span></span></span></h1>\n  <!--[if mso]></td></tr></table><![endif]-->\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\">\n    <p style=\"line-height: 140%;\">Tusen takk for at du har registrert en bruker! Vi er veldig glade for at du vil være med å lage bruktbutikk sammen med oss❤️ Du er nå bare noen få steg unna å gi dine brukte barneklær nytt liv:</p>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\">\n    <ol>\n<li style=\"line-height: 19.6px;\">Gå til <a rel=\"noopener\" href=\"https://www.minihjorne.no/min-side\" target=\"_blank\">www.minihjorne.no/min-side</a>.<br /><br /></li>\n<li style=\"line-height: 19.6px;\">\n<p style=\"line-height: 140%;\" data-pm-slice=\"1 1 []\">Ta bilder av plaggene du vil selge og <a rel=\"noopener\" href=\"https://minihjorne.no/min-side/selge/last-opp\" target=\"_blank\">last opp dine produkter</a> inne på mine sider.<br /><br /></p>\n</li>\n<li style=\"line-height: 19.6px;\">Opprett en <a rel=\"noopener\" href=\"https://minihjorne.no/min-side/selge/salgsprofil\" target=\"_blank\">salgsprofil</a> for personlig preg.<br /><br /></li>\n<li style=\"line-height: 19.6px;\"><a rel=\"noopener\" href=\"https://minihjorne.no/om-oss/levering\" target=\"_blank\">Send inn</a> eller <a rel=\"noopener\" href=\"https://minihjorne.no/om-oss/levering\" target=\"_blank\">lever plaggene</a> til oss i Oslo.</li>\n</ol>\n<p style=\"line-height: 140%;\"> </p>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\">\n    <p style=\"line-height: 140%;\" data-pm-slice=\"1 1 []\">Etter vi har mottatt plaggene, vil vi aktivere profilen din slik at alle plaggene blir tilgjengelig for salg i nettbutikken vår.</p>\n<p style=\"line-height: 140%;\"> </p>\n<p style=\"line-height: 140%;\">Du kan følge med på <a rel=\"noopener\" href=\"https://minihjorne.no/min-side/selge/statistikk\" target=\"_blank\">statistikk</a> inne på \"min side\" under hele din leieperiode.</p>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\">\n    <p style=\"line-height: 140%;\">Mvh,<br />Minihjørne❤️</p>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->\n  </div>\n</div>\n<!--[if (mso)|(IE)]></td><![endif]-->\n      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n    </div>\n  </div>\n  </div>\n  \n\n\n    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->\n    </td>\n  </tr>\n  </tbody>\n  </table>\n  <!--[if mso]></div><![endif]-->\n  <!--[if IE]></div><![endif]-->\n</body>\n\n</html>\n",
-        "bodyText": "",
-        "enabled": true,
-        "tags": null,
-        "createdAt": "2024-08-01T22:03:06.907Z",
-        "updatedAt": "2024-09-10T17:56:15.600Z",
+        "action": "plugin::users-permissions.user.me",
+        "createdAt": "2023-11-30T13:04:38.460Z",
+        "updatedAt": "2024-09-13T22:07:24.231Z",
+        "role": 1,
         "createdBy": null,
         "updatedBy": null
       },
       "2": {
         "id": 2,
-        "templateReferenceId": 1,
-        "design": {
-          "body": {
-            "id": "2jbfgM5LRK",
-            "rows": [
-              {
-                "id": "YR6pY9OTj_",
-                "cells": [1],
-                "values": {
-                  "_meta": {
-                    "htmlID": "u_row_1",
-                    "htmlClassNames": "u_row"
-                  },
-                  "anchor": "",
-                  "columns": false,
-                  "padding": "0px",
-                  "hideable": true,
-                  "deletable": true,
-                  "draggable": true,
-                  "selectable": true,
-                  "hideDesktop": false,
-                  "duplicatable": true,
-                  "backgroundColor": "",
-                  "backgroundImage": {
-                    "url": "",
-                    "size": "custom",
-                    "repeat": "no-repeat",
-                    "position": "center",
-                    "fullWidth": true,
-                    "customPosition": ["50%", "50%"]
-                  },
-                  "displayCondition": null,
-                  "columnsBackgroundColor": ""
-                },
-                "columns": [
-                  {
-                    "id": "SIQ7VOwNNw",
-                    "values": {
-                      "_meta": {
-                        "htmlID": "u_column_1",
-                        "htmlClassNames": "u_column"
-                      },
-                      "border": {},
-                      "padding": "0px",
-                      "borderRadius": "0px",
-                      "backgroundColor": ""
-                    },
-                    "contents": [
-                      {
-                        "id": "Zi37I33S0P",
-                        "type": "html",
-                        "values": {
-                          "html": "<!DOCTYPE html>\n<html lang=\"no\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Ny Brukerregistrering</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f4f4f4;\n            margin: 0;\n            padding: 0;\n            color: #333;\n        }\n        .container {\n            max-width: 600px;\n            margin: 20px auto;\n            background-color: #fff;\n            border-radius: 8px;\n            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n            overflow: hidden;\n        }\n        .header {\n            background-color: #4CAF50;\n            padding: 20px;\n            text-align: center;\n            color: #fff;\n        }\n        .header h1 {\n            margin: 0;\n            font-size: 24px;\n        }\n        .content {\n            padding: 20px;\n        }\n        .content h2 {\n            font-size: 22px;\n            margin-bottom: 10px;\n            color: #333;\n        }\n        .content p {\n            font-size: 16px;\n            line-height: 1.6;\n            margin-bottom: 10px;\n        }\n        .details {\n            background-color: #f9f9f9;\n            padding: 15px;\n            border-radius: 5px;\n            margin-top: 20px;\n        }\n        .details p {\n            margin: 5px 0;\n            font-size: 16px;\n        }\n        .footer {\n            background-color: #f4f4f4;\n            padding: 15px;\n            text-align: center;\n            font-size: 14px;\n            color: #777;\n        }\n    </style>\n</head>\n<body>\n\n<div class=\"container\">\n    <div class=\"header\">\n        <h1>🎉 Ny Brukerregistrering! 🎉</h1>\n    </div>\n    <div class=\"content\">\n        <h2>Hei Minihjørne-teamet,</h2>\n        <p>Vi er glade for å kunne fortelle at en ny bruker nettopp har blitt med i vårt fellesskap! La oss ønske vår nyeste medlem hjertelig velkommen:</p>\n        \n        <div class=\"details\">\n            <p><strong>Brukernavn:</strong> {{USER.name}}</p>\n            <p><strong>Bruker-ID:</strong> {{USER.id}}</p>\n            <p><strong>E-post:</strong> {{USER.email}}</p>\n        </div>\n        \n        <p>Vi er begeistret over å se fellesskapet vårt vokse! Fortsett det fantastiske arbeidet med å gjøre Minihjørne til det beste stedet for våre brukere.</p>\n    </div>\n    <div class=\"footer\">\n        <p>Med vennlig hilsen, <br>Minihjørne-teamet 💚</p>\n    </div>\n</div>\n\n</body>\n</html>",
-                          "_meta": {
-                            "htmlID": "u_content_html_1",
-                            "htmlClassNames": "u_content_html"
-                          },
-                          "anchor": "",
-                          "hideable": true,
-                          "deletable": true,
-                          "draggable": true,
-                          "selectable": true,
-                          "duplicatable": true,
-                          "containerPadding": "10px",
-                          "displayCondition": null
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "values": {
-              "_meta": {
-                "htmlID": "u_body",
-                "htmlClassNames": "u_body"
-              },
-              "linkStyle": {
-                "body": true,
-                "linkColor": "#0000ee",
-                "linkUnderline": true,
-                "linkHoverColor": "#0000ee",
-                "linkHoverUnderline": true
-              },
-              "textColor": "#000000",
-              "fontFamily": {
-                "label": "Arial",
-                "value": "arial,helvetica,sans-serif"
-              },
-              "popupWidth": "600px",
-              "popupHeight": "auto",
-              "borderRadius": "10px",
-              "contentAlign": "center",
-              "contentWidth": "500px",
-              "popupPosition": "center",
-              "preheaderText": "",
-              "backgroundColor": "#F7F8F9",
-              "backgroundImage": {
-                "url": "",
-                "size": "custom",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "contentVerticalAlign": "center",
-              "popupBackgroundColor": "#FFFFFF",
-              "popupBackgroundImage": {
-                "url": "",
-                "size": "cover",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "popupCloseButton_action": {
-                "name": "close_popup",
-                "attrs": {
-                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
-                }
-              },
-              "popupCloseButton_margin": "0px",
-              "popupCloseButton_position": "top-right",
-              "popupCloseButton_iconColor": "#000000",
-              "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
-              "popupCloseButton_borderRadius": "0px",
-              "popupCloseButton_backgroundColor": "#DDDDDD"
-            },
-            "footers": [],
-            "headers": []
-          },
-          "counters": {
-            "u_row": 1,
-            "u_column": 1,
-            "u_content_html": 1,
-            "u_content_text": 1,
-            "u_content_image": 1,
-            "u_content_heading": 1
-          },
-          "schemaVersion": 16
-        },
-        "name": "Intern - Ny bruker",
-        "subject": "Ny bruker er registrert!",
-        "bodyHtml": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<!--[if gte mso 9]>\n<xml>\n  <o:OfficeDocumentSettings>\n    <o:AllowPNG/>\n    <o:PixelsPerInch>96</o:PixelsPerInch>\n  </o:OfficeDocumentSettings>\n</xml>\n<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <!--[if !mso]><!--><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]-->\n  <title></title>\n  \n    <style type=\"text/css\">\n      @media only screen and (min-width: 520px) {\n  .u-row {\n    width: 500px !important;\n  }\n  .u-row .u-col {\n    vertical-align: top;\n  }\n\n  .u-row .u-col-100 {\n    width: 500px !important;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .u-row-container {\n    max-width: 100% !important;\n    padding-left: 0px !important;\n    padding-right: 0px !important;\n  }\n  .u-row .u-col {\n    min-width: 320px !important;\n    max-width: 100% !important;\n    display: block !important;\n  }\n  .u-row {\n    width: 100% !important;\n  }\n  .u-col {\n    width: 100% !important;\n  }\n  .u-col > div {\n    margin: 0 auto;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ntable,\ntr,\ntd {\n  vertical-align: top;\n  border-collapse: collapse;\n}\n\np {\n  margin: 0;\n}\n\n.ie-container table,\n.mso-container table {\n  table-layout: fixed;\n}\n\n* {\n  line-height: inherit;\n}\n\na[x-apple-data-detectors='true'] {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n\ntable, td { color: #000000; } </style>\n  \n  \n\n</head>\n\n<body class=\"clean-body u_body\" style=\"margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #F7F8F9;color: #000000\">\n  <!--[if IE]><div class=\"ie-container\"><![endif]-->\n  <!--[if mso]><div class=\"mso-container\"><![endif]-->\n  <table style=\"border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #F7F8F9;width:100%\" cellpadding=\"0\" cellspacing=\"0\">\n  <tbody>\n  <tr style=\"vertical-align: top\">\n    <td style=\"word-break: break-word;border-collapse: collapse !important;vertical-align: top\">\n    <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" style=\"background-color: #F7F8F9;\"><![endif]-->\n    \n  \n  \n<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n  <div class=\"u-row\" style=\"margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n    <div style=\"border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;\">\n      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color: transparent;\"><![endif]-->\n      \n<!--[if (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n<div class=\"u-col u-col-100\" style=\"max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;\">\n  <div style=\"height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\">\n  <!--[if (!mso)&(!IE)]><!--><div style=\"box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\"><!--<![endif]-->\n  \n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div>\n    <!DOCTYPE html>\n<html lang=\"no\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Ny Brukerregistrering</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f4f4f4;\n            margin: 0;\n            padding: 0;\n            color: #333;\n        }\n        .container {\n            max-width: 600px;\n            margin: 20px auto;\n            background-color: #fff;\n            border-radius: 8px;\n            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n            overflow: hidden;\n        }\n        .header {\n            background-color: #4CAF50;\n            padding: 20px;\n            text-align: center;\n            color: #fff;\n        }\n        .header h1 {\n            margin: 0;\n            font-size: 24px;\n        }\n        .content {\n            padding: 20px;\n        }\n        .content h2 {\n            font-size: 22px;\n            margin-bottom: 10px;\n            color: #333;\n        }\n        .content p {\n            font-size: 16px;\n            line-height: 1.6;\n            margin-bottom: 10px;\n        }\n        .details {\n            background-color: #f9f9f9;\n            padding: 15px;\n            border-radius: 5px;\n            margin-top: 20px;\n        }\n        .details p {\n            margin: 5px 0;\n            font-size: 16px;\n        }\n        .footer {\n            background-color: #f4f4f4;\n            padding: 15px;\n            text-align: center;\n            font-size: 14px;\n            color: #777;\n        }\n    </style>\n</head>\n<body>\n\n<div class=\"container\">\n    <div class=\"header\">\n        <h1>🎉 Ny Brukerregistrering! 🎉</h1>\n    </div>\n    <div class=\"content\">\n        <h2>Hei Minihjørne-teamet,</h2>\n        <p>Vi er glade for å kunne fortelle at en ny bruker nettopp har blitt med i vårt fellesskap! La oss ønske vår nyeste medlem hjertelig velkommen:</p>\n        \n        <div class=\"details\">\n            <p><strong>Brukernavn:</strong> {{USER.name}}</p>\n            <p><strong>Bruker-ID:</strong> {{USER.id}}</p>\n            <p><strong>E-post:</strong> {{USER.email}}</p>\n        </div>\n        \n        <p>Vi er begeistret over å se fellesskapet vårt vokse! Fortsett det fantastiske arbeidet med å gjøre Minihjørne til det beste stedet for våre brukere.</p>\n    </div>\n    <div class=\"footer\">\n        <p>Med vennlig hilsen, <br>Minihjørne-teamet 💚</p>\n    </div>\n</div>\n\n</body>\n</html>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->\n  </div>\n</div>\n<!--[if (mso)|(IE)]></td><![endif]-->\n      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n    </div>\n  </div>\n  </div>\n  \n\n\n    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->\n    </td>\n  </tr>\n  </tbody>\n  </table>\n  <!--[if mso]></div><![endif]-->\n  <!--[if IE]></div><![endif]-->\n</body>\n\n</html>\n",
-        "bodyText": "",
-        "enabled": true,
-        "tags": null,
-        "createdAt": "2024-08-02T22:39:09.106Z",
-        "updatedAt": "2024-08-21T18:46:26.364Z",
+        "action": "plugin::users-permissions.auth.changePassword",
+        "createdAt": "2023-11-30T13:04:38.460Z",
+        "updatedAt": "2024-09-13T22:07:24.264Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "3": {
+        "id": 3,
+        "action": "plugin::users-permissions.auth.callback",
+        "createdAt": "2023-11-30T13:04:38.462Z",
+        "updatedAt": "2024-09-13T22:07:24.293Z",
+        "role": 2,
         "createdBy": null,
         "updatedBy": null
       },
       "4": {
         "id": 4,
-        "templateReferenceId": 3,
-        "design": {
-          "body": {
-            "id": "5GR6oRPFlD",
-            "rows": [
-              {
-                "id": "zatyKP8Fa9",
-                "cells": [1],
-                "values": {
-                  "_meta": {
-                    "htmlID": "u_row_1",
-                    "htmlClassNames": "u_row"
-                  },
-                  "anchor": "",
-                  "columns": false,
-                  "padding": "0px",
-                  "hideable": true,
-                  "deletable": true,
-                  "draggable": true,
-                  "selectable": true,
-                  "hideDesktop": false,
-                  "duplicatable": true,
-                  "backgroundColor": "",
-                  "backgroundImage": {
-                    "url": "",
-                    "size": "custom",
-                    "repeat": "no-repeat",
-                    "position": "center",
-                    "fullWidth": true,
-                    "customPosition": ["50%", "50%"]
-                  },
-                  "displayCondition": null,
-                  "columnsBackgroundColor": ""
-                },
-                "columns": [
-                  {
-                    "id": "PNNWyqjrG6",
-                    "values": {
-                      "_meta": {
-                        "htmlID": "u_column_1",
-                        "htmlClassNames": "u_column"
-                      },
-                      "border": {},
-                      "padding": "0px",
-                      "borderRadius": "0px",
-                      "backgroundColor": ""
-                    },
-                    "contents": [
-                      {
-                        "id": "7gYSnwlZzX",
-                        "type": "html",
-                        "values": {
-                          "html": "<!DOCTYPE html>\n<html lang=\"no\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f4f4f4;\n      margin: 0;\n      padding: 20px;\n      color: #333333;\n    }\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      background-color: #ffffff;\n      padding: 20px;\n      border-radius: 8px;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    }\n    .header {\n      text-align: center;\n      padding: 20px 0;\n      border-bottom: 1px solid #eeeeee;\n    }\n    .header h1 {\n      margin: 0;\n      color: #333333;\n    }\n    .content {\n      padding: 20px 0;\n    }\n    .order-details {\n      margin-bottom: 20px;\n    }\n    .order-details h2 {\n      color: #333333;\n      font-size: 18px;\n      margin-bottom: 10px;\n    }\n    .order-details p {\n      margin: 5px 0;\n      font-size: 16px;\n    }\n    .product-list {\n      margin-bottom: 20px;\n    }\n    .product-list li {\n      list-style-type: none;\n      padding: 10px;\n      border-bottom: 1px solid #eeeeee;\n    }\n    .product-list li:last-child {\n      border-bottom: none;\n    }\n    .product-list span {\n      display: block;\n    }\n    .product-list .product-name {\n      font-weight: bold;\n      font-size: 16px;\n    }\n    .product-list .product-details {\n      font-size: 14px;\n      color: #666666;\n    }\n\t.track-order {\n      margin: 20px 0;\n      text-align: center;\n    }\n    .track-order a {\n      display: inline-block;\n      padding: 10px 20px;\n      background-color: #007bff;\n      color: #ffffff;\n      text-decoration: none;\n      border-radius: 5px;\n      font-size: 16px;\n    }\n    .footer {\n      text-align: center;\n      padding: 20px 0;\n      border-top: 1px solid #eeeeee;\n      font-size: 14px;\n      color: #666666;\n    }\n    .footer p {\n      margin: 5px 0;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"header\">\n      <h1>Ordrebekreftelse</h1>\n    </div>\n\n    <div class=\"content\">\n      <p>Hei {{USER.name}},</p>\n      <p>Takk for at du handlet hos oss! Din ordre (ID: {{ORDER.id}}) har blitt mottatt og vil bli behandlet snart. Nedenfor finner du detaljer om din bestilling:</p>\n\n      <div class=\"order-details\">\n        <h2>Ordredetaljer:</h2>\n        <p><strong>Bestillingsnummer:</strong> {{ORDER.id}}</p>\n        <p><strong>Bestillingsdato:</strong> {{ORDER.createdAt}}</p>\n        <p><strong>Totalt beløp:</strong> {{ORDER.amount}} kr</p>\n        <p><strong>Leveringsadresse:</strong> {{ORDER.address}}, {{ORDER.postalCode}} {{ORDER.city}}</p>\n      </div>\n\n      <div class=\"product-list\">\n        <h2>Dine produkter:</h2>\n        <ul>\n          {{#PRODUCTS}}\n          <li>\n            <span class=\"product-name\">{{category.name}}</span>\n            <span class=\"product-details\">Størrelse: {{size.number}}</span>\n            <span class=\"product-details\">Merke: {{brand}}</span>\n            <span class=\"product-details\">Pris: {{price}} kr</span>\n          </li>\n          {{/PRODUCTS}}\n        </ul>\n      </div>\n      \n      <div class=\"track-order\">\n  <p>Du kan følge statusen på din ordre ved å besøke Min Side.</p>\n  <a href=\"https://minihjorne.no/min-side/ordre/{{ORDER.id}}\">Sjekk ordrestatus</a>\n</div>\n\n      <p>Du vil motta en e-post med sporingsinformasjon når ordren din har blitt sendt.</p>\n      <p>Hvis du har spørsmål eller trenger hjelp, vennligst kontakt oss på <a href=\"mailto:kontakt@minihjorne.no\">kontakt@minihjorne.no</a>.</p>\n    </div>\n\n    <div class=\"footer\">\n      <p>Minihjørne © 2024</p>\n      <p>Kanonhallveien 12 A, 0585 Oslo</p>\n      <p>Org.nr: 926 647 504</p>\n    </div>\n  </div>\n</body>\n</html>",
-                          "_meta": {
-                            "htmlID": "u_content_html_1",
-                            "htmlClassNames": "u_content_html"
-                          },
-                          "anchor": "",
-                          "hideable": true,
-                          "deletable": true,
-                          "draggable": true,
-                          "selectable": true,
-                          "hideDesktop": false,
-                          "duplicatable": true,
-                          "containerPadding": "10px",
-                          "displayCondition": null
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "values": {
-              "_meta": {
-                "htmlID": "u_body",
-                "htmlClassNames": "u_body"
-              },
-              "linkStyle": {
-                "body": true,
-                "linkColor": "#0000ee",
-                "linkUnderline": true,
-                "linkHoverColor": "#0000ee",
-                "linkHoverUnderline": true
-              },
-              "textColor": "#000000",
-              "fontFamily": {
-                "label": "Arial",
-                "value": "arial,helvetica,sans-serif"
-              },
-              "popupWidth": "600px",
-              "popupHeight": "auto",
-              "borderRadius": "10px",
-              "contentAlign": "center",
-              "contentWidth": "500px",
-              "popupPosition": "center",
-              "preheaderText": "",
-              "backgroundColor": "#F7F8F9",
-              "backgroundImage": {
-                "url": "",
-                "size": "custom",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "contentVerticalAlign": "center",
-              "popupBackgroundColor": "#FFFFFF",
-              "popupBackgroundImage": {
-                "url": "",
-                "size": "cover",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "popupCloseButton_action": {
-                "name": "close_popup",
-                "attrs": {
-                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
-                }
-              },
-              "popupCloseButton_margin": "0px",
-              "popupCloseButton_position": "top-right",
-              "popupCloseButton_iconColor": "#000000",
-              "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
-              "popupCloseButton_borderRadius": "0px",
-              "popupCloseButton_backgroundColor": "#DDDDDD"
-            },
-            "footers": [],
-            "headers": []
-          },
-          "counters": {
-            "u_row": 1,
-            "u_column": 1,
-            "u_content_html": 1
-          },
-          "schemaVersion": 16
-        },
-        "name": "Ordrebekreftelse External",
-        "subject": "Ordrebekreftelse",
-        "bodyHtml": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<!--[if gte mso 9]>\n<xml>\n  <o:OfficeDocumentSettings>\n    <o:AllowPNG/>\n    <o:PixelsPerInch>96</o:PixelsPerInch>\n  </o:OfficeDocumentSettings>\n</xml>\n<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <!--[if !mso]><!--><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]-->\n  <title></title>\n  \n    <style type=\"text/css\">\n      @media only screen and (min-width: 520px) {\n  .u-row {\n    width: 500px !important;\n  }\n  .u-row .u-col {\n    vertical-align: top;\n  }\n\n  .u-row .u-col-100 {\n    width: 500px !important;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .u-row-container {\n    max-width: 100% !important;\n    padding-left: 0px !important;\n    padding-right: 0px !important;\n  }\n  .u-row .u-col {\n    min-width: 320px !important;\n    max-width: 100% !important;\n    display: block !important;\n  }\n  .u-row {\n    width: 100% !important;\n  }\n  .u-col {\n    width: 100% !important;\n  }\n  .u-col > div {\n    margin: 0 auto;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ntable,\ntr,\ntd {\n  vertical-align: top;\n  border-collapse: collapse;\n}\n\np {\n  margin: 0;\n}\n\n.ie-container table,\n.mso-container table {\n  table-layout: fixed;\n}\n\n* {\n  line-height: inherit;\n}\n\na[x-apple-data-detectors='true'] {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n\ntable, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: underline; }\n    </style>\n  \n  \n\n</head>\n\n<body class=\"clean-body u_body\" style=\"margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #F7F8F9;color: #000000\">\n  <!--[if IE]><div class=\"ie-container\"><![endif]-->\n  <!--[if mso]><div class=\"mso-container\"><![endif]-->\n  <table id=\"u_body\" style=\"border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #F7F8F9;width:100%\" cellpadding=\"0\" cellspacing=\"0\">\n  <tbody>\n  <tr style=\"vertical-align: top\">\n    <td style=\"word-break: break-word;border-collapse: collapse !important;vertical-align: top\">\n    <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" style=\"background-color: #F7F8F9;\"><![endif]-->\n    \n  \n  \n<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n  <div class=\"u-row\" style=\"margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n    <div style=\"border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;\">\n      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color: transparent;\"><![endif]-->\n      \n<!--[if (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n<div class=\"u-col u-col-100\" style=\"max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;\">\n  <div style=\"height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\">\n  <!--[if (!mso)&(!IE)]><!--><div style=\"box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\"><!--<![endif]-->\n  \n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div>\n    <!DOCTYPE html>\n<html lang=\"no\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f4f4f4;\n      margin: 0;\n      padding: 20px;\n      color: #333333;\n    }\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      background-color: #ffffff;\n      padding: 20px;\n      border-radius: 8px;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    }\n    .header {\n      text-align: center;\n      padding: 20px 0;\n      border-bottom: 1px solid #eeeeee;\n    }\n    .header h1 {\n      margin: 0;\n      color: #333333;\n    }\n    .content {\n      padding: 20px 0;\n    }\n    .order-details {\n      margin-bottom: 20px;\n    }\n    .order-details h2 {\n      color: #333333;\n      font-size: 18px;\n      margin-bottom: 10px;\n    }\n    .order-details p {\n      margin: 5px 0;\n      font-size: 16px;\n    }\n    .product-list {\n      margin-bottom: 20px;\n    }\n    .product-list li {\n      list-style-type: none;\n      padding: 10px;\n      border-bottom: 1px solid #eeeeee;\n    }\n    .product-list li:last-child {\n      border-bottom: none;\n    }\n    .product-list span {\n      display: block;\n    }\n    .product-list .product-name {\n      font-weight: bold;\n      font-size: 16px;\n    }\n    .product-list .product-details {\n      font-size: 14px;\n      color: #666666;\n    }\n\t.track-order {\n      margin: 20px 0;\n      text-align: center;\n    }\n    .track-order a {\n      display: inline-block;\n      padding: 10px 20px;\n      background-color: #007bff;\n      color: #ffffff;\n      text-decoration: none;\n      border-radius: 5px;\n      font-size: 16px;\n    }\n    .footer {\n      text-align: center;\n      padding: 20px 0;\n      border-top: 1px solid #eeeeee;\n      font-size: 14px;\n      color: #666666;\n    }\n    .footer p {\n      margin: 5px 0;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"header\">\n      <h1>Ordrebekreftelse</h1>\n    </div>\n\n    <div class=\"content\">\n      <p>Hei {{USER.name}},</p>\n      <p>Takk for at du handlet hos oss! Din ordre (ID: {{ORDER.id}}) har blitt mottatt og vil bli behandlet snart. Nedenfor finner du detaljer om din bestilling:</p>\n\n      <div class=\"order-details\">\n        <h2>Ordredetaljer:</h2>\n        <p><strong>Bestillingsnummer:</strong> {{ORDER.id}}</p>\n        <p><strong>Bestillingsdato:</strong> {{ORDER.createdAt}}</p>\n        <p><strong>Totalt beløp:</strong> {{ORDER.amount}} kr</p>\n        <p><strong>Leveringsadresse:</strong> {{ORDER.address}}, {{ORDER.postalCode}} {{ORDER.city}}</p>\n      </div>\n\n      <div class=\"product-list\">\n        <h2>Dine produkter:</h2>\n        <ul>\n          {{#PRODUCTS}}\n          <li>\n            <span class=\"product-name\">{{category.name}}</span>\n            <span class=\"product-details\">Størrelse: {{size.number}}</span>\n            <span class=\"product-details\">Merke: {{brand}}</span>\n            <span class=\"product-details\">Pris: {{price}} kr</span>\n          </li>\n          {{/PRODUCTS}}\n        </ul>\n      </div>\n      \n      <div class=\"track-order\">\n  <p>Du kan følge statusen på din ordre ved å besøke Min Side.</p>\n  <a href=\"https://minihjorne.no/min-side/ordre/{{ORDER.id}}\">Sjekk ordrestatus</a>\n</div>\n\n      <p>Du vil motta en e-post med sporingsinformasjon når ordren din har blitt sendt.</p>\n      <p>Hvis du har spørsmål eller trenger hjelp, vennligst kontakt oss på <a href=\"mailto:kontakt@minihjorne.no\">kontakt@minihjorne.no</a>.</p>\n    </div>\n\n    <div class=\"footer\">\n      <p>Minihjørne © 2024</p>\n      <p>Kanonhallveien 12 A, 0585 Oslo</p>\n      <p>Org.nr: 926 647 504</p>\n    </div>\n  </div>\n</body>\n</html>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->\n  </div>\n</div>\n<!--[if (mso)|(IE)]></td><![endif]-->\n      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n    </div>\n  </div>\n  </div>\n  \n\n\n    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->\n    </td>\n  </tr>\n  </tbody>\n  </table>\n  <!--[if mso]></div><![endif]-->\n  <!--[if IE]></div><![endif]-->\n</body>\n\n</html>\n",
-        "bodyText": "",
-        "enabled": true,
-        "tags": null,
-        "createdAt": "2024-08-18T18:38:33.800Z",
-        "updatedAt": "2024-08-21T18:46:26.366Z",
+        "action": "plugin::users-permissions.auth.connect",
+        "createdAt": "2023-11-30T13:04:38.462Z",
+        "updatedAt": "2024-09-13T22:07:24.323Z",
+        "role": 2,
         "createdBy": null,
         "updatedBy": null
       },
       "5": {
         "id": 5,
-        "templateReferenceId": 4,
-        "design": {
-          "body": {
-            "id": "aQMMRPLeJ6",
-            "rows": [
-              {
-                "id": "WpUWIdeG_K",
-                "cells": [1],
-                "values": {
-                  "_meta": {
-                    "htmlID": "u_row_1",
-                    "htmlClassNames": "u_row"
-                  },
-                  "anchor": "",
-                  "columns": false,
-                  "padding": "0px",
-                  "hideable": true,
-                  "deletable": true,
-                  "draggable": true,
-                  "selectable": true,
-                  "hideDesktop": false,
-                  "duplicatable": true,
-                  "backgroundColor": "",
-                  "backgroundImage": {
-                    "url": "",
-                    "size": "custom",
-                    "repeat": "no-repeat",
-                    "position": "center",
-                    "fullWidth": true,
-                    "customPosition": ["50%", "50%"]
-                  },
-                  "displayCondition": null,
-                  "columnsBackgroundColor": ""
-                },
-                "columns": [
-                  {
-                    "id": "dxLEVXSRBr",
-                    "values": {
-                      "_meta": {
-                        "htmlID": "u_column_1",
-                        "htmlClassNames": "u_column"
-                      },
-                      "border": {},
-                      "padding": "0px",
-                      "borderRadius": "0px",
-                      "backgroundColor": ""
-                    },
-                    "contents": [
-                      {
-                        "id": "aPcRli9Iay",
-                        "type": "html",
-                        "values": {
-                          "html": "<!DOCTYPE html>\n<html lang=\"no\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Ny Ordre Mottatt</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      line-height: 1.6;\n      color: #333;\n    }\n\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      padding: 20px;\n      background-color: #f4f4f4;\n      border-radius: 8px;\n    }\n\n    h1 {\n      color: #4CAF50;\n    }\n\n    .order-info {\n      margin: 20px 0;\n      padding: 10px;\n      background-color: #fff;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list {\n      margin: 20px 0;\n      padding: 10px;\n      background-color: #f9f9f9;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list ul {\n      list-style: none;\n      padding: 0;\n    }\n\n    .products-list ul li {\n      padding: 5px 0;\n      border-bottom: 1px solid #ddd;\n    }\n\n    .products-list ul li:last-child {\n      border-bottom: none;\n    }\n  </style>\n</head>\n\n<body>\n  <div class=\"container\">\n    <h1>🎉 Ny Ordre Mottatt! 🎉</h1>\n    <p>Hei Team,</p>\n    <p>Vi har nettopp mottatt en ny ordre fra <strong>{{USER.name}}</strong>! 🎉</p>\n\n    <div class=\"order-info\">\n      <h2>Ordre Detaljer:</h2>\n      <p><strong>Ordre-ID:</strong> {{ORDER.id}}</p>\n      <p><strong>Dato:</strong> {{ORDER.createdAt}}</p>\n      <p><strong>Totalt Beløp:</strong> {{ORDER.amount}} kr</p>\n      <p><strong>Leveringsadresse:</strong></p>\n      <p>{{ORDER.address}}, {{ORDER.city}}, {{ORDER.postalCode}}</p>\n    </div>\n\n    <div class=\"products-list\">\n      <h2>Produkter:</h2>\n      <ul>\n        {{#PRODUCTS}}\n        <li>\n          <strong>{{category.name}}</strong> - Strl {{size.number}}: {{price}} kr\n        </li>\n        {{/PRODUCTS}}\n      </ul>\n    </div>\n\n    <p>La oss sørge for at denne bestillingen behandles raskt og effektivt. 💪</p>\n    <p>Fortsett det gode arbeidet!</p>\n  </div>\n</body>\n\n</html>",
-                          "_meta": {
-                            "htmlID": "u_content_html_1",
-                            "htmlClassNames": "u_content_html"
-                          },
-                          "anchor": "",
-                          "hideable": true,
-                          "deletable": true,
-                          "draggable": true,
-                          "selectable": true,
-                          "hideDesktop": false,
-                          "duplicatable": true,
-                          "containerPadding": "10px",
-                          "displayCondition": null
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "values": {
-              "_meta": {
-                "htmlID": "u_body",
-                "htmlClassNames": "u_body"
-              },
-              "linkStyle": {
-                "body": true,
-                "linkColor": "#0000ee",
-                "linkUnderline": true,
-                "linkHoverColor": "#0000ee",
-                "linkHoverUnderline": true
-              },
-              "textColor": "#000000",
-              "fontFamily": {
-                "label": "Arial",
-                "value": "arial,helvetica,sans-serif"
-              },
-              "popupWidth": "600px",
-              "popupHeight": "auto",
-              "borderRadius": "10px",
-              "contentAlign": "center",
-              "contentWidth": "500px",
-              "popupPosition": "center",
-              "preheaderText": "",
-              "backgroundColor": "#F7F8F9",
-              "backgroundImage": {
-                "url": "",
-                "size": "custom",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "contentVerticalAlign": "center",
-              "popupBackgroundColor": "#FFFFFF",
-              "popupBackgroundImage": {
-                "url": "",
-                "size": "cover",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "popupCloseButton_action": {
-                "name": "close_popup",
-                "attrs": {
-                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
-                }
-              },
-              "popupCloseButton_margin": "0px",
-              "popupCloseButton_position": "top-right",
-              "popupCloseButton_iconColor": "#000000",
-              "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
-              "popupCloseButton_borderRadius": "0px",
-              "popupCloseButton_backgroundColor": "#DDDDDD"
-            },
-            "footers": [],
-            "headers": []
-          },
-          "counters": {
-            "u_row": 1,
-            "u_column": 1,
-            "u_content_html": 1
-          },
-          "schemaVersion": 16
-        },
-        "name": "Ordrebekreftelse Internal",
-        "subject": "Ny ordre!",
-        "bodyHtml": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<!--[if gte mso 9]>\n<xml>\n  <o:OfficeDocumentSettings>\n    <o:AllowPNG/>\n    <o:PixelsPerInch>96</o:PixelsPerInch>\n  </o:OfficeDocumentSettings>\n</xml>\n<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <!--[if !mso]><!--><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]-->\n  <title></title>\n  \n    <style type=\"text/css\">\n      @media only screen and (min-width: 520px) {\n  .u-row {\n    width: 500px !important;\n  }\n  .u-row .u-col {\n    vertical-align: top;\n  }\n\n  .u-row .u-col-100 {\n    width: 500px !important;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .u-row-container {\n    max-width: 100% !important;\n    padding-left: 0px !important;\n    padding-right: 0px !important;\n  }\n  .u-row .u-col {\n    min-width: 320px !important;\n    max-width: 100% !important;\n    display: block !important;\n  }\n  .u-row {\n    width: 100% !important;\n  }\n  .u-col {\n    width: 100% !important;\n  }\n  .u-col > div {\n    margin: 0 auto;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ntable,\ntr,\ntd {\n  vertical-align: top;\n  border-collapse: collapse;\n}\n\np {\n  margin: 0;\n}\n\n.ie-container table,\n.mso-container table {\n  table-layout: fixed;\n}\n\n* {\n  line-height: inherit;\n}\n\na[x-apple-data-detectors='true'] {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n\ntable, td { color: #000000; } </style>\n  \n  \n\n</head>\n\n<body class=\"clean-body u_body\" style=\"margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #F7F8F9;color: #000000\">\n  <!--[if IE]><div class=\"ie-container\"><![endif]-->\n  <!--[if mso]><div class=\"mso-container\"><![endif]-->\n  <table style=\"border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #F7F8F9;width:100%\" cellpadding=\"0\" cellspacing=\"0\">\n  <tbody>\n  <tr style=\"vertical-align: top\">\n    <td style=\"word-break: break-word;border-collapse: collapse !important;vertical-align: top\">\n    <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" style=\"background-color: #F7F8F9;\"><![endif]-->\n    \n  \n  \n<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n  <div class=\"u-row\" style=\"margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n    <div style=\"border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;\">\n      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color: transparent;\"><![endif]-->\n      \n<!--[if (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n<div class=\"u-col u-col-100\" style=\"max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;\">\n  <div style=\"height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\">\n  <!--[if (!mso)&(!IE)]><!--><div style=\"box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\"><!--<![endif]-->\n  \n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div>\n    <!DOCTYPE html>\n<html lang=\"no\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Ny Ordre Mottatt</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      line-height: 1.6;\n      color: #333;\n    }\n\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      padding: 20px;\n      background-color: #f4f4f4;\n      border-radius: 8px;\n    }\n\n    h1 {\n      color: #4CAF50;\n    }\n\n    .order-info {\n      margin: 20px 0;\n      padding: 10px;\n      background-color: #fff;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list {\n      margin: 20px 0;\n      padding: 10px;\n      background-color: #f9f9f9;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list ul {\n      list-style: none;\n      padding: 0;\n    }\n\n    .products-list ul li {\n      padding: 5px 0;\n      border-bottom: 1px solid #ddd;\n    }\n\n    .products-list ul li:last-child {\n      border-bottom: none;\n    }\n  </style>\n</head>\n\n<body>\n  <div class=\"container\">\n    <h1>🎉 Ny Ordre Mottatt! 🎉</h1>\n    <p>Hei Team,</p>\n    <p>Vi har nettopp mottatt en ny ordre fra <strong>{{USER.name}}</strong>! 🎉</p>\n\n    <div class=\"order-info\">\n      <h2>Ordre Detaljer:</h2>\n      <p><strong>Ordre-ID:</strong> {{ORDER.id}}</p>\n      <p><strong>Dato:</strong> {{ORDER.createdAt}}</p>\n      <p><strong>Totalt Beløp:</strong> {{ORDER.amount}} kr</p>\n      <p><strong>Leveringsadresse:</strong></p>\n      <p>{{ORDER.address}}, {{ORDER.city}}, {{ORDER.postalCode}}</p>\n    </div>\n\n    <div class=\"products-list\">\n      <h2>Produkter:</h2>\n      <ul>\n        {{#PRODUCTS}}\n        <li>\n          <strong>{{category.name}}</strong> - Strl {{size.number}}: {{price}} kr\n        </li>\n        {{/PRODUCTS}}\n      </ul>\n    </div>\n\n    <p>La oss sørge for at denne bestillingen behandles raskt og effektivt. 💪</p>\n    <p>Fortsett det gode arbeidet!</p>\n  </div>\n</body>\n\n</html>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->\n  </div>\n</div>\n<!--[if (mso)|(IE)]></td><![endif]-->\n      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n    </div>\n  </div>\n  </div>\n  \n\n\n    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->\n    </td>\n  </tr>\n  </tbody>\n  </table>\n  <!--[if mso]></div><![endif]-->\n  <!--[if IE]></div><![endif]-->\n</body>\n\n</html>\n",
-        "bodyText": "",
-        "enabled": true,
-        "tags": null,
-        "createdAt": "2024-08-18T19:35:57.336Z",
-        "updatedAt": "2024-08-21T18:46:26.369Z",
+        "action": "plugin::users-permissions.auth.forgotPassword",
+        "createdAt": "2023-11-30T13:04:38.462Z",
+        "updatedAt": "2024-09-13T22:07:24.350Z",
+        "role": 2,
         "createdBy": null,
         "updatedBy": null
       },
       "6": {
         "id": 6,
-        "templateReferenceId": 5,
-        "design": {
-          "body": {
-            "id": "5GR6oRPFlD",
-            "rows": [
-              {
-                "id": "zatyKP8Fa9",
-                "cells": [1],
-                "values": {
-                  "_meta": {
-                    "htmlID": "u_row_1",
-                    "htmlClassNames": "u_row"
-                  },
-                  "anchor": "",
-                  "columns": false,
-                  "padding": "0px",
-                  "hideable": true,
-                  "deletable": true,
-                  "draggable": true,
-                  "selectable": true,
-                  "hideDesktop": false,
-                  "duplicatable": true,
-                  "backgroundColor": "",
-                  "backgroundImage": {
-                    "url": "",
-                    "size": "custom",
-                    "repeat": "no-repeat",
-                    "position": "center",
-                    "fullWidth": true,
-                    "customPosition": ["50%", "50%"]
-                  },
-                  "displayCondition": null,
-                  "columnsBackgroundColor": ""
-                },
-                "columns": [
-                  {
-                    "id": "PNNWyqjrG6",
-                    "values": {
-                      "_meta": {
-                        "htmlID": "u_column_1",
-                        "htmlClassNames": "u_column"
-                      },
-                      "border": {},
-                      "padding": "0px",
-                      "borderRadius": "0px",
-                      "backgroundColor": ""
-                    },
-                    "contents": [
-                      {
-                        "id": "7gYSnwlZzX",
-                        "type": "html",
-                        "values": {
-                          "html": "<!DOCTYPE html>\n<html lang=\"no\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f4f4f4;\n      margin: 0;\n      padding: 20px;\n      color: #333333;\n    }\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      background-color: #ffffff;\n      padding: 20px;\n      border-radius: 8px;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    }\n    .header {\n      text-align: center;\n      padding: 20px 0;\n      border-bottom: 1px solid #eeeeee;\n    }\n    .header h1 {\n      margin: 0;\n      color: #333333;\n    }\n    .content {\n      padding: 20px 0;\n    }\n    .order-details {\n      margin-bottom: 20px;\n    }\n    .order-details h2 {\n      color: #333333;\n      font-size: 18px;\n      margin-bottom: 10px;\n    }\n    .order-details p {\n      margin: 5px 0;\n      font-size: 16px;\n    }\n    .product-list {\n      margin-bottom: 20px;\n    }\n    .product-list li {\n      list-style-type: none;\n      padding: 10px;\n      border-bottom: 1px solid #eeeeee;\n    }\n    .product-list li:last-child {\n      border-bottom: none;\n    }\n    .product-list span {\n      display: block;\n    }\n    .product-list .product-name {\n      font-weight: bold;\n      font-size: 16px;\n    }\n    .product-list .product-details {\n      font-size: 14px;\n      color: #666666;\n    }\n\t.track-order {\n      margin: 20px 0;\n      text-align: center;\n    }\n    .track-order a {\n      display: inline-block;\n      padding: 10px 20px;\n      background-color: #007bff;\n      color: #ffffff;\n      text-decoration: none;\n      border-radius: 5px;\n      font-size: 16px;\n    }\n    .footer {\n      text-align: center;\n      padding: 20px 0;\n      border-top: 1px solid #eeeeee;\n      font-size: 14px;\n      color: #666666;\n    }\n    .footer p {\n      margin: 5px 0;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"header\">\n      <h1>Ordrebekreftelse</h1>\n    </div>\n\n    <div class=\"content\">\n      <p>Hei {{USER.name}},</p>\n      <p>Takk for at du handlet hos oss! Din ordre (ID: {{ORDER.id}}) har blitt mottatt og vil bli behandlet snart. Nedenfor finner du detaljer om din bestilling:</p>\n\n      <div class=\"order-details\">\n        <h2>Ordredetaljer:</h2>\n        <p><strong>Bestillingsnummer:</strong> {{ORDER.id}}</p>\n        <p><strong>Bestillingsdato:</strong> {{ORDER.createdAt}}</p>\n        <p><strong>Totalt beløp:</strong> {{ORDER.amount}} kr</p>\n        <p><strong>Leveringsadresse:</strong> {{ORDER.address}}, {{ORDER.postalCode}} {{ORDER.city}}</p>\n      </div>\n\n      <div class=\"product-list\">\n        <h2>Dine produkter:</h2>\n        <ul>\n          {{#PRODUCTS}}\n          <li>\n            <span class=\"product-name\">{{category.name}}</span>\n            <span class=\"product-details\">Størrelse: {{size.number}}</span>\n            <span class=\"product-details\">Merke: {{brand}}</span>\n            <span class=\"product-details\">Pris: {{price}} kr</span>\n          </li>\n          {{/PRODUCTS}}\n        </ul>\n      </div>\n      \n      \n\n      <p>Du vil motta en e-post med sporingsinformasjon når ordren din har blitt sendt.</p>\n      <p>Hvis du har spørsmål eller trenger hjelp, vennligst kontakt oss på <a href=\"mailto:kontakt@minihjorne.no\">kontakt@minihjorne.no</a>.</p>\n    </div>\n\n    <div class=\"footer\">\n      <p>Minihjørne © 2024</p>\n      <p>Kanonhallveien 12 A, 0585 Oslo</p>\n      <p>Org.nr: 926 647 504</p>\n    </div>\n  </div>\n</body>\n</html>",
-                          "_meta": {
-                            "htmlID": "u_content_html_1",
-                            "htmlClassNames": "u_content_html"
-                          },
-                          "anchor": "",
-                          "hideable": true,
-                          "deletable": true,
-                          "draggable": true,
-                          "selectable": true,
-                          "hideDesktop": false,
-                          "duplicatable": true,
-                          "containerPadding": "10px",
-                          "displayCondition": null
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "values": {
-              "_meta": {
-                "htmlID": "u_body",
-                "htmlClassNames": "u_body"
-              },
-              "linkStyle": {
-                "body": true,
-                "linkColor": "#0000ee",
-                "linkUnderline": true,
-                "linkHoverColor": "#0000ee",
-                "linkHoverUnderline": true
-              },
-              "textColor": "#000000",
-              "fontFamily": {
-                "label": "Arial",
-                "value": "arial,helvetica,sans-serif"
-              },
-              "popupWidth": "600px",
-              "popupHeight": "auto",
-              "borderRadius": "10px",
-              "contentAlign": "center",
-              "contentWidth": "500px",
-              "popupPosition": "center",
-              "preheaderText": "",
-              "backgroundColor": "#F7F8F9",
-              "backgroundImage": {
-                "url": "",
-                "size": "custom",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "contentVerticalAlign": "center",
-              "popupBackgroundColor": "#FFFFFF",
-              "popupBackgroundImage": {
-                "url": "",
-                "size": "cover",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "popupCloseButton_action": {
-                "name": "close_popup",
-                "attrs": {
-                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
-                }
-              },
-              "popupCloseButton_margin": "0px",
-              "popupCloseButton_position": "top-right",
-              "popupCloseButton_iconColor": "#000000",
-              "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
-              "popupCloseButton_borderRadius": "0px",
-              "popupCloseButton_backgroundColor": "#DDDDDD"
-            },
-            "footers": [],
-            "headers": []
-          },
-          "counters": {
-            "u_row": 1,
-            "u_column": 1,
-            "u_content_html": 1
-          },
-          "schemaVersion": 16
-        },
-        "name": "Ordrebekreftelse External Public",
-        "subject": "Ordrebekreftelse",
-        "bodyHtml": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<!--[if gte mso 9]>\n<xml>\n  <o:OfficeDocumentSettings>\n    <o:AllowPNG/>\n    <o:PixelsPerInch>96</o:PixelsPerInch>\n  </o:OfficeDocumentSettings>\n</xml>\n<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <!--[if !mso]><!--><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]-->\n  <title></title>\n  \n    <style type=\"text/css\">\n      @media only screen and (min-width: 520px) {\n  .u-row {\n    width: 500px !important;\n  }\n  .u-row .u-col {\n    vertical-align: top;\n  }\n\n  .u-row .u-col-100 {\n    width: 500px !important;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .u-row-container {\n    max-width: 100% !important;\n    padding-left: 0px !important;\n    padding-right: 0px !important;\n  }\n  .u-row .u-col {\n    min-width: 320px !important;\n    max-width: 100% !important;\n    display: block !important;\n  }\n  .u-row {\n    width: 100% !important;\n  }\n  .u-col {\n    width: 100% !important;\n  }\n  .u-col > div {\n    margin: 0 auto;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ntable,\ntr,\ntd {\n  vertical-align: top;\n  border-collapse: collapse;\n}\n\np {\n  margin: 0;\n}\n\n.ie-container table,\n.mso-container table {\n  table-layout: fixed;\n}\n\n* {\n  line-height: inherit;\n}\n\na[x-apple-data-detectors='true'] {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n\ntable, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: underline; }\n    </style>\n  \n  \n\n</head>\n\n<body class=\"clean-body u_body\" style=\"margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #F7F8F9;color: #000000\">\n  <!--[if IE]><div class=\"ie-container\"><![endif]-->\n  <!--[if mso]><div class=\"mso-container\"><![endif]-->\n  <table id=\"u_body\" style=\"border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #F7F8F9;width:100%\" cellpadding=\"0\" cellspacing=\"0\">\n  <tbody>\n  <tr style=\"vertical-align: top\">\n    <td style=\"word-break: break-word;border-collapse: collapse !important;vertical-align: top\">\n    <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" style=\"background-color: #F7F8F9;\"><![endif]-->\n    \n  \n  \n<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n  <div class=\"u-row\" style=\"margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n    <div style=\"border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;\">\n      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color: transparent;\"><![endif]-->\n      \n<!--[if (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n<div class=\"u-col u-col-100\" style=\"max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;\">\n  <div style=\"height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\">\n  <!--[if (!mso)&(!IE)]><!--><div style=\"box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\"><!--<![endif]-->\n  \n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div>\n    <!DOCTYPE html>\n<html lang=\"no\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f4f4f4;\n      margin: 0;\n      padding: 20px;\n      color: #333333;\n    }\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      background-color: #ffffff;\n      padding: 20px;\n      border-radius: 8px;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    }\n    .header {\n      text-align: center;\n      padding: 20px 0;\n      border-bottom: 1px solid #eeeeee;\n    }\n    .header h1 {\n      margin: 0;\n      color: #333333;\n    }\n    .content {\n      padding: 20px 0;\n    }\n    .order-details {\n      margin-bottom: 20px;\n    }\n    .order-details h2 {\n      color: #333333;\n      font-size: 18px;\n      margin-bottom: 10px;\n    }\n    .order-details p {\n      margin: 5px 0;\n      font-size: 16px;\n    }\n    .product-list {\n      margin-bottom: 20px;\n    }\n    .product-list li {\n      list-style-type: none;\n      padding: 10px;\n      border-bottom: 1px solid #eeeeee;\n    }\n    .product-list li:last-child {\n      border-bottom: none;\n    }\n    .product-list span {\n      display: block;\n    }\n    .product-list .product-name {\n      font-weight: bold;\n      font-size: 16px;\n    }\n    .product-list .product-details {\n      font-size: 14px;\n      color: #666666;\n    }\n\t.track-order {\n      margin: 20px 0;\n      text-align: center;\n    }\n    .track-order a {\n      display: inline-block;\n      padding: 10px 20px;\n      background-color: #007bff;\n      color: #ffffff;\n      text-decoration: none;\n      border-radius: 5px;\n      font-size: 16px;\n    }\n    .footer {\n      text-align: center;\n      padding: 20px 0;\n      border-top: 1px solid #eeeeee;\n      font-size: 14px;\n      color: #666666;\n    }\n    .footer p {\n      margin: 5px 0;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"header\">\n      <h1>Ordrebekreftelse</h1>\n    </div>\n\n    <div class=\"content\">\n      <p>Hei {{USER.name}},</p>\n      <p>Takk for at du handlet hos oss! Din ordre (ID: {{ORDER.id}}) har blitt mottatt og vil bli behandlet snart. Nedenfor finner du detaljer om din bestilling:</p>\n\n      <div class=\"order-details\">\n        <h2>Ordredetaljer:</h2>\n        <p><strong>Bestillingsnummer:</strong> {{ORDER.id}}</p>\n        <p><strong>Bestillingsdato:</strong> {{ORDER.createdAt}}</p>\n        <p><strong>Totalt beløp:</strong> {{ORDER.amount}} kr</p>\n        <p><strong>Leveringsadresse:</strong> {{ORDER.address}}, {{ORDER.postalCode}} {{ORDER.city}}</p>\n      </div>\n\n      <div class=\"product-list\">\n        <h2>Dine produkter:</h2>\n        <ul>\n          {{#PRODUCTS}}\n          <li>\n            <span class=\"product-name\">{{category.name}}</span>\n            <span class=\"product-details\">Størrelse: {{size.number}}</span>\n            <span class=\"product-details\">Merke: {{brand}}</span>\n            <span class=\"product-details\">Pris: {{price}} kr</span>\n          </li>\n          {{/PRODUCTS}}\n        </ul>\n      </div>\n      \n      \n\n      <p>Du vil motta en e-post med sporingsinformasjon når ordren din har blitt sendt.</p>\n      <p>Hvis du har spørsmål eller trenger hjelp, vennligst kontakt oss på <a href=\"mailto:kontakt@minihjorne.no\">kontakt@minihjorne.no</a>.</p>\n    </div>\n\n    <div class=\"footer\">\n      <p>Minihjørne © 2024</p>\n      <p>Kanonhallveien 12 A, 0585 Oslo</p>\n      <p>Org.nr: 926 647 504</p>\n    </div>\n  </div>\n</body>\n</html>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->\n  </div>\n</div>\n<!--[if (mso)|(IE)]></td><![endif]-->\n      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n    </div>\n  </div>\n  </div>\n  \n\n\n    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->\n    </td>\n  </tr>\n  </tbody>\n  </table>\n  <!--[if mso]></div><![endif]-->\n  <!--[if IE]></div><![endif]-->\n</body>\n\n</html>\n",
-        "bodyText": "",
-        "enabled": true,
-        "tags": null,
-        "createdAt": "2024-08-19T21:50:07.284Z",
-        "updatedAt": "2024-08-21T18:46:26.371Z",
+        "action": "plugin::users-permissions.auth.resetPassword",
+        "createdAt": "2023-11-30T13:04:38.462Z",
+        "updatedAt": "2024-09-13T22:07:24.377Z",
+        "role": 2,
         "createdBy": null,
         "updatedBy": null
       },
       "7": {
         "id": 7,
-        "templateReferenceId": 6,
-        "design": {
-          "counters": {
-            "u_row": 1,
-            "u_column": 1,
-            "u_content_html": 1
-          },
-          "body": {
-            "id": "Yo6cqBMBIf",
-            "rows": [
-              {
-                "id": "3M6hUlKtd4",
-                "cells": [1],
-                "columns": [
-                  {
-                    "id": "oxtXOQsz4i",
-                    "contents": [
-                      {
-                        "id": "oW6qGUwECp",
-                        "type": "html",
-                        "values": {
-                          "html": "<!DOCTYPE html>\n<html lang=\"no\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Ordrebekreftelse - Henting</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f4f4f4;\n            color: #333333;\n            margin: 0;\n            padding: 20px;\n        }\n        .container {\n            max-width: 600px;\n            margin: 0 auto;\n            background-color: #ffffff;\n            padding: 20px;\n            border-radius: 8px;\n            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n        }\n        h1 {\n            color: #007BFF;\n        }\n        p {\n            font-size: 16px;\n            line-height: 1.5;\n        }\n        .order-details {\n            margin-top: 20px;\n            background-color: #f9f9f9;\n            padding: 15px;\n            border-radius: 8px;\n        }\n        .order-details h2 {\n            font-size: 18px;\n            margin-bottom: 10px;\n        }\n        .order-details p {\n            margin: 5px 0;\n        }\n        .product-list {\n            list-style-type: none;\n            padding: 0;\n        }\n        .product-list li {\n            padding: 10px 0;\n            border-bottom: 1px solid #dddddd;\n        }\n        .product-list li:last-child {\n            border-bottom: none;\n        }\n        .button-container {\n            text-align: center;\n            margin-top: 20px;\n        }\n        .button {\n            background-color: #007BFF;\n            color: #ffffff;\n            padding: 10px 20px;\n            text-decoration: none;\n            border-radius: 5px;\n        }\n        .footer {\n            margin-top: 20px;\n            font-size: 14px;\n            color: #777777;\n            text-align: center;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Takk for din bestilling!</h1>\n        <p>Hei,</p>\n        <p>Vi har mottatt din bestilling, og den er snart klar for henting. Her er en oversikt over din ordre:</p>\n\n        <div class=\"order-details\">\n            <h2>Ordredetaljer</h2>\n            <p><strong>Ordrenummer:</strong> {{ORDER.id}}</p>\n            <p><strong>Bestillingsdato:</strong> {{ORDER.createdAt}}</p>\n            <p><strong>Totalt beløp:</strong> {{ORDER.amount}} kr</p>\n        </div>\n\n        <div class=\"product-list\">\n            <h2>Dine produkter:</h2>\n            <ul>\n                {{#PRODUCTS}}\n                <li>\n                    <strong>{{category.name}}</strong>\n                    <br>\n                    Pris: {{price}} kr<br>\n                    Størrelse: {{size.number}}<br>\n                    Merke: {{brand}}\n                </li>\n                {{/PRODUCTS}}\n            </ul>\n        </div>\n\n        \n\n        <p>Vi sender deg en mail når varene er klare for henting!</p>\n\n        <div class=\"footer\">\n            <p>Har du spørsmål? Kontakt oss på <a href=\"mailto:kontakt@minihjorne.no\">kontakt@minihjorne.no</a>.</p>\n        </div>\n    </div>\n</body>\n</html>",
-                          "hideDesktop": false,
-                          "displayCondition": null,
-                          "containerPadding": "10px",
-                          "anchor": "",
-                          "_meta": {
-                            "htmlID": "u_content_html_1",
-                            "htmlClassNames": "u_content_html"
-                          },
-                          "selectable": true,
-                          "draggable": true,
-                          "duplicatable": true,
-                          "deletable": true,
-                          "hideable": true
-                        }
-                      }
-                    ],
-                    "values": {
-                      "_meta": {
-                        "htmlID": "u_column_1",
-                        "htmlClassNames": "u_column"
-                      },
-                      "border": {},
-                      "padding": "0px",
-                      "borderRadius": "0px",
-                      "backgroundColor": ""
-                    }
-                  }
-                ],
-                "values": {
-                  "displayCondition": null,
-                  "columns": false,
-                  "backgroundColor": "",
-                  "columnsBackgroundColor": "",
-                  "backgroundImage": {
-                    "url": "",
-                    "fullWidth": true,
-                    "repeat": "no-repeat",
-                    "size": "custom",
-                    "position": "center",
-                    "customPosition": ["50%", "50%"]
-                  },
-                  "padding": "0px",
-                  "anchor": "",
-                  "hideDesktop": false,
-                  "_meta": {
-                    "htmlID": "u_row_1",
-                    "htmlClassNames": "u_row"
-                  },
-                  "selectable": true,
-                  "draggable": true,
-                  "duplicatable": true,
-                  "deletable": true,
-                  "hideable": true
-                }
-              }
-            ],
-            "headers": [],
-            "footers": [],
-            "values": {
-              "popupPosition": "center",
-              "popupWidth": "600px",
-              "popupHeight": "auto",
-              "borderRadius": "10px",
-              "contentAlign": "center",
-              "contentVerticalAlign": "center",
-              "contentWidth": "500px",
-              "fontFamily": {
-                "label": "Arial",
-                "value": "arial,helvetica,sans-serif"
-              },
-              "textColor": "#000000",
-              "popupBackgroundColor": "#FFFFFF",
-              "popupBackgroundImage": {
-                "url": "",
-                "fullWidth": true,
-                "repeat": "no-repeat",
-                "size": "cover",
-                "position": "center"
-              },
-              "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
-              "popupCloseButton_position": "top-right",
-              "popupCloseButton_backgroundColor": "#DDDDDD",
-              "popupCloseButton_iconColor": "#000000",
-              "popupCloseButton_borderRadius": "0px",
-              "popupCloseButton_margin": "0px",
-              "popupCloseButton_action": {
-                "name": "close_popup",
-                "attrs": {
-                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
-                }
-              },
-              "backgroundColor": "#F7F8F9",
-              "preheaderText": "",
-              "linkStyle": {
-                "body": true,
-                "linkColor": "#0000ee",
-                "linkHoverColor": "#0000ee",
-                "linkUnderline": true,
-                "linkHoverUnderline": true
-              },
-              "backgroundImage": {
-                "url": "",
-                "fullWidth": true,
-                "repeat": "no-repeat",
-                "size": "custom",
-                "position": "center"
-              },
-              "_meta": {
-                "htmlID": "u_body",
-                "htmlClassNames": "u_body"
-              }
-            }
-          },
-          "schemaVersion": 16
-        },
-        "name": "Ordrebekreftelse External Public Pickup",
-        "subject": "Ordrebekreftelse",
-        "bodyHtml": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<!--[if gte mso 9]>\n<xml>\n  <o:OfficeDocumentSettings>\n    <o:AllowPNG/>\n    <o:PixelsPerInch>96</o:PixelsPerInch>\n  </o:OfficeDocumentSettings>\n</xml>\n<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <!--[if !mso]><!--><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]-->\n  <title></title>\n  \n    <style type=\"text/css\">\n      @media only screen and (min-width: 520px) {\n  .u-row {\n    width: 500px !important;\n  }\n  .u-row .u-col {\n    vertical-align: top;\n  }\n\n  .u-row .u-col-100 {\n    width: 500px !important;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .u-row-container {\n    max-width: 100% !important;\n    padding-left: 0px !important;\n    padding-right: 0px !important;\n  }\n  .u-row .u-col {\n    min-width: 320px !important;\n    max-width: 100% !important;\n    display: block !important;\n  }\n  .u-row {\n    width: 100% !important;\n  }\n  .u-col {\n    width: 100% !important;\n  }\n  .u-col > div {\n    margin: 0 auto;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ntable,\ntr,\ntd {\n  vertical-align: top;\n  border-collapse: collapse;\n}\n\np {\n  margin: 0;\n}\n\n.ie-container table,\n.mso-container table {\n  table-layout: fixed;\n}\n\n* {\n  line-height: inherit;\n}\n\na[x-apple-data-detectors='true'] {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n\ntable, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: underline; }\n    </style>\n  \n  \n\n</head>\n\n<body class=\"clean-body u_body\" style=\"margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #F7F8F9;color: #000000\">\n  <!--[if IE]><div class=\"ie-container\"><![endif]-->\n  <!--[if mso]><div class=\"mso-container\"><![endif]-->\n  <table id=\"u_body\" style=\"border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #F7F8F9;width:100%\" cellpadding=\"0\" cellspacing=\"0\">\n  <tbody>\n  <tr style=\"vertical-align: top\">\n    <td style=\"word-break: break-word;border-collapse: collapse !important;vertical-align: top\">\n    <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" style=\"background-color: #F7F8F9;\"><![endif]-->\n    \n  \n  \n<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n  <div class=\"u-row\" style=\"margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n    <div style=\"border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;\">\n      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color: transparent;\"><![endif]-->\n      \n<!--[if (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n<div class=\"u-col u-col-100\" style=\"max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;\">\n  <div style=\"height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\">\n  <!--[if (!mso)&(!IE)]><!--><div style=\"box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\"><!--<![endif]-->\n  \n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div>\n    <!DOCTYPE html>\n<html lang=\"no\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Ordrebekreftelse - Henting</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f4f4f4;\n            color: #333333;\n            margin: 0;\n            padding: 20px;\n        }\n        .container {\n            max-width: 600px;\n            margin: 0 auto;\n            background-color: #ffffff;\n            padding: 20px;\n            border-radius: 8px;\n            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n        }\n        h1 {\n            color: #007BFF;\n        }\n        p {\n            font-size: 16px;\n            line-height: 1.5;\n        }\n        .order-details {\n            margin-top: 20px;\n            background-color: #f9f9f9;\n            padding: 15px;\n            border-radius: 8px;\n        }\n        .order-details h2 {\n            font-size: 18px;\n            margin-bottom: 10px;\n        }\n        .order-details p {\n            margin: 5px 0;\n        }\n        .product-list {\n            list-style-type: none;\n            padding: 0;\n        }\n        .product-list li {\n            padding: 10px 0;\n            border-bottom: 1px solid #dddddd;\n        }\n        .product-list li:last-child {\n            border-bottom: none;\n        }\n        .button-container {\n            text-align: center;\n            margin-top: 20px;\n        }\n        .button {\n            background-color: #007BFF;\n            color: #ffffff;\n            padding: 10px 20px;\n            text-decoration: none;\n            border-radius: 5px;\n        }\n        .footer {\n            margin-top: 20px;\n            font-size: 14px;\n            color: #777777;\n            text-align: center;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Takk for din bestilling!</h1>\n        <p>Hei,</p>\n        <p>Vi har mottatt din bestilling, og den er snart klar for henting. Her er en oversikt over din ordre:</p>\n\n        <div class=\"order-details\">\n            <h2>Ordredetaljer</h2>\n            <p><strong>Ordrenummer:</strong> {{ORDER.id}}</p>\n            <p><strong>Bestillingsdato:</strong> {{ORDER.createdAt}}</p>\n            <p><strong>Totalt beløp:</strong> {{ORDER.amount}} kr</p>\n        </div>\n\n        <div class=\"product-list\">\n            <h2>Dine produkter:</h2>\n            <ul>\n                {{#PRODUCTS}}\n                <li>\n                    <strong>{{category.name}}</strong>\n                    <br>\n                    Pris: {{price}} kr<br>\n                    Størrelse: {{size.number}}<br>\n                    Merke: {{brand}}\n                </li>\n                {{/PRODUCTS}}\n            </ul>\n        </div>\n\n        \n\n        <p>Vi sender deg en mail når varene er klare for henting!</p>\n\n        <div class=\"footer\">\n            <p>Har du spørsmål? Kontakt oss på <a href=\"mailto:kontakt@minihjorne.no\">kontakt@minihjorne.no</a>.</p>\n        </div>\n    </div>\n</body>\n</html>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->\n  </div>\n</div>\n<!--[if (mso)|(IE)]></td><![endif]-->\n      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n    </div>\n  </div>\n  </div>\n  \n\n\n    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->\n    </td>\n  </tr>\n  </tbody>\n  </table>\n  <!--[if mso]></div><![endif]-->\n  <!--[if IE]></div><![endif]-->\n</body>\n\n</html>\n",
-        "bodyText": "",
-        "enabled": true,
-        "tags": null,
-        "createdAt": "2024-08-20T21:52:47.697Z",
-        "updatedAt": "2024-08-21T18:53:16.299Z",
+        "action": "plugin::users-permissions.auth.register",
+        "createdAt": "2023-11-30T13:04:38.462Z",
+        "updatedAt": "2024-09-13T22:07:24.403Z",
+        "role": 2,
         "createdBy": null,
         "updatedBy": null
       },
       "8": {
         "id": 8,
-        "templateReferenceId": 7,
-        "design": {
-          "body": {
-            "id": "dK2VNeHl9A",
-            "rows": [
-              {
-                "id": "EPfPjbiNYI",
-                "cells": [1],
-                "values": {
-                  "_meta": {
-                    "htmlID": "u_row_1",
-                    "htmlClassNames": "u_row"
-                  },
-                  "anchor": "",
-                  "columns": false,
-                  "padding": "0px",
-                  "hideable": true,
-                  "deletable": true,
-                  "draggable": true,
-                  "selectable": true,
-                  "hideDesktop": false,
-                  "duplicatable": true,
-                  "backgroundColor": "",
-                  "backgroundImage": {
-                    "url": "",
-                    "size": "custom",
-                    "repeat": "no-repeat",
-                    "position": "center",
-                    "fullWidth": true,
-                    "customPosition": ["50%", "50%"]
-                  },
-                  "displayCondition": null,
-                  "columnsBackgroundColor": ""
-                },
-                "columns": [
-                  {
-                    "id": "BQA_vlDR8d",
-                    "values": {
-                      "_meta": {
-                        "htmlID": "u_column_1",
-                        "htmlClassNames": "u_column"
-                      },
-                      "border": {},
-                      "padding": "0px",
-                      "borderRadius": "0px",
-                      "backgroundColor": ""
-                    },
-                    "contents": [
-                      {
-                        "id": "34yP-uf24U",
-                        "type": "html",
-                        "values": {
-                          "html": "<!DOCTYPE html>\n<html lang=\"no\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Ny Hentebestilling Mottatt</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      line-height: 1.6;\n      color: #333;\n    }\n\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      padding: 20px;\n      background-color: #f4f4f4;\n      border-radius: 8px;\n    }\n\n    h1 {\n      color: #4CAF50;\n    }\n\n    .order-info {\n      margin: 20px 0;\n      padding: 10px;\n      background-color: #fff;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list {\n      margin: 20px 0;\n      padding: 10px;\n      background-color: #f9f9f9;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list ul {\n      list-style: none;\n      padding: 0;\n    }\n\n    .products-list ul li {\n      padding: 5px 0;\n      border-bottom: 1px solid #ddd;\n    }\n\n    .products-list ul li:last-child {\n      border-bottom: none;\n    }\n  </style>\n</head>\n\n<body>\n  <div class=\"container\">\n    <h1>🎉 Ny Hentebestilling Mottatt! 🎉</h1>\n    <p>Hei Team,</p>\n    <p>Vi har nettopp mottatt en ny hentebestilling! 🎉</p>\n\n    <div class=\"order-info\">\n      <h2>Ordre Detaljer:</h2>\n      <p><strong>Ordre-ID:</strong> {{ORDER.id}}</p>\n      <p><strong>Dato:</strong> {{ORDER.createdAt}}</p>\n      <p><strong>Totalt Beløp:</strong> {{ORDER.amount}} kr</p>\n    </div>\n\n    <div class=\"products-list\">\n      <h2>Produkter:</h2>\n      <ul>\n        {{#PRODUCTS}}\n        <li>\n          <strong>{{category.name}}</strong> - Strl {{size.number}}: {{price}} kr\n        </li>\n        {{/PRODUCTS}}\n      </ul>\n    </div>\n\n    <p>La oss sørge for at denne bestillingen behandles raskt og effektivt. 💪</p>\n    <p>Fortsett det gode arbeidet!</p>\n  </div>\n</body>\n\n</html>",
-                          "_meta": {
-                            "htmlID": "u_content_html_1",
-                            "htmlClassNames": "u_content_html"
-                          },
-                          "anchor": "",
-                          "hideable": true,
-                          "deletable": true,
-                          "draggable": true,
-                          "selectable": true,
-                          "hideDesktop": false,
-                          "duplicatable": true,
-                          "containerPadding": "10px",
-                          "displayCondition": null
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "values": {
-              "_meta": {
-                "htmlID": "u_body",
-                "htmlClassNames": "u_body"
-              },
-              "linkStyle": {
-                "body": true,
-                "linkColor": "#0000ee",
-                "linkUnderline": true,
-                "linkHoverColor": "#0000ee",
-                "linkHoverUnderline": true
-              },
-              "textColor": "#000000",
-              "fontFamily": {
-                "label": "Arial",
-                "value": "arial,helvetica,sans-serif"
-              },
-              "popupWidth": "600px",
-              "popupHeight": "auto",
-              "borderRadius": "10px",
-              "contentAlign": "center",
-              "contentWidth": "500px",
-              "popupPosition": "center",
-              "preheaderText": "",
-              "backgroundColor": "#F7F8F9",
-              "backgroundImage": {
-                "url": "",
-                "size": "custom",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "contentVerticalAlign": "center",
-              "popupBackgroundColor": "#FFFFFF",
-              "popupBackgroundImage": {
-                "url": "",
-                "size": "cover",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "popupCloseButton_action": {
-                "name": "close_popup",
-                "attrs": {
-                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
-                }
-              },
-              "popupCloseButton_margin": "0px",
-              "popupCloseButton_position": "top-right",
-              "popupCloseButton_iconColor": "#000000",
-              "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
-              "popupCloseButton_borderRadius": "0px",
-              "popupCloseButton_backgroundColor": "#DDDDDD"
-            },
-            "footers": [],
-            "headers": []
-          },
-          "counters": {
-            "u_row": 1,
-            "u_column": 1,
-            "u_content_html": 1
-          },
-          "schemaVersion": 16
-        },
-        "name": "Order Confirmation Internal Pickup",
-        "subject": "Ny ordre!",
-        "bodyHtml": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<!--[if gte mso 9]>\n<xml>\n  <o:OfficeDocumentSettings>\n    <o:AllowPNG/>\n    <o:PixelsPerInch>96</o:PixelsPerInch>\n  </o:OfficeDocumentSettings>\n</xml>\n<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <!--[if !mso]><!--><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]-->\n  <title></title>\n  \n    <style type=\"text/css\">\n      @media only screen and (min-width: 520px) {\n  .u-row {\n    width: 500px !important;\n  }\n  .u-row .u-col {\n    vertical-align: top;\n  }\n\n  .u-row .u-col-100 {\n    width: 500px !important;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .u-row-container {\n    max-width: 100% !important;\n    padding-left: 0px !important;\n    padding-right: 0px !important;\n  }\n  .u-row .u-col {\n    min-width: 320px !important;\n    max-width: 100% !important;\n    display: block !important;\n  }\n  .u-row {\n    width: 100% !important;\n  }\n  .u-col {\n    width: 100% !important;\n  }\n  .u-col > div {\n    margin: 0 auto;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ntable,\ntr,\ntd {\n  vertical-align: top;\n  border-collapse: collapse;\n}\n\np {\n  margin: 0;\n}\n\n.ie-container table,\n.mso-container table {\n  table-layout: fixed;\n}\n\n* {\n  line-height: inherit;\n}\n\na[x-apple-data-detectors='true'] {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n\ntable, td { color: #000000; } </style>\n  \n  \n\n</head>\n\n<body class=\"clean-body u_body\" style=\"margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #F7F8F9;color: #000000\">\n  <!--[if IE]><div class=\"ie-container\"><![endif]-->\n  <!--[if mso]><div class=\"mso-container\"><![endif]-->\n  <table style=\"border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #F7F8F9;width:100%\" cellpadding=\"0\" cellspacing=\"0\">\n  <tbody>\n  <tr style=\"vertical-align: top\">\n    <td style=\"word-break: break-word;border-collapse: collapse !important;vertical-align: top\">\n    <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" style=\"background-color: #F7F8F9;\"><![endif]-->\n    \n  \n  \n<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n  <div class=\"u-row\" style=\"margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n    <div style=\"border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;\">\n      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color: transparent;\"><![endif]-->\n      \n<!--[if (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n<div class=\"u-col u-col-100\" style=\"max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;\">\n  <div style=\"height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\">\n  <!--[if (!mso)&(!IE)]><!--><div style=\"box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\"><!--<![endif]-->\n  \n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div>\n    <!DOCTYPE html>\n<html lang=\"no\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Ny Hentebestilling Mottatt</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      line-height: 1.6;\n      color: #333;\n    }\n\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      padding: 20px;\n      background-color: #f4f4f4;\n      border-radius: 8px;\n    }\n\n    h1 {\n      color: #4CAF50;\n    }\n\n    .order-info {\n      margin: 20px 0;\n      padding: 10px;\n      background-color: #fff;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list {\n      margin: 20px 0;\n      padding: 10px;\n      background-color: #f9f9f9;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list ul {\n      list-style: none;\n      padding: 0;\n    }\n\n    .products-list ul li {\n      padding: 5px 0;\n      border-bottom: 1px solid #ddd;\n    }\n\n    .products-list ul li:last-child {\n      border-bottom: none;\n    }\n  </style>\n</head>\n\n<body>\n  <div class=\"container\">\n    <h1>🎉 Ny Hentebestilling Mottatt! 🎉</h1>\n    <p>Hei Team,</p>\n    <p>Vi har nettopp mottatt en ny hentebestilling! 🎉</p>\n\n    <div class=\"order-info\">\n      <h2>Ordre Detaljer:</h2>\n      <p><strong>Ordre-ID:</strong> {{ORDER.id}}</p>\n      <p><strong>Dato:</strong> {{ORDER.createdAt}}</p>\n      <p><strong>Totalt Beløp:</strong> {{ORDER.amount}} kr</p>\n    </div>\n\n    <div class=\"products-list\">\n      <h2>Produkter:</h2>\n      <ul>\n        {{#PRODUCTS}}\n        <li>\n          <strong>{{category.name}}</strong> - Strl {{size.number}}: {{price}} kr\n        </li>\n        {{/PRODUCTS}}\n      </ul>\n    </div>\n\n    <p>La oss sørge for at denne bestillingen behandles raskt og effektivt. 💪</p>\n    <p>Fortsett det gode arbeidet!</p>\n  </div>\n</body>\n\n</html>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->\n  </div>\n</div>\n<!--[if (mso)|(IE)]></td><![endif]-->\n      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n    </div>\n  </div>\n  </div>\n  \n\n\n    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->\n    </td>\n  </tr>\n  </tbody>\n  </table>\n  <!--[if mso]></div><![endif]-->\n  <!--[if IE]></div><![endif]-->\n</body>\n\n</html>\n",
-        "bodyText": "",
-        "enabled": true,
-        "tags": null,
-        "createdAt": "2024-08-20T23:06:53.045Z",
-        "updatedAt": "2024-08-21T18:46:26.375Z",
+        "action": "plugin::users-permissions.auth.emailConfirmation",
+        "createdAt": "2023-11-30T13:04:38.462Z",
+        "updatedAt": "2024-09-13T22:07:24.433Z",
+        "role": 2,
         "createdBy": null,
         "updatedBy": null
       },
       "9": {
         "id": 9,
-        "templateReferenceId": 8,
-        "design": {
-          "body": {
-            "id": "kqP644sp0T",
-            "rows": [
-              {
-                "id": "UJTPKjlVWG",
-                "cells": [1],
-                "values": {
-                  "_meta": {
-                    "htmlID": "u_row_1",
-                    "htmlClassNames": "u_row"
-                  },
-                  "anchor": "",
-                  "columns": false,
-                  "padding": "0px",
-                  "hideable": true,
-                  "deletable": true,
-                  "draggable": true,
-                  "selectable": true,
-                  "hideDesktop": false,
-                  "duplicatable": true,
-                  "backgroundColor": "",
-                  "backgroundImage": {
-                    "url": "",
-                    "size": "custom",
-                    "repeat": "no-repeat",
-                    "position": "center",
-                    "fullWidth": true,
-                    "customPosition": ["50%", "50%"]
-                  },
-                  "displayCondition": null,
-                  "columnsBackgroundColor": ""
-                },
-                "columns": [
-                  {
-                    "id": "qln53Xe-54",
-                    "values": {
-                      "_meta": {
-                        "htmlID": "u_column_1",
-                        "htmlClassNames": "u_column"
-                      },
-                      "border": {},
-                      "padding": "0px",
-                      "borderRadius": "0px",
-                      "backgroundColor": ""
-                    },
-                    "contents": [
-                      {
-                        "id": "Bao_bWvNW1",
-                        "type": "html",
-                        "values": {
-                          "html": "<!DOCTYPE html>\n<html lang=\"no\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Ordrebekreftelse - Henting</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      line-height: 1.6;\n      color: #333;\n      background-color: #f4f4f4;\n      margin: 0;\n      padding: 20px;\n    }\n\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      padding: 20px;\n      background-color: #fff;\n      border-radius: 8px;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    }\n\n    h1 {\n      color: #4CAF50;\n      font-size: 24px;\n    }\n\n    p {\n      font-size: 16px;\n      margin: 0 0 10px;\n    }\n\n    .order-info {\n      margin: 20px 0;\n      padding: 15px;\n      background-color: #f9f9f9;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list {\n      margin: 20px 0;\n      padding: 15px;\n      background-color: #f9f9f9;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list ul {\n      list-style: none;\n      padding: 0;\n      margin: 0;\n    }\n\n    .products-list ul li {\n      padding: 10px 0;\n      border-bottom: 1px solid #ddd;\n    }\n\n    .products-list ul li:last-child {\n      border-bottom: none;\n    }\n  </style>\n</head>\n\n<body>\n  <div class=\"container\">\n    <h1>Ordrebekreftelse - Henting</h1>\n    <p>Kjære {{USER.name}},</p>\n    <p>Takk for din bestilling! Din ordre er bekreftet og vil være klar til henting snart. Her er detaljene for din ordre:</p>\n\n    <div class=\"order-info\">\n      <h2>Ordre Detaljer</h2>\n      <p><strong>Ordre-ID:</strong> {{ORDER.id}}</p>\n      <p><strong>Bestillingsdato:</strong> {{ORDER.createdAt}}</p>\n      <p><strong>Totalbeløp:</strong> {{ORDER.amount}} kr</p>\n    </div>\n\n    <div class=\"products-list\">\n      <h2>Bestilte Produkter</h2>\n      <ul>\n        {{#PRODUCTS}}\n        <li>\n          <strong>{{category.name}}</strong> - Størrelse: {{size.number}} - Pris: {{price}} kr\n        </li>\n        {{/PRODUCTS}}\n      </ul>\n    </div>\n\n    <p>Du vil motta en e-post med mer informasjon når din ordre er klar til henting.</p>\n    <p>Vi ser frem til å se deg snart!</p>\n  </div>\n</body>\n\n</html>",
-                          "_meta": {
-                            "htmlID": "u_content_html_1",
-                            "htmlClassNames": "u_content_html"
-                          },
-                          "anchor": "",
-                          "hideable": true,
-                          "deletable": true,
-                          "draggable": true,
-                          "selectable": true,
-                          "duplicatable": true,
-                          "containerPadding": "10px",
-                          "displayCondition": null
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "values": {
-              "_meta": {
-                "htmlID": "u_body",
-                "htmlClassNames": "u_body"
-              },
-              "linkStyle": {
-                "body": true,
-                "linkColor": "#0000ee",
-                "linkUnderline": true,
-                "linkHoverColor": "#0000ee",
-                "linkHoverUnderline": true
-              },
-              "textColor": "#000000",
-              "fontFamily": {
-                "label": "Arial",
-                "value": "arial,helvetica,sans-serif"
-              },
-              "popupWidth": "600px",
-              "popupHeight": "auto",
-              "borderRadius": "10px",
-              "contentAlign": "center",
-              "contentWidth": "500px",
-              "popupPosition": "center",
-              "preheaderText": "",
-              "backgroundColor": "#F7F8F9",
-              "backgroundImage": {
-                "url": "",
-                "size": "custom",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "contentVerticalAlign": "center",
-              "popupBackgroundColor": "#FFFFFF",
-              "popupBackgroundImage": {
-                "url": "",
-                "size": "cover",
-                "repeat": "no-repeat",
-                "position": "center",
-                "fullWidth": true
-              },
-              "popupCloseButton_action": {
-                "name": "close_popup",
-                "attrs": {
-                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
-                }
-              },
-              "popupCloseButton_margin": "0px",
-              "popupCloseButton_position": "top-right",
-              "popupCloseButton_iconColor": "#000000",
-              "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
-              "popupCloseButton_borderRadius": "0px",
-              "popupCloseButton_backgroundColor": "#DDDDDD"
-            },
-            "footers": [],
-            "headers": []
-          },
-          "counters": {
-            "u_row": 1,
-            "u_column": 1,
-            "u_content_html": 1
-          },
-          "schemaVersion": 16
-        },
-        "name": "Order confirmation - External - Pickup",
-        "subject": "Ordrebekreftelse",
-        "bodyHtml": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<!--[if gte mso 9]>\n<xml>\n  <o:OfficeDocumentSettings>\n    <o:AllowPNG/>\n    <o:PixelsPerInch>96</o:PixelsPerInch>\n  </o:OfficeDocumentSettings>\n</xml>\n<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <!--[if !mso]><!--><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]-->\n  <title></title>\n  \n    <style type=\"text/css\">\n      @media only screen and (min-width: 520px) {\n  .u-row {\n    width: 500px !important;\n  }\n  .u-row .u-col {\n    vertical-align: top;\n  }\n\n  .u-row .u-col-100 {\n    width: 500px !important;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .u-row-container {\n    max-width: 100% !important;\n    padding-left: 0px !important;\n    padding-right: 0px !important;\n  }\n  .u-row .u-col {\n    min-width: 320px !important;\n    max-width: 100% !important;\n    display: block !important;\n  }\n  .u-row {\n    width: 100% !important;\n  }\n  .u-col {\n    width: 100% !important;\n  }\n  .u-col > div {\n    margin: 0 auto;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ntable,\ntr,\ntd {\n  vertical-align: top;\n  border-collapse: collapse;\n}\n\np {\n  margin: 0;\n}\n\n.ie-container table,\n.mso-container table {\n  table-layout: fixed;\n}\n\n* {\n  line-height: inherit;\n}\n\na[x-apple-data-detectors='true'] {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n\ntable, td { color: #000000; } </style>\n  \n  \n\n</head>\n\n<body class=\"clean-body u_body\" style=\"margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #F7F8F9;color: #000000\">\n  <!--[if IE]><div class=\"ie-container\"><![endif]-->\n  <!--[if mso]><div class=\"mso-container\"><![endif]-->\n  <table style=\"border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #F7F8F9;width:100%\" cellpadding=\"0\" cellspacing=\"0\">\n  <tbody>\n  <tr style=\"vertical-align: top\">\n    <td style=\"word-break: break-word;border-collapse: collapse !important;vertical-align: top\">\n    <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" style=\"background-color: #F7F8F9;\"><![endif]-->\n    \n  \n  \n<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n  <div class=\"u-row\" style=\"margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n    <div style=\"border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;\">\n      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color: transparent;\"><![endif]-->\n      \n<!--[if (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n<div class=\"u-col u-col-100\" style=\"max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;\">\n  <div style=\"height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\">\n  <!--[if (!mso)&(!IE)]><!--><div style=\"box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\"><!--<![endif]-->\n  \n<table style=\"font-family:arial,helvetica,sans-serif;\" role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody>\n    <tr>\n      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n        \n  <div>\n    <!DOCTYPE html>\n<html lang=\"no\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Ordrebekreftelse - Henting</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      line-height: 1.6;\n      color: #333;\n      background-color: #f4f4f4;\n      margin: 0;\n      padding: 20px;\n    }\n\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      padding: 20px;\n      background-color: #fff;\n      border-radius: 8px;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    }\n\n    h1 {\n      color: #4CAF50;\n      font-size: 24px;\n    }\n\n    p {\n      font-size: 16px;\n      margin: 0 0 10px;\n    }\n\n    .order-info {\n      margin: 20px 0;\n      padding: 15px;\n      background-color: #f9f9f9;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list {\n      margin: 20px 0;\n      padding: 15px;\n      background-color: #f9f9f9;\n      border-radius: 8px;\n      border: 1px solid #ddd;\n    }\n\n    .products-list ul {\n      list-style: none;\n      padding: 0;\n      margin: 0;\n    }\n\n    .products-list ul li {\n      padding: 10px 0;\n      border-bottom: 1px solid #ddd;\n    }\n\n    .products-list ul li:last-child {\n      border-bottom: none;\n    }\n  </style>\n</head>\n\n<body>\n  <div class=\"container\">\n    <h1>Ordrebekreftelse - Henting</h1>\n    <p>Kjære {{USER.name}},</p>\n    <p>Takk for din bestilling! Din ordre er bekreftet og vil være klar til henting snart. Her er detaljene for din ordre:</p>\n\n    <div class=\"order-info\">\n      <h2>Ordre Detaljer</h2>\n      <p><strong>Ordre-ID:</strong> {{ORDER.id}}</p>\n      <p><strong>Bestillingsdato:</strong> {{ORDER.createdAt}}</p>\n      <p><strong>Totalbeløp:</strong> {{ORDER.amount}} kr</p>\n    </div>\n\n    <div class=\"products-list\">\n      <h2>Bestilte Produkter</h2>\n      <ul>\n        {{#PRODUCTS}}\n        <li>\n          <strong>{{category.name}}</strong> - Størrelse: {{size.number}} - Pris: {{price}} kr\n        </li>\n        {{/PRODUCTS}}\n      </ul>\n    </div>\n\n    <p>Du vil motta en e-post med mer informasjon når din ordre er klar til henting.</p>\n    <p>Vi ser frem til å se deg snart!</p>\n  </div>\n</body>\n\n</html>\n  </div>\n\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->\n  </div>\n</div>\n<!--[if (mso)|(IE)]></td><![endif]-->\n      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n    </div>\n  </div>\n  </div>\n  \n\n\n    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->\n    </td>\n  </tr>\n  </tbody>\n  </table>\n  <!--[if mso]></div><![endif]-->\n  <!--[if IE]></div><![endif]-->\n</body>\n\n</html>\n",
-        "bodyText": "",
-        "enabled": true,
-        "tags": null,
-        "createdAt": "2024-08-21T17:38:14.210Z",
-        "updatedAt": "2024-08-21T18:46:26.376Z",
+        "action": "plugin::users-permissions.auth.sendEmailConfirmation",
+        "createdAt": "2023-11-30T13:04:38.462Z",
+        "updatedAt": "2024-09-13T22:07:24.459Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "10": {
+        "id": 10,
+        "action": "api::category.category.find",
+        "createdAt": "2024-06-26T09:44:47.171Z",
+        "updatedAt": "2024-06-26T09:44:47.171Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "11": {
+        "id": 11,
+        "action": "api::product.product.findOne",
+        "createdAt": "2023-12-01T09:59:08.217Z",
+        "updatedAt": "2024-09-13T22:07:24.483Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "12": {
+        "id": 12,
+        "action": "api::color.color.find",
+        "createdAt": "2023-12-01T10:37:10.233Z",
+        "updatedAt": "2024-09-13T22:07:24.511Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "13": {
+        "id": 13,
+        "action": "api::color.color.findOne",
+        "createdAt": "2023-12-01T10:37:10.233Z",
+        "updatedAt": "2024-09-13T22:07:24.536Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "14": {
+        "id": 14,
+        "action": "api::tag.tag.find",
+        "createdAt": "2023-12-01T10:37:10.233Z",
+        "updatedAt": "2024-09-13T22:07:24.566Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "15": {
+        "id": 15,
+        "action": "api::tag.tag.findOne",
+        "createdAt": "2023-12-01T10:37:10.233Z",
+        "updatedAt": "2024-09-13T22:07:24.594Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "16": {
+        "id": 16,
+        "action": "plugin::users-permissions.role.findOne",
+        "createdAt": "2023-12-01T11:00:35.856Z",
+        "updatedAt": "2024-09-13T22:07:24.623Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "17": {
+        "id": 17,
+        "action": "plugin::users-permissions.role.find",
+        "createdAt": "2023-12-01T11:00:35.856Z",
+        "updatedAt": "2024-09-13T22:07:24.648Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "18": {
+        "id": 18,
+        "action": "plugin::users-permissions.user.find",
+        "createdAt": "2023-12-01T11:21:23.655Z",
+        "updatedAt": "2024-09-13T22:07:24.677Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "19": {
+        "id": 19,
+        "action": "plugin::users-permissions.user.findOne",
+        "createdAt": "2023-12-01T11:21:23.655Z",
+        "updatedAt": "2024-09-13T22:07:24.703Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "20": {
+        "id": 20,
+        "action": "api::size.size.find",
+        "createdAt": "2023-12-01T22:07:30.254Z",
+        "updatedAt": "2024-09-13T22:07:24.730Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "21": {
+        "id": 21,
+        "action": "api::size.size.findOne",
+        "createdAt": "2023-12-01T22:07:30.254Z",
+        "updatedAt": "2024-09-13T22:07:24.769Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "22": {
+        "id": 22,
+        "action": "api::category.category.find",
+        "createdAt": "2023-12-03T13:14:14.491Z",
+        "updatedAt": "2024-09-13T22:07:24.796Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "23": {
+        "id": 23,
+        "action": "api::category.category.findOne",
+        "createdAt": "2023-12-03T13:14:14.491Z",
+        "updatedAt": "2024-09-13T22:07:24.822Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "24": {
+        "id": 24,
+        "action": "api::material.material.find",
+        "createdAt": "2023-12-03T13:14:14.491Z",
+        "updatedAt": "2024-09-13T22:07:24.848Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "25": {
+        "id": 25,
+        "action": "api::material.material.findOne",
+        "createdAt": "2023-12-03T13:14:14.491Z",
+        "updatedAt": "2024-09-13T22:07:24.872Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "26": {
+        "id": 26,
+        "action": "plugin::upload.content-api.upload",
+        "createdAt": "2023-12-03T20:00:59.625Z",
+        "updatedAt": "2024-09-13T22:07:24.898Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "27": {
+        "id": 27,
+        "action": "api::category.category.find",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:24.924Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "28": {
+        "id": 28,
+        "action": "api::category.category.findOne",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:24.952Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "29": {
+        "id": 29,
+        "action": "api::color.color.find",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:24.979Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "30": {
+        "id": 30,
+        "action": "api::color.color.findOne",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.010Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "31": {
+        "id": 31,
+        "action": "api::material.material.find",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.040Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "32": {
+        "id": 32,
+        "action": "api::material.material.findOne",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.070Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "33": {
+        "id": 33,
+        "action": "api::product.product.find",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.099Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "34": {
+        "id": 34,
+        "action": "api::product.product.findOne",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.129Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "35": {
+        "id": 35,
+        "action": "api::size.size.find",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.155Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "36": {
+        "id": 36,
+        "action": "api::size.size.findOne",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.182Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "37": {
+        "id": 37,
+        "action": "api::tag.tag.find",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.208Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "38": {
+        "id": 38,
+        "action": "api::tag.tag.findOne",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.234Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "39": {
+        "id": 39,
+        "action": "plugin::users-permissions.user.find",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.264Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "40": {
+        "id": 40,
+        "action": "plugin::users-permissions.user.findOne",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.294Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "41": {
+        "id": 41,
+        "action": "plugin::users-permissions.role.findOne",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.322Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "42": {
+        "id": 42,
+        "action": "plugin::users-permissions.role.find",
+        "createdAt": "2023-12-03T20:51:34.881Z",
+        "updatedAt": "2024-09-13T22:07:25.353Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "43": {
+        "id": 43,
+        "action": "api::product.product.create",
+        "createdAt": "2023-12-07T21:33:01.279Z",
+        "updatedAt": "2024-09-13T22:07:25.380Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "44": {
+        "id": 44,
+        "action": "plugin::upload.content-api.upload",
+        "createdAt": "2023-12-07T21:33:01.279Z",
+        "updatedAt": "2024-09-13T22:07:25.412Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "45": {
+        "id": 45,
+        "action": "api::product.product.create",
+        "createdAt": "2023-12-07T21:33:11.338Z",
+        "updatedAt": "2024-09-13T22:07:25.442Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "46": {
+        "id": 46,
+        "action": "api::color.color.create",
+        "createdAt": "2023-12-08T06:33:11.506Z",
+        "updatedAt": "2024-09-13T22:07:25.469Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "47": {
+        "id": 47,
+        "action": "api::sex.sex.create",
+        "createdAt": "2023-12-08T06:33:11.506Z",
+        "updatedAt": "2024-09-13T22:07:25.497Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "48": {
+        "id": 48,
+        "action": "api::sex.sex.find",
+        "createdAt": "2023-12-08T20:02:00.703Z",
+        "updatedAt": "2024-09-13T22:07:25.525Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "49": {
+        "id": 49,
+        "action": "api::sex.sex.findOne",
+        "createdAt": "2023-12-08T20:02:00.703Z",
+        "updatedAt": "2024-09-13T22:07:25.551Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "50": {
+        "id": 50,
+        "action": "api::state.state.find",
+        "createdAt": "2023-12-08T20:02:00.703Z",
+        "updatedAt": "2024-09-13T22:07:25.578Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "51": {
+        "id": 51,
+        "action": "api::state.state.findOne",
+        "createdAt": "2023-12-08T20:02:00.703Z",
+        "updatedAt": "2024-09-13T22:07:25.606Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "52": {
+        "id": 52,
+        "action": "api::category.category.findOne",
+        "createdAt": "2024-06-26T09:48:01.957Z",
+        "updatedAt": "2024-06-26T09:48:01.957Z",
+        "role": null,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "53": {
+        "id": 53,
+        "action": "plugin::users-permissions.user.update",
+        "createdAt": "2023-12-10T21:19:10.054Z",
+        "updatedAt": "2024-09-09T22:22:33.241Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "54": {
+        "id": 54,
+        "action": "api::sex.sex.find",
+        "createdAt": "2023-12-13T21:21:55.954Z",
+        "updatedAt": "2024-09-13T22:07:25.633Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "55": {
+        "id": 55,
+        "action": "api::sex.sex.findOne",
+        "createdAt": "2023-12-13T21:21:55.954Z",
+        "updatedAt": "2024-09-13T22:07:25.660Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "56": {
+        "id": 56,
+        "action": "api::order.order.find",
+        "createdAt": "2023-12-14T20:57:35.281Z",
+        "updatedAt": "2024-09-13T22:07:25.693Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "57": {
+        "id": 57,
+        "action": "api::order.order.findOne",
+        "createdAt": "2023-12-14T20:57:35.281Z",
+        "updatedAt": "2024-09-13T22:07:25.726Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "58": {
+        "id": 58,
+        "action": "api::order.order.create",
+        "createdAt": "2023-12-14T20:57:35.281Z",
+        "updatedAt": "2024-09-13T22:07:25.757Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "59": {
+        "id": 59,
+        "action": "api::state.state.find",
+        "createdAt": "2023-12-14T20:57:35.281Z",
+        "updatedAt": "2024-09-13T22:07:25.783Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "60": {
+        "id": 60,
+        "action": "api::state.state.findOne",
+        "createdAt": "2023-12-14T20:57:35.281Z",
+        "updatedAt": "2024-09-13T22:07:25.809Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "61": {
+        "id": 61,
+        "action": "api::product.product.update",
+        "createdAt": "2023-12-15T13:41:05.509Z",
+        "updatedAt": "2024-09-13T22:07:25.835Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "62": {
+        "id": 62,
+        "action": "api::product.product.delete",
+        "createdAt": "2023-12-15T13:41:05.509Z",
+        "updatedAt": "2024-09-13T22:07:25.862Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "63": {
+        "id": 63,
+        "action": "api::status.status.find",
+        "createdAt": "2023-12-15T15:55:32.603Z",
+        "updatedAt": "2024-09-13T22:07:25.889Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "64": {
+        "id": 64,
+        "action": "api::status.status.findOne",
+        "createdAt": "2023-12-15T15:55:32.603Z",
+        "updatedAt": "2024-09-13T22:07:25.916Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "65": {
+        "id": 65,
+        "action": "api::payment.payment.create",
+        "createdAt": "2023-12-16T21:24:23.664Z",
+        "updatedAt": "2024-09-13T22:07:25.943Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "66": {
+        "id": 66,
+        "action": "api::payment.payment.find",
+        "createdAt": "2023-12-16T21:24:23.664Z",
+        "updatedAt": "2024-09-13T22:07:25.970Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "67": {
+        "id": 67,
+        "action": "api::payment.payment.findOne",
+        "createdAt": "2023-12-16T21:24:23.664Z",
+        "updatedAt": "2024-09-13T22:07:25.995Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "68": {
+        "id": 68,
+        "action": "api::payment.payment.update",
+        "createdAt": "2023-12-16T21:24:23.664Z",
+        "updatedAt": "2024-09-13T22:07:26.022Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "69": {
+        "id": 69,
+        "action": "api::order.order.create",
+        "createdAt": "2023-12-17T08:20:04.829Z",
+        "updatedAt": "2024-09-13T22:07:26.052Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "70": {
+        "id": 70,
+        "action": "api::order.order.find",
+        "createdAt": "2023-12-17T08:20:04.829Z",
+        "updatedAt": "2024-09-13T22:07:26.083Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "71": {
+        "id": 71,
+        "action": "api::order.order.findOne",
+        "createdAt": "2023-12-17T08:20:04.829Z",
+        "updatedAt": "2024-09-13T22:07:26.109Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "72": {
+        "id": 72,
+        "action": "api::order.order.update",
+        "createdAt": "2023-12-17T08:20:04.829Z",
+        "updatedAt": "2024-09-13T22:07:26.134Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "73": {
+        "id": 73,
+        "action": "api::webhook.webhook.strapi_payment",
+        "createdAt": "2023-12-17T08:48:25.098Z",
+        "updatedAt": "2024-09-13T22:07:26.161Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "74": {
+        "id": 74,
+        "action": "plugin::users-permissions.user.find",
+        "createdAt": "2024-06-26T09:48:01.957Z",
+        "updatedAt": "2024-06-26T09:48:01.957Z",
+        "role": null,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "75": {
+        "id": 75,
+        "action": "api::product.product.find_inactive",
+        "createdAt": "2023-12-23T12:40:11.448Z",
+        "updatedAt": "2024-09-13T22:07:26.185Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "76": {
+        "id": 76,
+        "action": "plugin::users-permissions.user.me",
+        "createdAt": "2024-06-26T09:48:01.957Z",
+        "updatedAt": "2024-06-26T09:48:01.957Z",
+        "role": null,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "77": {
+        "id": 77,
+        "action": "api::product.product.find_inactive",
+        "createdAt": "2023-12-27T08:35:19.951Z",
+        "updatedAt": "2024-09-13T22:07:26.211Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "78": {
+        "id": 78,
+        "action": "api::category-type.category-type.findOne",
+        "createdAt": "2024-07-29T21:42:35.124Z",
+        "updatedAt": "2024-07-29T21:42:35.124Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "79": {
+        "id": 79,
+        "action": "api::product.product.find",
+        "createdAt": "2023-12-27T09:10:04.362Z",
+        "updatedAt": "2024-09-13T22:07:26.235Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "80": {
+        "id": 80,
+        "action": "plugin::users-permissions.user.update",
+        "createdAt": "2024-01-24T23:07:55.819Z",
+        "updatedAt": "2024-09-09T22:22:33.906Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "81": {
+        "id": 81,
+        "action": "api::payment.payment.create_subscription_payment_link",
+        "createdAt": "2024-01-28T21:29:17.951Z",
+        "updatedAt": "2024-09-13T22:07:26.265Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "82": {
+        "id": 82,
+        "action": "api::webhook.webhook.checkout_subscriptions",
+        "createdAt": "2024-01-28T22:20:14.535Z",
+        "updatedAt": "2024-09-13T22:07:26.292Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "83": {
+        "id": 83,
+        "action": "api::plan.plan.find",
+        "createdAt": "2024-01-31T21:41:56.299Z",
+        "updatedAt": "2024-09-13T22:07:26.321Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "84": {
+        "id": 84,
+        "action": "api::plan.plan.findOne",
+        "createdAt": "2024-01-31T21:41:56.299Z",
+        "updatedAt": "2024-09-13T22:07:26.353Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "85": {
+        "id": 85,
+        "action": "api::plan.plan.find",
+        "createdAt": "2024-01-31T21:44:42.779Z",
+        "updatedAt": "2024-09-13T22:07:26.408Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "86": {
+        "id": 86,
+        "action": "api::plan.plan.findOne",
+        "createdAt": "2024-01-31T21:44:42.779Z",
+        "updatedAt": "2024-09-13T22:07:26.437Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "87": {
+        "id": 87,
+        "action": "api::product.product.my_products_all",
+        "createdAt": "2024-02-28T11:02:32.999Z",
+        "updatedAt": "2024-09-13T22:07:26.466Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "88": {
+        "id": 88,
+        "action": "api::defect.defect.find",
+        "createdAt": "2024-07-08T07:32:32.715Z",
+        "updatedAt": "2024-09-13T22:07:26.492Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "89": {
+        "id": 89,
+        "action": "api::defect.defect.findOne",
+        "createdAt": "2024-07-08T07:32:32.715Z",
+        "updatedAt": "2024-09-13T22:07:26.532Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "90": {
+        "id": 90,
+        "action": "api::defect.defect.find",
+        "createdAt": "2024-07-08T07:32:45.776Z",
+        "updatedAt": "2024-09-13T22:07:26.563Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "91": {
+        "id": 91,
+        "action": "api::defect.defect.findOne",
+        "createdAt": "2024-07-08T07:32:45.776Z",
+        "updatedAt": "2024-09-13T22:07:26.591Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "92": {
+        "id": 92,
+        "action": "api::category-type.category-type.find",
+        "createdAt": "2024-07-11T07:47:21.808Z",
+        "updatedAt": "2024-09-13T22:07:26.621Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "93": {
+        "id": 93,
+        "action": "api::category-type.category-type.findOne",
+        "createdAt": "2024-07-11T07:47:21.808Z",
+        "updatedAt": "2024-09-13T22:07:26.650Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "94": {
+        "id": 94,
+        "action": "api::category-type.category-type.find",
+        "createdAt": "2024-07-11T07:47:30.038Z",
+        "updatedAt": "2024-09-13T22:07:26.678Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "95": {
+        "id": 95,
+        "action": "api::category-type.category-type.findOne",
+        "createdAt": "2024-07-11T07:47:30.038Z",
+        "updatedAt": "2024-09-13T22:07:26.705Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "98": {
+        "id": 98,
+        "action": "api::feature-flag.feature-flag.find",
+        "createdAt": "2024-07-19T19:05:13.215Z",
+        "updatedAt": "2024-09-13T22:07:26.731Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "99": {
+        "id": 99,
+        "action": "api::feature-flag.feature-flag.findOne",
+        "createdAt": "2024-07-19T19:05:13.215Z",
+        "updatedAt": "2024-09-13T22:07:26.761Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "100": {
+        "id": 100,
+        "action": "api::category.category.create",
+        "createdAt": "2024-08-04T11:25:06.125Z",
+        "updatedAt": "2024-09-13T22:07:26.788Z",
+        "role": 3,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "101": {
+        "id": 101,
+        "action": "api::category.category.delete",
+        "createdAt": "2024-08-04T11:25:06.125Z",
+        "updatedAt": "2024-09-13T22:07:26.812Z",
+        "role": 3,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "102": {
+        "id": 102,
+        "action": "api::brand.brand.find",
+        "createdAt": "2024-08-07T19:50:54.233Z",
+        "updatedAt": "2024-09-13T22:07:26.837Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "103": {
+        "id": 103,
+        "action": "api::brand.brand.findOne",
+        "createdAt": "2024-08-07T19:50:54.233Z",
+        "updatedAt": "2024-09-13T22:07:26.863Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "104": {
+        "id": 104,
+        "action": "api::brand.brand.find",
+        "createdAt": "2024-08-07T19:51:04.034Z",
+        "updatedAt": "2024-09-13T22:07:26.893Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "105": {
+        "id": 105,
+        "action": "api::brand.brand.findOne",
+        "createdAt": "2024-08-07T19:51:04.034Z",
+        "updatedAt": "2024-09-13T22:07:26.918Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "106": {
+        "id": 106,
+        "action": "plugin::users-permissions.auth.resetPassword",
+        "createdAt": "2024-08-10T08:57:47.348Z",
+        "updatedAt": "2024-09-13T22:07:26.953Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "107": {
+        "id": 107,
+        "action": "api::webhook.webhook.sendEmailTest",
+        "createdAt": "2024-08-17T21:16:51.579Z",
+        "updatedAt": "2024-09-13T22:07:26.981Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "108": {
+        "id": 108,
+        "action": "api::payment.payment.create",
+        "createdAt": "2024-08-18T22:04:04.590Z",
+        "updatedAt": "2024-09-13T22:07:27.006Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "109": {
+        "id": 109,
+        "action": "api::product.product.increment_views",
+        "createdAt": "2024-08-22T14:17:30.960Z",
+        "updatedAt": "2024-09-13T22:07:27.032Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "110": {
+        "id": 110,
+        "action": "api::product.product.increment_add_to_cart",
+        "createdAt": "2024-08-23T19:00:06.424Z",
+        "updatedAt": "2024-09-13T22:07:27.061Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "111": {
+        "id": 111,
+        "action": "api::product.product.increment_user_views",
+        "createdAt": "2024-08-23T19:14:18.597Z",
+        "updatedAt": "2024-09-13T22:07:27.086Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "113": {
+        "id": 113,
+        "action": "api::user-status.user-status.find",
+        "createdAt": "2024-09-01T12:30:54.611Z",
+        "updatedAt": "2024-09-13T22:07:27.116Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "114": {
+        "id": 114,
+        "action": "api::user-status.user-status.findOne",
+        "createdAt": "2024-09-01T12:30:54.611Z",
+        "updatedAt": "2024-09-13T22:07:27.140Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "115": {
+        "id": 115,
+        "action": "api::user-status.user-status.find",
+        "createdAt": "2024-09-01T12:31:02.752Z",
+        "updatedAt": "2024-09-13T22:07:27.166Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "116": {
+        "id": 116,
+        "action": "api::user-status.user-status.findOne",
+        "createdAt": "2024-09-01T12:31:02.752Z",
+        "updatedAt": "2024-09-13T22:07:27.190Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "117": {
+        "id": 117,
+        "action": "api::delivery.delivery.find",
+        "createdAt": "2024-09-03T11:47:13.515Z",
+        "updatedAt": "2024-09-13T22:07:27.216Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "118": {
+        "id": 118,
+        "action": "api::delivery.delivery.findOne",
+        "createdAt": "2024-09-03T11:47:13.516Z",
+        "updatedAt": "2024-09-13T22:07:27.241Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "119": {
+        "id": 119,
+        "action": "api::delivery.delivery.create",
+        "createdAt": "2024-09-03T11:47:13.516Z",
+        "updatedAt": "2024-09-13T22:07:27.266Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "120": {
+        "id": 120,
+        "action": "api::delivery-type.delivery-type.find",
+        "createdAt": "2024-09-03T11:47:13.516Z",
+        "updatedAt": "2024-09-13T22:07:27.288Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "121": {
+        "id": 121,
+        "action": "api::delivery-type.delivery-type.findOne",
+        "createdAt": "2024-09-03T11:47:13.516Z",
+        "updatedAt": "2024-09-13T22:07:27.314Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "122": {
+        "id": 122,
+        "action": "api::sales-method.sales-method.find",
+        "createdAt": "2024-09-03T12:47:13.426Z",
+        "updatedAt": "2024-09-13T22:07:27.342Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "123": {
+        "id": 123,
+        "action": "api::sales-method.sales-method.findOne",
+        "createdAt": "2024-09-03T12:47:13.426Z",
+        "updatedAt": "2024-09-13T22:07:27.369Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "124": {
+        "id": 124,
+        "action": "api::sales-method.sales-method.find",
+        "createdAt": "2024-09-03T12:48:55.551Z",
+        "updatedAt": "2024-09-13T22:07:27.394Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "125": {
+        "id": 125,
+        "action": "api::sales-method.sales-method.findOne",
+        "createdAt": "2024-09-03T12:48:55.551Z",
+        "updatedAt": "2024-09-13T22:07:27.422Z",
+        "role": 2,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "126": {
+        "id": 126,
+        "action": "api::delivery.delivery.update",
+        "createdAt": "2024-09-04T11:18:23.253Z",
+        "updatedAt": "2024-09-13T22:07:27.452Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "127": {
+        "id": 127,
+        "action": "api::product.product.admin_products_all",
+        "createdAt": "2024-09-05T19:48:44.017Z",
+        "updatedAt": "2024-09-13T22:07:27.479Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "128": {
+        "id": 128,
+        "action": "api::delivery.delivery.relateProductsToUser",
+        "createdAt": "2024-09-09T21:14:05.854Z",
+        "updatedAt": "2024-09-13T22:07:27.506Z",
+        "role": 1,
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "129": {
+        "id": 129,
+        "action": "api::custom.custom.getBankAccountNumber",
+        "createdAt": "2024-09-13T21:30:11.897Z",
+        "updatedAt": "2024-09-13T22:07:27.531Z",
+        "role": 1,
         "createdBy": null,
         "updatedBy": null
       }
