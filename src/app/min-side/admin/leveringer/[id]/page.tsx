@@ -8,6 +8,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   const cookieStore: any = cookies();
   const token = cookieStore.get("Token").value;
   const delivery = await DeliveryMethods.getDelivery(params.id, token);
+  console.log(delivery);
   return (
     <div className="flex flex-col">
       <div className="container mx-auto bg-white px-4 py-8 md:px-6">

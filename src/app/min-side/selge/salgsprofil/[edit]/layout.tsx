@@ -1,4 +1,5 @@
 import { FilterQueries } from "@/queryFactory/Filter";
+import { SellerQueries } from "@/queryFactory/Seller";
 import { UserQueries } from "@/queryFactory/User";
 import {
   HydrationBoundary,
@@ -13,7 +14,7 @@ const layout = async ({ children }: any) => {
   const cookieStore: any = cookies();
 
   const token = cookieStore.get("Token");
-  await queryClient.prefetchQuery(UserQueries.me(token.value));
+  await queryClient.prefetchQuery(SellerQueries.me(token.value));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

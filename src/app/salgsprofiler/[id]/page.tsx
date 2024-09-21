@@ -2,7 +2,7 @@ import TextSkeleton from "@/components/common/skeleton/TextSkeleton";
 import SalgsprofilHeader from "@/components/features/minSide/salgsprofil/SalgsprofilHeader";
 import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
 import SalgsProfilProducts from "@/components/features/product/SalgsProfilProducts";
-import { UserMethods } from "@/queryFactory/User";
+import { SellerMethods } from "@/queryFactory/Seller";
 import { Metadata, ResolvingMetadata } from "next";
 import { Suspense } from "react";
 
@@ -18,11 +18,11 @@ export async function generateMetadata(
   const id = params.id;
 
   // fetch data
-  const userData = await UserMethods.getById(id);
+  const seller = await SellerMethods.getById(id);
 
   return {
-    title: `Salgsprofil - Brukte Barneklær | Minihjørne - ${userData.username}`,
-    description: `Se salgsprofilen til ${userData.username} på Minihjørne. Oppdag brukte barneklær fra pålitelige selgere.`,
+    title: `Salgsprofil - Brukte Barneklær | Minihjørne - ${seller.attributes.username}`,
+    description: `Se salgsprofilen til ${seller.attributes.username} på Minihjørne. Oppdag brukte barneklær fra pålitelige selgere.`,
   };
 }
 

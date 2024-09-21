@@ -27,7 +27,7 @@ const LeveringsDager = () => {
       </p>
       <p>
         Dersom du ikke kan levere på noen av disse dagene, send oss en mail til
-        kontakt@minihjorne.no, så finner vi ut av en løsning.
+        iselin@minihjorne.no, så finner vi ut av en løsning.
       </p>
     </div>
   );

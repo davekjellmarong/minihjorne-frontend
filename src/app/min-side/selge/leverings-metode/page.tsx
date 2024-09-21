@@ -1,21 +1,19 @@
 import Form from "@/components/features/minSide/levering/Form";
 import CurrentDelivery from "@/components/features/minSide/levering/CurrentDelivery";
-import { UserMethods } from "@/queryFactory/User";
-import { UserBackend } from "@/utils/types";
 import { cookies } from "next/headers";
 import React from "react";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
+import { SellerMethods } from "@/queryFactory/Seller";
 
 const LeveringPage = async () => {
   const token = cookies().get("Token")?.value;
-  const user: UserBackend = await UserMethods.getMe(token);
-  const currentDelivery = user.deliveries.find(
+  const user = await SellerMethods.getMe(token);
+  const currentDelivery = user.seller?.deliveries?.find(
     (delivery) => delivery.inProgress,
   );
-
   if (!currentDelivery) {
     return (
-      <div className="px-4">
+      <div className="">
         <ActionsColoredBox
           header="Du må velge salgsmetode"
           button="Velg salgsmetode"
@@ -28,17 +26,13 @@ const LeveringPage = async () => {
       </div>
     );
   }
-  const deliveryDetails = await UserMethods.getDelivery(
-    currentDelivery?.id,
-    token,
-  );
 
   return (
     <div className="container mx-auto p-4">
-      {currentDelivery && deliveryDetails.attributes.delivery_type.data ? (
-        <CurrentDelivery delivery={currentDelivery} token={token} />
+      {currentDelivery && currentDelivery.delivery_type ? (
+        <CurrentDelivery delivery={currentDelivery} />
       ) : (
-        <Form user={user} />
+        <Form currentDelivery={currentDelivery} />
       )}
     </div>
   );

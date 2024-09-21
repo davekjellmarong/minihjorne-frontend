@@ -31,7 +31,7 @@ const StatsCard = ({
     User: <User size={22} color="gray" />,
   };
   return (
-    <div className=" rounded p-6 shadow">
+    <div className=" rounded-lg border border-gray-200 bg-white p-6">
       {percentage && <ProgressBar percentage={percentage} />}
       <div className="flex flex-col gap-2 pt-3">
         <div className="flex items-center">

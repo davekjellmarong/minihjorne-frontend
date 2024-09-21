@@ -14,10 +14,10 @@ const Layout = async ({ children }: LayoutProps) => {
   }
 
   return (
-    <>
+    <div className="">
       <Breadcrumb />
       {children}
-    </>
+    </div>
   );
 };
 

@@ -14,6 +14,7 @@ import { Question } from "@phosphor-icons/react";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import { ImageMethods } from "@/queryFactory/Upload";
 import { useStore } from "@/stateManagment/ZustandStore";
+import { SellerQueries } from "@/queryFactory/Seller";
 
 interface ImageUploaderProps {
   setImages: any;
@@ -24,8 +25,8 @@ const ImageUploader = ({ setImages, setModal }: ImageUploaderProps) => {
   const hideNav = useStore((state) => state.hideNav);
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
-  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
-  const userId = user.id;
+  const { data: user } = useSuspenseQuery(SellerQueries.me(jwt));
+  const sellerId = user.seller?.id;
   const [loading, setLoading] = useState(false);
 
   const { mutate: uploadImages } = useMutation({
@@ -79,12 +80,8 @@ const ImageUploader = ({ setImages, setModal }: ImageUploaderProps) => {
             multiple
             onChange={uploadImages}
           />
-          <input
-            type="hidden"
-            name="ref"
-            value="plugin::users-permissions.user"
-          />
-          <input type="hidden" name="refId" value={userId} />
+          <input type="hidden" name="ref" value="api::seller.seller" />
+          <input type="hidden" name="refId" value={sellerId} />
           <input type="hidden" name="field" value="productImages" />
         </form>
       </div>

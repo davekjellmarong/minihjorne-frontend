@@ -2,21 +2,21 @@
 import React, { Suspense, useState } from "react";
 import UserDropdown from "@/components/features/admin/Delivery/UserDropdown";
 import { Button } from "@/components/UI/button";
-import { Delivery, UserBackend } from "@/utils/types";
+import { Delivery, Seller, UserBackend } from "@/utils/types";
 import Loading from "@/components/common/loading/Loading";
 import { useMutation } from "@tanstack/react-query";
-import { relateDeliveryProductsToUser } from "@/serverActions/ServerActions";
 import { toast } from "react-toastify";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
+import { relateDeliveryProductsToSeller } from "@/serverActions/ServerActions";
 interface HeaderProps {
   delivery: Delivery;
 }
 const Header = ({ delivery }: HeaderProps) => {
-  const [selectedUser, setSelectedUser] = useState<UserBackend>();
+  const [selectedSeller, setSelectedSeller] = useState<Seller>();
   const { mutate, isPending } = useMutation({
-    mutationFn: relateDeliveryProductsToUser,
+    mutationFn: relateDeliveryProductsToSeller,
     onSuccess: () => {
-      toast.success("Levering og produkter er nå overført til ny bruker");
+      toast.success("Levering og produkter er nå overført til ny selger");
     },
     onError: (error) => {
       const message = JSON.parse(error.message);
@@ -29,26 +29,26 @@ const Header = ({ delivery }: HeaderProps) => {
       <h1 className="text-2xl font-bold">Levering {delivery.id}</h1>
       <Suspense fallback={<Loading />}>
         <UserDropdown
-          selectedUser={selectedUser}
-          setSelectedUser={setSelectedUser}
+          selectedSeller={selectedSeller}
+          setSelectedSeller={setSelectedSeller}
         />
       </Suspense>
       <div className="text-brand-500">
         Nåværende bruker:{" "}
         <span
-          className={`text-xl font-semibold ${selectedUser ? "line-through" : ""}`}
+          className={`text-xl font-semibold ${selectedSeller ? "line-through" : ""}`}
         >
-          {delivery.attributes.user.data.attributes.username}
+          {delivery.attributes.seller.data.attributes.username}
         </span>
       </div>
-      {selectedUser && (
+      {selectedSeller && (
         <>
           <div>
             <p>
               Ny bruker:
               <span className="text-xl font-semibold">
                 {" "}
-                {selectedUser.username}
+                {selectedSeller.attributes.username}
               </span>
             </p>
           </div>
@@ -57,7 +57,7 @@ const Header = ({ delivery }: HeaderProps) => {
               onClick={() => {
                 mutate({
                   deliveryId: delivery.id,
-                  userId: selectedUser.id,
+                  sellerId: selectedSeller.id,
                 });
               }}
               className="bg-brand-500 text-white"

@@ -35,7 +35,7 @@ const page = async () => {
                   <div className="flex items-center gap-2">
                     <User size={22} color="gray" />
                     <div>
-                      {delivery.attributes.user.data.attributes.username}
+                      {delivery.attributes.seller.data.attributes.username}
                     </div>
                   </div>
                 </Link>

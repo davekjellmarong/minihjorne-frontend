@@ -5,6 +5,8 @@ import { ProductsMethods } from "@/queryFactory/Product";
 import CarouselComponent from "@/components/common/Carousel";
 import ColorSquares from "@/components/features/filters/color/ColorSquares";
 import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
+import { incrementSellerViews } from "@/serverActions/ServerActions";
+import QuickLink from "@/components/features/salgsprofil/QuickLink";
 
 const ProductDetail = async ({ params }: { params: { id: string } }) => {
   const product = await ProductsMethods.getById(params.id);
@@ -18,14 +20,15 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
     size,
     state,
     tags,
-    user,
-    sex,
+    seller,
     category_type,
     defects,
-    brand_link,
   } = product.attributes;
 
-  const sellerProducts = await ProductsMethods.getByUserId(user.data.id, 20);
+  const sellerProducts = await ProductsMethods.getBySellerId(
+    seller.data.id,
+    20,
+  );
 
   const randomProductSort = sellerProducts
     .sort(() => Math.random() - 0.5)
@@ -104,27 +107,10 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
               <AddToCartButtons product={product} />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src="/placeholder-user.jpg" alt="Seller Name" />
-                  <AvatarFallback>
-                    {user.data.attributes.username.slice(0, 2)}
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <h3 className="font-bold">{user.data.attributes.username}</h3>
-                  <Link
-                    href={`/salgsprofiler/${user.data.id}`}
-                    className="text-[#7d6adf] hover:underline"
-                    prefetch={false}
-                  >
-                    Se salgsprofil
-                  </Link>
-                </div>
-              </div>
+              <QuickLink seller={seller} />
               <div className="mt-4">
                 <h3 className="font-bold">
-                  Se andre klær fra {user.data.attributes.username}
+                  Se andre klær fra {seller.data.attributes.username}
                 </h3>
                 <div className="mt-2 grid grid-cols-2 gap-4 ">
                   {randomProductSort.map((product) => {

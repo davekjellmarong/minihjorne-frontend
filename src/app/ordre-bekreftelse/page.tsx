@@ -33,8 +33,8 @@ const OrderConfirmationPage = () => {
         </p>
         <p className="mb-4 text-center">
           Hvis du har spørsmål om bestillingen din, vennligst kontakt oss på{" "}
-          <Link href="mailto:kontakt@minihjorne.no" className="text-blue-500">
-            kontakt@minihjorne.no
+          <Link href="mailto:iselin@minihjorne.no" className="text-blue-500">
+            iselin@minihjorne.no
           </Link>
           .
         </p>

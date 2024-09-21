@@ -2,6 +2,7 @@
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
+import { SellerQueries } from "@/queryFactory/Seller";
 import { UserQueries } from "@/queryFactory/User";
 import { activateSalgsMetodeAndCreateDelivery } from "@/serverActions/ServerActions";
 import { SalgsMetode, UserStatus } from "@/utils/Enums";
@@ -31,7 +32,7 @@ const Form = () => {
       // setAnimateAway(true);
       // setAnimateChosen(true);
       toast.success("Salgsmetode lagret!");
-      queryClient.invalidateQueries(UserQueries.me(cookies.Token));
+      queryClient.invalidateQueries(SellerQueries.me(cookies.Token));
     },
     onError: (error) => {
       toast.error(error.message);
@@ -51,7 +52,7 @@ const Form = () => {
             : "Velg Salgsmetode"}
         </h1>
         <div
-          className={`flex flex-col items-center rounded-lg border border-gray-200 p-6 transition duration-700 ${
+          className={`flex flex-col items-center rounded-lg border border-gray-300 p-6 transition duration-700 ${
             selectedOption === SalgsMetode.Selvregistrering
               ? animateChosen
                 ? "translate-y-24 scale-110 transform bg-brand-200 shadow-lg"
@@ -84,7 +85,7 @@ const Form = () => {
         </div>
 
         <div
-          className={`flex flex-col items-center rounded-lg border border-gray-200 p-6 transition duration-700 ${
+          className={`flex flex-col items-center rounded-lg border border-gray-300 p-6 transition duration-700 ${
             selectedOption === SalgsMetode.FullService
               ? animateChosen
                 ? "-translate-y-36 scale-110  transform bg-brand-200 shadow-lg"

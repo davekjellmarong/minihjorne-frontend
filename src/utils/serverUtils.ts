@@ -1,7 +1,15 @@
 import { FeatureFlagServerSideMethods } from "@/queryFactory/FeatureFlag";
-import { Delivery, UserBackend } from "./types";
+import {
+  Delivery,
+  DeliveryBackend,
+  Seller,
+  SellerBackend,
+  SellerGetMe,
+  SellerGetMeDelivery,
+  UserBackend,
+} from "./types";
 import axios from "axios";
-import { UserStatus } from "./Enums";
+import { SalgsMetode, UserStatus } from "./Enums";
 
 export const isFeatureFlagActive = async (flagId: number, token: any) => {
   const data = await FeatureFlagServerSideMethods.get(token);
@@ -79,8 +87,8 @@ export const getPublicData = async (query: string) => {
   }
 };
 
-const hasRegisteredProducts = (delivery: Delivery) => {
-  return delivery.attributes.products.data.length > 0;
+const hasRegisteredProducts = (delivery: SellerGetMeDelivery) => {
+  return delivery.products.length > 0;
   // return (
   //   user.products.filter((product) => {
   //     return !product.active && !product.sold;
@@ -88,12 +96,14 @@ const hasRegisteredProducts = (delivery: Delivery) => {
   // );
 };
 
-const hasSalesProfile = (user: UserBackend) => {
-  return user.header?.length > 4 && user.description?.length > 5;
+const hasSalesProfile = (user: SellerGetMe) => {
+  if (!user.seller) return false;
+  return user.seller.header?.length > 4 && user.seller.description?.length > 5;
+  // return user.seller?.header?.length > 4 && user.description?.length > 5;
 };
 
-const hasDelivery = (delivery: Delivery) => {
-  if (delivery.attributes.delivery_type.data) {
+const hasDelivery = (delivery: SellerGetMeDelivery) => {
+  if (delivery.delivery_type) {
     return true;
   }
   // return (
@@ -110,13 +120,20 @@ const hasAutoRegistration = (user: UserBackend) => {
   );
 };
 
-export const getSteps = (user: UserBackend, delivery: Delivery | false) => {
+export const getSteps = (
+  user: SellerGetMe,
+  currentDelivery: SellerGetMeDelivery | undefined,
+) => {
   let steps;
-  if (user.user_status.id === UserStatus.Member)
+  if (
+    !user.seller ||
+    (user.seller && currentDelivery && !currentDelivery.sales_method)
+  )
     return {
       steps: [],
       currentStep: {
         title: "Salgs metode",
+        description: "Velg mellom selvregistrering eller fullservice pakke",
         isCompleted: false,
         nextStepUrl: "/min-side/selge/salgs-metode",
         stepNumber: 1,
@@ -124,20 +141,25 @@ export const getSteps = (user: UserBackend, delivery: Delivery | false) => {
         helpUrl: "/om-oss/salgs-metode",
       },
     };
-  else if (user.user_status.id === UserStatus.Seller || delivery === false) {
+  else if (!currentDelivery) {
     return {
       steps: [],
       currentStep: {
         menuId: 0,
         stepNumber: 0,
         helpUrl: "",
+        description: "",
+        button: "",
       },
     };
-  } else if (user.user_status.id === UserStatus.Selvregistrering) {
+  } else if (
+    currentDelivery.sales_method?.id === SalgsMetode.Selvregistrering
+  ) {
     steps = [
       {
         title: "Last opp klær",
-        isCompleted: hasRegisteredProducts(delivery),
+        description: "Last opp bilder og beskrivelse av dine klær",
+        isCompleted: hasRegisteredProducts(currentDelivery),
         nextStepUrl: "/min-side/selge/last-opp",
         stepNumber: 1,
         menuId: 1,
@@ -145,6 +167,8 @@ export const getSteps = (user: UserBackend, delivery: Delivery | false) => {
       },
       {
         title: "Salgsprofil",
+        description:
+          "Opprett din egen salgsprofil med en overskift og en beskrivelse",
         isCompleted: hasSalesProfile(user),
         nextStepUrl: "/min-side/selge/salgsprofil",
         stepNumber: 2,
@@ -153,18 +177,20 @@ export const getSteps = (user: UserBackend, delivery: Delivery | false) => {
       },
       {
         title: "Leverings metode",
-        isCompleted: hasDelivery(delivery),
+        description: "Lever klærne direkte eller send dem til oss",
+        isCompleted: hasDelivery(currentDelivery),
         nextStepUrl: "/min-side/selge/leverings-metode",
         stepNumber: 3,
         menuId: 4,
         helpUrl: "/om-oss/levering",
       },
     ];
-  } else if (user.user_status.id === UserStatus.FullService) {
+  } else if (currentDelivery.sales_method?.id === SalgsMetode.FullService) {
     steps = [
       {
         title: "Leverings metode",
-        isCompleted: hasDelivery(delivery),
+        description: "Lever klærne direkte eller send dem til oss",
+        isCompleted: hasDelivery(currentDelivery),
         nextStepUrl: "/min-side/selge/leverings-metode",
         stepNumber: 1,
         menuId: 4,
@@ -172,6 +198,8 @@ export const getSteps = (user: UserBackend, delivery: Delivery | false) => {
       },
       {
         title: "Salgsprofil",
+        description:
+          "Opprett din egen salgsprofil med en overskift og en beskrivelse",
         isCompleted: hasSalesProfile(user),
         nextStepUrl: "/min-side/selge/salgsprofil",
         stepNumber: 2,

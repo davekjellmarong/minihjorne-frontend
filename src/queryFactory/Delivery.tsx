@@ -10,10 +10,7 @@ import {
   putData,
   putDataFetch,
 } from "./Utils";
-import {
-  incrementUserViews,
-  updateDelivery,
-} from "@/serverActions/ServerActions";
+import { updateDelivery } from "@/serverActions/ServerActions";
 import { get } from "http";
 
 export const UserQueries = {
@@ -41,7 +38,7 @@ export const DeliveryMethods = {
   },
   getDelivery: async (id: any, token: any): Promise<Delivery> => {
     return getData(
-      `/deliveries/${id}?populate[products][populate][0]=image&populate[user]=username`,
+      `/deliveries/${id}?populate[products][populate][0]=image&populate[seller]=username`,
       token,
     );
   },

@@ -33,6 +33,15 @@ export const ProductsMethods = {
       `/products?populate=*&sort=createdAt:desc&filters[sold][$eq]=false&filters[active][$eq]=true&filters[user][id][$eq]=${id}&pagination[page]=1&pagination[pageSize]=${page}`,
     );
   },
+  getBySellerId: async (id: any, pageSize?: number): Promise<Product[]> => {
+    let page = 200;
+    if (pageSize) {
+      page = pageSize;
+    }
+    return getPublicData(
+      `/products?populate=*&sort=createdAt:desc&filters[sold][$eq]=false&filters[active][$eq]=true&filters[seller][id][$eq]=${id}&pagination[page]=1&pagination[pageSize]=${page}`,
+    );
+  },
   getAllMyProducts: async (token: any): Promise<ProductBackend[]> => {
     return getData("/products/me/all", token);
   },
@@ -89,6 +98,11 @@ export const ProductQueries = {
     queryOptions({
       queryKey: [...ProductQueries.all(), "user", id],
       queryFn: () => ProductsMethods.getByUserId(id),
+    }),
+  sellerId: (id: string) =>
+    queryOptions({
+      queryKey: [...ProductQueries.all(), "seller", id],
+      queryFn: () => ProductsMethods.getBySellerId(id),
     }),
   me_all: (jwt: any) =>
     queryOptions({

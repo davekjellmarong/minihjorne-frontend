@@ -39,7 +39,7 @@ const page = () => {
           vil likevel at du som handler brukte barneklær hos oss skal være
           fornøyd! Dersom du skulle være så uheldig å motta et plagg som er i
           dårligere stand enn hva annonsen sier, ber vi deg ta kontakt på
-          kontakt@minihjorne.no slik at vi får ordnet opp!
+          iselin@minihjorne.no slik at vi får ordnet opp!
         </p>
         <p className="text-2xl">Plaggets tilstand</p>
         <p>
@@ -86,7 +86,7 @@ const page = () => {
           <p className="pb-2 pt-4 text-2xl">Retur/klager</p>
           <p>
             Opplever du som kjøper å motta et plagg som tydelig avviker fra
-            annonsen ber vi deg sende oss en mail på kontakt@minihjorne.no så
+            annonsen ber vi deg sende oss en mail på iselin@minihjorne.no så
             hjelper vi deg.
           </p>
         </div> */}

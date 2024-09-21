@@ -9,12 +9,13 @@ import { EmptyList } from "@/components/common/EmptyList";
 import MyProductsTable from "@/components/features/minSide/produkter/MyProductsTable";
 import { UserQueries } from "@/queryFactory/User";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
+import { SellerQueries } from "@/queryFactory/Seller";
 
 const Produkter = () => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: products } = useSuspenseQuery(ProductQueries.me_all(jwt));
-  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
+  const { data: user } = useSuspenseQuery(SellerQueries.me(jwt));
   if (products.length === 0)
     return (
       <EmptyList
@@ -26,7 +27,7 @@ const Produkter = () => {
   return (
     <div className="mb-28">
       <p className="mb-4 mt-8 text-center">Mine produkter</p>
-      {!user.active && (
+      {/* {!user.active && (
         <div className="px-6 py-4">
           <ActionsColoredBox
             header="Ikke aktivert."
@@ -39,7 +40,7 @@ const Produkter = () => {
             produkter blir publisert.
           </ActionsColoredBox>
         </div>
-      )}
+      )} */}
       <div className="flex justify-end pb-2 pr-6">
         <Link
           href="/min-side/selge/last-opp"

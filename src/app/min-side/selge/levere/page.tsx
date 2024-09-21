@@ -1,16 +1,16 @@
 import React from "react";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
 import { DeliveryType } from "@/utils/Enums";
-import { UserMethods } from "@/queryFactory/User";
 import { cookies } from "next/headers";
 import LeveringsDager from "@/components/common/leveringsDager/LeveringsDager";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
+import { SellerMethods } from "@/queryFactory/Seller";
 
 const LeverePage = async () => {
   const token = cookies().get("Token")?.value;
-  const user = await UserMethods.getMe(token);
+  const user = await SellerMethods.getMe(token);
 
-  const currentDelivery = user.deliveries.find(
+  const currentDelivery = user.seller?.deliveries?.find(
     (delivery) => delivery.inProgress,
   );
   if (!currentDelivery) {
@@ -21,6 +21,7 @@ const LeverePage = async () => {
           color="yellow"
           path="/min-side/selge/leverings-metode"
           button="Tilbake til Min side"
+          shadow={false}
         >
           Du må først velge om leveringen skal sendes til oss eller leveres
           direkte. Gå hit for å velge leveringsmetode.
@@ -28,15 +29,12 @@ const LeverePage = async () => {
       </div>
     );
   }
-  const deliveryDetails = await UserMethods.getDelivery(
-    currentDelivery?.id,
-    token,
-  );
-  if (!deliveryDetails) {
-    return <div>Ingen levering funnet.</div>;
-  }
 
-  const deliveryType = deliveryDetails.attributes.delivery_type.data?.id;
+  // if (!deliveryDetails) {
+  //   return <div>Ingen levering funnet.</div>;
+  // }
+
+  const deliveryType = currentDelivery.delivery_type?.id;
   if (!deliveryType) {
     return (
       <div className="px-4">

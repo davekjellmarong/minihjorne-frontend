@@ -1,7 +1,5 @@
 import React from "react";
-import { cookies } from "next/headers";
-import { UserMethods } from "@/queryFactory/User";
-import { UserBackend } from "@/utils/types";
+import { SellerGetMe } from "@/utils/types";
 import { getSteps } from "@/utils/serverUtils";
 import { Check } from "@phosphor-icons/react/dist/ssr"; // Using only the Check icon
 import clsx from "clsx";
@@ -9,19 +7,14 @@ import Link from "next/link";
 import StepsComplete from "./StepsComplete";
 
 interface OnboardingStepsProps {
-  user: UserBackend;
+  user: SellerGetMe;
 }
 
 const OnboardingSteps = async ({ user }: OnboardingStepsProps) => {
-  const token = cookies().get("Token")?.value;
-  const currentDelivery = user.deliveries.find(
+  const currentDelivery = user.seller?.deliveries?.find(
     (delivery) => delivery.inProgress,
   );
-  const deliveryDetails = await UserMethods.getDelivery(
-    currentDelivery?.id,
-    token,
-  );
-  const { steps } = getSteps(user, deliveryDetails);
+  const { steps } = getSteps(user, currentDelivery);
 
   const colors = {
     completed: "bg-green-500 text-white",
@@ -35,7 +28,7 @@ const OnboardingSteps = async ({ user }: OnboardingStepsProps) => {
       <div className="flex flex-col items-stretch gap-4">
         <div className="rounded-lg bg-white p-6 shadow-lg">
           <p className="pb-4 text-center text-xl  text-gray-700">
-            {deliveryDetails.attributes.sales_method.data.attributes.name}
+            {currentDelivery?.sales_method?.name}
           </p>
           <div className="flex flex-col gap-4">
             {steps.map((step) => {

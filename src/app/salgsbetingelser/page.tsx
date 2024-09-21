@@ -26,10 +26,10 @@ const Salgsbetingelser = () => {
           være fornøyd! Opplever du å motta et plagg som er i en annen/dårligere
           tilstand enn beskrevet i annonsen, send oss en mail på{" "}
           <a
-            href="mailto:kontakt@minihjorne.no"
+            href="mailto:iselin@minihjorne.no"
             className="text-blue-600 underline"
           >
-            kontakt@minihjorne.no
+            iselin@minihjorne.no
           </a>{" "}
           så ordner vi opp.
         </p>

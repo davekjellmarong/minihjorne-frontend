@@ -4,15 +4,15 @@ import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
 import { updateDelivery } from "@/serverActions/ServerActions";
 import { DeliveryType } from "@/utils/Enums";
-import { UserBackend } from "@/utils/types";
+import { SellerGetMeDelivery } from "@/utils/types";
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 interface FormProps {
-  user: UserBackend;
+  currentDelivery?: SellerGetMeDelivery;
 }
-const Form = ({ user }: FormProps) => {
+const Form = ({ currentDelivery }: FormProps) => {
   const [description, setDescription] = useState("");
   const [deliveryType, setDeliveryType] = useState<
     DeliveryType.InPerson | DeliveryType.Shipping | 0
@@ -28,11 +28,11 @@ const Form = ({ user }: FormProps) => {
     },
   });
   return (
-    <div className="flex flex-col items-center justify-center bg-white p-4">
-      <LoadingOverlay loading={isPending} /> {/* Set loading state as needed */}
+    <div className="flex flex-col items-center justify-center rounded-lg bg-white p-4">
+      <LoadingOverlay loading={isPending} />
       <div className="mb-6 ">
         <h1 className="text-center text-2xl font-semibold">Levering</h1>
-        <p>{user.user_status.type}</p>
+        <p>{currentDelivery?.sales_method?.name}</p>
       </div>
       <div className="pb-6">
         <InfoColoredBox title="Adresse informasjon:" color="secondary">

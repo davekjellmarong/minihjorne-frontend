@@ -87,10 +87,10 @@ const PrivacyPolicy = () => {
         Hvis du har spørsmål eller bekymringer angående vår personvernerklæring,
         vennligst kontakt oss på{" "}
         <a
-          href="mailto:kontakt@minihjorne.no"
+          href="mailto:iselin@minihjorne.no"
           className="text-blue-500 hover:underline"
         >
-          kontakt@minihjorne.no
+          iselin@minihjorne.no
         </a>
         .
       </p>

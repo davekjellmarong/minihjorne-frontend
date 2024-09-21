@@ -6,6 +6,13 @@ export interface CommonSize {
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonSeller {
+  header: string;
+  description: string;
+  views: number;
+  isActive: boolean;
+  username: string;
+}
 export interface CommonDelivery {
   inProgress: boolean;
   receivedFromSeller: boolean;
@@ -14,6 +21,12 @@ export interface CommonDelivery {
   publishedOnWebsiteOn: string;
   acceptedTerms: boolean;
   description: string;
+}
+export interface CommonDeliveryType {
+  id: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
 }
 export interface CommonUserStatus {
   type: string;
@@ -210,6 +223,12 @@ export interface UserStatusBackend extends CommonUserStatus {
 export interface TagBackend extends CommonTags {
   id: number;
 }
+export interface SellerBackend extends CommonSeller {
+  id: number;
+  products: ProductBackend[];
+  deliveries: DeliveryBackend[];
+  user: UserBackend;
+}
 export interface CategoryBackend extends CommonCategory {
   id: number;
 }
@@ -238,6 +257,35 @@ export interface DeliveryBackend extends CommonDelivery {
   user: { data: User };
   sales_method: { data: SalesMethod };
 }
+export interface SellerGetMeDelivery {
+  id: number;
+  inProgress: boolean;
+  receivedFromSeller: boolean;
+  receivedAtWarehouseOn: string;
+  publishedInWebsite: boolean;
+  publishedOnWebsiteOn: string;
+  acceptedTerms: boolean;
+  description: string;
+  sales_method: SalesMethodBackend | null;
+  products: CommonProduct[];
+  delivery_type: CommonDeliveryType | null;
+}
+export interface SellerGetMe extends CommonUser {
+  id: number;
+  seller: {
+    id: number;
+    header: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    views: number;
+    isActive: boolean;
+    username: string;
+    productImages: ImageBackend[];
+    deliveries: SellerGetMeDelivery[] | null;
+  } | null;
+}
 export interface UserBackend extends CommonUser {
   id: number;
   plan: CommonPlan;
@@ -245,6 +293,7 @@ export interface UserBackend extends CommonUser {
   products: ProductBackend[];
   user_status: UserStatusBackend;
   deliveries: DeliveryBackend[];
+  seller: SellerBackend;
 }
 export interface OrderBackend extends CommonOrder {
   id: number;
@@ -316,6 +365,7 @@ export interface Product {
     category_type: { data: CategoryType };
     brand_link: { data: Brand_link | null };
     delivery: { data: Delivery };
+    seller: { data: Seller };
   };
 }
 export interface SalesMethod {
@@ -335,6 +385,22 @@ export interface DeliveryType {
     updatedAt: string;
   };
 }
+export interface Seller {
+  id: number;
+  attributes: {
+    header: string;
+    description: string;
+    views: number;
+    isActive: boolean;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    username: string;
+    products: { data: Product[] };
+    deliveries: { data: Delivery[] | [] };
+    user: { data: User };
+  };
+}
 export interface Delivery {
   id: number;
   attributes: {
@@ -351,6 +417,7 @@ export interface Delivery {
     delivery_type: { data: DeliveryType };
     user: { data: User };
     sales_method: { data: SalesMethod };
+    seller: { data: Seller };
   };
 }
 export interface CartItem {
@@ -393,6 +460,7 @@ export interface User {
     views: number;
     bankAccountNumber: string;
     user_status: { data: CommonUserStatus };
+    seller: { data: Seller };
   };
 }
 export interface Tag {

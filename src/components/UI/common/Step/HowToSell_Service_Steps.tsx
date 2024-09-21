@@ -16,8 +16,8 @@ const HowToSell_Service_Steps = () => {
       <div className="mt-4 flex flex-col">
         <Step number="1" title="Send oss en mail">
           Send en e-post til{" "}
-          <a href="mailto:kontakt@minihjorne.no">kontakt@minihjorne.no</a> hvor
-          du forteller at du ønsker å benytte deg av vårt tilbud om fullservice.
+          <a href="mailto:iselin@minihjorne.no">iselin@minihjorne.no</a> hvor du
+          forteller at du ønsker å benytte deg av vårt tilbud om fullservice.
         </Step>
         <Step number="2" title="Avtale leveringsmetode">
           Vi avtaler over e-post leveringsmetode og eventuell tidspunkt.

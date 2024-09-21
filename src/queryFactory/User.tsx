@@ -10,7 +10,6 @@ import {
   putData,
   putDataFetch,
 } from "./Utils";
-import { get } from "http";
 
 export const UserQueries = {
   all: () => ["users"],
@@ -69,9 +68,6 @@ export const UserMethods = {
     return postPublicData(data, "/auth/reset-password");
   },
 
-  incrementUserView: async (id: number) => {
-    return postPublicEmptyData(`/product/view/user/${id}`);
-  },
   createDelivery: async (data: any, token: any) => {
     return postData(data, "/deliveries", token);
   },

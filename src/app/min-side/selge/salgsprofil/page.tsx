@@ -2,6 +2,7 @@ import React from "react";
 import EditSalgsprofil from "@/components/features/minSide/salgsprofil/EditSalgsprofil";
 
 const Page = () => {
+  console.log("salgsprofil");
   return (
     <>
       <div className="flex flex-col items-center justify-center py-6">

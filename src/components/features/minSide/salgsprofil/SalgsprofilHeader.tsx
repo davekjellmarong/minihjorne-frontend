@@ -1,30 +1,33 @@
-import React, { use } from "react";
+import React from "react";
 import { User } from "@phosphor-icons/react/dist/ssr";
-import { UserMethods } from "@/queryFactory/User";
+import { SellerMethods } from "@/queryFactory/Seller";
 interface SalgsprofilHeaderProps {
   id: string | number;
 }
 const SalgsprofilHeader = async ({ id }: SalgsprofilHeaderProps) => {
-  const userData = await UserMethods.getById(id);
-  const description = userData.description?.split("\n").map((item, index) => {
-    if (item === "") {
-      return (
-        <React.Fragment key={index}>
-          <br />
-        </React.Fragment>
-      );
-    } else {
-      return <p key={index}>{item}</p>;
-    }
-  });
+  const seller = await SellerMethods.getById(id);
+  console.log(seller);
+  const description = seller.attributes.description
+    ?.split("\n")
+    .map((item, index) => {
+      if (item === "") {
+        return (
+          <React.Fragment key={index}>
+            <br />
+          </React.Fragment>
+        );
+      } else {
+        return <p key={index}>{item}</p>;
+      }
+    });
   return (
     <>
       <div className="flex items-center gap-14">
-        <p className="text-lg font-semibold">{userData.header}</p>
+        <p className="text-lg font-semibold">{seller.attributes.header}</p>
       </div>
       <p className="flex items-center gap-1 text-gray-500">
         <User size={28} />
-        <span>{userData.username}</span>
+        <span>{seller.attributes.username}</span>
       </p>
       <div className="max-w-[500px] px-6 text-sm">{description}</div>
     </>

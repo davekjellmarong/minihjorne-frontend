@@ -4,13 +4,13 @@ import Header from "@/components/features/minSide/Header";
 
 const MinSide = () => {
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-col gap-6 bg-brand-200 pb-24 pt-14">
+    <div className="flex flex-col px-4">
+      <div className="flex flex-col gap-6">
         <Suspense
           fallback={
             <div className="flex flex-col items-center">
               <div className="mb-4 flex justify-center">
-                <span className="animate-pulse rounded-full border border-gray-300 bg-white px-8 py-6 text-center text-5xl shadow-sm">
+                <span className="animate-pulse rounded-full border border-gray-200 bg-white px-8 py-6 text-center text-5xl shadow-sm">
                   ?
                 </span>
               </div>
@@ -24,7 +24,12 @@ const MinSide = () => {
           <Header />
         </Suspense>
       </div>
-      <Menu />
+
+      <div className="py-6">
+        <Suspense>
+          <Menu />
+        </Suspense>
+      </div>
     </div>
   );
 };
