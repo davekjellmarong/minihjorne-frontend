@@ -1,8 +1,4 @@
 import { SellerMethods } from "@/queryFactory/Seller";
-import Image from "next/image";
-import Link from "next/link";
-import AvatarLetter from "../minSide/AvatarLetter";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/avatar";
 import QuickLink from "./QuickLink";
 import Product from "./Product";
 
@@ -20,7 +16,7 @@ const QuickList = async () => {
           </div>
         </div>
         <div className="grid gap-8 lg:grid-cols-2">
-          {sellers?.slice(0, 3).map((profile) => (
+          {sellers?.slice(0, 6).map((profile) => (
             <div key={profile.id} className="group relative grid gap-4">
               <div className="grid gap-2 rounded-lg border border-gray-200 bg-white p-4">
                 <QuickLink seller={{ data: profile }} />
