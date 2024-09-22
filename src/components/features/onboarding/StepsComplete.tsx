@@ -1,27 +1,20 @@
 import React from "react";
-import { UserBackend } from "@/utils/types";
+import { SellerGetMe } from "@/utils/types";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import InfoColoredBox from "@/components/UI/common/InfoColoredBox";
-import { UserMethods } from "@/queryFactory/User";
-import { cookies } from "next/headers";
 import { SalgsMetode } from "@/utils/Enums";
 
 interface SelvregistreringCompleteProps {
-  user: UserBackend;
+  user: SellerGetMe;
 }
 
 const StepsComplete = async ({ user }: SelvregistreringCompleteProps) => {
-  const token = cookies().get("Token")?.value;
-  const currentDelivery = user.deliveries.find(
+  const currentDelivery = user.seller?.deliveries?.find(
     (delivery) => delivery.inProgress,
-  );
-  const deliveryDetails = await UserMethods.getDelivery(
-    currentDelivery?.id,
-    token,
   );
   if (currentDelivery?.receivedFromSeller) {
     return (
-      <div className="px-4">
+      <div className="">
         <InfoColoredBox
           title="Gratulerer! Alle trinn er fullført."
           color="green"
@@ -34,15 +27,16 @@ const StepsComplete = async ({ user }: SelvregistreringCompleteProps) => {
     );
   } else {
     return (
-      <div className="px-4">
+      <div className="">
         <ActionsColoredBox
-          header={`Du er ferdig med "${deliveryDetails.attributes.sales_method.data.attributes.name}"!`}
+          header={`Du er ferdig med "${currentDelivery?.sales_method?.name}"!`}
           button="Les mer om levering"
           path="/min-side/selge/levere"
           color="green"
+          shadow={false}
           image={true}
         >
-          {deliveryDetails.attributes.sales_method.data.id ===
+          {currentDelivery?.sales_method?.id ===
             SalgsMetode.Selvregistrering && (
             <div>
               <p>
@@ -61,8 +55,7 @@ const StepsComplete = async ({ user }: SelvregistreringCompleteProps) => {
               </p>
             </div>
           )}
-          {deliveryDetails.attributes.sales_method.data.id ===
-            SalgsMetode.FullService && (
+          {currentDelivery?.sales_method?.id === SalgsMetode.FullService && (
             <p>
               Nå gjenstår det bare å levere klærne dine. Dersom du allerede har
               sendt dem, vennligst vent til vi har mottatt dem på lageret.

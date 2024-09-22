@@ -128,7 +128,7 @@ const Page = () => {
             onChange={() => setChecked(!checked)}
             className="size-7 rounded border-gray-300 bg-gray-100 text-brand-600 focus:ring-2 focus:ring-brand-500"
           />
-          <Link href="/salgsbetingelser" className="ml-2">
+          <Link href="/kjopebetingelser" className="ml-2">
             Godtar du våre{" "}
             <span className="text-blue-500">kjøpebetingelser?</span>
           </Link>

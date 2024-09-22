@@ -5,7 +5,7 @@ import Image from "next/image";
 import React from "react";
 
 interface SavedImagesProps {
-  images: ImageBackend[];
+  images: ImageBackend[] | undefined;
   setImages: any;
   setModal: any;
 }

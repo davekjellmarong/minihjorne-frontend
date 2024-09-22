@@ -4,7 +4,7 @@ import StatsCard from "@/components/features/minSide/statistikk/StatsCard";
 import { getProductsStats } from "@/components/features/minSide/statistikk/utils";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { ProductQueries } from "@/queryFactory/Product";
-import { UserQueries } from "@/queryFactory/User";
+import { SellerQueries } from "@/queryFactory/Seller";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import React from "react";
 
@@ -12,7 +12,7 @@ const Page = () => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: products } = useSuspenseQuery(ProductQueries.me_all(jwt));
-  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
+  const { data: user } = useSuspenseQuery(SellerQueries.me(jwt));
 
   const {
     revenue,
@@ -54,9 +54,15 @@ const Page = () => {
         >
           Produktene dine er lagt til i handlevogner så mange ganger
         </StatsCard>
-        <StatsCard result={user.views} header="Profilvisninger" icon="User">
-          Totalt antall visninger av din brukerprofil
-        </StatsCard>
+        {user.seller && (
+          <StatsCard
+            result={user.seller.views}
+            header="Profilvisninger"
+            icon="User"
+          >
+            Totalt antall visninger av din brukerprofil
+          </StatsCard>
+        )}
 
         {/* <LineReChart user={user} products={products} /> */}
       </div>

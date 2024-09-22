@@ -17,8 +17,8 @@ const OmOssLinks = () => {
       href: "/om-oss/hva-er-minihjorne",
     },
     // {
-    //   name: "Hvorfor bruke oss",
-    //   href: "/om-oss/hvorfor-bruke-oss",
+    //   name: "Hvorfor funker det?",
+    //   href: "/om-oss/hvordan-funker-det",
     // },
     {
       name: "Selge klær - Selvregistrering",

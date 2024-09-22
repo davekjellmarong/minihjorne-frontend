@@ -1,7 +1,6 @@
 "use client";
 import {
   useMutation,
-  useQuery,
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
@@ -10,7 +9,6 @@ import { useFormik } from "formik";
 import { ProductQueries, ProductsMethods } from "@/queryFactory/Product";
 import { useRouter } from "next/navigation";
 import { AuthQueries } from "@/queryFactory/Auth";
-import { UserQueries } from "@/queryFactory/User";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import { toast } from "react-toastify";
 import Button from "@/components/common/buttons/Button";
@@ -37,8 +35,6 @@ const Page = ({ params }: { params: { id: string } }) => {
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
   const { data: product } = useSuspenseQuery(ProductQueries.detail(params.id));
-  const { data: user } = useQuery(UserQueries.me(jwt));
-  console.log(product);
   const { mutate: updateProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.put(params.id, values, jwt);
@@ -112,7 +108,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     },
 
     onSubmit: (values) => {
-      const data = { ...values, user: user?.id };
+      const data = { ...values };
       updateProduct({ data: data });
     },
   });

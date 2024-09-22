@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 import { ArrowRight, SidebarSimple } from "@phosphor-icons/react";
 import Link from "next/link";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
-import { UserQueries } from "@/queryFactory/User";
 import { AuthQueries } from "@/queryFactory/Auth";
 import { Image as ImageType } from "@/utils/types";
 import { ImageMethods } from "@/queryFactory/Upload";
@@ -24,6 +23,7 @@ import SelectedImages from "@/components/features/minSide/lastOpp/SelectedImages
 import ProductForm from "@/components/features/productForm/ProductForm";
 import { ProductsMethods } from "@/queryFactory/Product";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
+import { SellerQueries } from "@/queryFactory/Seller";
 
 const LeggUt = () => {
   const showNav = useStore((state) => state.showNav);
@@ -33,8 +33,10 @@ const LeggUt = () => {
   const [nextProduct, setNextProduct] = useState(false);
   const queryClient = useQueryClient();
   const jwt = queryClient.getQueryData(AuthQueries.all());
-  const { data: user } = useSuspenseQuery(UserQueries.me(jwt));
-  const delivery = user.deliveries?.find((delivery) => delivery.inProgress);
+  const { data: user } = useSuspenseQuery(SellerQueries.me(jwt));
+  const delivery = user.seller?.deliveries?.find(
+    (delivery) => delivery.inProgress,
+  );
   const { mutate: createProduct, isPending: loading } = useMutation({
     mutationFn: (values: any) => {
       return ProductsMethods.post(values, jwt);
@@ -50,7 +52,7 @@ const LeggUt = () => {
       );
       if (response.length > 0) {
         const productId = data?.id;
-        queryClient.invalidateQueries(UserQueries.me(jwt));
+        queryClient.invalidateQueries(SellerQueries.me(jwt));
         setSelectedImages([]);
         formik.resetForm();
         setNextProduct(true);
@@ -74,7 +76,7 @@ const LeggUt = () => {
       // todo - remove all "name" fields
       colorsNorwegianName: "",
       brand: "",
-      user: user.id,
+      seller: user.seller?.id,
       image: [],
       price: "",
       category: "",
@@ -144,7 +146,7 @@ const LeggUt = () => {
       <>
         <Suspense>
           <SavedImages
-            images={user.productImages}
+            images={user.seller?.productImages}
             setImages={setImages}
             setModal={setModal}
           />

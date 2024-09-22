@@ -8,11 +8,12 @@ import { updateUserSaleProfile } from "@/serverActions/ServerActions";
 import { UserQueries } from "@/queryFactory/User";
 import { useCookies } from "react-cookie";
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
+import { SellerQueries } from "@/queryFactory/Seller";
 
 const EditSalgsprofilForm = () => {
   const router = useRouter();
   const [cookie] = useCookies(["Token"]);
-  const { data: user } = useSuspenseQuery(UserQueries.me(cookie.Token));
+  const { data: user } = useSuspenseQuery(SellerQueries.me(cookie.Token));
   const { mutate: updateUser, isPending } = useMutation({
     mutationFn: updateUserSaleProfile,
     onSuccess: () => {
@@ -33,8 +34,8 @@ const EditSalgsprofilForm = () => {
             type="text"
             id="header"
             name="header"
-            defaultValue={user.header}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
+            defaultValue={user.seller?.header}
+            className="block w-full rounded-lg border border-gray-200 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
             placeholder="Eks: Leon's lille butikk eller Babyklær 1-2 år."
             required
           />
@@ -44,8 +45,8 @@ const EditSalgsprofilForm = () => {
           <textarea
             id="description"
             name="description"
-            defaultValue={user.description}
-            className="block h-56 w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
+            defaultValue={user.seller?.description}
+            className="block h-56 w-full rounded-lg border border-gray-200 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
             placeholder="Eks: Velkommen til min lille butikk. Her finner du klær til barn i alle aldre. 
             Jeg har klær fra kjente merker og klær som er laget av resirkulerte materialer.
             Håper du finner noe du liker."

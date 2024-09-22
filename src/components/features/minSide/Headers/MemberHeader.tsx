@@ -1,23 +1,16 @@
 import React from "react";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
-import Link from "next/link";
-
-const MemberHeader = () => {
+import UserInfoCard from "../cards/UserInfoCard";
+import { SellerGetMe } from "@/utils/types";
+import BecomeSeller from "../cards/BecomeSeller";
+interface MemberHeaderProps {
+  user: SellerGetMe;
+}
+const MemberHeader = ({ user }: MemberHeaderProps) => {
   return (
-    <div className="flex flex-col items-center justify-center bg-brand-200 px-4">
-      <ActionsColoredBox
-        header="Bli selger på Minihjørne"
-        color="white"
-        path="/min-side/selge/salgs-metode"
-        button="Velg salgsmetode"
-        headerWeight="semi-bold"
-      >
-        Velg mellom salgsmetodene <b>selvregistrering </b>
-        eller vår <b>full service pakke.</b>
-        <p className="mt-4 text-sm">
-          Bli selger gratis - vi tar kun provision på salg.
-        </p>
-      </ActionsColoredBox>
+    <div className="space-y-6">
+      <BecomeSeller />
+      <UserInfoCard user={user} />
     </div>
   );
 };

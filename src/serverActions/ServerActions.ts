@@ -4,30 +4,13 @@ import { UserMethods } from "@/queryFactory/User";
 import { cookies } from "next/headers";
 import { emailSchema, resetPasswordSchema } from "@/zod/Zod";
 import { z } from "zod";
-import { PlanEnum, SalgsMetode, UserStatus } from "@/utils/Enums";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { ProductsMethods } from "@/queryFactory/Product";
-
+import { SellerMethods } from "@/queryFactory/Seller";
+import { DeliveryMethods } from "@/queryFactory/Delivery";
 const cookieStore: any = cookies();
-const token = cookieStore.get("Token").value;
-
-export const activeUserProfile = async (cool: any) => {
-  const user = await UserMethods.getMe(token);
-  const payload = {
-    active: true,
-    paid: true,
-    activeUntil: new Date("2024-10-01T00:00:00Z").toISOString(),
-    activatedDate: new Date(),
-    plan: PlanEnum.Free_July_To_October,
-  };
-  const response = await UserMethods.put(
-    payload,
-    user.id,
-    process.env.UPDATE_USER_TOKEN,
-  );
-  return response;
-};
+const token = cookieStore.get("Token")?.value;
 
 export const sendPasswordResetEmail = async (formdata: FormData) => {
   const email = formdata.get("email");
@@ -64,18 +47,20 @@ export const resetPassword = async (formdata: FormData) => {
 export const updateUserSaleProfile = async (formdata: FormData) => {
   const header = formdata.get("header");
   const description = formdata.get("description");
-  const data = {
-    header: header,
-    description: description,
+  const payload = {
+    data: {
+      header: header,
+      description: description,
+    },
   };
-  const user = await UserMethods.getMe(token);
-  const response = await UserMethods.putFetch(
-    data,
-    user.id,
-    process.env.UPDATE_USER_TOKEN,
+  const user = await SellerMethods.getMe(token);
+  const response = await SellerMethods.putFetch(
+    payload,
+    user.seller?.id,
+    token,
   );
-  if (response.id === user.id) {
-    revalidatePath("/users/me?populate=*");
+  if (response.id === user.seller?.id) {
+    revalidatePath("/sellers/me");
     redirect("/min-side/selge/salgsprofil");
   } else {
     throw new Error("Error updating user sale profile");
@@ -100,11 +85,11 @@ export const incrementProductAddedToCart = async (productId: number) => {
   return "Bot detected";
 };
 
-export const incrementUserViews = async (userId: number) => {
+export const incrementSellerViews = async (sellerId: number) => {
   const isBotCookie: any = cookies().get("isBot")?.value;
   if (isBotCookie === "false") {
-    await UserMethods.incrementUserView(userId);
-    return "User view incremented";
+    await SellerMethods.incrementSellerView(sellerId);
+    return "Seller view incremented";
   }
   return "Bot detected";
 };
@@ -113,48 +98,48 @@ export const activateSalgsMetodeAndCreateDelivery = async (
   formdata: FormData,
 ) => {
   const salgsmetode = formdata.get("salgsmetode");
-  const user = await UserMethods.getMe(token);
-  let currentDelivery = user.deliveries.find((delivery) => delivery.inProgress);
-  if (!currentDelivery) {
+  const user = await SellerMethods.getMe(token);
+  let currentDelivery = user.seller?.deliveries?.find(
+    (delivery) => delivery.inProgress,
+  );
+  let seller = user.seller;
+  if (!seller) {
     try {
       const payload = {
         data: {
-          sales_method: salgsmetode,
           user: user.id,
+          username: user.username,
         },
       };
-      currentDelivery = await UserMethods.createDelivery(payload, token);
-      console.log(currentDelivery);
-      // revalidatePath("/users/me?populate=*");
+      seller = await SellerMethods.createSeller(payload, token);
     } catch (error) {
       console.error("Error creating delivery:", error);
       throw error;
     }
   }
-  const payload = {
-    user_status:
-      salgsmetode === String(SalgsMetode.Selvregistrering)
-        ? UserStatus.Selvregistrering
-        : UserStatus.FullService,
-  };
-  const response = await UserMethods.putFetch(
-    payload,
-    user.id,
-    process.env.UPDATE_USER_TOKEN,
-  );
-  if (response.id === user.id) {
-    revalidatePath("/users/me?populate=*");
-  } else {
-    throw new Error("Error updating user status");
+  if (!currentDelivery) {
+    try {
+      const payload = {
+        data: {
+          sales_method: salgsmetode,
+          seller: seller?.id,
+        },
+      };
+      currentDelivery = await DeliveryMethods.createDelivery(payload, token);
+      revalidatePath("/sellers/me");
+    } catch (error) {
+      console.error("Error creating delivery:", error);
+      throw error;
+    }
   }
-  return response;
+  return seller;
 };
 
 export const updateDelivery = async (formdata: FormData) => {
   const deliveryType = formdata.get("deliveryType");
   const description = formdata.get("description");
-  const user = await UserMethods.getMe(token);
-  const currentDelivery = user.deliveries.find(
+  const user = await SellerMethods.getMe(token);
+  const currentDelivery = user.seller?.deliveries?.find(
     (delivery) => delivery.inProgress,
   );
   if (!currentDelivery) {
@@ -169,12 +154,12 @@ export const updateDelivery = async (formdata: FormData) => {
   };
 
   try {
-    const response = await UserMethods.updateDelivery(
+    const response = await DeliveryMethods.updateDelivery(
       payload,
       currentDelivery.id,
       token,
     );
-    revalidatePath("/users/me?populate=*");
+    revalidatePath("/sellers/me");
     return response;
   } catch (error) {
     console.error("Error creating delivery:", error);
@@ -182,17 +167,17 @@ export const updateDelivery = async (formdata: FormData) => {
   }
 };
 
-export const relateDeliveryProductsToUser = async ({
+export const relateDeliveryProductsToSeller = async ({
   deliveryId,
-  userId,
+  sellerId,
 }: any) => {
   try {
-    const response = await UserMethods.relateDeliveryProductsToUser(
+    const response = await SellerMethods.relateDeliveryProductsToSeller(
       deliveryId,
-      userId,
+      sellerId,
       token,
     );
-    revalidatePath("/users/me?populate=*");
+    revalidatePath("/sellers/me");
     return response;
   } catch (error) {
     console.error("Error creating delivery:", error);
@@ -212,7 +197,7 @@ export const updateBankAccountNumber = async (formdata: FormData) => {
     const response = await UserMethods.put(
       payload,
       user.id,
-      process.env.UPDATE_USER_TOKEN,
+      process.env.STRAPI_ACCESS_TOKEN,
     );
     revalidatePath("/users/me?populate=*");
     return response;

@@ -10,23 +10,28 @@ import {
 import { ChevronDownIcon, UserIcon } from "lucide-react";
 import { Button } from "@/components/UI/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/UI/avatar";
-import { UserQueries } from "@/queryFactory/User";
-import { UserBackend } from "@/utils/types";
+import { Seller } from "@/utils/types";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { SellerQueries } from "@/queryFactory/Seller";
 
 interface UserDropdownProps {
-  setSelectedUser: (user: UserBackend) => void;
-  selectedUser: UserBackend | undefined;
+  setSelectedSeller: (user: Seller) => void;
+  selectedSeller: Seller | undefined;
 }
-const UserDropdown = ({ setSelectedUser, selectedUser }: UserDropdownProps) => {
-  const { data: users } = useSuspenseQuery(UserQueries.allUsers());
+const UserDropdown = ({
+  setSelectedSeller,
+  selectedSeller,
+}: UserDropdownProps) => {
+  const { data: sellers } = useSuspenseQuery(SellerQueries.allSellers());
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className="flex items-center gap-2 bg-brand-500 text-white hover:bg-brand-600">
           <UserIcon className="h-4 w-4" />
-          {selectedUser ? selectedUser.username : "Velg en bruker"}
+          {selectedSeller
+            ? selectedSeller.attributes.username
+            : "Velg en bruker"}
 
           <ChevronDownIcon className="h-4 w-4" />
         </Button>
@@ -34,23 +39,23 @@ const UserDropdown = ({ setSelectedUser, selectedUser }: UserDropdownProps) => {
       <DropdownMenuContent align="end" className="w-[200px]">
         <DropdownMenuLabel>Velg en ny bruker</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {users.map((user) => {
+        {sellers.map((seller) => {
           return (
             <DropdownMenuItem
-              key={user.id}
+              key={seller.id}
               onClick={() => {
-                setSelectedUser(user);
+                setSelectedSeller(seller);
               }}
             >
               <div className="flex items-center gap-2">
                 <Avatar className="h-6 w-6">
                   <AvatarImage
                     src="/placeholder-user.jpg"
-                    alt={user.username}
+                    alt={seller.attributes.username}
                   />
-                  <AvatarFallback>{user.username}</AvatarFallback>
+                  <AvatarFallback>{seller.attributes.username}</AvatarFallback>
                 </Avatar>
-                <div>{user.username}</div>
+                <div>{seller.attributes.username}</div>
               </div>
             </DropdownMenuItem>
           );

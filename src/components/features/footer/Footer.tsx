@@ -23,12 +23,12 @@ const Footer = () => {
       href: "/personvern",
     },
     {
-      name: "Betingelser leie",
+      name: "Kjøpebetingelser",
       href: "/kjopebetingelser",
     },
     {
-      name: "Betingelser kjøp",
-      href: "/salgsbetingelser",
+      name: "Selgervilkår",
+      href: "/selgervilkar",
     },
   ];
   return (
@@ -71,7 +71,7 @@ const Footer = () => {
           </Link>
         ))}
       </div>
-      <p className="text-xs text-brand-400">kontakt@minhjorne.no</p>
+      <p className="text-xs text-brand-400">kontakt@minihjorne.no</p>
     </footer>
   );
 };

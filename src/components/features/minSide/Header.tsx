@@ -1,28 +1,26 @@
-import { UserMethods } from "@/queryFactory/User";
 import React from "react";
 import { cookies } from "next/headers";
-import { UserStatus } from "@/utils/Enums";
 import SellerHeader from "./Headers/SellerHeader";
 import MemberHeader from "./Headers/MemberHeader";
-import OnboardingSteps from "../onboarding/OnboardingSteps";
+import { SellerMethods } from "@/queryFactory/Seller";
+import OnboardingSteps from "./cards/OnboardingSteps";
+import OnboardingHeader from "./Headers/OnboardingHeader";
 
 const Header = async () => {
   const token = cookies().get("Token")?.value;
-  const user = await UserMethods.getMeFetch(token);
-  const {
-    user_status: { id },
-  } = user;
-
-  if (id === UserStatus.Seller) {
-    return <SellerHeader user={user} />;
-  } else if (id === UserStatus.Member) {
-    return <MemberHeader />;
-  } else if (
-    id === UserStatus.Selvregistrering ||
-    id === UserStatus.FullService
-  ) {
-    return <OnboardingSteps user={user} />;
+  // CHECK FOR DELIVERY INSTEAD OF USERSTATUS
+  const user = await SellerMethods.getMe(token);
+  if (!user.seller) {
+    return <MemberHeader user={user} />;
   }
+
+  const activeDelivery = user.seller?.deliveries?.find(
+    (delivery) => delivery.inProgress,
+  );
+
+  if (activeDelivery) {
+    return <OnboardingHeader user={user} />;
+  } else return <SellerHeader user={user} />;
 };
 
 export default Header;
