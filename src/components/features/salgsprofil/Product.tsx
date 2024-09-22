@@ -10,7 +10,7 @@ const Product = ({ product }: ProductProps) => {
   return (
     <Link href={`/brukte-barne-klaer/${product.id}`} className="grid gap-2">
       <Image
-        src={product.attributes.image.data[0].attributes.url}
+        src={product.attributes.image.data[0].attributes.formats.medium.url}
         alt={`${product.id}`}
         width={100}
         height={100}
