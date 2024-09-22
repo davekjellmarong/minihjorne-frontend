@@ -4,7 +4,7 @@ const Kjøpebetingelser = () => {
   return (
     <div className="px-4 py-6">
       <h1 className="mb-4 text-2xl font-bold">
-        Salgsbetingelser for leie hos Minihjørne
+        Kjøpebetingelser hos Minihjørne
       </h1>
 
       <h2 className="mt-6 text-xl font-semibold">1. Innledning</h2>
@@ -145,10 +145,10 @@ const Kjøpebetingelser = () => {
         Leieperioden starter når Minihjørne mottar kjøperens barneklær. Dersom
         kjøper vil benytte seg av angrerett må det sendes mail til oss på{" "}
         <a
-          href="mailto:iselin@minihjorne.no"
+          href="mailto:kontakt@minihjorne.no"
           className="text-blue-500 hover:underline"
         >
-          iselin@minihjorne.no
+          kontakt@minihjorne.no
         </a>{" "}
         med kjøpers fulle navn.
       </p>

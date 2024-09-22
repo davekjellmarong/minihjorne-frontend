@@ -16,10 +16,10 @@ const OmOssLinks = () => {
       name: "Hva er Minihjørne?",
       href: "/om-oss/hva-er-minihjorne",
     },
-    {
-      name: "Hvorfor funker det?",
-      href: "/om-oss/hvordan-funker-det",
-    },
+    // {
+    //   name: "Hvorfor funker det?",
+    //   href: "/om-oss/hvordan-funker-det",
+    // },
     {
       name: "Selge klær - Selvregistrering",
       href: "/om-oss/selvregistrering",

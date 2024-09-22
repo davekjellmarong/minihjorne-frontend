@@ -125,7 +125,7 @@ const Form = () => {
           />
           <label htmlFor="terms" className="text-sm">
             Jeg aksepterer{" "}
-            <Link href="/kjopebetingelser" className="text-blue-500 underline">
+            <Link href="/selgervilkar" className="text-blue-500 underline">
               vilkårene
             </Link>
           </label>

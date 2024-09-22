@@ -21,18 +21,17 @@ const AboutUsAccordions = () => {
         </AccordionContent>
       </AccordionItem>
 
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Personlig Salgsprofil</AccordionTrigger>
+      <AccordionItem value="item-6">
+        <AccordionTrigger>Selge klær - Selvregistrering</AccordionTrigger>
         <AccordionContent>
-          Du får en personlig salgsprofil der alle klærne dine blir samlet, slik
-          at kjøpere enkelt kan se hva du tilbyr. Du kan også legge til en
-          beskrivelse om deg selv og klærne du selger.
-          <LesMer href="/om-oss/salgsprofil" />
+          Selvregistrering innebærer at du selv registrerer dine brukte
+          barneklær her på minihjorne.no.
+          <LesMer href="/om-oss/selvregistrering" />
         </AccordionContent>
       </AccordionItem>
 
       <AccordionItem value="item-3">
-        <AccordionTrigger>Hvordan registrerer jeg klær?</AccordionTrigger>
+        <AccordionTrigger>Registrere klær</AccordionTrigger>
         <AccordionContent>
           Å registrere klær på Minihjørne er enkelt og kan gjøres direkte fra
           mobilen. Følg stegene på vår nettside, så hjelper vi deg gjennom
@@ -41,8 +40,27 @@ const AboutUsAccordions = () => {
         </AccordionContent>
       </AccordionItem>
 
+      <AccordionItem value="item-7">
+        <AccordionTrigger>Selge klær - Fullservice pakke</AccordionTrigger>
+        <AccordionContent>
+          Full service-pakke innebærer at du sender klærne dine til oss, og vi
+          tar oss av resten.
+          <LesMer href="/om-oss/full-service-pakke" />
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Salgsprofil</AccordionTrigger>
+        <AccordionContent>
+          Du får en personlig salgsprofil der alle klærne dine blir samlet, slik
+          at kjøpere enkelt kan se hva du tilbyr. Du kan også legge til en
+          beskrivelse om deg selv og klærne du selger.
+          <LesMer href="/om-oss/salgsprofil" />
+        </AccordionContent>
+      </AccordionItem>
+
       <AccordionItem value="item-4">
-        <AccordionTrigger>Hvordan leverer jeg klær?</AccordionTrigger>
+        <AccordionTrigger>Levere klær</AccordionTrigger>
         <AccordionContent>
           Du kan enten levere klærne direkte til oss, eller sende dem med
           posten. Vår adresse er:
@@ -53,7 +71,7 @@ const AboutUsAccordions = () => {
       </AccordionItem>
 
       <AccordionItem value="item-5">
-        <AccordionTrigger>Hva koster det?</AccordionTrigger>
+        <AccordionTrigger>Priser</AccordionTrigger>
         <AccordionContent>
           Vi tar 30% eller 60% provisjon per salg, avhenging av om du velger
           <Link href="om-oss/selvregistrering" className="text-brand-500">
