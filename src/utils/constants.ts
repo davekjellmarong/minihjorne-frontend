@@ -117,4 +117,4 @@ export const responsive = {
   },
 };
 
-export const shippingPrice = 99;
+export const shippingPrice = 69;

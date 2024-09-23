@@ -125,7 +125,7 @@ const StripeForm = ({ price, user, clientId }: StripeFormProps) => {
           size="small"
           type={`${isShipping ? "brand" : "outline"}`}
         >
-          Sendes med post (99kr)
+          Sendes med post ({shippingPrice} kr)
         </Button>
         <Button
           onClick={() => {
