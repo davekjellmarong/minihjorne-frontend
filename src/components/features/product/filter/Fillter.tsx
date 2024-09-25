@@ -1,10 +1,11 @@
 "use client";
 import { addQueryParam, removeQueryParam } from "@/utils/QueryParamUtils";
-import { CaretDown, CaretUp, XCircle } from "@phosphor-icons/react";
+import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 
 import React, { useEffect, useRef, useState } from "react";
 import FilterChipsInner from "./FilterChipsInner";
+import { usePostHog } from "posthog-js/react";
 interface FilterProps {
   data: any;
   property: string;
@@ -27,6 +28,7 @@ const Filter = ({
   const FilterRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const posthog = usePostHog();
 
   // Sync checkbox states with URL query parameters
   useEffect(() => {
@@ -46,6 +48,11 @@ const Filter = ({
       [item.attributes[property]]: isChecked,
     }));
     if (isChecked) {
+      posthog.capture("filter_applied", {
+        filter_type: filter,
+        filter_value: item.attributes[property],
+        location: "modal_checkbox_filter",
+      });
       addQueryParam(router, queryTemplate, item.id);
     } else {
       removeQueryParam(router, queryTemplate, item.id);

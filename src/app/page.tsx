@@ -5,7 +5,6 @@ import React, { Suspense } from "react";
 import Link from "next/link";
 import HomepageProducts from "@/components/features/productList/HomepageProducts";
 import HowToSell_Summary from "@/components/UI/omOss/HowToSell_Summary";
-import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import AboutUsAccordions from "@/components/UI/omOss/AboutUsAccordions";
 import QuickList from "@/components/features/salgsprofil/QuickList";
 const Home = () => {
@@ -13,27 +12,12 @@ const Home = () => {
     <>
       <OpeningSoon />
       <div className="px-3">
+        <div className="my-6">
+          <QuickList />
+        </div>
         <div className="py-3">
           <AboutUsAccordions />
         </div>
-        {/* <div className="pb-6 pt-4">
-          <ActionsColoredBox
-            header="Fullservice-pakke"
-            button="Les mer"
-            color="white"
-            path="/om-oss/full-service-pakke"
-          >
-            Vi tilbyr en full service pakke for deg som ønsker å selge brukte
-            barneklær, men som ikke har tid til å gjøre det selv. Du sender oss
-            klærne, så tar vi bilder, regisrerer og publiserer dem for deg.
-          </ActionsColoredBox>
-        </div> */}
-
-        {/* <div>
-          <h2 className="text-center text-lg">
-            Se gjennom våre brukte barneklær
-          </h2>
-        </div> */}
         <div className="pt-4">
           <QuickLinks />
         </div>
@@ -48,9 +32,6 @@ const Home = () => {
           >
             Se mer brukte barneklær
           </Link>
-        </div>
-        <div className="my-6">
-          <QuickList />
         </div>
       </div>
       <div className=" bg-secondary-200 py-4">
