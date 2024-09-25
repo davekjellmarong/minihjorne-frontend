@@ -9,7 +9,9 @@ const QuickList = async () => {
       <div className="grid gap-6">
         <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:gap-8">
           <div className="grid gap-1 px-2">
-            <h1 className="text-2xl font-bold tracking-tight">Salgsprofiler</h1>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Salgsprofiler
+            </h1>
             <p className="text-muted-foreground">
               Utforsk noen av våre salgsprofiler.
             </p>
