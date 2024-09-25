@@ -21,7 +21,7 @@ const QuickLink = ({ seller }: QuickLinkProps) => {
         </AvatarFallback>
       </Avatar>
       <div>
-        <h3 className="font-bold">{seller.data.attributes.header}</h3>
+        <h3 className="font-semibold">{seller.data.attributes.header}</h3>
         <div className="text-[#7d6adf] ">{seller.data.attributes.username}</div>
       </div>
     </Link>
