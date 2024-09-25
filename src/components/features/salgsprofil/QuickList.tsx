@@ -33,51 +33,6 @@ const QuickList = async () => {
               </div>
             </div>
           ))}
-          {sellers?.slice(0, 6).map((profile) => (
-            <div key={profile.id} className="group relative grid gap-4">
-              <div className="grid gap-2 rounded-lg border border-gray-200 bg-white p-4">
-                <QuickLink seller={{ data: profile }} />
-                <div className="grid grid-cols-2 gap-4">
-                  {/* Sort by randomWeight */}
-                  {profile.attributes.products?.data
-                    ?.slice(0, 2)
-                    .map((product) => (
-                      <Product key={product.id} product={product} />
-                    ))}
-                </div>
-              </div>
-            </div>
-          ))}
-          {sellers?.slice(0, 6).map((profile) => (
-            <div key={profile.id} className="group relative grid gap-4">
-              <div className="grid gap-2 rounded-lg border border-gray-200 bg-white p-4">
-                <QuickLink seller={{ data: profile }} />
-                <div className="grid grid-cols-2 gap-4">
-                  {/* Sort by randomWeight */}
-                  {profile.attributes.products?.data
-                    ?.slice(0, 2)
-                    .map((product) => (
-                      <Product key={product.id} product={product} />
-                    ))}
-                </div>
-              </div>
-            </div>
-          ))}
-          {sellers?.slice(0, 6).map((profile) => (
-            <div key={profile.id} className="group relative grid gap-4">
-              <div className="grid gap-2 rounded-lg border border-gray-200 bg-white p-4">
-                <QuickLink seller={{ data: profile }} />
-                <div className="grid grid-cols-2 gap-4">
-                  {/* Sort by randomWeight */}
-                  {profile.attributes.products?.data
-                    ?.slice(0, 2)
-                    .map((product) => (
-                      <Product key={product.id} product={product} />
-                    ))}
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
