@@ -5,7 +5,7 @@ import Product from "./Product";
 const QuickList = async () => {
   const sellers = await SellerMethods.getAll();
   return (
-    <section className="w-full bg-white py-12">
+    <section className="w-full bg-white">
       <div className="grid gap-6">
         <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:gap-8">
           <div className="grid gap-1 px-2">
