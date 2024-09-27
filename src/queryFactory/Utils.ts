@@ -1,9 +1,14 @@
 import axios from "axios";
 
 export const getProductsFiltered = async (query: string) => {
+  // check if sor t is in query from parameter
+  let sort = "random_weight:desc";
+  if (query?.includes("sort=")) {
+    sort = query.split("sort=")[1];
+  }
   const baseUrl =
     apiUrl +
-    `/products?pagination[pageSize]=20&sort=random_weight:desc&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
+    `/products?pagination[pageSize]=20&sort=${sort}&populate=*&filters[sold][$eq]=false&filters[active][$eq]=true`;
   const url = query?.length > 0 ? baseUrl + "&" + query : baseUrl;
   const data = await axios.get(url);
   return data.data;

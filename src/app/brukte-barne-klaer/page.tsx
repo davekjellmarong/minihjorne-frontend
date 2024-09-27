@@ -7,6 +7,7 @@ import Filters from "@/components/features/product/filter/Filters";
 import FilterChips from "@/components/features/product/filter/FilterChips";
 import FilterIcon from "@/components/features/product/filter/FilterIcon";
 import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
+import SortMenu from "@/components/features/product/SortMenu";
 
 export interface SelectedFilter {
   query: string;
@@ -16,7 +17,7 @@ export interface SelectedFilter {
 
 const ProductPage = () => {
   const [open, setOpen] = useState(false);
-
+  const [sortBy, setSortBy] = useState("sort=random_weight:desc");
   return (
     <>
       <div className="relative flex w-full flex-col items-center px-4">
@@ -26,8 +27,9 @@ const ProductPage = () => {
         <div className="w-full pb-6">
           <QuickFilterCards />
         </div>
-        <div className="flex w-full  border-gray-200  py-2">
+        <div className="flex w-full gap-4 border-gray-200  py-2">
           <FilterIcon setOpen={setOpen} />
+          {/* <SortMenu setSortBy={setSortBy} sortBy={sortBy} /> */}
         </div>
         <Suspense>
           <div className="flex w-full  border-gray-200  py-2">
