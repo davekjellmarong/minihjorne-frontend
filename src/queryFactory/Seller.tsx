@@ -32,7 +32,7 @@ export const SellerQueries = {
 export const SellerMethods = {
   getAll: async (): Promise<Seller[]> => {
     return getPublicData(
-      "/sellers?filters[isActive][$eq]=true&populate[products][populate][0]=size&&populate[products][populate][1]=image",
+      "/sellers?filters[isActive][$eq]=true&populate[products][populate][0]=size&populate[products][populate][1]=image&populate[products][filters][sold][$eq]=false",
     );
   },
   getById: async (id: any): Promise<Seller> => {

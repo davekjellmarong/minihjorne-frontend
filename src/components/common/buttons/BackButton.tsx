@@ -1,5 +1,5 @@
 "use client";
-import { ArrowCircleLeft } from "@phosphor-icons/react";
+import { ArrowCircleLeft, ArrowLeft } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 
 interface BackButtonProps {
@@ -9,7 +9,20 @@ const BackButton = ({ path }: BackButtonProps) => {
   const router = useRouter();
 
   return (
-    <ArrowCircleLeft
+    // <ArrowCircleLeft
+    //   onClick={() => {
+    //     if (path) {
+    //       router.push(path);
+    //     } else {
+    //       router.back();
+    //     }
+    //   }}
+    //   size={40}
+    //   color="black"
+    //   // className="rounded-full bg-gray-700 opacity-60"
+    // />
+
+    <div
       onClick={() => {
         if (path) {
           router.push(path);
@@ -17,8 +30,15 @@ const BackButton = ({ path }: BackButtonProps) => {
           router.back();
         }
       }}
-      size={30}
-    />
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.5)", // gray background with 60% opacity
+        borderRadius: "50%", // round the background container
+        padding: "5px", // space around the icon
+        display: "inline-block", // ensure the container size matches the content
+      }}
+    >
+      <ArrowLeft size={24} color="white" />
+    </div>
   );
 };
 

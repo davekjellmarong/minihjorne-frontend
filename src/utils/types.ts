@@ -81,6 +81,7 @@ export interface CommonProduct {
   views: number;
   added_to_cart: number;
   isReceivedAtWarehouse: boolean;
+  featured: boolean;
 }
 export interface CommonOrder {
   guid: string;
@@ -351,6 +352,7 @@ export interface Product {
     views: number;
     sex: { data: Sex };
     brand: string | null;
+    featured: boolean;
     image: {
       data: Image[];
     };
