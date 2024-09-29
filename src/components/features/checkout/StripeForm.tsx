@@ -13,6 +13,7 @@ import { shippingPrice } from "@/utils/constants";
 import { UserBackend } from "@/utils/types";
 import Button from "@/components/common/buttons/Button";
 import { updateAmountByShipping } from "@/serverActions/Stripe";
+import TermsChecked from "./TermsChecked";
 interface StripeFormProps {
   price: any;
   user: UserBackend | undefined;
@@ -21,6 +22,7 @@ interface StripeFormProps {
 const StripeForm = ({ price, user, clientId }: StripeFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
+  const [termsChecked, setTermsChecked] = useState(false);
   const [isShipping, setIsShipping] = useState(true);
   const [message, setMessage] = useState<any>();
   const [isLoading, setIsLoading] = useState(false);
@@ -214,9 +216,12 @@ const StripeForm = ({ price, user, clientId }: StripeFormProps) => {
           </span>
         </div>
       </div>
+      <TermsChecked setChecked={setTermsChecked} checked={termsChecked} />
       <button
-        className="mt-8 w-[400px] rounded-md bg-purple-600 p-4 text-white"
-        disabled={isLoading || !stripe || !elements}
+        className={`mt-8 w-[400px] rounded-md bg-purple-600 ${
+          !termsChecked ? "opacity-50" : ""
+        } p-4 text-white`}
+        disabled={isLoading || !stripe || !elements || !termsChecked}
         id="submit"
       >
         <span id="button-text">

@@ -5,21 +5,15 @@ import {
   removeItemFromCart,
 } from "@/utils/CartUtils";
 import { Product } from "@/utils/types";
-import { CurrencyDollar, Pants, Truck, XCircle } from "@phosphor-icons/react";
+import { CurrencyDollar, XCircle } from "@phosphor-icons/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useQueryClient } from "@tanstack/react-query";
-import { AuthQueries } from "@/queryFactory/Auth";
 import Button from "@/components/common/buttons/Button";
 import Image from "next/image";
-import { shippingPrice } from "@/utils/constants";
 
 const Page = () => {
   const router = useRouter();
-  const queryClient = useQueryClient();
-  const jwt = queryClient.getQueryData(AuthQueries.all());
-  const [checked, setChecked] = useState(false);
   let productItems: Product[] = [];
   if (typeof window !== "undefined") {
     // Perform localStorage action
@@ -49,9 +43,9 @@ const Page = () => {
     <div className="relative flex flex-col">
       <div className="max-w-[500px] px-4 ">
         <div className="mb-8 mt-8 grid grid-cols-5 grid-rows-1 items-center gap-2">
-          <h2 className="col-span-2 text-2xl">Handlekurv</h2>
+          <h2 className="col-span-3 text-2xl">Handlekurv</h2>
+          {/* <p className="col-span-1 text-gray-700">{totalPrice} kr</p> */}
           <p className="col-span-1 text-gray-700">{cartItems.length} stk</p>
-          <p className="col-span-1 text-gray-700">{totalPrice} kr</p>
         </div>
         <ul className="flex flex-col gap-12 pb-8">
           {cartItems.map((product: Product) => {
@@ -87,31 +81,12 @@ const Page = () => {
                 <p className="col-span-3 row-span-1 font-light text-gray-500">
                   Str {product.attributes.size.data.attributes.number}
                 </p>
-                {/* <p className="col-span-3 row-span-1 font-light text-gray-500">
-                  {product.attributes.brand}
-                </p> */}
               </li>
             );
           })}
         </ul>
       </div>
       <div className="sticky bottom-0 flex flex-col justify-center gap-8 border-t bg-white px-4 py-8">
-        {/* <div className="flex gap-2">
-          <Pants size={24} color="gray" />
-          <p className="w-24 text-gray-500">Varer </p>
-          <span className="text-xl font-light text-black">
-            {totalPrice} kr{" "}
-          </span>
-        </div>
-        <div className="flex gap-2">
-          <Truck size={24} color="gray" />
-          <p className="w-24 text-gray-500">Frakt </p>
-          <span className="text-xl font-light text-black">
-            {" "}
-            {shippingPrice} kr
-          </span>
-        </div>
-        <hr className="w-52 border" /> */}
         <div className="flex gap-2">
           <CurrencyDollar size={24} color="gray" />
           <p className="w-24 text-gray-500">Total </p>
@@ -120,33 +95,14 @@ const Page = () => {
             {totalPrice} kr
           </span>
         </div>
-        <label className="flex items-center gap-2">
-          <input
-            id="default-checkbox"
-            type="checkbox"
-            checked={checked}
-            onChange={() => setChecked(!checked)}
-            className="size-7 rounded border-gray-300 bg-gray-100 text-brand-600 focus:ring-2 focus:ring-brand-500"
-          />
-          <Link href="/kjopebetingelser" className="ml-2">
-            Godtar du våre{" "}
-            <span className="text-blue-500">kjøpebetingelser?</span>
-          </Link>
-        </label>
-        {/* <Link
-          href={jwt ? "/checkout" : "/auth?redirect=/checkout&type=login"}
-          className="shadow- max-w-[350px] rounded bg-brand-500 px-8 py-4 text-center font-semibold text-white  "
-        > */}
         <button
-          className={`shadow- max-w-[350px] rounded  px-8 py-4 text-center font-semibold text-white ${checked ? "bg-brand-500" : "bg-gray-300"}`}
+          className={`shadow- max-w-[350px] rounded  bg-brand-500 px-8 py-4 text-center font-semibold text-white`}
           onClick={() => {
             router.push("/checkout");
           }}
-          disabled={!checked}
         >
-          Gå til betalings informasjon -{">"}
+          Gå til betaling
         </button>
-        {/* </Link> */}
       </div>
     </div>
   );

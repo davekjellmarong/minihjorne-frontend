@@ -18,14 +18,20 @@ const QuickList = async () => {
           </div>
         </div>
         <div className="grid gap-8 lg:grid-cols-2">
-          {sellers?.slice(0, 6).map((profile) => (
+          {sellers?.slice(0, 4).map((profile) => (
             <div key={profile.id} className="group relative grid gap-4">
               <div className="grid gap-2 rounded-lg border border-gray-200 bg-white p-4">
                 <QuickLink seller={{ data: profile }} />
                 <div className="grid grid-cols-2 gap-4">
-                  {/* Sort by randomWeight */}
                   {profile.attributes.products?.data
-                    ?.slice(0, 2)
+                    ?.sort((a, b) =>
+                      a.attributes.featured === b.attributes.featured
+                        ? 0
+                        : a.attributes.featured
+                          ? -1
+                          : 1,
+                    )
+                    .slice(0, 2)
                     .map((product) => (
                       <Product key={product.id} product={product} />
                     ))}

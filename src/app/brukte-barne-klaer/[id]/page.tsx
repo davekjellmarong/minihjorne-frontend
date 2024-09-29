@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/UI/avatar";
 import Image from "next/image";
 import { ProductsMethods } from "@/queryFactory/Product";
 import CarouselComponent from "@/components/common/Carousel";
 import ColorSquares from "@/components/features/filters/color/ColorSquares";
 import AddToCartButtons from "@/components/common/buttons/AddToCartButtons";
-import { incrementSellerViews } from "@/serverActions/ServerActions";
 import QuickLink from "@/components/features/salgsprofil/QuickLink";
+import BackButton from "@/components/common/buttons/BackButton";
 
 const ProductDetail = async ({ params }: { params: { id: string } }) => {
   const product = await ProductsMethods.getById(params.id);
@@ -34,11 +33,14 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
     .sort(() => Math.random() - 0.5)
     .slice(0, 2);
   return (
-    <div className=" mx-auto rounded-lg bg-white py-8">
+    <div className=" mx-auto rounded-lg bg-white pb-8">
       <div className="flex flex-col items-start gap-6">
-        <div className="w-full rounded-lg p-4">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className=" w-full rounded-lg px-4 pb-4">
+          <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
+              <div className="absolute left-3 top-3 z-10 flex items-center gap-2">
+                <BackButton />
+              </div>
               <CarouselComponent>
                 {image.data.map((image) => {
                   return (
