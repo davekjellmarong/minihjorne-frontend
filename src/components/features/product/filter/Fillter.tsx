@@ -39,9 +39,9 @@ const Filter = ({
       return prev;
     }, {});
     setCheckboxStates(filtersObject);
-  }, [data, queryParams, filter, property]);
+  }, [queryParams]);
 
-  const handleCheckboxChange = (item: any) => {
+  const handleCheckboxChange = async (item: any) => {
     const isChecked = !checkboxStates[item.attributes[property]];
     setCheckboxStates((prevStates: any) => ({
       ...prevStates,

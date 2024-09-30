@@ -10,7 +10,7 @@ const Footer = () => {
     },
     {
       name: "Selge klær",
-      href: "/om-oss/hvordan-selge",
+      href: "/om-oss/selvregistrering",
     },
     {
       name: "Priser",
@@ -32,7 +32,7 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="flex flex-col items-center gap-6 py-8">
+    <footer className="p flex flex-col items-center gap-6">
       <hr className="w-full" />
       <div className=" mx-auto flex flex-col items-center gap-2 text-center">
         <Link
@@ -71,7 +71,20 @@ const Footer = () => {
           </Link>
         ))}
       </div>
-      <p className="text-xs text-brand-400">kontakt@minihjorne.no</p>
+
+      <div className="flex flex-col items-center gap-2 px-4 text-center">
+        <p className="text-xs text-gray-400">Org navn: Marong Utvikling</p>
+        <p className="text-xs text-gray-400">Org nummer: 926647504</p>
+        <p className="text-xs text-gray-400">Telefon: +47 46 80 70 41</p>
+        <p className="text-xs text-gray-400">
+          Addresse: Kanonhallveien 12a, 0585 Oslo
+        </p>
+        <p className="text-xs text-brand-400">Email: kontakt@minihjorne.no</p>
+      </div>
+      <p className="py-4 text-center text-xs text-gray-400">
+        &copy; {new Date().getFullYear()} Minihjørne. Alle rettigheter
+        forbeholdes.
+      </p>
     </footer>
   );
 };

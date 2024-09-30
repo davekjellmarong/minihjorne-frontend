@@ -66,7 +66,6 @@ const Filters = ({ setOpen, open }: FiltersProps) => {
               filter="category_type"
               queryTemplate={queryTemplates.categoryTypeQueryTemplate}
             />
-
             <Filter
               queryParams={queryParams}
               data={sizes}
