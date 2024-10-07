@@ -3,12 +3,15 @@ import { incrementProductViews } from "@/serverActions/ServerActions";
 import { Product as ProductType } from "@/utils/types";
 import Image from "next/image";
 import Link from "next/link";
+import { usePostHog } from "posthog-js/react";
 import React from "react";
 
 interface ProductProps {
   product: ProductType;
 }
 const Product = ({ product }: ProductProps) => {
+  const posthog = usePostHog();
+
   const { image, brand, price, size } = product.attributes;
   return (
     <Link
@@ -17,6 +20,10 @@ const Product = ({ product }: ProductProps) => {
       key={product.id}
       onClick={() => {
         incrementProductViews(product.id);
+        posthog.capture("product_view", {
+          product: product,
+          location: "products_page",
+        });
       }}
     >
       <div className="relative">
