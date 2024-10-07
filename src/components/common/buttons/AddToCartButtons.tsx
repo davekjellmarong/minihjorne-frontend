@@ -7,12 +7,14 @@ import { Product } from "@/utils/types";
 import ActionsColoredBox from "@/components/UI/common/ActionColoredBox";
 import { incrementProductAddedToCart } from "@/serverActions/ServerActions";
 import { Button } from "@/components/UI/button";
+import { usePostHog } from "posthog-js/react";
 
 interface AddToCartButtonsProps {
   product: Product;
 }
 
 const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
+  const posthog = usePostHog();
   const [addedProductsIds, setAddedProductsIds] =
     useState<number[]>(getSavedProductIds());
   if (product.attributes.sold) return null;
@@ -38,6 +40,9 @@ const AddToCartButtons = ({ product }: AddToCartButtonsProps) => {
             setAddedProductsIds([...addedProductsIds, product.id]);
             toast.info("Lagt til", { position: toast.POSITION.BOTTOM_RIGHT });
             incrementProductAddedToCart(product.id);
+            posthog.capture("add_to_cart", {
+              product: product,
+            });
           }}
           // className="flex gap-2 rounded border-2 border-green-500 bg-green-500 px-5 py-3"
         >
