@@ -1,1138 +1,289 @@
 {
   "version": 2,
   "data": {
-    "plugin::users-permissions.permission": {
+    "api::category.category": {
       "1": {
         "id": 1,
-        "action": "plugin::users-permissions.user.me",
-        "createdAt": "2023-11-30T13:04:38.460Z",
-        "updatedAt": "2024-09-13T22:07:24.231Z",
-        "role": 1,
+        "name": "Hode",
+        "icon": "Head",
+        "order": 1,
+        "createdAt": "2023-12-22T18:26:16.963Z",
+        "updatedAt": "2024-07-11T14:04:05.474Z",
+        "publishedAt": null,
+        "category_types": [1, 2, 3],
         "createdBy": null,
         "updatedBy": null
       },
       "2": {
         "id": 2,
-        "action": "plugin::users-permissions.auth.changePassword",
-        "createdAt": "2023-11-30T13:04:38.460Z",
-        "updatedAt": "2024-09-13T22:07:24.264Z",
-        "role": 1,
+        "name": "Body",
+        "icon": "Body",
+        "order": 3,
+        "createdAt": "2023-12-22T18:26:16.970Z",
+        "updatedAt": "2024-07-11T14:04:05.495Z",
+        "publishedAt": "2023-12-03T13:08:52.277Z",
+        "category_types": [4],
         "createdBy": null,
         "updatedBy": null
       },
       "3": {
         "id": 3,
-        "action": "plugin::users-permissions.auth.callback",
-        "createdAt": "2023-11-30T13:04:38.462Z",
-        "updatedAt": "2024-09-13T22:07:24.293Z",
-        "role": 2,
+        "name": "Genser",
+        "icon": "Sweater",
+        "order": 5,
+        "createdAt": "2023-12-22T18:26:16.973Z",
+        "updatedAt": "2024-07-11T14:04:05.514Z",
+        "publishedAt": "2023-12-03T13:08:52.277Z",
+        "category_types": [4, 5],
         "createdBy": null,
         "updatedBy": null
       },
       "4": {
         "id": 4,
-        "action": "plugin::users-permissions.auth.connect",
-        "createdAt": "2023-11-30T13:04:38.462Z",
-        "updatedAt": "2024-09-13T22:07:24.323Z",
-        "role": 2,
+        "name": "Kjole",
+        "icon": "Dress",
+        "order": 6,
+        "createdAt": "2023-12-22T18:26:16.975Z",
+        "updatedAt": "2024-07-11T14:04:05.536Z",
+        "publishedAt": "2023-12-03T13:08:52.277Z",
+        "category_types": [4, 5],
         "createdBy": null,
         "updatedBy": null
       },
       "5": {
         "id": 5,
-        "action": "plugin::users-permissions.auth.forgotPassword",
-        "createdAt": "2023-11-30T13:04:38.462Z",
-        "updatedAt": "2024-09-13T22:07:24.350Z",
-        "role": 2,
+        "name": "T skjorte",
+        "icon": "TShirt",
+        "order": 7,
+        "createdAt": "2023-12-22T18:26:16.976Z",
+        "updatedAt": "2024-07-11T14:04:05.556Z",
+        "publishedAt": "2023-12-22T14:21:18.270Z",
+        "category_types": [4],
         "createdBy": null,
         "updatedBy": null
       },
       "6": {
         "id": 6,
-        "action": "plugin::users-permissions.auth.resetPassword",
-        "createdAt": "2023-11-30T13:04:38.462Z",
-        "updatedAt": "2024-09-13T22:07:24.377Z",
-        "role": 2,
+        "name": "Bukse",
+        "icon": "Pants",
+        "order": 9,
+        "createdAt": "2023-12-22T18:26:16.978Z",
+        "updatedAt": "2024-07-11T14:04:05.576Z",
+        "publishedAt": "2023-12-22T14:21:18.270Z",
+        "category_types": [1, 2, 3, 4, 5],
         "createdBy": null,
         "updatedBy": null
       },
       "7": {
         "id": 7,
-        "action": "plugin::users-permissions.auth.register",
-        "createdAt": "2023-11-30T13:04:38.462Z",
-        "updatedAt": "2024-09-13T22:07:24.403Z",
-        "role": 2,
+        "name": "Sko",
+        "icon": "Shoes",
+        "order": 12,
+        "createdAt": "2023-12-22T18:26:16.979Z",
+        "updatedAt": "2024-07-11T14:04:05.595Z",
+        "publishedAt": null,
+        "category_types": [1, 2, 3],
         "createdBy": null,
         "updatedBy": null
       },
       "8": {
         "id": 8,
-        "action": "plugin::users-permissions.auth.emailConfirmation",
-        "createdAt": "2023-11-30T13:04:38.462Z",
-        "updatedAt": "2024-09-13T22:07:24.433Z",
-        "role": 2,
+        "name": "Shorts",
+        "icon": "Shorts",
+        "order": 10,
+        "createdAt": "2023-12-22T18:26:16.981Z",
+        "updatedAt": "2024-07-11T14:04:05.616Z",
+        "publishedAt": "2023-12-22T18:02:45.280Z",
+        "category_types": [4],
         "createdBy": null,
         "updatedBy": null
       },
       "9": {
         "id": 9,
-        "action": "plugin::users-permissions.auth.sendEmailConfirmation",
-        "createdAt": "2023-11-30T13:04:38.462Z",
-        "updatedAt": "2024-09-13T22:07:24.459Z",
-        "role": 2,
+        "name": "Skjørt",
+        "icon": "Skirt",
+        "order": 11,
+        "createdAt": "2023-12-22T18:26:16.982Z",
+        "updatedAt": "2024-07-11T14:04:05.636Z",
+        "publishedAt": "2023-12-22T18:02:54.759Z",
+        "category_types": [4, 5],
         "createdBy": null,
         "updatedBy": null
       },
       "10": {
         "id": 10,
-        "action": "api::category.category.find",
-        "createdAt": "2024-06-26T09:44:47.171Z",
-        "updatedAt": "2024-06-26T09:44:47.171Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "11": {
-        "id": 11,
-        "action": "api::product.product.findOne",
-        "createdAt": "2023-12-01T09:59:08.217Z",
-        "updatedAt": "2024-09-13T22:07:24.483Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "12": {
-        "id": 12,
-        "action": "api::color.color.find",
-        "createdAt": "2023-12-01T10:37:10.233Z",
-        "updatedAt": "2024-09-13T22:07:24.511Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "13": {
-        "id": 13,
-        "action": "api::color.color.findOne",
-        "createdAt": "2023-12-01T10:37:10.233Z",
-        "updatedAt": "2024-09-13T22:07:24.536Z",
-        "role": 2,
+        "name": "Hansker",
+        "icon": "Gloves",
+        "order": 8,
+        "createdAt": "2023-12-22T18:26:16.983Z",
+        "updatedAt": "2024-07-11T14:04:05.657Z",
+        "publishedAt": null,
+        "category_types": [1, 3],
         "createdBy": null,
         "updatedBy": null
       },
       "14": {
         "id": 14,
-        "action": "api::tag.tag.find",
-        "createdAt": "2023-12-01T10:37:10.233Z",
-        "updatedAt": "2024-09-13T22:07:24.566Z",
-        "role": 2,
+        "name": "Jakke",
+        "icon": "Jacket",
+        "order": 4,
+        "createdAt": "2023-12-22T18:26:16.984Z",
+        "updatedAt": "2024-07-11T14:04:05.678Z",
+        "publishedAt": "2023-12-22T17:52:25.189Z",
+        "category_types": [1, 2, 3, 4, 5],
         "createdBy": null,
         "updatedBy": null
       },
       "15": {
         "id": 15,
-        "action": "api::tag.tag.findOne",
-        "createdAt": "2023-12-01T10:37:10.233Z",
-        "updatedAt": "2024-09-13T22:07:24.594Z",
-        "role": 2,
+        "name": "Dress",
+        "icon": "OutdoorSuit",
+        "order": 2,
+        "createdAt": "2023-12-22T18:26:16.985Z",
+        "updatedAt": "2024-07-11T14:04:05.698Z",
+        "publishedAt": "2023-12-22T18:16:01.642Z",
+        "category_types": [1, 3],
         "createdBy": null,
         "updatedBy": null
       },
       "16": {
         "id": 16,
-        "action": "plugin::users-permissions.role.findOne",
-        "createdAt": "2023-12-01T11:00:35.856Z",
-        "updatedAt": "2024-09-13T22:07:24.623Z",
-        "role": 2,
+        "name": "Sett",
+        "icon": "Set",
+        "order": 13,
+        "createdAt": "2024-07-01T09:01:39.656Z",
+        "updatedAt": "2024-08-06T21:44:58.936Z",
+        "publishedAt": "2024-07-01T09:01:41.979Z",
+        "category_types": [4, 2, 1, 3, 5],
         "createdBy": null,
         "updatedBy": null
       },
       "17": {
         "id": 17,
-        "action": "plugin::users-permissions.role.find",
-        "createdAt": "2023-12-01T11:00:35.856Z",
-        "updatedAt": "2024-09-13T22:07:24.648Z",
-        "role": 2,
+        "name": "Sokker",
+        "icon": "Socks",
+        "order": 15,
+        "createdAt": "2024-07-10T20:45:05.740Z",
+        "updatedAt": "2024-07-11T14:04:05.741Z",
+        "publishedAt": null,
+        "category_types": [4],
         "createdBy": null,
         "updatedBy": null
       },
       "18": {
         "id": 18,
-        "action": "plugin::users-permissions.user.find",
-        "createdAt": "2023-12-01T11:21:23.655Z",
-        "updatedAt": "2024-09-13T22:07:24.677Z",
-        "role": 2,
+        "name": "Pysj",
+        "icon": "Pajamas",
+        "order": 16,
+        "createdAt": "2024-07-10T20:45:15.709Z",
+        "updatedAt": "2024-07-11T14:04:05.763Z",
+        "publishedAt": "2024-07-11T07:10:49.340Z",
+        "category_types": [4],
         "createdBy": null,
         "updatedBy": null
       },
       "19": {
         "id": 19,
-        "action": "plugin::users-permissions.user.findOne",
-        "createdAt": "2023-12-01T11:21:23.655Z",
-        "updatedAt": "2024-09-13T22:07:24.703Z",
-        "role": 2,
+        "name": "One Piece",
+        "icon": "OnePiece",
+        "order": 17,
+        "createdAt": "2024-07-10T20:45:30.640Z",
+        "updatedAt": "2024-07-11T14:04:05.783Z",
+        "publishedAt": "2024-07-11T07:10:49.340Z",
+        "category_types": [4],
         "createdBy": null,
         "updatedBy": null
       },
       "20": {
         "id": 20,
-        "action": "api::size.size.find",
-        "createdAt": "2023-12-01T22:07:30.254Z",
-        "updatedAt": "2024-09-13T22:07:24.730Z",
-        "role": 2,
+        "name": "Bluse",
+        "icon": "Blouse",
+        "order": null,
+        "createdAt": "2024-08-06T21:11:02.606Z",
+        "updatedAt": "2024-08-06T21:29:06.207Z",
+        "publishedAt": "2024-08-06T21:40:28.171Z",
+        "category_types": [5, 4],
         "createdBy": null,
         "updatedBy": null
       },
       "21": {
         "id": 21,
-        "action": "api::size.size.findOne",
-        "createdAt": "2023-12-01T22:07:30.254Z",
-        "updatedAt": "2024-09-13T22:07:24.769Z",
-        "role": 2,
+        "name": "Singlet",
+        "icon": "Singlet",
+        "order": null,
+        "createdAt": "2024-08-06T21:18:15.316Z",
+        "updatedAt": "2024-08-06T21:29:26.449Z",
+        "publishedAt": "2024-08-06T21:40:28.171Z",
+        "category_types": [4],
         "createdBy": null,
         "updatedBy": null
       },
       "22": {
         "id": 22,
-        "action": "api::category.category.find",
-        "createdAt": "2023-12-03T13:14:14.491Z",
-        "updatedAt": "2024-09-13T22:07:24.796Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "23": {
-        "id": 23,
-        "action": "api::category.category.findOne",
-        "createdAt": "2023-12-03T13:14:14.491Z",
-        "updatedAt": "2024-09-13T22:07:24.822Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "24": {
-        "id": 24,
-        "action": "api::material.material.find",
-        "createdAt": "2023-12-03T13:14:14.491Z",
-        "updatedAt": "2024-09-13T22:07:24.848Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "25": {
-        "id": 25,
-        "action": "api::material.material.findOne",
-        "createdAt": "2023-12-03T13:14:14.491Z",
-        "updatedAt": "2024-09-13T22:07:24.872Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "26": {
-        "id": 26,
-        "action": "plugin::upload.content-api.upload",
-        "createdAt": "2023-12-03T20:00:59.625Z",
-        "updatedAt": "2024-09-13T22:07:24.898Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "27": {
-        "id": 27,
-        "action": "api::category.category.find",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:24.924Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "28": {
-        "id": 28,
-        "action": "api::category.category.findOne",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:24.952Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "29": {
-        "id": 29,
-        "action": "api::color.color.find",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:24.979Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "30": {
-        "id": 30,
-        "action": "api::color.color.findOne",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.010Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "31": {
-        "id": 31,
-        "action": "api::material.material.find",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.040Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "32": {
-        "id": 32,
-        "action": "api::material.material.findOne",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.070Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "33": {
-        "id": 33,
-        "action": "api::product.product.find",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.099Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "34": {
-        "id": 34,
-        "action": "api::product.product.findOne",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.129Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "35": {
-        "id": 35,
-        "action": "api::size.size.find",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.155Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "36": {
-        "id": 36,
-        "action": "api::size.size.findOne",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.182Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "37": {
-        "id": 37,
-        "action": "api::tag.tag.find",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.208Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "38": {
-        "id": 38,
-        "action": "api::tag.tag.findOne",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.234Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "39": {
-        "id": 39,
-        "action": "plugin::users-permissions.user.find",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.264Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "40": {
-        "id": 40,
-        "action": "plugin::users-permissions.user.findOne",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.294Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "41": {
-        "id": 41,
-        "action": "plugin::users-permissions.role.findOne",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.322Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "42": {
-        "id": 42,
-        "action": "plugin::users-permissions.role.find",
-        "createdAt": "2023-12-03T20:51:34.881Z",
-        "updatedAt": "2024-09-13T22:07:25.353Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "43": {
-        "id": 43,
-        "action": "api::product.product.create",
-        "createdAt": "2023-12-07T21:33:01.279Z",
-        "updatedAt": "2024-09-13T22:07:25.380Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "44": {
-        "id": 44,
-        "action": "plugin::upload.content-api.upload",
-        "createdAt": "2023-12-07T21:33:01.279Z",
-        "updatedAt": "2024-09-13T22:07:25.412Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "45": {
-        "id": 45,
-        "action": "api::product.product.create",
-        "createdAt": "2023-12-07T21:33:11.338Z",
-        "updatedAt": "2024-09-13T22:07:25.442Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "46": {
-        "id": 46,
-        "action": "api::color.color.create",
-        "createdAt": "2023-12-08T06:33:11.506Z",
-        "updatedAt": "2024-09-13T22:07:25.469Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "47": {
-        "id": 47,
-        "action": "api::sex.sex.create",
-        "createdAt": "2023-12-08T06:33:11.506Z",
-        "updatedAt": "2024-09-13T22:07:25.497Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "48": {
-        "id": 48,
-        "action": "api::sex.sex.find",
-        "createdAt": "2023-12-08T20:02:00.703Z",
-        "updatedAt": "2024-09-13T22:07:25.525Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "49": {
-        "id": 49,
-        "action": "api::sex.sex.findOne",
-        "createdAt": "2023-12-08T20:02:00.703Z",
-        "updatedAt": "2024-09-13T22:07:25.551Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "50": {
-        "id": 50,
-        "action": "api::state.state.find",
-        "createdAt": "2023-12-08T20:02:00.703Z",
-        "updatedAt": "2024-09-13T22:07:25.578Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "51": {
-        "id": 51,
-        "action": "api::state.state.findOne",
-        "createdAt": "2023-12-08T20:02:00.703Z",
-        "updatedAt": "2024-09-13T22:07:25.606Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "52": {
-        "id": 52,
-        "action": "api::category.category.findOne",
-        "createdAt": "2024-06-26T09:48:01.957Z",
-        "updatedAt": "2024-06-26T09:48:01.957Z",
-        "role": null,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "53": {
-        "id": 53,
-        "action": "plugin::users-permissions.user.update",
-        "createdAt": "2023-12-10T21:19:10.054Z",
-        "updatedAt": "2024-09-09T22:22:33.241Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "54": {
-        "id": 54,
-        "action": "api::sex.sex.find",
-        "createdAt": "2023-12-13T21:21:55.954Z",
-        "updatedAt": "2024-09-13T22:07:25.633Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "55": {
-        "id": 55,
-        "action": "api::sex.sex.findOne",
-        "createdAt": "2023-12-13T21:21:55.954Z",
-        "updatedAt": "2024-09-13T22:07:25.660Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "56": {
-        "id": 56,
-        "action": "api::order.order.find",
-        "createdAt": "2023-12-14T20:57:35.281Z",
-        "updatedAt": "2024-09-13T22:07:25.693Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "57": {
-        "id": 57,
-        "action": "api::order.order.findOne",
-        "createdAt": "2023-12-14T20:57:35.281Z",
-        "updatedAt": "2024-09-13T22:07:25.726Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "58": {
-        "id": 58,
-        "action": "api::order.order.create",
-        "createdAt": "2023-12-14T20:57:35.281Z",
-        "updatedAt": "2024-09-13T22:07:25.757Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "59": {
-        "id": 59,
-        "action": "api::state.state.find",
-        "createdAt": "2023-12-14T20:57:35.281Z",
-        "updatedAt": "2024-09-13T22:07:25.783Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "60": {
-        "id": 60,
-        "action": "api::state.state.findOne",
-        "createdAt": "2023-12-14T20:57:35.281Z",
-        "updatedAt": "2024-09-13T22:07:25.809Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "61": {
-        "id": 61,
-        "action": "api::product.product.update",
-        "createdAt": "2023-12-15T13:41:05.509Z",
-        "updatedAt": "2024-09-13T22:07:25.835Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "62": {
-        "id": 62,
-        "action": "api::product.product.delete",
-        "createdAt": "2023-12-15T13:41:05.509Z",
-        "updatedAt": "2024-09-13T22:07:25.862Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "63": {
-        "id": 63,
-        "action": "api::status.status.find",
-        "createdAt": "2023-12-15T15:55:32.603Z",
-        "updatedAt": "2024-09-13T22:07:25.889Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "64": {
-        "id": 64,
-        "action": "api::status.status.findOne",
-        "createdAt": "2023-12-15T15:55:32.603Z",
-        "updatedAt": "2024-09-13T22:07:25.916Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "65": {
-        "id": 65,
-        "action": "api::payment.payment.create",
-        "createdAt": "2023-12-16T21:24:23.664Z",
-        "updatedAt": "2024-09-13T22:07:25.943Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "66": {
-        "id": 66,
-        "action": "api::payment.payment.find",
-        "createdAt": "2023-12-16T21:24:23.664Z",
-        "updatedAt": "2024-09-13T22:07:25.970Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "67": {
-        "id": 67,
-        "action": "api::payment.payment.findOne",
-        "createdAt": "2023-12-16T21:24:23.664Z",
-        "updatedAt": "2024-09-13T22:07:25.995Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "68": {
-        "id": 68,
-        "action": "api::payment.payment.update",
-        "createdAt": "2023-12-16T21:24:23.664Z",
-        "updatedAt": "2024-09-13T22:07:26.022Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "69": {
-        "id": 69,
-        "action": "api::order.order.create",
-        "createdAt": "2023-12-17T08:20:04.829Z",
-        "updatedAt": "2024-09-13T22:07:26.052Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "70": {
-        "id": 70,
-        "action": "api::order.order.find",
-        "createdAt": "2023-12-17T08:20:04.829Z",
-        "updatedAt": "2024-09-13T22:07:26.083Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "71": {
-        "id": 71,
-        "action": "api::order.order.findOne",
-        "createdAt": "2023-12-17T08:20:04.829Z",
-        "updatedAt": "2024-09-13T22:07:26.109Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "72": {
-        "id": 72,
-        "action": "api::order.order.update",
-        "createdAt": "2023-12-17T08:20:04.829Z",
-        "updatedAt": "2024-09-13T22:07:26.134Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "73": {
-        "id": 73,
-        "action": "api::webhook.webhook.strapi_payment",
-        "createdAt": "2023-12-17T08:48:25.098Z",
-        "updatedAt": "2024-09-13T22:07:26.161Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "74": {
-        "id": 74,
-        "action": "plugin::users-permissions.user.find",
-        "createdAt": "2024-06-26T09:48:01.957Z",
-        "updatedAt": "2024-06-26T09:48:01.957Z",
-        "role": null,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "75": {
-        "id": 75,
-        "action": "api::product.product.find_inactive",
-        "createdAt": "2023-12-23T12:40:11.448Z",
-        "updatedAt": "2024-09-13T22:07:26.185Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "76": {
-        "id": 76,
-        "action": "plugin::users-permissions.user.me",
-        "createdAt": "2024-06-26T09:48:01.957Z",
-        "updatedAt": "2024-06-26T09:48:01.957Z",
-        "role": null,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "77": {
-        "id": 77,
-        "action": "api::product.product.find_inactive",
-        "createdAt": "2023-12-27T08:35:19.951Z",
-        "updatedAt": "2024-09-13T22:07:26.211Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "78": {
-        "id": 78,
-        "action": "api::category-type.category-type.findOne",
-        "createdAt": "2024-07-29T21:42:35.124Z",
-        "updatedAt": "2024-07-29T21:42:35.124Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "79": {
-        "id": 79,
-        "action": "api::product.product.find",
-        "createdAt": "2023-12-27T09:10:04.362Z",
-        "updatedAt": "2024-09-13T22:07:26.235Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "80": {
-        "id": 80,
-        "action": "plugin::users-permissions.user.update",
-        "createdAt": "2024-01-24T23:07:55.819Z",
-        "updatedAt": "2024-09-09T22:22:33.906Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "81": {
-        "id": 81,
-        "action": "api::payment.payment.create_subscription_payment_link",
-        "createdAt": "2024-01-28T21:29:17.951Z",
-        "updatedAt": "2024-09-13T22:07:26.265Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "82": {
-        "id": 82,
-        "action": "api::webhook.webhook.checkout_subscriptions",
-        "createdAt": "2024-01-28T22:20:14.535Z",
-        "updatedAt": "2024-09-13T22:07:26.292Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "83": {
-        "id": 83,
-        "action": "api::plan.plan.find",
-        "createdAt": "2024-01-31T21:41:56.299Z",
-        "updatedAt": "2024-09-13T22:07:26.321Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "84": {
-        "id": 84,
-        "action": "api::plan.plan.findOne",
-        "createdAt": "2024-01-31T21:41:56.299Z",
-        "updatedAt": "2024-09-13T22:07:26.353Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "85": {
-        "id": 85,
-        "action": "api::plan.plan.find",
-        "createdAt": "2024-01-31T21:44:42.779Z",
-        "updatedAt": "2024-09-13T22:07:26.408Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "86": {
-        "id": 86,
-        "action": "api::plan.plan.findOne",
-        "createdAt": "2024-01-31T21:44:42.779Z",
-        "updatedAt": "2024-09-13T22:07:26.437Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "87": {
-        "id": 87,
-        "action": "api::product.product.my_products_all",
-        "createdAt": "2024-02-28T11:02:32.999Z",
-        "updatedAt": "2024-09-13T22:07:26.466Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "88": {
-        "id": 88,
-        "action": "api::defect.defect.find",
-        "createdAt": "2024-07-08T07:32:32.715Z",
-        "updatedAt": "2024-09-13T22:07:26.492Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "89": {
-        "id": 89,
-        "action": "api::defect.defect.findOne",
-        "createdAt": "2024-07-08T07:32:32.715Z",
-        "updatedAt": "2024-09-13T22:07:26.532Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "90": {
-        "id": 90,
-        "action": "api::defect.defect.find",
-        "createdAt": "2024-07-08T07:32:45.776Z",
-        "updatedAt": "2024-09-13T22:07:26.563Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "91": {
-        "id": 91,
-        "action": "api::defect.defect.findOne",
-        "createdAt": "2024-07-08T07:32:45.776Z",
-        "updatedAt": "2024-09-13T22:07:26.591Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "92": {
-        "id": 92,
-        "action": "api::category-type.category-type.find",
-        "createdAt": "2024-07-11T07:47:21.808Z",
-        "updatedAt": "2024-09-13T22:07:26.621Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "93": {
-        "id": 93,
-        "action": "api::category-type.category-type.findOne",
-        "createdAt": "2024-07-11T07:47:21.808Z",
-        "updatedAt": "2024-09-13T22:07:26.650Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "94": {
-        "id": 94,
-        "action": "api::category-type.category-type.find",
-        "createdAt": "2024-07-11T07:47:30.038Z",
-        "updatedAt": "2024-09-13T22:07:26.678Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "95": {
-        "id": 95,
-        "action": "api::category-type.category-type.findOne",
-        "createdAt": "2024-07-11T07:47:30.038Z",
-        "updatedAt": "2024-09-13T22:07:26.705Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "98": {
-        "id": 98,
-        "action": "api::feature-flag.feature-flag.find",
-        "createdAt": "2024-07-19T19:05:13.215Z",
-        "updatedAt": "2024-09-13T22:07:26.731Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "99": {
-        "id": 99,
-        "action": "api::feature-flag.feature-flag.findOne",
-        "createdAt": "2024-07-19T19:05:13.215Z",
-        "updatedAt": "2024-09-13T22:07:26.761Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "100": {
-        "id": 100,
-        "action": "api::category.category.create",
-        "createdAt": "2024-08-04T11:25:06.125Z",
-        "updatedAt": "2024-09-13T22:07:26.788Z",
-        "role": 3,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "101": {
-        "id": 101,
-        "action": "api::category.category.delete",
-        "createdAt": "2024-08-04T11:25:06.125Z",
-        "updatedAt": "2024-09-13T22:07:26.812Z",
-        "role": 3,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "102": {
-        "id": 102,
-        "action": "api::brand.brand.find",
-        "createdAt": "2024-08-07T19:50:54.233Z",
-        "updatedAt": "2024-09-13T22:07:26.837Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "103": {
-        "id": 103,
-        "action": "api::brand.brand.findOne",
-        "createdAt": "2024-08-07T19:50:54.233Z",
-        "updatedAt": "2024-09-13T22:07:26.863Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "104": {
-        "id": 104,
-        "action": "api::brand.brand.find",
-        "createdAt": "2024-08-07T19:51:04.034Z",
-        "updatedAt": "2024-09-13T22:07:26.893Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "105": {
-        "id": 105,
-        "action": "api::brand.brand.findOne",
-        "createdAt": "2024-08-07T19:51:04.034Z",
-        "updatedAt": "2024-09-13T22:07:26.918Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "106": {
-        "id": 106,
-        "action": "plugin::users-permissions.auth.resetPassword",
-        "createdAt": "2024-08-10T08:57:47.348Z",
-        "updatedAt": "2024-09-13T22:07:26.953Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "107": {
-        "id": 107,
-        "action": "api::webhook.webhook.sendEmailTest",
-        "createdAt": "2024-08-17T21:16:51.579Z",
-        "updatedAt": "2024-09-13T22:07:26.981Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "108": {
-        "id": 108,
-        "action": "api::payment.payment.create",
-        "createdAt": "2024-08-18T22:04:04.590Z",
-        "updatedAt": "2024-09-13T22:07:27.006Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "109": {
-        "id": 109,
-        "action": "api::product.product.increment_views",
-        "createdAt": "2024-08-22T14:17:30.960Z",
-        "updatedAt": "2024-09-13T22:07:27.032Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "110": {
-        "id": 110,
-        "action": "api::product.product.increment_add_to_cart",
-        "createdAt": "2024-08-23T19:00:06.424Z",
-        "updatedAt": "2024-09-13T22:07:27.061Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "111": {
-        "id": 111,
-        "action": "api::product.product.increment_user_views",
-        "createdAt": "2024-08-23T19:14:18.597Z",
-        "updatedAt": "2024-09-13T22:07:27.086Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "113": {
-        "id": 113,
-        "action": "api::user-status.user-status.find",
-        "createdAt": "2024-09-01T12:30:54.611Z",
-        "updatedAt": "2024-09-13T22:07:27.116Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "114": {
-        "id": 114,
-        "action": "api::user-status.user-status.findOne",
-        "createdAt": "2024-09-01T12:30:54.611Z",
-        "updatedAt": "2024-09-13T22:07:27.140Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "115": {
-        "id": 115,
-        "action": "api::user-status.user-status.find",
-        "createdAt": "2024-09-01T12:31:02.752Z",
-        "updatedAt": "2024-09-13T22:07:27.166Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "116": {
-        "id": 116,
-        "action": "api::user-status.user-status.findOne",
-        "createdAt": "2024-09-01T12:31:02.752Z",
-        "updatedAt": "2024-09-13T22:07:27.190Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "117": {
-        "id": 117,
-        "action": "api::delivery.delivery.find",
-        "createdAt": "2024-09-03T11:47:13.515Z",
-        "updatedAt": "2024-09-13T22:07:27.216Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "118": {
-        "id": 118,
-        "action": "api::delivery.delivery.findOne",
-        "createdAt": "2024-09-03T11:47:13.516Z",
-        "updatedAt": "2024-09-13T22:07:27.241Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "119": {
-        "id": 119,
-        "action": "api::delivery.delivery.create",
-        "createdAt": "2024-09-03T11:47:13.516Z",
-        "updatedAt": "2024-09-13T22:07:27.266Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "120": {
-        "id": 120,
-        "action": "api::delivery-type.delivery-type.find",
-        "createdAt": "2024-09-03T11:47:13.516Z",
-        "updatedAt": "2024-09-13T22:07:27.288Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "121": {
-        "id": 121,
-        "action": "api::delivery-type.delivery-type.findOne",
-        "createdAt": "2024-09-03T11:47:13.516Z",
-        "updatedAt": "2024-09-13T22:07:27.314Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "122": {
-        "id": 122,
-        "action": "api::sales-method.sales-method.find",
-        "createdAt": "2024-09-03T12:47:13.426Z",
-        "updatedAt": "2024-09-13T22:07:27.342Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "123": {
-        "id": 123,
-        "action": "api::sales-method.sales-method.findOne",
-        "createdAt": "2024-09-03T12:47:13.426Z",
-        "updatedAt": "2024-09-13T22:07:27.369Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "124": {
-        "id": 124,
-        "action": "api::sales-method.sales-method.find",
-        "createdAt": "2024-09-03T12:48:55.551Z",
-        "updatedAt": "2024-09-13T22:07:27.394Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "125": {
-        "id": 125,
-        "action": "api::sales-method.sales-method.findOne",
-        "createdAt": "2024-09-03T12:48:55.551Z",
-        "updatedAt": "2024-09-13T22:07:27.422Z",
-        "role": 2,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "126": {
-        "id": 126,
-        "action": "api::delivery.delivery.update",
-        "createdAt": "2024-09-04T11:18:23.253Z",
-        "updatedAt": "2024-09-13T22:07:27.452Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "127": {
-        "id": 127,
-        "action": "api::product.product.admin_products_all",
-        "createdAt": "2024-09-05T19:48:44.017Z",
-        "updatedAt": "2024-09-13T22:07:27.479Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "128": {
-        "id": 128,
-        "action": "api::delivery.delivery.relateProductsToUser",
-        "createdAt": "2024-09-09T21:14:05.854Z",
-        "updatedAt": "2024-09-13T22:07:27.506Z",
-        "role": 1,
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "129": {
-        "id": 129,
-        "action": "api::custom.custom.getBankAccountNumber",
-        "createdAt": "2024-09-13T21:30:11.897Z",
-        "updatedAt": "2024-09-13T22:07:27.531Z",
-        "role": 1,
+        "name": "Skjorte",
+        "icon": "Shirt",
+        "order": null,
+        "createdAt": "2024-08-06T21:25:48.964Z",
+        "updatedAt": "2024-08-06T21:29:16.457Z",
+        "publishedAt": "2024-08-06T21:40:28.171Z",
+        "category_types": [5, 4],
+        "createdBy": null,
+        "updatedBy": null
+      }
+    },
+    "api::category-type.category-type": {
+      "1": {
+        "id": 1,
+        "name": "Uteklær",
+        "createdAt": "2024-07-11T07:44:13.839Z",
+        "updatedAt": "2024-07-11T14:04:05.384Z",
+        "publishedAt": "2024-07-11T07:47:11.122Z",
+        "order": null,
+        "categories": [15, 10, 1, 14, 6, 7, 16],
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "2": {
+        "id": 2,
+        "name": "Regnklær",
+        "createdAt": "2024-07-11T07:44:33.916Z",
+        "updatedAt": "2024-07-11T14:04:05.410Z",
+        "publishedAt": "2024-07-11T07:47:11.122Z",
+        "order": null,
+        "categories": [6, 14, 1, 7, 16],
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "3": {
+        "id": 3,
+        "name": "Vinterklær",
+        "createdAt": "2024-07-11T07:45:12.628Z",
+        "updatedAt": "2024-07-11T14:04:05.431Z",
+        "publishedAt": "2024-07-11T07:47:11.122Z",
+        "order": null,
+        "categories": [6, 15, 14, 1, 10, 7, 16],
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "4": {
+        "id": 4,
+        "name": "Inneklær",
+        "createdAt": "2024-07-11T07:46:29.214Z",
+        "updatedAt": "2024-08-06T21:50:11.550Z",
+        "publishedAt": "2024-07-11T07:47:11.122Z",
+        "order": null,
+        "categories": [2, 6, 3, 14, 4, 19, 18, 16, 8, 9, 17, 5, 21, 22, 20],
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "5": {
+        "id": 5,
+        "name": "Penklær",
+        "createdAt": "2024-08-06T21:04:18.147Z",
+        "updatedAt": "2024-08-06T21:04:20.983Z",
+        "publishedAt": "2024-08-06T21:04:20.977Z",
+        "order": 0,
+        "categories": [6, 3, 14, 4, 16, 9, 20, 22],
         "createdBy": null,
         "updatedBy": null
       }
