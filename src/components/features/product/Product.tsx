@@ -12,7 +12,18 @@ interface ProductProps {
 const Product = ({ product }: ProductProps) => {
   const posthog = usePostHog();
 
-  const { image, brand, price, size } = product.attributes;
+  const {
+    image,
+    brand,
+    price,
+    size,
+    category,
+    seller,
+    category_type,
+    sex,
+    material,
+  } = product.attributes;
+
   return (
     <Link
       href={`/brukte-barne-klaer/${product.id}`}
@@ -21,7 +32,14 @@ const Product = ({ product }: ProductProps) => {
       onClick={() => {
         incrementProductViews(product.id);
         posthog.capture("product_view", {
-          product: product,
+          id: product.id,
+          seller: seller.data.attributes.username,
+          brand: brand,
+          category: category.data.attributes.name,
+          size: size.data.attributes.number,
+          category_type: category_type.data.attributes.name,
+          sex: sex.data.attributes.name,
+          price: price,
           location: "products_page",
         });
       }}
