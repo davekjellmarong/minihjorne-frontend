@@ -11,8 +11,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/common/buttons/Button";
 import Image from "next/image";
+import { usePostHog } from "posthog-js/react";
 
 const Page = () => {
+  const posthog = usePostHog();
   const router = useRouter();
   let productItems: Product[] = [];
   if (typeof window !== "undefined") {
@@ -99,6 +101,10 @@ const Page = () => {
           className={`shadow- max-w-[350px] rounded  bg-brand-500 px-8 py-4 text-center font-semibold text-white`}
           onClick={() => {
             router.push("/checkout");
+            posthog.capture("go_to_checkout", {
+              products: cartItems,
+              totalPrice: totalPrice,
+            });
           }}
         >
           Gå til betaling
