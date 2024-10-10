@@ -7,7 +7,6 @@ import Filters from "@/components/features/product/filter/Filters";
 import FilterChips from "@/components/features/product/filter/FilterChips";
 import FilterIcon from "@/components/features/product/filter/FilterIcon";
 import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
-import SortMenu from "@/components/features/product/SortMenu";
 
 export interface SelectedFilter {
   query: string;

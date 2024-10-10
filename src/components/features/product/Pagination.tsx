@@ -5,11 +5,13 @@ import React from "react";
 import PageNumber from "./PageNumber";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductQueries } from "@/queryFactory/Product";
+import { usePostHog } from "posthog-js/react";
 
 interface PaginationProps {
   pageCount: number | undefined;
 }
 const Pagination = () => {
+  const posthog = usePostHog();
   const router = useRouter();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
@@ -42,6 +44,12 @@ const Pagination = () => {
           onClick={() => {
             params.set("pagination[page]", String(page + 1));
             router.push(`?${params.toString()}`);
+            if (pageCount === page - 1) {
+              posthog.capture("last_product_page", {
+                location: "products_page",
+                pageCount: pageCount,
+              });
+            }
           }}
         >
           <p></p>
