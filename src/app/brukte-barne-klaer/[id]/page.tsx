@@ -55,14 +55,14 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
                   );
                 })}
               </CarouselComponent>
-              <div className="mt-4 flex items-center gap-2">
+              <div className="mt-4 flex flex-col">
                 <div className="text-2xl font-bold">Kr {price}</div>
                 <div className="text-sm text-gray-500">
                   Størrelse: {size.data.attributes.number}
                 </div>
               </div>
               <div className="mt-2">
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-4">
                   <ColorSquares
                     size="small"
                     colors={colors.data}
