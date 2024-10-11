@@ -6,7 +6,6 @@ interface SalgsprofilHeaderProps {
 }
 const SalgsprofilHeader = async ({ id }: SalgsprofilHeaderProps) => {
   const seller = await SellerMethods.getById(id);
-  console.log(seller);
   const description = seller.attributes.description
     ?.split("\n")
     .map((item, index) => {
@@ -22,10 +21,12 @@ const SalgsprofilHeader = async ({ id }: SalgsprofilHeaderProps) => {
     });
   return (
     <>
-      <div className="flex items-center gap-14">
-        <p className="text-lg font-semibold">{seller.attributes.header}</p>
+      <div className="flex items-center justify-center gap-14">
+        <p className="text-center text-lg font-semibold">
+          {seller.attributes.header}
+        </p>
       </div>
-      <p className="flex items-center gap-1 text-gray-500">
+      <p className="flex items-center justify-center gap-1 text-center text-gray-500">
         <User size={28} />
         <span>{seller.attributes.username}</span>
       </p>

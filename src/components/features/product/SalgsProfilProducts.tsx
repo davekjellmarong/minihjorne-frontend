@@ -11,7 +11,8 @@ const SalgsProfilProducts = ({ id }: { id: string | number }) => {
     ProductQueries.sellerId(String(id)),
   );
   return (
-    <ul className="mt-10 grid w-full grid-cols-2 justify-items-center gap-x-4 gap-y-16 sm:grid-cols-3 md:grid-cols-4">
+    // <ul className="mt-10 grid w-full grid-cols-2 justify-items-center gap-x-4 gap-y-16 sm:grid-cols-3 md:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
       {products.map((product) => {
         return (
           <React.Fragment key={product.id}>
@@ -19,7 +20,7 @@ const SalgsProfilProducts = ({ id }: { id: string | number }) => {
           </React.Fragment>
         );
       })}
-    </ul>
+    </div>
   );
 };
 
