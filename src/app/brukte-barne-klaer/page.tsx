@@ -7,6 +7,7 @@ import Filters from "@/components/features/product/filter/Filters";
 import FilterChips from "@/components/features/product/filter/FilterChips";
 import FilterIcon from "@/components/features/product/filter/FilterIcon";
 import ProductsSkeleton from "@/components/features/product/ProductsSkeleton";
+import LastProductsPage from "@/components/features/product/LastProductsPage";
 
 export interface SelectedFilter {
   query: string;
@@ -19,7 +20,7 @@ const ProductPage = () => {
   const [sortBy, setSortBy] = useState("sort=random_weight:desc");
   return (
     <>
-      <div className="relative flex w-full flex-col items-center px-4">
+      <div className="relative flex w-full flex-col px-4">
         <div className="w-full  py-10 ">
           <h2 className="text-3xl ">Produkter</h2>
         </div>
@@ -40,9 +41,10 @@ const ProductPage = () => {
         </Suspense>
         <Suspense fallback={<ProductsSkeleton />}>
           <Products />
-          <div className="flex flex-col gap-6 py-6">
+          <div className="flex justify-center py-6">
             <Pagination />
           </div>
+          {/* <LastProductsPage /> */}
         </Suspense>
       </div>
     </>

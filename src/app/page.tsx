@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       <OpeningSoon />
-      <div className="px-3">
+      <div className="px-4">
         <div className="my-6">
           <QuickList />
         </div>
