@@ -14,6 +14,7 @@ import { UserBackend } from "@/utils/types";
 import Button from "@/components/common/buttons/Button";
 import { updateAmountByShipping } from "@/serverActions/Stripe";
 import TermsChecked from "./TermsChecked";
+import { usePostHog } from "posthog-js/react";
 interface StripeFormProps {
   price: any;
   user: UserBackend | undefined;
@@ -22,6 +23,8 @@ interface StripeFormProps {
 const StripeForm = ({ price, user, clientId }: StripeFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
+  const posthog = usePostHog();
+
   const [termsChecked, setTermsChecked] = useState(false);
   const [isShipping, setIsShipping] = useState(true);
   const [message, setMessage] = useState<any>();
@@ -70,6 +73,13 @@ const StripeForm = ({ price, user, clientId }: StripeFormProps) => {
     }
 
     setIsLoading(true);
+
+    posthog.capture("payment_completed", {
+      location: "checkout",
+      price: price,
+      shipping: isShipping,
+      pickUp: !isShipping,
+    });
 
     const { error } = await stripe.confirmPayment({
       elements,
