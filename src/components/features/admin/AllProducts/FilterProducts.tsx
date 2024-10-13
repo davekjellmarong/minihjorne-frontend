@@ -1,22 +1,20 @@
-"use client";
-import { useState } from "react";
 import { Product } from "@/utils/types";
 import Image from "next/image";
-import React from "react";
-
-interface ProductsProps {
+import React, { useState } from "react";
+interface FilterProductsProps {
   products: Product[];
 }
-
-const Products = ({ products }: ProductsProps) => {
+const FilterProducts = ({ products }: FilterProductsProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [sortOption, setSortOption] = useState<string>("");
+  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
-  // Filter products based on search term (e.g., size, price, or other attributes)
+  // Filter products based on search term (e.g., size, price, or ID)
   const handleFilter = () => {
     const filtered = products.filter(
       (product) =>
+        product.id.toString().includes(searchTerm) || // Search by ID
         product.attributes.size.data.attributes.number
           .toLowerCase()
           .includes(searchTerm.toLowerCase()) ||
@@ -51,31 +49,30 @@ const Products = ({ products }: ProductsProps) => {
     setFilteredProducts(sorted);
   };
 
+  // Handle product selection with checkboxes
+  const handleSelectProduct = (product: Product) => {
+    const isSelected = selectedProducts.some((p) => p.id === product.id);
+    if (isSelected) {
+      setSelectedProducts((prev) => prev.filter((p) => p.id !== product.id));
+    } else {
+      setSelectedProducts((prev) => [...prev, product]);
+    }
+  };
   return (
-    <div className="container mx-auto px-4 py-6">
-      <h1 className="mb-6 text-center text-2xl font-semibold">All Products</h1>
-
+    <div>
       {/* Search Filter */}
-      <div className="mb-6 flex items-center justify-center gap-4">
+      <div className="mb-6 flex justify-center gap-4">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search by size or price..."
-          className="rounded border px-4 py-2"
+          placeholder="Size, price or ID"
+          className="w-40 rounded border px-4 py-2"
         />
-        <button
-          onClick={handleFilter}
-          className="rounded bg-purple-500 px-4 py-2 text-white hover:bg-purple-600"
-        >
-          Filter
-        </button>
-
-        {/* Sort Dropdown */}
         <select
           value={sortOption}
           onChange={handleSort}
-          className="rounded border px-4 py-2"
+          className="w-40 rounded border px-4 py-2"
         >
           <option value="">Sort By</option>
           <option value="price-asc">Price: Low to High</option>
@@ -83,6 +80,14 @@ const Products = ({ products }: ProductsProps) => {
           <option value="size-asc">Size: Small to Large</option>
           <option value="size-desc">Size: Large to Small</option>
         </select>
+        <button
+          onClick={handleFilter}
+          className="rounded bg-purple-500 px-6 py-2 text-white hover:bg-purple-600"
+        >
+          Filter
+        </button>
+
+        {/* Sort Dropdown */}
       </div>
 
       {/* Grid Layout */}
@@ -107,12 +112,40 @@ const Products = ({ products }: ProductsProps) => {
                 Size: {product.attributes.size.data.attributes.number}
               </p>
               <p className="text-sm">{product.attributes.price} kr</p>
+
+              {/* Checkbox for selecting the product */}
+              <label className="mt-2 block">
+                <input
+                  type="checkbox"
+                  checked={selectedProducts.some((p) => p.id === product.id)}
+                  onChange={() => handleSelectProduct(product)}
+                />
+                Select Product
+              </label>
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Display selected products */}
+      <div className="mt-6">
+        <h2 className="text-xl font-semibold">Selected Products:</h2>
+        {selectedProducts.length > 0 ? (
+          <ul className="mt-4 list-disc pl-6">
+            {selectedProducts.map((product) => (
+              <li key={product.id}>
+                ID: {product.id}, Size:{" "}
+                {product.attributes.size.data.attributes.number}, Price:{" "}
+                {product.attributes.price} kr
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No products selected.</p>
+        )}
       </div>
     </div>
   );
 };
 
-export default Products;
+export default FilterProducts;

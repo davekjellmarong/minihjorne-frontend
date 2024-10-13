@@ -66,7 +66,7 @@ export const ProductsMethods = {
     pagesize: number,
   ): Promise<Product[]> => {
     return getData(
-      `/products?pagination[page]=${page}&pagination[pageSize]=${pagesize}&populate=size&populate=image&filters[sold][$eq]=false`,
+      `/products?pagination[page]=${page}&pagination[pageSize]=${pagesize}&populate=size&populate=image&filters[sold][$eq]=false&filters[active][$eq]=true`,
       token,
     );
   },

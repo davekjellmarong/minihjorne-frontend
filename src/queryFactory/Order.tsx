@@ -21,9 +21,12 @@ export const OrderQueries = {
     }),
 };
 
-const OrderMethods = {
+export const OrderMethods = {
   post: async (data: any, token: any) => {
     return postData(data, "/orders", token);
+  },
+  marketplaceOrder: async (data: any, token: any) => {
+    return postData(data, "/order/marketplace", token);
   },
   getByUserId: async (id: any, token: any): Promise<Order[]> => {
     return getData(`/orders?populate=*&filters[user][id][$eq]=${id}`, token);
