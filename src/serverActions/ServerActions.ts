@@ -9,6 +9,8 @@ import { redirect } from "next/navigation";
 import { ProductsMethods } from "@/queryFactory/Product";
 import { SellerMethods } from "@/queryFactory/Seller";
 import { DeliveryMethods } from "@/queryFactory/Delivery";
+import { Product } from "@/utils/types";
+import { OrderMethods } from "@/queryFactory/Order";
 const cookieStore: any = cookies();
 const token = cookieStore.get("Token")?.value;
 
@@ -199,7 +201,37 @@ export const updateBankAccountNumber = async (formdata: FormData) => {
       user.id,
       process.env.STRAPI_ACCESS_TOKEN,
     );
-    revalidatePath("/users/me?populate=*");
+    revalidatePath("/sellers/me");
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
+};
+
+export const createOrder = async (products: Product[]) => {
+  const user = await UserMethods.getMe(token);
+  if (!user.admin) return "Not an admin";
+  const productIds = products.map((product) => product.id);
+  const amount = products.reduce(
+    (acc, product) => acc + product.attributes.price,
+    0,
+  );
+  const payload = {
+    data: {
+      products: productIds,
+      amount: amount,
+    },
+  };
+
+  try {
+    console.log("inside create order");
+    const response = await OrderMethods.marketplaceOrder(
+      payload,
+      process.env.STRAPI_ACCESS_TOKEN,
+    );
+    console.log(response);
+    revalidatePath("/sellers/me");
     return response;
   } catch (error) {
     console.error("Error creating delivery:", error);

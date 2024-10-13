@@ -1,4 +1,4 @@
-import Products from "@/components/features/admin/Delivery/Products";
+import FindProducts from "@/components/features/admin/AllProducts/FindProducts";
 import { ProductsMethods } from "@/queryFactory/Product";
 import { cookies } from "next/headers";
 import React from "react";
@@ -19,7 +19,7 @@ const page = async () => {
     ...products5,
     ...products6,
   ];
-  return <Products products={mergedProducts} />;
+  return <FindProducts products={mergedProducts} />;
 };
 
 export default page;
