@@ -34,7 +34,7 @@ const Pagination = () => {
             router.push(`?${params.toString()}`);
           }}
         >
-          <ArrowLeft size={20} />
+          <ArrowLeft size={40} />
           <p></p>
         </button>
         <PageNumber page={page} pageCount={pageCount} />
@@ -53,7 +53,7 @@ const Pagination = () => {
           }}
         >
           <p></p>
-          <ArrowRight size={20} />
+          <ArrowRight size={40} />
         </button>
       </div>
     </>
