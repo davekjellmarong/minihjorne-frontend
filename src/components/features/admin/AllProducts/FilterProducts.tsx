@@ -109,7 +109,7 @@ const FilterProducts = ({ products }: FilterProductsProps) => {
             <div className="text-center">
               <p className="text-sm">ID: {product.id}</p>
               <p className="text-sm font-medium">
-                Size: {product.attributes.size.data.attributes.number}
+                Size: {product.attributes.size?.data?.attributes?.number}
               </p>
               <p className="text-sm">Merke: {product.attributes.brand}</p>
               <p className="text-sm">{product.attributes.price} kr</p>
