@@ -136,8 +136,8 @@ const FilterProducts = ({ products }: FilterProductsProps) => {
             {selectedProducts.map((product) => (
               <li key={product.id}>
                 ID: {product.id}, Size:{" "}
-                {product.attributes.size.data.attributes.number}, Price:{" "}
-                {product.attributes.price} kr
+                {product?.attributes?.size?.data?.attributes?.number}, Price:{" "}
+                {product?.attributes?.price} kr
               </li>
             ))}
           </ul>
