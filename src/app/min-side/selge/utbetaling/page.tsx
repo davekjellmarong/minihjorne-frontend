@@ -1,4 +1,4 @@
-import Form from "@/components/features/minSide/betaling/Form";
+import Form from "@/components/features/minSide/utbetaling/Form";
 import { UserMethods } from "@/queryFactory/User";
 import { cookies } from "next/headers";
 
