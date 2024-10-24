@@ -56,8 +56,8 @@ const Menu = async () => {
 
         {
           id: 11,
-          title: "Betaling",
-          path: "/min-side/selge/betaling",
+          title: "Utbetaling",
+          path: "/min-side/selge/utbetaling",
           icon: <Money size={32} weight="thin" color="purple" />,
           action: null,
         },
