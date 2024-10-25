@@ -24,12 +24,12 @@ const Form = ({ user, initialBankAccountNumber }: FormProps) => {
       toast.error(message[0].message);
     },
   });
-  const [bankAccountNumber, setBankAccountNumber] = useState(
-    initialBankAccountNumber || "",
-  );
+  const [bankAccountNumber, setBankAccountNumber] = useState("");
   const [confirmBankAccount, setConfirmBankAccount] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(
+    initialBankAccountNumber ? false : true,
+  );
   useEffect(() => {
     if (bankAccountNumber != confirmBankAccount) {
       setErrorMessage("Bankkontonummer matcher ikke");
