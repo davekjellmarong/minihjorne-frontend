@@ -46,4 +46,11 @@ export const DeliveryMethods = {
   getDeliveries: async (token: any): Promise<Delivery[]> => {
     return getData("/deliveries?populate=*", token);
   },
+  getDeliveriesBySellerId: async (token: any, id: any): Promise<Delivery[]> => {
+    return getData(
+      // ADD FILTER FOR IF PRODUCT HAS PAYOUT
+      `/deliveries?populate[products][populate][0]=image&populate=sales_method&filters[seller]=${id}&filters[inProgress][$eq]=false&populate[products][filters][sold][$eq]=true`,
+      token,
+    );
+  },
 };

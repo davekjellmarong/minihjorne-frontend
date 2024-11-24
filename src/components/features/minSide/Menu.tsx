@@ -125,6 +125,13 @@ const Menu = async () => {
           icon: <Truck size={32} weight="thin" color="purple" />,
           action: null,
         },
+        {
+          id: 12,
+          title: "Utbetalinger",
+          path: "/min-side/admin/utbetalinger",
+          icon: <Money size={32} weight="thin" color="purple" />,
+          action: null,
+        },
       ],
     },
     // {
