@@ -11,6 +11,7 @@ import { SellerMethods } from "@/queryFactory/Seller";
 import { DeliveryMethods } from "@/queryFactory/Delivery";
 import { Product } from "@/utils/types";
 import { OrderMethods } from "@/queryFactory/Order";
+import { SellerPayoutMethods } from "@/queryFactory/SellerPayout";
 const cookieStore: any = cookies();
 const token = cookieStore.get("Token")?.value;
 
@@ -232,6 +233,92 @@ export const createOrder = async (products: Product[]) => {
     );
     console.log(response);
     revalidatePath("/sellers/me");
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
+};
+
+export const getSellerPayouts = async (sellerId: number) => {
+  const user = await UserMethods.getMe(token);
+  if (!user.admin) return "Not an admin";
+  try {
+    const response = await SellerPayoutMethods.getBySellerId(
+      sellerId,
+      process.env.STRAPI_ACCESS_TOKEN,
+    );
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
+};
+
+export const sendReceipt = async ({ id }: any) => {
+  const user = await UserMethods.getMe(token);
+  if (!user.admin) return "Not an admin";
+  try {
+    const response = await SellerPayoutMethods.sendReceipt(
+      id,
+      process.env.STRAPI_ACCESS_TOKEN,
+    );
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
+};
+
+export const createSellerPayout = async ({
+  productIds,
+  sellerId,
+  salesMethod,
+  minihjornePrice,
+  payoutPrice,
+  totalPrice,
+}: any) => {
+  const user = await UserMethods.getMe(token);
+  if (!user.admin) return "Not an admin";
+  const payload = {
+    data: {
+      products: productIds,
+      seller: sellerId,
+      sales_method: salesMethod,
+      minihjornePrice: minihjornePrice,
+      payoutPrice: payoutPrice,
+      totalPrice: totalPrice,
+    },
+  };
+  try {
+    const response = await SellerPayoutMethods.createSellerPayout(
+      payload,
+      process.env.STRAPI_ACCESS_TOKEN,
+    );
+    revalidatePath("/seller-payouts");
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
+};
+
+export const markPayoutAsPaid = async ({ id }: any) => {
+  const user = await UserMethods.getMe(token);
+  if (!user.admin) return "Not an admin";
+  const payload = {
+    data: {
+      sellerPaymentCompleted: true,
+      payoutDate: new Date().toISOString(),
+    },
+  };
+  try {
+    const response = await SellerPayoutMethods.markPayoutAsPaid(
+      payload,
+      id,
+      process.env.STRAPI_ACCESS_TOKEN,
+    );
+    revalidatePath("/seller-payouts");
     return response;
   } catch (error) {
     console.error("Error creating delivery:", error);

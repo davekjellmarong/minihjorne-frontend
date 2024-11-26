@@ -118,3 +118,13 @@ export const responsive = {
 };
 
 export const shippingPrice = 69;
+export const salesMethodPercent = {
+  Seller: {
+    FullService: 0.4,
+    Selvregistrering: 0.7,
+  },
+  Minihjorne: {
+    FullService: 0.6,
+    Selvregistrering: 0.3,
+  },
+};
