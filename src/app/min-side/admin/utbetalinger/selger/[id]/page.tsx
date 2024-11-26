@@ -1,5 +1,7 @@
+import PayoutsList from "@/components/features/admin/Delivery/PayoutsList";
 import DeliveryLists from "@/components/features/admin/Utbetalinger/DeliveryLists";
 import ProductList from "@/components/features/admin/Utbetalinger/ProductList";
+import { Button } from "@/components/UI/button";
 import { DeliveryMethods } from "@/queryFactory/Delivery";
 import { ProductQueries, ProductsMethods } from "@/queryFactory/Product";
 import { SellerMethods } from "@/queryFactory/Seller";
@@ -13,20 +15,23 @@ const Page = async ({ params }: { params: { id: string } }) => {
   if (!me.admin) return <div>Not an admin</div>;
   const seller = await SellerMethods.getById(params.id);
   const products = await ProductsMethods.getBySellerId(params.id);
-  console.log(products[0].attributes.delivery);
   const deliveries = await DeliveryMethods.getDeliveriesBySellerId(
     token,
     seller.id,
   );
-
   const sellerPayouts = await SellerPayoutMethods.getBySellerId(
     seller.id,
     process.env.STRAPI_ACCESS_TOKEN,
   );
   return (
     <div>
-      <ProductList products={products} seller={seller} />
-      <DeliveryLists deliveries={deliveries} />
+      <PayoutsList sellerPayouts={sellerPayouts} sellerId={seller.id} />
+      <ProductList
+        products={products}
+        seller={seller}
+        deliveries={deliveries}
+      />
+      {/* <DeliveryLists deliveries={deliveries} /> */}
     </div>
   );
 };

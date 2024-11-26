@@ -24,6 +24,7 @@ const config = {
     extend: {
       colors: {
         brand: {
+          50: "#faf5ff",
           100: "#e5e1f9",
           200: "#cbc3f2",
           300: "#b1a6ec",

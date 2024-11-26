@@ -257,7 +257,6 @@ export const getSellerPayouts = async (sellerId: number) => {
 
 export const sendReceipt = async ({ id }: any) => {
   const user = await UserMethods.getMe(token);
-  console.log(user.username);
   if (!user.admin) return "Not an admin";
   try {
     const response = await SellerPayoutMethods.sendReceipt(
@@ -275,6 +274,9 @@ export const createSellerPayout = async ({
   productIds,
   sellerId,
   salesMethod,
+  minihjornePrice,
+  payoutPrice,
+  totalPrice,
 }: any) => {
   const user = await UserMethods.getMe(token);
   if (!user.admin) return "Not an admin";
@@ -283,6 +285,9 @@ export const createSellerPayout = async ({
       products: productIds,
       seller: sellerId,
       sales_method: salesMethod,
+      minihjornePrice: minihjornePrice,
+      payoutPrice: payoutPrice,
+      totalPrice: totalPrice,
     },
   };
   try {
@@ -290,6 +295,30 @@ export const createSellerPayout = async ({
       payload,
       process.env.STRAPI_ACCESS_TOKEN,
     );
+    revalidatePath("/seller-payouts");
+    return response;
+  } catch (error) {
+    console.error("Error creating delivery:", error);
+    throw error;
+  }
+};
+
+export const markPayoutAsPaid = async ({ id }: any) => {
+  const user = await UserMethods.getMe(token);
+  if (!user.admin) return "Not an admin";
+  const payload = {
+    data: {
+      sellerPaymentCompleted: true,
+      payoutDate: new Date().toISOString(),
+    },
+  };
+  try {
+    const response = await SellerPayoutMethods.markPayoutAsPaid(
+      payload,
+      id,
+      process.env.STRAPI_ACCESS_TOKEN,
+    );
+    revalidatePath("/seller-payouts");
     return response;
   } catch (error) {
     console.error("Error creating delivery:", error);

@@ -49,7 +49,7 @@ export const DeliveryMethods = {
   getDeliveriesBySellerId: async (token: any, id: any): Promise<Delivery[]> => {
     return getData(
       // ADD FILTER FOR IF PRODUCT HAS PAYOUT
-      `/deliveries?populate[products][populate][0]=image&populate=sales_method&filters[seller]=${id}&filters[inProgress][$eq]=false&populate[products][filters][sold][$eq]=true`,
+      `/deliveries?populate[products][populate][0]=image&populate=sales_method&filters[seller]=${id}&filters[inProgress][$eq]=false&populate[products][filters][sold][$eq]=true&populate[products][filters][payout][id][$null]=true`,
       token,
     );
   },

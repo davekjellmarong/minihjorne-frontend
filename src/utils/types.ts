@@ -6,6 +6,17 @@ export interface CommonSize {
   updatedAt: string;
   publishedAt: string;
 }
+export interface CommonSellerPayout {
+  createdAt: string;
+  updatedAt: string;
+  products: Product[];
+  seller: Seller;
+  sales_method: SalesMethod;
+  totalPrice: number;
+  payoutPrice: number;
+  minihjornePrice: number;
+  payoutDate: string;
+}
 export interface CommonSeller {
   header: string;
   description: string;
@@ -368,6 +379,21 @@ export interface Product {
     brand_link: { data: Brand_link | null };
     delivery: { data: Delivery };
     seller: { data: Seller };
+    payout: { data: SellerPayout };
+  };
+}
+export interface SellerPayout {
+  id: number;
+  attributes: {
+    createdAt: string;
+    updatedAt: string;
+    products: { data: Product[] };
+    seller: { data: Seller };
+    sales_method: { data: SalesMethod };
+    totalPrice: number;
+    payoutPrice: number;
+    minihjornePrice: number;
+    payoutDate: string;
   };
 }
 export interface SalesMethod {
@@ -401,6 +427,7 @@ export interface Seller {
     products: { data: Product[] };
     deliveries: { data: Delivery[] | [] };
     user: { data: User };
+    payouts: { data: SellerPayout[] };
   };
 }
 export interface Delivery {
