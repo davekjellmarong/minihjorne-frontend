@@ -1,2 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://minihjorne.no
+
+# Sitemaps
+Sitemap: https://minihjorne.no/sitemap.xml
