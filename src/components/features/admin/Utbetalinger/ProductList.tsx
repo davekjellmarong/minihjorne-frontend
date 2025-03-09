@@ -2,6 +2,7 @@
 import LoadingOverlay from "@/components/common/loading/LoadingOverlay";
 import { Button } from "@/components/UI/button";
 import { Checkbox } from "@/components/UI/checkbox";
+import { Tabs, TabsList, TabsTrigger } from "@/components/UI/tabs";
 import { createSellerPayout } from "@/serverActions/ServerActions";
 import { salesMethodPercent } from "@/utils/constants";
 import { SalgsMetode } from "@/utils/Enums";
@@ -18,7 +19,10 @@ interface ProductListProps {
 const ProductList = ({ deliveries, seller }: ProductListProps) => {
   const [salesMethod, setSalesMethod] = useState<
     SalgsMetode.FullService | SalgsMetode.Selvregistrering
-  >(SalgsMetode.FullService);
+  >(SalgsMetode.Selvregistrering);
+  const [selectedTab, setSelectedTab] = useState<
+    "Full service" | "Selvregistrering"
+  >("Selvregistrering");
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const handleCheckboxChange = (e: any, product: Product) => {
     if (!e) {
@@ -61,6 +65,24 @@ const ProductList = ({ deliveries, seller }: ProductListProps) => {
         <h2 className="text-xl font-bold text-[#333333] dark:text-[#f0f0f0]">
           Leveringer
         </h2>
+        <Tabs
+          value={selectedTab}
+          onValueChange={(value) => {
+            if (value === "Full service") {
+              setSalesMethod(SalgsMetode.FullService);
+              setSelectedTab("Full service");
+            } else {
+              setSalesMethod(SalgsMetode.Selvregistrering);
+              setSelectedTab("Selvregistrering");
+            }
+          }}
+          className="mb-6"
+        >
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="Full service">Full Service</TabsTrigger>
+            <TabsTrigger value="Selvregistrering">Selvregistrering</TabsTrigger>
+          </TabsList>
+        </Tabs>
         <div className="space-y-4">
           {deliveries.map((delivery) => (
             <div
@@ -81,38 +103,40 @@ const ProductList = ({ deliveries, seller }: ProductListProps) => {
                   {delivery.attributes.sales_method.data.attributes.name}
                 </div>
               </div>
-              <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-                {delivery.attributes.products.data.map((product) => (
-                  <div
-                    key={product.id}
-                    className="flex items-center justify-between rounded-lg border border-[#e5e5e5] bg-white p-4 dark:border-[#2c2c2c] dark:bg-[#2c2c2c]"
-                  >
-                    <div className="flex items-center gap-4">
-                      <Image
-                        src={product.attributes.image.data[0].attributes.url}
-                        alt="Product image"
-                        width={50}
-                        height={50}
-                        className="rounded-md"
-                        style={{ aspectRatio: "50/50", objectFit: "cover" }}
-                      />
-                      <div className="text-lg font-bold text-[#333333] dark:text-[#f0f0f0]">
-                        {product.attributes.brand}
+              {delivery.attributes.sales_method.data.id === salesMethod && (
+                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                  {delivery.attributes.products.data.map((product) => (
+                    <div
+                      key={product.id}
+                      className="flex items-center justify-between rounded-lg border border-[#e5e5e5] bg-white p-4 dark:border-[#2c2c2c] dark:bg-[#2c2c2c]"
+                    >
+                      <div className="flex items-center gap-4">
+                        <Image
+                          src={product.attributes.image.data[0].attributes.url}
+                          alt="Product image"
+                          width={50}
+                          height={50}
+                          className="rounded-md"
+                          style={{ aspectRatio: "50/50", objectFit: "cover" }}
+                        />
+                        <div className="text-lg font-bold text-[#333333] dark:text-[#f0f0f0]">
+                          {product.attributes.brand}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="text-sm text-[#666666] dark:text-[#b0b0b0]">
+                          kr {product.attributes.price}
+                        </div>
+                        <Checkbox
+                          onCheckedChange={(e) =>
+                            handleCheckboxChange(e, product)
+                          }
+                        />
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="text-sm text-[#666666] dark:text-[#b0b0b0]">
-                        kr {product.attributes.price}
-                      </div>
-                      <Checkbox
-                        onCheckedChange={(e) =>
-                          handleCheckboxChange(e, product)
-                        }
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
